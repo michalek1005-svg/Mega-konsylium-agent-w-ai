@@ -32,6 +32,10 @@
   --pole: rgba(255,255,255,.9); --pole-obrys: rgba(15,94,88,.25);
   --strona-cien: 0 16px 30px -14px rgba(10,54,52,.34);
   --alarm: #A83A38;
+  /* wypukłe/wklęsłe przyciski paska bocznego (Nawigator: --wcisk-*, components/left-nav-bar.tsx) */
+  --wcisk-cien: rgba(163,177,198,.5); --wcisk-swiatlo: rgba(255,255,255,.85); --wcisk-tlo: rgba(224,229,236,.7); --nav-obrys: rgba(255,255,255,.3);
+  --wcisk-on-tlo: #d6dbe2; --wcisk-on-cien: inset 5px 5px 10px #a3b1c6e6, inset -5px -5px 10px #ffffff;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 html[data-motyw="ciemny"] {
   color-scheme: dark;
@@ -49,6 +53,8 @@ html[data-motyw="ciemny"] {
   --pole: rgba(255,255,255,.06); --pole-obrys: rgba(255,255,255,.12);
   --strona-cien: 0 16px 30px -14px rgba(0,0,0,.7);
   --alarm: #ff9a8c;
+  --wcisk-cien: rgba(0,0,0,.55); --wcisk-swiatlo: rgba(255,255,255,.07); --wcisk-tlo: rgba(32,46,45,.85); --nav-obrys: rgba(255,255,255,.08);
+  --wcisk-on-tlo: #070e0d; --wcisk-on-cien: inset 6px 6px 12px rgba(0,0,0,1), inset -5px -5px 10px rgba(255,255,255,.22), inset 0 -1px 0 rgba(255,255,255,.18);
 }
 /* przyciski i pola — jak .nk-button / .nk-field w Nawigatorze */
 .nk-button { border: 0; border-radius: 22px; padding: 9px 14px; min-height: 40px; background: var(--btn); color: var(--btn-txt);
@@ -153,6 +159,11 @@ input[type="checkbox"] { accent-color: var(--on); width: 16px; height: 16px; mar
 .ostrzezenie { margin-top: 14px; }
 .pasek-postepu { height: 6px; border-radius: 99px; background: var(--btn); overflow: hidden; margin: -4px 0 14px; }
 .pasek-postepu div { height: 100%; width: 0; background: var(--petrol); transition: width .2s; }
+
+/* w aplikacji MS Konsylium (powłoka z szklaną taflą i paskiem ikon): bez własnego tła, logo i przełącznika motywu */
+html.osadzony, html.osadzony body { background: transparent !important; }
+html.osadzony body::after, html.osadzony body::before { display: none !important; }
+html.osadzony .naglowek .logo, html.osadzony #b-motyw { display: none !important; }
 </style>
 </head>
 <body>
@@ -1312,7 +1323,7 @@ const powloka = (() => {
   });
   return { wywolaj };
 })();
-powloka.wywolaj('ping', [], 1200).then((w) => { if (w === 'ms-powloka-1') $('#b-wywiad').hidden = false; }, () => {});
+powloka.wywolaj('ping', [], 1200).then((w) => { if (w === 'ms-powloka-1') { $('#b-wywiad').hidden = false; document.documentElement.classList.add('osadzony'); } }, () => {});
 $('#b-wywiad').addEventListener('click', async () => {
   try {
     await powloka.wywolaj('wyslij', ['wywiad', { wyniki: tekst(), nazwa: 'Wynik ' + dzis() + (S.strony.some((s) => s.ocr) ? ' (OCR)' : '') }]);

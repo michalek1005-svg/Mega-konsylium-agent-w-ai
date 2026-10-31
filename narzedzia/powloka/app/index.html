@@ -7,63 +7,81 @@
 <style>
 /*@@FONT@@*/
 /*@@MS-TOKENY@@*/
-/* Powłoka: boczne menu z modułami, moduł w ramce obok. Paleta „Laguna” z Nawigatora
-   (narzedzia/wspolne/ms-tokeny.css), motyw przez data-motyw na <html>. */
+/* Powłoka w układzie Nawigatora Medycznego: jedna szklana tafla (rounded 44px, .neumorphic-panel-shadow)
+   na scenie „Laguna” z ziarnem, pionowy pasek okrągłych ikon (components/left-nav-bar.tsx: otwarty moduł =
+   przycisk wciśnięty, bez koloru akcentu), logo-litera w stylu neonowego N (lib/logo-n.ts). */
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html, body { height: 100%; margin: 0; }
-body { font: 14px/1.45 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif; color: var(--ink);
-  background: var(--scene); background-color: var(--bg-viewport); display: grid; grid-template-columns: 248px minmax(0, 1fr); }
-nav { padding: 20px 14px; display: flex; flex-direction: column; gap: 8px; background: var(--tafla); box-shadow: var(--tafla-cien);
-  backdrop-filter: blur(26px) saturate(140%); }
-.marka { display: flex; gap: 12px; align-items: center; margin: 0 4px 18px; }
-.logo { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; font-size: 24px; letter-spacing: -1px; color: #F7FBFA;
-  background: linear-gradient(150deg, #157268, #0F5E58); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
-.marka b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -.3px; }
-.marka span { font-size: 12px; color: var(--mut); }
-.nk-label { margin: 4px 6px 4px; }
-button.modul { all: unset; cursor: pointer; padding: 11px 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 1px;
-  background: var(--btn); color: var(--btn-txt); font-weight: 650; transition: background .15s; }
-button.modul:hover { background: var(--btn-h); }
-button.modul small { font-size: 11.5px; font-weight: 500; opacity: .8; }
-button.modul[aria-current="page"] { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
-button.modul:focus-visible, .nk-button:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; }
-.stan { margin-top: auto; font-size: 12px; color: var(--mut); display: flex; flex-direction: column; gap: 8px; padding: 0 6px; }
-.stan .offline { color: var(--petrol); font-weight: 700; display: flex; align-items: center; gap: 7px; }
-.stan .offline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
-main { position: relative; min-width: 0; }
+body { font: 14px/1.45 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif; color: var(--ink); overflow: hidden;
+  background: var(--scene); background-color: var(--bg-viewport); display: grid; place-items: center; }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; background-image: var(--grain); opacity: .16; mix-blend-mode: soft-light; }
+html[data-motyw="ciemny"] body::after { opacity: .08; }
+.tafla-glowna { position: relative; width: calc(100vw - 48px); height: calc(100vh - 48px); max-width: 1680px; border-radius: 44px; overflow: hidden;
+  background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); }
+/* logo K jak neonowe N Nawigatora */
+.logo-k { position: absolute; left: 23px; top: 12px; width: 60px; height: 60px; z-index: 100; display: grid; place-items: center; }
+.logo-k svg { width: 48px; height: 51px; filter: contrast(1.2) drop-shadow(0 1px 2px rgba(10,54,52,.4)); }
+/* pasek boczny */
+nav.pasek { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 6px; padding: 8px;
+  border-radius: 24px; background: var(--wcisk-tlo); backdrop-filter: blur(12px); border: 1px solid var(--nav-obrys);
+  box-shadow: 8px 8px 16px var(--wcisk-cien), -8px -8px 16px var(--wcisk-swiatlo); }
+nav.pasek button { all: unset; position: relative; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--mut);
+  transition: background-color .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s cubic-bezier(.2,.8,.2,1), color .22s; }
+nav.pasek button svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .22s; }
+nav.pasek button[aria-current="page"], nav.pasek button[aria-pressed="true"], nav.pasek button:focus-visible, nav.pasek button:active {
+  background-color: var(--wcisk-on-tlo); box-shadow: var(--wcisk-on-cien); color: var(--ink); outline: none; }
+html[data-motyw="ciemny"] nav.pasek button[aria-current="page"], html[data-motyw="ciemny"] nav.pasek button[aria-pressed="true"] { color: #fff; }
+nav.pasek button:active svg { transform: scale(.92); }
+nav.pasek .kreska { height: 1px; margin: 4px 8px; background: var(--nav-obrys); }
+.podpis { position: absolute; left: calc(100% + 14px); top: 50%; transform: translate(-6px, -50%); white-space: nowrap; padding: 6px 11px; border-radius: 12px;
+  background: var(--panel); box-shadow: var(--panel-cien); backdrop-filter: blur(14px); color: var(--ink); font-size: 12px; font-weight: 650; opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; }
+.podpis small { display: block; font-weight: 500; color: var(--mut); font-size: 11px; }
+nav.pasek button:hover .podpis, nav.pasek button:focus-visible .podpis { opacity: 1; transform: translate(0, -50%); }
+/* moduły */
+main { position: absolute; inset: 0 0 0 88px; min-width: 0; }
 iframe { border: 0; width: 100%; height: 100%; display: block; background: transparent; position: absolute; inset: 0; }
-.folder { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 12px; color: var(--mut); }
-.folder b { color: var(--ink); font-size: 12.5px; }
+.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--mut); padding: 40px; }
+/* stan na dole i okienko folderu */
+.stan { position: absolute; left: 22px; bottom: 16px; z-index: 100; font-size: 11px; color: var(--mut); display: flex; flex-direction: column; align-items: center; gap: 2px; width: 52px; text-align: center; }
+.stan .offline { color: var(--petrol); font-weight: 750; display: flex; align-items: center; gap: 5px; }
+.stan .offline::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+.folder { position: absolute; left: 92px; top: 50%; transform: translateY(-10%); z-index: 120; width: 320px; display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 20px;
+  background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); font-size: 12.5px; color: var(--mut); }
+.folder b { color: var(--ink); font-size: 13px; }
 .folder code { font: 11.5px ui-monospace, Consolas, monospace; color: var(--ink); word-break: break-all; }
 .folder .rzad { display: flex; gap: 6px; flex-wrap: wrap; }
-.folder .brak-f { color: var(--uwaga, #8a5d0c); }
-.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--mut); padding: 40px; }
+.folder .brak-f { color: var(--alarm); }
+.folder .uwaga { font-size: 11.5px; }
 </style>
 </head>
 <body>
-<nav aria-label="Moduły">
-  <div class="marka"><div class="logo" aria-hidden="true">K</div><div><b>Konsylium AI</b><span>Narzędzia offline · MS</span></div></div>
-  <p class="nk-label">Moduły</p>
-  <button class="modul" type="button" data-modul="wywiad" aria-current="page">Wywiad z pacjentem<small>Opis, pytania, kopia do Konsylium</small></button>
-  <button class="modul" type="button" data-modul="anonimizator">Anonimizator badań<small>Wyniki Synevo bez danych osobowych</small></button>
-  <button class="modul" type="button" data-modul="pokoj">Pokój lekarski<small>Konsylium na żywo, dymki agentów</small></button>
-  <div class="stan">
-    <div class="folder" id="folder-panel">
-      <b>Folder Konsylium</b>
-      <span id="folder-sciezka">Nie wybrano. Wybierz kopię repo Konsylium, żeby pracować na żywo z Claude.</span>
-      <div class="rzad"><button class="nk-button" type="button" id="folder-wybierz">Wybierz folder…</button>
-      <button class="nk-button" type="button" id="folder-otworz" hidden>Otwórz</button></div>
-    </div>
-    <button class="nk-button" type="button" id="motyw">Motyw jasny / ciemny</button>
-    <span class="offline">Offline</span>
-    <span>Sieć jest zablokowana. Dane zostają na tym komputerze. Do folderu Konsylium aplikacja zapisuje tylko teksty po anonimizacji.</span>
-    <span id="wersja"></span>
+<div class="tafla-glowna">
+  <div class="logo-k" title="Konsylium AI · marka MS" aria-label="Konsylium AI">
+    <svg viewBox="0 0 186 198" aria-hidden="true"><defs><linearGradient id="neon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f9f8"/><stop offset="1" stop-color="#b8c3c1"/></linearGradient></defs>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M56 38V160M138 40L74 102M86 92L142 158" stroke="url(#neon)" stroke-width="27"/>
+      <path d="M56 38V160M138 40L74 102M86 92L142 158" stroke="#fff" stroke-width="3.2"/></g></svg>
   </div>
-</nav>
-<main>
-  <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
-</main>
+  <nav class="pasek" aria-label="Moduły">
+    <button class="modul" type="button" data-modul="wywiad" aria-label="Wywiad z pacjentem"><svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></svg><span class="podpis">Wywiad z pacjentem<small>opis, pytania od AI na żywo</small></span></button>
+    <button class="modul" type="button" data-modul="anonimizator" aria-label="Anonimizator badań"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><span class="podpis">Anonimizator badań<small>wyniki bez danych osobowych</small></span></button>
+    <button class="modul" type="button" data-modul="pokoj" aria-label="Pokój lekarski"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="podpis">Pokój lekarski<small>konsylium na żywo i wnioski</small></span></button>
+    <div class="kreska"></div>
+    <button type="button" id="folder-przycisk" aria-label="Folder Konsylium" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span class="podpis">Folder Konsylium<small id="folder-podpis">nie wybrano</small></span></button>
+    <button type="button" id="motyw" aria-label="Motyw jasny / ciemny"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span class="podpis">Motyw jasny / ciemny</span></button>
+  </nav>
+  <div class="folder" id="folder-panel" hidden>
+    <b>Folder Konsylium</b>
+    <span id="folder-sciezka">Nie wybrano.</span>
+    <span class="uwaga">Tu AI czyta zanonimizowane odpowiedzi i zapisuje pytania, a konsylium dymki i wnioski. Sieć jest zablokowana; dane zostają na tym komputerze.</span>
+    <div class="rzad"><button class="nk-button nk-on" type="button" id="folder-wybierz">Wybierz folder…</button>
+    <button class="nk-button" type="button" id="folder-otworz" hidden>Otwórz</button></div>
+  </div>
+  <main>
+    <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
+  </main>
+  <div class="stan"><span class="offline">Offline</span><span id="wersja"></span></div>
+</div>
 <!--KONFIGURACJA-->
 <script>
 (function () {
@@ -100,7 +118,7 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
   }
   function pokaz(id) {
     if (!MODULY[id]) id = 'wywiad';
-    biezacy = id;
+    biezacy = id; if (typeof pokazPanelFolderu === 'function') pokazPanelFolderu(false);
     document.querySelectorAll('button.modul').forEach(function (b) {
       if (b.dataset.modul === id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
@@ -143,15 +161,20 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
   // Folder Konsylium
   var $fs = document.getElementById('folder-sciezka'), $fo = document.getElementById('folder-otworz'), $fw = document.getElementById('folder-wybierz');
   function pokazFolder(f) {
-    if (f) { $fs.innerHTML = ''; var c = document.createElement('code'); c.textContent = f; $fs.appendChild(c); $fw.textContent = 'Zmień…'; }
-    else { $fs.textContent = 'Nie wybrano. Wybierz kopię repo Konsylium, żeby pracować na żywo z Claude.'; $fs.className = 'brak-f'; $fw.textContent = 'Wybierz folder…'; }
+    var $fp = document.getElementById('folder-podpis');
+    if (f) { $fs.innerHTML = ''; $fs.className = ''; var c = document.createElement('code'); c.textContent = f; $fs.appendChild(c); $fw.textContent = 'Zmień…'; $fp.textContent = f.split(/[\\/]/).filter(Boolean).pop(); }
+    else { $fs.textContent = 'Nie wybrano. Wybierz kopię repo Konsylium, żeby AI mogło prowadzić wywiad i konsylium na żywo.'; $fs.className = 'brak-f'; $fw.textContent = 'Wybierz folder…'; $fp.textContent = 'nie wybrano'; }
     $fo.hidden = !f;
   }
+  var $fpan = document.getElementById('folder-panel'), $fb = document.getElementById('folder-przycisk');
+  function pokazPanelFolderu(t) { $fpan.hidden = !t; $fb.setAttribute('aria-pressed', String(!!t)); }
+  $fb.addEventListener('click', function () { pokazPanelFolderu($fpan.hidden); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pokazPanelFolderu(false); });
   if (P) {
-    P.folder().then(pokazFolder);
+    P.folder().then(function (f) { pokazFolder(f); if (!f) pokazPanelFolderu(true); });
     $fw.addEventListener('click', function () { P.wybierzFolder().then(function (f) { pokazFolder(f); Object.keys(ramki).forEach(function (k) { doModulu(k, { typ: 'ms-dane', od: 'powloka', dane: { folder: f } }); }); }); });
     $fo.addEventListener('click', function () { P.otworzFolder(); });
-  } else document.getElementById('folder-panel').hidden = true;
+  } else $fb.hidden = true;
 
   var start = 'wywiad';
   try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}
@@ -169,7 +192,7 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
   document.getElementById('motyw').addEventListener('click', function () {
     ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
   });
-  document.getElementById('wersja').textContent = 'Wersja ' + (window.MS_WERSJA || 'dev');
+  document.getElementById('wersja').textContent = (window.MS_WERSJA || 'dev');
 })();
 </script>
 </body>

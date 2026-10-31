@@ -221,3 +221,8 @@ select.tempo { border: 0; border-radius: 22px; min-height: 38px; padding: 0 12px
 .wnioski dd { margin: 0; font-size: 13.5px; line-height: 1.55; white-space: pre-wrap; }
 .wnioski .stopka-w { font-size: 11.5px; color: var(--mut); }
 @container (max-width: 620px) { .wnioski { inset: 8px; } .wnioski dl { grid-template-columns: 1fr; } }
+
+/* w aplikacji MS Konsylium (powłoka z szklaną taflą i paskiem ikon): bez własnego tła, logo i przełącznika motywu */
+html.osadzony, html.osadzony body { background: transparent !important; }
+html.osadzony body::after, html.osadzony body::before { display: none !important; }
+html.osadzony .naglowek .logo, html.osadzony #motyw { display: none !important; }

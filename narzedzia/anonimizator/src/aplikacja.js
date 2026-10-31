@@ -556,7 +556,7 @@ const powloka = (() => {
   });
   return { wywolaj };
 })();
-powloka.wywolaj('ping', [], 1200).then((w) => { if (w === 'ms-powloka-1') $('#b-wywiad').hidden = false; }, () => {});
+powloka.wywolaj('ping', [], 1200).then((w) => { if (w === 'ms-powloka-1') { $('#b-wywiad').hidden = false; document.documentElement.classList.add('osadzony'); } }, () => {});
 $('#b-wywiad').addEventListener('click', async () => {
   try {
     await powloka.wywolaj('wyslij', ['wywiad', { wyniki: tekst(), nazwa: 'Wynik ' + dzis() + (S.strony.some((s) => s.ocr) ? ' (OCR)' : '') }]);
