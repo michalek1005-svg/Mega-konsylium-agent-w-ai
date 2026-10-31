@@ -209,11 +209,17 @@ ${podpisy(wpisy)}`;
       `<p class="stopka-w">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
     $('wnioski-zamknij').addEventListener('click', () => { el.hidden = true; });
     // na żywo: pierwsze pojawienie się 09-FINAL otwiera wnioski same
+    // ...ale dopiero gdy odtwarzanie dojdzie do końca dyskusji (nie zasłania trwającej rozmowy)
     const klucz = (s.sprawa || '') + '|' + w.tekst.length;
-    if (otworz && wnioskiPokazane !== klucz) { wnioskiPokazane = klucz; el.hidden = false; }
+    if (otworz && wnioskiPokazane !== klucz) wnioskiCzekaja = klucz;
   }
   $('wnioski-btn').addEventListener('click', () => { $('wnioski').hidden = !$('wnioski').hidden; });
 
+  let wnioskiCzekaja = null;
+  function otworzCzekajaceWnioski() {
+    if (!wnioskiCzekaja || !scen || !scen.wnioski) return;
+    wnioskiPokazane = wnioskiCzekaja; wnioskiCzekaja = null; $('wnioski').hidden = false;
+  }
   function aktualizuj(s) {
     rysujWnioski(s, !!zywoTimer);
     const bylo = kroki.length, naKoncu = i >= bylo - 1;
@@ -222,13 +228,14 @@ ${podpisy(wpisy)}`;
     s.tablica.liczbaRezydentow = ileRezydentow();
     kroki = [];
     s.sceny.forEach((sc, si) => sc.wypowiedzi.forEach((w, wi) => kroki.push({ si, wi })));
-    if (kroki.length === bylo && bylo) return;
+    if (kroki.length === bylo && bylo) { if (i >= kroki.length - 1 && !gra) otworzCzekajaceWnioski(); return; }
     if (s.tablica.liczbaRezydentow !== rez || !bylo) rysujPokoj();
     rysujOs(); rysujListe();
     if (!bylo) { rysujLegende(); const d = wAplikacji() ? pierwszyDyskusji() : -1; pokaz(d > 0 ? d : 0, true); return; }
     // na żywo w aplikacji: gdy trwa jeszcze etap techniczny, a pojawiła się dyskusja — przeskocz do niej
     if (wAplikacji() && techniczny(kroki[i])) { const d = pierwszyDyskusji(i); if (d > i) { pokaz(d); return; } }
     pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
+    if (zywoTimer && naKoncu && !gra) ustawGre(true); // na żywo: nowe wypowiedzi odtwarzają się same
   }
 
   function przygotuj(s) {
@@ -315,7 +322,7 @@ ${podpisy(wpisy)}`;
     clearTimeout(timer);
     if (!gra) return;
     timer = setTimeout(() => {
-      if (i >= kroki.length - 1) { ustawGre(false); return; }
+      if (i >= kroki.length - 1) { ustawGre(false); otworzCzekajaceWnioski(); return; }
       pokaz(i + 1);
     }, czasKroku(kroki[i]));
   }
