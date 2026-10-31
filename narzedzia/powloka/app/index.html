@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; frame-src file:">
+<title>MS Konsylium Narzędzia</title>
+<style>
+/* Powłoka: boczne menu z modułami, moduł w ramce obok. Kolory jak w wywiadzie
+   (neumorfizm MS); po wydzieleniu narzedzia/wspolne/ms-tokeny.css przejdą na tokeny Nawigatora. */
+:root {
+  --tlo: #e3e7eb; --cien-jasny: #ffffff; --cien-ciemny: #b9c1c9;
+  --tekst: #233039; --tekst-2: #5a6873; --akcent: #357f75; --akcent-tlo: #d3e3df; --linia: #cdd4da;
+  --f: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21; --tekst: #dce3e8; --tekst-2: #94a2ac;
+    --akcent: #74b8ac; --akcent-tlo: #2b3d3b; --linia: #353d45; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--tlo); color: var(--tekst); font: 14px/1.45 var(--f); display: grid; grid-template-columns: 236px minmax(0, 1fr); }
+nav { padding: 22px 16px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid var(--linia); }
+.marka { display: flex; gap: 11px; align-items: center; margin-bottom: 18px; }
+.znak { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; color: var(--akcent);
+  box-shadow: 5px 5px 12px var(--cien-ciemny), -5px -5px 12px var(--cien-jasny); }
+.marka b { display: block; font-size: 15px; }
+.marka span { font-size: 12px; color: var(--tekst-2); }
+button.modul { all: unset; cursor: pointer; padding: 12px 14px; border-radius: 13px; display: flex; flex-direction: column; gap: 2px;
+  box-shadow: 5px 5px 12px var(--cien-ciemny), -5px -5px 12px var(--cien-jasny); }
+button.modul small { color: var(--tekst-2); font-size: 12px; }
+button.modul[aria-current="page"] { box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); color: var(--akcent); font-weight: 600; }
+button.modul:focus-visible { outline: 2px solid var(--akcent); outline-offset: 3px; }
+.stan { margin-top: auto; font-size: 12px; color: var(--tekst-2); display: flex; flex-direction: column; gap: 6px; }
+.stan .offline { color: var(--akcent); font-weight: 600; }
+.stan .offline::before { content: "●"; margin-right: 6px; }
+main { position: relative; min-width: 0; }
+iframe { border: 0; width: 100%; height: 100%; display: block; background: var(--tlo); }
+.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--tekst-2); padding: 40px; }
+</style>
+</head>
+<body>
+<nav aria-label="Moduły">
+  <div class="marka"><div class="znak">MS</div><div><b>Konsylium</b><span>Narzędzia offline</span></div></div>
+  <button class="modul" type="button" data-modul="wywiad" aria-current="page">Wywiad z pacjentem<small>Opis, pytania, kopia do Konsylium</small></button>
+  <button class="modul" type="button" data-modul="anonimizator">Anonimizator badań<small>Wyniki Synevo bez danych osobowych</small></button>
+  <div class="stan">
+    <span class="offline">Offline</span>
+    <span>Sieć jest zablokowana. Dane zostają na tym komputerze, dopóki sam ich nie skopiujesz.</span>
+    <span id="wersja"></span>
+  </div>
+</nav>
+<main>
+  <iframe id="ramka" title="Moduł" allow="clipboard-write"></iframe>
+  <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
+</main>
+<!--KONFIGURACJA-->
+<script>
+(function () {
+  var MODULY = { wywiad: 'moduly/wywiad.html', anonimizator: 'moduly/anonimizator.html' };
+  var ramka = document.getElementById('ramka'), brak = document.getElementById('brak');
+  var dostepne = window.MS_MODULY || {};
+  function pokaz(id) {
+    document.querySelectorAll('button.modul').forEach(function (b) {
+      if (b.dataset.modul === id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    if (dostepne[id] === false) { ramka.hidden = true; brak.hidden = false; return; }
+    brak.hidden = true; ramka.hidden = false;
+    ramka.src = MODULY[id];
+    try { localStorage.setItem('ms-modul', id); } catch (e) {}
+  }
+  document.querySelectorAll('button.modul').forEach(function (b) { b.addEventListener('click', function () { pokaz(b.dataset.modul); }); });
+  var start = 'wywiad';
+  try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}
+  pokaz(MODULY[start] ? start : 'wywiad');
+  document.getElementById('wersja').textContent = 'Wersja ' + (window.MS_WERSJA || 'dev');
+})();
+</script>
+</body>
+</html>

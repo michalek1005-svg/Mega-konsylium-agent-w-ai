@@ -431,7 +431,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 
     var md = S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) });
     h += '<div class="sekcja eksport"><h3>Dla Konsylium: 01-wywiad.md</h3><div class="rzad">' +
-      '<button class="przycisk wypukly glowny" type="button" data-akcja="kopiuj">Kopiuj 01-wywiad.md</button>' +
+      '<button class="przycisk wypukly glowny" type="button" data-akcja="kopiuj">Kopiuj do Konsylium</button>' +
       '<button class="przycisk wypukly" type="button" data-akcja="kopiuj-json">Kopiuj JSON</button><span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' +
       '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(md) + '</pre></div>';
 
@@ -454,7 +454,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 
   function kopiuj(tekst, etykieta) {
     var potw = document.getElementById('potw');
-    var ok = function () { potw.textContent = 'Skopiowano ' + etykieta + '.'; };
+    var ok = function () { potw.textContent = 'Skopiowano ' + etykieta + '. Wklej to w czacie projektu Konsylium.'; };
     var awaryjnie = function () {
       var pre = document.getElementById('podglad-md'), sel = window.getSelection(), zakres = document.createRange();
       zakres.selectNodeContents(pre); sel.removeAllRanges(); sel.addRange(zakres);

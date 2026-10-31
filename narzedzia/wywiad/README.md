@@ -13,7 +13,7 @@ Adaptacyjna ankieta, którą pacjent otwiera z linku. Po każdej odpowiedzi siln
 | `silnik.js` | Logika: przeliczenie stanu, wybór następnego pytania, czerwone flagi, eksport do `01-wywiad.md` |
 | `pytania.js` | Bank pytań, moduły i reguły czerwonych flag (to edytują lekarze) |
 | `przyklady.js` | Fikcyjne scenariusze do demo i testów |
-| `test-silnik.js` | Testy: `node wywiad/test-silnik.js` |
+| `test-silnik.js` | Testy: `node narzedzia/wywiad/test-silnik.js` |
 
 Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
 

@@ -1,0 +1,16 @@
+{
+  "name": "ms-konsylium-narzedzia",
+  "productName": "MS Konsylium Narzędzia",
+  "version": "0.1.0",
+  "description": "Wywiad z pacjentem i anonimizator badań: offline, dla Konsylium AI",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "zbuduj": "node zbuduj.mjs"
+  },
+  "devDependencies": {
+    "@electron/packager": "18.3.6",
+    "electron": "38.0.0"
+  }
+}

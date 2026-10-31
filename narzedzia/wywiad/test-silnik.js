@@ -1,4 +1,4 @@
-// Testy silnika wywiadu: node wywiad/test-silnik.js
+// Testy silnika wywiadu: node narzedzia/wywiad/test-silnik.js
 'use strict';
 const assert = require('assert');
 const S = require('./silnik.js');
