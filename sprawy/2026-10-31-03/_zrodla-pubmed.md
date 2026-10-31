@@ -1,0 +1,44 @@
+# Źródła zewnętrzne sprawy 2026-10-31-03 (dociągnięte na prośbę Michała „dodaj z PubMed”, 31.10.2026 ok. 22:45)
+
+Wtyczka PubMed MCP nie łączyła się (proxy 403), więc źródła pobrano przez wyszukiwarkę (indeks PubMed) i strony wydawców; część stron PubMed/PMC blokowała odczyt (captcha) — te pozycje mają tylko PMID i tytuł, bez przeczytanego abstraktu. Poziomy wg CLAUDE.md §5: 2 = źródło pierwotne/przegląd z DOI (przeczytane), 3 = ChPL zagraniczna / wytyczna międzynarodowa, (T) = tylko tytuł z indeksu PubMed, treść nieprzeczytana.
+
+## Anafilaksja, beta-bloker, adrenalina, glukagon
+- **White JL i wsp.** Patients Taking β-Blockers Do Not Require Increased Doses of Epinephrine for Anaphylaxis. *J Allergy Clin Immunol Pract* 2018;6(5):1553-8. DOI 10.1016/j.jaip.2017.12.020, PMID 29449164. (poziom 2) — 789 wizyt SOR; >1 dawka adrenaliny u 8%; beta-bloker u 13% wymagających powtórnej dawki vs 10% (OR 1,26; 95% CI 0,58–2,75) — brak istotnej różnicy. **Wniosek dla sprawy:** bisoprolol nie jest powodem do zmiany dawki adrenaliny ani do wahania przed jej podaniem.
+- **Francuzik W, Dölle-Bierke S, … Worm M.** Refractory Anaphylaxis: Data From the European Anaphylaxis Registry. *Front Immunol* 2019;10:2482. DOI 10.3389/fimmu.2019.02482, PMID 31749797. (poziom 2) — oporna anafilaksja 0,37% (42/11 596), śmiertelność 26,2%; leki wyzwalaczem w 50% przypadków opornych; beta-blokery u ok. 14% bez istotnej różnicy vs kontrola; autorzy zalecają glukagon przy podejrzeniu blokady beta-adrenergicznej (w rejestrze nie zastosowano go w żadnym przypadku).
+- **Shaker MS.** Anaphylaxis: Definition and criteria. *J Food Allergy* 2024;6(1):26-31. DOI 10.2500/jfa.2024.6.240002 (PMC11382771). (poziom 3, kryteria WAO 2020) — anafilaksja wysoce prawdopodobna, gdy ostre zmiany skórne/śluzówkowe + objawy oddechowe LUB hipotensja LUB ciężkie objawy żołądkowo-jelitowe; albo nagła hipotensja/skurcz oskrzeli/zajęcie krtani po prawdopodobnym alergenie nawet bez zmian skórnych.
+- **Giannetti MP.** Epidemiology, Risk Factors, and Management of Biphasic Anaphylaxis. *Curr Allergy Asthma Rep* 2024;24(12):651-6. DOI 10.1007/s11882-024-01179-1, PMID 39259441. (poziom 2) — reakcje dwufazowe 0,4–20% epizodów (rozrzut przez różne kryteria); czynniki ryzyka: ciężki początek (hipotensja, hipoksja), opóźniona adrenalina, >1 dawka adrenaliny.
+- **Worm M i wsp.** Triggers and Treatment of Anaphylaxis (rejestr niemieckojęzyczny, 4141 pacjentów). *Dtsch Arztebl Int* 2014;111:367-75. DOI 10.3238/arztebl.2014.0367. (poziom 2) — leki wyzwalaczem u 15,1%; wśród lekowych: analgetyki/NLPZ 44,2% (diklofenak, ASA, ibuprofen), antybiotyki 21,5% (głównie penicyliny i cefalosporyny).
+- (T) Relationship Between Anaphylaxis and Use of Beta-Blockers and ACE Inhibitors: Systematic Review and Meta-Analysis. *J Allergy Clin Immunol Pract* 2018 (S221321981830713X) — nieprzeczytane.
+- (T) Impact of Outpatient Antihypertensive Medication Use on Epinephrine Resistance in Anaphylaxis. PMID 36945274 — nieprzeczytane.
+
+## Cefalosporyny: reaktywność krzyżowa
+- **Stevenson B, Klinken E, … Lucas M.** Cephalosporin allergy: R1 side-chain and penicillin cross-reactivity patterns in an Australian cohort. *J Allergy Clin Immunol Glob* 2025;5(1):100583. DOI 10.1016/j.jacig.2025.100583, PMID 41278010 (PMC12639306). (poziom 2) — 212 dorosłych z etykietą alergii na cefalosporynę; potwierdzono u 27,4%; wzór testów tłumaczy podobieństwo łańcucha R1. Grupa R1 z cefuroksymem (wg legendy ryc. 1): cefepim, cefotaksym, ceftriakson, ceftazydym — łańcuch niepełnie identyczny, ale „pewne dowody klinicznej reaktywności krzyżowej”. Niepowiązane cefalosporyny: 0% dodatnich testów (58 osób). 87,5% z podwójną etykietą tolerowało penicylinę. Cefuroksym jako sprawca tylko u 2 pacjentów.
+- **D'Errico S i wsp.** Cephalosporins' Cross-Reactivity and the High Degree of Required Knowledge. *Antibiotics (Basel)* 2020;9(5):209. DOI 10.3390/antibiotics9050209 (PMC7277108). (poziom 2) — ceftriakson i cefotaksym identyczny R1, ceftazydym i cefepim podobny; prawdziwa alergia na cefalosporyny u 1–4% uczulonych na penicyliny; brak danych o karbapenemach.
+- **ChPL Zinnat 125 mg (cefuroksym aksetyl), Sandoz, emc UK, rew. 04.04.2024.** https://www.medicines.org.uk/emc/product/3811/smpc (poziom 3; polska ChPL nie była dostępna do odczytu) — 4.3: przeciwwskazany przy znanej nadwrażliwości na cefalosporyny i przy ciężkiej (np. anafilaktycznej) nadwrażliwości na inne beta-laktamy; 4.4: „serious and occasionally fatal hypersensitivity reactions have been reported… In case of severe hypersensitivity reactions, treatment with cefuroxime must be discontinued immediately”.
+- (T) Boosted IgE response after anaphylaxis reaction to cefuroxime with cross-reactivity with cefotaxime. PMID 12141712 — opis przypadku, nieprzeczytany; tytuł wspiera krzyżowość cefuroksym–cefotaksym.
+- (T) Romano A i wsp. Immediate allergic reactions to cephalosporins: cross-reactivity with penicillins and cephalosporins. PMID 16461141 — nieprzeczytane.
+
+## NLPZ (bromfenak) i pokrzywka/obrzęk naczynioruchowy
+- **ChPL Yellox (bromfenak 0,9 mg/ml, krople do oczu), EMA EPAR.** https://www.ema.europa.eu/en/documents/product-information/yellox-epar-product-information_en.pdf (poziom 3) — 4.4: „potential for cross-sensitivity to acetylsalicylic acid, phenylacetic acid derivatives, and other NSAIDs”; 6.1: siarczyn sodu bezwodny (E221); 5.2: po dawkowaniu 2×/d „plasma concentrations were not quantifiable”. **Wniosek dla sprawy:** ekspozycja ogólnoustrojowa znikoma — hipoteza rezydenta R1 (bromfenak jako główny sprawca przez wchłanianie nosowo-łzowe) jest słabo wsparta, ale krzyżowość z NLPZ i siarczyn uzasadniają zakaz doustnych NLPZ i informację dla okulisty.
+- **Pham DL i wsp.** Blended reactions and angioedema are common in patients with cross-reactive NSAID hypersensitivity. *Asia Pac Allergy* 2026;16(1):8-13. DOI 10.5415/apallergy.0000000000000211, PMID 41958715. (poziom 2) — 141 pacjentów; obrzęk naczynioruchowy u 90,4% z objawami skórnymi; brak osobnych danych o obrzęku okołooczodołowym.
+- (T) Localized periorbital edema induced by ibuprofen. PMID 16471459 — opis przypadku, nieprzeczytany.
+- (T) Kowalski ML i wsp. Classification and practical approach to the diagnosis and management of hypersensitivity to NSAIDs (EAACI/ENDA). *Allergy* 2013. DOI 10.1111/all.12260 — strona niedostępna; cytowane z pamięci jako nazwa dokumentu.
+- (T) Association between urticaria and virus infections: a systematic review. PMID 26637522 — nieprzeczytane (uzasadnia pokrzywkę poinfekcyjną jako rozpoznanie alternatywne).
+
+## Leczenie objawowe
+- **ChPL Cetirizine dihydrochloride 10 mg, emc UK, rew. 17.06.2026.** https://www.medicines.org.uk/emc/product/100094/smpc (poziom 3) — dorośli 10 mg raz na dobę; eGFR 30–<60: 5 mg/d; u osób starszych bez redukcji przy prawidłowych nerkach. **Dawka 20 mg/d w projekcie = poza ChPL** (zwiększanie dawki do 4× to zalecenie wytycznych pokrzywki EAACI/GA²LEN/EuroGuiDerm/APAAACI 2022 i międzynarodowej 2026, DOI 10.1111/all.70210 — strona niedostępna, cytowane z pamięci → etykieta).
+
+## Azytromycyna i QT
+- **Juurlink DN.** The cardiovascular safety of azithromycin. *CMAJ* 2014;186(15):1127-8. DOI 10.1503/cmaj.140572 (PMC4203592). (poziom 2, komentarz) — omawia Ray 2012 (NEJM, PMID 22913693): sygnał zgonu sercowo-naczyniowego najsilniejszy u osób z najwyższym wyjściowym ryzykiem sercowym; <100 zgonów na milion recept; FDA 2013 wzmocniła ostrzeżenia; ostrożność przy wydłużonym QT, hipokaliemii, hipomagnezemii, lekach wydłużających QT.
+- (T) Ray WA i wsp. Azithromycin and the risk of cardiovascular death. *N Engl J Med* 2012;366:1881-90. PMID 22913693 — strona niedostępna.
+
+## Nebulizacja budezonidu
+- **ChPL Pulmicort Respules 0,5 mg, AstraZeneca, emc UK, rew. 22.03.2023.** https://www.medicines.org.uk/emc/product/880/smpc (poziom 3) — 4.2: „Pulmicort Respules can be mixed with 0.9% saline… The admixture should be used within 30 minutes.” Woda nie jest wymieniona jako rozcieńczalnik. **Potwierdza uwagę konsylium:** rozcieńczać wyłącznie 0,9% NaCl.
+- (T) The use of water as a diluent for bronchodilator nebuliser solutions. PMID 2366999; Bronchoconstrictive responses to inhaled ultrasonically nebulized distilled water… PMID 8222786 — nieprzeczytane; tytuły wspierają mechanizm skurczu oskrzeli po aerozolu hipotonicznym.
+
+## Czego NIE udało się potwierdzić źródłem (zostaje etykieta [wiedza modelu, niezweryfikowane])
+- Dawka glukagonu 1–5 mg i.v. + wlew 5–15 µg/min (tylko ogólne zalecenie glukagonu u Francuzik 2019).
+- Próg odstawienia azytromycyny QTc >500 ms / wzrost >60 ms.
+- Termin diagnostyki alergologicznej 4–6 tygodni po reakcji.
+- Okno oznaczania tryptazy 1–4 h.
+- Ryzyko krzyżowe cefalosporyna→penicylina „1–2%” i karbapenemy „<1%” (źródła podają dane w odwrotnym kierunku: penicylina→cefalosporyna 1–4%).

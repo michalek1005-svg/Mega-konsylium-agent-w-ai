@@ -1,0 +1,95 @@
+{
+  "rola": "bayes",
+  "skrot": "Najbardziej prawdopodobna jest natychmiastowa reakcja nadwrażliwości na cefuroksym (pokrzywka/obrzęk naczynioruchowy z typowym dla wczesnej anafilaksji zajęciem dłoni i stóp), do której mogła się przyczynić tocząca się infekcja wirusowa; wcześniejsza tolerancja leku nie wyklucza uczulenia, a obrzęk powieki oka nieleczonego przemawia za mechanizmem układowym, nie miejscowym od kropli.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0.45,
+      "za": [
+        "pretest: antybiotyki beta-laktamowe należą do najczęstszych przyczyn natychmiastowej nadwrażliwości polekowej u dorosłych w POZ → podnosi silnie [wiedza modelu, niezweryfikowane]",
+        "początek ok. 15 min po dawce doustnej → zgodne z mechanizmem natychmiastowym (IgE-zależnym lub mastocytarnym) → podnosi silnie",
+        "wielokrotne wcześniejsze kursy bez reakcji → nie obniża; powtarzana ekspozycja jest warunkiem uczulenia, więc pasuje do sekwencji sensytyzacja–reakcja → neutralnie do lekko podnosi",
+        "obrzęk powieki oka NIELECZONEGO kroplami → przemawia za mechanizmem układowym (obrzęk naczynioruchowy), nie miejscowym od kropli → podnosi umiarkowanie",
+        "zmiany na dłoniach i stopach → świąd/rumień dłoni i podeszew to klasyczny wczesny objaw skórny reakcji anafilaktycznej → podnosi umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "toczące się zakażenie dróg oddechowych → działa jako kofaktor obniżający próg reakcji → lekko podnosi"
+      ],
+      "przeciw": [
+        "wcześniejsza wielokrotna tolerancja cefuroksymu → lekko obniża",
+        "nieznana kolejność dawek w tym epizodzie (czy dzień wcześniej Zinnat był tolerowany) → niepewność; reakcja po kolejnej dawce kursu nie wyklucza, ale osłabia wnioskowanie o leku jako jedynej przyczynie",
+        "jednoczesne przyjęcie erdosteiny → rozmywa przypisanie przyczyny",
+        "ostra pokrzywka w trakcie infekcji wirusowej jest częsta i bywa błędnie przypisywana antybiotykowi; większość dzieci i wielu dorosłych z etykietą alergii na beta-laktamy ma ujemne testy → obniża umiarkowanie [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "ostra pokrzywka z obrzękiem naczynioruchowym w przebiegu zakażenia wirusowego",
+      "p": 0.2,
+      "za": [
+        "pretest: zakażenia (głównie wirusowe dróg oddechowych) to najczęstsza identyfikowalna przyczyna ostrej pokrzywki u dorosłych → podnosi umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "nagły początek infekcji górnych dróg oddechowych 1–2 dni przed reakcją → podnosi umiarkowanie",
+        "obrzęk powiek i zmiany na dłoniach/stopach mieszczą się w obrazie pokrzywki z obrzękiem naczynioruchowym niezależnie od przyczyny → neutralnie"
+      ],
+      "przeciw": [
+        "ścisły związek czasowy 15 min po leku → obniża umiarkowanie (przy pokrzywce poinfekcyjnej początek nie jest związany z dawką)",
+        "brak danych o wcześniejszych bąblach przed dawką → niepewność"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0.08,
+      "za": [
+        "przyjęta w tym samym czasie (ok. 15 min przed objawami) → podnosi",
+        "opisy pojedynczych reakcji nadwrażliwości na leki mukolityczne → słabo podnosi [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "pretest: natychmiastowa nadwrażliwość na erdosteinę jest rzadka w porównaniu z beta-laktamami → obniża silnie [wiedza modelu, niezweryfikowane]",
+        "wcześniejsza tolerancja → lekko obniża"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — krople do oczu (lewofloksacyna z kortykosteroidem, bromfenak)",
+      "p": 0.07,
+      "za": [
+        "nowy lek wprowadzony 3–4 dni wcześniej → okno czasowe pasuje do sensytyzacji pierwotnej lub kontaktowego zapalenia skóry powiek → podnosi słabo",
+        "przeniesienie kropli rękami na drugie oko/powiekę możliwe → słabo podnosi",
+        "bromfenak to niesteroidowy lek przeciwzapalny; nadwrażliwość krzyżowa na NLPZ może manifestować się obrzękiem powiek → słabo podnosi (wchłanianie układowe z kropli niewielkie)"
+      ],
+      "przeciw": [
+        "obrzęk oka NIELECZONEGO przy braku informacji o objawach oka leczonego → obniża umiarkowanie",
+        "kontaktowe zapalenie skóry jest reakcją późną (godziny–dni), nie wyjaśnia początku 15 min po tabletkach → obniża umiarkowanie",
+        "zmiany na dłoniach i stopach nie pasują do miejscowej reakcji okulistycznej → obniża"
+      ]
+    },
+    {
+      "nazwa": "osutka wirusowa z obrzękiem powiek",
+      "p": 0.05,
+      "za": [
+        "zmiany na dłoniach i stopach w trakcie ostrej infekcji (np. enterowirusowej) → słabo podnosi",
+        "obrzęk powiek bywa składową zakażenia wirusowego z zapaleniem spojówek → słabo podnosi"
+      ],
+      "przeciw": [
+        "nagłość pojawienia się w ciągu 15 min → obniża silnie",
+        "wiek 64 lata – osutka enterowirusowa dłoni i stóp rzadka u dorosłych → obniża [wiedza modelu, niezweryfikowane]"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "anafilaksja w toku lub dwufazowa: brak danych o duszności, świstach, obrzęku warg/języka, dysfagii, hipotensji, omdleniu, objawach z przewodu pokarmowego",
+    "obrzęk krtani maskowany przez wcześniejsze zapalenie krtani i chrypkę — narastanie chrypki lub stridor nie mogą być przypisywane infekcji bez oceny",
+    "bisoprolol (beta-adrenolityk) może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę (przy dawce 1,25 mg kardioselektywnego leku efekt prawdopodobnie mały) [wiedza modelu, niezweryfikowane]",
+    "ciężka reakcja skórna (zespół Stevensa-Johnsona, rumień wielopostaciowy) niewykluczona bez opisu morfologii wysypki, pęcherzy i zmian na śluzówkach — choć początek po 15 min czyni ją mało prawdopodobną",
+    "brak potwierdzenia odstawienia cefuroksymu — dalsze dawki zwiększają ryzyko cięższej reakcji",
+    "azytromycyna u pacjentki z zaburzeniami rytmu bez EKG (wydłużenie QT) [wiedza modelu, niezweryfikowane]",
+    "nebulizacja budezonidu rozcieńczonego wodą do wstrzykiwań (roztwór hipotoniczny) może prowokować skurcz oskrzeli — zwykle rozcieńcza się 0,9% NaCl [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Dziś osobista ocena lekarska (ciśnienie tętnicze, tętno, SpO2, osłuchiwanie, ocena jamy ustnej i krtani, morfologia wysypki) z potwierdzeniem odstawienia cefuroksymu i erdosteiny oraz wpisaniem do dokumentacji „podejrzenie natychmiastowej nadwrażliwości na cefuroksym” do późniejszej weryfikacji alergologicznej.",
+  "co_zmieniloby_zdanie": "Informacja, że bąble/obrzęki pojawiły się przed dzisiejszą dawką Zinnatu albo że cefuroksym przyjmowany od dnia poprzedniego był tolerowany i objawy nawracają bez leku, przesunęłaby główne rozpoznanie na pokrzywkę poinfekcyjną; obecność duszności, świstów lub spadku ciśnienia podniosłaby pilność do 1.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — biblioteka zawiera wyłącznie pliki przykładowe; brak polskiej wytycznej dla nadwrażliwości polekowej i pokrzywki",
+    "PubMed niedostępny w dniu opinii (błąd połączenia) — brak weryfikacji źródłami pierwotnymi",
+    "pamiec/zespol.md — brak wniosków dotyczących reakcji polekowych",
+    "pozostałe częstości i mechanizmy: [wiedza modelu, niezweryfikowane] (m.in. zalecenia EAACI/WAO dotyczące anafilaksji i nadwrażliwości na beta-laktamy, wytyczne EAACI/GA2LEN dotyczące pokrzywki — do weryfikacji)"
+  ]
+}

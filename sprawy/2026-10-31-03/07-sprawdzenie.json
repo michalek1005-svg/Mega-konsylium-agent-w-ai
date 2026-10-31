@@ -1,0 +1,233 @@
+{
+  "sprawa": "2026-10-31-03",
+  "tryb": "PELNY",
+  "petla": 1,
+  "data": "2026-10-31",
+  "skrot": "Fakty: CZERWONA — zdanie „penicyliny i karbapenemy dopuszczalne” jest sprzeczne z EAACI 2020 (ok. 25% uczulonych na cefalosporyny ma dodatnie testy z penicylinami; testy przed podaniem), a 05-projekt.md nie ma ani jednego źródła ani etykiety. Proces: CZERWONA — brak sekcji §6 (CZEGO NIE WIEMY, WRÓĆ/ESKALUJ, ŹRÓDŁA), rezydenci jeszcze nie oddali uwag.",
+  "uwaga_metodyczna": "zrodla/ zawiera wyłącznie przykłady (poziom 1 niedostępny). PubMed MCP niedostępny (proxy 403). Weryfikację wykonano przez WebSearch/WebFetch u wydawców pierwotnych (EMA, producent/URPL dla ChPL, EAACI/WAO, PMC/JACI) oraz z pliku ordynatora _zrodla-pubmed.md (źródła dociągnięte równolegle; pozycje oznaczone tam (T) — tylko tytuł — nie były użyte jako potwierdzenie). Tam, gdzie pełny tekst był za paywallem lub CAPTCHA, werdykt jest z pamięci modelu z nazwą i rokiem wytycznej (poziom 3, oznaczone „z pamięci”). Sprawdzający nie ocenia, czy rekomendacja jest dobra — tylko czy jest prawdziwa i udokumentowana.",
+  "fakty": {
+    "kartka": "CZERWONA",
+    "powod_kartki": "1 × SPRZECZNE w kategorii przeciwwskazanie/bezpieczeństwo (penicyliny i karbapenemy „dopuszczalne” u chorej po podejrzewanej reakcji natychmiastowej na cefuroksym). Dodatkowo: żadna liczba w 05-projekt.md nie ma źródła ani etykiety [wiedza modelu, niezweryfikowane]; dawka cetyryzyny 20 mg/d podana bez zaznaczenia, że jest poza ChPL (ChPL: 10 mg/d).",
+    "twierdzenia": [
+      {
+        "twierdzenie": "PLAN 1: po reakcji na cefuroksym „penicyliny, karbapenemy i makrolidy dopuszczalne” (bez warunku testów/oceny alergologa)",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Romano A. i wsp., Towards a more precise diagnosis of hypersensitivity to beta-lactams — an EAACI position paper, Allergy 2020, DOI 10.1111/all.14122 (pełny tekst: https://allergolyon.fr/wp-content/uploads/2020/09/7.5.1.-Diagnosis-of-hypersensitivity-to-betalactams.pdf)",
+        "cytat": "about 25% of the subjects had positive allergy tests to penicillins […] prophylactic ST with the BL concerned are advisable before their administration",
+        "co_mowi_zrodlo": "EAACI 2020: u ok. 25% uczulonych na cefalosporyny testy z penicylinami są dodatnie; przed podaniem alternatywnego beta-laktamu (penicyliny, karbapenemu) zalecane są profilaktyczne testy skórne (zalecenie silne). Reaktywność <1% dotyczy kierunku penicylina→karbapenem/aztreonam, nie cefalosporyna→penicylina. Stevenson 2025 (DOI 10.1016/j.jacig.2025.100583): 87,5% z podwójną etykietą tolerowało penicylinę — czyli większość toleruje, ale nie wszyscy, i tolerancję ustalono testami/prowokacją u alergologa, nie „z definicji”. ChPL Zinnat (emc UK 2024) pkt 4.3: przeciwwskazanie także przy ciężkiej nadwrażliwości na inne beta-laktamy — kierunek odwrotny, ale pokazuje, że producent traktuje grupę beta-laktamów jako powiązaną. Opinie farmakologa i pragmatyka POZ zawierały warunek „po ocenie alergologa / pod nadzorem” — projekt go usunął. MAKROLIDY: brak reaktywności krzyżowej z beta-laktamami — ta część zdania POTWIERDZONA. Poprawka: „penicyliny i karbapenemy dopiero po testach alergologicznych (EAACI 2020); do tego czasu antybiotyki niebeta-laktamowe”."
+      },
+      {
+        "twierdzenie": "PLAN 1: unikać cefalosporyn z podobnym łańcuchem bocznym R1: ceftriakson, cefotaksym, cefepim, cefpodoksym (grupa metoksyiminowa, jak cefuroksym)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Stone CA, Trubiano JA, Phillips EJ. Testing Strategies and Predictors for Evaluating Immediate and Delayed Reactions to Cephalosporins. J Allergy Clin Immunol Pract 2021;9:435-444, DOI 10.1016/j.jaip.2020.07.056, PMID 32822918 (https://pmc.ncbi.nlm.nih.gov/articles/PMC7855229); EAACI 2020 (DOI 10.1111/all.14122) grupa A: cefuroksym, ceftriakson, cefotaksym, cefodizym, cefepim (+ceftazydym)",
+        "cytat": "the methoxyimino side chain family shared by cefuroxime, ceftriaxone, cefotaxime, cefepime, and cefpodoxime",
+        "co_mowi_zrodlo": "Lista w projekcie zgodna ze źródłami. Dodatkowo (z _zrodla-pubmed.md): Stevenson B i wsp. J Allergy Clin Immunol Glob 2025;5:100583, DOI 10.1016/j.jacig.2025.100583 — grupa R1 z cefuroksymem: cefepim, cefotaksym, ceftriakson, ceftazydym; niepowiązane cefalosporyny 0% dodatnich testów (n=58); D'Errico S i wsp. Antibiotics 2020;9:209, DOI 10.3390/antibiotics9050209. EAACI 2020 i Stevenson 2025 zaliczają też CEFTAZYDYM — dopisać do listy w PLAN 1. Odwrotnie: cefalosporyny o odmiennym R1 (np. cefazolina, cefaleksyna) są realną alternatywą po ocenie alergologa."
+      },
+      {
+        "twierdzenie": "PILNOŚĆ / PLAN 5: adrenalina 0,5 mg domięśniowo w udo (przednio-boczna część) w anafilaksji",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "World Allergy Organization Anaphylaxis Guidance 2020 (Cardona V i wsp., WAO J 2020;13:100472) — plakat WAO: https://www.worldallergy.org/media/PDFs/Anaphylaxis_Guidelines_Poster.pdf; EAACI guidelines: Anaphylaxis (2021 update), Allergy 2022;77:357-377, DOI 10.1111/all.15032 (pełny tekst niedostępny — z pamięci)",
+        "cytat": "0.01 mg/kg of a 1:1,000 (1 mg/ml) solution, maximum of 0.5 mg (adult) […] midanterolateral aspect of the thigh",
+        "co_mowi_zrodlo": "Dawka dla dorosłych 0,01 mg/kg, maks. 0,5 mg i.m. w udo; powtórzyć po 5–15 min. Zgodne z projektem."
+      },
+      {
+        "twierdzenie": "PILNOŚĆ: natychmiast (1, 112, adrenalina), jeśli jakikolwiek objaw oddechowy, krążeniowy lub z przewodu pokarmowego",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "WAO Anaphylaxis Guidance 2020 — kryteria kliniczne (https://www.worldallergy.org/media/PDFs/Anaphylaxis_Guidelines_Poster.pdf); EAACI 2021 (abstrakt: https://pubmed.ncbi.nlm.nih.gov/34343358/)",
+        "cytat": "Acute onset of an illness (minutes to several hours) with involvement of the skin, mucosal tissue, or both […] and at least one of the following: respiratory compromise, reduced BP, severe gastrointestinal symptoms",
+        "co_mowi_zrodlo": "Skóra/śluzówki + układ oddechowy LUB krążenia LUB ciężkie objawy żołądkowo-jelitowe = anafilaksja → adrenalina i.m. pierwszego rzutu. Zgodne."
+      },
+      {
+        "twierdzenie": "DLACZEGO / PLAN 5: bisoprolol może osłabić odpowiedź na adrenalinę; nie jest przeciwwskazaniem do adrenaliny; glukagon przy oporności (szpital)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Francuzik W i wsp. Refractory Anaphylaxis: Data From the European Anaphylaxis Registry. Front Immunol 2019;10:2482, DOI 10.3389/fimmu.2019.02482 (glukagon przy podejrzeniu blokady beta); White JL i wsp. Patients Taking β-Blockers Do Not Require Increased Doses of Epinephrine for Anaphylaxis. J Allergy Clin Immunol Pract 2018;6:1553-8, DOI 10.1016/j.jaip.2017.12.020; Brockow K i wsp. Allergo J Int 2015, DOI 10.1007/s40629-015-0052-6 (https://pmc.ncbi.nlm.nih.gov/articles/PMC4479479); EAACI 2021 / WAO 2020 — z pamięci. Szczegóły: _zrodla-pubmed.md",
+        "cytat": "drugs contraindicated in anaphylaxis: severe cardiovascular disease, severe asthma, β-blocker use (Brockow 2015); OR 1,26 (95% CI 0,58–2,75) dla >1 dawki adrenaliny u leczonych beta-blokerem (White 2018)",
+        "co_mowi_zrodlo": "Adrenalina pozostaje lekiem pierwszego rzutu, beta-bloker nie jest przeciwwskazaniem — POTWIERDZONE. Glukagon przy oporności u leczonych beta-blokerem — zalecany przez Francuzik 2019 (dawka w projekcie nie występuje; 1–5 mg i.v. pozostaje z pamięci). NIUANS: White 2018 (789 wizyt SOR) nie wykazał, by beta-bloker zwiększał zapotrzebowanie na adrenalinę; Francuzik 2019: beta-blokery u ok. 14% opornych bez istotnej różnicy vs kontrola. Zdanie „bisoprolol może osłabić odpowiedź” jest zgodne z wytycznymi (EAACI/WAO), ale dane obserwacyjne są słabe — w FINAL osłabić do „teoretycznie może osłabić; w rejestrach bez istotnej różnicy (White 2018)”. Nie jest to SPRZECZNE, bo projekt mówi „może”."
+      },
+      {
+        "twierdzenie": "PLAN 2: cetyryzyna 10 mg, przy nasilonych objawach do 20 mg/d, przez kilka dni",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "International EAACI/GA²LEN/EuroGuiDerm/APAAACI guideline for urticaria — aktualizacja 2026, Allergy, DOI 10.1111/all.70210 (streszczenie BSACI: https://www.bsaci.org/international-urticaria-guideline-published/); poprzednia wersja Zuberbier T i wsp. Allergy 2022;77:734-766, DOI 10.1111/all.15090. ChPL cetyryzyny (Letizen 10 mg, PL, 05.01.2024): https://krka-polska.pl/_assets/Letizen_ChPL.pdf; emc UK 2026: https://www.medicines.org.uk/emc/product/100094/smpc (eGFR 30–<60: 5 mg/d)",
+        "cytat": "second-generation H1-antihistamines as first-line therapy […] prompt updosing up to fourfold recommended; ChPL: „10 mg (1 tabletka) raz na dobę”",
+        "co_mowi_zrodlo": "Wytyczna pokrzywki dopuszcza zwiększenie dawki leku II generacji do 4× przy braku kontroli (dowody głównie dla pokrzywki przewlekłej). ChPL cetyryzyny: 10 mg/d u dorosłych, dawek większych nie zaleca; przy eGFR <50 ml/min redukcja dawki. Zdanie jest prawdziwe wg wytycznej, ALE w FINAL dawka 20 mg/d musi mieć dopisek „poza ChPL (ChPL: 10 mg/d), wg wytycznej pokrzywki” — farmakolog tak oznaczył, projekt to zgubił. Czas „kilka dni” — bez źródła liczbowego, akceptowalne jako nieliczbowe."
+      },
+      {
+        "twierdzenie": "PLAN 2 i 3 (implicit): lek przeciwhistaminowy II generacji jako leczenie objawów skórnych; nie zastępuje adrenaliny",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Wytyczna pokrzywki EAACI/GA²LEN/EuroGuiDerm/APAAACI (DOI 10.1111/all.70210; 2022: 10.1111/all.15090); EAACI anafilaksja 2021 — leki przeciwhistaminowe są leczeniem drugiego rzutu objawów skórnych (z pamięci)",
+        "cytat": "second-generation H1-antihistamines as first-line therapy",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "PLAN 2: bez doustnych NLPZ (kofaktor nasilający pokrzywkę/obrzęk naczynioruchowy)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: EAACI/ENDA position paper on NSAID hypersensitivity (Kowalski ML i wsp., Allergy 2013; aktualizacja 2019); wytyczna pokrzywki EAACI/GA²LEN (NLPZ jako czynnik zaostrzający); ChPL Yellox 4.4 o nadwrażliwości krzyżowej na NLPZ (https://www.ema.europa.eu/pl/documents/product-information/yellox-epar-product-information_pl.pdf)",
+        "cytat": "Istnieje potencjalna możliwość nadwrażliwości krzyżowej na kwas acetylosalicylowy (ChPL Yellox 4.4)",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne z wiedzą wytycznych; URL potwierdza tylko fragment (krzyżowa nadwrażliwość NLPZ). Oznaczyć poziom 3."
+      },
+      {
+        "twierdzenie": "PLAN 3: azytromycyna — jeśli zostaje: EKG z QTc, potas, magnez; odstawić przy QTc > 500 ms",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Dela Cruz M, Ershad M, Mostafa A. QTc interval prolongation associated with inpatient azithromycin therapy for pneumonia. J Osteopath Med 2021;121:5-9, DOI 10.7556/jaoa.2020.142 (https://www.degruyterbrill.com/document/doi/10.7556/jaoa.2020.142/html) — cytuje Drew BJ i wsp., AHA/ACCF Scientific Statement: Prevention of torsade de pointes in hospital settings, Circulation 2010 oraz komunikat FDA 2013 o azytromycynie; ESC 2022 Guidelines for ventricular arrhythmias (QTc >500 ms = wysokie ryzyko) — z pamięci",
+        "cytat": "a QT interval greater than 500 ms currently serves as a surrogate marker […] In 2013, the US Food and Drug Administration issued a warning regarding the use of azithromycin",
+        "co_mowi_zrodlo": "Próg 500 ms jako marker ryzyka torsade pochodzi z AHA/ACCF 2010 (Drew 2010); ESC 2022 i AHA zalecają odstawienie leku wydłużającego QT przy QTc >500 ms lub wzroście >60 ms (z pamięci — samo zalecenie „odstawić” nie zostało przeczytane online). Potas/magnez: Juurlink DN, CMAJ 2014;186:1127-8, DOI 10.1503/cmaj.140572 (omówienie Ray 2012, NEJM, PMID 22913693) — ostrożność przy wydłużonym QT, hipokaliemii, hipomagnezemii, lekach wydłużających QT; FDA 2013. Zgodne."
+      },
+      {
+        "twierdzenie": "PLAN 3: azytromycyna — odstawić, jeśli osłuchowo brak zmian ogniskowych (obraz wirusowy)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "Brak w zrodla/ (Rekomendacje NPOA „Pozaszpitalne zakażenia układu oddechowego” 2016 — z pamięci; nie zweryfikowano online)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, kliniczne (wirusowe zapalenie gardła/krtani/oskrzeli nie wymaga antybiotyku). W FINAL etykieta [wiedza modelu, niezweryfikowane] lub odwołanie do rekomendacji NPOA 2016 z poziomu 3."
+      },
+      {
+        "twierdzenie": "PLAN 4: nebulizacje budezonidu tylko z 0,9% NaCl, nie z wodą do wstrzykiwań",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ChPL Pulmicort zawiesina do nebulizacji (PL), AstraZeneca/URPL, 04.01.2024, pkt 4.2 i 6.6: https://www.astrazeneca.com/content/dam/az-pl/SPC/SPC_Pulmicort(neb)_2024-01-04.pdf; zgodnie ChPL Pulmicort Respules emc UK 2023: https://www.medicines.org.uk/emc/product/880/smpc",
+        "cytat": "Należy rozcieńczyć do 2 ml 0,9% roztworem chlorku sodu lub innym zalecanym płynem, patrz punkt 6.6. […] może być mieszany z 0,9% roztworem chlorku sodu",
+        "co_mowi_zrodlo": "ChPL wymienia jako rozcieńczalnik wyłącznie 0,9% NaCl (i wybrane leki do nebulizacji); wody do wstrzykiwań nie wymienia. Mieszaninę zużyć w 30 min. Mechanizm „roztwór hipotoniczny → skurcz oskrzeli” (04-konsylium) jest wiedzą modelu, ale projekt go nie powtarza. Dawka budezonidu w projekcie nie występuje (brak liczby do sprawdzenia). ChPL nie jest w zrodla/, stąd poziom 3, nie 1."
+      },
+      {
+        "twierdzenie": "PLAN 6: bromfenak zawiera siarczyny",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ChPL Yellox 0,9 mg/ml krople do oczu (bromfenak), EMA/EPAR, pkt 6.1: https://www.ema.europa.eu/pl/documents/product-information/yellox-epar-product-information_pl.pdf",
+        "cytat": "Kwas borowy, Boraks, Sodu siarczyn bezwodny (E 221), Tyloksapol, Powidon (K30), Benzalkoniowy chlorek, Disodu edetynian",
+        "co_mowi_zrodlo": "Prawda dla preparatu Yellox (jedyny bromfenak oczny w EU). ChPL Yellox NIE zawiera osobnego ostrzeżenia o siarczynach (farmakolog to sugerował — w 05 nie powtórzono, OK). ChPL 5.2: stężenia bromfenaku w osoczu nieoznaczalne — wspiera niską rolę kropli w reakcji układowej. W FINAL doprecyzować „preparat Yellox zawiera siarczyn sodu (E221)”."
+      },
+      {
+        "twierdzenie": "PLAN 7: reakcja dwufazowa — najbliższa noc nie sama, plan wezwania 112",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Giannetti MP. Epidemiology, Risk Factors, and Management of Biphasic Anaphylaxis. Curr Allergy Asthma Rep 2024;24:651-6, DOI 10.1007/s11882-024-01179-1, PMID 39259441 (wg _zrodla-pubmed.md); EAACI 2021 (DOI 10.1111/all.15032) — z pamięci",
+        "cytat": "reakcje dwufazowe 0,4–20% epizodów (rozrzut przez różne kryteria); czynniki ryzyka: ciężki początek, opóźniona adrenalina, >1 dawka adrenaliny (Giannetti 2024, streszczenie wg ordynatora)",
+        "co_mowi_zrodlo": "Zjawisko udokumentowane; projekt nie podaje liczb, więc nie ma liczby do sprawdzenia. Uwaga: największe ryzyko dwufazowości dotyczy ciężkiego początku z adrenaliną — przy izolowanej reakcji skórnej ryzyko jest na dolnym końcu zakresu; zalecenie „nie zostawać samej” jest ostrożnościowe, nie sprzeczne."
+      },
+      {
+        "twierdzenie": "PLAN 9: skierowanie do alergologa; diagnostyka po 4–6 tygodniach",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "EAACI position paper Romano i wsp. 2020, DOI 10.1111/all.14122 (https://allergolyon.fr/wp-content/uploads/2020/09/7.5.1.-Diagnosis-of-hypersensitivity-to-betalactams.pdf); Brockow K i wsp., Allergo J Int 2015, DOI 10.1007/s40629-015-0052-6 (https://pmc.ncbi.nlm.nih.gov/articles/PMC4479479)",
+        "cytat": "ST should be performed after a time interval of 3-6 weeks from the reaction […] within 4 weeks–6 months following the reaction",
+        "co_mowi_zrodlo": "EAACI 2020 dla reakcji natychmiastowych: testy po 3–6 tyg. od reakcji, możliwie szybko po tym okresie; DGAKI 2015: okno 4 tyg.–6 mies. „4–6 tygodni” mieści się w obu; ściślej wg EAACI „po 3–6 tygodniach”. Brockow 2015: beta-bloker jest względnym przeciwwskazaniem do testów — alergolog musi wiedzieć o bisoprololu (projekt o tym nie wspomina w pkt 9; farmakolog wspomniał)."
+      },
+      {
+        "twierdzenie": "PLAN 9: zgłoszenie działania niepożądanego do URPL",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: ustawa Prawo farmaceutyczne, art. 36d (obowiązek zgłaszania działań niepożądanych przez osoby wykonujące zawód medyczny); formularz URPL",
+        "cytat": "",
+        "co_mowi_zrodlo": "Obowiązek prawny; twierdzenie nieliczbowe."
+      },
+      {
+        "twierdzenie": "DLACZEGO: najczęstszym sprawcą [natychmiastowej reakcji polekowej] jest beta-laktam",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: EAACI position paper Romano 2020 (DOI 10.1111/all.14122) — beta-laktamy najczęstszą przyczyną nadwrażliwości na leki; brak cytatu online",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie epidemiologiczne, nieliczbowe. W FINAL etykieta [poziom 3, z pamięci]."
+      },
+      {
+        "twierdzenie": "DLACZEGO: cefuroksym p 0,64",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/2026-10-31-03/03-opinie/_agregat-synonimy.json (ranking[0].p = 0.64; surowy _agregat.json: ta sama pozycja rozbita na synonimy)",
+        "cytat": "{'rozpoznanie': 'objawy polekowe — cefuroksym', 'p': 0.64, 'wymienili': 5 lekarzy}",
+        "co_mowi_zrodlo": "Liczba zgodna z plikiem roboczym. Uwaga: pochodzi z kopii z ręcznie dopisanymi synonimami, nie z config/ — w FINAL napisać „p 0,64 (agregat po scaleniu synonimów)”; zgoda 0,38 (<0,5, flaga NISKA_ZGODA)."
+      },
+      {
+        "twierdzenie": "DLACZEGO: wcześniejsza tolerancja nie wyklucza uczulenia; obrzęk oka nieleczonego + zmiany dłoni/stóp = obraz układowy",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: EAACI 2020 (uczulenie IgE wymaga wcześniejszej ekspozycji); ChPL Yellox 5.2 — stężenia bromfenaku w osoczu nieoznaczalne (https://www.ema.europa.eu/pl/documents/product-information/yellox-epar-product-information_pl.pdf)",
+        "cytat": "Po zastosowaniu bromfenaku w postaci kropli do oczu dwa razy na dobę stężenia w osoczu nie były oznaczalne.",
+        "co_mowi_zrodlo": "Rozumowanie kliniczne, nie liczba; zgodne z wiedzą. Etykieta poziom 3."
+      },
+      {
+        "twierdzenie": "PLAN 5: bisoprolol kontynuować, nie odstawiać nagle",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: ChPL bisoprololu (pkt 4.4: nie przerywać nagle — ryzyko zaostrzenia choroby wieńcowej/zaburzeń rytmu); nie zweryfikowano online",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe. Dawka 1,25 mg w 05 nie występuje jako zalecenie (tylko fakt z wywiadu, „chyba”)."
+      },
+      {
+        "twierdzenie": "PLAN B: zmiany tarczowate, pęcherze, nadżerki śluzówek, gorączka, ból skóry → tego samego dnia dermatologia/szpital (ciężka skórna reakcja polekowa)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci: Brockow K i wsp., EAACI/ENDA position paper on severe cutaneous adverse reactions (SCAR), Allergy 2019 — objawy alarmowe SJS/TEN",
+        "cytat": "",
+        "co_mowi_zrodlo": "Objawy alarmowe zgodne z pozycją EAACI; nieliczbowe. Etykieta poziom 3."
+      },
+      {
+        "twierdzenie": "PLAN 8: test grypa/SARS-CoV-2; bez pracy z pacjentami w ostrej fazie",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "Brak w zrodla/; zalecenie organizacyjne (epidemiologia szpitalna)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Nieliczbowe, rozsądne; w FINAL etykieta [wiedza modelu, niezweryfikowane] albo odwołanie do procedur szpitala."
+      },
+      {
+        "twierdzenie": "REKOMENDACJA: wpis „podejrzenie natychmiastowej nadwrażliwości na cefuroksym”; trwałe odstawienie cefuroksymu i erdosteiny",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "EAACI 2020 (DOI 10.1111/all.14122) — unikanie podejrzanego leku do czasu diagnostyki; Brockow 2015 (DOI 10.1007/s40629-015-0052-6)",
+        "cytat": "Where possible, the objective is to perform allergy diagnostics within 4 weeks–6 months following the reaction.",
+        "co_mowi_zrodlo": "Zgodne. Uwaga spójności: wpis dotyczy tylko cefuroksymu, choć erdosteina też jest odstawiona jako współpodejrzana — pragmatyk POZ proponował wpis obu."
+      }
+    ],
+    "do_poprawy_w_projekcie": [
+      "PLAN 1: zamienić „penicyliny, karbapenemy i makrolidy dopuszczalne” na: „makrolidy bez reaktywności krzyżowej; penicyliny i karbapenemy dopiero po testach alergologicznych (EAACI 2020: ok. 25% uczulonych na cefalosporyny ma dodatnie testy z penicylinami)”.",
+      "PLAN 2: przy „do 20 mg/d” dopisać „poza ChPL (ChPL cetyryzyny: 10 mg/d), wg wytycznej pokrzywki EAACI/GA²LEN; przy eGFR <50 ml/min nie zwiększać”.",
+      "PLAN 9: „po 3–6 tygodniach (EAACI 2020)” i dopisać, że alergolog ma wiedzieć o bisoprololu (względne przeciwwskazanie do testów prowokacyjnych).",
+      "PLAN 6: „preparat Yellox zawiera siarczyn sodu (E221)” zamiast ogólnego „bromfenak zawiera siarczyny”.",
+      "Dodać sekcję ŹRÓDŁA z pozycjami z tego pliku i etykiety [poziom 3, z pamięci] / [wiedza modelu, niezweryfikowane] przy twierdzeniach bez URL."
+    ]
+  },
+  "proces": {
+    "kartka": "CZERWONA",
+    "powod_kartki": "BRAK w sekcji rezydenci (0 plików w 06-rezydenci/, brak 08) oraz BRAK w sekcji FINAL (pola §6 niekompletne: brak CZEGO NIE WIEMY, WRÓĆ/ESKALUJ GDY, ŹRÓDŁA; żadna liczba bez źródła/etykiety). Triage, weto i Dane są OK. Kartka jest do zdjęcia bez zmiany decyzji klinicznej: dokończyć 06/08 i przepisać 05 na format §6.",
+    "lista": [
+      {"punkt": "Wywiad: 00-surowe.md istnieje i nie był edytowany po utworzeniu", "status": "OK", "plik": "00-surowe.md", "uwaga": "Commit 2f34257 (22:03 UTC); git status: plik niezmodyfikowany. _log.jsonl nie ma wpisu modyfikacji. mtime 22:35 to checkout, nie edycja."},
+      {"punkt": "Wywiad: 01-wywiad.md zawiera wiek/płeć, SOCRATES, leki i suplementy, alergie, choroby przewlekłe, red flagi, sekcję NIEZNANE", "status": "OK", "plik": "01-wywiad.md", "uwaga": "Wszystkie elementy obecne; alergie, suplementy, czerwone flagi i parametry życiowe jawnie w NIEZNANE (brak odpowiedzi pacjentki/użytkownika). SOCRATES niepełny z przyczyn zewnętrznych, co zapisano."},
+      {"punkt": "Wywiad: ≤3 tury pytań", "status": "OK", "plik": "_ankieta-tura1.json", "uwaga": "1 tura (ankieta przygotowana, niewypełniona); zamknięto z listą NIEZNANE zgodnie z §2."},
+      {"punkt": "Triage: 02-triage.json ma 3 wpisy zastępców; tryb zgodny z regułą OR; bezpieczenstwo.eskaluj=true → PEŁNY", "status": "OK", "plik": "02-triage.json", "uwaga": "3 wpisy (złożoność 7, bezpieczeństwo 7, niepewność 6 — wszystkie ≥ progów 5/4/5), tryb PEŁNY. ODSTĘPSTWO ZGŁOSZONE: wszystkie trzy wpisy napisał ordynator, nie osobni zastępcy. Ocena: cel triage (niezależna decyzja o trybie) nie został naruszony w skutku — wynik jest najbardziej konserwatywny z możliwych (PEŁNY, pilność wstępna 2, 5 flag). Formalnie niezależność ocen utracona; akceptowalne w trybie opinii w tle, nie powinno stać się normą."},
+      {"punkt": "Triage: liczba rezydentów zgodna z config (ryzyko ≥7 → 3)", "status": "BRAK", "plik": "02-triage.json", "uwaga": "Deklarowany 1 rezydent zamiast 3 (odstępstwo zgłoszone). Niespójność: _log.jsonl pokazuje pakiet_rezydenta wygenerowany dla 2 person (lekarz chorób zakaźnych, geriatra) — 02-triage.json mówi „1”. Ujednolicić. Ocena odstępstwa: uzasadnione trybem pracy; koszt to słabszy pre-mortem, nie błąd bezpieczeństwa."},
+      {"punkt": "Tryb PEŁNY: 6 plików w 03-opinie/", "status": "OK", "plik": "03-opinie/", "uwaga": "bayes, farmakolog, gospodarz_kosztow, hipotezujacy, najgorszy_scenariusz, poz_pragmatyk — 6/6."},
+      {"punkt": "Tryb PEŁNY: ślepa tura potwierdzona znacznikami czasu w _log.jsonl", "status": "BRAK", "plik": "_log.jsonl", "uwaga": "Log nie ma wpisów zapisu opinii per lekarz (tylko start, agregacja, pakiet_rezydenta). Z mtime: opinie 22:38:02–22:39:10, agregat 22:39:32 — kolejność zgodna, ale brak dowodu, że nikt nie czytał cudzej opinii. Niemożliwe do zweryfikowania, nie stwierdzono naruszenia. Treść opinii nie wykazuje kopiowania (różne listy rozpoznań, różne p). Punkt kosmetyczno-dowodowy."},
+      {"punkt": "Tryb PEŁNY: _agregat.json istnieje; pilność w 05 nie niższa niż weto najgorszego scenariusza", "status": "OK", "plik": "03-opinie/_agregat.json", "uwaga": "Weto najgorszy_scenariusz = 2; 05-projekt PILNOŚĆ 2; wszyscy 6 lekarzy pilność 2. Zgodne. Skrypt zapisał weto: null (nie wyliczył wartości) — drobny defekt skryptu, nie sprawy."},
+      {"punkt": "Tryb PEŁNY: flaga NISKA_ZGODA → dodatkowa runda dyskusji", "status": "BRAK", "plik": "04-konsylium.md", "uwaga": "Zgoda 0,468 (surowy) / 0,382 (po synonimach) < 0,5. Pisemnej rundy nie zwołano — odstępstwo zgłoszone. Ocena: uzasadnienie ordynatora jest trafne — rozbieżność dotyczy nazw (4 synonimy pokrzywki poinfekcyjnej) i długiego ogona, nie decyzji: 5/5 lekarzy z wagą stawia cefuroksym na 1. miejscu (p 0,45–0,50), 6/6 pilność 2, 6/6 pewność średnia. Rozbieżności realne (EKG zawsze vs warunkowo, GKS doustny, adenowirus) rozstrzygnięto jawnie w 04. Akceptuję jako ŻÓŁTE, nie czerwone. Uwaga systemowa: miara zgody karze rozdrobnienie nazw — do pamiec/luki.md."},
+      {"punkt": "Tryb PEŁNY: każda red_flags_otwarte z opinii pojawia się w 05 (CZEGO NIE WIEMY / WRÓĆ-ESKALUJ) albo jest wykluczona w 04", "status": "BRAK", "plik": "05-projekt.md", "uwaga": "Sekcje CZEGO NIE WIEMY i WRÓĆ/ESKALUJ GDY nie istnieją w 05. Treściowo pokryte w PLAN/PILNOŚĆ/PLAN B: anafilaksja, maskowanie krtani, beta-bloker, QT, SJS/TEN, budezonid, dwufazowa, zakaźność, przyszła ekspozycja, zapalenie płuc (osłuchiwanie). NIEPOKRYTE: (a) zmiany dłoni/stóp nieblednące/wybroczyny (posocznica meningokokowa) — najgorszy_scenariusz; (b) OKO LECZONE: ból, światłowstręt, spadek ostrości wzroku (opryszczkowe zapalenie rogówki pod sterydem / zapalenie wnętrza gałki) — najgorszy_scenariusz; (c) adenowirus — zaczerwienienie spojówki/wydzielina (w 04 jako NIEZNANE, w 05 nieobecne); (d) brak potwierdzenia odstawienia cefuroksymu (bayes) — w REKOMENDACJI jest „odstawić”, ale nie „potwierdzić, czy odstawiono”."},
+      {"punkt": "Tryb PEŁNY: 06-rezydenci/ ma ≥2 pliki", "status": "BRAK", "plik": "06-rezydenci/", "uwaga": "Katalog pusty (0 plików). Pakiety wygenerowano 22:40 dla 2 person; pre-mortem w toku lub nieuruchomiony. Formalnie BRAK → kartka czerwona do czasu dostarczenia."},
+      {"punkt": "Tryb PEŁNY: 08-odpowiedz-rezydentom.md odpowiada na każdy punkt każdego rezydenta (PRZYJMUJĘ/ODRZUCAM + powód + kategoria + hasło)", "status": "BRAK", "plik": "08-odpowiedz-rezydentom.md", "uwaga": "Plik nie istnieje (etap jeszcze nie nastąpił)."},
+      {"punkt": "Tryb PEŁNY: jeśli PRZYJMUJĘ zmieniło decyzję → wpis rewizja_projektu w _log.jsonl", "status": "N/D", "plik": "_log.jsonl", "uwaga": "Brak uwag rezydentów, więc nie dotyczy na tym etapie."},
+      {"punkt": "FINAL: 05-projekt.md ma dokładnie pola z CLAUDE.md §6, w tej kolejności", "status": "BRAK", "plik": "05-projekt.md", "uwaga": "Obecne: REKOMENDACJA, PILNOŚĆ, DLACZEGO, PLAN (pole spoza §6), PLAN B. Brak: CZEGO NIE WIEMY, WRÓĆ / ESKALUJ GDY, ŹRÓDŁA, stopka „Narzędzie testowe i edukacyjne marki MS…”. Kolejność: PLAN B po DLACZEGO — OK, ale wstawiono niestandardowy PLAN. Treść PLAN 1–9 należy rozłożyć: kroki → REKOMENDACJA/DLACZEGO, objawy alarmowe → WRÓĆ/ESKALUJ GDY, niewiadome → CZEGO NIE WIEMY."},
+      {"punkt": "FINAL: REKOMENDACJA to jedno zdanie z jednym działaniem; bez „lub/albo/rozważ/można też”", "status": "OK", "plik": "05-projekt.md", "uwaga": "Jedno zdanie, brak słów zakazanych. Uwaga: zdanie łączy trzy działania (ocena osobista dziś + odstawienie leków + lek przeciwhistaminowy) — to jeden pakiet „dziś w gabinecie”, akceptuję; nie jest to lista opcji do wyboru. Linia PILNOŚĆ zawiera warunkową eskalację do 1 — to w istocie treść WRÓĆ/ESKALUJ GDY, przenieść tam."},
+      {"punkt": "FINAL: PLAN B jest warunkowy („jeśli … to …”)", "status": "OK", "plik": "05-projekt.md", "uwaga": "„Jeśli wysypka to zmiany tarczowate… — tego samego dnia dermatologia/szpital”. Warunkowy. Brakuje PLANU B dla scenariusza „brak poprawy po leku przeciwhistaminowym w 24–48 h” (GKS doustny krótko — farmakolog/pragmatyk) — opcjonalne."},
+      {"punkt": "FINAL: CZEGO NIE WIEMY zawiera wszystkie pozycje NIEZNANE z 01-wywiad.md", "status": "BRAK", "plik": "05-projekt.md", "uwaga": "Sekcja nie istnieje. 01-wywiad.md ma 13 pozycji NIEZNANE (objawy układowe, parametry, morfologia wysypki, gorączka, obrzęk powieki — cechy, leczenie reakcji, preparaty kropli i wskazanie, kolejność dawek, inne leki/NLPZ/suplementy, wcześniejsze alergie/atopia/lateks, dawka azytromycyny, EKG, wskazanie nebulizacji). W 05 pojawiają się pośrednio tylko: parametry/wysypka/EKG (w REKOMENDACJI), świsty/krtań (PLAN 4). Reszta — nieobecna."},
+      {"punkt": "FINAL: każda liczba ma źródło lub etykietę [wiedza modelu, niezweryfikowane] (krzyżowo z fakty)", "status": "BRAK", "plik": "05-projekt.md", "uwaga": "Żadna liczba (0,5 mg, 10/20 mg, 500 ms, 4–6 tyg., p 0,64, 0,9% NaCl) nie ma źródła ani etykiety; brak sekcji ŹRÓDŁA. Opinie lekarzy miały etykiety — projekt je zgubił. Źródła do wstawienia są w fakty.twierdzenia."},
+      {"punkt": "Dane: 00-surowe.md bez PESEL (\\b\\d{11}\\b) i nazwisk", "status": "OK", "plik": "00-surowe.md", "uwaga": "grep wzorca PESEL: brak trafień. Brak nazwisk pacjentki. Imię użytkownika („Michał”) występuje w 01/02, nie w 00 — to lekarz-użytkownik, nie pacjent; dopuszczalne, ale rozważyć „użytkownik” dla jednolitości."},
+      {"punkt": "Odstępstwo zgłoszone: praca w trybie opinii w tle na prośbę użytkownika", "status": "OK", "plik": "01-wywiad.md", "uwaga": "Udokumentowane w 01, 02 i 04 z datą i powodem. Ocena: tryb nie zwalnia z formatu §6 ani z etykiet źródeł — te braki nie wynikają z trybu, tylko z pośpiechu. Zwolnienie z osobnych zastępców i pełnej liczby rezydentów — akceptowalne jednorazowo; sprawa powinna dostać adnotację „tryb uproszczony” w 09-FINAL, żeby followup/kalibracja nie liczyły jej jak pełnej."}
+    ],
+    "co_poprawic_zeby_zdjac_czerwona": [
+      "Dostarczyć ≥2 pliki 06-rezydenci/ i 08-odpowiedz-rezydentom.md z PRZYJMUJĘ/ODRZUCAM dla każdego punktu (albo jawnie zapisać w 02-triage.json i 09-FINAL, że pre-mortem pominięto — wtedy kartka pozostaje czerwona z adnotacją „tryb uproszczony”).",
+      "Przepisać 05-projekt.md na dokładne pola §6: dodać CZEGO NIE WIEMY (13 pozycji z 01), WRÓĆ / ESKALUJ GDY (przenieść warunek z PILNOŚCI + dodać: zmiany nieblednące/wybroczyny, ból oka/światłowstręt/spadek wzroku, narastanie chrypki/stridor/dysfagia, nawrót w nocy), ŹRÓDŁA (z fakty), stopkę.",
+      "Ujednolicić liczbę rezydentów (02-triage.json „1” vs 2 pakiety w _log.jsonl)."
+    ]
+  },
+  "rubryka": {
+    "za_przeciw_obecne": 12,
+    "komunikat": 7,
+    "uzasadnienie": "za_przeciw_obecne 12/15: wszystkie 6 opinii mają listy za/przeciw dla top-3, trafne i niezależne (różne p, różne rozpoznania z ogona); 04-konsylium.md jawnie rozstrzyga rozbieżności. Odjęte 3: w 05 nie ma „przeciw” dla rozpoznania głównego (pokrzywka poinfekcyjna p 0,15 jako alternatywa nie jest nazwana w DLACZEGO). komunikat 7/15: jedna decyzja (+), PLAN B warunkowy (+), brak CZEGO NIE WIEMY (−), brak ŹRÓDEŁ i etykiet (−), brak WRÓĆ/ESKALUJ jako sekcji (−), jedno twierdzenie sprzeczne z wytyczną (−)."
+  }
+}

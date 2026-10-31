@@ -1,0 +1,185 @@
+{
+  "rola": "farmakolog",
+  "skrot": "Najbardziej prawdopodobną przyczyną natychmiastowej reakcji nadwrażliwości (obrzęk powieki, zmiany dłoniowo-podeszwowe 15 minut po dawce) jest cefuroksym mimo wcześniejszej tolerancji. Należy trwale odstawić cefuroksym i erdosteinę, wykluczyć anafilaksję z uwzględnieniem bisoprololu oraz zweryfikować wskazanie do azytromycyny i rozcieńczanie budezonidu wodą.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0.45,
+      "za": [
+        "Odstęp ok. 15 minut od przyjęcia doustnego — typowy dla reakcji natychmiastowej (IgE-zależnej lub przez aktywację mastocytów).",
+        "Antybiotyki beta-laktamowe są najczęstszą przyczyną natychmiastowych reakcji polekowych u dorosłych [wiedza modelu, niezweryfikowane].",
+        "Wielokrotne wcześniejsze kursy cefuroksymu to warunek uczulenia, a nie dowód jego braku: uczulenie IgE wymaga wcześniejszej ekspozycji.",
+        "Obraz: obrzęk naczynioruchowy powieki (oka nieleczonego kroplami) + zmiany na dłoniach i stopach — wzorzec układowy, nie miejscowy; świąd/rumień dłoni i podeszew bywa wczesnym objawem anafilaksji [wiedza modelu, niezweryfikowane].",
+        "Zakażenie wirusowe działa jako kofaktor obniżający próg degranulacji mastocytów."
+      ],
+      "przeciw": [
+        "Wielokrotna wcześniejsza tolerancja bez reakcji.",
+        "NIEZNANE, czy w tym epizodzie wcześniejsze dawki cefuroksymu (dzień wcześniej) były tolerowane; jeśli tak, uczulenie de novo w ciągu 1–2 dni jest mało typowe (choć możliwe przy wcześniejszym uczuleniu i kofaktorze).",
+        "Jednoczesne przyjęcie erdosteiny uniemożliwia przypisanie reakcji jednemu lekowi.",
+        "Ostra pokrzywka/obrzęk naczynioruchowy w przebiegu infekcji wirusowej daje identyczny obraz."
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0.1,
+      "za": [
+        "Przyjęta jednocześnie z cefuroksymem, ten sam odstęp czasowy.",
+        "W ChPL erdosteiny opisywane są rzadkie reakcje nadwrażliwości (pokrzywka, obrzęk naczynioruchowy) [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Reakcje natychmiastowe na erdosteinę są bardzo rzadkie w porównaniu z beta-laktamami [wiedza modelu, niezweryfikowane].",
+        "Wcześniejsza tolerancja."
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — bromfenak",
+      "p": 0.07,
+      "za": [
+        "Preparat z bromfenakiem (Yellox) zawiera siarczyn sodu; ChPL ostrzega przed reakcjami alergicznymi, w tym anafilaktycznymi i skurczem oskrzeli u osób wrażliwych [wiedza modelu, niezweryfikowane].",
+        "Bromfenak jest NLPZ; nadwrażliwość krzyżowa na NLPZ (pokrzywka/obrzęk naczynioruchowy indukowane przez NLPZ) nasila się w czasie infekcji.",
+        "Nowy lek w ostatnich 3–4 dniach — jedyna nowość obok cefuroksymu."
+      ],
+      "przeciw": [
+        "Wchłanianie układowe z kropli do oka jest minimalne [wiedza modelu, niezweryfikowane].",
+        "Reakcja związana czasowo z dawką leków doustnych, nie z wkropleniem (godziny wkropleń NIEZNANE)."
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — lewofloksacyna z deksametazonem w kroplach do oczu",
+      "p": 0.06,
+      "za": [
+        "Obrzęk powieki drugiego oka może wynikać z alergicznego kontaktowego zapalenia skóry powiek (przeniesienie palcami/poduszką; reakcja typu IV po 2–4 dniach stosowania pasuje do czasu) — na lewofloksacynę, benzalkoniowy chlorek (konserwant) lub sam deksametazon.",
+        "Fluorochinolony mogą aktywować mastocyty bezpośrednio (receptor MRGPRX2) [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Kontaktowe zapalenie skóry daje zmiany wypryskowe narastające godzinami, a nie nagły obrzęk 15 minut po dawce leków doustnych.",
+        "Zmiany na dłoniach (a zwłaszcza podeszwach) nie pasują do kontaktu z kroplami; wchłanianie układowe minimalne.",
+        "Oko leczone bez obrzęku — przemawia przeciw miejscowej alergii na krople."
+      ]
+    },
+    {
+      "nazwa": "ostra pokrzywka i obrzęk naczynioruchowy w przebiegu zakażenia wirusowego",
+      "p": 0,
+      "za": [
+        "Częsta przyczyna ostrej pokrzywki u dorosłych; trwająca infekcja górnych dróg oddechowych."
+      ],
+      "przeciw": [
+        "Ścisły związek czasowy (15 minut) z przyjęciem leków. p=0 zgodnie z rolą farmakologa (rozpoznanie niepolekowe pozostawiam internistom)."
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Anafilaksja (lub jej wczesna faza) — objawy z układu oddechowego, krążenia i przewodu pokarmowego NIEZNANE; zmiany dłoniowo-podeszwowe + obrzęk naczynioruchowy to wzorzec układowy.",
+    "Beta-adrenolityk (bisoprolol): ryzyko cięższej anafilaksji i słabszej odpowiedzi na adrenalinę.",
+    "Chrypka obecna już wcześniej z powodu zapalenia krtani — maskuje ewentualny obrzęk krtani; potrzebna ocena stridoru, dysfagii, obrzęku języka i warg.",
+    "Wydłużenie odstępu QT po azytromycynie u kobiety 64 lat z zaburzeniami rytmu, bez EKG i elektrolitów.",
+    "Ciężka skórna reakcja polekowa (zespół Stevensa-Johnsona, rumień wielopostaciowy) — morfologia zmian dłoniowo-podeszwowych i błony śluzowe NIEZNANE.",
+    "Nebulizacja roztworem hipotonicznym (budezonid z wodą do wstrzykiwań) może prowokować skurcz oskrzeli."
+  ],
+  "nastepny_krok": "Dziś: trwale odstawić cefuroksym i erdosteinę, wpisać do dokumentacji podejrzenie natychmiastowej nadwrażliwości na cefuroksym i ocenić pacjentkę bezpośrednio pod kątem anafilaksji (oddech, stridor, obrzęk języka, ciśnienie, tętno, SpO2), podając lek przeciwhistaminowy II generacji; przy jakimkolwiek objawie oddechowym lub krążeniowym — adrenalina domięśniowo i SOR.",
+  "co_zmieniloby_zdanie": "Informacja, że pacjentka przyjęła dziś również inny nowy lek (np. doustny NLPZ, lek złożony na przeziębienie), że wcześniejsze dawki cefuroksymu w tym epizodzie i po ekspozycji na erdosteinę były tolerowane, lub że zmiany skórne to osutka plamisto-grudkowa/tarczowate albo wypryskowe zmiany powiek zamiast pokrzywki i obrzęku naczynioruchowego — przesunęłoby podejrzenie z cefuroksymu odpowiednio na ten lek, infekcję lub kontaktową alergię na krople.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "cetyryzyna (alternatywnie bilastyna 20 mg lub feksofenadyna 180 mg)",
+      "dawka": "10 mg raz dziennie; przy utrzymujących się objawach można zwiększyć do 20 mg/d (poza ChPL, zgodnie z wytycznymi dla pokrzywki)",
+      "droga": "doustnie",
+      "czas": "5–7 dni lub do 2–3 dni po ustąpieniu zmian",
+      "uwagi": "Leczy objawy skórne; nie leczy anafilaksji i nie zastępuje adrenaliny. Unikać leków I generacji (sedacja, działanie antycholinergiczne).",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] (wytyczne EAACI/GA2LEN/EuroGuiDerm dotyczące pokrzywki — nie w zrodla/)"
+    },
+    {
+      "lek": "prednizon (opcjonalnie)",
+      "dawka": "20–40 mg raz dziennie rano",
+      "droga": "doustnie",
+      "czas": "3–5 dni, bez stopniowego zmniejszania",
+      "uwagi": "Tylko przy nasilonym obrzęku naczynioruchowym lub braku efektu leku przeciwhistaminowego. Brak dowodów, że zapobiega reakcji dwufazowej. Pacjentka ma już budezonid wziewny.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "adrenalina — w razie anafilaksji",
+      "dawka": "0,5 mg (0,5 ml roztworu 1 mg/ml) domięśniowo; powtórzyć co 5 minut w razie braku poprawy",
+      "droga": "domięśniowo, przednio-boczna powierzchnia uda",
+      "czas": "doraźnie",
+      "uwagi": "Lek pierwszego rzutu także u przyjmującej bisoprolol — beta-adrenolityk NIE jest przeciwwskazaniem; odpowiedź może być słabsza, więc wcześniej rozważyć kolejną dawkę i transport. Bisoprolol 1,25 mg jest kardioselektywny i w niskiej dawce, więc ryzyko nadciśnienia z niezrównoważonej stymulacji alfa jest małe. Rozważyć przepisanie autostrzykawki z adrenaliną do czasu diagnostyki alergologicznej.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] (wytyczne EAACI 2021 i WAO 2020 dotyczące anafilaksji — nie w zrodla/)"
+    },
+    {
+      "lek": "glukagon — anafilaksja oporna na adrenalinę u leczonej beta-adrenolitykiem",
+      "dawka": "1–5 mg dożylnie w ciągu 5 minut, następnie wlew 5–15 µg/min dostosowany do odpowiedzi",
+      "droga": "dożylnie",
+      "czas": "w warunkach szpitalnych (SOR / zespół ratownictwa)",
+      "uwagi": "Działa niezależnie od receptorów beta (przez cyklazę adenylanową). Często wywołuje wymioty — ułożenie na boku, ochrona dróg oddechowych. Poziom POZ: wiedzieć, że istnieje, i przekazać informację o beta-adrenolityku zespołowi.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "bisoprolol",
+      "dawka": "1,25 mg/d — kontynuować (dawka do potwierdzenia)",
+      "droga": "doustnie",
+      "czas": "bez zmian",
+      "uwagi": "Nie odstawiać nagle teraz (ryzyko nawrotu tachyarytmii); niska dawka beta1-selektywna. Poinformować alergologa przed testami prowokacyjnymi — wtedy ocenić czasowe wstrzymanie.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "azytromycyna — weryfikacja wskazania",
+      "dawka": "jeśli wskazanie bakteryjne potwierdzone: 500 mg raz dziennie przez 3 dni (alternatywnie 500 mg dnia 1., potem 250 mg dni 2.–5.)",
+      "droga": "doustnie",
+      "czas": "maks. 3–5 dni",
+      "uwagi": "Obraz (nagły początek, katar, chrypka, zapalenie gardła i krtani, kaszel) wskazuje na zakażenie wirusowe — antybiotyk najpewniej niewskazany; rekomenduję odstawienie, jeśli nie ma przesłanek bakteryjnych (zapalenie płuc w badaniu, zakażenie paciorkowcowe potwierdzone testem). Makrolid nie wykazuje reakcji krzyżowej z beta-laktamami — jako zamiennik cefuroksymu bezpieczny pod tym względem. Ryzyko QT: kobieta, wiek 64, zaburzenia rytmu, bradykardyzujący bisoprolol, możliwa hipokaliemia/hipomagnezemia (NIEZNANE) — jeśli kontynuacja: EKG z pomiarem QTc i potas/magnez; odstawić przy QTc > 500 ms lub wzroście o > 60 ms. Brak istotnych interakcji farmakokinetycznych azytromycyny z bisoprololem i budezonidem (słaby wpływ na CYP3A4). Unikać dołączania innych leków wydłużających QT (fluorochinolony doustne, ondansetron, hydroksyzyna, domperidon, citalopram).",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] (ChPL azytromycyny; ostrzeżenie FDA 2013 dotyczące QT — nie w zrodla/)"
+    },
+    {
+      "lek": "budezonid w nebulizacji",
+      "dawka": "0,5–1 mg na nebulizację, 1–2 razy dziennie (zawiesina 0,25 lub 0,5 mg/ml)",
+      "droga": "wziewnie (nebulizacja)",
+      "czas": "do ustąpienia objawów krtaniowych, zwykle kilka dni",
+      "uwagi": "Rozcieńczać wyłącznie 0,9% NaCl, a nie wodą do wstrzykiwań — roztwór hipotoniczny może wywołać kaszel i skurcz oskrzeli. Ampułki 2 ml można podawać bez rozcieńczania. Płukać usta po inhalacji. Wskazanie (świsty? zapalenie krtani?) NIEZNANE.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] (ChPL Pulmicort zawiesina do nebulizacji — nie w zrodla/)"
+    },
+    {
+      "lek": "krople do oka (lewofloksacyna z deksametazonem, bromfenak)",
+      "dawka": "bez zmian do decyzji okulisty",
+      "droga": "do worka spojówkowego",
+      "czas": "wg okulisty",
+      "uwagi": "Nie odstawiać samowolnie, jeśli to profilaktyka po zabiegu zaćmy (ryzyko zapalenia i obrzęku plamki). Skontaktować się z okulistą: zgłosić reakcję i ewentualnie zamienić bromfenak (siarczyn sodu, NLPZ) na preparat bez siarczynów i konserwantów. Myć ręce po wkropleniu, nie dotykać drugiego oka.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "cefuroksym",
+      "powod": "Podejrzenie natychmiastowej nadwrażliwości — trwale do czasu diagnostyki alergologicznej."
+    },
+    {
+      "lek": "cefalosporyny o podobnym łańcuchu bocznym R1 (grupa metoksyiminowa): ceftriakson, cefotaksym, cefpodoksym, cefepim",
+      "powod": "Reaktywność krzyżowa w alergii na beta-laktamy wynika głównie z podobieństwa łańcucha bocznego R1. Inne cefalosporyny o odmiennym R1, penicyliny (ryzyko krzyżowe ok. 1–2%) i karbapenemy (< 1%) są możliwe do zastosowania po ocenie alergologa lub przy próbie pod nadzorem [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "erdosteina",
+      "powod": "Współpodejrzana; mukolityk bez udowodnionej korzyści w ostrym zapaleniu oskrzeli — nie wracać przed diagnostyką."
+    },
+    {
+      "lek": "NLPZ doustne (ibuprofen, ketoprofen, naproksen, diklofenak, kwas acetylosalicylowy w dawce przeciwbólowej)",
+      "powod": "Ostra pokrzywka/obrzęk naczynioruchowy — NLPZ są częstym kofaktorem i mogą nasilić lub podtrzymać reakcję; na gorączkę i ból gardła paracetamol (do 1 g co 6 godzin, maks. 4 g/d) [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "doustne fluorochinolony (lewofloksacyna, moksyfloksacyna) i inne leki wydłużające QT",
+      "powod": "Sumowanie wydłużenia QT z azytromycyną u pacjentki z zaburzeniami rytmu; fluorochinolon dodatkowo podejrzany w obecnym epizodzie."
+    },
+    {
+      "lek": "leki przeciwhistaminowe I generacji (klemastyna, hydroksyzyna) jako leczenie przewlekłe",
+      "powod": "Sedacja przy pracy nocnej i przemęczeniu; hydroksyzyna wydłuża QT."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak źródeł poziomu 1 dla tej sytuacji (biblioteka zawiera tylko przykłady).",
+    "PubMed niedostępny podczas ślepej tury (błąd połączenia).",
+    "[wiedza modelu, niezweryfikowane] Wytyczne EAACI 2021 i WAO 2020 dotyczące anafilaksji (adrenalina 0,5 mg domięśniowo, glukagon przy beta-adrenolitykach).",
+    "[wiedza modelu, niezweryfikowane] Wytyczne EAACI/GA2LEN/EuroGuiDerm/APAAACI dotyczące pokrzywki (lek przeciwhistaminowy II generacji, zwiększanie dawki).",
+    "[wiedza modelu, niezweryfikowane] Reaktywność krzyżowa beta-laktamów oparta na łańcuchu bocznym R1 (m.in. przegląd Romano i wsp., parametry praktyczne AAAAI/ACAAI 2022).",
+    "[wiedza modelu, niezweryfikowane] ChPL: Zinnat (cefuroksym aksetyl), Erdomed (erdosteina), Yellox (bromfenak — siarczyn sodu), lewofloksacyna z deksametazonem krople do oczu (chlorek benzalkoniowy), azytromycyna (QT), Pulmicort zawiesina do nebulizacji (rozcieńczanie 0,9% NaCl).",
+    "[wiedza modelu, niezweryfikowane] Ostrzeżenie FDA 2013 dotyczące azytromycyny i ryzyka zaburzeń rytmu."
+  ]
+}

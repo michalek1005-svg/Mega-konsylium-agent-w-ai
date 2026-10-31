@@ -1,0 +1,104 @@
+{
+  "rola": "hipotezujacy",
+  "skrot": "Najbardziej prawdopodobna jest natychmiastowa (IgE-zależna) nadwrażliwość na cefuroksym aksetylu z obrzękiem naczynioruchowym powieki i zmianami skórnymi dłoni i stóp; wcześniejsza dobra tolerancja nie wyklucza uczulenia. Zajęcie oka nieleczonego przemawia za reakcją układową, a nie miejscową po kroplach; beta-adrenolityk i trwająca chrypka utrudniają ocenę anafilaksji.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0.45,
+      "za": [
+        "Początek ok. 15 minut po przyjęciu dawki — odstęp czasowy typowy dla reakcji natychmiastowej IgE-zależnej (pokrzywka/obrzęk naczynioruchowy).",
+        "Wielokrotna wcześniejsza ekspozycja na Zinnat: uczulenie wymaga wcześniejszego kontaktu, więc dobra tolerancja w przeszłości nie wyklucza obecnej reakcji, a wręcz ją umożliwia.",
+        "Obrzęk powieki oka NIELECZONEGO kroplami oraz zmiany na dłoniach i stopach (dwie odległe okolice) wskazują na mechanizm układowy (lek doustny), nie miejscowy po kroplach.",
+        "Świąd/rumień dłoni i stóp bywa wczesnym objawem rozwijającej się anafilaksji [wiedza modelu, niezweryfikowane].",
+        "Antybiotyki beta-laktamowe należą do najczęstszych przyczyn natychmiastowych reakcji polekowych u dorosłych [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Erdosteina przyjęta jednocześnie — brak możliwości rozdzielenia sprawcy na podstawie samego czasu.",
+        "Nieznana morfologia wysypki: jeśli nie jest to pokrzywka (bąble blednące, swędzące, ustępujące <24 h), rozpoznanie reakcji natychmiastowej słabnie.",
+        "Nie wiadomo, czy wcześniejsze dawki cefuroksymu w obecnym epizodzie (jeśli były) były tolerowane — jeśli tak, przeciw nagłemu uczuleniu."
+      ]
+    },
+    {
+      "nazwa": "pokrzywka ostra z obrzękiem naczynioruchowym w przebiegu infekcji wirusowej",
+      "p": 0.17,
+      "za": [
+        "Trwająca ostra infekcja górnych dróg oddechowych (katar, zapalenie gardła i krtani) — infekcje są częstym wyzwalaczem pokrzywki ostrej, także u dorosłych [wiedza modelu, niezweryfikowane].",
+        "Infekcja działa jako kofaktor obniżający próg reakcji na leki (cefuroksym, erdosteina, ewentualne niesteroidowe leki przeciwzapalne) — reakcja może pojawić się na lek wcześniej tolerowany bez swoistego uczulenia.",
+        "Obustronne/naprzemienne zajęcie okolic luźnej tkanki (powieka) i dystalnych części kończyn pasuje do pokrzywki ostrej o dowolnej przyczynie."
+      ],
+      "przeciw": [
+        "Ostry, ścisły związek czasowy (15 minut) z przyjęciem leków przemawia raczej za przyczyną polekową niż przypadkową.",
+        "Infekcja trwała już ok. 1–2 dni bez objawów skórnych do momentu przyjęcia leków."
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0.10,
+      "za": [
+        "Przyjęta w tym samym momencie co cefuroksym — równy związek czasowy.",
+        "Wcześniejsza ekspozycja w przeszłości (możliwe uczulenie, analogicznie jak dla cefuroksymu)."
+      ],
+      "przeciw": [
+        "Reakcje nadwrażliwości natychmiastowej na erdosteinę są opisywane znacznie rzadziej niż na antybiotyki beta-laktamowe [wiedza modelu, niezweryfikowane].",
+        "Brak danych o reakcji przy wcześniejszych kursach erdosteiny."
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — bromfenak",
+      "p": 0.07,
+      "za": [
+        "Bromfenak to niesteroidowy lek przeciwzapalny; nadwrażliwość na leki z tej grupy (mechanizm nieimmunologiczny, zależny od cyklooksygenazy 1) typowo daje obrzęk okołooczodołowy i pokrzywkę, często obustronnie i niezależnie od miejsca podania.",
+        "Infekcja wirusowa nasila nadwrażliwość na niesteroidowe leki przeciwzapalne; NIEZNANE, czy pacjentka nie przyjmowała doustnie ibuprofenu/ketoprofenu lub preparatów „na przeziębienie” — wtedy to rozpoznanie zyskuje na wadze.",
+        "Paradoks oka: w oku leczonym kortykosteroid i niesteroidowy lek przeciwzapalny miejscowo mogły stłumić obrzęk, co tłumaczy, dlaczego obrzęk ujawnił się po stronie przeciwnej."
+      ],
+      "przeciw": [
+        "Ogólnoustrojowe wchłanianie bromfenaku z kropli do oka jest małe [wiedza modelu, niezweryfikowane].",
+        "Krople stosowane już 3–4 dni bez reakcji; nagła reakcja 15 minut po lekach doustnych lepiej pasuje do nich."
+      ]
+    },
+    {
+      "nazwa": "rumień wielopostaciowy",
+      "p": 0.06,
+      "za": [
+        "Zmiany o dystrybucji akralnej (dłonie, stopy) są typowe dla rumienia wielopostaciowego.",
+        "Kaszel produktywny, chrypka, zapalenie gardła i krtani — możliwa infekcja Mycoplasma pneumoniae (lub reaktywacja wirusa opryszczki), klasyczne wyzwalacze; także polekowy (beta-laktamy)."
+      ],
+      "przeciw": [
+        "Rumień wielopostaciowy rozwija się w ciągu kilku godzin–dni, nie 15 minut po leku.",
+        "Obrzęk powieki bez opisu zmian na śluzówkach — bardziej typowy dla obrzęku naczynioruchowego."
+      ]
+    }
+  ],
+  "kandydaci_rozwazeni_i_odrzuceni": [
+    "objawy polekowe — lewofloksacyna (miejscowo): fluorochinolony mogą wyzwalać reakcje natychmiastowe także drogą nie-IgE (receptor MRGPRX2), ale wchłanianie z kropli małe i brak związku czasowego z dawką — p ok. 0,03.",
+    "alergiczne kontaktowe zapalenie skóry i spojówek od kropli przeniesionych rękami na drugie oko i dłonie: czas uczulenia 3–4 dni możliwy, ale nie tłumaczy stóp ani początku 15 minut po lekach doustnych — p ok. 0,03.",
+    "choroba dłoni, stóp i jam ustnych u dorosłej (praca w szpitalu, zapalenie gardła, zmiany dłoni i stóp) — „rzadkie o typowym obrazie”; zbieżność czasowa z lekami przypadkowa; obrzęk powieki nietypowy — p ok. 0,03.",
+    "reakcja podobna do choroby posurowiczej (cefaklor/cefuroksym) — zbyt szybki początek; należy pamiętać przy ewolucji w ciągu 1–2 tygodni.",
+    "obrzęk naczynioruchowy bradykininowy (inhibitor konwertazy angiotensyny, wrodzony/nabyty niedobór inhibitora C1) — brak inhibitora konwertazy w lekach, ale lista leków i suplementów NIEZNANA.",
+    "zespół Kounisa (ostry zespół wieńcowy w przebiegu reakcji alergicznej) — nie rozpoznanie, lecz czujność u pacjentki z zaburzeniami rytmu; brak danych o bólu w klatce piersiowej.",
+    "toksyczna nekroliza naskórka / zespół Stevensa-Johnsona we wczesnej fazie — mało prawdopodobny przy 15-minutowym początku, ale ból skóry, pęcherze i zmiany śluzówkowe NIEZNANE."
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "brak — z dostępnych danych nie da się jawnie wykluczyć żadnej czerwonej flagi; żaden objaw układowy nie został potwierdzony ani zaprzeczony"
+  ],
+  "red_flags_otwarte": [
+    "anafilaksja: zajęcie skóry i tkanki podskórnej + ewentualne objawy oddechowe/krążeniowe/żołądkowo-jelitowe — wszystkie NIEZNANE",
+    "obrzęk krtani maskowany przez istniejącą chrypkę z zapalenia krtani — nasilenie chrypki, stridor, dysfagia, ślinienie się wymagają natychmiastowej oceny",
+    "przyjmowanie beta-adrenolityku (bisoprolol): może nasilać przebieg anafilaksji i zmniejszać odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]",
+    "reakcja dwufazowa w ciągu kolejnych godzin [wiedza modelu, niezweryfikowane]",
+    "ciężka skórna reakcja polekowa (zmiany tarczowate atypowe, pęcherze, nadżerki śluzówek, ból skóry, gorączka) — morfologia wysypki NIEZNANA",
+    "azytromycyna u pacjentki z zaburzeniami rytmu przyjmującej beta-adrenolityk — ryzyko wydłużenia QT; EKG NIEZNANE",
+    "zapalenie płuc jako przyczyna kaszlu produktywnego — osłuchiwanie i parametry życiowe NIEZNANE"
+  ],
+  "nastepny_krok": "Dziś osobiste badanie pacjentki z pomiarem ciśnienia, tętna, SpO2 i osłuchiwaniem oraz oceną jamy ustnej, języka, głosu i oddechu (cechy obrzęku krtani) i opisem morfologii wysypki (pokrzywka blednąca vs zmiany tarczowate/pęcherzyki/nadżerki) — to jedno badanie rozstrzyga między reakcją natychmiastową (cefuroksym), rumieniem wielopostaciowym a chorobą zakaźną i ustala, czy potrzebny jest SOR.",
+  "co_zmieniloby_zdanie": "Gdyby wysypka okazała się zmianami tarczowatymi lub pęcherzykowymi utrzymującymi się >24 h, albo gdyby pierwsza dawka Zinnatu w tym epizodzie była dzień wcześniej dobrze tolerowana, a pacjentka przyjęła dziś też doustny niesteroidowy lek przeciwzapalny, przesunąłbym główne prawdopodobieństwo z cefuroksymu na rumień wielopostaciowy lub nadwrażliwość na niesteroidowe leki przeciwzapalne.",
+  "zrodla": [
+    "zrodla/ — brak plików merytorycznych (MANIFEST zawiera tylko przykłady); brak polskiej wytycznej w bibliotece",
+    "PubMed — niedostępny w dniu opinii (błąd połączenia), brak cytowań pierwotnych",
+    "EAACI — wytyczne dotyczące anafilaksji (2021) i diagnostyki nadwrażliwości na antybiotyki beta-laktamowe (2020) [wiedza modelu, niezweryfikowane]",
+    "World Allergy Organization — Anaphylaxis Guidance (2020) — kryteria rozpoznania anafilaksji, rola beta-adrenolityków [wiedza modelu, niezweryfikowane]",
+    "EAACI/ENDA — klasyfikacja nadwrażliwości na niesteroidowe leki przeciwzapalne (2019) [wiedza modelu, niezweryfikowane]"
+  ]
+}

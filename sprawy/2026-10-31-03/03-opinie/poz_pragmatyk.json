@@ -1,0 +1,134 @@
+{
+  "rola": "poz_pragmatyk",
+  "skrot": "Obrzęk powieki oka nieleczonego i wysypka dłoniowo-podeszwowa 15 minut po cefuroksymie i erdosteinie to najpewniej reakcja natychmiastowa na cefuroksym, możliwie wczesna anafilaksja. Dziś: ocena w gabinecie (parametry życiowe, śluzówki, osłuchiwanie, EKG z QTc), lek przeciwhistaminowy, wpis nadwrażliwości i rewizja wskazania do azytromycyny.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0.5,
+      "za": [
+        "początek ok. 15 minut po dawce: czas typowy dla reakcji natychmiastowej (IgE-zależnej lub z bezpośredniej degranulacji)",
+        "beta-laktamy to najczęstsza przyczyna natychmiastowej alergii na leki [wiedza modelu, niezweryfikowane]",
+        "wielokrotna wcześniejsza ekspozycja bez reakcji nie wyklucza alergii, bo uczulenie wymaga wcześniejszego kontaktu z lekiem",
+        "objawy poza okiem leczonym (obrzęk drugiej powieki, dłonie, stopy) przemawiają za reakcją ogólnoustrojową, a nie miejscową"
+      ],
+      "przeciw": [
+        "lek był wielokrotnie tolerowany",
+        "przyjęty jednocześnie z erdosteiną, więc nie da się wskazać jednego sprawcy",
+        "trwa zakażenie wirusowe, które samo może wywołać ostrą pokrzywkę",
+        "NIEZNANE: czy była dawka cefuroksymu dzień wcześniej i czy przeszła bez reakcji"
+      ]
+    },
+    {
+      "nazwa": "ostra pokrzywka z obrzękiem naczynioruchowym w przebiegu zakażenia wirusowego",
+      "p": 0.15,
+      "za": [
+        "trwa ostre zakażenie górnych dróg oddechowych (katar, zapalenie gardła i krtani)",
+        "zakażenie jest najczęstszą przyczyną ostrej pokrzywki u dorosłych [wiedza modelu, niezweryfikowane]",
+        "zakażenie może też obniżać próg reakcji na lek (kofaktor)"
+      ],
+      "przeciw": [
+        "ścisły związek czasowy (15 minut) z przyjęciem leków"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0.1,
+      "za": [
+        "przyjęta w tym samym czasie co cefuroksym",
+        "opisywano reakcje skórne po mukolitykach [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "wcześniej tolerowana",
+        "reakcje natychmiastowe na erdosteinę są znacznie rzadsze niż na beta-laktamy [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — bromfenak",
+      "p": 0.07,
+      "za": [
+        "niesteroidowy lek przeciwzapalny (NLPZ) wprowadzony 3–4 dni wcześniej; nadwrażliwość krzyżowa na NLPZ może dawać pokrzywkę i obrzęk powiek",
+        "NLPZ mogą działać jako kofaktor nasilający reakcję na inny lek"
+      ],
+      "przeciw": [
+        "podanie do oka daje bardzo małe stężenie w surowicy",
+        "obrzęk dotyczy oka nieleczonego, a nie leczonego",
+        "objawy pojawiły się po lekach doustnych, a nie po zakropleniu"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — lewofloksacyna z deksametazonem w kroplach do oczu",
+      "p": 0.05,
+      "za": [
+        "nowy lek; kontaktowe zapalenie powiek mogło przejść na drugie oko przez ręce"
+      ],
+      "przeciw": [
+        "obrzęk pojawił się w oku nieleczonym, a nie w leczonym",
+        "kontaktowe zapalenie skóry rozwija się zwykle w ciągu dni i ma charakter wypryskowy; to nie pasuje do początku po 15 minutach ani do zmian na dłoniach i stopach",
+        "glikokortykosteroid w preparacie działa przeciwzapalnie w oku leczonym"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "anafilaksja: świąd lub rumień dłoni i stóp oraz obrzęk okołooczodołowy to typowe wczesne objawy; NIEZNANE są duszność, świsty, stridor, obrzęk języka lub warg, spadek ciśnienia, omdlenie i objawy brzuszne",
+    "beta-adrenolityk (bisoprolol) może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]; dawka 1,25 mg jest mała, ale ryzyko trzeba wziąć pod uwagę",
+    "obrzęk krtani maskowany przez chrypkę z zapalenia krtani: nasilenie chrypki, dysfagia lub stridor wymagają karetki (999)",
+    "ciężka reakcja skórna (zespół Stevensa-Johnsona lub toksyczna nekroliza naskórka) jest mało prawdopodobna przy początku po 15 minutach, ale nie można jej wykluczyć bez oceny śluzówek i morfologii zmian (pęcherze, zmiany tarczowate, ból skóry)",
+    "azytromycyna u pacjentki z zaburzeniami rytmu: brak EKG (QTc)",
+    "brak oceny osłuchowej: nie wiadomo, czy azytromycyna i budezonid mają wskazanie (zapalenie płuc? obturacja?)"
+  ],
+  "nastepny_krok": "Dziś osobiście w gabinecie (pacjentka pracuje w szpitalu, więc dojazd nie stanowi bariery): ocena ABCDE z pomiarem ciśnienia, tętna i SpO2, oglądaniem jamy ustnej, języka i spojówek oraz osłuchiwaniem płuc, EKG spoczynkowe 12-odprowadzeniowe z oceną QTc, a następnie lek przeciwhistaminowy II generacji (np. cetyryzyna 10 mg doustnie) [wiedza modelu, niezweryfikowane].",
+  "co_zmieniloby_zdanie": "Duszność, świsty, stridor, obrzęk języka lub warg, spadek ciśnienia albo omdlenie w czasie reakcji lub teraz podniosłyby pilność do 1 (adrenalina domięśniowo i wezwanie zespołu ratownictwa medycznego), a potwierdzenie, że dawka cefuroksymu dzień wcześniej przeszła bez reakcji, a erdosteina była przyjęta pierwszy raz w tym epizodzie, przesunęłoby podejrzenie na erdosteinę.",
+  "plan_poz": {
+    "teraz_w_gabinecie": [
+      "Telefonicznie przed wizytą: jeśli teraz jest duszność, stridor, obrzęk języka lub warg, zawroty głowy albo omdlenie, dzwonić pod 999 zamiast jechać do POZ. Postępowanie w anafilaksji: adrenalina 0,5 mg domięśniowo w przednio-boczną część uda, którą można powtórzyć po 5 minutach [wiedza modelu, niezweryfikowane].",
+      "Ocena ABCDE, ciśnienie tętnicze, tętno, SpO2, temperatura; obejrzeć skórę (pokrzywka czy osutka, pęcherze), śluzówki jamy ustnej i spojówki obu oczu; ostrość wzroku orientacyjnie; osłuchiwanie płuc.",
+      "EKG spoczynkowe 12-odprowadzeniowe z QTc (pacjentka na azytromycynie i beta-adrenolityku, z zaburzeniami rytmu w wywiadzie). Jeśli w gabinecie nie ma aparatu EKG, wykonać je w szpitalu, w którym pacjentka pracuje.",
+      "Odstawić na stałe cefuroksym i erdosteinę (potwierdzić, bo w wywiadzie NIEPOTWIERDZONE).",
+      "Lek przeciwhistaminowy II generacji, np. cetyryzyna 10 mg raz dziennie lub bilastyna 20 mg raz dziennie przez 5–7 dni; przy utrzymującej się pokrzywce można zwiększyć dawkę do 2 razy dziennie [wiedza modelu, niezweryfikowane]. Glikokortykosteroid doustny krótko (np. prednizon 20–40 mg przez 3–5 dni) tylko wtedy, gdy obrzęk naczynioruchowy się utrzymuje lub narasta [wiedza modelu, niezweryfikowane].",
+      "Azytromycyna: ponownie ocenić wskazanie. Chrypka, katar, zapalenie gardła i krtani oraz kaszel produktywny od ok. 2 dni to obraz wirusowego zakażenia górnych dróg oddechowych lub ostrego zapalenia oskrzeli, które nie wymaga antybiotyku [wiedza modelu, niezweryfikowane]. Jeśli osłuchowo nie ma zmian ogniskowych, nie ma wysokiej gorączki ani duszności i parametry życiowe są prawidłowe, zalecić odstawienie azytromycyny. Każdy kolejny antybiotyk to dodatkowa ekspozycja u pacjentki, która właśnie miała reakcję. Jeśli antybiotyk jest konieczny, makrolid jest bezpieczną alternatywą dla beta-laktamu, pod warunkiem prawidłowego QTc.",
+      "Bez doustnych NLPZ (ibuprofen, ketoprofen, kwas acetylosalicylowy) do czasu ustąpienia pokrzywki, bo nasilają pokrzywkę. Na gorączkę i ból paracetamol.",
+      "Nebulizacje z budezonidu: przy chrypce bez świstów i stridoru mają niewielką wartość, ale są nieszkodliwe; można je kontynuować przez kilka dni, a potem odstawić."
+    ],
+    "zlecic": [
+      "EKG spoczynkowe 12-odprowadzeniowe (w gabinecie, ten sam dzień).",
+      "Badania laboratoryjne nie są potrzebne do decyzji, jeśli stan jest stabilny. Tryptaza w surowicy ma sens tylko przy podejrzeniu anafilaksji i tylko w ciągu 1–4 godzin od reakcji [wiedza modelu, niezweryfikowane]; z POZ zwykle niewykonalna, więc nie zlecać, jeśli to okno minęło.",
+      "Morfologia krwi z rozmazem i CRP tylko przy gorączce powyżej 38,5°C lub zmianach osłuchowych, czyli dla decyzji o antybiotyku, a nie dla oceny reakcji."
+    ],
+    "skierowania": [
+      "Poradnia alergologiczna w trybie stabilnym, z dopiskiem 'podejrzenie natychmiastowej nadwrażliwości na cefuroksym / erdosteinę'. Diagnostykę (testy skórne, ewentualnie próba prowokacyjna) wykonuje się zwykle po 4–6 tygodniach od reakcji [wiedza modelu, niezweryfikowane]; skierowanie wystawić już dziś, bo terminy są długie.",
+      "Okulista prowadzący: poinformować telefonicznie lub przy kontroli o reakcji i obrzęku drugiej powieki. Nie odstawiać samodzielnie kropli do oka leczonego (zwłaszcza jeśli to stan po zabiegu zaćmy). Jeśli pokrzywka utrzymuje się dłużej niż 48 godzin, ustalić z okulistą, czy bromfenak (NLPZ) można zawiesić lub zastąpić.",
+      "Szpitalny oddział ratunkowy (SOR) lub zespół ratownictwa medycznego tylko przy objawach z sekcji red_flags_otwarte."
+    ],
+    "dokumentacja": [
+      "Wpisać w dokumentacji i na recepty 'nadwrażliwość natychmiastowa — cefuroksym (podejrzenie), erdosteina (podejrzenie)'. Do czasu diagnostyki alergologicznej unikać cefalosporyn, zwłaszcza tych o podobnym łańcuchu bocznym (ceftriakson, cefotaksym, cefepim). Penicyliny tylko po ocenie alergologa [wiedza modelu, niezweryfikowane].",
+      "Zgłosić działanie niepożądane do Urzędu Rejestracji Produktów Leczniczych (formularz zgłoszenia działania niepożądanego).",
+      "Zwolnienie lekarskie na czas infekcji (praca nocna w szpitalu, kontakt z pacjentami, wyczerpanie)."
+    ],
+    "kontrola": "Teleporada po 24–48 godzinach (ustąpienie obrzęku i wysypki, decyzja o azytromycynie, jeśli nie podjęto jej na wizycie). Wizyta osobista przy braku poprawy po 72 godzinach albo przy pojawieniu się pęcherzy, zmian na śluzówkach lub gorączki.",
+    "co_powiedziec_pacjentce": "To najpewniej reakcja alergiczna na Zinnat lub Erdomed, więc nie wolno ich już brać, a przy duszności, chrypie przechodzącej w świst, obrzęku języka lub osłabieniu trzeba od razu dzwonić pod 999.",
+    "wykonalnosc": "Wysoka. Pacjentka ma 64 lata, jest samodzielna i pracuje w szpitalu, więc ma łatwy dostęp do EKG i pomocy doraźnej. Ryzykiem jest samoleczenie: sama przyjęła antybiotyk, a azytromycyna została włączona bez jasnego wskazania. Trzeba wprost powiedzieć, że kolejnego antybiotyku nie bierze bez badania. Odległość do SOR jest NIEZNANA (pamiec/zespol.md niewypełnione); jeśli przekracza ok. 30 minut, przy każdym objawie oddechowym wzywać zespół ratownictwa medycznego zamiast dojazdu własnego."
+  },
+  "nie_zlecac": [
+    {
+      "co": "ponowna dawka cefuroksymu lub erdosteiny 'na próbę'",
+      "dlaczego": "próba prowokacyjna należy wyłącznie do alergologa w warunkach monitorowanych"
+    },
+    {
+      "co": "badanie swoistych IgE na leki w laboratorium komercyjnym z POZ",
+      "dlaczego": "niska czułość, wynik ujemny nie wyklucza alergii i nie zmienia dzisiejszego postępowania [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "co": "RTG klatki piersiowej",
+      "dlaczego": "przy prawidłowym osłuchiwaniu i braku duszności nie zmienia decyzji"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak w bibliotece polskich wytycznych dla alergii na leki, pokrzywki, anafilaksji i zakażeń dróg oddechowych oraz brak koszyka badań POZ",
+    "PubMed niedostępny (błąd połączenia), brak weryfikacji źródeł pierwotnych",
+    "Wszystkie dawki i progi: [wiedza modelu, niezweryfikowane]. Do weryfikacji: wytyczne European Academy of Allergy and Clinical Immunology (EAACI) dotyczące anafilaksji, wytyczne EAACI/GA2LEN dotyczące pokrzywki, Rekomendacje postępowania w pozaszpitalnych zakażeniach układu oddechowego (Narodowy Program Ochrony Antybiotyków), ChPL Zinnat, Erdomed, Yellox (bromfenak), azytromycyna",
+    "pamiec/zespol.md: realia lokalne niewypełnione (odległość do SOR, dostępność EKG w gabinecie)"
+  ]
+}
