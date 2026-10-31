@@ -3,3 +3,6 @@ Przypadek testowy. Narazie nie wczytuj do konsylium - kobieta 64 lata - praca w 
 Erdomed też brała w przeszłości. A krople może i od 4-3 dni bierze
 
 Obecnie azytromycyna i nebulizacje z budesonidu z Aqua pro injectione
+
+--- uzupełnienie Michała, 31.10.2026 22:58 (po wydaniu 09-FINAL) ---
+pracuje pacjent rowniez na oddziale neurlgii z intesnywna terapia

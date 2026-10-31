@@ -3,7 +3,7 @@
 Tryb pracy: opinia tekstowa w tle, na prośbę Michała (31.10.2026 22:34). Ankieta tury 1 (`_ankieta-tura1.json`) przygotowana, ale pacjentka jej nie wypełniła. Pytania kluczowe zadano Michałowi w wątku; do chwili ślepej tury brak odpowiedzi. Wywiad zamknięty z listą NIEZNANE (CLAUDE.md §2).
 
 ## Dane zebrane (z 00-surowe.md)
-- Kobieta, 64 lata, pracuje w szpitalu (praca nocna, przewlekłe przemęczenie, obciążenie psychiczne). Nadwaga. Niepaląca.
+- Kobieta, 64 lata, pracuje w szpitalu — uzupełnienie 22:58: na oddziale neurologii z intensywną terapią (praca nocna, przewlekłe przemęczenie, obciążenie psychiczne). Nadwaga. Niepaląca.
 - Choroby przewlekłe: napadowe dodatkowe pobudzenia nadkomorowe → bisoprolol 1,25 mg/d („chyba”, dawka niepotwierdzona).
 - Oko: przed 3–4 dniami (wg korekty; pierwotnie „dwa dni”) po konsultacji okulistycznej (brak dokumentów) krople do JEDNEGO oka: lewofloksacyna + kortykosteroid w jednym preparacie (prawdopodobnie lewofloksacyna/deksametazon) oraz bromfenak (niesteroidowy lek przeciwzapalny, NLPZ, do oka). Wskazanie do kropli NIEZNANE (prawdopodobnie zabieg zaćmy lub zapalenie spojówek/rogówki).
 - Infekcja: ok. 2 dni po rozpoczęciu kropli nagły początek: chrypka, kaszel produktywny, katar, zapalenie gardła i krtani. Pacjentka przyjęła Zinnat 500 (cefuroksym aksetyl) — w przeszłości brała go wielokrotnie bez reakcji.
@@ -21,7 +21,7 @@ Tryb pracy: opinia tekstowa w tle, na prośbę Michała (31.10.2026 22:34). Anki
 - dokładne preparaty kropli i wskazanie; czy oba oka miały kontakt z kroplami (np. przez ręce)
 - kolejność i godziny: czy pierwsza dawka Zinnatu w tym epizodzie była dzień wcześniej bez reakcji
 - inne leki: NLPZ doustne (ibuprofen, ketoprofen), paracetamol, leki na przeziębienie (pseudoefedryna), suplementy
-- wcześniejsze alergie na leki, pokarmy, lateks (praca w szpitalu), atopia, astma/POChP, pokrzywka przewlekła
+- wcześniejsze alergie na leki, pokarmy, lateks i środki dezynfekcyjne (praca na oddziale neurologii z intensywną terapią: częsty kontakt z rękawicami, chlorheksydyną, alkoholami, czwartorzędowymi związkami amoniowymi), atopia, astma/POChP, pokrzywka przewlekła; czy w pracy miała kontakt z antybiotykami (rozpuszczanie cefalosporyn do podania i.v. — uczulenie zawodowe)
 - dawka i wskazanie azytromycyny; kto ją zlecił; czy badana fizykalnie (osłuchiwanie)
 - EKG (QT) — azytromycyna u pacjentki z zaburzeniami rytmu
 - wskazanie do nebulizacji budezonidu (świsty? krtań?)
