@@ -17,3 +17,6 @@
 {"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"sprawdzenie","plik":"07-sprawdzenie.json","uwaga":"fakty ZOLTA, proces CZERWONA; PMID zweryfikowane przez ordynatora w PubMed"}
 {"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"odpowiedz_rezydentom","plik":"08-odpowiedz-rezydentom.md"}
 {"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"final","plik":"09-FINAL.md","uwaga":"poprawki po sprawdzajacych: jedna czynnosc w REKOMENDACJI, porfiria, NIEZNANE, etykiety"}
+{"ts": "2026-10-31T12:41:00+00:00", "rola": "skrypt", "zdarzenie": "kalibracja", "plik": "pamiec/kalibracja.json"}
+{"ts": "2026-10-31T12:41:00+00:00", "rola": "skrypt", "zdarzenie": "rubryka", "plik": "_rubryka.json"}
+{"ts":"2026-10-31T12:41:10Z","rola":"ordynator","zdarzenie":"followup","plik":"10-followup.md","uwaga":"kalibracja i rubryka liczone na kopii z synonimami (config bez zmian); rubryka 92/100"}
