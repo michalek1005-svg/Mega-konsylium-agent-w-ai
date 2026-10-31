@@ -46,6 +46,13 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
 .stan { position: absolute; left: 22px; bottom: 16px; z-index: 100; font-size: 11px; color: var(--mut); display: flex; flex-direction: column; align-items: center; gap: 2px; width: 52px; text-align: center; }
 .stan .offline { color: var(--petrol); font-weight: 750; display: flex; align-items: center; gap: 5px; }
 .stan .offline::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+/* wskaźnik „AI pracuje”: Claude (Remote Control) zapisuje _ai-aktywnosc.json w folderze Konsylium */
+.stan .ai-pracuje { color: var(--petrol); font-weight: 750; font-size: 10.5px; display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 6px; line-height: 1.1; }
+.stan .ai-pracuje::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--petrol); animation: puls 1.4s ease-in-out infinite; }
+@keyframes puls { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--petrol) 55%, transparent); opacity: 1; } 50% { box-shadow: 0 0 0 8px transparent; opacity: .6; } }
+html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-mix(in srgb, var(--petrol) 80%, transparent)); animation: swiec 1.8s ease-in-out infinite; }
+@keyframes swiec { 50% { filter: contrast(1.2) drop-shadow(0 0 3px color-mix(in srgb, var(--petrol) 40%, transparent)); } }
+@media (prefers-reduced-motion: reduce) { .stan .ai-pracuje::before, html.ai-aktywne .logo-k svg { animation: none; } }
 .folder { position: absolute; left: 92px; top: 50%; transform: translateY(-10%); z-index: 120; width: 320px; display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 20px;
   background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); font-size: 12.5px; color: var(--mut); }
 .folder b { color: var(--ink); font-size: 13px; }
@@ -80,7 +87,7 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
   <main>
     <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
   </main>
-  <div class="stan"><span class="offline">Offline</span><span id="wersja"></span></div>
+  <div class="stan"><span class="ai-pracuje" id="ai-pracuje" hidden title="Claude pracuje teraz na tym komputerze (Remote Control)">AI pracuje</span><span class="offline">Offline</span><span id="wersja"></span></div>
 </div>
 <!--KONFIGURACJA-->
 <script>
@@ -186,6 +193,19 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
     try { localStorage.setItem('ms-motyw-2', m); } catch (e) {}
     Object.keys(ramki).forEach(function (k) { wyslijMotyw(ramki[k]); });
   }
+  // „AI pracuje”: plik _ai-aktywnosc.json {"stan":"pracuje"|"czeka","czas":ms} odświeżany przez hooki Claude Code na tym komputerze
+  (function () {
+    var el = document.getElementById('ai-pracuje');
+    function sprawdz() {
+      if (!window.msPowloka) return;
+      window.msPowloka.czytaj('_ai-aktywnosc.json').then(function (r) {
+        var a = false;
+        if (r && r.tekst) { try { var j = JSON.parse(r.tekst); var t = Number(j.czas) || r.zmiana; a = j.stan === 'pracuje' && Date.now() - t < 90000; } catch (e) {} }
+        el.hidden = !a; document.documentElement.classList.toggle('ai-aktywne', a);
+      }).catch(function () { el.hidden = true; document.documentElement.classList.remove('ai-aktywne'); });
+    }
+    sprawdz(); setInterval(sprawdz, 2000);
+  })();
   var motyw = 'jasny';
   try { motyw = localStorage.getItem('ms-motyw-2') || 'jasny'; } catch (e) {}
   document.documentElement.dataset.motyw = motyw;

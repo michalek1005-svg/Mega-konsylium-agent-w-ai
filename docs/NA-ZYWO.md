@@ -63,3 +63,19 @@ Gdy podsumowanie mówi „Wywiad wysłany”:
 2. **Folder Konsylium**: kopia repo (zip z GitHub albo z paczki projektu) rozpakowana np. do `Dokumenty\MS-Konsylium`. W aplikacji: Folder Konsylium → Wybierz folder….
 3. **Python 3** (dla `dymek.py` i `wywiad_na_zywo.py`): w PowerShell `winget install Python.Python.3.12` albo instalator z python.org z zaznaczonym „Add python.exe to PATH”.
 4. **Claude na tym komputerze**: aplikacja Claude Desktop z włączonym Remote Control (sesja startowana z wątku projektu w tym folderze) albo Claude Code (`claude` w terminalu w folderze Konsylium).
+
+## Sygnał „AI pracuje”
+
+Gdy Claude (Remote Control) pracuje na komputerze, aplikacja pokazuje w lewym dolnym rogu pulsującą kropkę „AI pracuje”, a logo K świeci. Źródłem jest plik `_ai-aktywnosc.json` w folderze Konsylium (`{"stan":"pracuje"|"czeka","czas":<ms>}`); sygnał gaśnie po stanie `czeka` albo po 90 s bez odświeżenia.
+
+Plik zapisuje `skrypty/ai_aktywnosc.ps1`, wywoływany przez hooki Claude Code w `.claude/settings.local.json` folderu Konsylium (plik lokalny, nie trafia do repo):
+
+```json
+{ "hooks": {
+  "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "powershell -NoProfile -ExecutionPolicy Bypass -File skrypty\\ai_aktywnosc.ps1 -Stan pracuje -Dioda" }] }],
+  "PreToolUse":       [{ "matcher": "*", "hooks": [{ "type": "command", "command": "powershell -NoProfile -ExecutionPolicy Bypass -File skrypty\\ai_aktywnosc.ps1 -Stan pracuje -Dioda" }] }],
+  "Stop":             [{ "hooks": [{ "type": "command", "command": "powershell -NoProfile -ExecutionPolicy Bypass -File skrypty\\ai_aktywnosc.ps1 -Stan czeka -Dioda" }] }]
+} }
+```
+
+`-Dioda` zapala diodę **Scroll Lock** na czas pracy i gasi ją po zakończeniu (jeśli klawiatura ma tę diodę). Caps Lock celowo nie: jego przełączenie zmienia pisanie na wielkie litery.
