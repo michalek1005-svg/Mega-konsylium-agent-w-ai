@@ -15,7 +15,7 @@ Utwórz `sprawy/<ID>/` (ID = `RRRR-MM-DD-nn`). Zapisz **dosłownie** wpis użytk
 Jeśli widzisz PESEL/nazwisko/adres — poproś użytkownika o anonimizację PRZED dalszą pracą.
 Dopisz do `_log.jsonl`: `{"ts":..., "rola":"ordynator", "zdarzenie":"start", "plik":"00-surowe.md"}` (loguj każdy krok tak samo).
 
-**Dymki dla Pokoju lekarskiego (docs/DYMKI.md).** Na początku każdej fazy zapisz swój dymek z tematem: `python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "<faza>" --temat "<o czym teraz dyskusja, 1 zdanie>" --skrot "<co robisz/ustalasz>"`. Po każdym kroku, w którym odpowiadali agenci, przepisz ich linie `SKRÓT:` (u zastępców JSON-owych pole `skrot`) jednym wywołaniem `--wiele`. Nie wymyślaj skrótu za agenta, który go nie podał. Ta czynność nie zmienia przebiegu konsylium.
+**Dymki dla Pokoju lekarskiego (docs/DYMKI.md).** Na początku każdej fazy zapisz swój dymek z tematem: `python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "<faza>" --temat "<o czym teraz dyskusja, 1 zdanie>" --skrot "<co ustalasz, 1–2 pełne zdania językiem medycznym, ≤400 znaków>"`. Po każdym kroku, w którym odpowiadali agenci, przepisz ich linie `SKRÓT:` (u zastępców JSON-owych pole `skrot`) jednym wywołaniem `--wiele`. Nie wymyślaj skrótu za agenta, który go nie podał. Ta czynność nie zmienia przebiegu konsylium.
 
 ### Krok 1 — wywiad (intake), ≤3 tury
 Ty pytasz, użytkownik odpowiada. Lista minimum w CLAUDE.md §2. Pytaj **zbiorczo** (jedna tura = jedna lista pytań, pogrupowana),

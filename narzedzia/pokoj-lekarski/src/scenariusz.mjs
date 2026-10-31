@@ -57,7 +57,9 @@ export function bezMarkdown(t) {
 }
 
 // skraca do pełnych słów, z wielokropkiem
-export function utnij(t, max = 150) {
+// dymek: 1–2 pełne zdania, najwyżej 400 znaków (decyzja Michała 31.10.2026, docs/DYMKI.md)
+export const MAX_DYMEK = 400;
+export function utnij(t, max = MAX_DYMEK) {
   t = bezMarkdown(t);
   if (t.length <= max) return t;
   const cut = t.slice(0, max - 1);
@@ -129,10 +131,12 @@ export function skrotRundy(tresc) {
     const m = czysty.match(re);
     if (m && m[2].trim()) {
       let z = wielka(pierwszeZdanie(m[2]));
-      if (z.length < 40 && re === etykiety[0]) {
+      if (re === etykiety[0]) {
         const pk = czysty.match(etykiety[1]);
         if (pk) z += ' ' + wielka(pierwszeZdanie(pk[2]));
       }
+      const zm = czysty.match(/\*\*(Co by zmieniło|Co zmieniłoby|Zmieniłoby)[^*]*\*\*:?\s*([^\n]+)/i);
+      if (zm && z.length < 260) z += ' Zmieniłoby zdanie: ' + pierwszeZdanie(zm[2]).replace(/^./, (c) => c.toLowerCase());
       return utnij(z);
     }
   }
@@ -265,9 +269,11 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     if (!o) continue;
     const roz = (o.rozpoznania || []).filter((x) => x.p > 0).sort((a, b) => b.p - a.p);
     let s;
-    if (roz.length) s = `Stawiam na „${roz[0].nazwa}” (p ${P(roz[0].p)})${roz[1] ? `, dalej „${roz[1].nazwa}”` : ''}. Pilność ${o.pilnosc}.`;
+    const arg = roz.length && (roz[0].za || [])[0] ? String(roz[0].za[0]).split('→')[0].replace(/[\s.;,]+$/, '') : '';
+    if (roz.length) s = `Stawiam na „${roz[0].nazwa}” (p ${P(roz[0].p)}).${arg ? ` Za: ${arg}.` : ''}`
+      + `${roz[1] ? ` Dalej „${roz[1].nazwa}” (p ${P(roz[1].p)}).` : ''} Pilność ${o.pilnosc}, pewność ${{ srednia: 'średnia', wysoka: 'wysoka', niska: 'niska' }[o.pewnosc] || o.pewnosc}.`;
     else if (o.nastepny_krok) s = `Nie ważę rozpoznań. Pierwszy krok: ${pierwszeZdanie(o.nastepny_krok)}`;
-    else s = `Pilność ${o.pilnosc}, pewność ${o.pewnosc}.`;
+    else s = `Pilność ${o.pilnosc}, pewność ${{ srednia: 'średnia', wysoka: 'wysoka', niska: 'niska' }[o.pewnosc] || o.pewnosc}.`;
     const pelny = roz.map((x) => `${x.nazwa}: p ${P(x.p)}`).join('\n') + (o.nastepny_krok ? `\nNastępny krok: ${o.nastepny_krok}` : '');
     slepa.push(wyp(r, s, pelny, `03-opinie/${r}.json`));
   }
@@ -330,7 +336,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
       const persona = (t.match(/Persona:\s*([^(\n]+)/i) || [])[1]?.trim();
       const hip = (t.match(/HIPOTEZA NIEWYPOWIEDZIANA:\s*([^\n]+)/i) || [])[1];
       const brak = (t.match(/CZEGO BRAKUJE[^:]*:\s*([^\n]+)/i) || [])[1];
-      const s = skrotAgenta(t) || (hip ? `Nikt nie powiedział: ${pierwszeZdanie(hip).replace(/^./, (c) => c.toLowerCase())}` : pierwszeZdanie(brak || t));
+      const s = skrotAgenta(t) || (hip ? `Nikt nie powiedział: ${pierwszeZdanie(hip).replace(/^./, (c) => c.toLowerCase())}${brak ? ` Zapytałbym: ${pierwszeZdanie(brak).replace(/^./, (c) => c.toLowerCase())}` : ''}` : pierwszeZdanie(brak || t));
       return { ...wyp(kto, s, t, k), persona: persona || null };
     });
     sceny.push({ id: 'rezydenci', tytul: 'Rezydenci', czas: czasZdarzenia(zdarzenia, 'rezydenci', 'pakiet'),
@@ -344,7 +350,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     for (const [klucz, kto] of [['fakty', 's_fakty'], ['proces', 's_proces']]) {
       const x = spr[klucz]; if (!x) continue;
       const kartka = { ZIELONA: 'zielona', ZOLTA: 'żółta', CZERWONA: 'czerwona' }[x.kartka] || x.kartka;
-      w.push({ ...wyp(kto, `Kartka ${kartka}. ${pierwszeZdanie((x.uwagi || [])[0] || '')}`, (x.uwagi || []).join('\n'), '07-sprawdzenie.json'), kartka: x.kartka });
+      w.push({ ...wyp(kto, `Kartka ${kartka}. ${(x.uwagi || []).slice(0, 2).map(pierwszeZdanie).join(' ')}`, (x.uwagi || []).join('\n'), '07-sprawdzenie.json'), kartka: x.kartka });
     }
     if (w.length) sceny.push({ id: 'sprawdzenie', tytul: 'Sprawdzenie', czas: czasZdarzenia(zdarzenia, 'sprawdzenie'),
       temat: 'Sprawdzający weryfikują fakty i proces. Nie głosują nad rozpoznaniem.', wypowiedzi: w });

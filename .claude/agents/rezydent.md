@@ -26,4 +26,4 @@ Zasady:
 - Możesz sprawdzić coś w PubMed, jeśli masz konkretne pytanie. Nie pisz przeglądu literatury.
 - Nie zgaduj, jak zespół myślał. Pisz, czego byś się spodziewał od dobrego zespołu, a czego w decyzji nie widać.
 - Jeśli po uczciwym namyśle nie widzisz braków — napisz to w jednym zdaniu w każdym punkcie. Nie wymyślaj na siłę.
-- Ostatnia linia: `SKRÓT: <najważniejsza z Twoich trzech uwag, jedno zdanie ≤150 znaków>`. To zdanie zobaczy lekarz prowadzący jako skrót Twojej opinii.
+- Ostatnia linia: `SKRÓT: <najważniejsza z Twoich trzech uwag z uzasadnieniem, 1–2 pełne zdania ≤400 znaków, językiem medycznym>`. To zdanie zobaczy lekarz prowadzący jako skrót Twojej opinii.

@@ -222,7 +222,7 @@ ${podpisy(wpisy)}`;
 
   function czasKroku(k) {
     const w = scen.sceny[k.si].wypowiedzi[k.wi];
-    return (2600 + w.skrot.length * 42) / tempo;
+    return (2400 + w.skrot.length * 34) / tempo;
   }
 
   function pokaz(n, bezPisania) {

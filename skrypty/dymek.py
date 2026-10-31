@@ -6,7 +6,7 @@ Użycie (ordynator, po każdej wypowiedzi albo zbiorczo po kroku):
   python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "Tabletka widmo 0,70, pilność 4." [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
   python3 skrypty/dymek.py sprawy/<ID> --wiele dymki.jsonl     # wiele naraz: jedna linia JSON = jeden dymek (te same pola)
 
-Skrót: jedno zdanie, najwyżej 150 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
+Skrót: 1–2 pełne zdania językiem medycznym, najwyżej 400 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ ALIASY = {"zastepca_zlozonosc": "z_zlozonosc", "zastepca_bezpieczenstwo": "z_bez
           "sprawdzajacy_faktow": "s_fakty", "sprawdzajacy_procesu": "s_proces"}
 FAZY = ["Wywiad", "Triage", "Ślepa tura", "Agregacja", "Konsylium · runda", "Projekt", "Rezydenci", "Sprawdzenie",
         "Odpowiedź rezydentom", "Werdykt", "Follow-up"]
-MAX = 150
+MAX = 400
 
 
 def rola(r: str) -> str:
