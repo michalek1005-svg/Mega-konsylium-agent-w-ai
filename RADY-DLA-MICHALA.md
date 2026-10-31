@@ -40,7 +40,7 @@ To jest narzędzie **do ćwiczenia myślenia i zbierania wiedzy**, nie do pacjen
 | `RADY-DLA-MICHALA.md` | Ty | ten plik |
 | `docs/PO-LUDZKU.md` | Ty | jak działa konsylium, bez żargonu |
 | `PROMPT-NADZORCA.md` | Claude Code w Konsylium | instrukcja rozbudowy: Twoje plany, marka MS, zespół agentów budowy, fazy, zakazy |
-| `DLA-NADZORCY-NAWIGATORA.md` | Claude Code w Nawigatorze | żeby wiedział o marce MS i dwóch aplikacjach (Gabinet + Konsylium) |
+| `DLA-NADZORCY-NAWIGATORA.md` | Claude Code w Nawigatorze | żeby wiedział o marce MS i dwóch aplikacjach (Nawigator Medyczny + Konsylium agentów AI) |
 | `docs/ZAPIS-ROZMOWY.md` | obaj nadzorcy, Ty | cała nasza rozmowa — źródło „dlaczego tak" |
 | `CLAUDE.md`, `.claude/agents/`, `skrypty/`, `config/`, `schemas/`, `sprawy/PRZYKLAD-001/` | Konsylium | działający rdzeń |
 | `docs/ARCHITEKTURA.md`, `PUNKTACJA.md`, `FIREWALL-REZYDENTA.md`, `architektura.png` | agenci | specyfikacje i diagram |

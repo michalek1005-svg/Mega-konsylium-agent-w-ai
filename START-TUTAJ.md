@@ -21,7 +21,7 @@ Nie buduj niczego, zanim nie napiszesz do Michała pierwszej wiadomości opisane
 START-TUTAJ.md            ten plik
 RADY-DLA-MICHALA.md       rady dla Michała, prostym językiem
 PROMPT-NADZORCA.md        instrukcja rozbudowy (adresat: Claude Code — nadzorca Konsylium)
-DLA-NADZORCY-NAWIGATORA.md  przekaz dla nadzorcy Nawigatora: marka MS, dwie aplikacje (Gabinet + Konsylium)
+DLA-NADZORCY-NAWIGATORA.md  przekaz dla nadzorcy Nawigatora: marka MS, dwie aplikacje (Nawigator Medyczny + Konsylium agentów AI)
 CLAUDE.md                 konstytucja konsylium (czytają agenci kliniczni) — nie zmieniać znaczenia bez zgody Michała
 README.md                 szybki start konsylium z terminala
 .claude/agents/           13 agentów klinicznych
