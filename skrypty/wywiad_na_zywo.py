@@ -102,12 +102,23 @@ def podsumuj(kat: Path, stan: dict) -> str:
     return "\n".join(l)
 
 
+def sygnal_ai(stan: str) -> None:
+    """Sygnał „AI pracuje” dla aplikacji: _ai-aktywnosc.json w folderze Konsylium (kropka + świecące K).
+    Działa bez hooków Claude Code: czekaj → „czeka”, nowy stan → „pracuje”, dodaj → „czeka”."""
+    try:
+        zapisz_json(korzen() / "_ai-aktywnosc.json", {"stan": stan, "czas": int(time.time() * 1000)})
+    except OSError:
+        pass
+
+
 def cmd_czekaj(a) -> int:
     koniec = time.time() + a.limit
+    sygnal_ai("czeka")
     while True:
         kat = katalog_wywiadu(a.kod)
         stan = czytaj_json(kat / "stan.json") if kat else None
         if stan and int(stan.get("numer") or 0) > a.po:
+            sygnal_ai("pracuje")
             print(podsumuj(kat, stan))
             return 0
         if time.time() > koniec:
@@ -175,6 +186,7 @@ def cmd_dodaj(a) -> int:
     ank["koniec"] = bool(a.koniec)
     ank["zapisano"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     zapisz_json(kat / "ankieta.json", ank)
+    sygnal_ai("czeka")
     print(f"ankieta.json wersja {ank['wersja']}: pytań {len(ank['pytania'])} (+{len(nowe)}), flag {len(ank['flagi'])}" +
           (" · KONIEC pytań" if a.koniec else "") + f". Ostatni stan aplikacji: nr {stan.get('numer')}.")
     return 0
