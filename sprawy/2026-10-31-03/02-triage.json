@@ -1,0 +1,18 @@
+{
+ "uwaga": "Triage przeprowadził ordynator samodzielnie (tryb opinii w tle na prośbę Michała, 31.10.2026); zastępców nie uruchamiano osobno.",
+ "zastepcy": [
+  {"zastepca": "zlozonosc", "wynik": 7, "eskaluj": true, "uzasadnienie": "Skóra + oko + drogi oddechowe (3 układy); 6 leków w ciągu 4 dni (2 krople, cefuroksym, erdosteina, azytromycyna, budezonid) + bisoprolol; >4 pozycje NIEZNANE."},
+  {"zastepca": "bezpieczenstwo", "wynik": 7, "eskaluj": true, "pilnosc_wstepna": 2, "flagi": [
+    {"flaga": "Anafilaksja (objawy oddechowe/krążeniowe/pokarmowe po leku)", "status": "NIEZBADANA"},
+    {"flaga": "Beta-bloker — oporność na adrenalinę w anafilaksji", "status": "OBECNA"},
+    {"flaga": "Obrzęk naczynioruchowy górnych dróg oddechowych (chrypka już obecna z infekcji — maskuje)", "status": "NIEZBADANA"},
+    {"flaga": "SJS/TEN, DRESS (pęcherze, śluzówki, gorączka, ból skóry)", "status": "NIEZBADANA"},
+    {"flaga": "Azytromycyna + zaburzenia rytmu — wydłużenie QT", "status": "NIEZBADANA"}
+  ]},
+  {"zastepca": "niepewnosc", "wynik": 6, "eskaluj": true, "pilnosc_wstepna": 2, "hipoteza_ordynatora": "Natychmiastowa reakcja nadwrażliwości (pokrzywka/obrzęk naczynioruchowy) po cefuroksymie lub erdosteinie, możliwe kofaktory: infekcja wirusowa i NLPZ (bromfenak).", "co_by_zmienilo_zdanie": "Morfologia wysypki, objawy układowe, kontakt drugiego oka z kroplami."}
+ ],
+ "tryb": "PELNY",
+ "wymuszony_przez_uzytkownika": false,
+ "liczba_rezydentow": 1,
+ "odstepstwo": "Jeden rezydent zamiast 3 przy ryzyku ≥7 — tryb opinii w tle; odnotowane dla sprawdzającego procesu."
+}
