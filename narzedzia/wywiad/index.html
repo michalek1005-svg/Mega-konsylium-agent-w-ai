@@ -1,0 +1,707 @@
+<title>MS Wywiad z pacjentem</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Adaptacyjny wywiad z pacjentem dla Konsylium AI: opis własnymi słowami, pytania dobierane na bieżąco, kopia do Konsylium po anonimizacji.">
+<!--@@FONT-LINK@@-->
+<link rel="stylesheet" href="../wspolne/ms-tokeny.css">
+<style>
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+/* Układ: dwie tafle obok siebie — po lewej wywiad (jedno pytanie naraz), po prawej
+   podsumowanie dla lekarza aktualizowane na żywo. Wygląd marki MS z Nawigatora:
+   paleta „Laguna” (narzedzia/wspolne/ms-tokeny.css), szklane tafle, tryb ciemny przez data-motyw. */
+:root {
+  --f: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: ui-monospace, 'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace;
+  --uwaga: #8a5d0c;
+  --uwaga-tlo: rgba(214, 160, 52, .18);
+  --alarm-tlo: rgba(168, 58, 56, .12);
+}
+html[data-motyw="ciemny"] { --uwaga: #e5b85f; --uwaga-tlo: rgba(229, 184, 95, .14); --alarm-tlo: rgba(255, 154, 140, .12); }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; font: 14px/1.5 var(--f); color: var(--ink);
+  background: var(--scene); background-attachment: fixed; background-color: var(--bg-viewport);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 36px; min-height: 100%;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+button, select, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; }
+
+.ramka { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.tafla { background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+.wypukly { background: var(--panel); box-shadow: var(--panel-cien); }
+.wklesly { background: var(--pole); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
+
+/* ── nagłówek: logo K jak w anonimizatorze (N w Nawigatorze) ── */
+.pasek { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; justify-content: space-between; }
+.marka { display: flex; align-items: center; gap: 14px; }
+.logo { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; font-weight: 800; font-size: 26px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.marka h1 { font-size: 21px; font-weight: 800; letter-spacing: -.4px; }
+.marka p { margin: 2px 0 0; font-size: 12px; color: var(--mut); display: flex; align-items: center; gap: 7px; }
+.kropka-ok { width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+.sterowanie { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 6px; border-radius: 999px; }
+.etykieta-test { font-size: 11px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; color: var(--uwaga); background: var(--uwaga-tlo); padding: 6px 11px; border-radius: 999px; }
+.przycisk { border: 0; border-radius: 22px; padding: 9px 14px; min-height: 38px; background: var(--btn); color: var(--btn-txt);
+  font-size: 12.5px; font-weight: 650; cursor: pointer; transition: background .15s; }
+.przycisk:hover { background: var(--btn-h); }
+.przycisk:disabled { opacity: .4; cursor: default; }
+.przycisk.glowny, .przycisk.glowny:hover { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
+select.przycisk { appearance: none; padding-right: 30px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--btn-txt) 50%), linear-gradient(135deg, var(--btn-txt) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; background-color: var(--btn); }
+select.przycisk option { color: #14302D; background: #fff; }
+
+/* ── układ ── */
+.uklad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 22px; align-items: start; }
+@media (max-width: 900px) { .uklad { grid-template-columns: minmax(0, 1fr); } }
+.uklad.tylko-pacjent { grid-template-columns: minmax(0, 1fr); }
+.uklad.tylko-pacjent > aside { display: none; }
+.uklad.tylko-pacjent .telefon { max-width: 640px; }
+.przycisk[aria-pressed="true"] { background: var(--on); color: var(--on-txt); }
+.naglowek-panelu { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0 6px 10px; flex-wrap: wrap; }
+.naglowek-panelu h2 { font-size: 11px; letter-spacing: .06em; font-weight: 750; text-transform: uppercase; color: var(--mut); }
+.naglowek-panelu .opis-panelu { font-size: 12px; color: var(--mut); }
+.na-zywo { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 650; color: var(--petrol); }
+.na-zywo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--petrol); animation: puls 2s infinite; }
+@keyframes puls { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .na-zywo::before { animation: none; } * { transition: none !important; } }
+
+/* ── wywiad (lewa tafla) ── */
+.telefon { border-radius: 36px; padding: 26px 24px 22px; position: relative; max-width: 520px; margin: 0 auto; width: 100%;
+  min-height: 520px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
+.postep { display: flex; flex-direction: column; gap: 8px; }
+.postep-tekst { display: flex; justify-content: space-between; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums; }
+.tor { height: 7px; border-radius: 99px; overflow: hidden; }
+.tor > i { display: block; height: 100%; background: var(--petrol); border-radius: 99px; transition: width .35s ease; }
+.modul-pacjenta { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--petrol); font-weight: 750; }
+.pytanie { font-size: 21px; line-height: 1.32; font-weight: 750; letter-spacing: -.2px; }
+.opcje { display: flex; flex-direction: column; gap: 9px; }
+.opcja { text-align: left; border: 0; border-radius: 16px; padding: 12px 15px; cursor: pointer; display: flex; gap: 12px; align-items: center;
+  background: var(--btn); color: var(--ink); transition: background .15s; font-size: 14px; }
+.opcja:hover { background: var(--btn-h); }
+.opcja .kropka { flex: none; width: 18px; height: 18px; border-radius: 6px; box-shadow: inset 0 0 0 1.5px var(--pole-obrys); background: var(--pole); display: grid; place-items: center; }
+.opcja.jeden .kropka { border-radius: 50%; }
+.opcja[aria-pressed="true"] { background: var(--on); color: var(--on-txt); font-weight: 650; box-shadow: 0 8px 20px -13px var(--on); }
+.opcja[aria-pressed="true"] .kropka { background: var(--on-txt); box-shadow: none; }
+.opcja[aria-pressed="true"] .kropka::after { content: ""; width: 8px; height: 8px; border-radius: inherit; background: var(--on); }
+.skala { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 6px; }
+.skala .opcja { justify-content: center; padding: 12px 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+.skala-opis { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--mut); }
+@media (max-width: 420px) { .skala { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.pole { width: 100%; border: 0; border-radius: 13px; padding: 12px 14px; font-size: 16px; color: var(--ink); }
+textarea.pole { min-height: 120px; resize: vertical; font-size: 14px; line-height: 1.6; }
+.pole::placeholder { color: var(--mut); opacity: .8; }
+.pole-liczba { display: flex; align-items: center; gap: 12px; }
+.pole-liczba .pole { max-width: 170px; font-variant-numeric: tabular-nums; }
+.pole-liczba span { color: var(--mut); }
+.nawigacja { margin-top: auto; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.nawigacja .prawe { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+.link { background: none; border: 0; color: var(--mut); cursor: pointer; padding: 9px 4px; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; }
+.komunikat-pilne { border-radius: 16px; padding: 12px 14px; background: var(--uwaga-tlo); font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
+.komunikat-pilne strong { color: var(--uwaga); }
+.z-opisu { margin: -6px 0 0; font-size: 13px; color: var(--petrol); font-weight: 600; }
+
+.alarm { position: absolute; inset: 0; background: var(--bg-viewport); display: flex; flex-direction: column; gap: 14px; justify-content: center; padding: 30px; z-index: 2; }
+.alarm::before { content: ""; position: absolute; inset: 0; background: var(--alarm-tlo); z-index: -1; }
+.alarm .numer { font-size: 78px; line-height: 1; font-weight: 800; color: var(--alarm); letter-spacing: -1px; user-select: all; }
+.alarm h3 { font-size: 21px; color: var(--alarm); font-weight: 800; }
+.alarm p { margin: 0; font-size: 16px; }
+.alarm small { color: var(--mut); }
+
+.koniec { display: flex; flex-direction: column; gap: 12px; }
+.koniec h3 { font-size: 22px; font-weight: 800; }
+.koniec p { margin: 0; color: var(--mut); }
+
+.start { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.kafel { text-align: left; border: 0; border-radius: 20px; padding: 16px 18px; cursor: pointer; display: flex; flex-direction: column; gap: 5px;
+  background: var(--btn); color: var(--ink); transition: background .15s; }
+.kafel:hover { background: var(--btn-h); }
+.kafel b { font-size: 15.5px; }
+.kafel span { font-size: 13px; color: var(--mut); line-height: 1.5; }
+.kafel.glowny-kafel { background: var(--on); color: var(--on-txt); box-shadow: 0 10px 24px -14px var(--on); }
+.kafel.glowny-kafel span { color: var(--on-txt); opacity: .85; }
+.pomoc { margin: -4px 0 0; font-size: 13px; color: var(--mut); }
+#pole-ankieta { min-height: 170px; font: 12px/1.5 var(--f-mono); }
+.rzad-start { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.plik { display: inline-flex; align-items: center; }
+.dla-lekarza { border-radius: 16px; padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.dla-lekarza b { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
+.dla-lekarza > span { color: var(--mut); }
+.analiza-pacjent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 30px; }
+.analiza-pacjent h3 { font-size: 21px; font-weight: 750; }
+.analiza-pacjent p { margin: 0; color: var(--mut); }
+.kolko { width: 44px; height: 44px; border-radius: 50%; background: conic-gradient(var(--petrol) 0 25%, var(--btn) 25% 100%);
+  -webkit-mask: radial-gradient(circle, transparent 14px, #000 15px); mask: radial-gradient(circle, transparent 14px, #000 15px); animation: obrot 1s linear infinite; }
+@keyframes obrot { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .kolko { animation: none; } }
+
+/* ── podsumowanie dla lekarza (prawa tafla) ── */
+.lekarz { border-radius: 36px; padding: 22px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.metryka { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums; }
+.metryka b { color: var(--ink); font-weight: 650; }
+.sekcja { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.sekcja h3 { font-size: 11px; letter-spacing: .06em; font-weight: 750; text-transform: uppercase; color: var(--mut); }
+.flagi { display: flex; flex-direction: column; gap: 8px; }
+.flaga { border-radius: 14px; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 13.5px; }
+.flaga .poziom { font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 8px; white-space: nowrap; color: #fff; }
+.flaga.f112 { background: var(--alarm-tlo); } .flaga.f112 .poziom { background: var(--alarm); }
+html[data-motyw="ciemny"] .flaga.f112 .poziom { color: #1a0f0e; }
+.flaga.fpilne { background: var(--uwaga-tlo); } .flaga.fpilne .poziom { background: var(--uwaga); }
+html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
+.spokoj { font-size: 13px; color: var(--mut); padding: 10px 12px; border-radius: 14px; }
+.moduly { display: flex; flex-wrap: wrap; gap: 6px; }
+.modul { font-size: 12.5px; padding: 5px 11px; border-radius: 999px; color: var(--mut); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
+.modul.aktywny { box-shadow: none; background: var(--on); color: var(--on-txt); font-weight: 650; }
+.teraz { border-radius: 16px; padding: 13px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+.teraz .tresc { font-weight: 700; font-size: 14.5px; }
+.teraz .dlaczego { color: var(--mut); }
+.kolejka { margin: 0; padding-left: 18px; color: var(--mut); font-size: 12.5px; display: flex; flex-direction: column; gap: 2px; }
+.odpowiedzi { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; max-height: 300px; overflow-y: auto; }
+.odpowiedzi li { display: grid; grid-template-columns: 1.6em minmax(0, 1fr); gap: 4px 8px; padding: 8px 0; border-bottom: 1px solid var(--pole-obrys); font-size: 13px; }
+.odpowiedzi li:last-child { border-bottom: 0; }
+.odpowiedzi .nr { font-size: 12px; color: var(--mut); padding-top: 1px; font-variant-numeric: tabular-nums; }
+.odpowiedzi .p { color: var(--mut); }
+.odpowiedzi .o { font-weight: 650; }
+.odpowiedzi .o.nieznane { color: var(--uwaga); font-weight: 500; font-style: italic; }
+.tag { font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; color: var(--petrol); background: var(--btn); padding: 1px 6px; border-radius: 6px; margin-left: 4px; }
+.opis { margin: 0; border-radius: 14px; padding: 11px 13px; font-size: 14px; line-height: 1.6; }
+.opis mark { background: var(--btn-h); color: var(--petrol); border-radius: 5px; padding: 0 2px; font-weight: 700; }
+.wnioski { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.wnioski li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) auto; gap: 10px; align-items: baseline; }
+.wnioski .fr { color: var(--mut); font-style: italic; overflow-wrap: anywhere; }
+.wnioski .rodzaj { font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
+.wnioski .rodzaj.fakt { background: var(--btn); color: var(--petrol); }
+.wnioski .rodzaj.podp { box-shadow: inset 0 0 0 1px var(--pole-obrys); color: var(--mut); }
+@media (max-width: 520px) { .wnioski li { grid-template-columns: minmax(0, 1fr) auto; } .wnioski .fr { grid-column: 1 / -1; } }
+.eksport { display: flex; flex-direction: column; gap: 10px; }
+.eksport .rzad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.eksport pre { margin: 0; border-radius: 14px; padding: 13px; font: 12px/1.55 var(--f-mono); white-space: pre-wrap; word-break: break-word; max-height: 260px; overflow: auto; color: var(--ink); }
+.anonim { font-size: 12.5px; color: var(--mut); }
+.anonim b { color: var(--petrol); }
+.anonim.brak-modulu b { color: var(--uwaga); }
+.potwierdzenie { font-size: 12.5px; color: var(--petrol); font-weight: 650; }
+.stopka { font-size: 12px; color: var(--mut); max-width: 80ch; line-height: 1.55; margin: 0 6px; }
+</style>
+
+<div class="ramka">
+  <header class="pasek">
+    <div class="marka">
+      <div class="logo" aria-label="Konsylium AI" title="Konsylium AI">K</div>
+      <div>
+        <h1>Wywiad z pacjentem</h1>
+        <p><span class="kropka-ok"></span> Działa offline · dane nie opuszczają tego komputera</p>
+      </div>
+    </div>
+    <div class="sterowanie tafla">
+      <span class="etykieta-test">Narzędzie testowe</span>
+      <label for="przyklad" class="link" style="text-decoration:none;cursor:default;padding-inline:6px">Przykład</label>
+      <select id="przyklad" class="przycisk">
+        <option value="">wybierz…</option>
+      </select>
+      <button id="od-nowa" class="przycisk" type="button">Nowy wywiad</button>
+      <button id="wczytaj-ai" class="przycisk" type="button">Wczytaj ankietę od AI</button>
+      <button id="widok-lekarza" class="przycisk" type="button" aria-pressed="false" title="Pokaż lub ukryj podsumowanie dla lekarza">Podsumowanie dla lekarza</button>
+      <button id="motyw" class="przycisk" type="button" title="Motyw jasny / ciemny">Motyw</button>
+    </div>
+  </header>
+
+  <main class="uklad" id="uklad">
+    <section aria-labelledby="t-pacjent">
+      <div class="naglowek-panelu"><h2 id="t-pacjent">Wywiad</h2><span class="opis-panelu">Odpowiadaj po kolei. Możesz wrócić i poprawić odpowiedź.</span></div>
+      <div class="telefon tafla" id="telefon"></div>
+    </section>
+
+    <aside aria-labelledby="t-lekarz">
+      <div class="naglowek-panelu"><h2 id="t-lekarz">Podsumowanie dla lekarza</h2><span class="na-zywo">na żywo</span></div>
+      <div class="lekarz tafla" id="lekarz"></div>
+    </aside>
+  </main>
+
+  <p class="stopka">Narzędzie testowo-edukacyjne. Pytania i progi czerwonych flag nie są zatwierdzone klinicznie, a wywiad nie stawia rozpoznania. Odpowiedzi zostają na tym komputerze. Przed skopiowaniem do Konsylium tekst przechodzi przez anonimizator, ale przejrzyj go, zanim go wkleisz.</p>
+</div>
+
+<script src="wykrywanie.js"></script>
+<script src="analiza.js"></script>
+<script src="pytania.js"></script>
+<script src="silnik.js"></script>
+<script src="przyklady.js"></script>
+<script src="ankieta.js"></script>
+<script src="przyklad-ankieta-ai.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.SilnikWywiadu, BAZA = window.BankWywiadu, P = window.PrzykladyWywiadu, AI = window.AnkietaAI;
+  var B = BAZA;
+  var KLUCZ = 'ms-wywiad-v4';
+  var $tel = document.getElementById('telefon'), $lek = document.getElementById('lekarz');
+
+  // tryb: null = ekran startowy, 'wczytaj' = wczytanie ankiety od AI,
+  // 'opis' = krok 1 (sam opis dla AI), 'ai' = krok 2 (ankieta od AI), 'standard' = ankieta bez AI
+  function nowyStan(tryb) { return { tryb: tryb || null, ankieta: null, historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() }; }
+  var stan = nowyStan(null);
+  var bledyAnkiety = [];
+  // Ustawia bank pytań według trybu. Ankieta od AI jest trzymana jako tekst JSON i kompilowana od nowa.
+  function ustawBank() {
+    B = BAZA;
+    if (stan.tryb === 'opis') B = AI.bankOpisu();
+    else if (stan.tryb === 'ai') {
+      var r = AI.zAnkiety(stan.ankieta || '');
+      if (r.bank) B = r.bank; else { stan = nowyStan('wczytaj'); bledyAnkiety = r.bledy; }
+    }
+  }
+  var wybor = null; // bieżący wybór przed zatwierdzeniem
+  var wyborZOpisu = false; // czy bieżący wybór zaznaczyła analiza opisu
+  var analizuje = false;   // krótka plansza po wysłaniu opisu
+
+  function nowyKod() {
+    var z = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', k = '';
+    for (var i = 0; i < 6; i++) k += z[Math.floor(Math.random() * z.length)];
+    return k.slice(0, 3) + '-' + k.slice(3);
+  }
+  function zapisz() { try { localStorage.setItem(KLUCZ, JSON.stringify(stan)); } catch (e) {} }
+  function wczytaj() {
+    try { var s = JSON.parse(localStorage.getItem(KLUCZ)); if (s && Array.isArray(s.historia)) return s; } catch (e) {}
+    return null;
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function nazwaModulu(id) { var m = B.moduly.filter(function (x) { return x.id === id; })[0]; return m ? m.nazwa : id; }
+
+  // Odtwarza przykład: odpowiada na pytania wybierane przez silnik, zostawia ostatnie `zostaw` bez odpowiedzi.
+  function wczytajPrzyklad(klucz, zostaw) {
+    B = BAZA;
+    var odp = P[klucz].odpowiedzi, h = [];
+    for (var i = 0; i < 200; i++) {
+      var n = S.nastepne(B, h).pytanie;
+      if (!n) break;
+      h.push({ id: n.id, wartosc: Object.prototype.hasOwnProperty.call(odp, n.id) ? odp[n.id] : S.NIE_WIEM });
+    }
+    if (zostaw) h = h.slice(0, Math.max(1, h.length - zostaw));
+    stan = nowyStan('standard'); stan.historia = h;
+    wybor = null; zapisz(); rysuj();
+  }
+
+  // Krok 2: wczytanie ankiety od AI (wklejony tekst z czatu albo plik .json).
+  function wczytajAnkiete(tekst) {
+    var r = AI.zAnkiety(tekst);
+    if (!r.bank) { bledyAnkiety = r.bledy; rysuj(); return; }
+    bledyAnkiety = [];
+    var poprzedni = stan;
+    stan = nowyStan('ai');
+    stan.ankieta = tekst;
+    if (r.kod) stan.kod = r.kod;
+    // opis z kroku 1 na tym komputerze ma pierwszeństwo przed zanonimizowaną kopią z pliku
+    var opis = r.opis;
+    if (poprzedni && poprzedni.opisKroku1 && poprzedni.opisKroku1.kod === r.kod) opis = poprzedni.opisKroku1.tekst;
+    stan.historia = [{ id: 'opis', wartosc: opis }];
+    wybor = null; ustawBank(); zapisz(); rysuj(); ustawFokus();
+  }
+
+  function startuj(tryb) {
+    var opisKroku1 = stan.opisKroku1;
+    stan = nowyStan(tryb);
+    if (opisKroku1) stan.opisKroku1 = opisKroku1;
+    bledyAnkiety = []; wybor = null; ustawBank(); zapisz(); rysuj(); ustawFokus();
+  }
+
+  function rysujStart() {
+    var h = '<div class="start"><div class="modul-pacjenta">Nowy wywiad</div><h3 class="pytanie">Jak chcesz przeprowadzić wywiad?</h3>' +
+      '<button type="button" class="kafel glowny-kafel" data-akcja="tryb" data-tryb="opis"><b>1. Opis pacjenta dla AI</b>' +
+      '<span>Pacjent opisuje dolegliwości własnymi słowami. Kopiujesz opis do Konsylium, a AI przygotowuje pytania dla tego pacjenta.</span></button>' +
+      '<button type="button" class="kafel" data-akcja="tryb" data-tryb="wczytaj"><b>2. Wczytaj ankietę od AI</b>' +
+      '<span>Wklej odpowiedź z czatu Konsylium albo otwórz plik .json. Pacjent odpowiada na pytania dobrane przez AI.</span></button>' +
+      '<button type="button" class="link" data-akcja="tryb" data-tryb="standard" style="align-self:flex-start">Ankieta standardowa, bez AI</button></div>';
+    $tel.innerHTML = h;
+  }
+
+  function rysujWczytaj() {
+    var h = '<div class="start"><div class="modul-pacjenta">Krok 2 · ankieta od AI</div><h3 class="pytanie">Wczytaj ankietę od Konsylium</h3>' +
+      '<p class="pomoc">Skopiuj z czatu odpowiedź z blokiem JSON i wklej ją tutaj. Możesz wkleić całą wiadomość, aplikacja sama znajdzie ankietę.</p>' +
+      '<textarea id="pole-ankieta" class="pole wklesly" spellcheck="false" placeholder="{ &quot;format&quot;: &quot;ms-ankieta-1&quot;, … }"></textarea>' +
+      (bledyAnkiety.length ? '<div class="komunikat-pilne" role="alert"><strong>Nie da się wczytać ankiety</strong><span>' + bledyAnkiety.slice(0, 6).map(esc).join('<br>') +
+        (bledyAnkiety.length > 6 ? '<br>… i ' + (bledyAnkiety.length - 6) + ' więcej' : '') + '</span></div>' : '') +
+      '<div class="rzad-start"><label class="przycisk plik">Otwórz plik .json<input type="file" id="plik-ankiety" accept=".json,application/json,.txt" hidden></label>' +
+      '<button type="button" class="link" data-akcja="przyklad-ai">Wczytaj fikcyjny przykład</button></div>' +
+      '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="start">Wstecz</button><div class="prawe">' +
+      '<button class="przycisk glowny" type="button" data-akcja="wczytaj-ankiete">Rozpocznij wywiad</button></div></div></div>';
+    $tel.innerHTML = h;
+  }
+
+  function odpowiedz(v) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    if (!n) return;
+    stan.historia.push({ id: n.id, wartosc: v });
+    wybor = null; wyborZOpisu = false; zapisz();
+    if (n.id === 'opis' && v) {
+      analizuje = true; rysuj();
+      setTimeout(function () { analizuje = false; rysuj(); ustawFokus(); }, 1100);
+      return;
+    }
+    rysuj(); ustawFokus();
+  }
+  function ustawFokus() {
+    var pierwszy = $tel.querySelector('.opcja, .pole, button');
+    if (pierwszy) pierwszy.focus({ preventScroll: true });
+  }
+  function wstecz() {
+    if (!stan.historia.length) return;
+    var ostatnia = stan.historia.pop();
+    wybor = ostatnia.wartosc === S.NIE_WIEM ? null : ostatnia.wartosc;
+    wyborZOpisu = false;
+    // flagi, które zniknęły po cofnięciu, mogą się pokazać ponownie
+    var aktywne = S.przelicz(B, stan.historia).flagi.map(function (f) { return f.id; });
+    stan.potwierdzone = stan.potwierdzone.filter(function (id) { return aktywne.indexOf(id) !== -1; });
+    zapisz(); rysuj();
+  }
+
+  // ── widok pacjenta ──
+  function rysujPacjenta(n, st) {
+    var nowe112 = st.flagi.filter(function (f) { return f.poziom === '112' && stan.potwierdzone.indexOf(f.id) === -1; });
+    var nowePilne = st.flagi.filter(function (f) { return f.poziom === 'pilne' && stan.potwierdzone.indexOf(f.id) === -1; });
+    var zadano = stan.historia.length, zostalo = st.kandydaci.length;
+    var proc = n ? Math.round(100 * zadano / (zadano + zostalo)) : 100;
+    var a = '';
+    if (nowe112.length) {
+      a += '<div class="alarm" role="alertdialog" aria-labelledby="alarm-t"><div class="numer">112</div><h3 id="alarm-t">Zadzwoń teraz pod numer alarmowy</h3>' +
+        '<p>' + esc(nowe112[0].dlaPacjenta) + '</p><small>Numer alarmowy: 112 (lub 999 – pogotowie ratunkowe). Lekarz widzi już ten alarm.</small>' +
+        '<button class="przycisk" type="button" data-akcja="potwierdz" data-flagi="' + nowe112.map(function (f) { return f.id; }).join(',') + '" style="align-self:flex-start">W demo: wróć do ankiety</button></div>';
+    }
+    var h = '';
+    h += '<div class="postep"><div class="postep-tekst"><span>' + (n ? 'Pytanie ' + (zadano + 1) : 'Gotowe') + '</span><span>' +
+      (n ? 'zostało najwyżej ' + zostalo : zadano + ' odpowiedzi') + '</span></div><div class="tor wklesly"><i style="width:' + proc + '%"></i></div></div>';
+
+    if (analizuje) {
+      var an = st.analiza, ile = Object.keys(st.zOpisu).length;
+      h += '<div class="analiza-pacjent"><div class="kolko" aria-hidden="true"></div><h3>Analizuję Twój opis…</h3><p>' +
+        (an.slady.length ? 'Rozpoznane informacje: ' + an.slady.length + '. ' + (ile ? 'Nie zapytam ponownie o to, co już napisałeś(-aś).' : '') : 'Dobiorę pytania krok po kroku.') + '</p></div>';
+      $tel.innerHTML = h + a; return;
+    }
+
+    if (!n) {
+      if (stan.tryb === 'opis') {
+        h += '<div class="koniec"><h3>Dziękujemy za opis.</h3><p>Lekarz przygotuje teraz pytania dopasowane do Ciebie. Przekaż komputer lekarzowi. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p></div>' +
+          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Skopiuj opis do czatu Konsylium. AI odpowie ankietą, którą wczytasz przyciskiem „Wczytaj ankietę od AI”.</span>' +
+          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj opis do Konsylium</button>' +
+          '<button class="przycisk" type="button" data-akcja="tryb" data-tryb="wczytaj">Wczytaj ankietę od AI</button></div>' +
+          '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
+      } else {
+        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi albo osobie z rejestracji. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
+          '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>' +
+          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Wywiad przejdzie przez anonimizator i trafi do schowka. Wklej go w czacie Konsylium.</span>' +
+          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj wywiad do Konsylium</button></div>' +
+          '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
+      }
+      h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz">Wstecz</button></div>';
+      $tel.innerHTML = h + a; return;
+    }
+
+    if (nowePilne.length) {
+      h += '<div class="komunikat-pilne" role="status"><strong>Ważne</strong><span>' + esc(nowePilne[0].dlaPacjenta) + '</span>' +
+        '<button class="link" type="button" style="align-self:flex-start;padding:0" data-akcja="potwierdz" data-flagi="' + nowePilne.map(function (f) { return f.id; }).join(',') + '">Rozumiem</button></div>';
+    }
+
+    h += '<div class="modul-pacjenta">' + esc(nazwaModulu(n.modul)) + '</div>';
+    h += '<h3 class="pytanie" id="tresc-pytania">' + esc(wyborZOpisu && n.tekstPoOpisie ? n.tekstPoOpisie : n.tekst) + '</h3>';
+    if (wyborZOpisu) h += '<p class="z-opisu">Zaznaczyłem to, co wynika z Twojego opisu. Popraw, jeśli trzeba.</p>';
+    h += rysujOdpowiedz(n);
+
+    var mozeDalej = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.length > 0 :
+      n.typ === 'liczba' ? wybor !== null && wybor !== '' : n.typ === 'tekst';
+    var pokazDalej = n.typ === 'wiele' || n.typ === 'liczba' || n.typ === 'tekst';
+    h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz"' + (zadano ? '' : ' disabled') + '>Wstecz</button><div class="prawe">';
+    if (n.typ !== 'tekst' && n.nieWiem !== false) h += '<button class="link" type="button" data-akcja="niewiem">Nie wiem</button>';
+    if (pokazDalej) h += '<button class="przycisk glowny" type="button" data-akcja="dalej" id="dalej"' + (mozeDalej ? '' : ' disabled') + '>' +
+      (n.typ === 'tekst' ? 'Dalej' : 'Dalej') + '</button>';
+    h += '</div></div>';
+
+    $tel.innerHTML = h + a;
+  }
+
+  function rysujOdpowiedz(n) {
+    var h = '';
+    if (n.typ === 'jeden' || n.typ === 'wiele') {
+      h += '<div class="opcje" role="group" aria-labelledby="tresc-pytania">';
+      n.opcje.forEach(function (op) {
+        var wybrane = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.indexOf(op.w) !== -1 : wybor === op.w;
+        h += '<button type="button" class="opcja ' + n.typ + '" data-w="' + esc(op.w) + '" aria-pressed="' + wybrane + '"><span class="kropka"></span><span>' + esc(op.t) + '</span></button>';
+      });
+      h += '</div>';
+    } else if (n.typ === 'skala') {
+      h += '<div class="skala" role="group" aria-labelledby="tresc-pytania">';
+      for (var i = 0; i <= 10; i++) h += '<button type="button" class="opcja" data-w="' + i + '" aria-pressed="' + (wybor === i) + '">' + i + '</button>';
+      h += '</div><div class="skala-opis"><span>0 – ' + esc(n.skala[0]) + '</span><span style="text-align:right">10 – ' + esc(n.skala[1]) + '</span></div>';
+    } else if (n.typ === 'liczba') {
+      h += '<div class="pole-liczba"><input id="pole-' + n.id + '" class="pole wklesly" type="number" inputmode="decimal" aria-labelledby="tresc-pytania"' +
+        ' min="' + n.min + '" max="' + n.max + '" step="' + (n.krok || 1) + '" value="' + (typeof wybor === 'number' ? wybor : '') + '"><span>' + esc(n.jednostka || '') + '</span></div>';
+    } else if (n.typ === 'tekst') {
+      h += '<textarea id="pole-' + n.id + '" class="pole wklesly" aria-labelledby="tresc-pytania" placeholder="' + esc(n.podpowiedz || 'Możesz zostawić puste') + '">' + esc(typeof wybor === 'string' ? wybor : '') + '</textarea>';
+    }
+    return h;
+  }
+
+  // ── kopia do Konsylium: 01-wywiad.md po anonimizacji ──
+  // Reguły anonimizatora (narzedzia/anonimizator/src/wykrywanie.js) usuwają z tekstu dane osobowe,
+  // np. imię i nazwisko albo PESEL wpisane w opisie. Bez modułu kopia idzie bez zmian, z ostrzeżeniem.
+  function doKonsylium() {
+    var meta = { kod: stan.kod, data: stan.start.slice(0, 10) };
+    var md = stan.tryb === 'opis' ? AI.doProsby(B, stan.historia, meta) : S.doMarkdown(B, stan.historia, meta);
+    var W = window.WykrywanieDanych;
+    if (!W) return { tekst: md, opis: '<p class="anonim brak-modulu"><b>Anonimizator niedostępny.</b> Przejrzyj tekst i usuń dane osobowe ręcznie przed wklejeniem.</p>' };
+    var zakresy = [];
+    try { zakresy = W.wykryjWTekscie(md); } catch (e) { zakresy = []; }
+    var tekst = W.zanonimizujTekst(md, zakresy);
+    var opis = zakresy.length
+      ? '<p class="anonim">Przed kopiowaniem usunięto <b>' + zakresy.length + '</b>: ' + zakresy.map(function (z) { return '„' + esc(z.tekst) + '” (' + esc(z.powod || z.kategoria) + ')'; }).join(', ') + '.</p>'
+      : '<p class="anonim">Anonimizator nie znalazł danych osobowych w tekście.</p>';
+    return { tekst: tekst, opis: opis };
+  }
+
+  // ── panel lekarza ──
+  function podswietl(tekst, slady) {
+    var zakresy = [], n = AnalizaOpisu.normalizuj(tekst);
+    slady.forEach(function (s) {
+      var i = n.indexOf(AnalizaOpisu.normalizuj(s.fragment));
+      if (i !== -1) zakresy.push([i, i + s.fragment.length]);
+    });
+    zakresy.sort(function (a, b) { return a[0] - b[0]; });
+    var out = '', poz = 0;
+    zakresy.forEach(function (z) {
+      if (z[0] < poz) return;
+      out += esc(tekst.slice(poz, z[0])) + '<mark>' + esc(tekst.slice(z[0], z[1])) + '</mark>'; poz = z[1];
+    });
+    return out + esc(tekst.slice(poz));
+  }
+
+  function rysujAnalize(st, szkic) {
+    var tekst = szkic !== null ? szkic : st.o.opis;
+    if (typeof tekst !== 'string' || !tekst.trim()) {
+      return '<div class="sekcja"><h3>Opis pacjenta</h3><div class="spokoj wklesly">' + (szkic !== null ? 'Pacjent zaczyna pisać…' : 'Czeka na opis dolegliwości własnymi słowami.') + '</div></div>';
+    }
+    var an = st.analiza, h = '<div class="sekcja"><h3>Opis pacjenta' + (szkic !== null ? ' <span class="na-zywo" style="text-transform:none;letter-spacing:0">pisze…</span>' : '') + '</h3>';
+    h += '<blockquote class="opis wklesly">' + podswietl(tekst, an.slady) + '</blockquote>';
+    if (an.slady.length) {
+      h += '<ul class="wnioski">' + an.slady.map(function (s) {
+        var q = S.pytanieWg(B, s.id);
+        var odp = q ? S.opisOdpowiedzi(q, q.typ === 'wiele' ? [s.wartosc] : s.wartosc) : s.wartosc;
+        return '<li><span class="fr">„' + esc(s.fragment) + '”</span><span>' + esc(q ? q.krotko : s.id) + ': <b>' + esc(odp) + '</b></span><span class="rodzaj ' + s.rodzaj + '">' +
+          (s.rodzaj === 'fakt' ? 'nie pytam' : 'do potwierdzenia') + '</span></li>';
+      }).join('') + '</ul>';
+    } else h += '<div class="spokoj">Brak rozpoznanych objawów w opisie. Pytania pójdą od początku.</div>';
+    return h + '</div>';
+  }
+
+  function rysujLekarza(n, st, szkic) {
+    if (szkic === undefined) szkic = null;
+    var h = '';
+    h += '<div class="metryka"><span>kod <b>' + stan.kod + '</b></span><span>odpowiedzi <b>' + stan.historia.length + '</b></span><span>bank <b>' + B.wersja + '</b></span></div>';
+
+    h += '<div class="sekcja"><h3>Czerwone flagi</h3>';
+    if (!st.flagi.length) h += '<div class="spokoj wklesly">Brak. Reguły sprawdzają odpowiedzi po każdym pytaniu.</div>';
+    else h += '<div class="flagi">' + st.flagi.map(function (f) {
+      return '<div class="flaga ' + (f.poziom === '112' ? 'f112' : 'fpilne') + '"><span class="poziom">' + (f.poziom === '112' ? '112' : 'PILNE') + '</span><span>' + esc(f.dlaLekarza) + '</span></div>';
+    }).join('') + '</div>';
+    h += '</div>';
+
+    h += rysujAnalize(st, szkic);
+
+    h += '<div class="sekcja"><h3>Ścieżka wywiadu</h3><div class="moduly">' + B.moduly.filter(function (m) { return m.id !== 'start'; }).map(function (m) {
+      return '<span class="modul' + (st.moduly.indexOf(m.id) !== -1 ? ' aktywny' : '') + '">' + esc(m.nazwa) + '</span>';
+    }).join('') + '</div></div>';
+
+    h += '<div class="sekcja"><h3>Teraz pyta</h3>';
+    if (n) {
+      var dl = S.uzasadnienie(n, st.o);
+      h += '<div class="teraz wklesly"><span class="tresc">' + esc(n.tekst) + '</span>' + (dl ? '<span class="dlaczego">Dlaczego: ' + esc(dl) + '</span>' : '') + '</div>';
+      var dalej = st.kandydaci.filter(function (q) { return q !== n; }).slice(0, 3);
+      if (dalej.length) h += '<ol class="kolejka" aria-label="Następne w kolejce">' + dalej.map(function (q) { return '<li>' + esc(q.krotko) + ' <span style="opacity:.7">· ' + esc(nazwaModulu(q.modul)) + '</span></li>'; }).join('') + '</ol>';
+    } else h += '<div class="spokoj wklesly">Wywiad zakończony. Brak dalszych pytań dla tej ścieżki.</div>';
+    h += '</div>';
+
+    h += '<div class="sekcja"><h3>Odpowiedzi</h3>';
+    if (!stan.historia.length) h += '<div class="spokoj wklesly">Pacjent jeszcze nie odpowiedział.</div>';
+    else h += '<ol class="odpowiedzi" id="lista-odp">' + stan.historia.map(function (x, i) {
+      var q = S.pytanieWg(B, x.id);
+      var li = '<li><span class="nr">' + (i + 1) + '</span><span><span class="p">' + esc(q.krotko) + '</span><br><span class="o' + (S.czyNieznane(x.wartosc) ? ' nieznane' : '') + '">' +
+        esc(S.opisOdpowiedzi(q, x.wartosc)) + '</span></span></li>';
+      if (x.id === 'opis') Object.keys(st.zOpisu).forEach(function (k) {
+        var qz = S.pytanieWg(B, k);
+        if (qz) li += '<li><span class="nr">·</span><span><span class="p">' + esc(qz.krotko) + ' <span class="tag">z opisu</span></span><br><span class="o">' + esc(S.opisOdpowiedzi(qz, st.o[k])) + '</span></span></li>';
+      });
+      return li;
+    }).join('') + '</ol>';
+    h += '</div>';
+
+    var an = doKonsylium(), krok1 = stan.tryb === 'opis';
+    h += '<div class="sekcja eksport"><h3>' + (krok1 ? 'Dla Konsylium: prośba o ankietę' : 'Dla Konsylium: 01-wywiad.md') + '</h3><div class="rzad">' +
+      '<button class="przycisk glowny" type="button" data-akcja="kopiuj">' + (krok1 ? 'Kopiuj opis do Konsylium' : 'Kopiuj do Konsylium') + '</button>' +
+      '<span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' + an.opis +
+      '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(an.tekst) + '</pre></div>';
+
+    $lek.innerHTML = h;
+    var lista = document.getElementById('lista-odp');
+    if (lista) lista.scrollTop = lista.scrollHeight;
+  }
+
+  function rysuj() {
+    if (stan.tryb === null || stan.tryb === 'wczytaj') {
+      if (stan.tryb === null) rysujStart(); else rysujWczytaj();
+      B = BAZA;
+      rysujLekarza(null, S.przelicz(BAZA, []));
+      return;
+    }
+    var r = S.nastepne(B, stan.historia);
+    if (r.pytanie && wybor === null && r.pytanie.typ === 'wiele') {
+      var podp = r.stan.analiza.podpowiedzi[r.pytanie.id];
+      wybor = podp ? podp.filter(function (w) { return r.pytanie.opcje.some(function (op) { return op.w === w; }); }) : [];
+      wyborZOpisu = wybor.length > 0;
+    }
+    rysujPacjenta(r.pytanie, r.stan);
+    rysujLekarza(r.pytanie, r.stan);
+  }
+
+  function kopiuj(tekst, etykieta, idPotw) {
+    var potw = document.getElementById(idPotw || 'potw');
+    var ok = function () { potw.textContent = 'Skopiowano ' + etykieta + '. Wklej to w czacie projektu Konsylium.'; };
+    var awaryjnie = function () {
+      var pre = document.getElementById('podglad-md'), sel = window.getSelection(), zakres = document.createRange();
+      zakres.selectNodeContents(pre); sel.removeAllRanges(); sel.addRange(zakres);
+      potw.textContent = 'Zaznaczono tekst: skopiuj go skrótem Ctrl+C.';
+    };
+    try { navigator.clipboard.writeText(tekst).then(ok, awaryjnie); } catch (e) { awaryjnie(); }
+  }
+
+  // ── zdarzenia ──
+  $tel.addEventListener('click', function (e) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    var opcja = e.target.closest('.opcja');
+    if (opcja && n) {
+      var w = n.typ === 'skala' ? Number(opcja.dataset.w) : opcja.dataset.w;
+      if (n.typ === 'wiele') {
+        var op = n.opcje.filter(function (x) { return x.w === w; })[0];
+        var lista = Array.isArray(wybor) ? wybor.slice() : [];
+        var idx = lista.indexOf(w);
+        if (idx !== -1) lista.splice(idx, 1);
+        else if (op.wyklucza) lista = [w];
+        else { lista = lista.filter(function (x) { var o2 = n.opcje.filter(function (y) { return y.w === x; })[0]; return !o2.wyklucza; }); lista.push(w); }
+        wybor = lista; rysuj();
+      } else {
+        wybor = w; opcja.setAttribute('aria-pressed', 'true');
+        setTimeout(function () { odpowiedz(w); }, 180);
+      }
+      return;
+    }
+    var b = e.target.closest('[data-akcja]');
+    if (!b) return;
+    var a = b.dataset.akcja;
+    if (a === 'tryb') { startuj(b.dataset.tryb); return; }
+    if (a === 'start') { bledyAnkiety = []; startuj(null); return; }
+    if (a === 'przyklad-ai') { wczytajAnkiete(JSON.stringify(window.PrzykladAnkietyAI, null, 2)); return; }
+    if (a === 'wczytaj-ankiete') { wczytajAnkiete(document.getElementById('pole-ankieta').value); return; }
+    if (a === 'kopiuj-koniec') {
+      if (stan.tryb === 'opis') {
+        var o = stan.historia.filter(function (x) { return x.id === 'opis'; })[0];
+        stan.opisKroku1 = { kod: stan.kod, tekst: o ? o.wartosc : '' }; zapisz();
+      }
+      kopiuj(doKonsylium().tekst, stan.tryb === 'opis' ? 'opis' : 'wywiad', 'potw-koniec'); return;
+    }
+    if (a === 'wstecz') wstecz();
+    else if (a === 'niewiem') odpowiedz(S.NIE_WIEM);
+    else if (a === 'potwierdz') { stan.potwierdzone = stan.potwierdzone.concat(b.dataset.flagi.split(',')); zapisz(); rysuj(); }
+    else if (a === 'dalej' && n) {
+      if (n.typ === 'tekst') odpowiedz((document.getElementById('pole-' + n.id).value || '').trim());
+      else if (n.typ === 'liczba') odpowiedz(wybor);
+      else odpowiedz(wybor);
+    }
+  });
+  $tel.addEventListener('input', function (e) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    if (!n || !e.target.classList.contains('pole')) return;
+    if (n.typ === 'liczba') {
+      var v = parseFloat(String(e.target.value).replace(',', '.'));
+      wybor = isNaN(v) || v < n.min || v > n.max ? null : v;
+      var d = document.getElementById('dalej'); if (d) d.disabled = wybor === null;
+    } else {
+      wybor = e.target.value;
+      if (n.id === 'opis') {
+        clearTimeout(timerSzkicu);
+        timerSzkicu = setTimeout(function () {
+          var tymcz = stan.historia.concat([{ id: 'opis', wartosc: wybor }]);
+          var st = S.przelicz(B, tymcz);
+          rysujLekarza(n, st, wybor);
+        }, 200);
+      }
+    }
+  });
+  var timerSzkicu = null;
+  $tel.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.matches('input.pole')) { var d = document.getElementById('dalej'); if (d && !d.disabled) d.click(); }
+  });
+  $tel.addEventListener('change', function (e) {
+    if (e.target.id !== 'plik-ankiety' || !e.target.files[0]) return;
+    var r = new FileReader();
+    r.onload = function () { wczytajAnkiete(String(r.result)); };
+    r.readAsText(e.target.files[0]);
+  });
+  $lek.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-akcja]'); if (!b) return;
+    if (b.dataset.akcja === 'kopiuj') {
+      if (stan.tryb === 'opis') {
+        var o = stan.historia.filter(function (x) { return x.id === 'opis'; })[0];
+        stan.opisKroku1 = { kod: stan.kod, tekst: o ? o.wartosc : '' }; zapisz();
+      }
+      kopiuj(doKonsylium().tekst, stan.tryb === 'opis' ? 'opis' : 'wywiad');
+    }
+  });
+
+  // Motyw jak w Nawigatorze: data-motyw na <html>. Domyślnie ciemny; w podglądzie artefaktu
+  // (window.MS_MOTYW_Z_SYSTEMU) zgodnie z ustawieniem systemu. Powłoka Windows może przysłać motyw przez postMessage.
+  function ustawMotyw(m) {
+    document.documentElement.dataset.motyw = m === 'jasny' ? 'jasny' : 'ciemny';
+    try { localStorage.setItem('ms-motyw', document.documentElement.dataset.motyw); } catch (e) {}
+  }
+  (function () {
+    var m = null;
+    try { m = localStorage.getItem('ms-motyw'); } catch (e) {}
+    if (!m && window.MS_MOTYW_Z_SYSTEMU) {
+      var t = document.documentElement.getAttribute('data-theme');
+      m = t ? (t === 'dark' ? 'ciemny' : 'jasny') : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'ciemny' : 'jasny');
+    }
+    document.documentElement.dataset.motyw = m || 'ciemny';
+  })();
+  document.getElementById('motyw').addEventListener('click', function () {
+    ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
+  });
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw);
+  });
+
+  // Pacjent wypełnia sam: podsumowanie dla lekarza jest schowane, dopóki ktoś go nie pokaże.
+  // W podglądzie (artefakt) widać oba panele, żeby było widać działanie.
+  var $uklad = document.getElementById('uklad'), $wl = document.getElementById('widok-lekarza');
+  function ustawWidokLekarza(pokaz) {
+    $uklad.classList.toggle('tylko-pacjent', !pokaz);
+    $wl.setAttribute('aria-pressed', String(pokaz));
+    $wl.textContent = pokaz ? 'Ukryj podsumowanie' : 'Podsumowanie dla lekarza';
+  }
+  ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
+  $wl.addEventListener('click', function () { ustawWidokLekarza($wl.getAttribute('aria-pressed') !== 'true'); });
+
+  var $sel = document.getElementById('przyklad');
+  Object.keys(P).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = P[k].nazwa; $sel.appendChild(o); });
+  $sel.addEventListener('change', function () { if ($sel.value) wczytajPrzyklad($sel.value, 3); $sel.value = ''; });
+  document.getElementById('od-nowa').addEventListener('click', function () {
+    ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
+    startuj(null);
+  });
+  document.getElementById('wczytaj-ai').addEventListener('click', function () { startuj('wczytaj'); });
+
+  var zapisany = wczytaj();
+  if (zapisany) { stan = zapisany; if (stan.tryb === undefined) stan.tryb = 'standard'; }
+  ustawBank(); rysuj();
+})();
+</script>

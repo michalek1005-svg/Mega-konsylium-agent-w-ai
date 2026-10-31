@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pl" data-motyw="ciemny">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; frame-src file:">
+<title>MS Konsylium Narzędzia</title>
+<style>
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+/* Powłoka: boczne menu z modułami, moduł w ramce obok. Paleta „Laguna” z Nawigatora
+   (narzedzia/wspolne/ms-tokeny.css), motyw przez data-motyw na <html>. */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body { font: 14px/1.45 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif; color: var(--ink);
+  background: var(--scene); background-color: var(--bg-viewport); display: grid; grid-template-columns: 248px minmax(0, 1fr); }
+nav { padding: 20px 14px; display: flex; flex-direction: column; gap: 8px; background: var(--tafla); box-shadow: var(--tafla-cien);
+  backdrop-filter: blur(26px) saturate(140%); }
+.marka { display: flex; gap: 12px; align-items: center; margin: 0 4px 18px; }
+.logo { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; font-size: 24px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.marka b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -.3px; }
+.marka span { font-size: 12px; color: var(--mut); }
+.nk-label { margin: 4px 6px 4px; }
+button.modul { all: unset; cursor: pointer; padding: 11px 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 1px;
+  background: var(--btn); color: var(--btn-txt); font-weight: 650; transition: background .15s; }
+button.modul:hover { background: var(--btn-h); }
+button.modul small { font-size: 11.5px; font-weight: 500; opacity: .8; }
+button.modul[aria-current="page"] { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
+button.modul:focus-visible, .nk-button:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; }
+.stan { margin-top: auto; font-size: 12px; color: var(--mut); display: flex; flex-direction: column; gap: 8px; padding: 0 6px; }
+.stan .offline { color: var(--petrol); font-weight: 700; display: flex; align-items: center; gap: 7px; }
+.stan .offline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+main { position: relative; min-width: 0; }
+iframe { border: 0; width: 100%; height: 100%; display: block; background: transparent; }
+.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--mut); padding: 40px; }
+</style>
+</head>
+<body>
+<nav aria-label="Moduły">
+  <div class="marka"><div class="logo" aria-hidden="true">K</div><div><b>Konsylium AI</b><span>Narzędzia offline · MS</span></div></div>
+  <p class="nk-label">Moduły</p>
+  <button class="modul" type="button" data-modul="wywiad" aria-current="page">Wywiad z pacjentem<small>Opis, pytania, kopia do Konsylium</small></button>
+  <button class="modul" type="button" data-modul="anonimizator">Anonimizator badań<small>Wyniki Synevo bez danych osobowych</small></button>
+  <div class="stan">
+    <button class="nk-button" type="button" id="motyw">Motyw jasny / ciemny</button>
+    <span class="offline">Offline</span>
+    <span>Sieć jest zablokowana. Dane zostają na tym komputerze, dopóki sam ich nie skopiujesz.</span>
+    <span id="wersja"></span>
+  </div>
+</nav>
+<main>
+  <iframe id="ramka" title="Moduł" allow="clipboard-write *"></iframe>
+  <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
+</main>
+<!--KONFIGURACJA-->
+<script>
+(function () {
+  var MODULY = { wywiad: 'moduly/wywiad.html', anonimizator: 'moduly/anonimizator.html' };
+  var ramka = document.getElementById('ramka'), brak = document.getElementById('brak');
+  var dostepne = window.MS_MODULY || {};
+  function pokaz(id) {
+    document.querySelectorAll('button.modul').forEach(function (b) {
+      if (b.dataset.modul === id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    if (dostepne[id] === false) { ramka.hidden = true; brak.hidden = false; return; }
+    brak.hidden = true; ramka.hidden = false;
+    ramka.src = MODULY[id];
+    try { localStorage.setItem('ms-modul', id); } catch (e) {}
+  }
+  document.querySelectorAll('button.modul').forEach(function (b) { b.addEventListener('click', function () { pokaz(b.dataset.modul); }); });
+  var start = 'wywiad';
+  try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}
+  pokaz(MODULY[start] ? start : 'wywiad');
+  // Motyw jak w Nawigatorze; zapamiętany i przekazywany do modułu
+  function ustawMotyw(m) {
+    document.documentElement.dataset.motyw = m;
+    try { localStorage.setItem('ms-motyw', m); } catch (e) {}
+    try { ramka.contentWindow.postMessage({ typ: 'ms-motyw', motyw: m }, '*'); } catch (e) {}
+  }
+  var motyw = 'ciemny';
+  try { motyw = localStorage.getItem('ms-motyw') || 'ciemny'; } catch (e) {}
+  document.documentElement.dataset.motyw = motyw;
+  ramka.addEventListener('load', function () { ustawMotyw(document.documentElement.dataset.motyw); });
+  document.getElementById('motyw').addEventListener('click', function () {
+    ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
+  });
+  document.getElementById('wersja').textContent = 'Wersja ' + (window.MS_WERSJA || 'dev');
+})();
+</script>
+</body>
+</html>

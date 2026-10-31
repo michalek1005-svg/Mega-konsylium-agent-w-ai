@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl" data-motyw="ciemny">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Strażnik prywatności: przeglądarka nie pozwoli tej stronie połączyć się z żadnym serwerem. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' blob: 'wasm-unsafe-eval'; worker-src blob:; style-src 'unsafe-inline'; img-src blob: data:; font-src data:; connect-src blob: data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Anonimizator wyników · Konsylium AI</title>
+<style>/*@@CSS@@*/</style>
+</head>
+<body>
+<div class="scena">
+  <header class="naglowek">
+    <div class="logo" aria-label="Konsylium AI" title="Konsylium AI">K</div>
+    <div class="tytul">
+      <h1>Anonimizator wyników badań</h1>
+      <p><span class="kropka"></span> Działa offline · plik nie opuszcza tego komputera</p>
+    </div>
+    <div class="pasek">
+      <label class="nk-button nk-on" id="b-otworz" title="Otwórz PDF albo zdjęcie wyniku">
+        Otwórz wynik
+        <input type="file" id="plik" accept="application/pdf,image/png,image/jpeg,image/webp,.pdf" hidden>
+      </label>
+      <button class="nk-button" id="b-pomniejsz" title="Pomniejsz" disabled>−</button>
+      <button class="nk-button" id="b-powieksz" title="Powiększ" disabled>+</button>
+      <button class="nk-button" id="b-cofnij" title="Cofnij (Ctrl+Z)" disabled>Cofnij</button>
+      <button class="nk-button" id="b-podglad" title="Pokaż, jak będzie wyglądał plik po zapisie" disabled>Podgląd efektu</button>
+      <button class="nk-button" id="b-motyw" title="Motyw jasny / ciemny">Motyw</button>
+    </div>
+  </header>
+
+  <main class="uklad">
+    <section class="tafla" id="obszar">
+      <div class="powitanie" id="powitanie">
+        <div class="upusc" id="upusc">
+          <div class="upusc-ikona">⇪</div>
+          <p class="upusc-tytul">Upuść tu wynik z Synevo</p>
+          <p class="nk-muted">PDF (e-wynik) albo zdjęcie / skan (JPG, PNG). Narzędzie samo zaproponuje, co zakryć: imię i nazwisko, PESEL, datę urodzenia, adres, telefon, numery zlecenia i próbki, kody kreskowe, lekarza i podpisy personelu. Potem poprawisz to ręcznie.</p>
+        </div>
+      </div>
+      <div class="strony" id="strony"></div>
+    </section>
+
+    <aside class="tafla panel">
+      <div class="nk-status" id="status">Gotowy. Nic nie jest wysyłane do sieci.</div>
+      <div class="pasek-postepu" id="postep" hidden><div></div></div>
+
+      <div class="nk-label">Propozycje do zakrycia</div>
+      <div id="kategorie" class="kategorie"><p class="nk-empty">Otwórz plik, żeby zobaczyć propozycje.</p></div>
+
+      <div class="nk-label">Twoje frazy (każda w nowym wierszu)</div>
+      <textarea id="frazy" class="nk-manual" rows="3" placeholder="np. nazwisko, imię dziecka, nazwa firmy…"></textarea>
+      <button class="nk-button" id="b-frazy" disabled>Znajdź i zakryj frazy</button>
+
+      <div class="nk-label odstep">Ręcznie</div>
+      <ul class="pomoc">
+        <li><b>Przeciągnij</b> myszą po stronie — zakryjesz dowolny prostokąt.</li>
+        <li><b>Dwuklik</b> na słowie — zakryjesz to słowo.</li>
+        <li><b>Kliknij</b> ramkę — wyłączysz ją albo włączysz z powrotem. Twoje ramki usuwasz krzyżykiem.</li>
+      </ul>
+
+      <div class="nk-label odstep">Zapis</div>
+      <div class="akcje">
+        <button class="nk-button nk-on" id="b-pdf" disabled>Zapisz zanonimizowany PDF</button>
+        <button class="nk-button" id="b-txt" disabled>Zapisz tekst (.txt)</button>
+        <button class="nk-button" id="b-kopiuj" disabled>Kopiuj tekst dla konsylium</button>
+      </div>
+      <p class="nk-muted ostrzezenie">Zapisany PDF to obraz stron z zamalowanymi polami — zakrytego tekstu nie da się odzyskać ani zaznaczyć. Nazwa pliku nie powtarza nazwy oryginału (często jest w niej nazwisko). Zanim wyślesz wynik dalej, przejrzyj <b>Podgląd efektu</b>: automat może coś przeoczyć, zwłaszcza na zdjęciach.</p>
+    </aside>
+  </main>
+</div>
+
+<!--@@ZASOBY@@-->
+<script type="module">/*@@JS@@*/</script>
+</body>
+</html>
