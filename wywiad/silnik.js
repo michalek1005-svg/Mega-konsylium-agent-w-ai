@@ -38,12 +38,27 @@
     var o = {};
     historia.forEach(function (h) { o[h.id] = h.wartosc; });
 
+    // Analiza opisu własnymi słowami: fakty podane wprost uzupełniają odpowiedzi
+    // (te pytania są pomijane), podpowiedzi zaznaczają wstępnie pytania „wiele”.
+    var analiza = { moduly: [], fakty: {}, podpowiedzi: {}, slady: [] };
+    if (bank.analizuj && typeof o.opis === 'string' && o.opis.trim()) analiza = bank.analizuj(o.opis);
+    if (analiza.moduly.length) analiza.podpowiedzi.powod = analiza.moduly.slice();
+    var zOpisu = {};
+    Object.keys(analiza.fakty).forEach(function (k) {
+      if (o[k] === undefined) { o[k] = analiza.fakty[k]; zOpisu[k] = true; }
+    });
+    // Do czerwonych flag liczą się też podpowiedzi z opisu, dopóki pacjent ich nie potwierdzi
+    // ani nie poprawi: lepiej ostrzec za wcześnie niż za późno.
+    var doFlag = {};
+    Object.keys(o).forEach(function (k) { doFlag[k] = o[k]; });
+    Object.keys(analiza.podpowiedzi).forEach(function (k) { if (doFlag[k] === undefined) doFlag[k] = analiza.podpowiedzi[k]; });
+
     var moduly = bank.moduly
-      .filter(function (m) { return !m.gdy || bezpiecznie(m.gdy, o); })
+      .filter(function (m) { return !m.gdy || bezpiecznie(m.gdy, doFlag); })
       .map(function (m) { return m.id; });
 
     var flagi = bank.flagi
-      .filter(function (f) { return bezpiecznie(f.gdy, o); })
+      .filter(function (f) { return bezpiecznie(f.gdy, doFlag); })
       .map(function (f) {
         return {
           id: f.id,
@@ -62,12 +77,12 @@
       .map(function (q, i) { return { q: q, i: i }; })
       .filter(function (x) {
         var q = x.q;
-        return !zadane[q.id] && moduly.indexOf(q.modul) !== -1 && (!q.gdy || bezpiecznie(q.gdy, o));
+        return !zadane[q.id] && !zOpisu[q.id] && moduly.indexOf(q.modul) !== -1 && (!q.gdy || bezpiecznie(q.gdy, o));
       })
       .sort(function (a, b) { return (b.q.priorytet || 0) - (a.q.priorytet || 0) || a.i - b.i; })
       .map(function (x) { return x.q; });
 
-    return { o: o, moduly: moduly, flagi: flagi, kandydaci: kandydaci };
+    return { o: o, moduly: moduly, flagi: flagi, kandydaci: kandydaci, analiza: analiza, zOpisu: zOpisu };
   }
 
   // Domyślny wybór: najwyższy priorytet. Podmień na wybór AI (z tej samej listy).
@@ -144,6 +159,12 @@
       var q = pytanieWg(bank, h.id);
       if (!q) return;
       linie.push('P: ' + q.tekst + '  O: ' + opisOdpowiedzi(q, h.wartosc));
+      if (h.id === 'opis') {
+        Object.keys(stan.zOpisu).forEach(function (k) {
+          var qz = pytanieWg(bank, k);
+          if (qz) linie.push('P: ' + qz.tekst + '  O: ' + opisOdpowiedzi(qz, stan.o[k]) + ' (z opisu pacjenta)');
+        });
+      }
     });
     linie.push('');
     linie.push('## NIEZNANE');

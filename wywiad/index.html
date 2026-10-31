@@ -156,6 +156,24 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 .eksport .rzad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .eksport pre { margin: 0; border-radius: 12px; padding: 14px; font: 12px/1.55 var(--f-mono); white-space: pre-wrap; word-break: break-word; max-height: 260px; overflow: auto; color: var(--tekst); }
 .potwierdzenie { font-size: 13px; color: var(--akcent); }
+.z-opisu { margin: -6px 0 0; font-size: 13.5px; color: var(--akcent); }
+.analiza-pacjent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 30px; }
+.analiza-pacjent h3 { font-size: 21px; }
+.analiza-pacjent p { margin: 0; color: var(--tekst-2); }
+.kolko { width: 46px; height: 46px; border-radius: 50%; box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny);
+  background: conic-gradient(var(--akcent) 0 25%, transparent 25% 100%); -webkit-mask: radial-gradient(circle, transparent 14px, #000 15px); mask: radial-gradient(circle, transparent 14px, #000 15px); animation: obrot 1s linear infinite; }
+@keyframes obrot { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .kolko { animation: none; } }
+.opis { margin: 0; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; line-height: 1.6; }
+.opis mark { background: var(--akcent-tlo); color: var(--akcent); border-radius: 4px; padding: 0 2px; font-weight: 600; }
+.wnioski { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+.wnioski li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) auto; gap: 10px; align-items: baseline; }
+.wnioski .fr { color: var(--tekst-2); font-style: italic; overflow-wrap: anywhere; }
+.wnioski .rodzaj { font: 500 10.5px var(--f-mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 6px; border-radius: 5px; white-space: nowrap; }
+.wnioski .rodzaj.fakt { background: var(--akcent-tlo); color: var(--akcent); }
+.wnioski .rodzaj.podp { border: 1px dashed var(--linia); color: var(--tekst-2); }
+@media (max-width: 520px) { .wnioski li { grid-template-columns: minmax(0, 1fr) auto; } .wnioski .fr { grid-column: 1 / -1; } }
+.tag { font: 500 10.5px var(--f-mono); text-transform: uppercase; color: var(--akcent); background: var(--akcent-tlo); padding: 1px 5px; border-radius: 4px; margin-left: 4px; }
 .stopka { font-size: 12.5px; color: var(--tekst-2); max-width: 75ch; line-height: 1.55; }
 </style>
 
@@ -193,6 +211,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
   <p class="stopka">Prototyp testowo-edukacyjny. Pytania i progi czerwonych flag nie są zatwierdzone klinicznie, a ankieta nie stawia rozpoznania. Odpowiedzi zostają w tej przeglądarce i nigdzie nie są wysyłane. Nie wpisuj danych prawdziwych pacjentów.</p>
 </div>
 
+<script src="analiza.js"></script>
 <script src="pytania.js"></script>
 <script src="silnik.js"></script>
 <script src="przyklady.js"></script>
@@ -200,11 +219,13 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 (function () {
   'use strict';
   var S = window.SilnikWywiadu, B = window.BankWywiadu, P = window.PrzykladyWywiadu;
-  var KLUCZ = 'ms-wywiad-demo-v1';
+  var KLUCZ = 'ms-wywiad-demo-v2';
   var $tel = document.getElementById('telefon'), $lek = document.getElementById('lekarz');
 
   var stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
   var wybor = null; // bieżący wybór przed zatwierdzeniem
+  var wyborZOpisu = false; // czy bieżący wybór zaznaczyła analiza opisu
+  var analizuje = false;   // krótka plansza po wysłaniu opisu
 
   function nowyKod() {
     var z = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', k = '';
@@ -236,7 +257,15 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     var n = S.nastepne(B, stan.historia).pytanie;
     if (!n) return;
     stan.historia.push({ id: n.id, wartosc: v });
-    wybor = null; zapisz(); rysuj();
+    wybor = null; wyborZOpisu = false; zapisz();
+    if (n.id === 'opis' && v) {
+      analizuje = true; rysuj();
+      setTimeout(function () { analizuje = false; rysuj(); ustawFokus(); }, 1100);
+      return;
+    }
+    rysuj(); ustawFokus();
+  }
+  function ustawFokus() {
     var pierwszy = $tel.querySelector('.opcja, .pole, button');
     if (pierwszy) pierwszy.focus({ preventScroll: true });
   }
@@ -244,6 +273,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     if (!stan.historia.length) return;
     var ostatnia = stan.historia.pop();
     wybor = ostatnia.wartosc === S.NIE_WIEM ? null : ostatnia.wartosc;
+    wyborZOpisu = false;
     // flagi, które zniknęły po cofnięciu, mogą się pokazać ponownie
     var aktywne = S.przelicz(B, stan.historia).flagi.map(function (f) { return f.id; });
     stan.potwierdzone = stan.potwierdzone.filter(function (id) { return aktywne.indexOf(id) !== -1; });
@@ -266,6 +296,13 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     h += '<div class="postep"><div class="postep-tekst"><span>' + (n ? 'Pytanie ' + (zadano + 1) : 'Gotowe') + '</span><span>' +
       (n ? 'zostało najwyżej ' + zostalo : zadano + ' odpowiedzi') + '</span></div><div class="tor wklesly"><i style="width:' + proc + '%"></i></div></div>';
 
+    if (analizuje) {
+      var an = st.analiza, ile = Object.keys(st.zOpisu).length;
+      h += '<div class="analiza-pacjent"><div class="kolko" aria-hidden="true"></div><h3>Analizuję Twój opis…</h3><p>' +
+        (an.slady.length ? 'Rozpoznane informacje: ' + an.slady.length + '. ' + (ile ? 'Nie zapytam ponownie o to, co już napisałeś(-aś).' : '') : 'Dobiorę pytania krok po kroku.') + '</p></div>';
+      $tel.innerHTML = h + a; return;
+    }
+
     if (!n) {
       h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Twoje odpowiedzi czekają na lekarza. Jeśli objawy wyraźnie się nasilą, nie czekaj na kontakt: zadzwoń pod 112.</p>' +
         '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>';
@@ -279,7 +316,8 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     }
 
     h += '<div class="modul-pacjenta">' + esc(nazwaModulu(n.modul)) + '</div>';
-    h += '<h3 class="pytanie" id="tresc-pytania">' + esc(n.tekst) + '</h3>';
+    h += '<h3 class="pytanie" id="tresc-pytania">' + esc(wyborZOpisu && n.tekstPoOpisie ? n.tekstPoOpisie : n.tekst) + '</h3>';
+    if (wyborZOpisu) h += '<p class="z-opisu">Zaznaczyłem to, co wynika z Twojego opisu. Popraw, jeśli trzeba.</p>';
     h += rysujOdpowiedz(n);
 
     var mozeDalej = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.length > 0 :
@@ -311,13 +349,47 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       h += '<div class="pole-liczba"><input id="pole-' + n.id + '" class="pole wklesly" type="number" inputmode="decimal" aria-labelledby="tresc-pytania"' +
         ' min="' + n.min + '" max="' + n.max + '" step="' + (n.krok || 1) + '" value="' + (typeof wybor === 'number' ? wybor : '') + '"><span>' + esc(n.jednostka || '') + '</span></div>';
     } else if (n.typ === 'tekst') {
-      h += '<textarea id="pole-' + n.id + '" class="pole wklesly" aria-labelledby="tresc-pytania" placeholder="Możesz zostawić puste">' + esc(typeof wybor === 'string' ? wybor : '') + '</textarea>';
+      h += '<textarea id="pole-' + n.id + '" class="pole wklesly" aria-labelledby="tresc-pytania" placeholder="' + esc(n.podpowiedz || 'Możesz zostawić puste') + '">' + esc(typeof wybor === 'string' ? wybor : '') + '</textarea>';
     }
     return h;
   }
 
   // ── panel lekarza ──
-  function rysujLekarza(n, st) {
+  function podswietl(tekst, slady) {
+    var zakresy = [], n = AnalizaOpisu.normalizuj(tekst);
+    slady.forEach(function (s) {
+      var i = n.indexOf(AnalizaOpisu.normalizuj(s.fragment));
+      if (i !== -1) zakresy.push([i, i + s.fragment.length]);
+    });
+    zakresy.sort(function (a, b) { return a[0] - b[0]; });
+    var out = '', poz = 0;
+    zakresy.forEach(function (z) {
+      if (z[0] < poz) return;
+      out += esc(tekst.slice(poz, z[0])) + '<mark>' + esc(tekst.slice(z[0], z[1])) + '</mark>'; poz = z[1];
+    });
+    return out + esc(tekst.slice(poz));
+  }
+
+  function rysujAnalize(st, szkic) {
+    var tekst = szkic !== null ? szkic : st.o.opis;
+    if (typeof tekst !== 'string' || !tekst.trim()) {
+      return '<div class="sekcja"><h3>Opis pacjenta</h3><div class="spokoj wklesly">' + (szkic !== null ? 'Pacjent zaczyna pisać…' : 'Czeka na opis dolegliwości własnymi słowami.') + '</div></div>';
+    }
+    var an = st.analiza, h = '<div class="sekcja"><h3>Opis pacjenta' + (szkic !== null ? ' <span class="na-zywo" style="text-transform:none;letter-spacing:0">pisze…</span>' : '') + '</h3>';
+    h += '<blockquote class="opis wklesly">' + podswietl(tekst, an.slady) + '</blockquote>';
+    if (an.slady.length) {
+      h += '<ul class="wnioski">' + an.slady.map(function (s) {
+        var q = S.pytanieWg(B, s.id);
+        var odp = q ? S.opisOdpowiedzi(q, q.typ === 'wiele' ? [s.wartosc] : s.wartosc) : s.wartosc;
+        return '<li><span class="fr">„' + esc(s.fragment) + '”</span><span>' + esc(q ? q.krotko : s.id) + ': <b>' + esc(odp) + '</b></span><span class="rodzaj ' + s.rodzaj + '">' +
+          (s.rodzaj === 'fakt' ? 'nie pytam' : 'do potwierdzenia') + '</span></li>';
+      }).join('') + '</ul>';
+    } else h += '<div class="spokoj">Brak rozpoznanych objawów w opisie. Pytania pójdą od początku.</div>';
+    return h + '</div>';
+  }
+
+  function rysujLekarza(n, st, szkic) {
+    if (szkic === undefined) szkic = null;
     var h = '';
     h += '<div class="metryka"><span>kod <b>' + stan.kod + '</b></span><span>odpowiedzi <b>' + stan.historia.length + '</b></span><span>bank <b>' + B.wersja + '</b></span></div>';
 
@@ -327,6 +399,8 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       return '<div class="flaga ' + (f.poziom === '112' ? 'f112' : 'fpilne') + '"><span class="poziom">' + (f.poziom === '112' ? '112' : 'PILNE') + '</span><span>' + esc(f.dlaLekarza) + '</span></div>';
     }).join('') + '</div>';
     h += '</div>';
+
+    h += rysujAnalize(st, szkic);
 
     h += '<div class="sekcja"><h3>Ścieżka wywiadu</h3><div class="moduly">' + B.moduly.filter(function (m) { return m.id !== 'start'; }).map(function (m) {
       return '<span class="modul' + (st.moduly.indexOf(m.id) !== -1 ? ' aktywny' : '') + '">' + esc(m.nazwa) + '</span>';
@@ -345,8 +419,13 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     if (!stan.historia.length) h += '<div class="spokoj wklesly">Pacjent jeszcze nie odpowiedział.</div>';
     else h += '<ol class="odpowiedzi" id="lista-odp">' + stan.historia.map(function (x, i) {
       var q = S.pytanieWg(B, x.id);
-      return '<li><span class="nr">' + (i + 1) + '</span><span><span class="p">' + esc(q.krotko) + '</span><br><span class="o' + (S.czyNieznane(x.wartosc) ? ' nieznane' : '') + '">' +
+      var li = '<li><span class="nr">' + (i + 1) + '</span><span><span class="p">' + esc(q.krotko) + '</span><br><span class="o' + (S.czyNieznane(x.wartosc) ? ' nieznane' : '') + '">' +
         esc(S.opisOdpowiedzi(q, x.wartosc)) + '</span></span></li>';
+      if (x.id === 'opis') Object.keys(st.zOpisu).forEach(function (k) {
+        var qz = S.pytanieWg(B, k);
+        if (qz) li += '<li><span class="nr">·</span><span><span class="p">' + esc(qz.krotko) + ' <span class="tag">z opisu</span></span><br><span class="o">' + esc(S.opisOdpowiedzi(qz, st.o[k])) + '</span></span></li>';
+      });
+      return li;
     }).join('') + '</ol>';
     h += '</div>';
 
@@ -363,7 +442,11 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 
   function rysuj() {
     var r = S.nastepne(B, stan.historia);
-    if (r.pytanie && wybor === null && r.pytanie.typ === 'wiele') wybor = [];
+    if (r.pytanie && wybor === null && r.pytanie.typ === 'wiele') {
+      var podp = r.stan.analiza.podpowiedzi[r.pytanie.id];
+      wybor = podp ? podp.filter(function (w) { return r.pytanie.opcje.some(function (op) { return op.w === w; }); }) : [];
+      wyborZOpisu = wybor.length > 0;
+    }
     document.getElementById('kod-linku').textContent = 'ms.example/w/' + stan.kod;
     rysujPacjenta(r.pytanie, r.stan);
     rysujLekarza(r.pytanie, r.stan);
@@ -419,8 +502,19 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       var v = parseFloat(String(e.target.value).replace(',', '.'));
       wybor = isNaN(v) || v < n.min || v > n.max ? null : v;
       var d = document.getElementById('dalej'); if (d) d.disabled = wybor === null;
-    } else wybor = e.target.value;
+    } else {
+      wybor = e.target.value;
+      if (n.id === 'opis') {
+        clearTimeout(timerSzkicu);
+        timerSzkicu = setTimeout(function () {
+          var tymcz = stan.historia.concat([{ id: 'opis', wartosc: wybor }]);
+          var st = S.przelicz(B, tymcz);
+          rysujLekarza(n, st, wybor);
+        }, 200);
+      }
+    }
   });
+  var timerSzkicu = null;
   $tel.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && e.target.matches('input.pole')) { var d = document.getElementById('dalej'); if (d && !d.disabled) d.click(); }
   });
@@ -440,6 +534,6 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 
   var zapisany = wczytaj();
   if (zapisany) { stan = zapisany; rysuj(); }
-  else wczytajPrzyklad('brzuch', 9); // stan startowy: przykład w trakcie, żeby od razu było widać działanie
+  else wczytajPrzyklad('brzuch', 12); // stan startowy: przykład w trakcie, żeby od razu było widać działanie
 })();
 </script>

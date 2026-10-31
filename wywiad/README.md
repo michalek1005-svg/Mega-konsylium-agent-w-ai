@@ -9,6 +9,7 @@ Adaptacyjna ankieta, którą pacjent otwiera z linku. Po każdej odpowiedzi siln
 | Plik | Co robi |
 |---|---|
 | `index.html` | Okno wywiadu: widok pacjenta i podgląd lekarza obok siebie |
+| `analiza.js` | Analiza opisu dolegliwości pisanego własnymi słowami (słowa kluczowe, zaprzeczenia) |
 | `silnik.js` | Logika: przeliczenie stanu, wybór następnego pytania, czerwone flagi, eksport do `01-wywiad.md` |
 | `pytania.js` | Bank pytań, moduły i reguły czerwonych flag (to edytują lekarze) |
 | `przyklady.js` | Fikcyjne scenariusze do demo i testów |
@@ -18,6 +19,12 @@ Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
 
 ## Jak działa dobór pytań
 
+0. **Punkt wyjścia: opis własnymi słowami.** Pacjent pisze krótko, co mu dolega. Analiza opisu (`analiza.js`) od razu:
+   - wybiera moduły (np. „gniecie w klatce” → ból w klatce),
+   - uzupełnia odpowiedzi podane wprost (np. „od wczoraj”, „po tłustym jedzeniu”, „mam 54 lata”), więc o to już nie pytamy,
+   - zaznacza wstępnie odpowiedzi w pytaniach wielokrotnego wyboru (np. lokalizację bólu); pacjent je potwierdza lub poprawia,
+   - sprawdza czerwone flagi, zanim padnie pierwsze pytanie (opis ucisku w klatce z promieniowaniem do lewej ręki i potami → od razu ekran 112).
+   Brak wzmianki o objawie nigdy nie jest traktowany jak „nie”. Lekarz widzi opis z podświetlonymi fragmentami i to, co z nich wynika, już w trakcie pisania.
 1. Pytanie startowe („Z czym się dziś zgłaszasz?”) włącza moduły: ból w klatce, ból brzucha, ból głowy, kaszel i duszność, gorączka. Kilka powodów naraz łączy moduły.
 2. Każde pytanie ma regułę `gdy`, więc pojawia się tylko wtedy, gdy ma sens (np. pytanie o ciążę tylko u kobiet 12–55 lat, o drogi żółciowe tylko przy bólu w nadbrzuszu lub prawym podżebrzu).
 3. Kandydaci są sortowani po priorytecie. Pytania, które wykluczają stany nagłe, mają najwyższy priorytet w swoim module, więc padają przed pytaniami szczegółowymi.
@@ -29,8 +36,13 @@ Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
 `SilnikWywiadu.nastepne(bank, historia, wybieracz)` przyjmuje opcjonalną funkcję `wybieracz(kandydaci, stan)`. Dziś wybór to „najwyższy priorytet”. W kolejnym kroku można tu wpiąć Claude, który:
 
 - wybiera spośród dozwolonych kandydatów (silnik odrzuca pytanie spoza listy),
+- zastępuje regułową analizę opisu (`analizuj(tekst)` zwraca ten sam kształt: moduły, fakty, podpowiedzi, ślady),
 - interpretuje odpowiedzi tekstowe i streszcza wywiad dla lekarza,
 - nie może dodać własnego pytania, pominąć czerwonej flagi ani pokazać pacjentowi rozpoznania.
+
+## Na żywo: co działa dziś, a co wymaga serwera
+
+Dziś wszystko dzieje się w jednej przeglądarce: każda odpowiedź od razu zmienia kolejne pytanie, a podgląd lekarza obok aktualizuje się w tej samej chwili. Żeby pacjent i lekarz byli na dwóch różnych urządzeniach, potrzebny jest serwer, który przekazuje odpowiedzi z telefonu pacjenta do panelu lekarza. Tego celowo jeszcze nie ma (dane zdrowotne, RODO).
 
 ## Format eksportu
 

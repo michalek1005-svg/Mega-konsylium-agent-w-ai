@@ -37,8 +37,14 @@
 
   var pytania = [
     // ── START ───────────────────────────────────────────────
+    { id: 'opis', modul: 'start', typ: 'tekst', priorytet: 101, pominiecie: true, nieWiem: false,
+      tekst: 'Opisz krótko własnymi słowami, co Ci dolega i od kiedy.',
+      podpowiedz: 'Na przykład: „Od wczoraj boli mnie brzuch pod prawymi żebrami, zwłaszcza po jedzeniu. Raz zwymiotowałam.”',
+      krotko: 'opis dolegliwości własnymi słowami',
+      bo: 'Punkt wyjścia. Analiza opisu wybiera moduły, uzupełnia odpowiedzi podane wprost i od razu sprawdza czerwone flagi.' },
     { id: 'powod', modul: 'start', typ: 'wiele', priorytet: 100, nieWiem: false,
       tekst: 'Z czym się dziś zgłaszasz? Zaznacz wszystko, co pasuje.',
+      tekstPoOpisie: 'Czy dobrze rozumiem, z czym się zgłaszasz? Popraw, jeśli trzeba.',
       krotko: 'powód zgłoszenia',
       bo: 'Pytanie otwierające. Odpowiedź włącza moduły wywiadu.',
       opcje: [
@@ -53,7 +59,7 @@
       tekst: 'Opisz krótko własnymi słowami, co się dzieje.',
       krotko: 'opis dolegliwości własnymi słowami',
       bo: 'Pacjent zaznaczył „coś innego”.',
-      gdy: function (o, ma) { return ma(o, 'powod', 'inne'); } },
+      gdy: function (o, ma) { return ma(o, 'powod', 'inne') && !(typeof o.opis === 'string' && o.opis.trim()); } },
     { id: 'wiek', modul: 'start', typ: 'liczba', priorytet: 98, min: 0, max: 120, jednostka: 'lat',
       tekst: 'Ile masz lat?', krotko: 'wiek',
       bo: 'Wiek zmienia ryzyko i włącza pytania zależne od wieku.' },
@@ -352,7 +358,10 @@
       gdy: function (o) { return o.t_temp >= 39.5; } }
   ];
 
+  var A = (typeof module !== 'undefined' && module.exports) ? require('./analiza.js') : root.AnalizaOpisu;
+
   var bank = {
+    analizuj: A ? A.analizuj : null,
     wersja: 'demo-2026-10-31',
     moduly: moduly,
     pytania: pytania,
