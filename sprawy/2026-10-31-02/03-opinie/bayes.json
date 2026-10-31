@@ -1,0 +1,95 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Tabletka widmo",
+      "p": 0.70,
+      "za": [
+        "Pretest: u osoby przyjmującej metforminę o przedłużonym uwalnianiu (Siofor XR) wydalanie nierozpuszczalnej matrycy tabletki jest częstym, opisywanym zjawiskiem; zmiana leku sprzed kilku miesięcy zgodna czasowo → podnosi → silnie",
+        "Jedna kulka na epizod, raczej powiązana czasowo z przyjęciem leku → podnosi → silnie (liczba odpowiada jednej tabletce dziennie)",
+        "Żółtawy, okrągły obiekt w stolcu przy braku objawów brzusznych → podnosi → umiarkowanie; identyczny obraz opisano jako imitujący pasożyta u kobiety na metforminie XR (PMID 40209786)",
+        "Brak kuracji 'oczyszczania wątroby', brak nasion/chia/tapioki/kapsułek → obniża konkurencyjne wyjaśnienia → umiarkowanie"
+      ],
+      "przeciw": [
+        "Nie obejrzano ani nie zachowano obiektu; rozmiar i twardość NIEZNANE → brak potwierdzenia → umiarkowanie",
+        "Nie wiadomo, czy tabletka połykana w całości (rozkruszona/przełamana nie dałaby widma) → słabo"
+      ]
+    },
+    {
+      "nazwa": "Resztki pokarmowe w stolcu",
+      "p": 0.12,
+      "za": [
+        "Wysoka częstość w populacji ogólnej (nasiona, skórki, kukurydza, ziarna) → pretest umiarkowany",
+        "Obiekt nieobejrzany dokładnie → nie można odróżnić → słabo"
+      ],
+      "przeciw": [
+        "Związek czasowy z przyjęciem leku i powtarzalność jednej kulki → obniża → umiarkowanie",
+        "Negowane nasiona/chia/tapioka → obniża → słabo"
+      ]
+    },
+    {
+      "nazwa": "Odwodnienie",
+      "p": 0.10,
+      "za": [
+        "Rozpoznanie dotyczy drugiej, współistniejącej dolegliwości (ciemny mocz), nie kuleczek",
+        "Pacjentka mało pije → podnosi → umiarkowanie; barwa moczu koreluje z ciężarem właściwym/osmolalnością (PMID 36034925, 35201303)",
+        "Badanie ogólne moczu bez bilirubiny, krwi, białka, z prawidłowym urobilinogenem → obniża przyczyny patologiczne → silnie",
+        "Ciemny mocz 'rzadko' → zgodne z okresowym zagęszczeniem → słabo"
+      ],
+      "przeciw": [
+        "Ciężar właściwy moczu NIEZNANY dokładnie → brak potwierdzenia → umiarkowanie",
+        "Barwa moczu jako wskaźnik nawodnienia ma ograniczoną trafność (zależność od oświetlenia i oceniającego, PMID 35201303)"
+      ]
+    },
+    {
+      "nazwa": "Pasożytnicza choroba jelit",
+      "p": 0.03,
+      "za": [
+        "Obraz 'kuleczek' może imitować człony tasiemca lub jaja → słabo"
+      ],
+      "przeciw": [
+        "Niski pretest w POZ w Polsce przy braku objawów brzusznych, spadku masy ciała i świądu odbytu → obniża",
+        "Związek z przyjęciem tabletki i jedna kulka na epizod → obniża → umiarkowanie",
+        "Człony tasiemca są płaskie, ruchome, nie okrągłe z otoczką [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Cholestaza",
+      "p": 0.01,
+      "za": [
+        "Ciemny mocz + 'żółtawe' elementy w stolcu mogą sugerować pacjentce chorobę wątroby/dróg żółciowych → słabo"
+      ],
+      "przeciw": [
+        "Bilirubina, ALT, AST w normie, brak bilirubiny w moczu → obniża → silnie",
+        "Stolec normalnego koloru, brak żółtaczki, świądu, bólu brzucha, gorączki → obniża → silnie",
+        "Neguje wywiad kamiczy → obniża → słabo"
+      ]
+    }
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Żółtaczka/cholestaza: bilirubina i transaminazy w normie, brak bilirubiny w moczu, brak zażółcenia, świądu, odbarwionego stolca (z zastrzeżeniem nieznanych dat badań)",
+    "Rabdomioliza/miopatia statynowa (rosuwastatyna w Ezehron Duo): brak bólów i osłabienia mięśni, CK i kreatynina w normie, brak krwi w moczu",
+    "Krwiomocz: badanie ogólne moczu bez krwi",
+    "Krwawienie z przewodu pokarmowego: stolec normalnego koloru, bez krwi i smolistości",
+    "Objawy ogólne: brak gorączki, spadku masy ciała, bólu brzucha"
+  ],
+  "red_flags_otwarte": [
+    "Daty badań laboratoryjnych NIEZNANE — jeśli badania sprzed pojawienia się objawów, wykluczenie cholestazy i miopatii jest nieaktualne",
+    "Obiekt w stolcu nieobejrzany i niezachowany — tabletka widmo nie jest potwierdzona",
+    "Alkohol i zioła/suplementy NIEZNANE (odpowiedź ogólna)",
+    "HbA1c i wyrównanie cukrzycy NIEZNANE — czy metformina XR działa skutecznie (nie dotyczy pilności)"
+  ],
+  "nastepny_krok": "Wyjaśnić pacjentce zjawisko tabletki widmo przy metforminie XR, upewnić się, że połyka tabletkę w całości, i poprosić o zachowanie/sfotografowanie kolejnej kulki do porównania z tabletką Siofor XR, z kontrolą HbA1c jako pośrednim potwierdzeniem działania leku.",
+  "co_zmieniloby_zdanie": "Obejrzany obiekt niepodobny do matrycy tabletki (płaski, ruchomy, segmentowany) albo nawrót ciemnego moczu z bilirubiną lub krwią w moczu, podwyższoną bilirubiną/ALT lub CK w aktualnym badaniu.",
+  "zrodla": [
+    "PubMed PMID 40209786 — K-Sarı I i wsp. Presence of Ghost Capsules in Stool Mimicking Parasites due to Extended Release Metformin. Clin Lab 2025;71(4). DOI 10.7754/Clin.Lab.2024.241019",
+    "PubMed PMID 27048352 — Sun D i wsp. Ghost-Pill-Buster: intact levetiracetam ER tablets after dissolution testing. CNS Drugs 2016;30(5):455-60. DOI 10.1007/s40263-016-0332-9 (mechanizm: matryca nierozpuszczalna, lek uwolniony)",
+    "PubMed PMID 36034925 — Feng Y i wsp. Validation of urine colour L*a*b* for assessing hydration amongst athletes. Front Nutr 2022;9:997189. DOI 10.3389/fnut.2022.997189",
+    "PubMed PMID 35201303 — Wardenaar F i wsp. Validity of Urine Color Scoring Using Different Light Conditions. J Athl Train 2022;57(2):191-198. DOI 10.4085/1062-6050-0389.21",
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla tej prezentacji w bibliotece",
+    "Skład Ezehron Duo (rosuwastatyna 20 mg + ezetymib 10 mg) i Co-Prestarium (peryndopryl 10 mg + amlodypina 10 mg) [wiedza modelu, niezweryfikowane]",
+    "Częstości pretestowe w POZ i opis członów tasiemca [wiedza modelu, niezweryfikowane]"
+  ]
+}

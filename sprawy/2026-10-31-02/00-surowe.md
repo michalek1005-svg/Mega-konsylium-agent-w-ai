@@ -1,0 +1,1 @@
+A teraz chce nowy przypadek kobieta lat 40 zgłasza się z powodu występowania w stolcu małych okrągłych z żółtawą powłoką kuleczek o niewiadomym pochodzeniu oraz ciemnym zabarwieniu moczu brunatnym jasno brunatne bez żadnych odchyleń w badaniu przedmiotowym na stałe bierze ezehron duo 20+10, siofor xr 1 g , co prestarium 10+10. Zadawaj pytania i startujemy

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Werdykt sprawdzających (07-sprawdzenie.json)",
+  "type": "object",
+  "properties": {
+    "fakty": {
+      "type": "object", "required": ["kartka", "twierdzenia"],
+      "properties": {
+        "kartka": {"type": "string", "enum": ["ZIELONA", "ZOLTA", "CZERWONA"]},
+        "twierdzenia": {
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["twierdzenie", "werdykt"],
+            "properties": {
+              "twierdzenie": {"type": "string"},
+              "werdykt": {"type": "string", "enum": ["POTWIERDZONE", "SPRZECZNE", "BEZ_ZRODLA", "NIEAKTUALNE"]},
+              "poziom_zrodla": {"type": "integer", "minimum": 1, "maximum": 4},
+              "zrodlo": {"type": "string"},
+              "cytat": {"type": "string", "maxLength": 300},
+              "co_mowi_zrodlo": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "proces": {
+      "type": "object", "required": ["kartka", "lista"],
+      "properties": {
+        "kartka": {"type": "string", "enum": ["ZIELONA", "ZOLTA", "CZERWONA"]},
+        "lista": {
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["punkt", "status"],
+            "properties": {
+              "punkt": {"type": "string"},
+              "status": {"type": "string", "enum": ["OK", "BRAK", "N/D"]},
+              "plik": {"type": "string"},
+              "uwaga": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "rubryka": {
+      "type": "object",
+      "properties": {
+        "za_przeciw_obecne": {"type": "integer", "minimum": 0, "maximum": 15},
+        "komunikat": {"type": "integer", "minimum": 0, "maximum": 15}
+      }
+    },
+    "petla": {"type": "integer", "minimum": 1, "maximum": 2}
+  }
+}

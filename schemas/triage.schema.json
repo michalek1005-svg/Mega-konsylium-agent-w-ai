@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Werdykt panelu triage (02-triage.json)",
+  "type": "object",
+  "required": ["zastepcy", "tryb"],
+  "properties": {
+    "zastepcy": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "required": ["zastepca", "wynik", "eskaluj", "uzasadnienie"],
+        "properties": {
+          "zastepca": {"type": "string", "enum": ["zlozonosc", "bezpieczenstwo", "niepewnosc"]},
+          "wynik": {"type": "integer", "minimum": 0, "maximum": 10},
+          "eskaluj": {"type": "boolean"},
+          "uzasadnienie": {"type": "string"},
+          "pilnosc_wstepna": {"type": "integer", "minimum": 1, "maximum": 5},
+          "flagi": {"type": "array"},
+          "hipoteza_wlasna": {"type": "string"},
+          "hipoteza_ordynatora": {"type": "string"},
+          "zgodne": {"type": "boolean"}
+        }
+      }
+    },
+    "tryb": {"type": "string", "enum": ["SZYBKI", "PELNY"]},
+    "wymuszony_przez_uzytkownika": {"type": "boolean"},
+    "liczba_rezydentow": {"type": "integer", "minimum": 0, "maximum": 3}
+  }
+}
