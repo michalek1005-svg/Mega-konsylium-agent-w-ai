@@ -1,0 +1,445 @@
+<title>MS Wywiad z pacjentem</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Adaptacyjny wywiad z pacjentem: kolejne pytania dobierane na bieżąco, podgląd lekarza na żywo. Prototyp na danych fikcyjnych.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Układ: dwa panele obok siebie — po lewej „telefon pacjenta” z jednym pytaniem naraz,
+   po prawej podgląd lekarza na żywo. Neumorfizm marki MS: miękkie wypukłe i wklęsłe
+   powierzchnie z jednego tła. Pod 900 px panele układają się jeden pod drugim. */
+:root {
+  --tlo: #e3e7eb;
+  --cien-jasny: #ffffff;
+  --cien-ciemny: #b9c1c9;
+  --tekst: #233039;
+  --tekst-2: #5a6873;
+  --akcent: #357f75;
+  --akcent-tlo: #d3e3df;
+  --alarm: #b3433a;
+  --alarm-tlo: #f1d9d5;
+  --uwaga: #93651a;
+  --uwaga-tlo: #efe3c9;
+  --linia: #cdd4da;
+  --f-tytul: "Sora", "Segoe UI", system-ui, sans-serif;
+  --f-tekst: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21;
+    --tekst: #dce3e8; --tekst-2: #94a2ac; --akcent: #74b8ac; --akcent-tlo: #2b3d3b;
+    --alarm: #e5867c; --alarm-tlo: #43302e; --uwaga: #dcae5e; --uwaga-tlo: #3f372a; --linia: #353d45;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21;
+  --tekst: #dce3e8; --tekst-2: #94a2ac; --akcent: #74b8ac; --akcent-tlo: #2b3d3b;
+  --alarm: #e5867c; --alarm-tlo: #43302e; --uwaga: #dcae5e; --uwaga-tlo: #3f372a; --linia: #353d45;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--tlo); color: var(--tekst);
+  font: 15px/1.5 var(--f-tekst);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+h1, h2, h3 { font-family: var(--f-tytul); font-weight: 600; margin: 0; text-wrap: balance; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--akcent); outline-offset: 3px; }
+
+.wypukly { background: var(--tlo); box-shadow: 6px 6px 14px var(--cien-ciemny), -6px -6px 14px var(--cien-jasny); }
+.wklesly { background: var(--tlo); box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); }
+
+.ramka { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+
+/* ── pasek górny ── */
+.pasek { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; justify-content: space-between; }
+.marka { display: flex; align-items: center; gap: 12px; }
+.znak { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+  font: 600 15px var(--f-tytul); color: var(--akcent); letter-spacing: .02em; }
+.marka h1 { font-size: 19px; }
+.marka p { margin: 0; font-size: 13px; color: var(--tekst-2); }
+.sterowanie { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.etykieta-demo { font: 500 11px var(--f-mono); text-transform: uppercase; letter-spacing: .08em;
+  color: var(--uwaga); background: var(--uwaga-tlo); padding: 6px 10px; border-radius: 999px; }
+.przycisk { border: 0; border-radius: 12px; padding: 9px 15px; cursor: pointer; font-weight: 500; }
+.przycisk:active, .przycisk[aria-pressed="true"] { box-shadow: inset 3px 3px 7px var(--cien-ciemny), inset -3px -3px 7px var(--cien-jasny); }
+.przycisk:disabled { opacity: .45; cursor: default; }
+.przycisk.glowny { color: var(--akcent); font-weight: 600; }
+select.przycisk { appearance: none; padding-right: 30px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--tekst-2) 50%), linear-gradient(135deg, var(--tekst-2) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+
+/* ── układ ── */
+.uklad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 28px; align-items: start; }
+@media (max-width: 900px) { .uklad { grid-template-columns: minmax(0, 1fr); } }
+.naglowek-panelu { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.naglowek-panelu h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--tekst-2); font-weight: 500; }
+.na-zywo { display: inline-flex; align-items: center; gap: 7px; font: 500 12px var(--f-mono); color: var(--akcent); }
+.na-zywo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--akcent); animation: puls 2s infinite; }
+@keyframes puls { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .na-zywo::before { animation: none; } * { transition: none !important; } }
+
+/* ── telefon pacjenta ── */
+.telefon { border-radius: 30px; padding: 26px 22px 22px; position: relative; max-width: 480px; margin: 0 auto; width: 100%;
+  min-height: 500px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; }
+.postep { display: flex; flex-direction: column; gap: 8px; }
+.postep-tekst { display: flex; justify-content: space-between; font: 500 12px var(--f-mono); color: var(--tekst-2); }
+.tor { height: 8px; border-radius: 99px; overflow: hidden; }
+.tor > i { display: block; height: 100%; background: var(--akcent); border-radius: 99px; transition: width .35s ease; }
+.modul-pacjenta { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--akcent); font-weight: 600; }
+.pytanie { font-size: 21px; line-height: 1.32; }
+.opcje { display: flex; flex-direction: column; gap: 11px; }
+.opcja { text-align: left; border: 0; border-radius: 14px; padding: 13px 16px; cursor: pointer; display: flex; gap: 12px; align-items: center; transition: box-shadow .15s; }
+.opcja .kropka { flex: none; width: 18px; height: 18px; border-radius: 6px; box-shadow: inset 2px 2px 4px var(--cien-ciemny), inset -2px -2px 4px var(--cien-jasny); display: grid; place-items: center; }
+.opcja.jeden .kropka { border-radius: 50%; }
+.opcja[aria-pressed="true"] { box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); color: var(--akcent); font-weight: 600; }
+.opcja[aria-pressed="true"] .kropka::after { content: ""; width: 8px; height: 8px; border-radius: inherit; background: var(--akcent); }
+.skala { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 6px; }
+.skala .opcja { justify-content: center; padding: 12px 0; font: 500 15px var(--f-mono); }
+.skala-opis { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--tekst-2); }
+@media (max-width: 420px) { .skala { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.pole { width: 100%; border: 0; border-radius: 14px; padding: 14px 16px; font: 17px var(--f-tekst); color: var(--tekst); }
+textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
+.pole-liczba { display: flex; align-items: center; gap: 12px; }
+.pole-liczba .pole { max-width: 170px; font-family: var(--f-mono); }
+.pole-liczba span { color: var(--tekst-2); }
+.nawigacja { margin-top: auto; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.nawigacja .prawe { display: flex; gap: 10px; margin-left: auto; }
+.link { background: none; border: 0; color: var(--tekst-2); cursor: pointer; padding: 9px 4px; text-decoration: underline; text-underline-offset: 3px; }
+.komunikat-pilne { border-radius: 14px; padding: 12px 14px; background: var(--uwaga-tlo); color: var(--tekst); font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+.komunikat-pilne strong { color: var(--uwaga); }
+
+.alarm { position: absolute; inset: 0; background: var(--alarm-tlo); display: flex; flex-direction: column; gap: 14px; justify-content: center; padding: 28px; z-index: 2; }
+.alarm .numer { font: 600 74px/1 var(--f-tytul); color: var(--alarm); letter-spacing: .02em; user-select: all; }
+.alarm h3 { font-size: 21px; color: var(--alarm); }
+.alarm p { margin: 0; font-size: 16px; }
+.alarm small { color: var(--tekst-2); }
+
+.koniec { display: flex; flex-direction: column; gap: 14px; }
+.koniec h3 { font-size: 22px; }
+.koniec p { margin: 0; color: var(--tekst-2); }
+
+/* ── panel lekarza ── */
+.lekarz { border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.metryka { display: flex; flex-wrap: wrap; gap: 8px 18px; font: 13px var(--f-mono); color: var(--tekst-2); }
+.metryka b { color: var(--tekst); font-weight: 500; }
+.sekcja { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.sekcja h3 { font: 600 12px var(--f-tekst); text-transform: uppercase; letter-spacing: .09em; color: var(--tekst-2); }
+.flagi { display: flex; flex-direction: column; gap: 8px; }
+.flaga { border-radius: 12px; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14px; }
+.flaga .poziom { font: 600 11px var(--f-mono); padding: 3px 7px; border-radius: 6px; white-space: nowrap; }
+.flaga.f112 { background: var(--alarm-tlo); } .flaga.f112 .poziom { color: var(--tlo); background: var(--alarm); }
+.flaga.fpilne { background: var(--uwaga-tlo); } .flaga.fpilne .poziom { color: var(--tlo); background: var(--uwaga); }
+.spokoj { font-size: 14px; color: var(--tekst-2); padding: 10px 12px; border-radius: 12px; }
+.moduly { display: flex; flex-wrap: wrap; gap: 8px; }
+.modul { font-size: 13px; padding: 5px 11px; border-radius: 999px; color: var(--tekst-2); border: 1px dashed var(--linia); }
+.modul.aktywny { border: 1px solid transparent; background: var(--akcent-tlo); color: var(--akcent); font-weight: 600; }
+.teraz { border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+.teraz .tresc { font-weight: 600; font-size: 15px; }
+.teraz .dlaczego { color: var(--tekst-2); }
+.kolejka { margin: 0; padding-left: 18px; color: var(--tekst-2); font-size: 13px; display: flex; flex-direction: column; gap: 3px; }
+.odpowiedzi { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; max-height: 300px; overflow-y: auto; }
+.odpowiedzi li { display: grid; grid-template-columns: 1.6em minmax(0, 1fr); gap: 4px 8px; padding: 8px 0; border-bottom: 1px solid var(--linia); font-size: 13.5px; }
+.odpowiedzi li:last-child { border-bottom: 0; }
+.odpowiedzi .nr { font: 12px var(--f-mono); color: var(--tekst-2); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.odpowiedzi .p { color: var(--tekst-2); }
+.odpowiedzi .o { font-weight: 600; }
+.odpowiedzi .o.nieznane { color: var(--uwaga); font-weight: 500; font-style: italic; }
+.eksport { display: flex; flex-direction: column; gap: 10px; }
+.eksport .rzad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.eksport pre { margin: 0; border-radius: 12px; padding: 14px; font: 12px/1.55 var(--f-mono); white-space: pre-wrap; word-break: break-word; max-height: 260px; overflow: auto; color: var(--tekst); }
+.potwierdzenie { font-size: 13px; color: var(--akcent); }
+.stopka { font-size: 12.5px; color: var(--tekst-2); max-width: 75ch; line-height: 1.55; }
+</style>
+
+<div class="ramka">
+  <header class="pasek">
+    <div class="marka">
+      <div class="znak wypukly" aria-hidden="true">MS</div>
+      <div>
+        <h1>Wywiad z pacjentem</h1>
+        <p>Ankieta adaptacyjna · link <span id="kod-linku" style="font-family:var(--f-mono)"></span></p>
+      </div>
+    </div>
+    <div class="sterowanie">
+      <span class="etykieta-demo">Demo · dane fikcyjne</span>
+      <label for="przyklad" class="link" style="text-decoration:none;cursor:default">Przykład:</label>
+      <select id="przyklad" class="przycisk wypukly">
+        <option value="">wybierz…</option>
+      </select>
+      <button id="od-nowa" class="przycisk wypukly" type="button">Od nowa</button>
+    </div>
+  </header>
+
+  <main class="uklad">
+    <section aria-labelledby="t-pacjent">
+      <div class="naglowek-panelu"><h2 id="t-pacjent">Widok pacjenta</h2><span style="font-size:13px;color:var(--tekst-2)">tak to widzi pacjent na telefonie</span></div>
+      <div class="telefon wypukly" id="telefon"></div>
+    </section>
+
+    <aside aria-labelledby="t-lekarz">
+      <div class="naglowek-panelu"><h2 id="t-lekarz">Podgląd lekarza</h2><span class="na-zywo">na żywo</span></div>
+      <div class="lekarz wypukly" id="lekarz"></div>
+    </aside>
+  </main>
+
+  <p class="stopka">Prototyp testowo-edukacyjny. Pytania i progi czerwonych flag nie są zatwierdzone klinicznie, a ankieta nie stawia rozpoznania. Odpowiedzi zostają w tej przeglądarce i nigdzie nie są wysyłane. Nie wpisuj danych prawdziwych pacjentów.</p>
+</div>
+
+<script src="pytania.js"></script>
+<script src="silnik.js"></script>
+<script src="przyklady.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.SilnikWywiadu, B = window.BankWywiadu, P = window.PrzykladyWywiadu;
+  var KLUCZ = 'ms-wywiad-demo-v1';
+  var $tel = document.getElementById('telefon'), $lek = document.getElementById('lekarz');
+
+  var stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
+  var wybor = null; // bieżący wybór przed zatwierdzeniem
+
+  function nowyKod() {
+    var z = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', k = '';
+    for (var i = 0; i < 6; i++) k += z[Math.floor(Math.random() * z.length)];
+    return k.slice(0, 3) + '-' + k.slice(3);
+  }
+  function zapisz() { try { localStorage.setItem(KLUCZ, JSON.stringify(stan)); } catch (e) {} }
+  function wczytaj() {
+    try { var s = JSON.parse(localStorage.getItem(KLUCZ)); if (s && Array.isArray(s.historia)) return s; } catch (e) {}
+    return null;
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function nazwaModulu(id) { var m = B.moduly.filter(function (x) { return x.id === id; })[0]; return m ? m.nazwa : id; }
+
+  // Odtwarza przykład: odpowiada na pytania wybierane przez silnik, zostawia ostatnie `zostaw` bez odpowiedzi.
+  function wczytajPrzyklad(klucz, zostaw) {
+    var odp = P[klucz].odpowiedzi, h = [];
+    for (var i = 0; i < 200; i++) {
+      var n = S.nastepne(B, h).pytanie;
+      if (!n) break;
+      h.push({ id: n.id, wartosc: Object.prototype.hasOwnProperty.call(odp, n.id) ? odp[n.id] : S.NIE_WIEM });
+    }
+    if (zostaw) h = h.slice(0, Math.max(1, h.length - zostaw));
+    stan = { historia: h, potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
+    wybor = null; zapisz(); rysuj();
+  }
+
+  function odpowiedz(v) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    if (!n) return;
+    stan.historia.push({ id: n.id, wartosc: v });
+    wybor = null; zapisz(); rysuj();
+    var pierwszy = $tel.querySelector('.opcja, .pole, button');
+    if (pierwszy) pierwszy.focus({ preventScroll: true });
+  }
+  function wstecz() {
+    if (!stan.historia.length) return;
+    var ostatnia = stan.historia.pop();
+    wybor = ostatnia.wartosc === S.NIE_WIEM ? null : ostatnia.wartosc;
+    // flagi, które zniknęły po cofnięciu, mogą się pokazać ponownie
+    var aktywne = S.przelicz(B, stan.historia).flagi.map(function (f) { return f.id; });
+    stan.potwierdzone = stan.potwierdzone.filter(function (id) { return aktywne.indexOf(id) !== -1; });
+    zapisz(); rysuj();
+  }
+
+  // ── widok pacjenta ──
+  function rysujPacjenta(n, st) {
+    var nowe112 = st.flagi.filter(function (f) { return f.poziom === '112' && stan.potwierdzone.indexOf(f.id) === -1; });
+    var nowePilne = st.flagi.filter(function (f) { return f.poziom === 'pilne' && stan.potwierdzone.indexOf(f.id) === -1; });
+    var zadano = stan.historia.length, zostalo = st.kandydaci.length;
+    var proc = n ? Math.round(100 * zadano / (zadano + zostalo)) : 100;
+    var a = '';
+    if (nowe112.length) {
+      a += '<div class="alarm" role="alertdialog" aria-labelledby="alarm-t"><div class="numer">112</div><h3 id="alarm-t">Zadzwoń teraz pod numer alarmowy</h3>' +
+        '<p>' + esc(nowe112[0].dlaPacjenta) + '</p><small>Numer alarmowy: 112 (lub 999 – pogotowie ratunkowe). Lekarz widzi już ten alarm.</small>' +
+        '<button class="przycisk wypukly" type="button" data-akcja="potwierdz" data-flagi="' + nowe112.map(function (f) { return f.id; }).join(',') + '" style="align-self:flex-start">W demo: wróć do ankiety</button></div>';
+    }
+    var h = '';
+    h += '<div class="postep"><div class="postep-tekst"><span>' + (n ? 'Pytanie ' + (zadano + 1) : 'Gotowe') + '</span><span>' +
+      (n ? 'zostało najwyżej ' + zostalo : zadano + ' odpowiedzi') + '</span></div><div class="tor wklesly"><i style="width:' + proc + '%"></i></div></div>';
+
+    if (!n) {
+      h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Twoje odpowiedzi czekają na lekarza. Jeśli objawy wyraźnie się nasilą, nie czekaj na kontakt: zadzwoń pod 112.</p>' +
+        '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>';
+      h += '<div class="nawigacja"><button class="przycisk wypukly" type="button" data-akcja="wstecz">Wstecz</button></div>';
+      $tel.innerHTML = h + a; return;
+    }
+
+    if (nowePilne.length) {
+      h += '<div class="komunikat-pilne" role="status"><strong>Ważne</strong><span>' + esc(nowePilne[0].dlaPacjenta) + '</span>' +
+        '<button class="link" type="button" style="align-self:flex-start;padding:0" data-akcja="potwierdz" data-flagi="' + nowePilne.map(function (f) { return f.id; }).join(',') + '">Rozumiem</button></div>';
+    }
+
+    h += '<div class="modul-pacjenta">' + esc(nazwaModulu(n.modul)) + '</div>';
+    h += '<h3 class="pytanie" id="tresc-pytania">' + esc(n.tekst) + '</h3>';
+    h += rysujOdpowiedz(n);
+
+    var mozeDalej = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.length > 0 :
+      n.typ === 'liczba' ? wybor !== null && wybor !== '' : n.typ === 'tekst';
+    var pokazDalej = n.typ === 'wiele' || n.typ === 'liczba' || n.typ === 'tekst';
+    h += '<div class="nawigacja"><button class="przycisk wypukly" type="button" data-akcja="wstecz"' + (zadano ? '' : ' disabled') + '>Wstecz</button><div class="prawe">';
+    if (n.typ !== 'tekst' && n.nieWiem !== false) h += '<button class="link" type="button" data-akcja="niewiem">Nie wiem</button>';
+    if (pokazDalej) h += '<button class="przycisk wypukly glowny" type="button" data-akcja="dalej" id="dalej"' + (mozeDalej ? '' : ' disabled') + '>' +
+      (n.typ === 'tekst' ? 'Dalej' : 'Dalej') + '</button>';
+    h += '</div></div>';
+
+    $tel.innerHTML = h + a;
+  }
+
+  function rysujOdpowiedz(n) {
+    var h = '';
+    if (n.typ === 'jeden' || n.typ === 'wiele') {
+      h += '<div class="opcje" role="group" aria-labelledby="tresc-pytania">';
+      n.opcje.forEach(function (op) {
+        var wybrane = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.indexOf(op.w) !== -1 : wybor === op.w;
+        h += '<button type="button" class="opcja wypukly ' + n.typ + '" data-w="' + esc(op.w) + '" aria-pressed="' + wybrane + '"><span class="kropka"></span><span>' + esc(op.t) + '</span></button>';
+      });
+      h += '</div>';
+    } else if (n.typ === 'skala') {
+      h += '<div class="skala" role="group" aria-labelledby="tresc-pytania">';
+      for (var i = 0; i <= 10; i++) h += '<button type="button" class="opcja wypukly" data-w="' + i + '" aria-pressed="' + (wybor === i) + '">' + i + '</button>';
+      h += '</div><div class="skala-opis"><span>0 – ' + esc(n.skala[0]) + '</span><span style="text-align:right">10 – ' + esc(n.skala[1]) + '</span></div>';
+    } else if (n.typ === 'liczba') {
+      h += '<div class="pole-liczba"><input id="pole-' + n.id + '" class="pole wklesly" type="number" inputmode="decimal" aria-labelledby="tresc-pytania"' +
+        ' min="' + n.min + '" max="' + n.max + '" step="' + (n.krok || 1) + '" value="' + (typeof wybor === 'number' ? wybor : '') + '"><span>' + esc(n.jednostka || '') + '</span></div>';
+    } else if (n.typ === 'tekst') {
+      h += '<textarea id="pole-' + n.id + '" class="pole wklesly" aria-labelledby="tresc-pytania" placeholder="Możesz zostawić puste">' + esc(typeof wybor === 'string' ? wybor : '') + '</textarea>';
+    }
+    return h;
+  }
+
+  // ── panel lekarza ──
+  function rysujLekarza(n, st) {
+    var h = '';
+    h += '<div class="metryka"><span>kod <b>' + stan.kod + '</b></span><span>odpowiedzi <b>' + stan.historia.length + '</b></span><span>bank <b>' + B.wersja + '</b></span></div>';
+
+    h += '<div class="sekcja"><h3>Czerwone flagi</h3>';
+    if (!st.flagi.length) h += '<div class="spokoj wklesly">Brak. Reguły sprawdzają odpowiedzi po każdym pytaniu.</div>';
+    else h += '<div class="flagi">' + st.flagi.map(function (f) {
+      return '<div class="flaga ' + (f.poziom === '112' ? 'f112' : 'fpilne') + '"><span class="poziom">' + (f.poziom === '112' ? '112' : 'PILNE') + '</span><span>' + esc(f.dlaLekarza) + '</span></div>';
+    }).join('') + '</div>';
+    h += '</div>';
+
+    h += '<div class="sekcja"><h3>Ścieżka wywiadu</h3><div class="moduly">' + B.moduly.filter(function (m) { return m.id !== 'start'; }).map(function (m) {
+      return '<span class="modul' + (st.moduly.indexOf(m.id) !== -1 ? ' aktywny' : '') + '">' + esc(m.nazwa) + '</span>';
+    }).join('') + '</div></div>';
+
+    h += '<div class="sekcja"><h3>Teraz pyta</h3>';
+    if (n) {
+      var dl = S.uzasadnienie(n, st.o);
+      h += '<div class="teraz wklesly"><span class="tresc">' + esc(n.tekst) + '</span>' + (dl ? '<span class="dlaczego">Dlaczego: ' + esc(dl) + '</span>' : '') + '</div>';
+      var dalej = st.kandydaci.filter(function (q) { return q !== n; }).slice(0, 3);
+      if (dalej.length) h += '<ol class="kolejka" aria-label="Następne w kolejce">' + dalej.map(function (q) { return '<li>' + esc(q.krotko) + ' <span style="opacity:.7">· ' + esc(nazwaModulu(q.modul)) + '</span></li>'; }).join('') + '</ol>';
+    } else h += '<div class="spokoj wklesly">Wywiad zakończony. Brak dalszych pytań dla tej ścieżki.</div>';
+    h += '</div>';
+
+    h += '<div class="sekcja"><h3>Odpowiedzi</h3>';
+    if (!stan.historia.length) h += '<div class="spokoj wklesly">Pacjent jeszcze nie odpowiedział.</div>';
+    else h += '<ol class="odpowiedzi" id="lista-odp">' + stan.historia.map(function (x, i) {
+      var q = S.pytanieWg(B, x.id);
+      return '<li><span class="nr">' + (i + 1) + '</span><span><span class="p">' + esc(q.krotko) + '</span><br><span class="o' + (S.czyNieznane(x.wartosc) ? ' nieznane' : '') + '">' +
+        esc(S.opisOdpowiedzi(q, x.wartosc)) + '</span></span></li>';
+    }).join('') + '</ol>';
+    h += '</div>';
+
+    var md = S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) });
+    h += '<div class="sekcja eksport"><h3>Dla Konsylium: 01-wywiad.md</h3><div class="rzad">' +
+      '<button class="przycisk wypukly glowny" type="button" data-akcja="kopiuj">Kopiuj 01-wywiad.md</button>' +
+      '<button class="przycisk wypukly" type="button" data-akcja="kopiuj-json">Kopiuj JSON</button><span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' +
+      '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(md) + '</pre></div>';
+
+    $lek.innerHTML = h;
+    var lista = document.getElementById('lista-odp');
+    if (lista) lista.scrollTop = lista.scrollHeight;
+  }
+
+  function rysuj() {
+    var r = S.nastepne(B, stan.historia);
+    if (r.pytanie && wybor === null && r.pytanie.typ === 'wiele') wybor = [];
+    document.getElementById('kod-linku').textContent = 'ms.example/w/' + stan.kod;
+    rysujPacjenta(r.pytanie, r.stan);
+    rysujLekarza(r.pytanie, r.stan);
+  }
+
+  function kopiuj(tekst, etykieta) {
+    var potw = document.getElementById('potw');
+    var ok = function () { potw.textContent = 'Skopiowano ' + etykieta + '.'; };
+    var awaryjnie = function () {
+      var pre = document.getElementById('podglad-md'), sel = window.getSelection(), zakres = document.createRange();
+      zakres.selectNodeContents(pre); sel.removeAllRanges(); sel.addRange(zakres);
+      potw.textContent = 'Zaznaczono tekst: skopiuj go skrótem Ctrl+C.';
+    };
+    try { navigator.clipboard.writeText(tekst).then(ok, awaryjnie); } catch (e) { awaryjnie(); }
+  }
+
+  // ── zdarzenia ──
+  $tel.addEventListener('click', function (e) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    var opcja = e.target.closest('.opcja');
+    if (opcja && n) {
+      var w = n.typ === 'skala' ? Number(opcja.dataset.w) : opcja.dataset.w;
+      if (n.typ === 'wiele') {
+        var op = n.opcje.filter(function (x) { return x.w === w; })[0];
+        var lista = Array.isArray(wybor) ? wybor.slice() : [];
+        var idx = lista.indexOf(w);
+        if (idx !== -1) lista.splice(idx, 1);
+        else if (op.wyklucza) lista = [w];
+        else { lista = lista.filter(function (x) { var o2 = n.opcje.filter(function (y) { return y.w === x; })[0]; return !o2.wyklucza; }); lista.push(w); }
+        wybor = lista; rysuj();
+      } else {
+        wybor = w; opcja.setAttribute('aria-pressed', 'true');
+        setTimeout(function () { odpowiedz(w); }, 180);
+      }
+      return;
+    }
+    var b = e.target.closest('[data-akcja]');
+    if (!b) return;
+    var a = b.dataset.akcja;
+    if (a === 'wstecz') wstecz();
+    else if (a === 'niewiem') odpowiedz(S.NIE_WIEM);
+    else if (a === 'potwierdz') { stan.potwierdzone = stan.potwierdzone.concat(b.dataset.flagi.split(',')); zapisz(); rysuj(); }
+    else if (a === 'dalej' && n) {
+      if (n.typ === 'tekst') odpowiedz((document.getElementById('pole-' + n.id).value || '').trim());
+      else if (n.typ === 'liczba') odpowiedz(wybor);
+      else odpowiedz(wybor);
+    }
+  });
+  $tel.addEventListener('input', function (e) {
+    var n = S.nastepne(B, stan.historia).pytanie;
+    if (!n || !e.target.classList.contains('pole')) return;
+    if (n.typ === 'liczba') {
+      var v = parseFloat(String(e.target.value).replace(',', '.'));
+      wybor = isNaN(v) || v < n.min || v > n.max ? null : v;
+      var d = document.getElementById('dalej'); if (d) d.disabled = wybor === null;
+    } else wybor = e.target.value;
+  });
+  $tel.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.matches('input.pole')) { var d = document.getElementById('dalej'); if (d && !d.disabled) d.click(); }
+  });
+  $lek.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-akcja]'); if (!b) return;
+    if (b.dataset.akcja === 'kopiuj') kopiuj(S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) }), '01-wywiad.md');
+    if (b.dataset.akcja === 'kopiuj-json') kopiuj(JSON.stringify({ kod: stan.kod, bank: B.wersja, start: stan.start, historia: stan.historia,
+      flagi: S.przelicz(B, stan.historia).flagi.map(function (f) { return { id: f.id, poziom: f.poziom }; }) }, null, 2), 'JSON');
+  });
+
+  var $sel = document.getElementById('przyklad');
+  Object.keys(P).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = P[k].nazwa; $sel.appendChild(o); });
+  $sel.addEventListener('change', function () { if ($sel.value) wczytajPrzyklad($sel.value, 3); $sel.value = ''; });
+  document.getElementById('od-nowa').addEventListener('click', function () {
+    stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() }; wybor = null; zapisz(); rysuj();
+  });
+
+  var zapisany = wczytaj();
+  if (zapisany) { stan = zapisany; rysuj(); }
+  else wczytajPrzyklad('brzuch', 9); // stan startowy: przykład w trakcie, żeby od razu było widać działanie
+})();
+</script>
