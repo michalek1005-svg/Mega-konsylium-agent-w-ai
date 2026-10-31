@@ -27,4 +27,4 @@ Kartka sprawy:
 Zapisz do `07-sprawdzenie.json` sekcję `fakty` zgodnie z `schemas/werdykt.schema.json`. Każdy wpis: twierdzenie, werdykt, źródło (ścieżka/DOI), cytat ≤25 słów.
 Nie poprawiaj projektu sam. Nie proponuj alternatyw. Nie oceniaj, czy rekomendacja jest „dobra" — oceniasz, czy jest **prawdziwa i udokumentowana**.
 
-**Dymek (docs/DYMKI.md):** ostatnia linia Twojej odpowiedzi dla ordynatora to `SKRÓT: <jedno zdanie, ≤150 znaków, sama treść, bez markdownu>`.
+**Dymek (docs/DYMKI.md):** dwie ostatnie linie Twojej odpowiedzi dla ordynatora to `DYMEK: <2–4 pełne zdania językiem medycznym: co stwierdzasz, na jakiej podstawie, co z tego wynika; ≤600 znaków, bez markdownu>` i `SKRÓT: <jedno zdanie, ≤150 znaków>`. Opcjonalnie przed nimi `INFO: <liczby, skale, wytyczne, np. „Wells 1 pkt · D-dimer <500 · ESC 2019”; ≤200 znaków>`.

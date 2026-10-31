@@ -1,7 +1,7 @@
 {
   "name": "ms-konsylium-narzedzia",
   "productName": "MS Konsylium Narzędzia",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Wywiad z pacjentem i anonimizator badań: offline, dla Konsylium AI",
   "main": "main.js",
   "private": true,

@@ -154,6 +154,9 @@ body {
 .dymek.stary { opacity: .0; transform: translate(-50%, -100%) scale(.96); pointer-events: none; }
 .dymek.wejscie { animation: wejscie .35s ease both; }
 @keyframes wejscie { from { opacity: 0; transform: translate(-50%, -88%) scale(.94); } }
+.dymek.pelny { max-width: 38cqw; min-width: 22cqw; font-size: max(10px, 1.08cqw); line-height: 1.42; }
+.dymek .info { display: block; margin-top: .45cqw; padding-top: .4cqw; border-top: 1px solid rgba(15,94,88,.18); font-size: max(8.5px, .9cqw);
+  font-variant-numeric: tabular-nums; color: var(--dymek-mut); }
 .dymek.pisze { min-width: 0; padding: .9cqw 1.3cqw; }
 .kropki { display: inline-flex; gap: .45cqw; }
 .kropki i { width: .7cqw; height: .7cqw; min-width: 5px; min-height: 5px; border-radius: 50%; background: var(--dymek-mut); animation: kr 1s infinite; }

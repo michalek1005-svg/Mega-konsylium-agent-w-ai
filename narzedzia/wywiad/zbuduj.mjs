@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const WERSJA = '0.3.0';
+const WERSJA = '0.4.0';
 const tu = dirname(fileURLToPath(import.meta.url));
 const dist = join(tu, 'dist');
 mkdirSync(dist, { recursive: true });
@@ -39,7 +39,7 @@ function zloz({ font, fontLink, naPoczatku }) {
   let html = readFileSync(join(tu, 'index.html'), 'utf8');
   html = html.replace(/<link rel="stylesheet" href="\.\.\/wspolne\/ms-tokeny\.css">\n?/, '');
   html = html.replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => font).replace('<!--@@FONT-LINK@@-->', () => fontLink);
-  html = html.replace(/<script src="([\w.-]+\.js)"><\/script>/g, (_, plik) => {
+  html = html.replace(/<script src="((?:\.\.\/wspolne\/)?[\w.-]+\.js)"><\/script>/g, (_, plik) => {
     const src = plik === 'wykrywanie.js' ? wykrywanie : readFileSync(join(tu, plik), 'utf8');
     return '<script>\n' + src.replace(/<\/script/gi, '<\\/script') + '\n</script>';
   });

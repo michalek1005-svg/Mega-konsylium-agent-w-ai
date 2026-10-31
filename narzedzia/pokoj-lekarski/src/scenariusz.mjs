@@ -169,8 +169,11 @@ function zLogu(zdarzenia) {
     let s = mapa.get(f.id);
     if (!s) { s = { id: f.id, tytul: f.tytul, temat: null, czas: z.ts || null, rz: f.rz, wypowiedzi: [] }; mapa.set(f.id, s); }
     if (z.temat) s.temat = utnij(z.temat, 160);
-    const w = wyp(rola(z.rola || z.agent) || 'ordynator', z.skrot, z.pelny || z.skrot, z.plik);
+    const w = wyp(rola(z.rola || z.agent) || 'ordynator', z.skrot, z.pelny || z.tresc || z.skrot, z.plik);
     if (z.persona) w.persona = z.persona;
+    // pełniejsza wypowiedź do dymku (2–4 zdania językiem medycznym) i linia z liczbami/skalami
+    if (z.tresc) w.tresc = bezMarkdown(String(z.tresc)).replace(/\s+/g, ' ').trim().slice(0, 700);
+    if (z.info) w.info = bezMarkdown(String(z.info)).replace(/\s+/g, ' ').trim().slice(0, 240);
     s.wypowiedzi.push(w);
   }
   return [...mapa.values()];

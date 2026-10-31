@@ -32,7 +32,12 @@ button.modul:focus-visible, .nk-button:focus-visible { outline: 2px solid var(--
 .stan .offline { color: var(--petrol); font-weight: 700; display: flex; align-items: center; gap: 7px; }
 .stan .offline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
 main { position: relative; min-width: 0; }
-iframe { border: 0; width: 100%; height: 100%; display: block; background: transparent; }
+iframe { border: 0; width: 100%; height: 100%; display: block; background: transparent; position: absolute; inset: 0; }
+.folder { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 12px; color: var(--mut); }
+.folder b { color: var(--ink); font-size: 12.5px; }
+.folder code { font: 11.5px ui-monospace, Consolas, monospace; color: var(--ink); word-break: break-all; }
+.folder .rzad { display: flex; gap: 6px; flex-wrap: wrap; }
+.folder .brak-f { color: var(--uwaga, #8a5d0c); }
 .brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--mut); padding: 40px; }
 </style>
 </head>
@@ -42,46 +47,125 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
   <p class="nk-label">Moduły</p>
   <button class="modul" type="button" data-modul="wywiad" aria-current="page">Wywiad z pacjentem<small>Opis, pytania, kopia do Konsylium</small></button>
   <button class="modul" type="button" data-modul="anonimizator">Anonimizator badań<small>Wyniki Synevo bez danych osobowych</small></button>
+  <button class="modul" type="button" data-modul="pokoj">Pokój lekarski<small>Konsylium na żywo, dymki agentów</small></button>
   <div class="stan">
+    <div class="folder" id="folder-panel">
+      <b>Folder Konsylium</b>
+      <span id="folder-sciezka">Nie wybrano. Wybierz kopię repo Konsylium, żeby pracować na żywo z Claude.</span>
+      <div class="rzad"><button class="nk-button" type="button" id="folder-wybierz">Wybierz folder…</button>
+      <button class="nk-button" type="button" id="folder-otworz" hidden>Otwórz</button></div>
+    </div>
     <button class="nk-button" type="button" id="motyw">Motyw jasny / ciemny</button>
     <span class="offline">Offline</span>
-    <span>Sieć jest zablokowana. Dane zostają na tym komputerze, dopóki sam ich nie skopiujesz.</span>
+    <span>Sieć jest zablokowana. Dane zostają na tym komputerze. Do folderu Konsylium aplikacja zapisuje tylko teksty po anonimizacji.</span>
     <span id="wersja"></span>
   </div>
 </nav>
 <main>
-  <iframe id="ramka" title="Moduł" allow="clipboard-write *"></iframe>
   <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
 </main>
 <!--KONFIGURACJA-->
 <script>
 (function () {
-  var MODULY = { wywiad: 'moduly/wywiad.html', anonimizator: 'moduly/anonimizator.html' };
-  var ramka = document.getElementById('ramka'), brak = document.getElementById('brak');
+  'use strict';
+  var MODULY = { wywiad: 'moduly/wywiad.html', anonimizator: 'moduly/anonimizator.html', pokoj: 'moduly/pokoj.html' };
+  var NAZWY = { wywiad: 'Wywiad z pacjentem', anonimizator: 'Anonimizator badań', pokoj: 'Pokój lekarski' };
+  var main = document.querySelector('main'), brak = document.getElementById('brak');
   var dostepne = window.MS_MODULY || {};
+  var P = window.msPowloka || null; // most do plików (preload.js); brak = podgląd poza Electronem
+  // Każdy moduł ma własną ramkę, ładowaną przy pierwszym otwarciu i potem tylko ukrywaną,
+  // żeby przejście „wywiad → anonimizator → wywiad” nie gubiło stanu.
+  var ramki = {}, gotowe = {}, kolejka = {}, biezacy = null;
+  function ramka(id) {
+    if (ramki[id]) return ramki[id];
+    var f = document.createElement('iframe');
+    f.title = NAZWY[id]; f.setAttribute('allow', 'clipboard-write *'); f.hidden = true; f.dataset.modul = id;
+    f.addEventListener('load', function () {
+      gotowe[id] = true;
+      wyslijMotyw(f);
+      (kolejka[id] || []).forEach(function (m) { f.contentWindow.postMessage(m, '*'); });
+      kolejka[id] = [];
+    });
+    f.src = MODULY[id];
+    main.insertBefore(f, brak);
+    ramki[id] = f;
+    return f;
+  }
+  function doModulu(id, wiad) {
+    if (!MODULY[id] || dostepne[id] === false) return false;
+    var f = ramka(id);
+    if (gotowe[id]) f.contentWindow.postMessage(wiad, '*');
+    else (kolejka[id] = kolejka[id] || []).push(wiad);
+    return true;
+  }
   function pokaz(id) {
+    if (!MODULY[id]) id = 'wywiad';
+    biezacy = id;
     document.querySelectorAll('button.modul').forEach(function (b) {
       if (b.dataset.modul === id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
-    if (dostepne[id] === false) { ramka.hidden = true; brak.hidden = false; return; }
-    brak.hidden = true; ramka.hidden = false;
-    ramka.src = MODULY[id];
+    Object.keys(ramki).forEach(function (k) { ramki[k].hidden = k !== id; });
+    if (dostepne[id] === false) { brak.hidden = false; return; }
+    brak.hidden = true;
+    ramka(id).hidden = false;
     try { localStorage.setItem('ms-modul', id); } catch (e) {}
   }
   document.querySelectorAll('button.modul').forEach(function (b) { b.addEventListener('click', function () { pokaz(b.dataset.modul); }); });
+
+  // Prośby modułów (narzedzia/wspolne/ms-most.js). Odpowiadamy tylko naszym ramkom.
+  function modulZrodla(src) {
+    for (var k in ramki) if (ramki[k].contentWindow === src) return k;
+    return null;
+  }
+  var OPERACJE = {
+    ping: function () { return 'ms-powloka-1'; },
+    folder: function () { return P ? P.folder() : null; },
+    wybierzFolder: function () { return P ? P.wybierzFolder().then(function (f) { pokazFolder(f); return f; }) : null; },
+    czytaj: function (a) { return P.czytaj(a[0]); },
+    zapisz: function (a) { return P.zapisz(a[0], a[1]); },
+    lista: function (a) { return P.lista(a[0]); },
+    czytajFolder: function (a) { return P.czytajFolder(a[0]); },
+    otworzModul: function (a) { pokaz(a[0]); return true; },
+    wyslij: function (a, od) { return doModulu(a[0], { typ: 'ms-dane', od: od, dane: a[1] }); }
+  };
+  window.addEventListener('message', function (e) {
+    var d = e.data, od = modulZrodla(e.source);
+    if (!d || d.typ !== 'ms-most' || !od) return;
+    var odp = function (wynik, blad) { e.source.postMessage({ typ: 'ms-most-odp', id: d.id, wynik: wynik, blad: blad }, '*'); };
+    var op = OPERACJE[d.op];
+    if (!op) { odp(null, 'Nieznana operacja.'); return; }
+    if (!P && ['czytaj', 'zapisz', 'lista', 'czytajFolder'].indexOf(d.op) !== -1) { odp(null, 'Pliki działają tylko w aplikacji Windows.'); return; }
+    Promise.resolve().then(function () { return op(d.args || [], od); }).then(function (w) { odp(w === undefined ? null : w); }, function (err) {
+      odp(null, String(err && err.message || err).replace(/^Error invoking remote method '[^']+': (Error: )?/, ''));
+    });
+  });
+
+  // Folder Konsylium
+  var $fs = document.getElementById('folder-sciezka'), $fo = document.getElementById('folder-otworz'), $fw = document.getElementById('folder-wybierz');
+  function pokazFolder(f) {
+    if (f) { $fs.innerHTML = ''; var c = document.createElement('code'); c.textContent = f; $fs.appendChild(c); $fw.textContent = 'Zmień…'; }
+    else { $fs.textContent = 'Nie wybrano. Wybierz kopię repo Konsylium, żeby pracować na żywo z Claude.'; $fs.className = 'brak-f'; $fw.textContent = 'Wybierz folder…'; }
+    $fo.hidden = !f;
+  }
+  if (P) {
+    P.folder().then(pokazFolder);
+    $fw.addEventListener('click', function () { P.wybierzFolder().then(function (f) { pokazFolder(f); Object.keys(ramki).forEach(function (k) { doModulu(k, { typ: 'ms-dane', od: 'powloka', dane: { folder: f } }); }); }); });
+    $fo.addEventListener('click', function () { P.otworzFolder(); });
+  } else document.getElementById('folder-panel').hidden = true;
+
   var start = 'wywiad';
   try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}
-  pokaz(MODULY[start] ? start : 'wywiad');
-  // Motyw jak w Nawigatorze; zapamiętany i przekazywany do modułu
+  pokaz(start);
+  // Motyw jak w Nawigatorze; zapamiętany i przekazywany do modułów
+  function wyslijMotyw(f) { try { f.contentWindow.postMessage({ typ: 'ms-motyw', motyw: document.documentElement.dataset.motyw }, '*'); } catch (e) {} }
   function ustawMotyw(m) {
     document.documentElement.dataset.motyw = m;
     try { localStorage.setItem('ms-motyw', m); } catch (e) {}
-    try { ramka.contentWindow.postMessage({ typ: 'ms-motyw', motyw: m }, '*'); } catch (e) {}
+    Object.keys(ramki).forEach(function (k) { wyslijMotyw(ramki[k]); });
   }
   var motyw = 'ciemny';
   try { motyw = localStorage.getItem('ms-motyw') || 'ciemny'; } catch (e) {}
   document.documentElement.dataset.motyw = motyw;
-  ramka.addEventListener('load', function () { ustawMotyw(document.documentElement.dataset.motyw); });
   document.getElementById('motyw').addEventListener('click', function () {
     ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
   });

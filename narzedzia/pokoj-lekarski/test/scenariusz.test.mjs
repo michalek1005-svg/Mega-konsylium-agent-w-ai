@@ -104,3 +104,14 @@ test('linia SKRÓT: w pliku agenta wygrywa z heurystyką', async () => {
   assert.equal(skrotAgenta('**SKRÓT:** Pasożyt?'), 'Pasożyt?');
   assert.equal(skrotAgenta('bez skrótu'), null);
 });
+
+test('dymek z pełniejszą treścią medyczną i linią info', () => {
+  const log = JSON.stringify({ ts: '2026-11-01T10:05:00Z', zdarzenie: 'wypowiedz', rola: 'bayes', faza: 'Ślepa tura', skrot: 'ACS p 0,30.',
+    tresc: 'Wiodącym rozpoznaniem jest **ostry zespół wieńcowy** (p≈0,30). Przemawia za tym ucisk zamostkowy z promieniowaniem do żuchwy. Proponuję EKG i hs-troponinę w 0 i 1 h.',
+    info: 'HEART 5 pkt · ESC 2023' });
+  const w = zbudujScenariusz({ '_log.jsonl': log }, 'X').sceny[0].wypowiedzi[0];
+  assert.equal(w.skrot, 'ACS p 0,30.');
+  assert.match(w.tresc, /^Wiodącym rozpoznaniem jest ostry zespół wieńcowy/);
+  assert.equal(w.info, 'HEART 5 pkt · ESC 2023');
+  assert.match(w.pelny, /hs-troponinę/);
+});

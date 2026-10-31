@@ -222,7 +222,7 @@ ${podpisy(wpisy)}`;
 
   function czasKroku(k) {
     const w = scen.sceny[k.si].wypowiedzi[k.wi];
-    return (2600 + w.skrot.length * 42) / tempo;
+    return (2600 + (w.tresc || w.skrot).length * 45 + (w.info ? 1200 : 0)) / tempo;
   }
 
   function pokaz(n, bezPisania) {
@@ -243,9 +243,9 @@ ${podpisy(wpisy)}`;
     dymki.querySelectorAll('.dymek').forEach((d) => { d.classList.add('stary'); setTimeout(() => d.remove(), 400); });
     const d = document.createElement('div');
     const r = ROLE[w.kto] || { nazwa: w.kto, grupa: 'lekarz' };
-    d.className = 'dymek wejscie';
+    d.className = 'dymek wejscie' + (w.tresc ? ' pelny' : '');
     d.style.setProperty('--g', r.grupa === 'rezydent' ? '#8a5f34' : r.grupa === 'zastepca' ? '#4b6e3c' : r.grupa === 'sprawdzajacy' ? '#5a5890' : '#0F5E58');
-    const tresc = `<span class="kto">${esc(r.nazwa)}${w.persona ? ' · ' + esc(w.persona) : ''}</span>${esc(w.skrot)}`;
+    const tresc = `<span class="kto">${esc(r.nazwa)}${w.persona ? ' · ' + esc(w.persona) : ''}</span>${esc(w.tresc || w.skrot)}${w.info ? `<span class="info">${esc(w.info)}</span>` : ''}`;
     const ruch = !bezPisania && !matchMedia('(prefers-reduced-motion: reduce)').matches;
     d.innerHTML = ruch ? '<span class="kropki" aria-label="mówi"><i></i><i></i><i></i></span>' : tresc;
     if (ruch) d.classList.add('pisze');
@@ -253,7 +253,7 @@ ${podpisy(wpisy)}`;
     dymki.appendChild(d);
     ustawDymek(d, w.kto);
     if (ruch) setTimeout(() => { if (!d.isConnected) return; d.classList.remove('pisze'); d.innerHTML = tresc; ustawDymek(d, w.kto); }, Math.min(700, 900 / tempo));
-    $('napisy').innerHTML = `<span class="nap-temat"><b>Teraz · ${esc(sc.tytul)}</b>${esc(sc.temat)}</span><span><b>${esc(r.nazwa)}</b>${esc(w.skrot)}</span>`;
+    $('napisy').innerHTML = `<span class="nap-temat"><b>Teraz · ${esc(sc.tytul)}</b>${esc(sc.temat)}</span><span><b>${esc(r.nazwa)}</b>${esc(w.tresc || w.skrot)}${w.info ? ` <i>(${esc(w.info)})</i>` : ''}</span>`;
     // oś i protokół
     document.querySelectorAll('.odcinek').forEach((el, si) => {
       el.classList.toggle('biezacy', si === k.si);
@@ -336,7 +336,7 @@ ${podpisy(wpisy)}`;
   function pokazSzczegol(w, sc) {
     const r = ROLE[w.kto] || { nazwa: w.kto };
     const el = $('szczegol'); el.hidden = false;
-    el.innerHTML = `<b>${esc(r.nazwa)} · ${esc(sc.tytul)}</b>\n${esc(w.pelny)}${w.plik ? `\n\n<span class="plik">${esc(w.plik)}</span>` : ''}`;
+    el.innerHTML = `<b>${esc(r.nazwa)} · ${esc(sc.tytul)}</b>\n${esc(w.pelny)}${w.info && !String(w.pelny).includes(w.info) ? `\n\n${esc(w.info)}` : ''}${w.plik ? `\n\n<span class="plik">${esc(w.plik)}</span>` : ''}`;
     el.scrollTop = 0;
   }
   function pokazOsobe(kto) {
@@ -393,6 +393,54 @@ ${podpisy(wpisy)}`;
       ustawGre(true);
     });
   }
+  // ---------- na żywo w powłoce Windows: najnowsza sprawa z sprawy/ w folderze Konsylium ----------
+  // Konsylium (Claude Code na tym komputerze) pisze sprawy/<ID>/_log.jsonl skryptem dymek.py.
+  // Pokój co 3 s czyta folder sprawy, a co 15 s sprawdza, czy nie zaczęła się nowsza sprawa.
+  let zywoPowloka = null;
+  async function najnowszaSprawa() {
+    const l = (await window.MsMost.lista('sprawy')).filter((x) => x.katalog && /^\d{4}-\d{2}-\d{2}/.test(x.nazwa));
+    if (!l.length) return null;
+    const zLogiem = [];
+    for (const x of l) {
+      const log = (await window.MsMost.lista('sprawy/' + x.nazwa)).filter((p) => !p.katalog).reduce((m, p) => Math.max(m, p.zmiana), 0);
+      zLogiem.push({ nazwa: x.nazwa, zmiana: Math.max(log, x.zmiana) });
+    }
+    zLogiem.sort((a, b) => b.zmiana - a.zmiana || b.nazwa.localeCompare(a.nazwa));
+    return zLogiem[0];
+  }
+  async function zywoZPowloki(tylkoSwieza) {
+    const s = await najnowszaSprawa().catch(() => null);
+    if (!s) { if (!tylkoSwieza) $('opis-sprawy').textContent = 'W folderze Konsylium nie ma jeszcze spraw (sprawy/…). Pokój poczeka na pierwszą.'; return false; }
+    if (tylkoSwieza && Date.now() - s.zmiana > 3 * 3600 * 1000) return false;
+    zatrzymajZywo();
+    let nazwa = s.nazwa, licz = 0;
+    const odswiez = async () => {
+      try {
+        if (++licz % 5 === 0) { const n = await najnowszaSprawa(); if (n && n.nazwa !== nazwa) { nazwa = n.nazwa; scen = null; kroki = []; i = 0; } }
+        const pliki = {};
+        for (const p of await window.MsMost.czytajFolder('sprawy/' + nazwa)) pliki[p.sciezka] = p.tekst;
+        aktualizuj(zbudujScenariusz(pliki, nazwa));
+        $('opis-sprawy').textContent = `Sprawa ${nazwa} · na żywo z folderu Konsylium`;
+      } catch (e) { $('opis-sprawy').textContent = 'Nie da się czytać folderu sprawy: ' + e.message; }
+    };
+    scen = null; kroki = []; i = 0;
+    await odswiez();
+    zywoPowloka = setInterval(odswiez, 3000);
+    zywoTimer = zywoPowloka;
+    $('zywo').classList.add('nk-on'); $('zywo').textContent = '● Na żywo';
+    ustawGre(true);
+    return true;
+  }
+  if (window.MsMost) window.MsMost.dostepny().then(async (jest) => {
+    if (!jest) return;
+    // w powłoce przycisk „Na żywo” zawsze bierze sprawę z folderu Konsylium (bez okna wyboru)
+    const nowy = $('zywo').cloneNode(true); $('zywo').replaceWith(nowy);
+    nowy.hidden = false; nowy.title = 'Pokazuje najnowszą sprawę z folderu Konsylium i dociąga nowe dymki co 3 sekundy.';
+    nowy.addEventListener('click', () => { if (zywoTimer) zatrzymajZywo(); else zywoZPowloki(false); });
+    if (await window.MsMost.folder().catch(() => null)) zywoZPowloki(true);
+    window.MsMost.naDane((od, d) => { if (d && d.zywo) zywoZPowloki(false); });
+  });
+  window.addEventListener('message', (e) => { if (e.data && e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw); });
   $('folder').addEventListener('change', (e) => {
     const l = [...e.target.files].map((f) => ({ sciezka: f.webkitRelativePath || f.name, plik: f }));
     if (l.length) wczytajPliki(l);

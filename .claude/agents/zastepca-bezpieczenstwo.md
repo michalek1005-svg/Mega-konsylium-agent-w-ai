@@ -25,6 +25,6 @@ Odpowiedz WYŁĄCZNIE JSON-em:
 {"zastepca":"bezpieczenstwo","wynik":0,"eskaluj":false,
  "pilnosc_wstepna":3,
  "flagi":[{"flaga":"...","status":"OBECNA|NIEOBECNA|NIEZBADANA"}],
- "uzasadnienie":"≤40 słów","skrot":"jedno zdanie ≤150 znaków dla dymku (docs/DYMKI.md)"}
+ "uzasadnienie":"≤40 słów","skrot":"jedno zdanie ≤150 znaków dla dymku (docs/DYMKI.md)","dymek":"2–4 pełne zdania językiem medycznym, ≤600 znaków","info":"liczby/skale/wytyczne ≤200 znaków albo pusty"}
 ```
 Jeśli masz wątpliwość między dwoma wynikami — wybierz wyższy. Lepiej uruchomić pełne konsylium na niepotrzebnie, niż przegapić.

@@ -13,5 +13,8 @@
 4. **NIEZNANE z wywiadu** traktuj jako nieznane, nie jako „pewnie w normie”.
 5. **Runda dyskusji** (gdy ordynator Cię wezwie do `04-konsylium.md`): ≤120 słów, dwie części: „co mnie przekonuje w cudzych opiniach” i „co by zmieniło moje zdanie”. Możesz zmienić swoje `p` — wtedy dopisz `rewizja: true` w swoim JSON-ie i powód.
 6. Zapisz do `_log.jsonl` start i stop.
-   Ostatnia linia Twojej odpowiedzi dla ordynatora (w ślepej turze i w każdej rundzie): `SKRÓT: <jedno zdanie, ≤150 znaków>`, np. „Tabletka widmo 0,70, pilność 4”. Ordynator wpisze ją jako dymek (docs/DYMKI.md).
+   Na końcu odpowiedzi dla ordynatora (w ślepej turze i w każdej rundzie) trzy linie dla dymku w Pokoju lekarskim (docs/DYMKI.md):
+   `INFO: <liczby, skale, wytyczne, ≤200 znaków>` (opcjonalnie), np. „p=0,70 · pilność 4 · Bristol 6”;
+   `DYMEK: <2–4 pełne zdania językiem medycznym, ≤600 znaków>`: wiodące rozpoznanie z prawdopodobieństwem, najważniejszy argument za i przeciw, co proponujesz zbadać lub zrobić;
+   `SKRÓT: <jedno zdanie, ≤150 znaków>`, np. „Tabletka widmo 0,70, pilność 4”. Ordynator wpisze je jako dymek.
 7. Nie zwracaj się do użytkownika. Twój odbiorca to ordynator.

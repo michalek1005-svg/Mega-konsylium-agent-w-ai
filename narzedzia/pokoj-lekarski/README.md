@@ -14,7 +14,7 @@ Wygląd: marka MS, paleta „Laguna” z Nawigatora Medycznego, domyślnie tryb 
 
 ```
 npm install          # tylko krój Plus Jakarta Sans do osadzenia
-npm run build        # → POKOJ-LEKARSKI-0.2.0.html (jeden plik, ok. 150 KB, offline)
+npm run build        # → POKOJ-LEKARSKI-0.3.0.html (jeden plik, ok. 165 KB, offline)
 npm test             # parser na sprawach 2026-10-31-01 i -02
 npm run test:e2e     # Playwright: rysunek, dymek nad mówiącym, wczytanie folderu, tryb na żywo, zero żądań sieciowych
 ```

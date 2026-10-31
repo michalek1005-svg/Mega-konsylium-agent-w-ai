@@ -27,6 +27,10 @@ Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
 
 Aplikacja nadal nie łączy się z siecią. AI pracuje w czacie Konsylium, a dane przenosi lekarz przez schowek. Ankieta standardowa bez AI nadal jest dostępna.
 
+## Na żywo z Konsylium (od 0.4.0, aplikacja Windows)
+
+Trzecia droga obok dwóch kroków przez schowek: aplikacja i Claude dzielą folder na dysku (kopia repo Konsylium). Aplikacja po każdej odpowiedzi zapisuje zanonimizowany `wywiad-na-zywo/<KOD>/stan.json`, Claude dopisuje pytania do `ankieta.json`, a pacjent w tym czasie widzi „Dobieram kolejne pytania…”. Przycisk **Dołącz wyniki badań** otwiera anonimizator i wraca z zanonimizowanym tekstem do wywiadu. **Wyślij do Konsylium** zapisuje `01-wywiad.md`. Protokół i instrukcja dla Claude: `docs/NA-ZYWO.md`, skrypt `skrypty/wywiad_na_zywo.py`.
+
 ## Jak działa dobór pytań
 
 0. **Punkt wyjścia: opis własnymi słowami.** Pacjent pisze krótko, co mu dolega. Analiza opisu (`analiza.js`) od razu:

@@ -107,7 +107,7 @@ async function otworz(plik) {
     if (czyPdf) await wczytajPdf(dane);
     else await wczytajObraz(plik);
     $('#powitanie').hidden = true;
-    for (const b of ['#b-pomniejsz', '#b-powieksz', '#b-podglad', '#b-frazy', '#b-pdf', '#b-txt', '#b-kopiuj']) $(b).disabled = false;
+    for (const b of ['#b-pomniejsz', '#b-powieksz', '#b-podglad', '#b-frazy', '#b-pdf', '#b-txt', '#b-kopiuj', '#b-wywiad']) $(b).disabled = false;
     await rysujStrony();
     await przygotujTekst();
     await szukajKodow();
@@ -534,6 +534,35 @@ window.addEventListener('resize', () => { clearTimeout(tRozmiar); tRozmiar = set
 window.addEventListener('message', (e) => {
   const d = e.data;
   if (d && d.typ === 'ms-motyw' && (d.motyw === 'ciemny' || d.motyw === 'jasny')) document.documentElement.dataset.motyw = d.motyw;
+});
+
+// „Dołącz do wywiadu”: w powłoce Windows tekst po anonimizacji trafia do modułu Wywiad
+// (protokół narzedzia/wspolne/ms-most.js: ms-most → powłoka → ms-dane do wywiadu).
+const powloka = (() => {
+  let wRamce = false;
+  try { wRamce = window.parent && window.parent !== window; } catch { wRamce = false; }
+  let n = 0; const czeka = new Map();
+  window.addEventListener('message', (e) => {
+    const d = e.data;
+    if (!d || d.typ !== 'ms-most-odp' || e.source !== window.parent || !czeka.has(d.id)) return;
+    const p = czeka.get(d.id); czeka.delete(d.id);
+    d.blad ? p.zle(new Error(d.blad)) : p.ok(d.wynik);
+  });
+  const wywolaj = (op, args = [], limit = 5000) => new Promise((ok, zle) => {
+    if (!wRamce) { zle(new Error('poza powłoką')); return; }
+    const id = ++n; czeka.set(id, { ok, zle });
+    window.parent.postMessage({ typ: 'ms-most', id, op, args }, '*');
+    setTimeout(() => { if (czeka.has(id)) { czeka.delete(id); zle(new Error('Powłoka nie odpowiada.')); } }, limit);
+  });
+  return { wywolaj };
+})();
+powloka.wywolaj('ping', [], 1200).then((w) => { if (w === 'ms-powloka-1') $('#b-wywiad').hidden = false; }, () => {});
+$('#b-wywiad').addEventListener('click', async () => {
+  try {
+    await powloka.wywolaj('wyslij', ['wywiad', { wyniki: tekst(), nazwa: 'Wynik ' + dzis() + (S.strony.some((s) => s.ocr) ? ' (OCR)' : '') }]);
+    status('Dołączono do wywiadu. Wracam do wywiadu.');
+    setTimeout(() => powloka.wywolaj('otworzModul', ['wywiad']).catch(() => {}), 500);
+  } catch (e) { status('Nie udało się dołączyć: ' + e.message, true); }
 });
 
 // dla testów automatycznych
