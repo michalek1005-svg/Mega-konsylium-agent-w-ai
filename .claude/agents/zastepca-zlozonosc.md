@@ -20,6 +20,6 @@ Wynik `zlozonosc` 0–10 (obetnij). Próg eskalacji: **≥5**.
 
 Odpowiedz WYŁĄCZNIE JSON-em:
 ```json
-{"zastepca":"zlozonosc","wynik":0,"eskaluj":false,"uzasadnienie":"≤40 słów, same fakty z wywiadu","czynniki":["..."],"skrot":"jedno zdanie ≤150 znaków dla dymku (docs/DYMKI.md)","dymek":"2–4 pełne zdania językiem medycznym, ≤600 znaków","info":"liczby/skale/wytyczne ≤200 znaków albo pusty"}
+{"zastepca":"zlozonosc","wynik":0,"eskaluj":false,"uzasadnienie":"≤40 słów, same fakty z wywiadu","czynniki":["..."],"skrot":"1–2 pełne zdania ≤400 znaków, językiem medycznym, dla dymku (docs/DYMKI.md)"}
 ```
 Nie dodawaj komentarzy poza JSON. Nie proponuj rozpoznań. Jeśli brakuje danych do policzenia — to podnosi złożoność, nie obniża.

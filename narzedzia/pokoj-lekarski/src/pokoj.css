@@ -145,8 +145,8 @@ body {
 
 /* dymki */
 .dymki { position: absolute; inset: 0; pointer-events: none; }
-.dymek { position: absolute; max-width: 27cqw; min-width: 13cqw; padding: .85cqw 1.05cqw; border-radius: 1.2cqw; background: var(--dymek); color: var(--dymek-txt);
-  font-size: max(10px, 1.18cqw); line-height: 1.38; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(15,94,88,.12);
+.dymek { position: absolute; width: max-content; max-width: 34cqw; min-width: 13cqw; max-height: 27cqw; overflow-y: auto; overscroll-behavior: contain; padding: .85cqw 1.15cqw; border-radius: 1.2cqw; background: var(--dymek); color: var(--dymek-txt);
+  font-size: max(10px, 1.1cqw); line-height: 1.42; text-wrap: pretty; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(15,94,88,.12);
   transform: translate(-50%, -100%); transition: opacity .35s, transform .35s; pointer-events: auto; cursor: pointer; }
 .dymek::after { content: ""; position: absolute; left: var(--ogon, 50%); bottom: -.7cqw; width: 1.4cqw; height: 1.4cqw; background: var(--dymek);
   transform: translateX(-50%) rotate(45deg); box-shadow: 4px 4px 6px -4px rgba(0,0,0,.25); }

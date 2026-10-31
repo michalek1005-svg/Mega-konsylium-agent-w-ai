@@ -41,7 +41,7 @@ test('każda wypowiedź ma znaną rolę i krótki dymek', () => {
       assert.ok(sc.temat, `${n}/${sc.id}: temat`);
       for (const w of sc.wypowiedzi) {
         assert.ok(ROLE[w.kto], `${n}/${sc.id}: rola ${w.kto}`);
-        assert.ok(w.skrot.length > 3 && w.skrot.length <= 150, `${n}/${sc.id}/${w.kto}: dymek ${w.skrot.length}`);
+        assert.ok(w.skrot.length > 3 && w.skrot.length <= 400, `${n}/${sc.id}/${w.kto}: dymek ${w.skrot.length}`);
         assert.doesNotMatch(w.skrot, /\*\*/, 'bez markdownu w dymku');
       }
     }

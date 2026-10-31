@@ -34,4 +34,4 @@ Gdy ordynator poleci „przejmij sprawę z _handoff.md”: przeczytaj `_handoff.
 Od tego momentu wykonujesz instrukcję agenta `ordynator` (plik `.claude/agents/ordynator.md`) od kroku wskazanego w handoffie.
 Zapisz w `_log.jsonl` zdarzenie `"sukcesja"`. Nie zaczynaj sprawy od nowa i nie powtarzaj wywiadu z użytkownikiem.
 
-**Dymek (docs/DYMKI.md):** dwie ostatnie linie Twojej odpowiedzi dla ordynatora to `DYMEK: <2–4 pełne zdania językiem medycznym: co stwierdzasz, na jakiej podstawie, co z tego wynika; ≤600 znaków, bez markdownu>` i `SKRÓT: <jedno zdanie, ≤150 znaków>`. Opcjonalnie przed nimi `INFO: <liczby, skale, wytyczne, np. „Wells 1 pkt · D-dimer <500 · ESC 2019”; ≤200 znaków>`.
+**Dymek (docs/DYMKI.md):** ostatnia linia Twojej odpowiedzi dla ordynatora to `SKRÓT: <1–2 pełne zdania, ≤400 znaków, językiem medycznym, z kluczową liczbą lub uzasadnieniem, bez markdownu>`.

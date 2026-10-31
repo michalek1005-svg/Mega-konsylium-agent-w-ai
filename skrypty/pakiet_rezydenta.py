@@ -41,7 +41,7 @@ Odpowiedz w ≤150 słowach, dokładnie w trzech punktach:
 1. CZEGO BRAKUJE W DANYCH — o co nikt nie zapytał, a Ty byś zapytał (konkretne pytanie).
 2. HIPOTEZA NIEWYPOWIEDZIANA — rozpoznanie lub mechanizm, którego decyzja zdaje się nie uwzględniać (jedno).
 3. PODEJRZANE ZAŁOŻENIE — co w decyzji wygląda na nawyk zespołu lub ograniczenie jego narzędzi, a nie wynik danych.
-Pod punktami dopisz jedną linię: SKRÓT: <najważniejsza z Twoich uwag, jedno zdanie ≤150 znaków>.
+Pod punktami dopisz jedną linię: SKRÓT: <najważniejsza z Twoich uwag z uzasadnieniem, 1–2 pełne zdania ≤400 znaków, językiem medycznym>.
 Nie diagnozuj. Nie proponuj leczenia. Nie oceniaj, czy decyzja jest dobra. Jeśli odpowiedzi w [B] są niezrozumiałe bez pytań — zgłoś to w pkt 3.
 Jeśli uczciwie nie widzisz braków — napisz to jednym zdaniem w każdym punkcie."""
 

@@ -54,7 +54,7 @@ Gdy podsumowanie mówi „Wywiad wysłany”:
 
 1. Załóż `sprawy/<RRRR-MM-DD-NN>/`, skopiuj `wywiad-na-zywo/<KOD>/01-wywiad.md` jako `00-surowe.md` i `01-wywiad.md` (wywiad już jest zamknięty: lista NIEZNANE jedzie dalej, bez dodatkowych tur pytań, chyba że lekarz dopisze odpowiedzi w czacie).
 2. Prowadź konsylium według `CLAUDE.md` i `PROMPT-NADZORCA.md`, z modelami jak w `.claude/agents/`.
-3. **Dymki od razu po każdej wypowiedzi**, nie po całym kroku: `python skrypty/dymek.py sprawy/<ID> --rola … --faza "…" --skrot "…" --tresc "…" [--info "…"]`. Treść dymku to 2–4 pełne zdania językiem medycznym (docs/DYMKI.md). Na początku każdej fazy dymek ordynatora z `--temat`.
+3. **Dymki od razu po każdej wypowiedzi**, nie po całym kroku: `python skrypty/dymek.py sprawy/<ID> --rola … --faza "…" --skrot "…" [--info "…"]`. Skrót to 1–2 pełne zdania językiem medycznym (do 400 znaków), a `--info` to linia z liczbami, skalami i wytycznymi (docs/DYMKI.md). Na początku każdej fazy dymek ordynatora z `--temat`.
 4. Na końcu `09-FINAL.md` jak zwykle. Lekarz widzi przebieg w zakładce Pokój lekarski.
 
 ## 4. Co zainstalować na Windows
