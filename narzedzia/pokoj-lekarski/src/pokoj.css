@@ -1,0 +1,208 @@
+/* Pokój lekarski Konsylium — wygląd marki MS (paleta „Laguna” z Nawigatora, tryb ciemny jako domyślny).
+   Układ: nagłówek z logo K → scena pokoju (SVG + dymki HTML) obok protokołu → pasek odtwarzania.
+   Tokeny pokoju są dopisane do kopii tokenów MS; zmiany palety marki idą przez Michała. */
+/*@@FONT@@*/
+:root {
+  color-scheme: dark;
+  --petrol: #5CC8BB; --ink: #E4EEEB; --mut: #93A9A4; --bg-viewport: #0F1918;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.22) 0%, rgba(64,168,158,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.16) 0%, rgba(132,176,108,0) 70%),
+           linear-gradient(160deg, #121d1c 0%, #0b1413 100%);
+  --tafla: rgba(20,32,31,.78);
+  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.07), 0 40px 74px -34px rgba(0,0,0,.85);
+  --panel: rgba(255,255,255,.05);
+  --panel-cien: 0 14px 32px -25px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.08);
+  --btn: rgba(92,200,187,.12); --btn-h: rgba(92,200,187,.2); --btn-txt: #8fdcd2;
+  --on: #1b7a70; --on-txt: #fff;
+  --alarm: #ff9a8c; --ostrzezenie: #e9c46a; --ok: #6fd3a0;
+  /* pokój */
+  --sciana: #1a2a29; --sciana-2: #152322; --podloga: #101b1a; --podloga-linia: rgba(92,200,187,.06);
+  --listwa: #24403c; --stol: #2b3d3a; --stol-blat: #34504b; --stol-krawedz: #1f302e;
+  --szyba: rgba(140,210,220,.10); --szyba-obrys: rgba(160,220,225,.35);
+  --okno-niebo: #0d2230; --okno-gwiazda: rgba(255,255,255,.55);
+  --tablica: #e8efed; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #46625d;
+  --cien-postaci: rgba(0,0,0,.45);
+  --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
+  --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a;
+  --dymek: #f4f8f7; --dymek-txt: #14302D; --dymek-mut: #4d6762;
+  --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-motyw="ciemny"]) {
+    color-scheme: light;
+    --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
+    --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
+             radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
+             linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
+    --tafla: rgba(255,255,255,.44);
+    --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
+    --panel: rgba(255,255,255,.7);
+    --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
+    --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
+    --on: #0F5E58; --on-txt: #fff;
+    --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
+    --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
+    --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
+    --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
+    --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+    --tablica: #ffffff; --tablica-rama: #8fa9a2;
+    --cien-postaci: rgba(10,54,52,.22);
+    --dymek: #ffffff;
+  }
+}
+:root[data-theme="light"], :root[data-motyw="jasny"] {
+  color-scheme: light;
+  --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
+           linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
+  --tafla: rgba(255,255,255,.44);
+  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
+  --panel: rgba(255,255,255,.7);
+  --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
+  --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
+  --on: #0F5E58; --on-txt: #fff;
+  --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
+  --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
+  --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
+  --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
+  --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+  --tablica: #ffffff; --tablica-rama: #8fa9a2;
+  --cien-postaci: rgba(10,54,52,.22);
+  --dymek: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: var(--font); font-size: 14px; color: var(--ink);
+  background: var(--scene); background-attachment: fixed; background-color: var(--bg-viewport);
+}
+.scena { padding-block: 18px 22px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 16px; max-width: 1500px; margin: 0 auto; }
+
+/* nagłówek: logo K jak N w Nawigatorze */
+.naglowek { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.logo { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; flex: none;
+  font-weight: 800; font-size: 26px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.tytul { flex: 1; min-width: 200px; }
+.tytul h1 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.4px; text-wrap: balance; }
+.tytul p { margin: 3px 0 0; font-size: 12px; color: var(--mut); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.kropka { width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+.chip { font-size: 10.5px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px;
+  background: var(--btn); color: var(--btn-txt); }
+.pasek { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px; border-radius: 999px; background: var(--tafla); box-shadow: var(--tafla-cien);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.nk-button { border: 0; border-radius: 22px; padding: 8px 14px; min-height: 38px; background: var(--btn); color: var(--btn-txt);
+  font: inherit; font-size: 12.5px; font-weight: 650; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  cursor: pointer; line-height: 1.3; transition: background .15s; user-select: none; }
+.nk-button:hover { background: var(--btn-h); }
+.nk-button:focus-visible, .postac:focus-visible, .wpis:focus-visible, .odcinek:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
+.nk-button:not(:disabled):active { box-shadow: inset 4px 4px 8px rgba(0,0,0,.25), inset -3px -3px 7px rgba(255,255,255,.08); }
+.nk-on, .nk-on:hover { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
+.nk-label { font-size: 10.5px; letter-spacing: .07em; font-weight: 750; text-transform: uppercase; color: var(--mut); margin: 0; }
+
+/* układ: pokój + protokół */
+.uklad { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; align-items: start; }
+@media (max-width: 1060px) { .uklad { grid-template-columns: 1fr; } }
+.tafla { border-radius: 30px; background: var(--tafla); box-shadow: var(--tafla-cien);
+  backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+
+.pokoj-ramka { padding: 12px; min-width: 0; }
+.pokoj { position: relative; width: 100%; aspect-ratio: 1200 / 700; max-width: 100%; border-radius: 22px; overflow: hidden;
+  container-type: inline-size; background: var(--sciana); }
+.pokoj svg.rys { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* tablica na ścianie: o czym teraz dyskusja */
+.tablica { position: absolute; left: 31.5%; top: 6.6%; width: 37%; height: 30.5%; padding: 1.6cqw 1.9cqw; color: var(--tablica-txt);
+  display: flex; flex-direction: column; gap: .55cqw; overflow: hidden; }
+.tablica .gora { display: flex; align-items: baseline; gap: 1cqw; }
+.tablica .faza { font-size: max(9px, 1cqw); font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #0F5E58; }
+.tablica .czas { margin-left: auto; font-family: var(--font-mono); font-size: max(9px, .95cqw); color: var(--tablica-mut); font-variant-numeric: tabular-nums; }
+.tablica .temat { font-size: max(10px, 1.45cqw); font-weight: 700; line-height: 1.28; text-wrap: balance; margin: 0; }
+.tablica .ranking { display: flex; flex-direction: column; gap: .35cqw; margin-top: auto; }
+.tablica .wiersz { display: grid; grid-template-columns: minmax(0, 1fr) 7cqw 3.2cqw; gap: .8cqw; align-items: center; font-size: max(8.5px, .95cqw); }
+.tablica .wiersz span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tablica .belka { height: .55cqw; min-height: 4px; border-radius: 9px; background: rgba(15,94,88,.12); overflow: hidden; }
+.tablica .belka i { display: block; height: 100%; background: #0F5E58; border-radius: 9px; transition: width .6s ease; }
+.tablica .p { font-family: var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--tablica-mut); }
+.tablica .werdykt { font-size: max(9px, 1.05cqw); line-height: 1.35; padding: .7cqw .9cqw; border-radius: .8cqw; background: rgba(15,94,88,.1); }
+
+/* postacie */
+.postac { cursor: pointer; transition: opacity .35s, filter .35s; }
+.postac .halo { opacity: 0; transition: opacity .3s; }
+.pokoj.mowi .postac { opacity: .62; }
+.pokoj.mowi .postac.aktywna, .pokoj.mowi .postac.niedawno { opacity: 1; }
+.postac.aktywna .halo { opacity: 1; animation: puls 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.postac.aktywna .ciało { animation: kiw 1.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes puls { 50% { transform: scale(1.12); opacity: .55; } }
+@keyframes kiw { 50% { transform: translateY(-1.5px); } }
+.podpis { font-family: var(--font); font-size: 11px; font-weight: 700; fill: var(--ink); paint-order: stroke; stroke: var(--sciana); stroke-width: 3px; }
+.postac .podpis-maly, .podpis.podpis-maly { font-size: 9.5px; }
+
+/* dymki */
+.dymki { position: absolute; inset: 0; pointer-events: none; }
+.dymek { position: absolute; max-width: 27cqw; min-width: 13cqw; padding: .85cqw 1.05cqw; border-radius: 1.2cqw; background: var(--dymek); color: var(--dymek-txt);
+  font-size: max(10px, 1.18cqw); line-height: 1.38; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(15,94,88,.12);
+  transform: translate(-50%, -100%); transition: opacity .35s, transform .35s; pointer-events: auto; cursor: pointer; }
+.dymek::after { content: ""; position: absolute; left: var(--ogon, 50%); bottom: -.7cqw; width: 1.4cqw; height: 1.4cqw; background: var(--dymek);
+  transform: translateX(-50%) rotate(45deg); box-shadow: 4px 4px 6px -4px rgba(0,0,0,.25); }
+.dymek .kto { display: block; font-size: max(8.5px, .85cqw); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--g, #0F5E58); margin-bottom: .2cqw; }
+.dymek.stary { opacity: .0; transform: translate(-50%, -100%) scale(.96); pointer-events: none; }
+.dymek.wejscie { animation: wejscie .35s ease both; }
+@keyframes wejscie { from { opacity: 0; transform: translate(-50%, -88%) scale(.94); } }
+.dymek.pisze { min-width: 0; padding: .9cqw 1.3cqw; }
+.kropki { display: inline-flex; gap: .45cqw; }
+.kropki i { width: .7cqw; height: .7cqw; min-width: 5px; min-height: 5px; border-radius: 50%; background: var(--dymek-mut); animation: kr 1s infinite; }
+.kropki i:nth-child(2) { animation-delay: .15s; } .kropki i:nth-child(3) { animation-delay: .3s; }
+@keyframes kr { 50% { opacity: .25; } }
+
+/* napisy pod pokojem (wąskie ekrany zamiast dymka) */
+.napisy { display: none; margin-top: 10px; padding: 10px 12px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 13px; line-height: 1.5; }
+.napisy b { display: block; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
+@container (max-width: 620px) { .dymek:not(.pisze) { display: none; } .tablica .ranking, .tablica .werdykt, .tablica .temat { display: none; } .tablica { justify-content: center; } .tablica .faza { font-size: 11px; } }
+.napisy { flex-direction: column; gap: 8px; }
+.napisy .nap-temat { color: var(--mut); }
+@media (max-width: 680px) { .napisy { display: flex; } }
+
+/* pasek odtwarzania */
+.sterowanie { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 6px 2px; }
+.sterowanie .nk-button { min-width: 40px; }
+.os { flex: 1 1 320px; display: flex; gap: 3px; min-width: 0; }
+.odcinek { flex: var(--n, 1) 1 0; min-width: 0; border: 0; padding: 0; background: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; text-align: left; font: inherit; color: var(--mut); }
+.odcinek .tor { height: 6px; border-radius: 9px; background: var(--btn); overflow: hidden; }
+.odcinek .tor i { display: block; height: 100%; width: 0; background: var(--petrol); border-radius: 9px; }
+.odcinek .et { font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.odcinek.biezacy .et { color: var(--petrol); }
+@media (max-width: 680px) { .odcinek .et { display: none; } }
+select.tempo { border: 0; border-radius: 22px; min-height: 38px; padding: 0 12px; background: var(--btn); color: var(--btn-txt); font: inherit; font-size: 12.5px; font-weight: 650; }
+
+/* protokół */
+.protokol { padding: 16px; display: flex; flex-direction: column; gap: 10px; max-height: min(78vh, 760px); min-width: 0; }
+.protokol .lista { overflow-y: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; min-height: 120px; }
+.protokol h2 { margin: 0; font-size: 15px; font-weight: 800; }
+.sekcja-faza { font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--mut); margin: 10px 0 2px; display: flex; gap: 8px; }
+.sekcja-faza span { margin-left: auto; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.wpis { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 7px 8px; border-radius: 12px; cursor: pointer; border: 0; background: none; text-align: left; font: inherit; color: inherit; }
+.wpis:hover { background: var(--panel); }
+.wpis.biezacy { background: var(--btn); }
+.wpis.przyszly { opacity: .38; }
+.wpis .zn { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 9.5px; font-weight: 800; color: #fff; background: var(--g); }
+.wpis .t { font-size: 12.5px; line-height: 1.45; min-width: 0; }
+.wpis .t b { display: block; font-size: 11px; color: var(--mut); font-weight: 700; }
+.szczegol { border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); padding: 12px 14px; font-size: 12.5px; line-height: 1.55; max-height: 34vh; overflow: auto; white-space: pre-wrap; }
+.szczegol b { white-space: normal; }
+.szczegol .plik { font-family: var(--font-mono); font-size: 11px; color: var(--mut); }
+
+/* legenda ról */
+.legenda { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11.5px; color: var(--mut); padding: 0 6px; }
+.legenda span { display: inline-flex; align-items: center; gap: 6px; }
+.legenda i { width: 10px; height: 10px; border-radius: 3px; background: var(--g); }
+.stopka { font-size: 11px; color: var(--mut); padding: 0 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
