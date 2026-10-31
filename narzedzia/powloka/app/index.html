@@ -19,6 +19,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; back
 html[data-motyw="ciemny"] body::after { opacity: .08; }
 .tafla-glowna { position: relative; width: calc(100vw - 120px); height: calc(100vh - 140px); max-width: 1680px; border-radius: 44px; overflow: hidden;
   background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); }
+/* Pokój lekarski: konsylium na całą stronę (Michał 31.10) */
+body.pelny .tafla-glowna { width: calc(100vw - 20px); height: calc(100vh - 20px); max-width: none; border-radius: 30px; }
 /* logo K jak neonowe N Nawigatora */
 .logo-k { position: absolute; left: 23px; top: 12px; width: 60px; height: 60px; z-index: 100; display: grid; place-items: center; }
 .logo-k svg { width: 48px; height: 51px; filter: contrast(1.2) drop-shadow(0 1px 2px rgba(10,54,52,.4)); }
@@ -128,6 +130,7 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
     biezacy = id; if (typeof pokazPanelFolderu === 'function') pokazPanelFolderu(false);
     document.querySelectorAll('button.modul').forEach(function (b) {
       if (b.dataset.modul === id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+      document.body.classList.toggle('pelny', id === 'pokoj');
     });
     Object.keys(ramki).forEach(function (k) { ramki[k].hidden = k !== id; });
     if (dostepne[id] === false) { brak.hidden = false; return; }

@@ -74,6 +74,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; min-height: 100%; }
 body {
   font-family: var(--font); font-size: 14px; color: var(--ink);
@@ -226,8 +227,18 @@ select.tempo { border: 0; border-radius: 22px; min-height: 38px; padding: 0 12px
 html.osadzony, html.osadzony body { background: transparent !important; }
 html.osadzony body::after, html.osadzony body::before { display: none !important; }
 html.osadzony .naglowek .logo, html.osadzony #motyw, html.osadzony .stopka, html.osadzony .wnioski .stopka-w { display: none !important; }
+/* w aplikacji: konsylium na całą stronę, dymki na scenie; protokół tylko na żądanie */
+html.osadzony .scena { max-width: none; padding: 10px 14px 12px; gap: 10px; min-height: 100vh; }
+html.osadzony .naglowek { gap: 10px; }
+html.osadzony .tytul h1 { font-size: 17px; }
+html.osadzony .uklad { grid-template-columns: minmax(0, 1fr); }
+html.osadzony .uklad.z-protokolem { grid-template-columns: minmax(0, 1fr) 340px; }
+html.osadzony .uklad:not(.z-protokolem) .protokol { display: none; }
+html.osadzony .protokol { max-height: calc(100vh - 110px); }
 
 /* Przewijanie wpasowane w szklaną taflę */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--mut) 35%, transparent); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+/* w aplikacji scena mieści się w oknie razem z paskiem sterowania */
+html.osadzony .pokoj { width: min(100%, calc((100vh - 170px) * 1200 / 700)); margin: 0 auto; }

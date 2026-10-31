@@ -459,6 +459,10 @@ ${podpisy(wpisy)}`;
   if (window.MsMost) window.MsMost.dostepny().then(async (jest) => {
     if (!jest) return;
     document.documentElement.classList.add('osadzony');
+    // protokół na żądanie (scena na całą stronę)
+    const pb = $('protokol-btn'), uk = document.querySelector('.uklad');
+    pb.hidden = false;
+    pb.addEventListener('click', () => { const on = uk.classList.toggle('z-protokolem'); pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('nk-on', on); });
     // w powłoce przycisk „Na żywo” zawsze bierze sprawę z folderu Konsylium (bez okna wyboru)
     const nowy = $('zywo').cloneNode(true); $('zywo').replaceWith(nowy);
     nowy.hidden = false; nowy.title = 'Pokazuje najnowszą sprawę z folderu Konsylium i dociąga nowe dymki co 3 sekundy.';

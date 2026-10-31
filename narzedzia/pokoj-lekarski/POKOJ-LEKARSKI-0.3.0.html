@@ -81,6 +81,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; min-height: 100%; }
 body {
   font-family: var(--font); font-size: 14px; color: var(--ink);
@@ -233,11 +234,21 @@ select.tempo { border: 0; border-radius: 22px; min-height: 38px; padding: 0 12px
 html.osadzony, html.osadzony body { background: transparent !important; }
 html.osadzony body::after, html.osadzony body::before { display: none !important; }
 html.osadzony .naglowek .logo, html.osadzony #motyw, html.osadzony .stopka, html.osadzony .wnioski .stopka-w { display: none !important; }
+/* w aplikacji: konsylium na całą stronę, dymki na scenie; protokół tylko na żądanie */
+html.osadzony .scena { max-width: none; padding: 10px 14px 12px; gap: 10px; min-height: 100vh; }
+html.osadzony .naglowek { gap: 10px; }
+html.osadzony .tytul h1 { font-size: 17px; }
+html.osadzony .uklad { grid-template-columns: minmax(0, 1fr); }
+html.osadzony .uklad.z-protokolem { grid-template-columns: minmax(0, 1fr) 340px; }
+html.osadzony .uklad:not(.z-protokolem) .protokol { display: none; }
+html.osadzony .protokol { max-height: calc(100vh - 110px); }
 
 /* Przewijanie wpasowane w szklaną taflę */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--mut) 35%, transparent); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+/* w aplikacji scena mieści się w oknie razem z paskiem sterowania */
+html.osadzony .pokoj { width: min(100%, calc((100vh - 170px) * 1200 / 700)); margin: 0 auto; }
 </style>
 </head>
 <body>
@@ -253,6 +264,7 @@ html.osadzony .naglowek .logo, html.osadzony #motyw, html.osadzony .stopka, html
       <button class="nk-button" id="wczytaj" type="button" title="Wybierz folder sprawy, np. sprawy/2026-10-31-02">Wczytaj sprawę…</button>
       <button class="nk-button nk-on" id="wnioski-btn" type="button" hidden title="Wnioski końcowe konsylium (09-FINAL)">Wnioski</button>
       <button class="nk-button" id="zywo" type="button" hidden title="Wybierz folder sprawy, która właśnie trwa. Pokój co 3 sekundy dociąga nowe dymki.">Na żywo…</button>
+      <button class="nk-button" id="protokol-btn" type="button" hidden aria-pressed="false" title="Pokaż lub ukryj protokół dyskusji">Protokół</button>
       <button class="nk-button" id="motyw" type="button" aria-label="Przełącz tryb jasny lub ciemny">Tryb jasny</button>
     </div>
     <input id="folder" type="file" webkitdirectory multiple hidden>
@@ -1207,6 +1219,10 @@ ${podpisy(wpisy)}`;
   if (window.MsMost) window.MsMost.dostepny().then(async (jest) => {
     if (!jest) return;
     document.documentElement.classList.add('osadzony');
+    // protokół na żądanie (scena na całą stronę)
+    const pb = $('protokol-btn'), uk = document.querySelector('.uklad');
+    pb.hidden = false;
+    pb.addEventListener('click', () => { const on = uk.classList.toggle('z-protokolem'); pb.setAttribute('aria-pressed', String(on)); pb.classList.toggle('nk-on', on); });
     // w powłoce przycisk „Na żywo” zawsze bierze sprawę z folderu Konsylium (bez okna wyboru)
     const nowy = $('zywo').cloneNode(true); $('zywo').replaceWith(nowy);
     nowy.hidden = false; nowy.title = 'Pokazuje najnowszą sprawę z folderu Konsylium i dociąga nowe dymki co 3 sekundy.';
