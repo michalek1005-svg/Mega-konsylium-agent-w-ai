@@ -1,0 +1,85 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Kolka żółciowa w przebiegu objawowej kamicy pęcherzyka żółciowego",
+      "p": 0.5,
+      "za": ["ból poposiłkowy po tłustych posiłkach, falujący, epizody 30–90 min", "promieniowanie pod prawą łopatkę", "nudności, jednorazowe wymioty", "kobieta, 54 lata, BMI ok. 31", "2–3 podobne, samoustępujące epizody w ostatnim roku"],
+      "przeciw": ["Murphy dodatni i 3 dni objawów z bólem resztkowym — przebieg dłuższy niż typowa niepowikłana kolka", "brak USG — kamica niepotwierdzona"]
+    },
+    {
+      "nazwa": "Ostre zapalenie pęcherzyka żółciowego",
+      "p": 0.25,
+      "za": ["objaw Murphy'ego dodatni", "bolesność prawego podżebrza", "objawy od 3 dni z tępym bólem resztkowym między epizodami", "ibuprofen mógł maskować gorączkę i ból"],
+      "przeciw": ["temperatura 36,9 °C, tętno 84/min", "brak obrony mięśniowej", "brak dreszczy", "NIEZNANE: morfologia, białko C-reaktywne"]
+    },
+    {
+      "nazwa": "Kamica przewodowa z ryzykiem żółciowego ostrego zapalenia trzustki",
+      "p": 0.07,
+      "za": ["obraz kolki żółciowej z wymiotami", "NIEZNANE: bilirubina, enzymy wątrobowe, lipaza/amylaza"],
+      "przeciw": ["brak żółtaczki, ciemnego moczu, odbarwionych stolców", "ból nie opasujący, bez promieniowania do pleców w opisie"]
+    },
+    {
+      "nazwa": "Choroba wrzodowa lub dyspepsja czynnościowa",
+      "p": 0.07,
+      "za": ["ból w nadbrzuszu związany z jedzeniem", "przyjmowanie niesteroidowego leku przeciwzapalnego (ibuprofen)"],
+      "przeciw": ["NLPZ przyjęty dopiero po wystąpieniu bólu", "promieniowanie pod prawą łopatkę i Murphy dodatni wskazują na drogi żółciowe", "brak smolistych stolców"]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy z bólem w nadbrzuszu",
+      "p": 0.02,
+      "za": ["kobieta 54 lata z nadciśnieniem, hipercholesterolemią i otyłością — atypowa prezentacja możliwa", "EKG NIEZNANE"],
+      "przeciw": ["ból wyraźnie poposiłkowy, bez związku z wysiłkiem", "brak duszności, potów, bólu w klatce piersiowej", "bolesność uciskowa i Murphy dodatni"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "żółtaczka / ciemny mocz / odbarwione stolce (wg wywiadu — bez badań laboratoryjnych)",
+    "krwawienie z przewodu pokarmowego (brak smolistych stolców i krwi)",
+    "otrzewnowe objawy rozlane (brak obrony mięśniowej)",
+    "niestabilność hemodynamiczna (RR 138/86 mmHg, HR 84/min)"
+  ],
+  "red_flags_otwarte": [
+    "ostre zapalenie pęcherzyka żółciowego — Murphy dodatni, brak morfologii i białka C-reaktywnego; gorączka mogła być maskowana ibuprofenem",
+    "kamica przewodowa / żółciowe ostre zapalenie trzustki — brak bilirubiny, ALT, AST, fosfatazy zasadowej, GGTP, lipazy/amylazy",
+    "ostry zespół wieńcowy z atypową lokalizacją bólu — brak EKG u kobiety 50+ z czynnikami ryzyka sercowo-naczyniowego",
+    "ciąża — status miesiączkowania NIEZNANY (mało prawdopodobna w wieku 54 lat, ale niewykluczona przed badaniami)"
+  ],
+  "nastepny_krok": "Dziś w gabinecie: EKG 12-odprowadzeniowe oraz pobranie krwi z oznaczeniem tego samego dnia — morfologia krwi z rozmazem, białko C-reaktywne (CRP), ALT, AST, fosfataza zasadowa, GGTP, bilirubina całkowita, amylaza (lub lipaza, jeśli laboratorium ją wykonuje) — z decyzją o skierowaniu do szpitala jeszcze dziś na podstawie wyników.",
+  "co_zmieniloby_zdanie": "Leukocytoza lub podwyższone CRP, gorączka ≥38 °C, ból utrzymujący się >6 h, podwyższona bilirubina/enzymy wątrobowe lub lipaza, albo zmiany w EKG — każde z nich przesuwa do skierowania do szpitala (chirurgia) dziś; prawidłowe wyniki i ustąpienie bólu — do trybu planowego USG + kwalifikacji do cholecystektomii; dodatkowo zmieniłaby plan informacja o czasie dojazdu do SOR/szpitala z chirurgią i dostępności USG w ciągu 24–72 h (NIEZNANE, uzupełnić w pamiec/zespol.md).",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak wgranych polskich wytycznych dla kamicy żółciowej ani wykazu badań POZ (poziom 1 milczy)",
+    "PubMed niedostępny w tej sesji (błąd połączenia MCP) — poziom 2 niesprawdzony",
+    "Tokyo Guidelines 2018 (TG18) — kryteria rozpoznania i ciężkości ostrego zapalenia pęcherzyka żółciowego: objaw miejscowy (Murphy, bolesność prawego podżebrza) + objaw ogólny (gorączka, CRP, leukocytoza) + obraz w USG; [wiedza modelu, niezweryfikowane — brak DOI z PubMed w tej sesji]",
+    "EASL 2016 Clinical Practice Guidelines on the prevention, diagnosis and treatment of gallstones — USG jamy brzusznej jako badanie pierwszego wyboru, cholecystektomia przy kamicy objawowej; [wiedza modelu, niezweryfikowane]",
+    "pamiec/zespol.md — wniosek z PRZYKLAD-001: EKG w gabinecie przed planem planowym u kobiety 50+ z czynnikami ryzyka sercowego",
+    "Próg 6 h bólu, 38 °C, dostępność badań w koszyku POZ (amylaza vs lipaza) — [wiedza modelu, niezweryfikowane]"
+  ],
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "EKG 12-odprowadzeniowe",
+      "pomiar temperatury powtórnie (ibuprofen przyjęty wczoraj — możliwe maskowanie gorączki)",
+      "badanie brzucha powtórzone przy kontroli wyników tego samego dnia lub telefonicznie + wizyta",
+      "dopytać o ostatnią miesiączkę / menopauzę (NIEZNANE)",
+      "leczenie bólu: NLPZ doraźnie dopuszczalny krótko przy prawidłowej funkcji nerek; dodać rozkurczowy (drotaweryna) [wiedza modelu, niezweryfikowane — dawki do potwierdzenia przez farmakologa / ChPL]"
+    ],
+    "zlecic": [
+      "cito, wynik dziś: morfologia krwi z rozmazem, CRP, ALT, AST, fosfataza zasadowa, GGTP, bilirubina całkowita, amylaza (lipaza jeśli dostępna), kreatynina (przed dalszym NLPZ)",
+      "USG jamy brzusznej — skierowanie z dopiskiem 'pilne'; jeśli termin >72 h, a wyniki prawidłowe, rozważyć prywatne USG (koszt ok. 150–250 zł [wiedza modelu, niezweryfikowane]) — realnie wykonalne dla pacjentki w wieku produkcyjnym"
+    ],
+    "skierowanie": {
+      "tryb_pilny_dzis": "Skierowanie do szpitala (oddział chirurgii ogólnej / izba przyjęć) jeśli: leukocytoza lub podwyższone CRP, gorączka, ból stały >6 h mimo leczenia, nieprawidłowe bilirubina/enzymy/lipaza, nowe zmiany w EKG (wtedy SOR).",
+      "tryb_stabilny": "Przy prawidłowych wynikach, ustąpieniu bólu i kamicy w USG — skierowanie do poradni chirurgii ogólnej w celu kwalifikacji do planowej cholecystektomii laparoskopowej."
+    },
+    "kontrola": "Wyniki i ocena kliniczna tego samego dnia (wizyta lub teleporada + wizyta przy niepokojących wynikach); następnie kontrola po USG, najpóźniej za 3–5 dni.",
+    "zdanie_dla_pacjentki": "Najpewniej to kamień w woreczku żółciowym, ale objaw przy badaniu każe dziś wykluczyć jego zapalenie — dlatego robimy EKG i krew od razu, a jeśli ból wróci i nie minie w kilka godzin, pojawi się gorączka, dreszcze lub zażółcenie oczu, jedzie Pani do szpitala, nie czeka na wizytę.",
+    "wykonalnosc": "Plan wykonalny w jednym dniu w POZ pod warunkiem dostępu do laboratorium z wynikiem cito i aparatu EKG w gabinecie (oba NIEZNANE w pamiec/zespol.md); jeśli laboratorium nie daje wyniku tego samego dnia, a Murphy pozostaje dodatni — skierowanie do izby przyjęć dziś zamiast czekania na wyniki. Do czasu diagnostyki dieta lekkostrawna, bez tłuszczów.",
+    "nie_rob": [
+      "nie odkładać diagnostyki do terminu planowego USG bez wyników laboratoryjnych z dziś",
+      "nie traktować skierowania do poradni gastroenterologicznej jako rozwiązania — to problem chirurgiczny",
+      "nie przedłużać samodzielnego stosowania ibuprofenu bez kontroli kreatyniny i bez osłony przy ryzyku żołądkowym"
+    ]
+  },
+  "uwaga_procesowa": "Przy wczytywaniu 01-wywiad.md cały plik, łącznie z sekcją 'Hipoteza robocza ordynatora', trafił do kontekstu agenta (odczyt całego pliku zamiast pominięcia sekcji). Opinia została sformułowana na podstawie wywiadu i badania; pilność (2) różni się od tej hipotezy, ale ślepota tury nie była pełna — do odnotowania przez Sprawdzającego procesu."
+}

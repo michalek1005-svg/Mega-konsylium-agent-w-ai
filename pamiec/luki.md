@@ -6,3 +6,7 @@
 | 2026-10-31 | PRZYKLAD-001 | hipoteza | ozw | TAK | 2. "Hipoteza: OZW o nietypowej prezentacji" — PRZYJMUJĘ — już w planie (EKG dziś), ale dopisuję troponinę przy jakiejkolwiek wątpliwości w EKG — kategoria: hipo |
 | 2026-10-31 | PRZYKLAD-001 | brak_danych | temperatura | nie | 1. "Czy ktoś zmierzył temperaturę, czy pacjentka 'nie czuła dreszczy'?" — PRZYJMUJĘ — temp. zmierzona 36,9 w badaniu, ale wywiad był sugerujący — kategoria: bra |
 | 2026-10-31 | PRZYKLAD-001 | zalozenie | dostepnosc_usg | nie | 3. "Decyzja wygląda na kogoś, kto ma USG dostępne 'pilnie'; na prowincji to tydzień" — PRZYJMUJĘ — dopisuję do PLAN B: brak terminu USG ≤3 dni → skierowanie do  |
+| 2026-10-31 | 2026-10-31-01 (test) | hipoteza | troponina-przy-bolu-w-nadbrzuszu | TAK | 3/3 rezydentów: samo EKG nie wyklucza OZW u kobiety 50+ z czynnikami ryzyka → troponina hs |
+| 2026-10-31 | 2026-10-31-01 (test) | zalozenie | okno-usg-logistyka | TAK | okno USG ≤72 h przy dodatnim Murphym wyglądało na logistykę → USG dziś/jutro |
+| 2026-10-31 | 2026-10-31-01 (test) | brak_danych | czynniki-ryzyka-wiencowe | NIE | palenie, cukrzyca, wywiad rodzinny wieńcowy nie zebrane |
+| 2026-10-31 | 2026-10-31-01 (test) | brak_danych | nasilenie-bolu-i-masa-ciala | NIE | nasilenie bólu 0–10 i zmiana masy ciała nie zebrane |
