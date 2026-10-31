@@ -530,5 +530,11 @@ document.addEventListener('keydown', (e) => {
 let tRozmiar;
 window.addEventListener('resize', () => { clearTimeout(tRozmiar); tRozmiar = setTimeout(() => S.strony.length && rysujStrony(), 250); });
 
+// motyw z powłoki Windows (MS Konsylium · Narzędzia): postMessage({ typ: 'ms-motyw', motyw })
+window.addEventListener('message', (e) => {
+  const d = e.data;
+  if (d && d.typ === 'ms-motyw' && (d.motyw === 'ciemny' || d.motyw === 'jasny')) document.documentElement.dataset.motyw = d.motyw;
+});
+
 // dla testów automatycznych
 window.__anonimizator = { S, aktywne, tekst, wykrywaj };

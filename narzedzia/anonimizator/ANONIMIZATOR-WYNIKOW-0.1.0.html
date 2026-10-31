@@ -502,6 +502,42 @@ function wykryj(strony, opcje = {}) {
         }
       }
 
+      // 2b) wypowiedzi pisane własnymi słowami (wywiad): „nazywam się Jan Kowalski”, „mieszkam przy ul. …”
+      const WIELKA = /^[A-ZĄĆĘŁŃÓŚŹŻ][A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ'-]*[,.;]?$/;
+      const ZWROTY_OSOBA = [['nazywam', 'sie'], ['mam', 'na', 'imie'], ['moje', 'imie', 'to'], ['moje', 'nazwisko', 'to'],
+        ['nazwisko'], ['jestem'], ['tu'], ['z', 'tej', 'strony'], ['syn'], ['corka'], ['zona'], ['maz'], ['mama'], ['tata'], ['brat'], ['siostra']];
+      const ZWROTY_ADRES = [['mieszkam', 'przy'], ['mieszkam', 'na'], ['mieszkam', 'w'], ['mieszkam', 'we'], ['zamieszkaly', 'w'],
+        ['zamieszkala', 'w'], ['adres', 'zamieszkania'], ['moj', 'adres', 'to']];
+      const normS = l.slowa.map((w) => normalizuj(w.t).replace(/[^a-z0-9-]/g, ''));
+      const pasuje = (k, zw) => zw.every((z, i) => normS[k + i] === z);
+      for (let k = 0; k < l.slowa.length; k++) {
+        for (const zw of ZWROTY_OSOBA) {
+          if (!pasuje(k, zw)) continue;
+          const naz = [];
+          let j = k + zw.length;
+          while (j < l.slowa.length && naz.length < 3 && WIELKA.test(l.slowa[j].t) && l.slowa[j].t.replace(/[,.;]$/, '').length > 1) {
+            naz.push(l.slowa[j]);
+            if (/[,.;]$/.test(l.slowa[j].t)) break;
+            j++;
+          }
+          // „jestem”, „tu”, „syn”… tylko gdy dalej stoją co najmniej dwa słowa z wielkiej litery (imię i nazwisko)
+          const pewny = zw.length > 1 || zw[0] === 'nazwisko';
+          if (naz.length >= (pewny ? 1 : 2)) dodaj(st.nr, naz, 'pacjent', 'zwrot „' + zw.join(' ') + '” i imię/nazwisko');
+        }
+        for (const zw of ZWROTY_ADRES) {
+          if (!pasuje(k, zw)) continue;
+          const adr = [];
+          let j = k + zw.length;
+          while (j < l.slowa.length && adr.length < 6) {
+            const t = l.slowa[j].t;
+            adr.push(l.slowa[j]);
+            if (/[;.]$/.test(t) && !/^(ul|al|os|pl|m)\.$/i.test(t)) break;
+            j++;
+          }
+          if (adr.length) dodaj(st.nr, adr, 'adres', 'zwrot „' + zw.join(' ') + '”');
+        }
+      }
+
       // 3) tytuł + nazwisko (lek. Jan Kowalski, dr n. med. …, mgr …)
       l.slowa.forEach((w, k) => {
         const n = normalizuj(w.t).replace(/[.,:]$/, '');
@@ -1248,6 +1284,12 @@ document.addEventListener('keydown', (e) => {
 });
 let tRozmiar;
 window.addEventListener('resize', () => { clearTimeout(tRozmiar); tRozmiar = setTimeout(() => S.strony.length && rysujStrony(), 250); });
+
+// motyw z powłoki Windows (MS Konsylium · Narzędzia): postMessage({ typ: 'ms-motyw', motyw })
+window.addEventListener('message', (e) => {
+  const d = e.data;
+  if (d && d.typ === 'ms-motyw' && (d.motyw === 'ciemny' || d.motyw === 'jasny')) document.documentElement.dataset.motyw = d.motyw;
+});
 
 // dla testów automatycznych
 window.__anonimizator = { S, aktywne, tekst, wykrywaj };
