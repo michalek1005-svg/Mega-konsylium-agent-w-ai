@@ -94,6 +94,23 @@ function log(pliki) {
 }
 
 // pole „ETYKIETA: treść” z plików 05/09 (format FINAL)
+// Wnioski końcowe z 09-FINAL.md (format CLAUDE.md §6) → [{ etykieta, tresc }] dla ekranu „Wnioski”
+const POLA_FINAL = ['REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B', 'CZEGO NIE WIEMY', 'WRÓĆ / ESKALUJ GDY', 'ŹRÓDŁA'];
+export function wnioskiZFinal(md) {
+  if (!md || !md.trim()) return null;
+  const linie = md.replace(/\r/g, '').split('\n');
+  const out = []; let biez = null; const reszta = [];
+  for (const l of linie) {
+    const czysta = l.replace(/^\s*[#>*-]*\s*\**/, '').replace(/\*\*/g, '');
+    const m = czysta.match(/^([A-ZĄĆĘŁŃÓŚŹŻ][A-ZĄĆĘŁŃÓŚŹŻ /]+?)\s*:\s*(.*)$/);
+    if (m && POLA_FINAL.some((p) => m[1].trim().toUpperCase().startsWith(p))) { biez = { etykieta: m[1].trim(), tresc: m[2].trim() }; out.push(biez); continue; }
+    if (/^\s*—\s*Narzędzie testowe/.test(l)) { biez = null; continue; }
+    if (biez) biez.tresc += (biez.tresc ? '\n' : '') + l.trim(); else if (l.trim()) reszta.push(l.trim());
+  }
+  out.forEach((x) => { x.tresc = bezMarkdown(x.tresc).trim(); });
+  return { pola: out, tekst: bezMarkdown(md).trim(), wstep: reszta.filter((x) => !/^#/.test(x)).slice(0, 3).join(' ') };
+}
+
 export function pole(md, etykieta) {
   if (!md) return '';
   const re = new RegExp('^' + etykieta + '\\s*:\\s*(.*)$', 'mi');
@@ -379,6 +396,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     temat: 'Lekarz prowadzący wrócił z wynikiem. Kalibracja agentów.',
     wypowiedzi: [wyp('ordynator', `Potwierdzone: ${tablica.followup.rozpoznanie}. Decyzja była właściwa: ${tablica.followup.decyzja}.`, fu, '10-followup.md')] });
 
-  if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki' };
-  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: polacz(zywe, sceny), tablica, zrodlo: sceny.length ? 'log+pliki' : 'log' };
+  const wnioski = wnioskiZFinal(pliki['09-FINAL.md']);
+  if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki', wnioski };
+  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: polacz(zywe, sceny), tablica, zrodlo: sceny.length ? 'log+pliki' : 'log', wnioski };
 }

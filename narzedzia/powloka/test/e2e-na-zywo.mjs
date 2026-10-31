@@ -118,6 +118,13 @@ try {
   await pk.waitForSelector('.dymek.pelny >> text=kamicy pęcherzyka żółciowego', { timeout: 15000 });
   assert.match(await pk.textContent('.dymek.pelny .info'), /Tokio 2018/);
 
+  // 8. Wnioski końcowe: 09-FINAL.md otwiera ekran wniosków w Pokoju
+  writeFileSync(join(sprawa, '09-FINAL.md'), 'REKOMENDACJA: USG jamy brzusznej w trybie pilnym (do 24 h).\nPILNOŚĆ: 2 dziś — PEWNOŚĆ: średnia\nDLACZEGO: Kolka żółciowa najbardziej prawdopodobna.\nPLAN B: Gorączka lub żółtaczka: SOR.\nCZEGO NIE WIEMY: wyniki badań\nWRÓĆ / ESKALUJ GDY: gorączka, żółtaczka\nŹRÓDŁA: Tokio 2018\n— Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.\n');
+  await pk.waitForSelector('#wnioski:not([hidden]) .rek', { timeout: 10000 });
+  assert.match(await pk.textContent('#wnioski .rek'), /USG jamy brzusznej/);
+  assert.match(await pk.textContent('#wnioski dl'), /PLAN B/);
+  await okno.screenshot({ path: join(tmpdir(), 'ms-na-zywo-wnioski.png') });
+
   assert.deepEqual(sieci, [], 'aplikacja nie łączy się z siecią');
   await okno.screenshot({ path: join(tmpdir(), 'ms-na-zywo-pokoj.png') });
   console.log('e2e na żywo OK', folder);

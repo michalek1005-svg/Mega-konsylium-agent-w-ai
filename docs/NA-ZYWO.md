@@ -24,7 +24,7 @@ Do Claude trafiają tylko teksty po anonimizacji (PESEL, imię i nazwisko, adres
 3. Claude czyta stan, dopisuje 2–4 pytania do `ankieta.json`. Aplikacja sprawdza plik co 1,5 s i od razu pokazuje pytanie. Po każdej odpowiedzi nadpisuje `stan.json`. Gdy pytania się skończą, pacjent znowu widzi „Dobieram…”, a Claude dopisuje kolejne. Ostatnia partia ma `"koniec": true`.
 4. Lekarz w trakcie może kliknąć **Dołącz wyniki badań**: otwiera się anonimizator, a **Dołącz do wywiadu** wraca z zanonimizowanym tekstem. Wyniki są w `stan.json` (`wyniki`) i w `01-wywiad.md`.
 5. Na końcu **Wyślij do Konsylium** zapisuje `01-wywiad.md`. Claude zakłada `sprawy/<ID>/`, kopiuje wywiad i prowadzi konsylium, zapisując dymki skryptem `skrypty/dymek.py`.
-6. Zakładka **Pokój lekarski** sama pokazuje najnowszą sprawę z `sprawy/` i dociąga dymki na żywo.
+6. Zakładka **Pokój lekarski** sama pokazuje najnowszą sprawę z `sprawy/` i dociąga dymki na żywo. Gdy konsylium zapisze `09-FINAL.md`, pokój sam otwiera ekran **Wnioski** (rekomendacja, pilność, plan B, czego nie wiemy, kiedy wrócić, źródła); przycisk „Wnioski” otwiera go ponownie.
 
 ## 2. Instrukcja dla Claude (pętla wywiadu)
 
@@ -59,7 +59,7 @@ Gdy podsumowanie mówi „Wywiad wysłany”:
 
 ## 4. Co zainstalować na Windows
 
-1. **MS Konsylium Narzędzia 0.4.0** (zip z projektu): rozpakuj i uruchom `MS Konsylium Narzedzia.exe`.
+1. **MS Konsylium Narzędzia 0.5.0** (zip z projektu): rozpakuj i uruchom `MS Konsylium Narzedzia.exe`.
 2. **Folder Konsylium**: kopia repo (zip z GitHub albo z paczki projektu) rozpakowana np. do `Dokumenty\MS-Konsylium`. W aplikacji: Folder Konsylium → Wybierz folder….
 3. **Python 3** (dla `dymek.py` i `wywiad_na_zywo.py`): w PowerShell `winget install Python.Python.3.12` albo instalator z python.org z zaznaczonym „Add python.exe to PATH”.
 4. **Claude na tym komputerze**: aplikacja Claude Desktop z włączonym Remote Control (sesja startowana z wątku projektu w tym folderze) albo Claude Code (`claude` w terminalu w folderze Konsylium).

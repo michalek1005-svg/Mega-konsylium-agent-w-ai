@@ -193,7 +193,27 @@ ${podpisy(wpisy)}`;
 
   // ---------- odtwarzanie ----------
   // tryb na żywo: nowy scenariusz tej samej sprawy bez cofania odtwarzania
+  // ---------- wnioski końcowe ----------
+  let wnioskiPokazane = '';
+  function rysujWnioski(s, otworz) {
+    const w = s && s.wnioski, btn = $('wnioski-btn'), el = $('wnioski');
+    btn.hidden = !w;
+    if (!w) { el.hidden = true; return; }
+    const rek = w.pola.find((p) => /^REKOMENDACJA/i.test(p.etykieta));
+    const reszta = w.pola.filter((p) => p !== rek);
+    el.innerHTML = `<div class="gora"><h2 id="wnioski-t">Wnioski konsylium · ${esc(s.sprawa || '')}</h2><button class="nk-button" type="button" id="wnioski-zamknij">Wróć do pokoju</button></div>` +
+      (rek ? `<div class="rek">${esc(rek.tresc)}</div>` : '') +
+      (reszta.length ? `<dl>${reszta.map((p) => `<dt>${esc(p.etykieta)}</dt><dd>${esc(p.tresc)}</dd>`).join('')}</dl>` : `<div style="white-space:pre-wrap">${esc(w.tekst)}</div>`) +
+      `<p class="stopka-w">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
+    $('wnioski-zamknij').addEventListener('click', () => { el.hidden = true; });
+    // na żywo: pierwsze pojawienie się 09-FINAL otwiera wnioski same
+    const klucz = (s.sprawa || '') + '|' + w.tekst.length;
+    if (otworz && wnioskiPokazane !== klucz) { wnioskiPokazane = klucz; el.hidden = false; }
+  }
+  $('wnioski-btn').addEventListener('click', () => { $('wnioski').hidden = !$('wnioski').hidden; });
+
   function aktualizuj(s) {
+    rysujWnioski(s, !!zywoTimer);
     const bylo = kroki.length, naKoncu = i >= bylo - 1;
     const rez = scen ? ileRezydentow() : 0;
     scen = s;
@@ -208,6 +228,7 @@ ${podpisy(wpisy)}`;
   }
 
   function przygotuj(s) {
+    rysujWnioski(s, false); $('wnioski').hidden = true;
     scen = s;
     s.tablica.liczbaRezydentow = ileRezydentow();
     kroki = [];

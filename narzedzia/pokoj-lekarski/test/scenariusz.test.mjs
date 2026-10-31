@@ -115,3 +115,10 @@ test('dymek z pełniejszą treścią medyczną i linią info', () => {
   assert.equal(w.info, 'HEART 5 pkt · ESC 2023');
   assert.match(w.pelny, /hs-troponinę/);
 });
+
+test('wnioski końcowe z 09-FINAL.md', () => {
+  const s = sprawa('2026-10-31-02');
+  assert.ok(s.wnioski, 'są wnioski');
+  assert.deepEqual(s.wnioski.pola.map((p) => p.etykieta).slice(0, 4), ['REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B']);
+  assert.equal(zbudujScenariusz({}, 'pusty').wnioski, null);
+});
