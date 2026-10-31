@@ -44,6 +44,16 @@ Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
 
 Dziś wszystko dzieje się w jednej przeglądarce: każda odpowiedź od razu zmienia kolejne pytanie, a podgląd lekarza obok aktualizuje się w tej samej chwili. Żeby pacjent i lekarz byli na dwóch różnych urządzeniach, potrzebny jest serwer, który przekazuje odpowiedzi z telefonu pacjenta do panelu lekarza. Tego celowo jeszcze nie ma (dane zdrowotne, RODO).
 
+## Aplikacja na Windows (tryb pacjenta)
+
+Wywiad jest jednym z modułów aplikacji `narzedzia/powloka` (Electron, obok anonimizatora). Aplikacja blokuje każde połączenie sieciowe, dane zostają na komputerze.
+
+1. Pacjent siada sam przy komputerze, opisuje dolegliwości własnymi słowami i odpowiada na pytania. Panel lekarza jest ukryty.
+2. Lekarz klika „Podsumowanie dla lekarza”: widzi odpowiedzi, fragmenty z opisu i flagi.
+3. „Kopiuj do Konsylium” przepuszcza `01-wywiad.md` przez anonimizator (PESEL, imię i nazwisko, adres, kontakt) i kopiuje do schowka. Lekarz przegląda tekst i wkleja go do czatu projektu Konsylium.
+
+Budowanie: `cd narzedzia/powloka && npm install && node zbuduj.mjs` daje `out/MS-Konsylium-Narzedzia-<wersja>-win-x64.zip`. Sam moduł wywiadu: `node narzedzia/wywiad/zbuduj.mjs` (plik w `dist/`).
+
 ## Format eksportu
 
 Eksport ma sekcje `## Czerwone flagi`, `## Pytania i odpowiedzi` (linie `P: …  O: …`) i `## NIEZNANE`, jak `sprawy/*/01-wywiad.md`. Celowo nie zawiera hipotezy ani podpowiedzi rozpoznania, żeby nie zdradzać niczego lekarzom przed ślepą turą.
