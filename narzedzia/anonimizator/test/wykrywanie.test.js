@@ -124,3 +124,11 @@ test('zwykły tekst (wywiad): zakresy i podmiana', () => {
   for (const x of ['gorączka 38,5', 'Od 3 dni']) assert.ok(wynik.includes(x), wynik);
   assert.ok(z.every((r) => t.slice(r.od, r.do) === r.tekst));
 });
+
+test('wypowiedź pacjenta: imię i nazwisko oraz adres bez etykiet formularza', () => {
+  const t = 'Nazywam się Jan Kowalski, PESEL 85010112345. Mieszkam przy ul. Lipowej 7 m. 12. Od tygodnia mam kaszel.\n' +
+    'Mam na imię Ewa. Jestem zmęczona od rana. Tu Anna Nowak, córka pacjentki.';
+  const wynik = zanonimizujTekst(t, wykryjWTekscie(t));
+  for (const x of ['Kowalski', 'Jan ', '85010112345', 'Lipowej', 'Ewa', 'Anna Nowak']) assert.ok(!wynik.includes(x), x + ' → ' + wynik);
+  for (const x of ['Od tygodnia mam kaszel', 'Jestem zmęczona od rana']) assert.ok(wynik.includes(x), wynik);
+});
