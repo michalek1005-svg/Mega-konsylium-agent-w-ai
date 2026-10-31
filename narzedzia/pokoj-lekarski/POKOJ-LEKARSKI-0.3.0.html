@@ -1174,7 +1174,9 @@ ${podpisy(wpisy)}`;
       const log = (await window.MsMost.lista('sprawy/' + x.nazwa)).filter((p) => !p.katalog).reduce((m, p) => Math.max(m, p.zmiana), 0);
       zLogiem.push({ nazwa: x.nazwa, zmiana: Math.max(log, x.zmiana) });
     }
-    zLogiem.sort((a, b) => b.zmiana - a.zmiana || b.nazwa.localeCompare(a.nazwa));
+    // Najnowsza = najwyższy identyfikator (data + numer); czas zmiany tylko rozstrzyga remis.
+    // (Czas plików nie jest wiarygodny: pobranie repo odświeża go we wszystkich starych sprawach.)
+    zLogiem.sort((a, b) => b.nazwa.localeCompare(a.nazwa) || b.zmiana - a.zmiana);
     return zLogiem[0];
   }
   async function zywoZPowloki(tylkoSwieza) {
