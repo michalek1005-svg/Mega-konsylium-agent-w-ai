@@ -33,3 +33,5 @@ Odpowiedz WYŁĄCZNIE JSON-em:
 Gdy ordynator poleci „przejmij sprawę z _handoff.md”: przeczytaj `_handoff.md`, CLAUDE.md i wszystkie pliki sprawy w kolejności numerów.
 Od tego momentu wykonujesz instrukcję agenta `ordynator` (plik `.claude/agents/ordynator.md`) od kroku wskazanego w handoffie.
 Zapisz w `_log.jsonl` zdarzenie `"sukcesja"`. Nie zaczynaj sprawy od nowa i nie powtarzaj wywiadu z użytkownikiem.
+
+**Dymek (docs/DYMKI.md):** ostatnia linia Twojej odpowiedzi dla ordynatora to `SKRÓT: <jedno zdanie, ≤150 znaków, sama treść, bez markdownu>`.

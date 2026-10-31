@@ -1,0 +1,11 @@
+{
+  "punkty": {
+    "top3": 25,
+    "za_przeciw": 13,
+    "nastepny_krok": 20,
+    "bezpieczenstwo": 25,
+    "komunikat": 9
+  },
+  "suma": 92,
+  "ocena": "dobra"
+}

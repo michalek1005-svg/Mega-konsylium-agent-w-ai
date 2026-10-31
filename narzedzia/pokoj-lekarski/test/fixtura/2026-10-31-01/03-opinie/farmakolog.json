@@ -1,0 +1,138 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — ibuprofen (dyspepsja, uszkodzenie błony śluzowej żołądka i dwunastnicy)",
+      "p": 0.05,
+      "za": [
+        "dwie dawki ibuprofenu 400 mg w ostatniej dobie",
+        "ból w nadbrzuszu i nudności to typowe działania niepożądane niesteroidowych leków przeciwzapalnych"
+      ],
+      "przeciw": [
+        "ból zaczął się 3 dni temu, a ibuprofen przyjęto dopiero wczoraj",
+        "podobne epizody poposiłkowe 2–3 razy w ostatnim roku, bez związku z lekami",
+        "promieniowanie pod prawą łopatkę i dodatni objaw Murphy'ego nie pasują do gastropatii polekowej",
+        "brak smolistych stolców"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — atorwastatyna (polekowe uszkodzenie wątroby)",
+      "p": 0.02,
+      "za": [
+        "atorwastatyna może podnosić aktywność aminotransferaz; ból w prawym podżebrzu",
+        "próby wątrobowe NIEZNANE"
+      ],
+      "przeciw": [
+        "lek przyjmowany przewlekle, bez informacji o zmianie dawki",
+        "kolkowy, poposiłkowy charakter bólu i nawroty nie są typowe dla uszkodzenia polekowego",
+        "brak żółtaczki i ciemnego moczu"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — atorwastatyna (polekowe zapalenie trzustki)",
+      "p": 0.01,
+      "za": ["statyny są opisywaną, rzadką przyczyną zapalenia trzustki; lipaza NIEZNANA"],
+      "przeciw": ["bardzo rzadkie działanie niepożądane; obraz kliniczny przemawia za drogami żółciowymi"]
+    },
+    {
+      "nazwa": "objawy polekowe — amlodypina",
+      "p": 0.01,
+      "za": ["może dawać dyspepsję i nudności"],
+      "przeciw": ["nie wywołuje kolkowego bólu z promieniowaniem pod łopatkę; lek przewlekły, bez zmian"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "krwawienie z przewodu pokarmowego po niesteroidowych lekach przeciwzapalnych — klinicznie mało prawdopodobne (brak smolistych stolców i krwi w stolcu), ale bez aktualnej morfologii"
+  ],
+  "red_flags_otwarte": [
+    "ibuprofen przyjęty w ostatniej dobie mógł zamaskować gorączkę i część odczynu zapalnego; temperatura 36,9 °C nie wyklucza ostrego zapalenia pęcherzyka żółciowego",
+    "funkcja nerek (kreatynina, eGFR) NIEZNANA — ogranicza bezpieczne dawkowanie niesteroidowych leków przeciwzapalnych",
+    "próby wątrobowe i bilirubina NIEZNANE — nie wiadomo, czy można bezpiecznie kontynuować atorwastatynę",
+    "lipaza NIEZNANA",
+    "status menopauzalny i ewentualna hormonalna terapia zastępcza lub antykoncepcja estrogenowa NIEZNANE — estrogeny zwiększają ryzyko kamicy żółciowej"
+  ],
+  "nastepny_krok": "Dziś pobrać morfologię, CRP, ALT, AST, GGTP, fosfatazę zasadniczą, bilirubinę, lipazę i kreatyninę z eGFR, a do czasu wyników leczyć ból jednym niesteroidowym lekiem przeciwzapalnym w krótkim kursie (bez łączenia z drugim), z paracetamolem lub metamizolem jako uzupełnieniem.",
+  "co_zmieniloby_zdanie": "Wzrost ALT powyżej 3-krotności górnej granicy normy (wstrzymać atorwastatynę), eGFR poniżej 30 ml/min/1,73 m² lub cechy krwawienia z przewodu pokarmowego (odstawić niesteroidowe leki przeciwzapalne), albo informacja o przyjmowaniu estrogenów, leków przeciwkrzepliwych lub innych leków nieujętych w wywiadzie.",
+  "zrodla": [
+    "zrodla/ — brak plików dla tej sytuacji (MANIFEST zawiera wyłącznie przykłady); poziom 1 milczy",
+    "PubMed — niedostępny w tej sesji (błąd połączenia serwera MCP); poziom 2 niezweryfikowany",
+    "EASL Clinical Practice Guidelines on the prevention, diagnosis and treatment of gallstones. J Hepatol 2016;65:146–181, doi:10.1016/j.jhep.2016.03.005 — niesteroidowe leki przeciwzapalne jako leczenie pierwszego wyboru kolki żółciowej; kwas ursodeoksycholowy niezalecany w kamicy objawowej [cytowane z wiedzy modelu, niezweryfikowane w tej sesji]",
+    "Tokyo Guidelines 2018 (TG18) — kryteria ostrego zapalenia pęcherzyka żółciowego [wiedza modelu, niezweryfikowane]",
+    "EMA/CMDh 2013 — ograniczenie metoklopramidu: maks. 0,5 mg/kg/dobę (zwykle 10 mg do 3×/dobę), do 5 dni [wiedza modelu, niezweryfikowane]",
+    "ChPL atorwastatyny, ibuprofenu, diklofenaku, metamizolu, paracetamolu, metoklopramidu, amlodypiny — dawkowanie i przeciwwskazania [wiedza modelu, niezweryfikowane; brak ChPL w zrodla/]"
+  ],
+  "plan_farmakologiczny": [
+    {
+      "lek": "diklofenak",
+      "dawka": "75 mg jednorazowo i.m. przy napadzie kolki; ewentualnie 50 mg p.o. 2–3×/dobę, maks. 150 mg/dobę",
+      "droga": "i.m. (w gabinecie) lub p.o.",
+      "czas": "doraźnie, maks. 3–5 dni",
+      "uwagi": "Jeden niesteroidowy lek przeciwzapalny zamiast ibuprofenu — nie łączyć dwóch. Przed kolejnymi dawkami znać eGFR. Krótki kurs u pacjentki z nadciśnieniem dopuszczalny; kontrola RR (niesteroidowe leki przeciwzapalne osłabiają działanie hipotensyjne). Alternatywa przy wyższym ryzyku sercowo-naczyniowym: ibuprofen 400 mg do 3×/dobę (maks. 1200 mg/dobę bez recepty). Jeśli kurs dłuższy niż kilka dni lub dyspepsja — dołączyć inhibitor pompy protonowej (np. pantoprazol 20 mg/dobę).",
+      "zrodlo": "EASL 2016 (niesteroidowe leki przeciwzapalne w kolce żółciowej) [wiedza modelu, niezweryfikowane]; dawki: ChPL diklofenaku/ibuprofenu [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "paracetamol",
+      "dawka": "1 g co 6–8 h, maks. 4 g/dobę (maks. 3 g/dobę, jeśli nieprawidłowe próby wątrobowe lub regularny alkohol)",
+      "droga": "p.o.",
+      "czas": "doraźnie do czasu ustalenia leczenia",
+      "uwagi": "Uzupełnienie analgezji; bezpieczny przy nadciśnieniu. Ostrożnie do czasu wyników prób wątrobowych.",
+      "zrodlo": "ChPL paracetamolu [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "metamizol",
+      "dawka": "500–1000 mg do 4×/dobę, maks. 4 g/dobę",
+      "droga": "p.o. (lub i.m./i.v. w warunkach ambulatoryjnych/szpitalnych)",
+      "czas": "doraźnie, krótko",
+      "uwagi": "Opcja zamiast niesteroidowego leku przeciwzapalnego przy przeciwwskazaniach; ryzyko agranulocytozy — poinformować o gorączce i bólu gardła; spadki ciśnienia przy podaniu dożylnym.",
+      "zrodlo": "ChPL metamizolu [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "metoklopramid",
+      "dawka": "10 mg do 3×/dobę",
+      "droga": "p.o. lub i.m.",
+      "czas": "maks. 5 dni",
+      "uwagi": "Tylko przy nudnościach/wymiotach; ryzyko objawów pozapiramidowych. Nie podawać przy podejrzeniu niedrożności.",
+      "zrodlo": "EMA 2013; ChPL metoklopramidu [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "amlodypina 5 mg 1×/dobę",
+      "dawka": "bez zmian",
+      "droga": "p.o.",
+      "czas": "kontynuować, także okołooperacyjnie",
+      "uwagi": "Brak istotnych interakcji z proponowaną analgezją poza osłabieniem działania hipotensyjnego przez niesteroidowe leki przeciwzapalne.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "atorwastatyna 20 mg 1×/dobę",
+      "dawka": "bez zmian do czasu wyników",
+      "droga": "p.o.",
+      "czas": "kontynuować; wstrzymać, jeśli ALT/AST > 3× górna granica normy lub cechy cholestazy do wyjaśnienia",
+      "uwagi": "Statyny nie zwiększają ryzyka kamicy (raczej je zmniejszają); nie odstawiać rutynowo. Interakcja amlodypina–atorwastatyna (CYP3A4) klinicznie nieistotna przy tych dawkach.",
+      "zrodlo": "ChPL atorwastatyny [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "dwa niesteroidowe leki przeciwzapalne jednocześnie (np. ibuprofen + diklofenak/ketoprofen)",
+      "powod": "brak dodatkowej skuteczności, sumowanie ryzyka krwawienia z przewodu pokarmowego i uszkodzenia nerek"
+    },
+    {
+      "lek": "niesteroidowe leki przeciwzapalne przy eGFR < 30 ml/min/1,73 m², krwawieniu z przewodu pokarmowego lub czynnej chorobie wrzodowej",
+      "powod": "przeciwwskazanie; eGFR obecnie NIEZNANY [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "kwas ursodeoksycholowy jako leczenie kolki lub zamiennik leczenia zabiegowego",
+      "powod": "brak skuteczności w zapobieganiu nawrotom kolki w kamicy objawowej (EASL 2016) [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "empiryczna antybiotykoterapia ambulatoryjna przed wynikami badań",
+      "powod": "maskuje obraz ostrego zapalenia pęcherzyka; antybiotyk dopiero przy potwierdzonym zapaleniu, w ramach leczenia szpitalnego/chirurgicznego [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "estrogeny (hormonalna terapia zastępcza, antykoncepcja estrogenowa) — nie rozpoczynać; jeśli przyjmowane, zgłosić do oceny",
+      "powod": "zwiększają ryzyko kamicy żółciowej; status hormonalny NIEZNANY [wiedza modelu, niezweryfikowane]"
+    }
+  ]
+}

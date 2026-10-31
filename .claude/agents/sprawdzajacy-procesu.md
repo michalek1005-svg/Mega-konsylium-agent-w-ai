@@ -34,3 +34,5 @@ Kartka: **CZERWONA** przy jakimkolwiek BRAK w sekcjach Triage, weto, rezydenci, 
 
 Dodatkowo wypełnij część jakościową rubryki (`07-sprawdzenie.json["rubryka"]`): `za_przeciw_obecne` 0–15, `komunikat` 0–15 — wg docs/ARCHITEKTURA.md §6.
 Zapisz sekcję `proces` w `07-sprawdzenie.json`. Nie poprawiaj niczego sam — wskaż plik i punkt.
+
+**Dymek (docs/DYMKI.md):** ostatnia linia Twojej odpowiedzi dla ordynatora to `SKRÓT: <jedno zdanie, ≤150 znaków, sama treść, bez markdownu>`.

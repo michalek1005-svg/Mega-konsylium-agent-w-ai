@@ -1,0 +1,48 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "kolka żółciowa w przebiegu kamicy pęcherzyka żółciowego", "p": 0, "za": ["ból poposiłkowy po tłustych posiłkach, falujący, epizody 30–90 min, promieniowanie pod prawą łopatkę", "nawracające epizody 2–3 razy w ostatnim roku", "profil ryzyka: kobieta, 54 lata, BMI ok. 31"], "przeciw": ["dodatni objaw Murphy'ego i ból resztkowy wymagają różnicowania z ostrym zapaleniem pęcherzyka"]},
+    {"nazwa": "ostre zapalenie pęcherzyka żółciowego", "p": 0, "za": ["objaw Murphy'ego dodatni", "ból utrzymuje się 3 dni z bólem resztkowym między epizodami"], "przeciw": ["temperatura 36,9 °C (po ibuprofenie — może maskować)", "brak obrony mięśniowej", "HR 84"]},
+    {"nazwa": "kamica przewodowa lub ostre zapalenie trzustki", "p": 0, "za": ["wymioty, ból nadbrzusza 3 dni"], "przeciw": ["brak żółtaczki, ciemnego moczu, odbarwionych stolców (z wywiadu, bez badań)"]},
+    {"nazwa": "choroba wrzodowa lub uszkodzenie błony śluzowej żołądka po niesteroidowych lekach przeciwzapalnych", "p": 0, "za": ["ból nadbrzusza", "ibuprofen 2 × 400 mg"], "przeciw": ["ból poprzedza przyjęcie ibuprofenu", "brak smolistych stolców"]},
+    {"nazwa": "ostry zespół wieńcowy ściany dolnej z bólem w nadbrzuszu", "p": 0, "za": ["kobieta 50+, nadciśnienie, hipercholesterolemia, otyłość"], "przeciw": ["ból wyraźnie związany z jedzeniem, brak bólu wysiłkowego, duszności, potów"]}
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "objawy cholangitis w wywiadzie (żółtaczka, ciemny mocz, odbarwione stolce, dreszcze) — zaprzeczone, ale bez potwierdzenia laboratoryjnego",
+    "krwawienie z przewodu pokarmowego (brak smolistych stolców i krwi)"
+  ],
+  "red_flags_otwarte": [
+    "ostre zapalenie pęcherzyka żółciowego (Murphy dodatni, ból 3 dni, gorączka mogła być maskowana ibuprofenem) — wymaga CRP, leukocytozy i USG",
+    "kamica przewodowa / żółciopochodne ostre zapalenie trzustki — wymaga lipazy, bilirubiny, ALT/AST, ALP/GGTP",
+    "sercowa przyczyna bólu w nadbrzuszu u kobiety z czynnikami ryzyka — EKG nie wykonano"
+  ],
+  "nastepny_krok": "Dziś, w jednej wizycie: EKG w gabinecie oraz pobranie pakietu krwi (morfologia, CRP, lipaza, bilirubina całkowita, ALT, AST, ALP, GGTP, kreatynina) z wynikiem tego samego dnia, a USG jamy brzusznej w trybie pilnym (≤24–72 h) — przy nieprawidłowych wynikach lub gorączce zamiast czekania na USG kierowanie na SOR, gdzie USG i laboratorium wykona się jednorazowo.",
+  "co_zmieniloby_zdanie": "Gdyby USG w POZ było niedostępne w ciągu 72 h albo CRP/leukocytoza/lipaza/bilirubina wyszły podwyższone, najtańszą ścieżką staje się od razu skierowanie na SOR lub do chirurga, a nie dalsza diagnostyka ambulatoryjna.",
+  "zrodla": [
+    "zrodla/ — brak polskich wytycznych dla kamicy żółciowej i bólu brzucha (MANIFEST.md zawiera tylko przykłady); PubMed niedostępny w tej sesji (błąd połączenia MCP)",
+    "pamiec/zespol.md — wniosek 2026-10-31 PRZYKLAD-001: EKG w gabinecie zawsze przed planem planowym u kobiety 50+ z czynnikami ryzyka sercowego",
+    "EASL Clinical Practice Guidelines on the prevention, diagnosis and treatment of gallstones, J Hepatol 2016 — USG przezbrzuszne jako badanie pierwszego wyboru; MRCP/EUS tylko przy podejrzeniu kamicy przewodowej [wiedza modelu, niezweryfikowane — nie sprawdzono w PubMed]",
+    "Tokyo Guidelines 2018 (TG18) — kryteria ostrego zapalenia pęcherzyka: objaw Murphy'ego + CRP/leukocytoza/gorączka + obraz USG [wiedza modelu, niezweryfikowane]",
+    "Lipaza > 3 × górna granica normy jako kryterium ostrego zapalenia trzustki (kryteria Atlanta 2012) [wiedza modelu, niezweryfikowane]",
+    "Amylaza mniej swoista niż lipaza — nie zlecać obu [wiedza modelu, niezweryfikowane]"
+  ],
+  "badania": [
+    {"nazwa": "EKG 12-odprowadzeniowe w gabinecie", "cel": "wykluczenie ostrego zespołu wieńcowego ściany dolnej", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "koszt minimalny, wynik od ręki; nieprawidłowe → SOR/ZRM natychmiast, prawidłowe → ścieżka żółciowa. Red flag otwarta — badanie zawsze uzasadnione."},
+    {"nazwa": "morfologia z rozmazem i CRP", "cel": "odróżnienie kolki żółciowej od ostrego zapalenia pęcherzyka", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "leukocytoza lub CRP podwyższone + Murphy dodatni → podejrzenie ostrego zapalenia → chirurg/SOR dziś; prawidłowe → leczenie objawowe i planowe USG. Ibuprofen może zaniżać gorączkę, nie CRP w tym samym stopniu [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "lipaza", "cel": "wykluczenie żółciopochodnego ostrego zapalenia trzustki", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "> 3 × górna granica normy → szpital; w normie → ambulatoryjnie. Amylazy nie dokładać."},
+    {"nazwa": "bilirubina całkowita, ALT, AST, ALP, GGTP", "cel": "wykrycie kamicy przewodowej / cholestazy", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "nieprawidłowe → pilna diagnostyka dróg żółciowych (szpital, MRCP/ECPW); prawidłowe → niskie ryzyko kamicy przewodowej, wystarcza USG."},
+    {"nazwa": "kreatynina (eGFR)", "cel": "bezpieczeństwo dalszego stosowania niesteroidowych leków przeciwzapalnych u pacjentki z nadciśnieniem", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "tani dodatek do tej samej probówki; wpływa na wybór leku przeciwbólowego."},
+    {"nazwa": "USG jamy brzusznej", "cel": "potwierdzenie kamicy pęcherzyka i ocena cech zapalenia oraz poszerzenia przewodu żółciowego wspólnego", "zmienia_decyzje": true, "kolejnosc": 3, "uwagi": "badanie rozstrzygające top-2 hipotezy (kolka vs zapalenie pęcherzyka). Musi być w ciągu 24–72 h; termin kolejkowy kilkutygodniowy nic nie rozstrzyga — wtedy skierowanie na SOR lub USG odpłatnie. Bez promieniowania."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "tomografia komputerowa jamy brzusznej", "powod": "na tym etapie nie zmienia decyzji względem USG, gorsza czułość dla złogów cholesterolowych, promieniowanie i kontrast; zarezerwować dla powikłań lub niejasnego obrazu w szpitalu [wiedza modelu, niezweryfikowane]"},
+    {"nazwa": "cholangiografia rezonansu magnetycznego (MRCP) lub endosonografia", "powod": "tylko po nieprawidłowych próbach wątrobowych lub poszerzonym przewodzie w USG; zlecona z góry nie zmienia decyzji, długa kolejka"},
+    {"nazwa": "gastroskopia", "powod": "obraz typowy dla bólu żółciowego; wynik nie zmieni postępowania dziś — rozważyć dopiero przy prawidłowym USG i utrzymujących się objawach"},
+    {"nazwa": "amylaza obok lipazy", "powod": "dubluje informację, lipaza jest swoistsza [wiedza modelu, niezweryfikowane]"},
+    {"nazwa": "troponina w POZ przy prawidłowym EKG i bólu typowo poposiłkowym", "powod": "niski prawdopodobieństwo przedtestowe; ryzyko kaskady po fałszywie dodatnim wyniku; troponina wtórnie dopiero przy nieprawidłowym EKG lub nietypowym bólu (wtedy SOR)"},
+    {"nazwa": "lipidogram, HbA1c, markery nowotworowe (CA 19-9, CEA)", "powod": "nie wpływają na decyzję w ostrym epizodzie; lipidogram/HbA1c ewentualnie planowo przy kontroli przewlekłej, markery — brak wskazań i ryzyko fałszywie dodatnich wyników"},
+    {"nazwa": "RTG przeglądowe jamy brzusznej", "powod": "brak wartości dla kamicy żółciowej i zapalenia pęcherzyka; promieniowanie bez zmiany decyzji"}
+  ]
+}

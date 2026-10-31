@@ -31,6 +31,7 @@ uzasadnienie z `05-projekt.md`, `pamiec/`, `zrodla/`, `CLAUDE.md`, nazwy i liczb
 > 1. CZEGO BRAKUJE W DANYCH — o co nikt nie zapytał, a Ty byś zapytał.
 > 2. HIPOTEZA NIEWYPOWIEDZIANA — rozpoznanie lub mechanizm, którego decyzja zdaje się nie uwzględniać.
 > 3. PODEJRZANE ZAŁOŻENIE — co w tej decyzji wygląda, jakby wynikało z nawyku lub ograniczenia narzędzia, a nie z danych.
+> Pod punktami jedna linia: SKRÓT: najważniejsza z Twoich uwag, jedno zdanie ≤150 znaków (do dymku w Pokoju lekarskim, docs/DYMKI.md; ordynator przepisuje tylko to zdanie).
 > Nie stawiaj diagnozy. Nie proponuj leczenia. Nie oceniaj, czy decyzja jest dobra — szukaj, co mogło zostać pominięte.
 
 ## 3. Mechanika wymuszenia (Claude Code)

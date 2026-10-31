@@ -1,0 +1,10 @@
+{
+  "zastepcy": [
+    {"zastepca":"zlozonosc","wynik":4,"eskaluj":false,"uzasadnienie":"Objawy z jednego układu (pokarmowy/wątrobowo-żółciowy); 2 choroby przewlekłe (+2); 3 leki poniżej progu polipragmazji; 4 pozycje NIEZNANE (+2); brak wieku skrajnego, ciąży, immunosupresji; objawy spójne."},
+    {"zastepca":"bezpieczenstwo","wynik":7,"eskaluj":true,"pilnosc_wstepna":2,"flagi":["Murphy dodatni + ból >3 dni (podejrzenie ostrego zapalenia pęcherzyka): OBECNA","OZW o nietypowym obrazie, brak EKG/troponiny: NIEZBADANA","Ostre zapalenie trzustki, brak lipazy: NIEZBADANA","Kamica przewodowa, brak bilirubiny/prób wątrobowych: NIEZBADANA","Stan zapalny, brak CRP/leukocytów: NIEZBADANA","Ciąża, status menopauzalny nieznany: NIEZBADANA","Alarm nowotworowy przy nowej dyspepsji >50 r.ż.: NIEZBADANA"],"uzasadnienie":"Murphy dodatni z bólem 3-dniowym sugeruje ostre zapalenie pęcherzyka (+3). Brak EKG, lipazy, bilirubiny/prób wątrobowych, CRP, statusu menopauzalnego (+4). Ryzyko 7 ≥4: eskalacja."},
+    {"zastepca":"niepewnosc","wynik":9,"eskaluj":true,"pilnosc_wstepna":2,"hipoteza_wlasna":"Objawowa kamica pęcherzyka żółciowego z podejrzeniem wczesnego ostrego zapalenia pęcherzyka (Murphy dodatni, 3 dni, ból resztkowy, gorączka mogła być maskowana ibuprofenem); pilność 2.","hipoteza_ordynatora":"Objawowa kamica pęcherzyka żółciowego (kolka żółciowa), bez cech zapalenia; pilność 3.","zgodne":false,"uzasadnienie":"Ordynator wyklucza zapalenie bez badań mimo Murphy'ego, 3 dni bólu i NLPZ maskującego gorączkę. Razem 9: eskalacja."}
+  ],
+  "tryb": "PELNY",
+  "wymuszony_przez_uzytkownika": false,
+  "liczba_rezydentow": 3
+}
