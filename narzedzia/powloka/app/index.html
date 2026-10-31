@@ -1,58 +1,56 @@
 <!doctype html>
-<html lang="pl">
+<html lang="pl" data-motyw="ciemny">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; frame-src file:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; frame-src file:">
 <title>MS Konsylium Narzędzia</title>
 <style>
-/* Powłoka: boczne menu z modułami, moduł w ramce obok. Kolory jak w wywiadzie
-   (neumorfizm MS); po wydzieleniu narzedzia/wspolne/ms-tokeny.css przejdą na tokeny Nawigatora. */
-:root {
-  --tlo: #e3e7eb; --cien-jasny: #ffffff; --cien-ciemny: #b9c1c9;
-  --tekst: #233039; --tekst-2: #5a6873; --akcent: #357f75; --akcent-tlo: #d3e3df; --linia: #cdd4da;
-  --f: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21; --tekst: #dce3e8; --tekst-2: #94a2ac;
-    --akcent: #74b8ac; --akcent-tlo: #2b3d3b; --linia: #353d45; color-scheme: dark; }
-}
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+/* Powłoka: boczne menu z modułami, moduł w ramce obok. Paleta „Laguna” z Nawigatora
+   (narzedzia/wspolne/ms-tokeny.css), motyw przez data-motyw na <html>. */
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html, body { height: 100%; margin: 0; }
-body { background: var(--tlo); color: var(--tekst); font: 14px/1.45 var(--f); display: grid; grid-template-columns: 236px minmax(0, 1fr); }
-nav { padding: 22px 16px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid var(--linia); }
-.marka { display: flex; gap: 11px; align-items: center; margin-bottom: 18px; }
-.znak { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; color: var(--akcent);
-  box-shadow: 5px 5px 12px var(--cien-ciemny), -5px -5px 12px var(--cien-jasny); }
-.marka b { display: block; font-size: 15px; }
-.marka span { font-size: 12px; color: var(--tekst-2); }
-button.modul { all: unset; cursor: pointer; padding: 12px 14px; border-radius: 13px; display: flex; flex-direction: column; gap: 2px;
-  box-shadow: 5px 5px 12px var(--cien-ciemny), -5px -5px 12px var(--cien-jasny); }
-button.modul small { color: var(--tekst-2); font-size: 12px; }
-button.modul[aria-current="page"] { box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); color: var(--akcent); font-weight: 600; }
-button.modul:focus-visible { outline: 2px solid var(--akcent); outline-offset: 3px; }
-.stan { margin-top: auto; font-size: 12px; color: var(--tekst-2); display: flex; flex-direction: column; gap: 6px; }
-.stan .offline { color: var(--akcent); font-weight: 600; }
-.stan .offline::before { content: "●"; margin-right: 6px; }
+body { font: 14px/1.45 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif; color: var(--ink);
+  background: var(--scene); background-color: var(--bg-viewport); display: grid; grid-template-columns: 248px minmax(0, 1fr); }
+nav { padding: 20px 14px; display: flex; flex-direction: column; gap: 8px; background: var(--tafla); box-shadow: var(--tafla-cien);
+  backdrop-filter: blur(26px) saturate(140%); }
+.marka { display: flex; gap: 12px; align-items: center; margin: 0 4px 18px; }
+.logo { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; font-size: 24px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.marka b { display: block; font-size: 16px; font-weight: 800; letter-spacing: -.3px; }
+.marka span { font-size: 12px; color: var(--mut); }
+.nk-label { margin: 4px 6px 4px; }
+button.modul { all: unset; cursor: pointer; padding: 11px 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 1px;
+  background: var(--btn); color: var(--btn-txt); font-weight: 650; transition: background .15s; }
+button.modul:hover { background: var(--btn-h); }
+button.modul small { font-size: 11.5px; font-weight: 500; opacity: .8; }
+button.modul[aria-current="page"] { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
+button.modul:focus-visible, .nk-button:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; }
+.stan { margin-top: auto; font-size: 12px; color: var(--mut); display: flex; flex-direction: column; gap: 8px; padding: 0 6px; }
+.stan .offline { color: var(--petrol); font-weight: 700; display: flex; align-items: center; gap: 7px; }
+.stan .offline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
 main { position: relative; min-width: 0; }
-iframe { border: 0; width: 100%; height: 100%; display: block; background: var(--tlo); }
-.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--tekst-2); padding: 40px; }
+iframe { border: 0; width: 100%; height: 100%; display: block; background: transparent; }
+.brak { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--mut); padding: 40px; }
 </style>
 </head>
 <body>
 <nav aria-label="Moduły">
-  <div class="marka"><div class="znak">MS</div><div><b>Konsylium</b><span>Narzędzia offline</span></div></div>
+  <div class="marka"><div class="logo" aria-hidden="true">K</div><div><b>Konsylium AI</b><span>Narzędzia offline · MS</span></div></div>
+  <p class="nk-label">Moduły</p>
   <button class="modul" type="button" data-modul="wywiad" aria-current="page">Wywiad z pacjentem<small>Opis, pytania, kopia do Konsylium</small></button>
   <button class="modul" type="button" data-modul="anonimizator">Anonimizator badań<small>Wyniki Synevo bez danych osobowych</small></button>
   <div class="stan">
+    <button class="nk-button" type="button" id="motyw">Motyw jasny / ciemny</button>
     <span class="offline">Offline</span>
     <span>Sieć jest zablokowana. Dane zostają na tym komputerze, dopóki sam ich nie skopiujesz.</span>
     <span id="wersja"></span>
   </div>
 </nav>
 <main>
-  <iframe id="ramka" title="Moduł" allow="clipboard-write"></iframe>
+  <iframe id="ramka" title="Moduł" allow="clipboard-write *"></iframe>
   <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
 </main>
 <!--KONFIGURACJA-->
@@ -74,6 +72,19 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: var(-
   var start = 'wywiad';
   try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}
   pokaz(MODULY[start] ? start : 'wywiad');
+  // Motyw jak w Nawigatorze; zapamiętany i przekazywany do modułu
+  function ustawMotyw(m) {
+    document.documentElement.dataset.motyw = m;
+    try { localStorage.setItem('ms-motyw', m); } catch (e) {}
+    try { ramka.contentWindow.postMessage({ typ: 'ms-motyw', motyw: m }, '*'); } catch (e) {}
+  }
+  var motyw = 'ciemny';
+  try { motyw = localStorage.getItem('ms-motyw') || 'ciemny'; } catch (e) {}
+  document.documentElement.dataset.motyw = motyw;
+  ramka.addEventListener('load', function () { ustawMotyw(document.documentElement.dataset.motyw); });
+  document.getElementById('motyw').addEventListener('click', function () {
+    ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
+  });
   document.getElementById('wersja').textContent = 'Wersja ' + (window.MS_WERSJA || 'dev');
 })();
 </script>

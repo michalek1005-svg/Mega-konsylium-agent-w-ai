@@ -1,216 +1,216 @@
 <title>MS Wywiad z pacjentem</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Adaptacyjny wywiad z pacjentem: kolejne pytania dobierane na bieżąco, podgląd lekarza na żywo. Prototyp na danych fikcyjnych.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="Adaptacyjny wywiad z pacjentem dla Konsylium AI: opis własnymi słowami, pytania dobierane na bieżąco, kopia do Konsylium po anonimizacji.">
+<!--@@FONT-LINK@@-->
+<link rel="stylesheet" href="../wspolne/ms-tokeny.css">
 <style>
-/* Układ: dwa panele obok siebie — po lewej „telefon pacjenta” z jednym pytaniem naraz,
-   po prawej podgląd lekarza na żywo. Neumorfizm marki MS: miękkie wypukłe i wklęsłe
-   powierzchnie z jednego tła. Pod 900 px panele układają się jeden pod drugim. */
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+/* Układ: dwie tafle obok siebie — po lewej wywiad (jedno pytanie naraz), po prawej
+   podsumowanie dla lekarza aktualizowane na żywo. Wygląd marki MS z Nawigatora:
+   paleta „Laguna” (narzedzia/wspolne/ms-tokeny.css), szklane tafle, tryb ciemny przez data-motyw. */
 :root {
-  --tlo: #e3e7eb;
-  --cien-jasny: #ffffff;
-  --cien-ciemny: #b9c1c9;
-  --tekst: #233039;
-  --tekst-2: #5a6873;
-  --akcent: #357f75;
-  --akcent-tlo: #d3e3df;
-  --alarm: #b3433a;
-  --alarm-tlo: #f1d9d5;
-  --uwaga: #93651a;
-  --uwaga-tlo: #efe3c9;
-  --linia: #cdd4da;
-  --f-tytul: "Sora", "Segoe UI", system-ui, sans-serif;
-  --f-tekst: "Figtree", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --r: 18px;
+  --f: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: ui-monospace, 'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, monospace;
+  --uwaga: #8a5d0c;
+  --uwaga-tlo: rgba(214, 160, 52, .18);
+  --alarm-tlo: rgba(168, 58, 56, .12);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21;
-    --tekst: #dce3e8; --tekst-2: #94a2ac; --akcent: #74b8ac; --akcent-tlo: #2b3d3b;
-    --alarm: #e5867c; --alarm-tlo: #43302e; --uwaga: #dcae5e; --uwaga-tlo: #3f372a; --linia: #353d45;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --tlo: #242a30; --cien-jasny: #2e353c; --cien-ciemny: #191d21;
-  --tekst: #dce3e8; --tekst-2: #94a2ac; --akcent: #74b8ac; --akcent-tlo: #2b3d3b;
-  --alarm: #e5867c; --alarm-tlo: #43302e; --uwaga: #dcae5e; --uwaga-tlo: #3f372a; --linia: #353d45;
-  color-scheme: dark;
-}
+html[data-motyw="ciemny"] { --uwaga: #e5b85f; --uwaga-tlo: rgba(229, 184, 95, .14); --alarm-tlo: rgba(255, 154, 140, .12); }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
-  background: var(--tlo); color: var(--tekst);
-  font: 15px/1.5 var(--f-tekst);
+  margin: 0; font: 14px/1.5 var(--f); color: var(--ink);
+  background: var(--scene); background-attachment: fixed; background-color: var(--bg-viewport);
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 20px 40px;
+  padding-block: 20px 36px; min-height: 100%;
 }
-h1, h2, h3 { font-family: var(--f-tytul); font-weight: 600; margin: 0; text-wrap: balance; }
-button { font: inherit; color: inherit; }
-:focus-visible { outline: 2px solid var(--akcent); outline-offset: 3px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+button, select, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--petrol); outline-offset: 3px; }
 
-.wypukly { background: var(--tlo); box-shadow: 6px 6px 14px var(--cien-ciemny), -6px -6px 14px var(--cien-jasny); }
-.wklesly { background: var(--tlo); box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); }
+.ramka { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.tafla { background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+.wypukly { background: var(--panel); box-shadow: var(--panel-cien); }
+.wklesly { background: var(--pole); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
 
-.ramka { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
-
-/* ── pasek górny ── */
-.pasek { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; justify-content: space-between; }
-.marka { display: flex; align-items: center; gap: 12px; }
-.znak { width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
-  font: 600 15px var(--f-tytul); color: var(--akcent); letter-spacing: .02em; }
-.marka h1 { font-size: 19px; }
-.marka p { margin: 0; font-size: 13px; color: var(--tekst-2); }
-.sterowanie { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.etykieta-demo { font: 500 11px var(--f-mono); text-transform: uppercase; letter-spacing: .08em;
-  color: var(--uwaga); background: var(--uwaga-tlo); padding: 6px 10px; border-radius: 999px; }
-.przycisk { border: 0; border-radius: 12px; padding: 9px 15px; cursor: pointer; font-weight: 500; }
-.przycisk:active, .przycisk[aria-pressed="true"] { box-shadow: inset 3px 3px 7px var(--cien-ciemny), inset -3px -3px 7px var(--cien-jasny); }
-.przycisk:disabled { opacity: .45; cursor: default; }
-.przycisk.glowny { color: var(--akcent); font-weight: 600; }
+/* ── nagłówek: logo K jak w anonimizatorze (N w Nawigatorze) ── */
+.pasek { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; justify-content: space-between; }
+.marka { display: flex; align-items: center; gap: 14px; }
+.logo { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; font-weight: 800; font-size: 26px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.marka h1 { font-size: 21px; font-weight: 800; letter-spacing: -.4px; }
+.marka p { margin: 2px 0 0; font-size: 12px; color: var(--mut); display: flex; align-items: center; gap: 7px; }
+.kropka-ok { width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+.sterowanie { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 6px; border-radius: 999px; }
+.etykieta-test { font-size: 11px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; color: var(--uwaga); background: var(--uwaga-tlo); padding: 6px 11px; border-radius: 999px; }
+.przycisk { border: 0; border-radius: 22px; padding: 9px 14px; min-height: 38px; background: var(--btn); color: var(--btn-txt);
+  font-size: 12.5px; font-weight: 650; cursor: pointer; transition: background .15s; }
+.przycisk:hover { background: var(--btn-h); }
+.przycisk:disabled { opacity: .4; cursor: default; }
+.przycisk.glowny, .przycisk.glowny:hover { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
 select.przycisk { appearance: none; padding-right: 30px;
-  background-image: linear-gradient(45deg, transparent 50%, var(--tekst-2) 50%), linear-gradient(135deg, var(--tekst-2) 50%, transparent 50%);
-  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+  background-image: linear-gradient(45deg, transparent 50%, var(--btn-txt) 50%), linear-gradient(135deg, var(--btn-txt) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; background-color: var(--btn); }
+select.przycisk option { color: #14302D; background: #fff; }
 
 /* ── układ ── */
-.uklad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 28px; align-items: start; }
+.uklad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 22px; align-items: start; }
 @media (max-width: 900px) { .uklad { grid-template-columns: minmax(0, 1fr); } }
-.naglowek-panelu { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-.naglowek-panelu h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--tekst-2); font-weight: 500; }
-.na-zywo { display: inline-flex; align-items: center; gap: 7px; font: 500 12px var(--f-mono); color: var(--akcent); }
-.na-zywo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--akcent); animation: puls 2s infinite; }
+.uklad.tylko-pacjent { grid-template-columns: minmax(0, 1fr); }
+.uklad.tylko-pacjent > aside { display: none; }
+.uklad.tylko-pacjent .telefon { max-width: 640px; }
+.przycisk[aria-pressed="true"] { background: var(--on); color: var(--on-txt); }
+.naglowek-panelu { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0 6px 10px; flex-wrap: wrap; }
+.naglowek-panelu h2 { font-size: 11px; letter-spacing: .06em; font-weight: 750; text-transform: uppercase; color: var(--mut); }
+.naglowek-panelu .opis-panelu { font-size: 12px; color: var(--mut); }
+.na-zywo { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 650; color: var(--petrol); }
+.na-zywo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--petrol); animation: puls 2s infinite; }
 @keyframes puls { 50% { opacity: .3; } }
 @media (prefers-reduced-motion: reduce) { .na-zywo::before { animation: none; } * { transition: none !important; } }
 
-/* ── telefon pacjenta ── */
-.telefon { border-radius: 30px; padding: 26px 22px 22px; position: relative; max-width: 480px; margin: 0 auto; width: 100%;
-  min-height: 500px; display: flex; flex-direction: column; gap: 18px; overflow: hidden; }
+/* ── wywiad (lewa tafla) ── */
+.telefon { border-radius: 36px; padding: 26px 24px 22px; position: relative; max-width: 520px; margin: 0 auto; width: 100%;
+  min-height: 520px; display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
 .postep { display: flex; flex-direction: column; gap: 8px; }
-.postep-tekst { display: flex; justify-content: space-between; font: 500 12px var(--f-mono); color: var(--tekst-2); }
-.tor { height: 8px; border-radius: 99px; overflow: hidden; }
-.tor > i { display: block; height: 100%; background: var(--akcent); border-radius: 99px; transition: width .35s ease; }
-.modul-pacjenta { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--akcent); font-weight: 600; }
-.pytanie { font-size: 21px; line-height: 1.32; }
-.opcje { display: flex; flex-direction: column; gap: 11px; }
-.opcja { text-align: left; border: 0; border-radius: 14px; padding: 13px 16px; cursor: pointer; display: flex; gap: 12px; align-items: center; transition: box-shadow .15s; }
-.opcja .kropka { flex: none; width: 18px; height: 18px; border-radius: 6px; box-shadow: inset 2px 2px 4px var(--cien-ciemny), inset -2px -2px 4px var(--cien-jasny); display: grid; place-items: center; }
+.postep-tekst { display: flex; justify-content: space-between; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums; }
+.tor { height: 7px; border-radius: 99px; overflow: hidden; }
+.tor > i { display: block; height: 100%; background: var(--petrol); border-radius: 99px; transition: width .35s ease; }
+.modul-pacjenta { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--petrol); font-weight: 750; }
+.pytanie { font-size: 21px; line-height: 1.32; font-weight: 750; letter-spacing: -.2px; }
+.opcje { display: flex; flex-direction: column; gap: 9px; }
+.opcja { text-align: left; border: 0; border-radius: 16px; padding: 12px 15px; cursor: pointer; display: flex; gap: 12px; align-items: center;
+  background: var(--btn); color: var(--ink); transition: background .15s; font-size: 14px; }
+.opcja:hover { background: var(--btn-h); }
+.opcja .kropka { flex: none; width: 18px; height: 18px; border-radius: 6px; box-shadow: inset 0 0 0 1.5px var(--pole-obrys); background: var(--pole); display: grid; place-items: center; }
 .opcja.jeden .kropka { border-radius: 50%; }
-.opcja[aria-pressed="true"] { box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny); color: var(--akcent); font-weight: 600; }
-.opcja[aria-pressed="true"] .kropka::after { content: ""; width: 8px; height: 8px; border-radius: inherit; background: var(--akcent); }
+.opcja[aria-pressed="true"] { background: var(--on); color: var(--on-txt); font-weight: 650; box-shadow: 0 8px 20px -13px var(--on); }
+.opcja[aria-pressed="true"] .kropka { background: var(--on-txt); box-shadow: none; }
+.opcja[aria-pressed="true"] .kropka::after { content: ""; width: 8px; height: 8px; border-radius: inherit; background: var(--on); }
 .skala { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 6px; }
-.skala .opcja { justify-content: center; padding: 12px 0; font: 500 15px var(--f-mono); }
-.skala-opis { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--tekst-2); }
+.skala .opcja { justify-content: center; padding: 12px 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+.skala-opis { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--mut); }
 @media (max-width: 420px) { .skala { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
-.pole { width: 100%; border: 0; border-radius: 14px; padding: 14px 16px; font: 17px var(--f-tekst); color: var(--tekst); }
-textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
+.pole { width: 100%; border: 0; border-radius: 13px; padding: 12px 14px; font-size: 16px; color: var(--ink); }
+textarea.pole { min-height: 120px; resize: vertical; font-size: 14px; line-height: 1.6; }
+.pole::placeholder { color: var(--mut); opacity: .8; }
 .pole-liczba { display: flex; align-items: center; gap: 12px; }
-.pole-liczba .pole { max-width: 170px; font-family: var(--f-mono); }
-.pole-liczba span { color: var(--tekst-2); }
+.pole-liczba .pole { max-width: 170px; font-variant-numeric: tabular-nums; }
+.pole-liczba span { color: var(--mut); }
 .nawigacja { margin-top: auto; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-.nawigacja .prawe { display: flex; gap: 10px; margin-left: auto; }
-.link { background: none; border: 0; color: var(--tekst-2); cursor: pointer; padding: 9px 4px; text-decoration: underline; text-underline-offset: 3px; }
-.komunikat-pilne { border-radius: 14px; padding: 12px 14px; background: var(--uwaga-tlo); color: var(--tekst); font-size: 14px; display: flex; flex-direction: column; gap: 8px; }
+.nawigacja .prawe { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+.link { background: none; border: 0; color: var(--mut); cursor: pointer; padding: 9px 4px; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; }
+.komunikat-pilne { border-radius: 16px; padding: 12px 14px; background: var(--uwaga-tlo); font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
 .komunikat-pilne strong { color: var(--uwaga); }
+.z-opisu { margin: -6px 0 0; font-size: 13px; color: var(--petrol); font-weight: 600; }
 
-.alarm { position: absolute; inset: 0; background: var(--alarm-tlo); display: flex; flex-direction: column; gap: 14px; justify-content: center; padding: 28px; z-index: 2; }
-.alarm .numer { font: 600 74px/1 var(--f-tytul); color: var(--alarm); letter-spacing: .02em; user-select: all; }
-.alarm h3 { font-size: 21px; color: var(--alarm); }
+.alarm { position: absolute; inset: 0; background: var(--bg-viewport); display: flex; flex-direction: column; gap: 14px; justify-content: center; padding: 30px; z-index: 2; }
+.alarm::before { content: ""; position: absolute; inset: 0; background: var(--alarm-tlo); z-index: -1; }
+.alarm .numer { font-size: 78px; line-height: 1; font-weight: 800; color: var(--alarm); letter-spacing: -1px; user-select: all; }
+.alarm h3 { font-size: 21px; color: var(--alarm); font-weight: 800; }
 .alarm p { margin: 0; font-size: 16px; }
-.alarm small { color: var(--tekst-2); }
+.alarm small { color: var(--mut); }
 
-.koniec { display: flex; flex-direction: column; gap: 14px; }
-.koniec h3 { font-size: 22px; }
-.koniec p { margin: 0; color: var(--tekst-2); }
+.koniec { display: flex; flex-direction: column; gap: 12px; }
+.koniec h3 { font-size: 22px; font-weight: 800; }
+.koniec p { margin: 0; color: var(--mut); }
 
-/* ── panel lekarza ── */
-.lekarz { border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
-.metryka { display: flex; flex-wrap: wrap; gap: 8px 18px; font: 13px var(--f-mono); color: var(--tekst-2); }
-.metryka b { color: var(--tekst); font-weight: 500; }
-.sekcja { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.sekcja h3 { font: 600 12px var(--f-tekst); text-transform: uppercase; letter-spacing: .09em; color: var(--tekst-2); }
-.flagi { display: flex; flex-direction: column; gap: 8px; }
-.flaga { border-radius: 12px; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14px; }
-.flaga .poziom { font: 600 11px var(--f-mono); padding: 3px 7px; border-radius: 6px; white-space: nowrap; }
-.flaga.f112 { background: var(--alarm-tlo); } .flaga.f112 .poziom { color: var(--tlo); background: var(--alarm); }
-.flaga.fpilne { background: var(--uwaga-tlo); } .flaga.fpilne .poziom { color: var(--tlo); background: var(--uwaga); }
-.spokoj { font-size: 14px; color: var(--tekst-2); padding: 10px 12px; border-radius: 12px; }
-.moduly { display: flex; flex-wrap: wrap; gap: 8px; }
-.modul { font-size: 13px; padding: 5px 11px; border-radius: 999px; color: var(--tekst-2); border: 1px dashed var(--linia); }
-.modul.aktywny { border: 1px solid transparent; background: var(--akcent-tlo); color: var(--akcent); font-weight: 600; }
-.teraz { border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
-.teraz .tresc { font-weight: 600; font-size: 15px; }
-.teraz .dlaczego { color: var(--tekst-2); }
-.kolejka { margin: 0; padding-left: 18px; color: var(--tekst-2); font-size: 13px; display: flex; flex-direction: column; gap: 3px; }
-.odpowiedzi { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; max-height: 300px; overflow-y: auto; }
-.odpowiedzi li { display: grid; grid-template-columns: 1.6em minmax(0, 1fr); gap: 4px 8px; padding: 8px 0; border-bottom: 1px solid var(--linia); font-size: 13.5px; }
-.odpowiedzi li:last-child { border-bottom: 0; }
-.odpowiedzi .nr { font: 12px var(--f-mono); color: var(--tekst-2); padding-top: 2px; font-variant-numeric: tabular-nums; }
-.odpowiedzi .p { color: var(--tekst-2); }
-.odpowiedzi .o { font-weight: 600; }
-.odpowiedzi .o.nieznane { color: var(--uwaga); font-weight: 500; font-style: italic; }
-.eksport { display: flex; flex-direction: column; gap: 10px; }
-.eksport .rzad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.eksport pre { margin: 0; border-radius: 12px; padding: 14px; font: 12px/1.55 var(--f-mono); white-space: pre-wrap; word-break: break-word; max-height: 260px; overflow: auto; color: var(--tekst); }
-.potwierdzenie { font-size: 13px; color: var(--akcent); }
-.z-opisu { margin: -6px 0 0; font-size: 13.5px; color: var(--akcent); }
 .analiza-pacjent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 30px; }
-.analiza-pacjent h3 { font-size: 21px; }
-.analiza-pacjent p { margin: 0; color: var(--tekst-2); }
-.kolko { width: 46px; height: 46px; border-radius: 50%; box-shadow: inset 4px 4px 9px var(--cien-ciemny), inset -4px -4px 9px var(--cien-jasny);
-  background: conic-gradient(var(--akcent) 0 25%, transparent 25% 100%); -webkit-mask: radial-gradient(circle, transparent 14px, #000 15px); mask: radial-gradient(circle, transparent 14px, #000 15px); animation: obrot 1s linear infinite; }
+.analiza-pacjent h3 { font-size: 21px; font-weight: 750; }
+.analiza-pacjent p { margin: 0; color: var(--mut); }
+.kolko { width: 44px; height: 44px; border-radius: 50%; background: conic-gradient(var(--petrol) 0 25%, var(--btn) 25% 100%);
+  -webkit-mask: radial-gradient(circle, transparent 14px, #000 15px); mask: radial-gradient(circle, transparent 14px, #000 15px); animation: obrot 1s linear infinite; }
 @keyframes obrot { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .kolko { animation: none; } }
-.opis { margin: 0; border-radius: 12px; padding: 12px 14px; font-size: 14.5px; line-height: 1.6; }
-.opis mark { background: var(--akcent-tlo); color: var(--akcent); border-radius: 4px; padding: 0 2px; font-weight: 600; }
-.wnioski { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+
+/* ── podsumowanie dla lekarza (prawa tafla) ── */
+.lekarz { border-radius: 36px; padding: 22px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.metryka { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums; }
+.metryka b { color: var(--ink); font-weight: 650; }
+.sekcja { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.sekcja h3 { font-size: 11px; letter-spacing: .06em; font-weight: 750; text-transform: uppercase; color: var(--mut); }
+.flagi { display: flex; flex-direction: column; gap: 8px; }
+.flaga { border-radius: 14px; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 13.5px; }
+.flaga .poziom { font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 8px; white-space: nowrap; color: #fff; }
+.flaga.f112 { background: var(--alarm-tlo); } .flaga.f112 .poziom { background: var(--alarm); }
+html[data-motyw="ciemny"] .flaga.f112 .poziom { color: #1a0f0e; }
+.flaga.fpilne { background: var(--uwaga-tlo); } .flaga.fpilne .poziom { background: var(--uwaga); }
+html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
+.spokoj { font-size: 13px; color: var(--mut); padding: 10px 12px; border-radius: 14px; }
+.moduly { display: flex; flex-wrap: wrap; gap: 6px; }
+.modul { font-size: 12.5px; padding: 5px 11px; border-radius: 999px; color: var(--mut); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
+.modul.aktywny { box-shadow: none; background: var(--on); color: var(--on-txt); font-weight: 650; }
+.teraz { border-radius: 16px; padding: 13px 14px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+.teraz .tresc { font-weight: 700; font-size: 14.5px; }
+.teraz .dlaczego { color: var(--mut); }
+.kolejka { margin: 0; padding-left: 18px; color: var(--mut); font-size: 12.5px; display: flex; flex-direction: column; gap: 2px; }
+.odpowiedzi { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; max-height: 300px; overflow-y: auto; }
+.odpowiedzi li { display: grid; grid-template-columns: 1.6em minmax(0, 1fr); gap: 4px 8px; padding: 8px 0; border-bottom: 1px solid var(--pole-obrys); font-size: 13px; }
+.odpowiedzi li:last-child { border-bottom: 0; }
+.odpowiedzi .nr { font-size: 12px; color: var(--mut); padding-top: 1px; font-variant-numeric: tabular-nums; }
+.odpowiedzi .p { color: var(--mut); }
+.odpowiedzi .o { font-weight: 650; }
+.odpowiedzi .o.nieznane { color: var(--uwaga); font-weight: 500; font-style: italic; }
+.tag { font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; color: var(--petrol); background: var(--btn); padding: 1px 6px; border-radius: 6px; margin-left: 4px; }
+.opis { margin: 0; border-radius: 14px; padding: 11px 13px; font-size: 14px; line-height: 1.6; }
+.opis mark { background: var(--btn-h); color: var(--petrol); border-radius: 5px; padding: 0 2px; font-weight: 700; }
+.wnioski { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
 .wnioski li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) auto; gap: 10px; align-items: baseline; }
-.wnioski .fr { color: var(--tekst-2); font-style: italic; overflow-wrap: anywhere; }
-.wnioski .rodzaj { font: 500 10.5px var(--f-mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 6px; border-radius: 5px; white-space: nowrap; }
-.wnioski .rodzaj.fakt { background: var(--akcent-tlo); color: var(--akcent); }
-.wnioski .rodzaj.podp { border: 1px dashed var(--linia); color: var(--tekst-2); }
+.wnioski .fr { color: var(--mut); font-style: italic; overflow-wrap: anywhere; }
+.wnioski .rodzaj { font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
+.wnioski .rodzaj.fakt { background: var(--btn); color: var(--petrol); }
+.wnioski .rodzaj.podp { box-shadow: inset 0 0 0 1px var(--pole-obrys); color: var(--mut); }
 @media (max-width: 520px) { .wnioski li { grid-template-columns: minmax(0, 1fr) auto; } .wnioski .fr { grid-column: 1 / -1; } }
-.tag { font: 500 10.5px var(--f-mono); text-transform: uppercase; color: var(--akcent); background: var(--akcent-tlo); padding: 1px 5px; border-radius: 4px; margin-left: 4px; }
-.stopka { font-size: 12.5px; color: var(--tekst-2); max-width: 75ch; line-height: 1.55; }
+.eksport { display: flex; flex-direction: column; gap: 10px; }
+.eksport .rzad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.eksport pre { margin: 0; border-radius: 14px; padding: 13px; font: 12px/1.55 var(--f-mono); white-space: pre-wrap; word-break: break-word; max-height: 260px; overflow: auto; color: var(--ink); }
+.anonim { font-size: 12.5px; color: var(--mut); }
+.anonim b { color: var(--petrol); }
+.anonim.brak-modulu b { color: var(--uwaga); }
+.potwierdzenie { font-size: 12.5px; color: var(--petrol); font-weight: 650; }
+.stopka { font-size: 12px; color: var(--mut); max-width: 80ch; line-height: 1.55; margin: 0 6px; }
 </style>
 
 <div class="ramka">
   <header class="pasek">
     <div class="marka">
-      <div class="znak wypukly" aria-hidden="true">MS</div>
+      <div class="logo" aria-label="Konsylium AI" title="Konsylium AI">K</div>
       <div>
         <h1>Wywiad z pacjentem</h1>
-        <p>Ankieta adaptacyjna · link <span id="kod-linku" style="font-family:var(--f-mono)"></span></p>
+        <p><span class="kropka-ok"></span> Działa offline · dane nie opuszczają tego komputera</p>
       </div>
     </div>
-    <div class="sterowanie">
-      <span class="etykieta-demo">Demo · dane fikcyjne</span>
-      <label for="przyklad" class="link" style="text-decoration:none;cursor:default">Przykład:</label>
-      <select id="przyklad" class="przycisk wypukly">
+    <div class="sterowanie tafla">
+      <span class="etykieta-test">Narzędzie testowe</span>
+      <label for="przyklad" class="link" style="text-decoration:none;cursor:default;padding-inline:6px">Przykład</label>
+      <select id="przyklad" class="przycisk">
         <option value="">wybierz…</option>
       </select>
-      <button id="od-nowa" class="przycisk wypukly" type="button">Od nowa</button>
+      <button id="od-nowa" class="przycisk" type="button">Nowy wywiad</button>
+      <button id="widok-lekarza" class="przycisk" type="button" aria-pressed="false" title="Pokaż lub ukryj podsumowanie dla lekarza">Podsumowanie dla lekarza</button>
+      <button id="motyw" class="przycisk" type="button" title="Motyw jasny / ciemny">Motyw</button>
     </div>
   </header>
 
-  <main class="uklad">
+  <main class="uklad" id="uklad">
     <section aria-labelledby="t-pacjent">
-      <div class="naglowek-panelu"><h2 id="t-pacjent">Widok pacjenta</h2><span style="font-size:13px;color:var(--tekst-2)">tak to widzi pacjent na telefonie</span></div>
-      <div class="telefon wypukly" id="telefon"></div>
+      <div class="naglowek-panelu"><h2 id="t-pacjent">Wywiad</h2><span class="opis-panelu">Odpowiadaj po kolei. Możesz wrócić i poprawić odpowiedź.</span></div>
+      <div class="telefon tafla" id="telefon"></div>
     </section>
 
     <aside aria-labelledby="t-lekarz">
-      <div class="naglowek-panelu"><h2 id="t-lekarz">Podgląd lekarza</h2><span class="na-zywo">na żywo</span></div>
-      <div class="lekarz wypukly" id="lekarz"></div>
+      <div class="naglowek-panelu"><h2 id="t-lekarz">Podsumowanie dla lekarza</h2><span class="na-zywo">na żywo</span></div>
+      <div class="lekarz tafla" id="lekarz"></div>
     </aside>
   </main>
 
-  <p class="stopka">Prototyp testowo-edukacyjny. Pytania i progi czerwonych flag nie są zatwierdzone klinicznie, a ankieta nie stawia rozpoznania. Odpowiedzi zostają w tej przeglądarce i nigdzie nie są wysyłane. Nie wpisuj danych prawdziwych pacjentów.</p>
+  <p class="stopka">Narzędzie testowo-edukacyjne. Pytania i progi czerwonych flag nie są zatwierdzone klinicznie, a wywiad nie stawia rozpoznania. Odpowiedzi zostają na tym komputerze. Przed skopiowaniem do Konsylium tekst przechodzi przez anonimizator, ale przejrzyj go, zanim go wkleisz.</p>
 </div>
 
+<script src="wykrywanie.js"></script>
 <script src="analiza.js"></script>
 <script src="pytania.js"></script>
 <script src="silnik.js"></script>
@@ -219,7 +219,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
 (function () {
   'use strict';
   var S = window.SilnikWywiadu, B = window.BankWywiadu, P = window.PrzykladyWywiadu;
-  var KLUCZ = 'ms-wywiad-demo-v2';
+  var KLUCZ = 'ms-wywiad-v3';
   var $tel = document.getElementById('telefon'), $lek = document.getElementById('lekarz');
 
   var stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
@@ -290,7 +290,7 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     if (nowe112.length) {
       a += '<div class="alarm" role="alertdialog" aria-labelledby="alarm-t"><div class="numer">112</div><h3 id="alarm-t">Zadzwoń teraz pod numer alarmowy</h3>' +
         '<p>' + esc(nowe112[0].dlaPacjenta) + '</p><small>Numer alarmowy: 112 (lub 999 – pogotowie ratunkowe). Lekarz widzi już ten alarm.</small>' +
-        '<button class="przycisk wypukly" type="button" data-akcja="potwierdz" data-flagi="' + nowe112.map(function (f) { return f.id; }).join(',') + '" style="align-self:flex-start">W demo: wróć do ankiety</button></div>';
+        '<button class="przycisk" type="button" data-akcja="potwierdz" data-flagi="' + nowe112.map(function (f) { return f.id; }).join(',') + '" style="align-self:flex-start">W demo: wróć do ankiety</button></div>';
     }
     var h = '';
     h += '<div class="postep"><div class="postep-tekst"><span>' + (n ? 'Pytanie ' + (zadano + 1) : 'Gotowe') + '</span><span>' +
@@ -304,9 +304,9 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     }
 
     if (!n) {
-      h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Twoje odpowiedzi czekają na lekarza. Jeśli objawy wyraźnie się nasilą, nie czekaj na kontakt: zadzwoń pod 112.</p>' +
+      h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi albo osobie z rejestracji. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
         '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>';
-      h += '<div class="nawigacja"><button class="przycisk wypukly" type="button" data-akcja="wstecz">Wstecz</button></div>';
+      h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz">Wstecz</button></div>';
       $tel.innerHTML = h + a; return;
     }
 
@@ -323,9 +323,9 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     var mozeDalej = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.length > 0 :
       n.typ === 'liczba' ? wybor !== null && wybor !== '' : n.typ === 'tekst';
     var pokazDalej = n.typ === 'wiele' || n.typ === 'liczba' || n.typ === 'tekst';
-    h += '<div class="nawigacja"><button class="przycisk wypukly" type="button" data-akcja="wstecz"' + (zadano ? '' : ' disabled') + '>Wstecz</button><div class="prawe">';
+    h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz"' + (zadano ? '' : ' disabled') + '>Wstecz</button><div class="prawe">';
     if (n.typ !== 'tekst' && n.nieWiem !== false) h += '<button class="link" type="button" data-akcja="niewiem">Nie wiem</button>';
-    if (pokazDalej) h += '<button class="przycisk wypukly glowny" type="button" data-akcja="dalej" id="dalej"' + (mozeDalej ? '' : ' disabled') + '>' +
+    if (pokazDalej) h += '<button class="przycisk glowny" type="button" data-akcja="dalej" id="dalej"' + (mozeDalej ? '' : ' disabled') + '>' +
       (n.typ === 'tekst' ? 'Dalej' : 'Dalej') + '</button>';
     h += '</div></div>';
 
@@ -338,12 +338,12 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       h += '<div class="opcje" role="group" aria-labelledby="tresc-pytania">';
       n.opcje.forEach(function (op) {
         var wybrane = n.typ === 'wiele' ? Array.isArray(wybor) && wybor.indexOf(op.w) !== -1 : wybor === op.w;
-        h += '<button type="button" class="opcja wypukly ' + n.typ + '" data-w="' + esc(op.w) + '" aria-pressed="' + wybrane + '"><span class="kropka"></span><span>' + esc(op.t) + '</span></button>';
+        h += '<button type="button" class="opcja ' + n.typ + '" data-w="' + esc(op.w) + '" aria-pressed="' + wybrane + '"><span class="kropka"></span><span>' + esc(op.t) + '</span></button>';
       });
       h += '</div>';
     } else if (n.typ === 'skala') {
       h += '<div class="skala" role="group" aria-labelledby="tresc-pytania">';
-      for (var i = 0; i <= 10; i++) h += '<button type="button" class="opcja wypukly" data-w="' + i + '" aria-pressed="' + (wybor === i) + '">' + i + '</button>';
+      for (var i = 0; i <= 10; i++) h += '<button type="button" class="opcja" data-w="' + i + '" aria-pressed="' + (wybor === i) + '">' + i + '</button>';
       h += '</div><div class="skala-opis"><span>0 – ' + esc(n.skala[0]) + '</span><span style="text-align:right">10 – ' + esc(n.skala[1]) + '</span></div>';
     } else if (n.typ === 'liczba') {
       h += '<div class="pole-liczba"><input id="pole-' + n.id + '" class="pole wklesly" type="number" inputmode="decimal" aria-labelledby="tresc-pytania"' +
@@ -352,6 +352,22 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       h += '<textarea id="pole-' + n.id + '" class="pole wklesly" aria-labelledby="tresc-pytania" placeholder="' + esc(n.podpowiedz || 'Możesz zostawić puste') + '">' + esc(typeof wybor === 'string' ? wybor : '') + '</textarea>';
     }
     return h;
+  }
+
+  // ── kopia do Konsylium: 01-wywiad.md po anonimizacji ──
+  // Reguły anonimizatora (narzedzia/anonimizator/src/wykrywanie.js) usuwają z tekstu dane osobowe,
+  // np. imię i nazwisko albo PESEL wpisane w opisie. Bez modułu kopia idzie bez zmian, z ostrzeżeniem.
+  function doKonsylium() {
+    var md = S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) });
+    var W = window.WykrywanieDanych;
+    if (!W) return { tekst: md, opis: '<p class="anonim brak-modulu"><b>Anonimizator niedostępny.</b> Przejrzyj tekst i usuń dane osobowe ręcznie przed wklejeniem.</p>' };
+    var zakresy = [];
+    try { zakresy = W.wykryjWTekscie(md); } catch (e) { zakresy = []; }
+    var tekst = W.zanonimizujTekst(md, zakresy);
+    var opis = zakresy.length
+      ? '<p class="anonim">Przed kopiowaniem usunięto <b>' + zakresy.length + '</b>: ' + zakresy.map(function (z) { return '„' + esc(z.tekst) + '” (' + esc(z.powod || z.kategoria) + ')'; }).join(', ') + '.</p>'
+      : '<p class="anonim">Anonimizator nie znalazł danych osobowych w tekście.</p>';
+    return { tekst: tekst, opis: opis };
   }
 
   // ── panel lekarza ──
@@ -429,11 +445,11 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
     }).join('') + '</ol>';
     h += '</div>';
 
-    var md = S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) });
+    var an = doKonsylium();
     h += '<div class="sekcja eksport"><h3>Dla Konsylium: 01-wywiad.md</h3><div class="rzad">' +
-      '<button class="przycisk wypukly glowny" type="button" data-akcja="kopiuj">Kopiuj do Konsylium</button>' +
-      '<button class="przycisk wypukly" type="button" data-akcja="kopiuj-json">Kopiuj JSON</button><span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' +
-      '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(md) + '</pre></div>';
+      '<button class="przycisk glowny" type="button" data-akcja="kopiuj">Kopiuj do Konsylium</button>' +
+      '<span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' + an.opis +
+      '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(an.tekst) + '</pre></div>';
 
     $lek.innerHTML = h;
     var lista = document.getElementById('lista-odp');
@@ -447,7 +463,6 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
       wybor = podp ? podp.filter(function (w) { return r.pytanie.opcje.some(function (op) { return op.w === w; }); }) : [];
       wyborZOpisu = wybor.length > 0;
     }
-    document.getElementById('kod-linku').textContent = 'ms.example/w/' + stan.kod;
     rysujPacjenta(r.pytanie, r.stan);
     rysujLekarza(r.pytanie, r.stan);
   }
@@ -520,15 +535,47 @@ textarea.pole { min-height: 110px; resize: vertical; font-size: 15px; }
   });
   $lek.addEventListener('click', function (e) {
     var b = e.target.closest('[data-akcja]'); if (!b) return;
-    if (b.dataset.akcja === 'kopiuj') kopiuj(S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) }), '01-wywiad.md');
-    if (b.dataset.akcja === 'kopiuj-json') kopiuj(JSON.stringify({ kod: stan.kod, bank: B.wersja, start: stan.start, historia: stan.historia,
-      flagi: S.przelicz(B, stan.historia).flagi.map(function (f) { return { id: f.id, poziom: f.poziom }; }) }, null, 2), 'JSON');
+    if (b.dataset.akcja === 'kopiuj') kopiuj(doKonsylium().tekst, 'wywiad');
   });
+
+  // Motyw jak w Nawigatorze: data-motyw na <html>. Domyślnie ciemny; w podglądzie artefaktu
+  // (window.MS_MOTYW_Z_SYSTEMU) zgodnie z ustawieniem systemu. Powłoka Windows może przysłać motyw przez postMessage.
+  function ustawMotyw(m) {
+    document.documentElement.dataset.motyw = m === 'jasny' ? 'jasny' : 'ciemny';
+    try { localStorage.setItem('ms-motyw', document.documentElement.dataset.motyw); } catch (e) {}
+  }
+  (function () {
+    var m = null;
+    try { m = localStorage.getItem('ms-motyw'); } catch (e) {}
+    if (!m && window.MS_MOTYW_Z_SYSTEMU) {
+      var t = document.documentElement.getAttribute('data-theme');
+      m = t ? (t === 'dark' ? 'ciemny' : 'jasny') : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'ciemny' : 'jasny');
+    }
+    document.documentElement.dataset.motyw = m || 'ciemny';
+  })();
+  document.getElementById('motyw').addEventListener('click', function () {
+    ustawMotyw(document.documentElement.dataset.motyw === 'ciemny' ? 'jasny' : 'ciemny');
+  });
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw);
+  });
+
+  // Pacjent wypełnia sam: podsumowanie dla lekarza jest schowane, dopóki ktoś go nie pokaże.
+  // W podglądzie (artefakt) widać oba panele, żeby było widać działanie.
+  var $uklad = document.getElementById('uklad'), $wl = document.getElementById('widok-lekarza');
+  function ustawWidokLekarza(pokaz) {
+    $uklad.classList.toggle('tylko-pacjent', !pokaz);
+    $wl.setAttribute('aria-pressed', String(pokaz));
+    $wl.textContent = pokaz ? 'Ukryj podsumowanie' : 'Podsumowanie dla lekarza';
+  }
+  ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
+  $wl.addEventListener('click', function () { ustawWidokLekarza($wl.getAttribute('aria-pressed') !== 'true'); });
 
   var $sel = document.getElementById('przyklad');
   Object.keys(P).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = P[k].nazwa; $sel.appendChild(o); });
   $sel.addEventListener('change', function () { if ($sel.value) wczytajPrzyklad($sel.value, 3); $sel.value = ''; });
   document.getElementById('od-nowa').addEventListener('click', function () {
+    ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
     stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() }; wybor = null; zapisz(); rysuj();
   });
 

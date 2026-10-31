@@ -276,6 +276,9 @@
     { id: 'w_epizody', modul: 'wspolne', typ: 'jeden', priorytet: 15, opcje: TN,
       tekst: 'Czy podobne dolegliwości zdarzały się już wcześniej?', krotko: 'wcześniejsze epizody',
       gdy: function (o) { return o.g_wczesniej == null; } },
+    { id: 'w_obawy', modul: 'wspolne', typ: 'tekst', priorytet: 11, pominiecie: true, bezNieznanych: true,
+      tekst: 'Czego najbardziej się obawiasz i czego oczekujesz od tej wizyty?', krotko: 'obawy i oczekiwania pacjenta',
+      bo: 'Perspektywa pacjenta (obawy, oczekiwania): w badaniach wywiad komputerowy wypadał tu najsłabiej.' },
     { id: 'w_dodatkowe', modul: 'wspolne', typ: 'tekst', priorytet: 10, pominiecie: true, bezNieznanych: true,
       tekst: 'Czy jest coś jeszcze, co lekarz powinien wiedzieć?', krotko: 'uwagi pacjenta' }
   ];

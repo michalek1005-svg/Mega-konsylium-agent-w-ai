@@ -18,7 +18,8 @@ mkdirSync(join(build, 'app', 'moduly'), { recursive: true });
 // 1. Wywiad
 execFileSync(process.execPath, [join(narzedzia, 'wywiad', 'zbuduj.mjs')], { stdio: 'inherit' });
 const distW = join(narzedzia, 'wywiad', 'dist');
-const plikW = readdirSync(distW).filter((f) => /^WYWIAD-PACJENTA-.*\.html$/.test(f)).sort().pop();
+const plikW = readdirSync(distW).filter((f) => /^WYWIAD-PACJENTA-.*\.html$/.test(f))
+  .sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop();
 copyFileSync(join(distW, plikW), join(build, 'app', 'moduly', 'wywiad.html'));
 
 // 2. Anonimizator (osobny moduł, budowany w swoim katalogu)
@@ -33,8 +34,12 @@ if (plikA) copyFileSync(plikA, join(build, 'app', 'moduly', 'anonimizator.html')
 else console.warn('Anonimizator nie jest zbudowany: moduł pokaże komunikat „nie dołączono”.');
 
 // 3. Powłoka z konfiguracją wklejoną do HTML
+const tokeny = readFileSync(join(narzedzia, 'wspolne', 'ms-tokeny.css'), 'utf8');
+const wywiadHtml = readFileSync(join(build, 'app', 'moduly', 'wywiad.html'), 'utf8');
+const fontCss = (wywiadHtml.match(/@font-face\{[^}]+\}/g) || []).join('');
 const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ wywiad: true, anonimizator: !!plikA })};</script>`;
-writeFileSync(join(build, 'app', 'index.html'), readFileSync(join(tu, 'app', 'index.html'), 'utf8').replace('<!--KONFIGURACJA-->', konf));
+writeFileSync(join(build, 'app', 'index.html'), readFileSync(join(tu, 'app', 'index.html'), 'utf8')
+  .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss));
 copyFileSync(join(tu, 'main.js'), join(build, 'main.js'));
 writeFileSync(join(build, 'package.json'), JSON.stringify({ name: pkg.name, productName: pkg.productName, version: pkg.version, main: 'main.js' }, null, 2));
 console.log('Złożono aplikację w', build, plikA ? '(z anonimizatorem)' : '(bez anonimizatora)');

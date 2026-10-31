@@ -26,7 +26,7 @@ function utworzOkno() {
     minWidth: 960,
     minHeight: 640,
     title: 'MS Konsylium Narzędzia',
-    backgroundColor: '#e3e7eb',
+    backgroundColor: '#0F1918',
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
