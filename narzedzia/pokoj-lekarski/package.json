@@ -1,0 +1,15 @@
+{
+  "name": "pokoj-lekarski",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pokój lekarski Konsylium AI: graficzny szpital, w którym widać dyskusję agentów w dymkach. Offline, jeden plik HTML.",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:e2e": "node test/e2e.mjs"
+  },
+  "devDependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0"
+  }
+}
