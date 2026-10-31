@@ -1,0 +1,56 @@
+/* Wspólne tokeny marki MS dla narzędzi Konsylium (Anonimizator, Wywiad).
+   Kopia palety „Laguna”, trybu ciemnego i klas przycisków/pól z Nawigatora Medycznego
+   (repo michalek1005-svg/nawigatormedyczny, kod/app/globals.css: :root ok. 30–95,
+   html[data-motyw="ciemny"] od ok. 1600, .nk-button / .nk-label / .nk-manual ok. 857–870).
+   Zmiany wyglądu marki idą przez Michała — nie poprawiać tu po cichu.
+   Motyw: <html data-motyw="ciemny"> albo "jasny". */
+:root {
+  --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570;
+  --bg-viewport: #E9EFEC;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
+           radial-gradient(38vw 34vh at 52% 46%, rgba(86,150,178,.36) 0%, rgba(86,150,178,0) 72%),
+           linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
+  --tafla: rgba(255,255,255,.44);
+  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
+  --panel: rgba(255,255,255,.7);
+  --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
+  --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: var(--petrol);
+  --on: var(--petrol); --on-txt: #fff;
+  --pole: rgba(255,255,255,.9); --pole-obrys: rgba(15,94,88,.25);
+  --strona-cien: 0 16px 30px -14px rgba(10,54,52,.34);
+  --alarm: #A83A38;
+}
+html[data-motyw="ciemny"] {
+  color-scheme: dark;
+  --petrol: #5CC8BB; --ink: #E4EEEB; --mut: #93A9A4; --bg-viewport: #0F1918;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.22) 0%, rgba(64,168,158,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.16) 0%, rgba(132,176,108,0) 70%),
+           radial-gradient(38vw 34vh at 52% 46%, rgba(86,150,178,.14) 0%, rgba(86,150,178,0) 72%),
+           linear-gradient(160deg, #121d1c 0%, #0b1413 100%);
+  --tafla: rgba(20,32,31,.78);
+  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.07), 0 40px 74px -34px rgba(0,0,0,.85);
+  --panel: rgba(255,255,255,.05);
+  --panel-cien: 0 14px 32px -25px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.08);
+  --btn: rgba(92,200,187,.12); --btn-h: rgba(92,200,187,.2); --btn-txt: #8fdcd2;
+  --on: #1b7a70; --on-txt: #fff;
+  --pole: rgba(255,255,255,.06); --pole-obrys: rgba(255,255,255,.12);
+  --strona-cien: 0 16px 30px -14px rgba(0,0,0,.7);
+  --alarm: #ff9a8c;
+}
+/* przyciski i pola — jak .nk-button / .nk-field w Nawigatorze */
+.nk-button { border: 0; border-radius: 22px; padding: 9px 14px; min-height: 40px; background: var(--btn); color: var(--btn-txt);
+  font: inherit; font-size: 12.5px; font-weight: 650; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  cursor: pointer; line-height: 1.4; transition: background .15s; user-select: none; }
+.nk-button:hover { background: var(--btn-h); }
+.nk-button:disabled { opacity: .4; cursor: default; }
+.nk-button:not(:disabled):active { box-shadow: inset 4px 4px 8px rgba(0,0,0,.25), inset -3px -3px 7px rgba(255,255,255,.08); }
+.nk-on, .nk-on:hover { background: var(--on); color: var(--on-txt); box-shadow: 0 8px 20px -13px var(--on); }
+.nk-label { font-size: 11px; letter-spacing: .06em; font-weight: 750; text-transform: uppercase; color: var(--mut); margin: 4px 0 9px; }
+.nk-label.odstep { margin-top: 18px; }
+.nk-muted { font-size: 12px; line-height: 1.55; color: var(--mut); margin: 8px 0 0; }
+.nk-empty { font-size: 13px; color: var(--mut); line-height: 1.6; margin: 0 0 8px; }
+.nk-status { font-size: 12px; color: var(--petrol); min-height: 18px; margin-bottom: 10px; font-weight: 600; }
+.nk-manual { width: 100%; display: block; resize: vertical; border: 1px solid var(--pole-obrys); border-radius: 13px;
+  background: var(--pole); font: inherit; font-size: 13px; line-height: 1.6; padding: 10px 12px; margin: 0 0 10px; color: var(--ink); }
+
