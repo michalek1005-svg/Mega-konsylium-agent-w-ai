@@ -169,7 +169,7 @@
     var l = [];
     l.push('# Prośba o ankietę dla pacjenta (MS Wywiad, krok 1)');
     l.push('');
-    l.push('Kod: ' + (meta.kod || '') + (meta.data ? ' · ' + meta.data : '') + ' · DANE FIKCYJNE (demo)');
+    l.push('Kod: ' + (meta.kod || '') + (meta.data ? ' · ' + meta.data : ''));
     l.push('');
     l.push('Przygotuj ankietę w formacie ' + FORMAT + ' (narzedzia/wywiad/FORMAT-ANKIETY.md) dopasowaną do opisu poniżej. ' +
       'Odpowiedz jednym blokiem JSON, który wczytam w aplikacji. Wpisz w nim kod ' + (meta.kod || '') + '.');

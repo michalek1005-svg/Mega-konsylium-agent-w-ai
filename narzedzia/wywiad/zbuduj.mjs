@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const WERSJA = '0.4.0';
+const WERSJA = '0.5.1';
 const tu = dirname(fileURLToPath(import.meta.url));
 const dist = join(tu, 'dist');
 mkdirSync(dist, { recursive: true });
@@ -49,7 +49,7 @@ function zloz({ font, fontLink, naPoczatku }) {
 // 3a. Aplikacja Windows: pełny dokument, sieć zablokowana
 const csp = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'";
 const aplikacja = `<!doctype html>
-<html lang="pl" data-motyw="ciemny">
+<html lang="pl" data-motyw="jasny">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

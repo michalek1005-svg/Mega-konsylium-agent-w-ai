@@ -28,8 +28,9 @@ function utworzOkno() {
     height: 900,
     minWidth: 960,
     minHeight: 640,
-    title: 'MS Konsylium Narzędzia',
-    backgroundColor: '#0F1918',
+    title: 'MS Konsylium',
+    icon: path.join(__dirname, 'ikona.png'),
+    backgroundColor: '#E6EBEE',
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,

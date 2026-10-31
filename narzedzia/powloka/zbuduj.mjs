@@ -49,6 +49,7 @@ writeFileSync(join(build, 'app', 'index.html'), readFileSync(join(tu, 'app', 'in
   .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss));
 copyFileSync(join(tu, 'main.js'), join(build, 'main.js'));
 copyFileSync(join(tu, 'preload.js'), join(build, 'preload.js'));
+copyFileSync(join(tu, 'zasoby', 'ikona.png'), join(build, 'ikona.png'));
 writeFileSync(join(build, 'package.json'), JSON.stringify({ name: pkg.name, productName: pkg.productName, version: pkg.version, main: 'main.js' }, null, 2));
 console.log('Złożono aplikację w', build, plikA ? '(z anonimizatorem)' : '(bez anonimizatora)', plikP ? '(z pokojem lekarskim)' : '(bez pokoju)');
 
@@ -60,9 +61,10 @@ const out = join(tu, 'out');
 rmSync(out, { recursive: true, force: true });
 const [katalog] = await packager({
   dir: build, out, platform: 'win32', arch: 'x64', overwrite: true,
-  name: 'MS-Konsylium-Narzedzia', executableName: 'MS Konsylium Narzedzia',
+  name: 'MS-Konsylium', executableName: 'MS Konsylium', icon: join(tu, 'zasoby', 'ikona.ico'),
+  appCopyright: 'Marka MS', win32metadata: { ProductName: 'MS Konsylium', FileDescription: 'MS Konsylium', CompanyName: 'MS' },
   electronVersion: pkg.devDependencies.electron, asar: true, prune: false
 });
-const zip = join(out, `MS-Konsylium-Narzedzia-${pkg.version}-win-x64.zip`);
+const zip = join(out, `MS-Konsylium-${pkg.version}-win-x64.zip`);
 execFileSync('zip', ['-qr9', zip, '.'], { cwd: katalog });
 console.log('Gotowe:', zip);
