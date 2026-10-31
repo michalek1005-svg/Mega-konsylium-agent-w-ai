@@ -225,7 +225,9 @@ ${podpisy(wpisy)}`;
     if (kroki.length === bylo && bylo) return;
     if (s.tablica.liczbaRezydentow !== rez || !bylo) rysujPokoj();
     rysujOs(); rysujListe();
-    if (!bylo) { rysujLegende(); pokaz(0, true); return; }
+    if (!bylo) { rysujLegende(); const d = wAplikacji() ? pierwszyDyskusji() : -1; pokaz(d > 0 ? d : 0, true); return; }
+    // na żywo w aplikacji: gdy trwa jeszcze etap techniczny, a pojawiła się dyskusja — przeskocz do niej
+    if (wAplikacji() && techniczny(kroki[i])) { const d = pierwszyDyskusji(i); if (d > i) { pokaz(d); return; } }
     pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
   }
 
@@ -243,8 +245,15 @@ ${podpisy(wpisy)}`;
     pokaz(0, true);
   }
 
+  // W aplikacji liczy się dyskusja i wnioski (Michał 31.10): etapy techniczne (wywiad, triage, ślepa tura,
+  // agregacja) przelatują szybko, a dyskusja idzie w tempie do czytania.
+  const TECHNICZNE = new Set(['wywiad', 'triage', 'slepa', 'agregat']);
+  const wAplikacji = () => document.documentElement.classList.contains('osadzony');
+  const techniczny = (k) => k && scen && TECHNICZNE.has(scen.sceny[k.si].id);
+  const pierwszyDyskusji = (od = 0) => { for (let j = Math.max(0, od); j < kroki.length; j++) if (!techniczny(kroki[j])) return j; return -1; };
   function czasKroku(k) {
     const w = scen.sceny[k.si].wypowiedzi[k.wi];
+    if (wAplikacji() && techniczny(k)) return 650 / tempo;
     return (2400 + (w.tresc || w.skrot).length * 34 + (w.info ? 1200 : 0)) / tempo;
   }
 
