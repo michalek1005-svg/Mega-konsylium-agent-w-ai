@@ -118,6 +118,21 @@ textarea.pole { min-height: 120px; resize: vertical; font-size: 14px; line-heigh
 .koniec h3 { font-size: 22px; font-weight: 800; }
 .koniec p { margin: 0; color: var(--mut); }
 
+.start { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.kafel { text-align: left; border: 0; border-radius: 20px; padding: 16px 18px; cursor: pointer; display: flex; flex-direction: column; gap: 5px;
+  background: var(--btn); color: var(--ink); transition: background .15s; }
+.kafel:hover { background: var(--btn-h); }
+.kafel b { font-size: 15.5px; }
+.kafel span { font-size: 13px; color: var(--mut); line-height: 1.5; }
+.kafel.glowny-kafel { background: var(--on); color: var(--on-txt); box-shadow: 0 10px 24px -14px var(--on); }
+.kafel.glowny-kafel span { color: var(--on-txt); opacity: .85; }
+.pomoc { margin: -4px 0 0; font-size: 13px; color: var(--mut); }
+#pole-ankieta { min-height: 170px; font: 12px/1.5 var(--f-mono); }
+.rzad-start { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.plik { display: inline-flex; align-items: center; }
+.dla-lekarza { border-radius: 16px; padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+.dla-lekarza b { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
+.dla-lekarza > span { color: var(--mut); }
 .analiza-pacjent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 30px; }
 .analiza-pacjent h3 { font-size: 21px; font-weight: 750; }
 .analiza-pacjent p { margin: 0; color: var(--mut); }
@@ -190,6 +205,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
         <option value="">wybierz…</option>
       </select>
       <button id="od-nowa" class="przycisk" type="button">Nowy wywiad</button>
+      <button id="wczytaj-ai" class="przycisk" type="button">Wczytaj ankietę od AI</button>
       <button id="widok-lekarza" class="przycisk" type="button" aria-pressed="false" title="Pokaż lub ukryj podsumowanie dla lekarza">Podsumowanie dla lekarza</button>
       <button id="motyw" class="przycisk" type="button" title="Motyw jasny / ciemny">Motyw</button>
     </div>
@@ -215,14 +231,30 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
 <script src="pytania.js"></script>
 <script src="silnik.js"></script>
 <script src="przyklady.js"></script>
+<script src="ankieta.js"></script>
+<script src="przyklad-ankieta-ai.js"></script>
 <script>
 (function () {
   'use strict';
-  var S = window.SilnikWywiadu, B = window.BankWywiadu, P = window.PrzykladyWywiadu;
-  var KLUCZ = 'ms-wywiad-v3';
+  var S = window.SilnikWywiadu, BAZA = window.BankWywiadu, P = window.PrzykladyWywiadu, AI = window.AnkietaAI;
+  var B = BAZA;
+  var KLUCZ = 'ms-wywiad-v4';
   var $tel = document.getElementById('telefon'), $lek = document.getElementById('lekarz');
 
-  var stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
+  // tryb: null = ekran startowy, 'wczytaj' = wczytanie ankiety od AI,
+  // 'opis' = krok 1 (sam opis dla AI), 'ai' = krok 2 (ankieta od AI), 'standard' = ankieta bez AI
+  function nowyStan(tryb) { return { tryb: tryb || null, ankieta: null, historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() }; }
+  var stan = nowyStan(null);
+  var bledyAnkiety = [];
+  // Ustawia bank pytań według trybu. Ankieta od AI jest trzymana jako tekst JSON i kompilowana od nowa.
+  function ustawBank() {
+    B = BAZA;
+    if (stan.tryb === 'opis') B = AI.bankOpisu();
+    else if (stan.tryb === 'ai') {
+      var r = AI.zAnkiety(stan.ankieta || '');
+      if (r.bank) B = r.bank; else { stan = nowyStan('wczytaj'); bledyAnkiety = r.bledy; }
+    }
+  }
   var wybor = null; // bieżący wybór przed zatwierdzeniem
   var wyborZOpisu = false; // czy bieżący wybór zaznaczyła analiza opisu
   var analizuje = false;   // krótka plansza po wysłaniu opisu
@@ -242,6 +274,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
 
   // Odtwarza przykład: odpowiada na pytania wybierane przez silnik, zostawia ostatnie `zostaw` bez odpowiedzi.
   function wczytajPrzyklad(klucz, zostaw) {
+    B = BAZA;
     var odp = P[klucz].odpowiedzi, h = [];
     for (var i = 0; i < 200; i++) {
       var n = S.nastepne(B, h).pytanie;
@@ -249,8 +282,54 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       h.push({ id: n.id, wartosc: Object.prototype.hasOwnProperty.call(odp, n.id) ? odp[n.id] : S.NIE_WIEM });
     }
     if (zostaw) h = h.slice(0, Math.max(1, h.length - zostaw));
-    stan = { historia: h, potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() };
+    stan = nowyStan('standard'); stan.historia = h;
     wybor = null; zapisz(); rysuj();
+  }
+
+  // Krok 2: wczytanie ankiety od AI (wklejony tekst z czatu albo plik .json).
+  function wczytajAnkiete(tekst) {
+    var r = AI.zAnkiety(tekst);
+    if (!r.bank) { bledyAnkiety = r.bledy; rysuj(); return; }
+    bledyAnkiety = [];
+    var poprzedni = stan;
+    stan = nowyStan('ai');
+    stan.ankieta = tekst;
+    if (r.kod) stan.kod = r.kod;
+    // opis z kroku 1 na tym komputerze ma pierwszeństwo przed zanonimizowaną kopią z pliku
+    var opis = r.opis;
+    if (poprzedni && poprzedni.opisKroku1 && poprzedni.opisKroku1.kod === r.kod) opis = poprzedni.opisKroku1.tekst;
+    stan.historia = [{ id: 'opis', wartosc: opis }];
+    wybor = null; ustawBank(); zapisz(); rysuj(); ustawFokus();
+  }
+
+  function startuj(tryb) {
+    var opisKroku1 = stan.opisKroku1;
+    stan = nowyStan(tryb);
+    if (opisKroku1) stan.opisKroku1 = opisKroku1;
+    bledyAnkiety = []; wybor = null; ustawBank(); zapisz(); rysuj(); ustawFokus();
+  }
+
+  function rysujStart() {
+    var h = '<div class="start"><div class="modul-pacjenta">Nowy wywiad</div><h3 class="pytanie">Jak chcesz przeprowadzić wywiad?</h3>' +
+      '<button type="button" class="kafel glowny-kafel" data-akcja="tryb" data-tryb="opis"><b>1. Opis pacjenta dla AI</b>' +
+      '<span>Pacjent opisuje dolegliwości własnymi słowami. Kopiujesz opis do Konsylium, a AI przygotowuje pytania dla tego pacjenta.</span></button>' +
+      '<button type="button" class="kafel" data-akcja="tryb" data-tryb="wczytaj"><b>2. Wczytaj ankietę od AI</b>' +
+      '<span>Wklej odpowiedź z czatu Konsylium albo otwórz plik .json. Pacjent odpowiada na pytania dobrane przez AI.</span></button>' +
+      '<button type="button" class="link" data-akcja="tryb" data-tryb="standard" style="align-self:flex-start">Ankieta standardowa, bez AI</button></div>';
+    $tel.innerHTML = h;
+  }
+
+  function rysujWczytaj() {
+    var h = '<div class="start"><div class="modul-pacjenta">Krok 2 · ankieta od AI</div><h3 class="pytanie">Wczytaj ankietę od Konsylium</h3>' +
+      '<p class="pomoc">Skopiuj z czatu odpowiedź z blokiem JSON i wklej ją tutaj. Możesz wkleić całą wiadomość, aplikacja sama znajdzie ankietę.</p>' +
+      '<textarea id="pole-ankieta" class="pole wklesly" spellcheck="false" placeholder="{ &quot;format&quot;: &quot;ms-ankieta-1&quot;, … }"></textarea>' +
+      (bledyAnkiety.length ? '<div class="komunikat-pilne" role="alert"><strong>Nie da się wczytać ankiety</strong><span>' + bledyAnkiety.slice(0, 6).map(esc).join('<br>') +
+        (bledyAnkiety.length > 6 ? '<br>… i ' + (bledyAnkiety.length - 6) + ' więcej' : '') + '</span></div>' : '') +
+      '<div class="rzad-start"><label class="przycisk plik">Otwórz plik .json<input type="file" id="plik-ankiety" accept=".json,application/json,.txt" hidden></label>' +
+      '<button type="button" class="link" data-akcja="przyklad-ai">Wczytaj fikcyjny przykład</button></div>' +
+      '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="start">Wstecz</button><div class="prawe">' +
+      '<button class="przycisk glowny" type="button" data-akcja="wczytaj-ankiete">Rozpocznij wywiad</button></div></div></div>';
+    $tel.innerHTML = h;
   }
 
   function odpowiedz(v) {
@@ -304,8 +383,19 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     }
 
     if (!n) {
-      h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi albo osobie z rejestracji. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
-        '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>';
+      if (stan.tryb === 'opis') {
+        h += '<div class="koniec"><h3>Dziękujemy za opis.</h3><p>Lekarz przygotuje teraz pytania dopasowane do Ciebie. Przekaż komputer lekarzowi. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p></div>' +
+          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Skopiuj opis do czatu Konsylium. AI odpowie ankietą, którą wczytasz przyciskiem „Wczytaj ankietę od AI”.</span>' +
+          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj opis do Konsylium</button>' +
+          '<button class="przycisk" type="button" data-akcja="tryb" data-tryb="wczytaj">Wczytaj ankietę od AI</button></div>' +
+          '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
+      } else {
+        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi albo osobie z rejestracji. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
+          '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>' +
+          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Wywiad przejdzie przez anonimizator i trafi do schowka. Wklej go w czacie Konsylium.</span>' +
+          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj wywiad do Konsylium</button></div>' +
+          '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
+      }
       h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz">Wstecz</button></div>';
       $tel.innerHTML = h + a; return;
     }
@@ -358,7 +448,8 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   // Reguły anonimizatora (narzedzia/anonimizator/src/wykrywanie.js) usuwają z tekstu dane osobowe,
   // np. imię i nazwisko albo PESEL wpisane w opisie. Bez modułu kopia idzie bez zmian, z ostrzeżeniem.
   function doKonsylium() {
-    var md = S.doMarkdown(B, stan.historia, { kod: stan.kod, data: stan.start.slice(0, 10) });
+    var meta = { kod: stan.kod, data: stan.start.slice(0, 10) };
+    var md = stan.tryb === 'opis' ? AI.doProsby(B, stan.historia, meta) : S.doMarkdown(B, stan.historia, meta);
     var W = window.WykrywanieDanych;
     if (!W) return { tekst: md, opis: '<p class="anonim brak-modulu"><b>Anonimizator niedostępny.</b> Przejrzyj tekst i usuń dane osobowe ręcznie przed wklejeniem.</p>' };
     var zakresy = [];
@@ -445,9 +536,9 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     }).join('') + '</ol>';
     h += '</div>';
 
-    var an = doKonsylium();
-    h += '<div class="sekcja eksport"><h3>Dla Konsylium: 01-wywiad.md</h3><div class="rzad">' +
-      '<button class="przycisk glowny" type="button" data-akcja="kopiuj">Kopiuj do Konsylium</button>' +
+    var an = doKonsylium(), krok1 = stan.tryb === 'opis';
+    h += '<div class="sekcja eksport"><h3>' + (krok1 ? 'Dla Konsylium: prośba o ankietę' : 'Dla Konsylium: 01-wywiad.md') + '</h3><div class="rzad">' +
+      '<button class="przycisk glowny" type="button" data-akcja="kopiuj">' + (krok1 ? 'Kopiuj opis do Konsylium' : 'Kopiuj do Konsylium') + '</button>' +
       '<span class="potwierdzenie" id="potw" aria-live="polite"></span></div>' + an.opis +
       '<pre class="wklesly" id="podglad-md" tabindex="0">' + esc(an.tekst) + '</pre></div>';
 
@@ -457,6 +548,12 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   }
 
   function rysuj() {
+    if (stan.tryb === null || stan.tryb === 'wczytaj') {
+      if (stan.tryb === null) rysujStart(); else rysujWczytaj();
+      B = BAZA;
+      rysujLekarza(null, S.przelicz(BAZA, []));
+      return;
+    }
     var r = S.nastepne(B, stan.historia);
     if (r.pytanie && wybor === null && r.pytanie.typ === 'wiele') {
       var podp = r.stan.analiza.podpowiedzi[r.pytanie.id];
@@ -467,8 +564,8 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     rysujLekarza(r.pytanie, r.stan);
   }
 
-  function kopiuj(tekst, etykieta) {
-    var potw = document.getElementById('potw');
+  function kopiuj(tekst, etykieta, idPotw) {
+    var potw = document.getElementById(idPotw || 'potw');
     var ok = function () { potw.textContent = 'Skopiowano ' + etykieta + '. Wklej to w czacie projektu Konsylium.'; };
     var awaryjnie = function () {
       var pre = document.getElementById('podglad-md'), sel = window.getSelection(), zakres = document.createRange();
@@ -501,6 +598,17 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     var b = e.target.closest('[data-akcja]');
     if (!b) return;
     var a = b.dataset.akcja;
+    if (a === 'tryb') { startuj(b.dataset.tryb); return; }
+    if (a === 'start') { bledyAnkiety = []; startuj(null); return; }
+    if (a === 'przyklad-ai') { wczytajAnkiete(JSON.stringify(window.PrzykladAnkietyAI, null, 2)); return; }
+    if (a === 'wczytaj-ankiete') { wczytajAnkiete(document.getElementById('pole-ankieta').value); return; }
+    if (a === 'kopiuj-koniec') {
+      if (stan.tryb === 'opis') {
+        var o = stan.historia.filter(function (x) { return x.id === 'opis'; })[0];
+        stan.opisKroku1 = { kod: stan.kod, tekst: o ? o.wartosc : '' }; zapisz();
+      }
+      kopiuj(doKonsylium().tekst, stan.tryb === 'opis' ? 'opis' : 'wywiad', 'potw-koniec'); return;
+    }
     if (a === 'wstecz') wstecz();
     else if (a === 'niewiem') odpowiedz(S.NIE_WIEM);
     else if (a === 'potwierdz') { stan.potwierdzone = stan.potwierdzone.concat(b.dataset.flagi.split(',')); zapisz(); rysuj(); }
@@ -533,9 +641,21 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   $tel.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && e.target.matches('input.pole')) { var d = document.getElementById('dalej'); if (d && !d.disabled) d.click(); }
   });
+  $tel.addEventListener('change', function (e) {
+    if (e.target.id !== 'plik-ankiety' || !e.target.files[0]) return;
+    var r = new FileReader();
+    r.onload = function () { wczytajAnkiete(String(r.result)); };
+    r.readAsText(e.target.files[0]);
+  });
   $lek.addEventListener('click', function (e) {
     var b = e.target.closest('[data-akcja]'); if (!b) return;
-    if (b.dataset.akcja === 'kopiuj') kopiuj(doKonsylium().tekst, 'wywiad');
+    if (b.dataset.akcja === 'kopiuj') {
+      if (stan.tryb === 'opis') {
+        var o = stan.historia.filter(function (x) { return x.id === 'opis'; })[0];
+        stan.opisKroku1 = { kod: stan.kod, tekst: o ? o.wartosc : '' }; zapisz();
+      }
+      kopiuj(doKonsylium().tekst, stan.tryb === 'opis' ? 'opis' : 'wywiad');
+    }
   });
 
   // Motyw jak w Nawigatorze: data-motyw na <html>. Domyślnie ciemny; w podglądzie artefaktu
@@ -576,11 +696,12 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   $sel.addEventListener('change', function () { if ($sel.value) wczytajPrzyklad($sel.value, 3); $sel.value = ''; });
   document.getElementById('od-nowa').addEventListener('click', function () {
     ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
-    stan = { historia: [], potwierdzone: [], kod: nowyKod(), start: new Date().toISOString() }; wybor = null; zapisz(); rysuj();
+    startuj(null);
   });
+  document.getElementById('wczytaj-ai').addEventListener('click', function () { startuj('wczytaj'); });
 
   var zapisany = wczytaj();
-  if (zapisany) { stan = zapisany; rysuj(); }
-  else wczytajPrzyklad('brzuch', 12); // stan startowy: przykład w trakcie, żeby od razu było widać działanie
+  if (zapisany) { stan = zapisany; if (stan.tryb === undefined) stan.tryb = 'standard'; }
+  ustawBank(); rysuj();
 })();
 </script>

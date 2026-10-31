@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const WERSJA = '0.2.0';
+const WERSJA = '0.3.0';
 const tu = dirname(fileURLToPath(import.meta.url));
 const dist = join(tu, 'dist');
 mkdirSync(dist, { recursive: true });

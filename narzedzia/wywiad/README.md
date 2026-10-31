@@ -13,9 +13,19 @@ Adaptacyjna ankieta, którą pacjent otwiera z linku. Po każdej odpowiedzi siln
 | `silnik.js` | Logika: przeliczenie stanu, wybór następnego pytania, czerwone flagi, eksport do `01-wywiad.md` |
 | `pytania.js` | Bank pytań, moduły i reguły czerwonych flag (to edytują lekarze) |
 | `przyklady.js` | Fikcyjne scenariusze do demo i testów |
-| `test-silnik.js` | Testy: `node narzedzia/wywiad/test-silnik.js` |
+| `ankieta.js` | Ankieta od AI: krok 1 (prośba z opisem), wczytanie pliku `ms-ankieta-1` jako banku pytań |
+| `FORMAT-ANKIETY.md` | Format ankiety i zasady dla Konsylium, jak ją przygotować |
+| `przyklad-ankieta-ai.js` | Fikcyjna ankieta od AI do demo i testów |
+| `test-silnik.js`, `test-ankieta.js` | Testy: `node narzedzia/wywiad/test-silnik.js` i `node narzedzia/wywiad/test-ankieta.js` |
 
 Uruchomienie: otwórz `index.html` w przeglądarce. Nie trzeba nic budować.
+
+## Pytania od AI (dwa kroki)
+
+1. **Opis pacjenta dla AI.** Pacjent pisze, co mu dolega. Lekarz klika „Kopiuj opis do Konsylium” i wkleja zanonimizowany opis do czatu projektu.
+2. **Wczytaj ankietę od AI.** Konsylium odpowiada ankietą JSON przygotowaną dla tego pacjenta (format: `FORMAT-ANKIETY.md`). Lekarz wkleja ją w aplikacji, pacjent odpowiada, a gotowy wywiad wraca do Konsylium przyciskiem „Kopiuj wywiad do Konsylium”.
+
+Aplikacja nadal nie łączy się z siecią. AI pracuje w czacie Konsylium, a dane przenosi lekarz przez schowek. Ankieta standardowa bez AI nadal jest dostępna.
 
 ## Jak działa dobór pytań
 

@@ -144,7 +144,7 @@
     var linie = [];
     linie.push('# Wywiad wstępny (ankieta pacjenta)');
     linie.push('');
-    linie.push('_Źródło: adaptacyjna ankieta MS' + (meta.kod ? ' · kod ' + meta.kod : '') +
+    linie.push('_Źródło: ' + (bank.zrodlo || 'adaptacyjna ankieta MS') + (meta.kod ? ' · kod ' + meta.kod : '') +
       (meta.data ? ' · ' + meta.data : '') + ' · DANE FIKCYJNE (demo)_');
     linie.push('');
     linie.push('## Czerwone flagi (reguły ankiety)');
