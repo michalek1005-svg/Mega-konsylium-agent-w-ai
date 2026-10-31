@@ -1,0 +1,3 @@
+{"fakty":{"kartka":"ZOLTA","twierdzenia":[{"twierdzenie":"paracetamol max 4 g/d","werdykt":"BEZ_ZRODLA","poziom_zrodla":4,"zrodlo":"","uwaga":"brak ChPL w zrodla/ — dodać"}]},
+ "proces":{"kartka":"ZIELONA","lista":[{"punkt":"wywiad kompletny","status":"OK"},{"punkt":"weto najgorszy_scenariusz uwzględnione (pilność 2)","status":"OK"},{"punkt":"odpowiedź na każdą uwagę rezydenta","status":"OK"}]},
+ "rubryka":{"za_przeciw_obecne":13,"komunikat":14},"petla":1}

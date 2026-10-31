@@ -1,0 +1,8 @@
+{"rola":"najgorszy_scenariusz","rozpoznania":[
+ {"nazwa":"ostry zespół wieńcowy","p":0.06,"za":["kobieta 54 l., HA, hiperlipidemia; u kobiet OZW maskuje się jako ból w nadbrzuszu z nudnościami"],"przeciw":["Murphy, związek z tłuszczem"]},
+ {"nazwa":"ostre zapalenie trzustki","p":0.08,"za":["kamica = najczęstsza przyczyna OZT w Polsce; nudności, wymioty"],"przeciw":["ból nie opasujący"]},
+ {"nazwa":"zapalenie dróg żółciowych","p":0.04,"za":["kamica"],"przeciw":["bez gorączki, bez żółtaczki"]},
+ {"nazwa":"kamica żółciowa","p":0.50}],
+ "pilnosc":2,"pewnosc":"srednia","red_flags_wykluczone":["perforacja (bez obrony mięśniowej)","krwawienie"],
+ "red_flags_otwarte":["OZW u kobiety 54 l. — brak EKG","ostre zapalenie trzustki — brak lipazy","zapalenie pęcherzyka — nie zmierzono temperatury"],
+ "nastepny_krok":"EKG w gabinecie dziś + lipaza/CRP dziś (cito), zanim plan planowy","co_zmieniloby_zdanie":"EKG prawidłowe + lipaza w normie → zgadzam się na pilność 3","zrodla":["[wiedza modelu, niezweryfikowane]"]}

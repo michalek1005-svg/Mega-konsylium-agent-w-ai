@@ -1,0 +1,48 @@
+{
+  "role": {
+    "bayes": {
+      "k": 1.0047,
+      "n_spraw": 1,
+      "brier_sredni": 0.19500000000000003
+    },
+    "hipotezujacy": {
+      "k": 0.9941,
+      "n_spraw": 1,
+      "brier_sredni": 0.24829999999999994
+    },
+    "najgorszy_scenariusz": {
+      "k": 0.9914,
+      "n_spraw": 1,
+      "brier_sredni": 0.2616
+    },
+    "poz_pragmatyk": {
+      "k": 1.0097,
+      "n_spraw": 1,
+      "brier_sredni": 0.17000000000000004
+    }
+  },
+  "rezydenci": {
+    "uwag": 6,
+    "przyjetych": 4,
+    "zmienily_decyzje": 1,
+    "kategorie": {
+      "brak_danych": 2,
+      "hipoteza": 1,
+      "zalozenie": 1
+    },
+    "hasla": {
+      "brak_danych:menopauza": 1,
+      "hipoteza:ozw": 1,
+      "brak_danych:temperatura": 1,
+      "zalozenie:dostepnosc_usg": 1
+    }
+  },
+  "pilnosc_historia": [
+    {
+      "sprawa": "PRZYKLAD-001",
+      "wynik": 2,
+      "faktyczna": 3
+    }
+  ],
+  "ostatnia_aktualizacja": "2026-10-31"
+}
