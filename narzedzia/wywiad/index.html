@@ -735,7 +735,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   }
   (function () {
     var m = null;
-    try { m = localStorage.getItem('ms-motyw'); } catch (e) {}
+    try { if (window.parent === window) m = localStorage.getItem('ms-motyw'); } catch (e) {} // w aplikacji motyw przychodzi z powłoki
     if (!m && window.MS_MOTYW_Z_SYSTEMU) {
       var t = document.documentElement.getAttribute('data-theme');
       m = t ? (t === 'dark' ? 'ciemny' : 'jasny') : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'ciemny' : 'jasny');

@@ -945,8 +945,10 @@ ${podpisy(wpisy)}`;
   let wnioskiPokazane = '';
   function rysujWnioski(s, otworz) {
     const w = s && s.wnioski, btn = $('wnioski-btn'), el = $('wnioski');
+    // zmiana sprawy: poprzednie wnioski znikają, a nowe mogą otworzyć się same
+    if (!scen || !s || scen.sprawa !== s.sprawa) { el.hidden = true; el.innerHTML = ''; wnioskiPokazane = null; }
     btn.hidden = !w;
-    if (!w) { el.hidden = true; return; }
+    if (!w) { el.hidden = true; el.innerHTML = ''; return; }
     const rek = w.pola.find((p) => /^REKOMENDACJA/i.test(p.etykieta));
     const reszta = w.pola.filter((p) => p !== rek);
     el.innerHTML = `<div class="gora"><h2 id="wnioski-t">Wnioski konsylium · ${esc(s.sprawa || '')}</h2><button class="nk-button" type="button" id="wnioski-zamknij">Wróć do pokoju</button></div>` +
@@ -1256,7 +1258,7 @@ ${podpisy(wpisy)}`;
   }
   let motyw = null;
   try { motyw = localStorage.getItem('pokoj-motyw'); } catch { /* jw. */ }
-  if (motyw) ustawMotyw(motyw);
+  if (motyw && window.parent === window) ustawMotyw(motyw); // w aplikacji (iframe) motyw przychodzi z powłoki
   else $('motyw').textContent = matchMedia('(prefers-color-scheme: light)').matches ? 'Tryb ciemny' : 'Tryb jasny';
   $('motyw').addEventListener('click', () => {
     const teraz = document.documentElement.getAttribute('data-motyw') || (matchMedia('(prefers-color-scheme: light)').matches ? 'jasny' : 'ciemny');
