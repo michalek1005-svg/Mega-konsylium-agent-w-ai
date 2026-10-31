@@ -10,3 +10,6 @@
 | 2026-10-31 | 2026-10-31-01 (test) | zalozenie | okno-usg-logistyka | TAK | okno USG ≤72 h przy dodatnim Murphym wyglądało na logistykę → USG dziś/jutro |
 | 2026-10-31 | 2026-10-31-01 (test) | brak_danych | czynniki-ryzyka-wiencowe | NIE | palenie, cukrzyca, wywiad rodzinny wieńcowy nie zebrane |
 | 2026-10-31 | 2026-10-31-01 (test) | brak_danych | nasilenie-bolu-i-masa-ciala | NIE | nasilenie bólu 0–10 i zmiana masy ciała nie zebrane |
+| 2026-10-31 | 2026-10-31-02 | brak_danych | wywiad-epidemiologiczny | NIE | podróże, surowe ryby/mięso nie zebrane przy obiekcie w stolcu; dopisana morfologia z rozmazem |
+| 2026-10-31 | 2026-10-31-02 | zalozenie | ksztalt-kulki | NIE | opis „małej okrągłej kulki” nie pasuje do podłużnej tabletki Siofor XR → oględziny warunkiem rozpoznania; pewność obniżona |
+| 2026-10-31 | 2026-10-31-02 | zalozenie | pakiet-bez-pytan | NIE | rezydent źle przypisał odpowiedź („od paru miesięcy”) bez treści pytania — drugi raz po sprawie 01 |
