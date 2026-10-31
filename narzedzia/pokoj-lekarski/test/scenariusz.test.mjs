@@ -63,6 +63,7 @@ test('zdarzenia „wypowiedz” w _log.jsonl mają pierwszeństwo (tryb na żywo
   ].map((x) => JSON.stringify(x)).join('\n');
   const s = zbudujScenariusz({ '_log.jsonl': log }, 'X');
   assert.equal(s.zrodlo, 'log');
+  assert.equal(s.sceny[1].temat, 'Ślepa tura', 'brak tematu → nazwa fazy');
   assert.deepEqual(s.sceny.map((x) => x.tytul), ['Wywiad', 'Ślepa tura']);
   assert.deepEqual(s.sceny[1].wypowiedzi.map((w) => w.kto), ['bayes', 'najgorszy_scenariusz']);
   assert.equal(s.sceny[0].temat, 'Ból w klatce od rana');
@@ -70,4 +71,36 @@ test('zdarzenia „wypowiedz” w _log.jsonl mają pierwszeństwo (tryb na żywo
 
 test('pusty folder daje pusty scenariusz zamiast błędu', () => {
   assert.equal(zbudujScenariusz({}, 'pusty').sceny.length, 0);
+});
+
+test('dymki z logu zastępują wyliczone skróty tylko w swojej fazie', () => {
+  const pliki = wczytajSprawe(join(tu, 'fixtura', '2026-10-31-02'));
+  const dopisek = [
+    { ts: '2026-10-31T12:33:00Z', zdarzenie: 'wypowiedz', rola: 'ordynator', faza: 'Ślepa tura', temat: 'Kulka w stolcu i ciemny mocz: każdy pisze sam', skrot: 'Sześciu lekarzy pisze opinie osobno.' },
+    { ts: '2026-10-31T12:34:00Z', zdarzenie: 'wypowiedz', rola: 'bayes', faza: 'Ślepa tura', skrot: 'Tabletka widmo 0,70: pretest u osoby na metforminie XR jest wysoki.' },
+    { ts: '2026-10-31T12:39:00Z', zdarzenie: 'wypowiedz', rola: 'R1', faza: 'Rezydenci', persona: 'lekarz rodzinny z UK', skrot: 'A jeśli to mioglobinuria po statynie?' },
+  ].map((x) => JSON.stringify(x)).join('\n');
+  pliki['_log.jsonl'] += '\n' + dopisek;
+  const s = zbudujScenariusz(pliki, '2026-10-31-02');
+  assert.equal(s.zrodlo, 'log+pliki');
+  const slepa = s.sceny.find((x) => x.id === 'slepa');
+  assert.equal(slepa.temat, 'Kulka w stolcu i ciemny mocz: każdy pisze sam');
+  assert.deepEqual(slepa.wypowiedzi.map((w) => w.kto), ['ordynator', 'bayes']);
+  assert.equal(s.sceny.find((x) => x.id === 'rezydenci').wypowiedzi[0].persona, 'lekarz rodzinny z UK');
+  assert.equal(s.sceny.find((x) => x.id === 'triage').wypowiedzi.length, 4, 'faza bez dymków zostaje z plików');
+  assert.deepEqual(s.sceny.map((x) => x.id).slice(0, 4), ['wywiad', 'triage', 'slepa', 'agregat']);
+});
+
+test('nazwy faz: runda N, werdykt, nieznana', async () => {
+  const { fazaNaId } = await import('../src/scenariusz.mjs');
+  assert.equal(fazaNaId('Konsylium · runda 2').id, 'runda2');
+  assert.equal(fazaNaId('Werdykt').id, 'final');
+  assert.equal(fazaNaId('Narada nocna').rz, 99);
+});
+
+test('linia SKRÓT: w pliku agenta wygrywa z heurystyką', async () => {
+  const { skrotRundy, skrotAgenta } = await import('../src/scenariusz.mjs');
+  assert.equal(skrotRundy('**Decyzja:** bez zmian.\nSKRÓT: Tabletka widmo 0,70, pilność 4.'), 'Tabletka widmo 0,70, pilność 4.');
+  assert.equal(skrotAgenta('**SKRÓT:** Pasożyt?'), 'Pasożyt?');
+  assert.equal(skrotAgenta('bez skrótu'), null);
 });

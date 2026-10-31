@@ -1,6 +1,6 @@
 {
   "name": "pokoj-lekarski",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Pokój lekarski Konsylium AI: graficzny szpital, w którym widać dyskusję agentów w dymkach. Offline, jeden plik HTML.",

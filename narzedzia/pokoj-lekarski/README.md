@@ -14,9 +14,9 @@ Wygląd: marka MS, paleta „Laguna” z Nawigatora Medycznego, domyślnie tryb 
 
 ```
 npm install          # tylko krój Plus Jakarta Sans do osadzenia
-npm run build        # → POKOJ-LEKARSKI-0.1.0.html (jeden plik, ok. 150 KB, offline)
+npm run build        # → POKOJ-LEKARSKI-0.2.0.html (jeden plik, ok. 150 KB, offline)
 npm test             # parser na sprawach 2026-10-31-01 i -02
-npm run test:e2e     # Playwright: rysunek, dymek nad mówiącym, wczytanie folderu, zero żądań sieciowych
+npm run test:e2e     # Playwright: rysunek, dymek nad mówiącym, wczytanie folderu, tryb na żywo, zero żądań sieciowych
 ```
 
 Otwórz plik HTML w przeglądarce. Na start odtwarza się osadzona sprawa `2026-10-31-02` (dane fikcyjne). Przycisk **Wczytaj sprawę…** albo przeciągnięcie folderu z `sprawy/` odtwarza dowolną inną sprawę. Nic nie wychodzi z komputera: strona ma CSP `default-src 'none'`, a build przerywa się, jeśli w kodzie jest adres sieciowy.
@@ -25,23 +25,27 @@ Inna sprawa startowa: `node build.mjs --sprawa ../../sprawy/2026-10-31-01`.
 
 ## Skąd biorą się dymki
 
-`src/scenariusz.mjs` zamienia folder sprawy na „scenariusz” (sceny z tematem i listą wypowiedzi). Ten sam kod działa w Node i w przeglądarce.
+`src/scenariusz.mjs` zamienia folder sprawy na „scenariusz”, czyli sceny z tematem i listą wypowiedzi. Ten sam kod działa w Node i w przeglądarce. Dla każdej fazy pierwszeństwo ma źródło z wyższego punktu:
 
-1. **Dziś (z plików 01–10):** skróty są wyliczane heurystycznie. Ślepa tura bierze najwyższe rozpoznanie z `03-opinie/<rola>.json`, rundy biorą pierwsze zdanie po „Decyzja / Zmiany / Top-2” z `04-konsylium.md`, rezydenci „hipotezę niewypowiedzianą”, sprawdzający kolor kartki i pierwszą uwagę, a werdykt pole REKOMENDACJA z `09-FINAL.md`.
-2. **Proponowany format na żywo:** każdy agent po swojej wypowiedzi dopisuje do `_log.jsonl` jedną linię:
+1. **Dymki od agentów** (wdrożone 31.10.2026, `docs/DYMKI.md`). Każdy agent kończy odpowiedź linią `SKRÓT: …`, a zastępcy JSON-owi polem `"skrot"`. Ordynator zapisuje je skryptem `skrypty/dymek.py` jako zdarzenia `"wypowiedz"` w `_log.jsonl`. Na początku każdej fazy dodaje też swój dymek z `--temat`, który trafia na tablicę.
+2. **Linia `SKRÓT:` w zapisanym pliku agenta**, np. w `06-rezydenci/R1.md` albo w sekcji rundy w `04-konsylium.md`.
+3. **Heurystyka** dla starszych spraw:
+   - ślepa tura: najwyższe rozpoznanie z `03-opinie/<rola>.json`;
+   - rundy: pierwsze zdanie po „Decyzja / Zmiany / Top-2”;
+   - rezydenci: „hipoteza niewypowiedziana”;
+   - sprawdzający: kolor kartki i pierwsza uwaga;
+   - werdykt: pole REKOMENDACJA.
 
-   ```json
-   {"ts":"2026-11-01T10:05:00Z","zdarzenie":"wypowiedz","rola":"bayes","faza":"Ślepa tura","temat":"Ból w klatce od rana","skrot":"ACS p 0,30, pilność 1.","plik":"03-opinie/bayes.json"}
-   ```
+## Na żywo
 
-   `skrot` ma do 150 znaków i jest napisany przez samego agenta, więc jest trafniejszy od heurystyki. Gdy w logu są takie zdarzenia, pokój używa wyłącznie ich. Wymaga to dopisania jednego zdania do instrukcji agentów i do `PROMPT-NADZORCA.md`. Te pliki zmienia tylko Michał, więc to czeka na jego decyzję.
+Przycisk **Na żywo…** pozwala wybrać folder sprawy, która właśnie trwa. Pokój co 3 sekundy czyta go ponownie i dociąga nowe dymki bez przewijania wstecz. Jeśli oglądasz koniec, przechodzi do nowej wypowiedzi. Działa w Chrome, Edge i w powłoce Windows (File System Access API). W innych przeglądarkach przycisku nie ma, a „Wczytaj sprawę…” odtwarza zapisany stan.
 
 ## Dwie drogi: mod w Claude Code czy widok w aplikacji Konsylium
 
 | | **A. Mod (panel) w Claude Code** | **B. Widok w aplikacji Konsylium (ten prototyp)** |
 |---|---|---|
 | Gdzie widać | Panel obok czatu w Claude Code (desktop, VS Code, telefon), w tej sesji, w której biegnie konsylium | Plik HTML / moduł powłoki Windows obok Wywiadu i Anonimizatora |
-| Na żywo | Tak: hak na wywołania subagentów (`tool.call` dla Agent) widzi, kto startuje i kto skończył, bez zmian w agentach | Odtwarzanie gotowej sprawy; na żywo dopiero, gdy powłoka Electron będzie obserwować folder sprawy |
+| Na żywo | Tak: hak na wywołania subagentów (`tool.call` dla Agent) widzi, kto startuje i kto skończył | Tak: przycisk „Na żywo…” czyta folder sprawy co 3 s |
 | Grafika | Prosta: elementy panelu (Box, Text, Svg); bez CSS i animacji jak w przeglądarce | Pełna: SVG, animacje, tryb ciemny, wygląd Nawigatora |
 | Wątki projektu w claude.ai | Nie: interfejsu wątków projektu nie da się modyfikować, mod działa tylko w Claude Code | Nie bezpośrednio; Michał otwiera plik obok |
 | Trwałość | Mod napisany w chmurowej sesji znika z kontenerem; trzeba go opublikować z repo jako wtyczkę (`/plugin install`) | Plik w repo, działa offline na każdym komputerze |

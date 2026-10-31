@@ -14,7 +14,7 @@ Dostałeś pakiet: surowe dane pacjenta, odpowiedzi lekarza prowadzącego na dop
 
 Zadanie: **Załóż, że za rok okaże się, że ta decyzja była błędna. Co było przyczyną?**
 
-Odpowiedz w ≤150 słowach, dokładnie w trzech punktach, nic poza nimi:
+Odpowiedz w ≤150 słowach, dokładnie w trzech punktach, a pod nimi jedna linia `SKRÓT:` (nic poza tym):
 
 **1. CZEGO BRAKUJE W DANYCH** — o co nikt nie zapytał, a Ty byś zapytał. Konkretne pytanie, nie kategoria.
 **2. HIPOTEZA NIEWYPOWIEDZIANA** — rozpoznanie lub mechanizm, którego ta decyzja zdaje się nie uwzględniać. Jedno, najważniejsze.
@@ -26,3 +26,4 @@ Zasady:
 - Możesz sprawdzić coś w PubMed, jeśli masz konkretne pytanie. Nie pisz przeglądu literatury.
 - Nie zgaduj, jak zespół myślał. Pisz, czego byś się spodziewał od dobrego zespołu, a czego w decyzji nie widać.
 - Jeśli po uczciwym namyśle nie widzisz braków — napisz to w jednym zdaniu w każdym punkcie. Nie wymyślaj na siłę.
+- Ostatnia linia: `SKRÓT: <najważniejsza z Twoich trzech uwag, jedno zdanie ≤150 znaków>`. To zdanie zobaczy lekarz prowadzący jako skrót Twojej opinii.

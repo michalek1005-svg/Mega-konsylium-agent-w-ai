@@ -113,7 +113,15 @@ export function sekcje(md, poziom) {
 }
 
 // dymek lekarza z rundy: „Decyzja / Zmiany / Top-2” → pierwsze zdanie, inaczej „Co mnie przekonuje”
+// linia „SKRÓT: …” napisana przez samego agenta (docs/DYMKI.md) ma pierwszeństwo przed heurystyką
+export function skrotAgenta(tresc) {
+  const m = String(tresc || '').match(/^\s*\**SKRÓT\**\s*:\s*\**\s*(.+)$/im);
+  return m ? utnij(m[1]) : null;
+}
+
 export function skrotRundy(tresc) {
+  const wlasny = skrotAgenta(tresc);
+  if (wlasny) return wlasny;
   const czysty = String(tresc || '');
   const etykiety = [/\*\*(Decyzja|Zmiany?|Zmiana top-2[^*]*|Top-2[^*]*)[:：]?\*\*:?\s*([^\n]+)/i,
                     /\*\*(Co mnie przekonuje|Przekonuje mnie)[^*]*\*\*:?\s*([^\n]+)/i];
@@ -133,22 +141,50 @@ export function skrotRundy(tresc) {
 
 const wyp = (kto, skrot, pelny, plik) => ({ kto, skrot: utnij(wielka(bezMarkdown(skrot))), pelny: bezMarkdown(pelny || skrot), plik: plik || null });
 
-// --- format na żywo: zdarzenia "wypowiedz" w _log.jsonl ------------------
+// --- format na żywo: zdarzenia "wypowiedz" w _log.jsonl (docs/DYMKI.md) ------
+
+// kanoniczne fazy: nazwa z dymka → identyfikator sceny i kolejność
+export const FAZY = [
+  ['wywiad', /^wywiad/i, 'Wywiad'], ['triage', /^triage/i, 'Triage'], ['slepa', /^[śs]lepa/i, 'Ślepa tura'],
+  ['agregat', /^agregac/i, 'Agregacja'], ['runda', /runda\s*(\d+)/i, 'Konsylium · runda'], ['projekt', /^projekt/i, 'Projekt'],
+  ['rezydenci', /^rezydenc/i, 'Rezydenci'], ['sprawdzenie', /^sprawdz/i, 'Sprawdzenie'], ['odpowiedz', /^odpowied/i, 'Odpowiedź rezydentom'],
+  ['final', /^(werdykt|final)/i, 'Werdykt'], ['followup', /^follow/i, 'Follow-up'],
+];
+export function fazaNaId(faza) {
+  const f = String(faza || '').trim();
+  for (const [id, re, tytul] of FAZY) {
+    const m = f.match(re);
+    if (m) return id === 'runda' ? { id: 'runda' + m[1], tytul: `${tytul} ${m[1]}`, rz: FAZY.findIndex((x) => x[0] === 'runda') + m[1] / 100 }
+                                 : { id, tytul, rz: FAZY.findIndex((x) => x[0] === id) };
+  }
+  if (/konsylium|dyskusj/i.test(f)) return { id: 'runda1', tytul: 'Konsylium · runda 1', rz: 4.01 };
+  return { id: 'inne-' + f.toLowerCase().replace(/[^a-z0-9ąćęłńóśźż]+/g, '-'), tytul: f || 'Konsylium', rz: 99 };
+}
 
 function zLogu(zdarzenia) {
-  const sceny = [];
+  const mapa = new Map();
   for (const z of zdarzenia) {
     if (z.zdarzenie !== 'wypowiedz' || !z.skrot) continue;
-    const faza = z.faza || 'Konsylium';
-    let s = sceny[sceny.length - 1];
-    if (!s || s.tytul !== faza) {
-      s = { id: 'f' + sceny.length, tytul: faza, temat: z.temat || faza, czas: z.ts || null, wypowiedzi: [] };
-      sceny.push(s);
-    }
-    if (z.temat) s.temat = z.temat;
-    s.wypowiedzi.push(wyp(rola(z.rola || z.agent) || 'ordynator', z.skrot, z.pelny || z.skrot, z.plik));
+    const f = fazaNaId(z.faza);
+    let s = mapa.get(f.id);
+    if (!s) { s = { id: f.id, tytul: f.tytul, temat: null, czas: z.ts || null, rz: f.rz, wypowiedzi: [] }; mapa.set(f.id, s); }
+    if (z.temat) s.temat = utnij(z.temat, 160);
+    const w = wyp(rola(z.rola || z.agent) || 'ordynator', z.skrot, z.pelny || z.skrot, z.plik);
+    if (z.persona) w.persona = z.persona;
+    s.wypowiedzi.push(w);
   }
-  return sceny;
+  return [...mapa.values()];
+}
+
+// łączy sceny z dymków (pierwszeństwo) ze scenami wyliczonymi z plików
+function polacz(zywe, zPlikow) {
+  const wynik = zPlikow.map((s) => ({ ...s, rz: fazaNaId(s.tytul).rz }));
+  for (const z of zywe) {
+    const k = wynik.findIndex((s) => s.id === z.id);
+    if (k >= 0) wynik[k] = { ...wynik[k], ...z, temat: z.temat || wynik[k].temat, czas: z.czas || wynik[k].czas };
+    else wynik.push({ ...z, temat: z.temat || z.tytul });
+  }
+  return wynik.sort((a, b) => a.rz - b.rz).map(({ rz, ...s }) => s);
 }
 
 // --- format z plików sprawy -----------------------------------------------
@@ -184,8 +220,6 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     const m = fu.match(/rozpoznanie_potwierdzone:\s*(.+)/); const d = fu.match(/czy_decyzja_byla_wlasciwa:\s*(.+)/);
     tablica.followup = { rozpoznanie: m ? m[1].trim() : null, decyzja: d ? d[1].trim() : null };
   }
-
-  if (zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: zywe, tablica, zrodlo: 'log' };
 
   const sceny = [];
   const lider = tablica.ranking[0];
@@ -296,7 +330,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
       const persona = (t.match(/Persona:\s*([^(\n]+)/i) || [])[1]?.trim();
       const hip = (t.match(/HIPOTEZA NIEWYPOWIEDZIANA:\s*([^\n]+)/i) || [])[1];
       const brak = (t.match(/CZEGO BRAKUJE[^:]*:\s*([^\n]+)/i) || [])[1];
-      const s = hip ? `Nikt nie powiedział: ${pierwszeZdanie(hip).replace(/^./, (c) => c.toLowerCase())}` : pierwszeZdanie(brak || t);
+      const s = skrotAgenta(t) || (hip ? `Nikt nie powiedział: ${pierwszeZdanie(hip).replace(/^./, (c) => c.toLowerCase())}` : pierwszeZdanie(brak || t));
       return { ...wyp(kto, s, t, k), persona: persona || null };
     });
     sceny.push({ id: 'rezydenci', tytul: 'Rezydenci', czas: czasZdarzenia(zdarzenia, 'rezydenci', 'pakiet'),
@@ -336,5 +370,6 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     temat: 'Lekarz prowadzący wrócił z wynikiem. Kalibracja agentów.',
     wypowiedzi: [wyp('ordynator', `Potwierdzone: ${tablica.followup.rozpoznanie}. Decyzja była właściwa: ${tablica.followup.decyzja}.`, fu, '10-followup.md')] });
 
-  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki' };
+  if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki' };
+  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: polacz(zywe, sceny), tablica, zrodlo: sceny.length ? 'log+pliki' : 'log' };
 }

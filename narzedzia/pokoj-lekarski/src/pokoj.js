@@ -192,6 +192,21 @@ ${podpisy(wpisy)}`;
   }
 
   // ---------- odtwarzanie ----------
+  // tryb na żywo: nowy scenariusz tej samej sprawy bez cofania odtwarzania
+  function aktualizuj(s) {
+    const bylo = kroki.length, naKoncu = i >= bylo - 1;
+    const rez = scen ? ileRezydentow() : 0;
+    scen = s;
+    s.tablica.liczbaRezydentow = ileRezydentow();
+    kroki = [];
+    s.sceny.forEach((sc, si) => sc.wypowiedzi.forEach((w, wi) => kroki.push({ si, wi })));
+    if (kroki.length === bylo && bylo) return;
+    if (s.tablica.liczbaRezydentow !== rez || !bylo) rysujPokoj();
+    rysujOs(); rysujListe();
+    if (!bylo) { rysujLegende(); pokaz(0, true); return; }
+    pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
+  }
+
   function przygotuj(s) {
     scen = s;
     s.tablica.liczbaRezydentow = ileRezydentow();
@@ -348,7 +363,36 @@ ${podpisy(wpisy)}`;
     if (!s.sceny.length) { $('opis-sprawy').textContent = 'W tym folderze nie ma plików sprawy (01-wywiad.md … 09-FINAL.md). Wybierz folder z katalogu sprawy/.'; return; }
     ustawGre(false); przygotuj(s); ustawGre(true);
   }
-  $('wczytaj').addEventListener('click', () => $('folder').click());
+  $('wczytaj').addEventListener('click', () => { zatrzymajZywo(); $('folder').click(); });
+
+  // ---------- na żywo: folder sprawy czytany co 3 s (File System Access API: Chrome, Edge, powłoka Windows) ----------
+  let zywoTimer = null;
+  function zatrzymajZywo() { clearInterval(zywoTimer); zywoTimer = null; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
+  async function czytajUchwyt(uchwyt, sciezka, pliki) {
+    for await (const [nazwa, el] of uchwyt.entries()) {
+      if (el.kind === 'directory') await czytajUchwyt(el, sciezka + nazwa + '/', pliki);
+      else if (/\.(md|json|jsonl)$/i.test(nazwa)) pliki[sciezka + nazwa] = await (await el.getFile()).text();
+    }
+    return pliki;
+  }
+  if (typeof window.showDirectoryPicker === 'function') {
+    $('zywo').hidden = false;
+    $('zywo').addEventListener('click', async () => {
+      if (zywoTimer) { zatrzymajZywo(); return; }
+      let uchwyt;
+      try { uchwyt = await window.showDirectoryPicker({ mode: 'read' }); } catch { return; }
+      const odswiez = async () => {
+        try { aktualizuj(zbudujScenariusz(await czytajUchwyt(uchwyt, '', {}), uchwyt.name)); }
+        catch (e) { zatrzymajZywo(); $('opis-sprawy').textContent = 'Nie da się już czytać folderu sprawy: ' + e.message; }
+      };
+      scen = null; kroki = []; i = 0;
+      await odswiez();
+      $('opis-sprawy').textContent = `Sprawa ${uchwyt.name} · na żywo`;
+      $('zywo').classList.add('nk-on'); $('zywo').textContent = '● Na żywo';
+      zywoTimer = setInterval(odswiez, 3000);
+      ustawGre(true);
+    });
+  }
   $('folder').addEventListener('change', (e) => {
     const l = [...e.target.files].map((f) => ({ sciezka: f.webkitRelativePath || f.name, plik: f }));
     if (l.length) wczytajPliki(l);
