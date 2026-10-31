@@ -461,7 +461,8 @@ ${podpisy(wpisy)}`;
     const nowy = $('zywo').cloneNode(true); $('zywo').replaceWith(nowy);
     nowy.hidden = false; nowy.title = 'Pokazuje najnowszą sprawę z folderu Konsylium i dociąga nowe dymki co 3 sekundy.';
     nowy.addEventListener('click', () => { if (zywoTimer) zatrzymajZywo(); else zywoZPowloki(false); });
-    if (await window.MsMost.folder().catch(() => null)) zywoZPowloki(true);
+    if (await window.MsMost.folder().catch(() => null)) zywoZPowloki(false);
+    else $('opis-sprawy').textContent = 'Wybierz folder Konsylium (ikona folderu po lewej), a Pokój pokaże najnowszą sprawę.';
     window.MsMost.naDane((od, d) => { if (d && d.zywo) zywoZPowloki(false); });
   });
   window.addEventListener('message', (e) => { if (e.data && e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw); });
@@ -514,11 +515,14 @@ ${podpisy(wpisy)}`;
     ustawMotyw(teraz === 'jasny' ? 'ciemny' : 'jasny');
   });
 
-  // start: osadzona sprawa demonstracyjna
-  if (typeof DEMO !== 'undefined' && DEMO) {
-    przygotuj(DEMO);
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(() => ustawGre(true), 1500);
-    else ustawGre(false);
+  // start: osadzona sprawa demonstracyjna — tylko poza aplikacją MS Konsylium (w aplikacji Pokój czyta folder Konsylium)
+  function startDemo() {
+    if (typeof DEMO !== 'undefined' && DEMO) {
+      przygotuj(DEMO);
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(() => ustawGre(true), 1500);
+      else ustawGre(false);
+    }
   }
   gra = false; $('graj').textContent = '▶︎ Odtwarzaj'; $('graj').classList.remove('nk-on');
+  if (window.MsMost) window.MsMost.dostepny().then((jest) => { if (!jest) startDemo(); }); else startDemo();
 })();
