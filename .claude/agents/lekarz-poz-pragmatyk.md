@@ -1,8 +1,8 @@
 ---
 name: lekarz-poz-pragmatyk
 description: Lekarz stały - pragmatyk POZ. Ocenia, co realnie da się zrobić w poradni lekarza rodzinnego w Polsce (czas, dostępność badań, skierowania, refundacja, odległość do szpitala). Uruchamiany w ślepej turze trybu PEŁNEGO; ma dużą wagę w planie.
-tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata
-model: opus
+tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__plugin_pubmed_PubMed__search_articles, mcp__plugin_pubmed_PubMed__get_article_metadata, Bash, mcp__Clinical_Trials__search_trials, mcp__Clinical_Trials__get_trial_details
+model: fable
 effort: high
 ---
 

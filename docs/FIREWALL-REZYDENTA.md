@@ -66,3 +66,6 @@ Bez tego: rezydent = subagent Claude z `model: haiku` lub `sonnet` (inny rozmiar
 ## 6. Czego firewall nie załatwia
 - Rezydent może trafić w dokładnie to samo, co zespół — wtedy po prostu potwierdza. To też informacja.
 - Rezydent widzi surowe dane, więc widzi też dane osobowe, jeśli użytkownik je wpisał. **Użytkownik anonimizuje przed wpisaniem** — `00-surowe.md` nie powinien zawierać PESEL, nazwisk, adresów. Skrypt ostrzega przy wykryciu wzorca PESEL, ale nie zastępuje dyscypliny.
+
+## Zmiana 1.11.2026 (testy serii 1 i 2, ankieta zmian „Tak, wszystko”)
+Pakiet zawiera teraz także: treść pytań przy odpowiedziach (sekcja [B]), wyniki badań, parametry i dopiski lekarza prowadzącego ([B2]) oraz PLAN B obok rekomendacji ([C]). Bez wyników rezydent krytykował braki, których nie było; z wynikami dawał uwagi merytoryczne (Na 131 przed SSRI, test HIV przy chłoniaku). Uzasadnienie zespołu, opinie, agregat, protokół i NIEZNANE nadal NIE wchodzą. Persona jest dobierana do problemu (`--persona dobrana`, domyślnie), w poleceniu jest wprost nazwa narzędzia PubMed (`--pubmed`).

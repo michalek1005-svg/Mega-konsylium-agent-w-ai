@@ -1,8 +1,8 @@
 ---
 name: lekarz-gospodarz-kosztow
 description: Lekarz stały - gospodarz zasobów (odpowiednik Dr. Stewardship z MAI-DxO). Pilnuje, żeby nie zlecać badań bez wpływu na decyzję, i wskazuje najtańszą ścieżkę do tej samej pewności. Uruchamiany w ślepej turze trybu PEŁNEGO.
-tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata
-model: opus
+tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__plugin_pubmed_PubMed__search_articles, mcp__plugin_pubmed_PubMed__get_article_metadata, Bash, mcp__Clinical_Trials__search_trials, mcp__Clinical_Trials__get_trial_details
+model: fable
 effort: high
 ---
 

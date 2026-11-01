@@ -26,7 +26,8 @@ sprawy/<ID>/            jedna sprawa = jeden katalog
 pamiec/                 pamięć zespołu stałego (zespol.md, kalibracja.json, luki.md)
 zrodla/                 biblioteka źródeł kuratorowana przez użytkownika (patrz §5)
 config/wagi.yaml        wagi ról per tor + progi triage
-skrypty/                agregacja.py, kalibracja.py, pakiet_rezydenta.py, rubryka.py
+skrypty/                agregacja.py, kalibracja.py, pakiet_rezydenta.py, rubryka.py, dymek.py, alarm.py,
+                        pytanie_lekarza.py, zrodla.py (RPL, openFDA, biblioteka sprawy), lint_final.py
 ```
 
 ## 2. Intake jest obowiązkowy i proaktywny

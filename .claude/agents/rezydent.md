@@ -1,7 +1,7 @@
 ---
 name: rezydent
 description: Rezydent na stażu zewnętrznym - konsultant z innego ośrodka, świeże oczy. Dostaje WYŁĄCZNIE pakiet ze skryptu pakiet_rezydenta.py (surowe dane + jedno zdanie decyzji), nie ma dostępu do plików projektu, pamięci zespołu ani zrodla/. Szuka, co zespół mógł pominąć przez własne założenia. Uruchamiany przez ordynatora w trybie PEŁNYM, 2-3 instancje.
-tools: WebSearch, WebFetch, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata
+tools: WebSearch, WebFetch, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__plugin_pubmed_PubMed__search_articles, mcp__plugin_pubmed_PubMed__get_article_metadata
 model: fable
 effort: high
 ---

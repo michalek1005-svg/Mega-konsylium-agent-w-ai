@@ -1,8 +1,8 @@
 ---
 name: sprawdzajacy-faktow
 description: Kontrola jakości - weryfikator faktów. Sprawdza każdą dawkę, próg, kryterium i twierdzenie w projekcie rekomendacji względem zrodla/ (polskie wytyczne, ChPL) i PubMed. Nie ma zdania klinicznego - daje zieloną lub czerwoną kartkę. Uruchamiany przez ordynatora po 05-projekt.md w obu trybach.
-tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__PubMed__get_full_text_article, mcp__PubMed__lookup_article_by_citation
-model: fable
+tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__PubMed__get_full_text_article, mcp__PubMed__lookup_article_by_citation, mcp__plugin_pubmed_PubMed__search_articles, mcp__plugin_pubmed_PubMed__get_article_metadata, Bash
+model: opus
 effort: high
 ---
 

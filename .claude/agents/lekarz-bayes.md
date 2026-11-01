@@ -1,8 +1,8 @@
 ---
 name: lekarz-bayes
 description: Lekarz stały - myśli prawdopodobieństwami pretestowymi. Zaczyna od częstości w populacji POZ i aktualizuje każdą informacją z wywiadu. Uruchamiany przez ordynatora w ślepej turze trybu PEŁNEGO.
-tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__PubMed__get_full_text_article
-model: opus
+tools: Read, Write, Glob, Grep, mcp__PubMed__search_articles, mcp__PubMed__get_article_metadata, mcp__PubMed__get_full_text_article, mcp__plugin_pubmed_PubMed__search_articles, mcp__plugin_pubmed_PubMed__get_article_metadata, Bash
+model: fable
 effort: high
 ---
 

@@ -102,3 +102,15 @@ W pierwszym przebiegu na żywo lekarze mieli PubMed, ale korzystali z niego sła
 3. **Pytanie użytkownika ma pierwszeństwo przed torem.** Jeśli lekarz pyta o czynnik etiologiczny, ordynator w `01-wywiad.md` zapisuje „Pytanie: czynnik etiologiczny”, a konsylium odpowiada rankingiem czynników (leki, składniki, ekspozycje) z mechanizmem i uzasadnieniem; pilność jest wtedy tylko dopiskiem. Rekomendacja „oceń dziś” bez odpowiedzi na pytanie jest błędem procesu.
 4. **Każde twierdzenie w dymku INFO i w 09-FINAL** ma PMID/DOI albo etykietę `[wiedza modelu, niezweryfikowane]`; etykieta na tezie głównej oznacza, że opinia jest niekompletna i wraca do roli.
 5. **Każda runda dyskusji to osobne wywołanie dla każdej roli** (z lekturą `03-opinie/` i poprzednich rund). Ordynator nie spisuje rundy sam „za wszystkich”; taki wpis Sprawdzający procesu odrzuca. Modele ról wg definicji w `.claude/agents/`, bez samowolnej zamiany na tańsze. Rezydent dostaje pakiet w treści promptu, nie przez ścieżkę pliku.
+
+## Po testach 1.11.2026 (ankieta zmian, opcje polecane – Michał dał zgodę na wszystkie)
+
+| Co | Skrypt | Co widać w aplikacji |
+|---|---|---|
+| Wczesny alarm 112 po triage (pilność 1) | `python skrypty/alarm.py sprawy/<ID> --tekst "Podejrzenie … – rozważ 112 teraz"` (`--odwolaj`) | czerwony pasek nad sceną; konsylium pracuje dalej |
+| Jedno pytanie rozstrzygające spór | `python skrypty/pytanie_lekarza.py sprawy/<ID> --id P1 --tekst "…" --bo "…" --czekaj 600` | karta z przyciskami tak / nie / nie wiem; kliknięcie zapisuje odpowiedź do `uwagi-lekarza.jsonl` |
+| Asystenci dowodów pracują | `python skrypty/dymek.py sprawy/<ID> --rola bayes --asystenci 2` (0 = koniec) | plakietka „konsultuje się (n)” na drzwiach |
+| Źródła poza PubMed + biblioteka sprawy | `python skrypty/zrodla.py sprawy/<ID> lokalne|rpl|fda|dodaj|lista` | `_biblioteka.jsonl` w sprawie |
+| Krótszy FINAL | `python skrypty/lint_final.py sprawy/<ID>` | Wnioski: ≤350 słów, przypisy [1]–[5], plan B ≤3 punkty |
+
+Agregacja: zgoda liczona po rozpoznaniu nr 1 (z kodem ICD-10 i łączeniem opisów tej samej choroby), runda tylko przy różnicy rozpoznania nr 1, farmakolog bez rankingu (`przyczyna_polekowa`), `mniejszosc_chroniona`. Reguły sporu: `docs/SPOR.md`. Wszyscy lekarze i ordynator na Fable z długim myśleniem; Sprawdzający faktów i asystent dowodów na Opusie (inny model niż ordynator), zastępca złożoności na Sonnecie (jedyny).
