@@ -317,6 +317,125 @@ html[data-motyw="ciemny"] .konta .blad { color: #ff9aa8; }
   .panel-boczny { left: 24px; right: 24px; width: auto; top: 128px; bottom: auto; max-height: calc(100% - 280px); box-shadow: 0 0 0 1px var(--karta-obrys), 0 0 0 100vmax rgba(20,14,34,.35), 0 24px 50px -20px rgba(30,20,50,.7); }
   .okno:has(> .panel-boczny:not([hidden])) .rozmowa, .okno:has(> .panel-boczny:not([hidden])) .pracuje { margin-right: 0; }
 }
+/* poprawki wyglądu 0.2.0 – Graficzny, 1.11.2026 */
+/* Poprawki wyglądu Psychoterapii AI 0.2.0 – wątek Graficzny, 1.11.2026.
+   Wkleić NA KOŃCU bloku <style> w ms-psycho/aplikacja/rozmowa/rozmowa.html (po poprawkach 0.1.9 – korzysta z ich zmiennych
+   --karta, --karta-obrys, --pole-tlo, --pole-obrys2, --pole-fokus). Tylko CSS, bez zmian w HTML i JS, bez adresów http.
+   Sprawdzone w Chromium: jasny i ciemny, 1340×800, 1180×800 i 820×1180. Zrzuty przed/po: grafika/psycholog/poprawki-0.2.0/. */
+
+/* ---------- 0. Układ okna: stałe wiersze siatki ----------
+   Było: .okno ma 4 wiersze (auto auto 1fr auto), a 0.2.0 dodało .faza jako 5. dziecko. Przy widocznej fazie to ONA
+   dostawała wiersz 1fr (pusty pas nad rozmową), a rozmowa – wiersz auto. Teraz każdy element ma swój wiersz. */
+.okno { grid-template-rows: auto auto auto minmax(0, 1fr) auto; }
+.okno > .naglowek { grid-row: 1; }
+.okno > .pracuje { grid-row: 2; }
+.okno > .faza { grid-row: 3; }
+.okno > .rozmowa { grid-row: 4; min-height: 0; }
+.okno > div:has(> .wpis) { grid-row: 5; }
+
+/* ---------- 1. Nagłówek w jednej linii ---------- */
+.naglowek { gap: 12px; flex-wrap: nowrap; min-width: 0; }
+.naglowek > div:nth-child(2) { min-width: 0; flex: 0 1 auto; }
+.naglowek h1 { white-space: nowrap; }
+.naglowek .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.naglowek .prawy { flex-wrap: nowrap; gap: 6px; flex: none; }
+.naglowek .prawy .btn, .naglowek .prawy select.btn { white-space: nowrap; padding: 8px 12px; }
+.tryb button { white-space: nowrap; padding: 6px 11px; }
+/* „Zakończ sesję” (sesja trwa): zielona kropka na żywo, żeby było widać, że to stan, a nie zwykły przycisk */
+#sesja-btn.on { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; box-shadow: 0 10px 20px -12px rgba(91,74,138,.9); }
+#sesja-btn.on::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #7ee0a8; box-shadow: 0 0 0 3px rgba(126,224,168,.25); animation: sesja-puls 2s ease-in-out infinite; }
+@keyframes sesja-puls { 50% { box-shadow: 0 0 0 6px rgba(126,224,168,0); } }
+/* węższe okno: najpierw znika podtytuł, potem opisy trybu robią się krótsze; dopiero na iPadzie przyciski schodzą do drugiej linii */
+@media (max-width: 1260px) { .naglowek .sub { display: none; } }
+@media (max-width: 1120px) {
+  .tryb button[data-tryb="rozmowa"] { font-size: 0; } .tryb button[data-tryb="rozmowa"]::after { content: "O mnie"; font-size: 12px; }
+  .tryb button[data-tryb="konsultacja"] { font-size: 0; } .tryb button[data-tryb="konsultacja"]::after { content: "Konsultacja"; font-size: 12px; }
+}
+@media (max-width: 900px) {
+  .naglowek { flex-wrap: wrap; } .naglowek .prawy { flex-wrap: wrap; flex: 1 1 100%; justify-content: flex-start; margin-left: 0; }
+}
+
+/* ---------- 2. Pasek faz sesji (.faza): trzy kroki połączone linią ---------- */
+.faza { gap: 0; padding: 2px 0; }
+.faza span { position: relative; padding: 4px 12px 4px 26px; font-weight: 650; background: var(--btn); color: var(--mut); }
+.faza span + span { margin-left: 22px; }
+.faza span + span::after { content: ""; position: absolute; right: 100%; top: 50%; width: 22px; height: 2px; background: var(--karta-obrys); }
+.faza span::before { content: ""; position: absolute; left: 9px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%; border: 2px solid currentColor; box-sizing: border-box; opacity: .7; }
+/* bieżący krok */
+.faza span.on { background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; box-shadow: 0 8px 18px -10px rgba(91,74,138,.8); }
+.faza span.on::before { background: #fff; border-color: #fff; opacity: 1; }
+/* kroki już za nami: ptaszek i linia w kolorze */
+.faza span:has(~ span.on) { color: #6a58a8; background: rgba(143,127,214,.14); }
+html[data-motyw="ciemny"] .faza span:has(~ span.on) { color: #cdb9f0; }
+.faza span:has(~ span.on)::before { border: 0; opacity: 1; width: 10px; height: 10px; margin-top: -5px; background: no-repeat center/10px url("data:image/svg+xml,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 5.2l2.3 2.3 4.7-5' fill='none' stroke='%238f7fd6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.faza span.on::after, .faza span:has(~ span.on) + span::after { background: #8f7fd6; }
+.faza small { margin-left: 12px; font-variant-numeric: tabular-nums; font-weight: 650; padding: 3px 9px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--karta-obrys); }
+
+/* ---------- 3. Karta zadania nad polem pisania ---------- */
+.karta-zadania {
+  position: relative; gap: 10px; margin: 0 0 10px; padding: 12px 14px 12px 52px; border-left: 0; border-radius: 18px;
+  background: var(--karta); box-shadow: inset 4px 0 0 #8f7fd6, 0 0 0 1px var(--karta-obrys), 0 14px 30px -24px rgba(60,40,90,.7);
+  line-height: 1.45; animation: zadanie-wej .3s cubic-bezier(.2,.9,.3,1) both;
+}
+.karta-zadania::before {
+  content: "✎"; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 14px; color: #fff; background: linear-gradient(150deg, #8f7fd6, #5B4A8A);
+}
+.karta-zadania .tresc { flex: 1 1 320px; min-width: 0; color: var(--ink); }
+.karta-zadania .tresc b { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #6a58a8; margin: 0 0 1px; }
+html[data-motyw="ciemny"] .karta-zadania .tresc b { color: #cdb9f0; }
+.karta-zadania .btn { white-space: nowrap; padding: 8px 14px; }
+.karta-zadania .btn.on { background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; }
+/* zadanie przyjęte („Do następnej rozmowy”): zielony akcent zamiast fioletu */
+.karta-zadania:has([data-zadanie="zrobione"]) { box-shadow: inset 4px 0 0 #5fbf8a, 0 0 0 1px var(--karta-obrys), 0 14px 30px -24px rgba(60,40,90,.7); }
+.karta-zadania:has([data-zadanie="zrobione"])::before { content: "✓"; background: linear-gradient(150deg, #6fd3a0, #2f8a5e); }
+@keyframes zadanie-wej { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .karta-zadania, #sesja-btn.on::before { animation: none; } }
+
+/* ---------- 4. Karta suwaków na koniec sesji ---------- */
+.suwaki-karta { width: min(540px, 94%); padding: 18px 22px 18px; gap: 14px; background: var(--karta); box-shadow: 0 0 0 1px var(--karta-obrys), 0 24px 50px -30px rgba(60,40,90,.7); border-radius: 22px; }
+.suwaki-karta > b { font-size: 15px; }
+.suwaki-karta label { gap: 8px; font-size: 13px; }
+/* suwak: jednolity lawendowy tor (wcześniej prawa część była czarna w obu trybach) i duży uchwyt */
+.suwaki-karta input[type=range] { -webkit-appearance: none; appearance: none; height: 24px; background: transparent; cursor: pointer; margin: 0; }
+.suwaki-karta input[type=range]::-webkit-slider-runnable-track { height: 8px; border-radius: 999px; background: linear-gradient(90deg, rgba(143,127,214,.35), rgba(143,127,214,.6)); }
+.suwaki-karta input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -7px; border-radius: 50%; background: #fff; border: 3px solid #7b6cc4; box-shadow: 0 4px 10px -3px rgba(60,40,90,.6); transition: transform .12s; }
+.suwaki-karta input[type=range]:hover::-webkit-slider-thumb, .suwaki-karta input[type=range]:focus-visible::-webkit-slider-thumb { transform: scale(1.12); }
+.suwaki-karta input[type=range]:focus-visible { outline: 0; }
+.suwaki-karta input[type=range]:focus-visible::-webkit-slider-runnable-track { box-shadow: 0 0 0 4px var(--pole-fokus); }
+.suwaki-karta input[type=range]::-moz-range-track { height: 8px; border-radius: 999px; background: rgba(143,127,214,.45); }
+.suwaki-karta input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #7b6cc4; }
+html[data-motyw="ciemny"] .suwaki-karta input[type=range]::-webkit-slider-thumb { background: #ECE8F4; }
+/* wartość w środku skali jako wyraźna plakietka */
+.suwaki-karta .skala { align-items: center; }
+.suwaki-karta .skala > span:nth-child(2) { min-width: 34px; text-align: center; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 800; color: #fff; background: linear-gradient(150deg, #8f7fd6, #5B4A8A); font-variant-numeric: tabular-nums; }
+.suwaki-karta select {
+  height: 40px; padding: 0 36px 0 14px; border-radius: 14px; border: 1px solid var(--pole-obrys2); background-color: var(--pole-tlo); color: var(--ink);
+  font: 500 14px inherit; font-family: inherit; appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238f7fd6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.suwaki-karta select:focus { outline: 0; border-color: #8f7fd6; box-shadow: 0 0 0 4px var(--pole-fokus); }
+html[data-motyw="ciemny"] .suwaki-karta select option { background: #241f34; color: #ECE8F4; }
+.suwaki-karta > div:last-child { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+.suwaki-karta .btn { padding: 10px 18px; font-size: 13px; }
+.suwaki-karta .btn.on { background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; box-shadow: 0 12px 24px -14px rgba(91,74,138,.9); }
+
+/* ---------- 5. Wykres suwaków w „Co pamiętam” ---------- */
+/* było: same paski bez toru, więc 3/10 i 6/10 wyglądały podobnie. Teraz każdy pasek ma tor 0–10, legenda to kolorowe kropki. */
+.wykres-suwakow { gap: 7px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--karta-obrys); }
+.wykres-suwakow > b { font-size: 13px; }
+.wykres-suwakow > small { color: var(--mut); font-size: 11.5px; line-height: 1.4; margin-bottom: 4px; }
+.wykres-suwakow div { grid-template-columns: 46px 1fr 1fr; gap: 10px; }
+.wykres-suwakow div > span { grid-column: 1; grid-row: 1; color: var(--mut); font-variant-numeric: tabular-nums; }
+.wykres-suwakow div::before, .wykres-suwakow div::after { content: ""; grid-row: 1; height: 8px; border-radius: 4px; background: var(--btn); }
+.wykres-suwakow div::before { grid-column: 2; } .wykres-suwakow div::after { grid-column: 3; }
+.wykres-suwakow div > i { grid-column: 2; grid-row: 1; position: relative; z-index: 1; background: linear-gradient(90deg, #a894d6, #7b6cc4); min-width: 4px; }
+.wykres-suwakow div > i.t { grid-column: 3; background: linear-gradient(90deg, #7ed3a6, #3fa772); }
+
+/* przy otwartym panelu „Co pamiętam” pasek faz też robi mu miejsce (jak rozmowa w 0.1.9) */
+.okno:has(> .panel-boczny:not([hidden])) > .faza { margin-right: calc(min(360px, 34vw) + 18px); }
+@media (max-width: 900px) { .okno:has(> .panel-boczny:not([hidden])) > .faza { margin-right: 0; } }
 </style>
 </head>
 <body>
