@@ -1011,16 +1011,30 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   // 00-surowe.md i 01-wywiad.md z tego wywiadu, _log.jsonl z kodem; Pokój przełącza się na nią od razu.
   function nowyIdSprawy() {
     var dzis = new Date(), d = dzis.getFullYear() + '-' + ('0' + (dzis.getMonth() + 1)).slice(-2) + '-' + ('0' + dzis.getDate()).slice(-2);
-    return MsMost.lista('sprawy').then(function (l) {
+    // Numer zawsze unikalny (1.11.2026: nowa sprawa dostała numer sprawy 64-latki): najwyższy dzisiejszy + 1,
+    // a potem sprawdzenie, że katalog naprawdę jest pusty (00-surowe.md, 01-wywiad.md, _log.jsonl); zajęty → kolejny numer.
+    var zajety = function (id) {
+      return Promise.all(['00-surowe.md', '01-wywiad.md', '_log.jsonl'].map(function (f) {
+        return MsMost.czytaj('sprawy/' + id + '/' + f).then(function (t) { return t != null && String(t).length > 0; }, function () { return false; });
+      })).then(function (w) { return w.some(Boolean); });
+    };
+    var sprobuj = function (n, ile) {
+      var id = d + '-' + ('0' + n).slice(-2);
+      return zajety(id).then(function (z) { if (!z) return id; if (ile > 50) throw new Error('Nie znaleziono wolnego numeru sprawy.'); return sprobuj(n + 1, ile + 1); });
+    };
+    return MsMost.lista('sprawy').then(function (l) { return l || []; }, function () { return []; }).then(function (l) {
       var n = 0;
-      (l || []).forEach(function (x) { var m = x.katalog && new RegExp('^' + d + '-(\\d+)$').exec(x.nazwa); if (m) n = Math.max(n, +m[1]); });
-      return d + '-' + ('0' + (n + 1)).slice(-2);
+      l.forEach(function (x) { var m = x.katalog && new RegExp('^' + d + '-(\\d+)$').exec(x.nazwa); if (m) n = Math.max(n, +m[1]); });
+      return sprobuj(n + 1, 0);
     });
   }
   function wyslijDoKonsylium() {
     var potw = document.getElementById('potw-koniec');
     var md = doKonsylium().tekst;
-    var gotowe = stan.sprawa ? Promise.resolve(stan.sprawa) : nowyIdSprawy();
+    // ponowne wysłanie tego samego wywiadu trafia do jego sprawy, ale tylko jeśli ta sprawa naprawdę należy do tego kodu
+    var gotowe = stan.sprawa
+      ? MsMost.czytaj('sprawy/' + stan.sprawa + '/_log.jsonl').then(function (t) { return String(t || '').indexOf('"kod":"' + stan.kod + '"') !== -1 ? stan.sprawa : (stan.sprawa = null, nowyIdSprawy()); }, function () { stan.sprawa = null; return nowyIdSprawy(); })
+      : nowyIdSprawy();
     gotowe.then(function (id) {
       var naglowek = '<!-- wywiad ' + stan.kod + ' · sprawa założona przez aplikację MS Konsylium ' + new Date().toISOString() + ' -->\n';
       return MsMost.zapisz(Z.katalog() + '/01-wywiad.md', md)
