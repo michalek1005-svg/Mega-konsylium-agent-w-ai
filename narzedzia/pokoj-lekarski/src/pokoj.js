@@ -34,52 +34,13 @@
 
   // ---------- rysunek pokoju ----------
   function figura(id, m, rola) {
-    const g = rola.grupa, kol = KOLOR[g], s = m.s, ziarno = [...id].reduce((a, c) => a + c.charCodeAt(0), 0);
-    const skora = SKORA[ziarno % SKORA.length], wlosy = WLOSY[(ziarno >> 1) % WLOSY.length];
-    const fartuch = g === 'rezydent' ? kol : 'var(--fartuch)';
-    const dlugi = g === 'ordynator' ? 8 : 0;
-    const fry = [
-      `<path d="M-17,-128 a17,17 0 0 1 34,0 q-4,-8 -17,-9 q-13,1 -17,9z" fill="${wlosy}"/>`,
-      `<path d="M-18,-124 a18,19 0 0 1 36,0 l0,14 q-3,-14 -6,-18 q-12,4 -24,0 q-3,4 -6,18z" fill="${wlosy}"/>`,
-      `<path d="M-17,-126 q2,-3 4,-2 l0,8 q-3,0 -4,-6z M17,-126 q-2,-3 -4,-2 l0,8 q3,0 4,-6z" fill="${wlosy}"/>`,
-      `<path d="M-18,-126 a18,18 0 0 1 36,0 q-8,-6 -18,-6 q-10,0 -18,6z" fill="${wlosy}"/><circle cx="0" cy="-146" r="7" fill="${wlosy}"/>`,
-      `<path d="M-18,-125 a18,18 0 0 1 36,-2 q-6,-4 -12,-3 q-8,-6 -24,5z" fill="${wlosy}"/>`,
-      `<path d="M-19,-122 a19,20 0 0 1 38,0 l1,26 q-5,-2 -6,-20 q-12,-6 -26,0 q-1,18 -6,20z" fill="${wlosy}"/>`,
-    ][m.f % 6];
-    const stetoskop = (g === 'lekarz' || g === 'ordynator')
-      ? `<path d="M-10,-104 q-4,22 6,30 q8,5 12,-4" fill="none" stroke="#2b3a38" stroke-width="2.4" stroke-linecap="round"/><circle cx="8" cy="-77" r="3.6" fill="#9fb1ad" stroke="#2b3a38" stroke-width="1.4"/>`
-      : '';
-    const plakietka = g === 'rezydent'
-      ? `<rect x="7" y="-96" width="11" height="14" rx="2" fill="#fff"/><rect x="7" y="-96" width="11" height="4" rx="1" fill="var(--g-rezydent)"/>`
-      : `<rect x="-17" y="-92" width="10" height="7" rx="1.5" fill="${kol}"/>`;
-    const okulary = m.o ? `<g fill="none" stroke="#1e2a28" stroke-width="1.6"><circle cx="-6.5" cy="-123" r="4.6"/><circle cx="6.5" cy="-123" r="4.6"/><path d="M-2,-123 h4"/></g>` : '';
-    const nogi = g === 'rezydent' ? '#3a3f4a' : '#24413d';
-    // ordynator jest gruby (Michał 1.11): szerszy tułów, brzuch, szerzej rozstawione nogi
-    const gruby = g === 'ordynator', tx = gruby ? 1.42 : 1;
-    const brzuch = gruby ? `<ellipse cx="0" cy="-${58 - dlugi}" rx="30" ry="22" fill="${fartuch}"/><path d="M-30,-${58 - dlugi} a30,22 0 0 0 60,0" fill="none" stroke="var(--fartuch-cien)" stroke-width="1.2"/>` : '';
-    const kolczyki = KOBIETA(m.f) ? `<circle cx="-16" cy="-118" r="1.8" fill="#d9c27a"/><circle cx="16" cy="-118" r="1.8" fill="#d9c27a"/>` : '';
-    const usta = KOBIETA(m.f) ? `<path d="M-4,-114 q4,2.5 8,0" fill="none" stroke="#b4555a" stroke-width="1.4" stroke-linecap="round"/>` : '';
+    // rysunek postaci: src/postacie.js (wątek Graficzny 1.11 – kobiety i mężczyźni, większe twarze, ruch ust, ordynator z fajką)
+    const g = rola.grupa, kol = KOLOR[g], s = m.s;
     return `
 <g class="postac" data-kto="${id}" tabindex="0" role="button" aria-label="${esc(rola.nazwa)}" transform="translate(${m.x},${m.y}) scale(${s})" style="--g:${kol}">
-  <ellipse cx="0" cy="0" rx="30" ry="7" fill="var(--cien-postaci)"/>
-  <ellipse class="halo" cx="0" cy="0" rx="38" ry="10" fill="none" stroke="var(--petrol)" stroke-width="3"/>
-  <g class="ciało">
-    <g transform="scale(${tx},1)">
-    <rect x="-14" y="-48" width="11" height="47" rx="4" fill="${nogi}"/><rect x="3" y="-48" width="11" height="47" rx="4" fill="${nogi}"/>
-    <rect x="-16" y="-4" width="14" height="5" rx="2.5" fill="#1b2120"/><rect x="2" y="-4" width="14" height="5" rx="2.5" fill="#1b2120"/>
-    <path d="M-27,-${44 - dlugi} L-24,-98 Q-22,-108 -10,-109 L10,-109 Q22,-108 24,-98 L27,-${44 - dlugi} Z" fill="${fartuch}"/>
-    ${brzuch}
-    <path d="M-10,-109 L0,-90 L10,-109 Z" fill="${g === 'rezydent' ? '#e8e2d6' : kol}"/>
-    <path d="M0,-90 L0,-${46 - dlugi}" stroke="var(--fartuch-cien)" stroke-width="1.4"/>
-    <rect x="-34" y="-104" width="10" height="44" rx="5" fill="${fartuch}"/><rect x="24" y="-104" width="10" height="44" rx="5" fill="${fartuch}"/>
-    <circle cx="-29" cy="-58" r="5" fill="${skora}"/><circle cx="29" cy="-58" r="5" fill="${skora}"/>
-    ${plakietka}
-    </g>
-    ${stetoskop}${g === 'ordynator' ? '<g class="papieros fajka"><path d="M9,-113 Q20,-110 28,-100" fill="none" stroke="#3b2414" stroke-width="3.2" stroke-linecap="round"/><path d="M9,-113 Q20,-110 28,-100" fill="none" stroke="#8a5a37" stroke-width="1.2" stroke-linecap="round" opacity=".8"/><path d="M22,-102 h13 a2,2 0 0 1 2,2 v7 a6,6 0 0 1 -6,6 h-5 a6,6 0 0 1 -6,-6 v-7 a2,2 0 0 1 2,-2z" fill="#5a3a22" stroke="#2f1d10" stroke-width="1.2"/><ellipse cx="28.5" cy="-102" rx="7" ry="2.4" fill="#2a1a0f"/><circle class="zar" cx="28.5" cy="-102.5" r="2.4" fill="#ff8a3d"/></g>' : ''}
-    <rect x="-6" y="-114" width="12" height="8" fill="${skora}"/>
-    <circle cx="0" cy="-125" r="${gruby ? 19 : 17}" fill="${skora}"/>
-    ${usta}${kolczyki}${fry}${okulary}
-  </g>
+  <ellipse cx="0" cy="0" rx="${g === 'ordynator' ? 40 : 30}" ry="7" fill="var(--cien-postaci)"/>
+  <ellipse class="halo" cx="0" cy="0" rx="${g === 'ordynator' ? 46 : 38}" ry="10" fill="none" stroke="var(--petrol)" stroke-width="3"/>
+  <g class="ciało">${postacSVG(id, g, kol)}</g>
 </g>`;
   }
 

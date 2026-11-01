@@ -289,3 +289,11 @@ html.osadzony .legenda { display: none; }
 .chip-ai { background: var(--petrol); color: #fff; display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
 .chip-ai::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: ai-kr 1.3s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .tablica .ai-kropki i, .chip-ai::before { animation: none; opacity: 1; } }
+
+/* postacie (wątek Graficzny 1.11): usta ruszają się, gdy postać ma dymek */
+.postac .u-otw { opacity: 0; }
+.postac.aktywna .u-otw { animation: usta-otw .36s steps(1, end) infinite; }
+.postac.aktywna .u-zam { animation: usta-zam .36s steps(1, end) infinite; }
+@keyframes usta-otw { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes usta-zam { 0% { opacity: 0; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .postac.aktywna .u-otw, .postac.aktywna .u-zam { animation: none; } }
