@@ -71,73 +71,103 @@
     const rezydenci = wpisy.filter(([, m]) => m.w === -1).map(([id, m]) => figura(id, m, ROLE[id])).join('');
 
     $('rys').innerHTML = `
-<rect x="0" y="0" width="${W}" height="338" fill="var(--sciana)"/>
-${[180, 360, 840, 1020].map((x) => `<rect x="${x}" y="0" width="2" height="330" fill="var(--sciana-2)"/>`).join('')}
+<!-- supernowoczesny szpital (Michał 1.11 04:09, makieta-6): szkło, światło, ekrany zamiast tablic -->
+<defs><linearGradient id="sc-sciana" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sciana)"/><stop offset="1" stop-color="var(--sciana-2)"/></linearGradient>
+<linearGradient id="sc-szklo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".75"/><stop offset="1" stop-color="#cfe3df" stop-opacity=".5"/></linearGradient>
+<linearGradient id="sc-led" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3fbf8a" stop-opacity="0"/><stop offset=".5" stop-color="#3fbf8a"/><stop offset="1" stop-color="#3fbf8a" stop-opacity="0"/></linearGradient>
+<linearGradient id="sc-miasto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--okno-niebo)"/><stop offset="1" stop-color="var(--sciana)"/></linearGradient>
+<filter id="sc-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect x="0" y="0" width="${W}" height="338" fill="url(#sc-sciana)"/>
 <polygon points="0,338 1200,338 1200,700 0,700" fill="var(--podloga)"/>
 ${podloga}
-<rect x="0" y="328" width="${W}" height="10" fill="var(--listwa)"/>
+<rect x="0" y="330" width="${W}" height="8" fill="var(--listwa)" opacity=".6"/>
+<!-- pasek LED pod sufitem: zielony = wszystko działa, pulsuje gdy AI pracuje -->
+<rect x="0" y="0" width="${W}" height="10" fill="var(--sciana)"/>
+<rect class="led" x="60" y="9" width="1080" height="4" rx="2" fill="url(#sc-led)" filter="url(#sc-glow)"/>
 
 <!-- ekran na ścianie (Michał 1.11 04:09: zamiast okna): wykres prognoz po kliknięciu „Prognozy”; wygaszony pokazuje logo K -->
 <g id="ekran-sciana" role="button" aria-label="Ekran prognoz rozpoznań">
-<rect x="872" y="52" width="288" height="208" rx="10" fill="#1b2826"/>
-<rect x="882" y="62" width="268" height="188" rx="4" fill="#0f1918"/>
-<rect x="882" y="62" width="268" height="188" rx="4" fill="var(--petrol)" opacity=".08"/>
-<text x="1016" y="168" text-anchor="middle" font-family="var(--font)" font-size="44" font-weight="800" fill="var(--petrol)" opacity=".35">K</text>
-<text x="1016" y="196" text-anchor="middle" font-family="var(--font)" font-size="10" font-weight="700" letter-spacing="1.5" fill="var(--petrol)" opacity=".6">PROGNOZY · KLIKNIJ</text>
-<rect x="1004" y="260" width="24" height="10" fill="#1b2826"/><rect x="984" y="268" width="64" height="5" rx="2" fill="var(--listwa)"/>
+<rect x="876" y="30" width="300" height="196" rx="6" fill="url(#sc-miasto)"/>
+<g fill="var(--listwa)" opacity=".6">${[[886, 200, 40, 130], [934, 160, 30, 170], [971, 220, 36, 110], [1014, 120, 44, 210], [1066, 190, 28, 140], [1101, 150, 52, 180], [1161, 230, 14, 100]].map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2"/>`).join('')}</g>
+<g fill="#ffffff" opacity=".8">${[[1026, 140], [1036, 170], [1116, 170], [1126, 200], [946, 190], [996, 250]].map(([x, y]) => `<rect x="${x}" y="${y}" width="5" height="5"/>`).join('')}</g>
+<rect x="876" y="30" width="300" height="196" fill="url(#sc-szklo)" opacity=".3"/>
+${[0, 1, 2].map((k) => `<rect x="${876 + k * 100}" y="30" width="3" height="196" fill="var(--sciana)"/>`).join('')}
+<rect x="872" y="224" width="308" height="6" rx="3" fill="var(--listwa)"/>
+</g>
+<!-- realny pokój lekarski (Michał 1.11 04:18): komoda z ekspresem do kawy, kubkami, drukarką i papierami -->
+<g class="komoda">
+<rect x="884" y="262" width="290" height="74" rx="4" fill="var(--stol-blat)"/><rect x="884" y="262" width="290" height="6" rx="2" fill="#ffffff" opacity=".5"/>
+${[0, 1, 2, 3].map((k) => `<rect x="${892 + k * 72}" y="274" width="64" height="56" rx="3" fill="var(--stol)" stroke="var(--stol-krawedz)" stroke-opacity=".5"/><rect x="${916 + k * 72}" y="300" width="16" height="3" rx="1.5" fill="#ffffff" opacity=".6"/>`).join('')}
+<!-- ekspres do kawy -->
+<g transform="translate(904,262)"><rect x="0" y="-52" width="46" height="52" rx="5" fill="#2a2f31"/><rect x="4" y="-48" width="38" height="14" rx="2" fill="#3c4346"/><rect x="8" y="-30" width="30" height="4" rx="2" fill="#1a1d1e"/><rect x="18" y="-26" width="10" height="8" fill="#1a1d1e"/><rect x="12" y="-16" width="22" height="14" rx="2" fill="#f4f7f6"/><path d="M34,-12 q6,0 6,5 q0,5 -6,5" fill="none" stroke="#f4f7f6" stroke-width="2"/><circle cx="38" cy="-40" r="3" fill="#3fbf8a"/><path class="para" d="M20,-20 q-3,-6 1,-11 M28,-20 q3,-6 -1,-11" fill="none" stroke="#c9d6d3" stroke-width="1.6" stroke-linecap="round"/></g>
+<!-- kubki -->
+${[962, 978, 994].map((x) => `<g transform="translate(${x},262)"><rect x="-6" y="-12" width="12" height="12" rx="2" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M6,-9 q5,0 5,4 q0,4 -5,4" fill="none" stroke="#b8c7c3" stroke-width="1.8"/></g>`).join('')}
+<!-- drukarka i papiery -->
+<g transform="translate(1016,262)"><rect x="0" y="-26" width="58" height="26" rx="4" fill="#e9eeec" stroke="#b8c7c3"/><rect x="8" y="-34" width="42" height="10" rx="2" fill="#d6dedb"/><rect x="12" y="-14" width="34" height="3" fill="#1b2826" opacity=".6"/><rect x="2" y="-40" width="54" height="2" fill="#fbfdfc"/></g>
+<g transform="translate(1094,262)"><rect x="0" y="-10" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3"/><rect x="3" y="-14" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3" transform="rotate(-3 3 -14)"/><rect x="1" y="-18" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3" transform="rotate(2 1 -18)"/><rect x="48" y="-8" width="22" height="8" rx="2" fill="#d9a84e"/></g>
 </g>
 
 <!-- plakat z serduszkiem: realistyczny rysunek pastelowy (src/plakat.js); kliknięcie pokazuje go w powiększeniu -->
 ${PLAKAT_DEFS}
-<g id="plakat" transform="translate(268,86) scale(.36)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
+<g id="plakat" transform="translate(236,70) scale(.44)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
   <rect x="-7" y="-7" width="${PLAKAT_W + 14}" height="${PLAKAT_H + 14}" rx="6" fill="var(--listwa)"/>
   <rect x="-2" y="-2" width="${PLAKAT_W + 4}" height="${PLAKAT_H + 4}" fill="#efe9dd"/>
   <use href="#pl-rys"/>
 </g>
 
-<!-- tablica -->
-<rect x="318" y="28" width="546" height="252" rx="12" fill="var(--tablica-rama)"/>
-<rect x="326" y="36" width="530" height="236" rx="7" fill="var(--tablica)"/>
-<rect x="400" y="280" width="390" height="7" rx="3" fill="var(--tablica-rama)"/>
-<rect x="432" y="274" width="26" height="6" rx="2" fill="#0F5E58"/><rect x="464" y="274" width="26" height="6" rx="2" fill="#A83A38"/>
+<!-- ściana wideo (zamiast białej tablicy): treść w HTML #tablica -->
+<rect x="316" y="26" width="550" height="256" rx="12" fill="#0e1b1a"/>
+<rect x="324" y="34" width="534" height="240" rx="6" fill="#0b1514"/>
+<rect x="324" y="34" width="534" height="240" rx="6" fill="none" stroke="#3fbf8a" stroke-opacity=".35"/>
+<rect x="560" y="282" width="62" height="6" rx="3" fill="var(--listwa)"/>
 
 <!-- zegar: czas bieżącej fazy -->
-<g transform="translate(216,142)"><circle r="24" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
+<g transform="translate(206,96)"><circle r="22" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
 ${Array.from({ length: 12 }, (_, k) => `<rect x="-1" y="-20" width="2" height="${k % 3 ? 3 : 5}" fill="var(--tablica-mut)" transform="rotate(${k * 30})"/>`).join('')}
 <line id="wsk-h" x1="0" y1="0" x2="0" y2="-10" stroke="var(--tablica-txt)" stroke-width="3" stroke-linecap="round"/>
 <line id="wsk-m" x1="0" y1="0" x2="0" y2="-16" stroke="var(--tablica-txt)" stroke-width="2" stroke-linecap="round"/>
 <circle r="2.6" fill="#A83A38"/></g>
 
 <!-- drzwi: korytarz rezydentów za szybą -->
-<rect x="22" y="78" width="164" height="260" rx="6" fill="var(--listwa)"/>
+<rect x="22" y="78" width="164" height="260" rx="4" fill="var(--listwa)" opacity=".7"/>
 <rect x="30" y="86" width="148" height="244" fill="var(--sciana-2)"/>
 <rect x="30" y="300" width="148" height="30" fill="var(--podloga)"/>
 ${rezydenci}
-<rect x="30" y="86" width="148" height="244" fill="var(--szyba)" stroke="var(--szyba-obrys)" stroke-width="2"/>
-${[0, 1, 2, 3, 4, 5].map((k) => `<line x1="${44 + k * 22}" y1="96" x2="${30 + k * 22}" y2="150" stroke="var(--szyba-obrys)" stroke-width="1" opacity=".5"/>`).join('')}
+<rect x="30" y="86" width="70" height="244" fill="url(#sc-szklo)" opacity=".7" stroke="var(--szyba-obrys)" stroke-width="1.5"/>
+<rect x="108" y="86" width="70" height="244" fill="url(#sc-szklo)" opacity=".7" stroke="var(--szyba-obrys)" stroke-width="1.5"/>
+<rect x="100" y="86" width="8" height="244" fill="#3fbf8a" opacity=".55"/>
 <rect x="44" y="52" width="120" height="20" rx="5" fill="var(--g-rezydent)"/>
 <text x="104" y="66" text-anchor="middle" font-family="var(--font)" font-size="10.5" font-weight="800" letter-spacing=".8" fill="#fff">STAŻ ZEWNĘTRZNY</text>
 
 <!-- biurko sprawdzających -->
 ${zaStolem}
-<rect x="1002" y="420" width="186" height="16" rx="4" fill="var(--stol-blat)"/>
-<rect x="1006" y="436" width="178" height="38" rx="3" fill="var(--stol)"/>
+<rect x="1002" y="420" width="186" height="12" rx="4" fill="url(#sc-szklo)" stroke="#fff" stroke-opacity=".8"/>
+<rect x="1010" y="432" width="6" height="42" fill="var(--stol)"/><rect x="1174" y="432" width="6" height="42" fill="var(--stol)"/>
 <rect x="1030" y="384" width="54" height="36" rx="4" fill="#1b2826" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1052" y="418" width="10" height="4" fill="#1b2826"/>
 <rect x="1110" y="384" width="54" height="36" rx="4" fill="#1b2826" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1132" y="418" width="10" height="4" fill="#1b2826"/>
 
 <!-- stół konsylium -->
-<ellipse cx="600" cy="548" rx="306" ry="88" fill="var(--stol-krawedz)"/>
-<ellipse cx="600" cy="538" rx="300" ry="82" fill="var(--stol-blat)"/>
-<ellipse cx="600" cy="532" rx="270" ry="64" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/>
+<!-- stół w proporcji do postaci (Michał 1.11 04:18): widoczna gruba krawędź, nogi, krzesła -->
+<ellipse cx="600" cy="640" rx="300" ry="40" fill="var(--cien-postaci)" opacity=".35"/>
+${[[380, 560], [820, 560], [470, 600], [730, 600]].map(([x, y]) => `<rect x="${x - 5}" y="${y}" width="10" height="${640 - y}" rx="3" fill="var(--stol)"/>`).join('')}
+<path d="M294,538 A306,86 0 0 0 906,538 L906,576 A306,86 0 0 1 294,576 Z" fill="var(--stol-krawedz)"/>
+<path d="M294,538 A306,86 0 0 0 906,538 L906,576 A306,86 0 0 1 294,576 Z" fill="url(#sc-szklo)" opacity=".25"/>
+<ellipse cx="600" cy="538" rx="306" ry="86" fill="url(#sc-szklo)" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+<ellipse cx="600" cy="538" rx="306" ry="86" fill="none" stroke="#3fbf8a" stroke-opacity=".45" stroke-width="1.5"/>
+<ellipse cx="600" cy="538" rx="250" ry="62" fill="none" stroke="#ffffff" stroke-opacity=".6"/>
 <g opacity=".95">
-  <rect x="566" y="478" width="68" height="40" rx="4" fill="#1b2826"/><rect x="570" y="482" width="60" height="30" rx="2" fill="var(--petrol)" opacity=".35"/>
-  <g class="laptop" transform="translate(469,512) rotate(-8)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
-  <g class="laptop" transform="translate(729,512) rotate(7)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
-  <g class="laptop" transform="translate(368,543) rotate(-14)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
-  <g class="laptop" transform="translate(834,543) rotate(12)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
-  <g class="laptop" transform="translate(505,580) rotate(4)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
-  <g class="laptop" transform="translate(697,580) rotate(-5)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <!-- papiery i długopisy przy ekranach -->
+  ${[[412, 492, -6], [788, 492, 8], [330, 548, -12], [872, 548, 14], [548, 586, 3], [652, 586, -4]].map(([x, y, r]) => `<g transform="translate(${x},${y}) rotate(${r})"><rect x="-16" y="-11" width="32" height="22" rx="1.5" fill="#fbfdfc" stroke="#c9d6d3"/><rect x="-12" y="-6" width="20" height="1.4" fill="#9fb2af"/><rect x="-12" y="-2" width="24" height="1.4" fill="#9fb2af"/><rect x="-12" y="2" width="14" height="1.4" fill="#9fb2af"/><rect x="12" y="-14" width="3" height="20" rx="1.5" fill="#0F5E58" transform="rotate(30 13 -4)"/></g>`).join('')}
+  <ellipse cx="600" cy="538" rx="60" ry="18" fill="#0f1918"/><ellipse cx="600" cy="538" rx="60" ry="18" fill="none" stroke="#5CC8BB" stroke-opacity=".7"/><ellipse class="holo" cx="600" cy="534" rx="40" ry="11" fill="none" stroke="#5CC8BB" stroke-opacity=".8" filter="url(#sc-glow)"/><ellipse class="holo" cx="600" cy="530" rx="22" ry="6" fill="none" stroke="#5CC8BB" stroke-opacity=".6"/>
+  <g class="laptop" transform="translate(469,512) rotate(-8)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(729,512) rotate(7)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(368,543) rotate(-14)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(834,543) rotate(12)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(505,580) rotate(4)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(697,580) rotate(-5)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
 </g>
+<!-- krzesła (oparcia widoczne za lekarzami z przodu) -->
+<g class="krzesla">${[[262, 566], [938, 566], [470, 668], [730, 668]].map(([x, y]) => `<g transform="translate(${x},${y})"><rect x="-22" y="-96" width="44" height="40" rx="9" fill="var(--stol)" stroke="var(--stol-krawedz)" stroke-opacity=".5"/><rect x="-24" y="-58" width="48" height="12" rx="4" fill="var(--stol-blat)"/><rect x="-4" y="-46" width="8" height="28" fill="var(--stol-krawedz)"/><path d="M-20,-16 L20,-16 M0,-16 L0,-6 M-16,-6 L16,-6" stroke="var(--stol-krawedz)" stroke-width="3" stroke-linecap="round" fill="none"/></g>`).join('')}</g>
 ${przedStolem}
 <!-- przerwa (AI pracuje): parujące kubki na stole i tabliczka „Narada” nad drzwiami – widoczne tylko w .pokoj.przerwa -->
 <g class="kubki" aria-hidden="true"><g transform="translate(430,520)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(530,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(668,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(772,522)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(600,578)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g></g>
@@ -145,8 +175,8 @@ ${przedStolem}
 <g id="dym" aria-hidden="true"></g>
 
 <!-- biurko lekarza prowadzącego z laptopem (Michał 1.11 04:09) -->
-<g class="biurko-prowadzacego"><rect x="948" y="618" width="76" height="12" rx="3" fill="var(--stol-blat)"/><rect x="954" y="630" width="8" height="46" fill="var(--stol)"/><rect x="1010" y="630" width="8" height="46" fill="var(--stol)"/>
-  <g class="laptop" transform="translate(986,618) rotate(-6)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/></g></g></g>
+<g class="biurko-prowadzacego"><rect x="948" y="618" width="76" height="10" rx="3" fill="url(#sc-szklo)" stroke="#fff" stroke-opacity=".8"/><rect x="954" y="628" width="6" height="48" fill="var(--stol)"/><rect x="1012" y="628" width="6" height="48" fill="var(--stol)"/>
+  <g class="laptop" transform="translate(986,618) rotate(-6)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/></g></g></g>
 <!-- roślina -->
 <g transform="translate(1150,676)"><path d="M-22,0 L-18,-34 L18,-34 L22,0 Z" fill="var(--listwa)"/>
 <g fill="var(--g-zastepca)"><ellipse cx="-14" cy="-58" rx="10" ry="24" transform="rotate(-24 -14 -58)"/><ellipse cx="12" cy="-62" rx="10" ry="26" transform="rotate(20 12 -62)"/><ellipse cx="0" cy="-70" rx="9" ry="28"/></g></g>
