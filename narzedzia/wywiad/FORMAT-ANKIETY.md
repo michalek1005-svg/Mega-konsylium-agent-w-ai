@@ -15,7 +15,7 @@ Aplikacja nie wykonuje żadnego kodu z pliku. Plik zawiera tylko dane, a warunki
 
 ## Zasady dla AI
 
-- Od 8 do 20 pytań, najwyżej 60. Język ma być prosty i zwracać się do pacjenta per „Ty”. Formy żeńsko-męskie zapisuj jako „zauważyłaś/zauważyłeś”.
+- Zwykle 8–20 pytań, ale **bez sztywnego limitu**: tyle, ile trzeba, żeby zamknąć czerwone flagi i pytanie lekarza (twardo najwyżej 80). Język ma być prosty i zwracać się do pacjenta per „Ty”. Formy żeńsko-męskie zapisuj jako „zauważyłaś/zauważyłeś”.
 - **Najpierw pytania wykluczające stany nagłe** dla tego opisu, potem charakterystyka objawu, potem choroby, leki, alergie i ryzyko. Na koniec obawy i oczekiwania pacjenta (`bezNieznanych: true`).
 - **Klikalnie, nie pisemnie (Michał 1.11.2026):** pacjent ma klikać, nie pisać. Używaj `jeden`, `wiele`, `skala`, opcji tak/nie/nie wiem oraz list godzin i czasów. `tekst` tylko gdy odpowiedzi nie da się zamknąć w opcjach (nazwa leku z opakowania), najwyżej 2–3 w ankiecie; `liczba` dla pomiarów.
 - Nie pytaj o to, co pacjent już jasno napisał. Analiza z prośby pokazuje, co rozpoznano.
@@ -70,6 +70,12 @@ Warunek może odwoływać się tylko do pytań z tego samego pliku.
 { "poziom": "112", "dlaLekarza": "Gorączka z żółtaczką: podejrzenie zapalenia dróg żółciowych.",
   "gdy": { "wszystkie": [ { "pytanie": "zoltaczka", "jest": "oczy" }, { "pytanie": "goraczka", "jest": "tak" } ] } }
 ```
+
+**Flaga bezwarunkowa** (od 1.11.2026): gdy już sam opis pacjenta wskazuje na stan nagły albo pilny, flaga może nie mieć warunku: `{ "poziom": "pilne", "bezwarunkowa": true, "dlaLekarza": "Opis: nagły ból głowy »najgorszy w życiu«" }` (albo `"gdy": "zawsze"`). Zapala się od razu po wczytaniu ankiety.
+
+### Kto odpowiada (od 1.11.2026)
+
+Gdy pacjent jest splątany albo zbyt chory, odpowiada bliska osoba: `"respondent": { "kto": "opiekun", "opis": "córka" }`. Pytania nadal pisz o pacjencie („Czy mama/tata…” nie – neutralnie: „Czy chory…”), a w `01-wywiad.md` trafia linia „Odpowiada opiekun: córka”.
 
 Komunikat dla pacjenta jest stały. Przy poziomie `112` aplikacja pokazuje pełnoekranowy alarm, a przy poziomie `pilne` komunikat „Ważne”.
 

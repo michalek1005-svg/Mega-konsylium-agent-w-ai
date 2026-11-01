@@ -95,11 +95,20 @@ try {
   await w.fill('#pole-obawy', 'Że to coś poważnego.');
   await w.click('#dalej');
   await w.waitForSelector('[data-akcja="zywo-wyslij"]', { timeout: 5000 });
+  // obowiązkowy ekran wyników i parametrów: przycisk zablokowany, dopóki lekarz nie uzupełni (wyniki już są dołączone)
+  assert.equal(await w.isDisabled('[data-akcja="zywo-wyslij"]'), true, 'Wyślij zablokowane bez parametrów');
+  await w.fill('[data-par="w.rr"]', '135/85');
+  await w.fill('[data-par="w.tetno"]', '88');
+  await w.click('[data-akcja="pw-fiz"][data-v="odchylenia"]');
+  await w.fill('[data-par="fizykalneOpis"]', 'Murphy dodatni');
+  assert.equal(await w.isDisabled('[data-akcja="zywo-wyslij"]'), false, 'Wyślij odblokowane');
+  await okno.screenshot({ path: join(tmpdir(), 'ms-przed-wyslaniem.png') });
   await w.click('[data-akcja="zywo-wyslij"]');
   const md = await czekaj(() => existsSync(join(kat, '01-wywiad.md')) && readFileSync(join(kat, '01-wywiad.md'), 'utf8'), 5000, '01-wywiad.md');
   assert.match(md, /# Wywiad wstępny/);
   assert.match(md, /zażółcenie białek oczu.*O: Nie/);
   assert.match(md, /## Wyniki badań \(z anonimizatora\)/);
+  assert.match(md, /## Parametry i badanie fizykalne \(lekarz\)[\s\S]*135\/85 mmHg[\s\S]*Murphy dodatni/);
   assert.ok(!/85010112345|Kowalski|Nowak/.test(md), '01-wywiad.md bez danych osobowych');
   assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), /Wywiad wysłany/);
 

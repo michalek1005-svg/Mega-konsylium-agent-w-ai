@@ -152,6 +152,10 @@ try {
   await czekaj(async () => /odpowiedzi\s*2/.test((await wpc.textContent('#lekarz')).replace(/\s+/g, ' ')), 8000, 'komputer pokazuje ten sam wywiad');
   assert.match(await wpc.textContent('#lekarz'), new RegExp('Kod wywiadu:\\s*' + kod));
   await wpc.waitForSelector('[data-akcja="zywo-wyslij"]', { timeout: 8000 });
+  // obowiązkowy ekran wyników i parametrów przed wysłaniem (dotykiem na iPadzie)
+  await w.tap('[data-par="brakWynikow"]');
+  await w.tap('[data-par="brakParametrow"]');
+  await w.tap('[data-akcja="pw-fiz"][data-v="nie"]');
   await w.tap('[data-akcja="zywo-wyslij"]');
   const md = await czekaj(() => existsSync(join(kat, '01-wywiad.md')) && readFileSync(join(kat, '01-wywiad.md'), 'utf8'), 5000, '01-wywiad.md');
   assert.match(md, /zażółcenie białek oczu.*O: Nie/);

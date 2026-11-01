@@ -92,7 +92,8 @@
     }
     if (!dane || dane.format !== FORMAT) return { bledy: ['Nieznany format pliku. Oczekiwano „' + FORMAT + '”.'] };
     if (!Array.isArray(dane.pytania) || !dane.pytania.length) return { bledy: ['Ankieta nie ma pytań.'] };
-    if (dane.pytania.length > 60) bledy.push('Za dużo pytań (najwyżej 60).');
+    // elastyczny limit (ankieta zmian 1.11): zwykle 8–20, tyle ile trzeba do zamknięcia czerwonych flag; twardo najwyżej 80
+    if (dane.pytania.length > 80) bledy.push('Za dużo pytań (najwyżej 80).');
 
     var ids = dane.pytania.map(function (q) { return q && q.id; });
     var B = bazowy();
@@ -138,8 +139,10 @@
       var s = 'flaga ' + (i + 1);
       if (!f || POZIOMY.indexOf(f.poziom) === -1) { bledy.push(s + ': poziom „112” albo „pilne”'); return; }
       if (!tekst(f.dlaLekarza, 300)) bledy.push(s + ': brak opisu „dlaLekarza”');
-      var g = zWarunku(f.gdy, ids, s + '.gdy', bledy);
-      if (!g) { bledy.push(s + ': flaga musi mieć warunek „gdy”'); return; }
+      // flaga bezwarunkowa (ankieta zmian 1.11): sam opis pacjenta może podnieść pilność – "gdy": "zawsze" albo "bezwarunkowa": true
+      var bezw = f.bezwarunkowa === true || f.gdy === 'zawsze';
+      var g = bezw ? function () { return true; } : zWarunku(f.gdy, ids, s + '.gdy', bledy);
+      if (!g) { bledy.push(s + ': flaga musi mieć warunek „gdy” (albo "bezwarunkowa": true)'); return; }
       flagi.push({ id: 'ai_' + i, poziom: f.poziom, dlaPacjenta: f.poziom === '112' ? P112 : PILNE, dlaLekarza: f.dlaLekarza, gdy: g });
     });
     if (bledy.length) return { bledy: bledy };
@@ -164,6 +167,8 @@
       flagi: B.flagi.concat(flagi),
       zawszeNieznane: B.zawszeNieznane
     };
+    // respondent-opiekun (ankieta zmian 1.11): przy splątanym albo ciężko chorym pacjencie odpowiada bliska osoba
+    if (dane.respondent && dane.respondent.kto === 'opiekun') bank.respondent = { kto: 'opiekun', opis: tekst(dane.respondent.opis, 60) ? dane.respondent.opis : 'opiekun' };
     return { bank: bank, opis: typeof dane.opis === 'string' ? dane.opis : '', kod: typeof dane.kod === 'string' ? dane.kod : '', bledy: [] };
   }
 

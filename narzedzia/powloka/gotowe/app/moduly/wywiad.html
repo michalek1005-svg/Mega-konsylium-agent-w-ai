@@ -232,6 +232,23 @@ textarea.pole { min-height: 120px; resize: vertical; font-size: 14px; line-heigh
 .dla-lekarza { border-radius: 16px; padding: 13px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
 .dla-lekarza b { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
 .dla-lekarza > span { color: var(--mut); }
+.przed-wyslaniem { display: flex; flex-direction: column; gap: 9px; padding: 11px 12px; border-radius: 14px; background: color-mix(in srgb, var(--petrol) 7%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--petrol) 30%, transparent); }
+.przed-wyslaniem .pw-tyt { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
+.pw-rzad { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pw-et { font-weight: 700; color: var(--ink); min-width: 9.5em; }
+.pw-ok { font-weight: 700; color: var(--petrol); }
+.pw-check { display: inline-flex; align-items: center; gap: 6px; color: var(--mut); cursor: pointer; }
+.pw-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.pw-pole { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--mut); }
+.pw-in { display: flex; align-items: center; gap: 5px; }
+.pw-in input, .pw-opis { width: 100%; min-width: 0; font: inherit; font-size: 15px; color: var(--ink); padding: 7px 9px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--petrol) 35%, transparent); background: color-mix(in srgb, var(--bg-viewport, #fff) 85%, transparent); }
+.pw-in i { font-style: normal; color: var(--mut); white-space: nowrap; }
+.pw-pole.zly input { border-color: #B3261E; }
+.pw-wybor { display: flex; flex-wrap: wrap; gap: 6px; }
+.opcja-mala { font: inherit; font-size: 13px; padding: 6px 11px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--petrol) 35%, transparent); background: transparent; color: var(--ink); cursor: pointer; }
+.opcja-mala.wybrana { background: var(--petrol); color: #fff; border-color: var(--petrol); }
+.pw-stan { color: var(--mut); }
+.przycisk:disabled { opacity: .45; cursor: not-allowed; }
 .analiza-pacjent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 30px; }
 .analiza-pacjent h3 { font-size: 21px; font-weight: 750; }
 .analiza-pacjent p { margin: 0; color: var(--mut); }
@@ -1839,7 +1856,8 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     }
     if (!dane || dane.format !== FORMAT) return { bledy: ['Nieznany format pliku. Oczekiwano „' + FORMAT + '”.'] };
     if (!Array.isArray(dane.pytania) || !dane.pytania.length) return { bledy: ['Ankieta nie ma pytań.'] };
-    if (dane.pytania.length > 60) bledy.push('Za dużo pytań (najwyżej 60).');
+    // elastyczny limit (ankieta zmian 1.11): zwykle 8–20, tyle ile trzeba do zamknięcia czerwonych flag; twardo najwyżej 80
+    if (dane.pytania.length > 80) bledy.push('Za dużo pytań (najwyżej 80).');
 
     var ids = dane.pytania.map(function (q) { return q && q.id; });
     var B = bazowy();
@@ -1885,8 +1903,10 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
       var s = 'flaga ' + (i + 1);
       if (!f || POZIOMY.indexOf(f.poziom) === -1) { bledy.push(s + ': poziom „112” albo „pilne”'); return; }
       if (!tekst(f.dlaLekarza, 300)) bledy.push(s + ': brak opisu „dlaLekarza”');
-      var g = zWarunku(f.gdy, ids, s + '.gdy', bledy);
-      if (!g) { bledy.push(s + ': flaga musi mieć warunek „gdy”'); return; }
+      // flaga bezwarunkowa (ankieta zmian 1.11): sam opis pacjenta może podnieść pilność – "gdy": "zawsze" albo "bezwarunkowa": true
+      var bezw = f.bezwarunkowa === true || f.gdy === 'zawsze';
+      var g = bezw ? function () { return true; } : zWarunku(f.gdy, ids, s + '.gdy', bledy);
+      if (!g) { bledy.push(s + ': flaga musi mieć warunek „gdy” (albo "bezwarunkowa": true)'); return; }
       flagi.push({ id: 'ai_' + i, poziom: f.poziom, dlaPacjenta: f.poziom === '112' ? P112 : PILNE, dlaLekarza: f.dlaLekarza, gdy: g });
     });
     if (bledy.length) return { bledy: bledy };
@@ -1911,6 +1931,8 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
       flagi: B.flagi.concat(flagi),
       zawszeNieznane: B.zawszeNieznane
     };
+    // respondent-opiekun (ankieta zmian 1.11): przy splątanym albo ciężko chorym pacjencie odpowiada bliska osoba
+    if (dane.respondent && dane.respondent.kto === 'opiekun') bank.respondent = { kto: 'opiekun', opis: tekst(dane.respondent.opis, 60) ? dane.respondent.opis : 'opiekun' };
     return { bank: bank, opis: typeof dane.opis === 'string' ? dane.opis : '', kod: typeof dane.kod === 'string' ? dane.kod : '', bledy: [] };
   }
 
@@ -2257,7 +2279,8 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
           '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>' +
           '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>' + (stan.wyslano ? 'Wywiad jest w folderze Konsylium (' + esc(Z.katalog()) + '/01-wywiad.md). Claude zaczyna konsylium, a przebieg zobaczysz w zakładce Pokój lekarski.'
             : 'Wywiad po anonimizacji trafi do folderu Konsylium. Claude od razu zacznie konsylium.') + '</span>' +
-          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="zywo-wyslij">' + (stan.wyslano ? 'Wyślij ponownie' : 'Wyślij do Konsylium') + '</button>' +
+          formularzLekarza() +
+          '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="zywo-wyslij" id="zywo-wyslij"' + (gotoweDoWyslania() ? '' : ' disabled title="Najpierw uzupełnij wyniki i parametry powyżej"') + '>' + (stan.wyslano ? 'Wyślij ponownie' : 'Wyślij do Konsylium') + '</button>' +
           '<button class="przycisk" type="button" data-akcja="pokoj">Pokój lekarski</button>' +
           '<button class="link" type="button" data-akcja="kopiuj-koniec">albo kopiuj do schowka</button></div>' +
           '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
@@ -2326,6 +2349,67 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     return h;
   }
 
+  // ── obowiązkowy ekran wyników i parametrów przed wysłaniem (ankieta zmian 1.11: „Tak, blokujący”) ──
+  // W testach rozpoznanie DRESS dało się postawić tylko dzięki wynikom; rezydent bez wyników krytykował braki, których nie było.
+  var PARAMY = [
+    { k: 'rr', et: 'Ciśnienie (RR)', ph: '120/80', jedn: 'mmHg', wz: /^\d{2,3}\s*\/\s*\d{2,3}$/ },
+    { k: 'tetno', et: 'Tętno', ph: '72', jedn: '/min', wz: /^\d{2,3}$/ },
+    { k: 'spo2', et: 'Saturacja (SpO₂)', ph: '97', jedn: '%', wz: /^\d{2,3}$/ },
+    { k: 'temp', et: 'Temperatura', ph: '36,6', jedn: '°C', wz: /^\d{2}([.,]\d)?$/ }
+  ];
+  function par() { stan.parametry = stan.parametry || { wartosci: {} }; stan.parametry.wartosci = stan.parametry.wartosci || {}; return stan.parametry; }
+  function gotoweDoWyslania() {
+    var p = par(), w = p.wartosci;
+    var wyniki = (stan.wyniki && stan.wyniki.length) || p.brakWynikow;
+    var parametry = p.brakParametrow || PARAMY.some(function (x) { return w[x.k] && x.wz.test(String(w[x.k]).trim()); });
+    var fiz = p.fizykalne === 'norma' || p.fizykalne === 'nie' || (p.fizykalne === 'odchylenia' && (p.fizykalneOpis || '').trim().length > 2);
+    return !!(wyniki && parametry && fiz);
+  }
+  function formularzLekarza() {
+    var p = par(), w = p.wartosci, n = (stan.wyniki || []).length;
+    var h = '<div class="przed-wyslaniem" id="przed-wyslaniem"><b class="pw-tyt">Przed wysłaniem: wyniki, parametry, badanie</b>';
+    h += '<div class="pw-rzad"><span class="pw-et">Wyniki badań</span>' +
+      (n ? '<span class="pw-ok">Dołączono: ' + n + '</span>' : '') +
+      '<button class="przycisk" type="button" data-akcja="pw-wyniki">Dołącz wyniki</button>' +
+      '<label class="pw-check"><input type="checkbox" data-par="brakWynikow"' + (p.brakWynikow ? ' checked' : '') + (n ? ' disabled' : '') + '> brak wyników</label></div>';
+    h += '<div class="pw-siatka">' + PARAMY.map(function (x) {
+      var v = w[x.k] || '', zly = v && !x.wz.test(String(v).trim());
+      return '<label class="pw-pole' + (zly ? ' zly' : '') + '"><span>' + x.et + '</span><span class="pw-in"><input type="text" inputmode="decimal" autocomplete="off" data-par="w.' + x.k + '" placeholder="' + x.ph + '" value="' + esc(v) + '"' + (p.brakParametrow ? ' disabled' : '') + '><i>' + x.jedn + '</i></span></label>';
+    }).join('') + '</div>';
+    h += '<label class="pw-check"><input type="checkbox" data-par="brakParametrow"' + (p.brakParametrow ? ' checked' : '') + '> parametrów nie zmierzono</label>';
+    h += '<div class="pw-rzad"><span class="pw-et">Badanie fizykalne</span><div class="pw-wybor" role="radiogroup">' +
+      [['norma', 'bez odchyleń'], ['odchylenia', 'odchylenia'], ['nie', 'nie badano']].map(function (o) {
+        return '<button type="button" class="opcja-mala' + (p.fizykalne === o[0] ? ' wybrana' : '') + '" role="radio" aria-checked="' + (p.fizykalne === o[0]) + '" data-akcja="pw-fiz" data-v="' + o[0] + '">' + o[1] + '</button>';
+      }).join('') + '</div></div>' +
+      (p.fizykalne === 'odchylenia' ? '<input type="text" class="pw-opis" data-par="fizykalneOpis" placeholder="Krótko: np. Murphy dodatni, trzeszczenia u podstawy prawego płuca" value="' + esc(p.fizykalneOpis || '') + '" maxlength="400">' : '');
+    h += '<small class="pw-stan" id="pw-stan">' + (gotoweDoWyslania() ? 'Gotowe – możesz wysłać.' : 'Wysyłanie odblokuje się po uzupełnieniu wyników (albo „brak wyników”), parametrów (albo „nie zmierzono”) i badania fizykalnego.') + '</small></div>';
+    return h;
+  }
+  function parametryMd() {
+    var p = par(), w = p.wartosci, l = ['', '## Parametry i badanie fizykalne (lekarz)'];
+    if (p.brakParametrow) l.push('- Parametrów nie zmierzono (NIEZNANE: RR, tętno, SpO2, temperatura).');
+    else PARAMY.forEach(function (x) { l.push('- ' + x.et + ': ' + (w[x.k] ? String(w[x.k]).trim() + ' ' + x.jedn : 'NIEZNANE')); });
+    l.push('- Badanie fizykalne: ' + (p.fizykalne === 'norma' ? 'bez odchyleń' : p.fizykalne === 'odchylenia' ? 'odchylenia – ' + (p.fizykalneOpis || '').trim() : 'nie badano (NIEZNANE)'));
+    if (!(stan.wyniki && stan.wyniki.length)) l.push('- Wyniki badań: ' + (p.brakWynikow ? 'brak (lekarz potwierdził)' : 'NIEZNANE'));
+    return l.join('\n') + '\n';
+  }
+  function odswiezPrzycisk() {
+    var b = document.getElementById('zywo-wyslij'), st = document.getElementById('pw-stan'), ok = gotoweDoWyslania();
+    if (b) { b.disabled = !ok; if (ok) b.removeAttribute('title'); else b.title = 'Najpierw uzupełnij wyniki i parametry powyżej'; }
+    if (st) st.textContent = ok ? 'Gotowe – możesz wysłać.' : 'Wysyłanie odblokuje się po uzupełnieniu wyników (albo „brak wyników”), parametrów (albo „nie zmierzono”) i badania fizykalnego.';
+  }
+  $tel.addEventListener('input', function (e) {
+    var k = e.target.dataset && e.target.dataset.par; if (!k) return;
+    var p = par();
+    if (e.target.type === 'checkbox') {
+      p[k] = e.target.checked; zapisz(); rysuj(); return;
+    }
+    if (k.indexOf('w.') === 0) p.wartosci[k.slice(2)] = e.target.value.slice(0, 12); else p[k] = e.target.value.slice(0, 400);
+    var x = PARAMY.filter(function (y) { return 'w.' + y.k === k; })[0], pole = e.target.closest('.pw-pole');
+    if (x && pole) pole.classList.toggle('zly', !!e.target.value && !x.wz.test(e.target.value.trim()));
+    zapisz(); odswiezPrzycisk();
+  });
+
   // ── kopia do Konsylium: 01-wywiad.md po anonimizacji ──
   // Reguły anonimizatora (narzedzia/anonimizator/src/wykrywanie.js) usuwają z tekstu dane osobowe,
   // np. imię i nazwisko albo PESEL wpisane w opisie. Bez modułu kopia idzie bez zmian, z ostrzeżeniem.
@@ -2333,10 +2417,12 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     var meta = { kod: stan.kod, data: stan.start.slice(0, 10) };
     var md = (stan.tryb === 'opis' || (stan.tryb === 'zywo' && !stan.ankieta)) ? AI.doProsby(B, stan.historia, meta) : S.doMarkdown(B, stan.historia, meta);
     if (stan.tryb === 'zywo' && !stan.ankieta) md = md.replace('(MS Wywiad, krok 1)', '(MS Wywiad, na żywo)');
+    if (B && B.respondent && B.respondent.kto === 'opiekun') md = md.replace(/\n/, '\n\n**Odpowiada opiekun:** ' + B.respondent.opis + ' (w imieniu pacjenta)\n');
     if (stan.wyniki && stan.wyniki.length) {
       md += '\n## Wyniki badań (z anonimizatora)\n';
       stan.wyniki.forEach(function (w, i) { md += '\n### Wynik ' + (i + 1) + (w.nazwa ? ' · ' + w.nazwa : '') + '\n' + w.tekst.trim() + '\n'; });
     }
+    if (stan.tryb === 'zywo' && stan.parametry) md += parametryMd();
     var W = window.WykrywanieDanych;
     if (!W) return { tekst: md, opis: '<p class="anonim brak-modulu"><b>Anonimizator niedostępny.</b> Przejrzyj tekst i usuń dane osobowe ręcznie przed wklejeniem.</p>' };
     var zakresy = [];
@@ -2500,7 +2586,9 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     if (a === 'tryb') { startuj(b.dataset.tryb); return; }
     if (a === 'wznow') { wznow(b.dataset.kod); return; }
     if (a === 'zywo-koniec') { stan.koniecAI = true; stan.koniecRecznie = true; zapisz(); synchronizuj(); rysuj(); return; }
-    if (a === 'zywo-wyslij') { wyslijDoKonsylium(); return; }
+    if (a === 'zywo-wyslij') { if (gotoweDoWyslania()) wyslijDoKonsylium(); return; }
+    if (a === 'pw-wyniki') { var dw = document.getElementById('dolacz-wyniki'); if (dw && !dw.hidden) dw.click(); return; }
+    if (a === 'pw-fiz') { par().fizykalne = b.dataset.v; zapisz(); rysuj(); return; }
     if (a === 'pokoj') { if (window.MsMost) { MsMost.wyslij('pokoj', { zywo: true }).catch(function () {}); MsMost.otworzModul('pokoj').catch(function () {}); } return; }
     if (a === 'start') { bledyAnkiety = []; startuj(null); return; }
     if (a === 'przyklad-ai') { wczytajAnkiete(JSON.stringify(window.PrzykladAnkietyAI, null, 2)); return; }

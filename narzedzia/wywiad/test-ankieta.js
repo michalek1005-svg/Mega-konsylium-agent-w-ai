@@ -70,4 +70,19 @@ t('krok 1: bank opisu kończy się po opisie, prośba ma opis i analizę', funct
   assert.ok(/ms-ankieta-1/.test(p) && /ABC-123/.test(p) && /tłustym/.test(p) && /wiek: 54/.test(p), p);
 });
 
+t('flaga bezwarunkowa, elastyczny limit, odpowiada opiekun (ankieta zmian 1.11)', function () {
+  var d = JSON.parse(surowy);
+  d.flagi = (d.flagi || []).concat([{ poziom: 'pilne', bezwarunkowa: true, dlaLekarza: 'Opis: najgorszy ból głowy w życiu' }]);
+  d.respondent = { kto: 'opiekun', opis: 'córka' };
+  var r = A.zAnkiety(d);
+  assert.deepStrictEqual(r.bledy, []);
+  var st = S.przelicz(r.bank, [{ id: 'opis', wartosc: r.opis }]);
+  assert.ok(st.flagi.some(function (f) { return /najgorszy ból głowy/.test(f.dlaLekarza); }), 'flaga bezwarunkowa zapala się od razu');
+  assert.strictEqual(r.bank.respondent.opis, 'córka');
+  var duzo = JSON.parse(surowy); duzo.flagi = [];
+  for (var i = 0; duzo.pytania.length < 72; i++) duzo.pytania.push({ id: 'x' + i, typ: 'jeden', tekst: 'Pytanie ' + i, opcje: [{ w: 'tak', t: 'Tak' }, { w: 'nie', t: 'Nie' }] });
+  assert.ok(duzo.pytania.length > 60 && duzo.pytania.length <= 80);
+  assert.deepStrictEqual(A.zAnkiety(duzo).bledy, [], 'ponad 60 pytań dozwolone (do 80)');
+});
+
 console.log('\n' + ok + ' testów przeszło.');
