@@ -53,7 +53,7 @@ def bez_ogonkow(t: str) -> str:
 
 def ryzyko_slownik(t: str) -> tuple[int, list[str]]:
     s = bez_ogonkow(t)
-    for poziom, klucz in ((3, "poziom3"), (2, "poziom2"), (1, "poziom1")):
+    for poziom, klucz in ((3, "poziom3"), (3, "przemoc"), (2, "poziom2"), (1, "poziom1")):
         traf = [m.group(0) for re_ in FRAZY.get(klucz, []) if (m := re.search(re_, s))]
         if traf:
             return poziom, traf

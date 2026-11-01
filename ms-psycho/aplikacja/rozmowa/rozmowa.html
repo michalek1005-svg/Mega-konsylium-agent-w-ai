@@ -163,6 +163,7 @@ var FRAZY = /*@@FRAZY@@*/null;
   function ryzykoLokalne(t) {
     var s = bezOgonkow(t), w = { poziom: 0, frazy: [] };
     ((FRAZY && FRAZY.poziom3) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 3; w.frazy.push(m[0]); } });
+    ((FRAZY && FRAZY.przemoc) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 3; w.przemoc = true; w.frazy.push(m[0]); } });
     if (!w.poziom) ((FRAZY && FRAZY.poziom2) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 2; w.frazy.push(m[0]); } });
     if (!w.poziom) ((FRAZY && FRAZY.poziom1) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = Math.max(w.poziom, 1); w.frazy.push(m[0]); } });
     return w;
@@ -238,7 +239,8 @@ var FRAZY = /*@@FRAZY@@*/null;
         if (m.typ === 'zwolaj') { h += '<div class="dzien">Zwołano konsylium' + (m.sprawa ? ' · sprawa ' + esc(m.sprawa) : '') + '</div>'; return; }
         var odp = stan.zespol.some(function (z) { return z.odpowiedz_na >= m.n; });
         h += '<div class="msg ja"><span class="kto">Ty</span>' + md(m.tekst) + '<span class="czas">' + godz(m.ts) + '<span class="stan-wys" title="' + (odp ? 'Zespół odpowiedział' : 'Zapisane w folderze') + '">' + (odp ? ' ✓✓' : ' ✓') + '</span></span>' + (emoZespolu(m.n) ? '<span class="emo" title="Reakcja terapeuty">' + esc(emoZespolu(m.n)) + '</span>' : '') + '</div>';
-        if (m.ryzykoLokalne && m.ryzykoLokalne >= 3) h += kryzysHtml('Widzę w Twojej wiadomości słowa, które mogą znaczyć, że jest Ci teraz bardzo ciężko. Twoje bezpieczeństwo jest najważniejsze. Jeśli myślisz o zrobieniu sobie krzywdy, porozmawiaj teraz z człowiekiem:', 'aplikacja');
+        if (m.ryzykoLokalne >= 3 && m.przemoc) h += kryzysHtml('Z tego, co piszesz, możesz być teraz w niebezpieczeństwie ze strony innej osoby. Twoje bezpieczeństwo jest najważniejsze. Przy zagrożeniu dzwoń od razu pod 112. Niebieska Linia 800 120 002 pomaga całodobowo w sytuacji przemocy:', 'aplikacja');
+        else if (m.ryzykoLokalne && m.ryzykoLokalne >= 3) h += kryzysHtml('Widzę w Twojej wiadomości słowa, które mogą znaczyć, że jest Ci teraz bardzo ciężko. Twoje bezpieczeństwo jest najważniejsze. Jeśli myślisz o zrobieniu sobie krzywdy, porozmawiaj teraz z człowiekiem:', 'aplikacja');
         else if (m.ryzykoLokalne === 2) h += '<div class="msg system">🤍 Dziękuję, że to napisałeś/napisałaś. Takie myśli warto traktować poważnie – zespół zaraz o nie dopyta. Gdyby zrobiły się silniejsze, możesz od razu zadzwonić: <b>800 70 2222</b> (całodobowo), <b>116 123</b>, a przy zagrożeniu życia <b>112</b>.</div>';
         return;
       }
@@ -296,7 +298,7 @@ var FRAZY = /*@@FRAZY@@*/null;
     var r = ryzykoLokalne(t);
     var n = stan.ja.reduce(function (a, m) { return Math.max(a, m.n || 0); }, 0) + 1;
     var m = { n: n, ts: new Date().toISOString(), tekst: t, typ: 'wiadomosc' };
-    if (r.poziom) { m.ryzykoLokalne = r.poziom; m.frazy = r.frazy; }
+    if (r.poziom) { m.ryzykoLokalne = r.poziom; m.frazy = r.frazy; if (r.przemoc) m.przemoc = true; }
     stan.ja.push(m); stan.ostatniaWys = Date.now();
     pole.value = ''; dopasuj(); $('wyslij').disabled = true;
     rysuj(true);

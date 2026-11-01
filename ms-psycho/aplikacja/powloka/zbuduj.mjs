@@ -72,7 +72,8 @@ copyFileSync(join(katP, plikP), join(build, 'app', 'moduly', 'pokoj.html'));
 const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ rozmowa: true, wywiad: true, pokoj: true })};</script>`;
 let prezentCss = '', prezentHtml = '';
 if (PREZENT) {
-  const p = readFileSync(join(aplikacja, 'prezent', 'prezent-start.html'), 'utf8');
+  // .podpis koliduje z globalną etykietą paska w powłoce (blur, tło, top:50%) – w prezencie zawsze .prezent-podpis
+  const p = readFileSync(join(aplikacja, 'prezent', 'prezent-start.html'), 'utf8').replace(/\bpodpis\b/g, 'prezent-podpis');
   prezentCss = p.match(/<style>([\s\S]*?)<\/style>/)[1]
     .replace(/^html,body\{[^}]*\}\s*$/m, '').replace(/^\.app\{[^}]*\}\s*$/m, '')
     // klasy prezentu (.podpis, .tafla…) nie mogą dotknąć powłoki: każda reguła tylko wewnątrz #prezent
