@@ -5,7 +5,7 @@
 //  3. składa powłokę dla Windows (index.html) i dla iPada (ipad.html, serwer-ipad.js),
 //  4. pakuje Electron dla Windows x64 do out/ i robi z tego zip.
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, existsSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, existsSync, copyFileSync, cpSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -75,6 +75,23 @@ copyFileSync(join(tu, 'preload.js'), join(build, 'preload.js'));
 copyFileSync(join(tu, 'zasoby', 'ikona.png'), join(build, 'ikona.png'));
 writeFileSync(join(build, 'package.json'), JSON.stringify({ name: pkg.name, productName: pkg.productName, version: pkg.version, main: 'main.js' }, null, 2));
 console.log('Złożono aplikację w', build, plikA ? '(z anonimizatorem)' : '(bez anonimizatora)', plikP ? '(z pokojem lekarskim)' : '(bez pokoju)');
+// 3c. Kopia gotowych plików w repo (gotowe/): komputer Michała nie ma node ani gita, operator pobiera archiwum commitu
+//     z GitHuba i podmienia zawartość resources\app zainstalowanej aplikacji (patrz gotowe/README.md).
+const gotowe = join(tu, 'gotowe');
+rmSync(gotowe, { recursive: true, force: true });
+cpSync(build, gotowe, { recursive: true });
+writeFileSync(join(gotowe, 'README.md'), [
+  '# Gotowe pliki aplikacji MS Konsylium (bez budowania)',
+  '',
+  'Ten katalog to wynik `node zbuduj.mjs` (zawartość `resources\\app` w zainstalowanej aplikacji Windows). Generowany automatycznie — nie edytować ręcznie.',
+  '',
+  'Wdrożenie na komputerze bez node i gita: pobierz archiwum commitu z GitHuba, zamknij MS Konsylium,',
+  'podmień całą zawartość `MS-Konsylium\\resources\\app` (albo folderu wskazanego w skrócie) na zawartość tego katalogu i uruchom aplikację ponownie.',
+  'Electron (MS-Konsylium.exe i reszta `resources`) zostaje bez zmian, dopóki nie zmieni się numer wersji Electrona w package.json.',
+  'Do folderu Konsylium (kopia repo) trzeba osobno skopiować `skrypty/` z tego samego commitu.',
+  ''
+].join('\n'));
+console.log('Skopiowano gotowe pliki do', gotowe);
 
 if (process.argv.includes('--bez-paczki')) process.exit(0);
 
