@@ -11,5 +11,12 @@ contextBridge.exposeInMainWorld('msPowloka', {
   zapisz: (sciezka, tekst) => ipcRenderer.invoke('ms:zapisz', String(sciezka), String(tekst)),
   lista: (sciezka) => ipcRenderer.invoke('ms:lista', String(sciezka || '')),
   czytajFolder: (sciezka) => ipcRenderer.invoke('ms:czytaj-folder', String(sciezka || '')),
-  otworzFolder: () => ipcRenderer.invoke('ms:otworz-folder')
+  otworzFolder: () => ipcRenderer.invoke('ms:otworz-folder'),
+  // udostępnienie dla iPada w sieci lokalnej (serwer-ipad.js)
+  ipad: {
+    stan: () => ipcRenderer.invoke('ms:ipad-stan'),
+    ustaw: (wl) => ipcRenderer.invoke('ms:ipad-ustaw', !!wl),
+    nowyKod: () => ipcRenderer.invoke('ms:ipad-nowy-kod'),
+    naZmiane: (f) => { ipcRenderer.on('ms:ipad-zmiana', () => f()); }
+  }
 });

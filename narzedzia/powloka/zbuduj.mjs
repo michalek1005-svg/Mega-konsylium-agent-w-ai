@@ -2,7 +2,8 @@
 // Użycie (w narzedzia/powloka):  npm ci && node zbuduj.mjs [--bez-paczki]
 //  1. składa moduł wywiadu w jeden plik HTML,
 //  2. dołącza anonimizator, jeśli jest zbudowany (narzedzia/anonimizator/ANONIMIZATOR-WYNIKOW-*.html),
-//  3. pakuje Electron dla Windows x64 do out/ i robi z tego zip.
+//  3. składa powłokę dla Windows (index.html) i dla iPada (ipad.html, serwer-ipad.js),
+//  4. pakuje Electron dla Windows x64 do out/ i robi z tego zip.
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, existsSync, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -45,8 +46,30 @@ const tokeny = readFileSync(join(narzedzia, 'wspolne', 'ms-tokeny.css'), 'utf8')
 const wywiadHtml = readFileSync(join(build, 'app', 'moduly', 'wywiad.html'), 'utf8');
 const fontCss = (wywiadHtml.match(/@font-face\{[^}]+\}/g) || []).join('');
 const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ wywiad: true, anonimizator: !!plikA, pokoj: !!plikP })};</script>`;
-writeFileSync(join(build, 'app', 'index.html'), readFileSync(join(tu, 'app', 'index.html'), 'utf8')
-  .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss));
+const powloka = readFileSync(join(tu, 'app', 'index.html'), 'utf8')
+  .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss);
+writeFileSync(join(build, 'app', 'index.html'), powloka.replace('<!--IPAD-GLOWA-->\n', ''));
+
+// 3b. Ta sama powłoka dla iPada (Safari w sieci lokalnej, serwer-ipad.js): most przez HTTP zamiast preload.js,
+//     CSP pozwala tylko na własny adres (komputer), ekran główny i tryb pełnoekranowy iPadOS.
+const CSP_WIN = `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; frame-src file:`;
+const CSP_IPAD = `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; frame-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'`;
+if (!powloka.includes(CSP_WIN)) throw new Error('Zmieniono CSP powłoki: popraw CSP_WIN w zbuduj.mjs.');
+const glowaIpad = [
+  '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
+  '<meta name="apple-mobile-web-app-capable" content="yes">',
+  '<meta name="mobile-web-app-capable" content="yes">',
+  '<meta name="apple-mobile-web-app-title" content="MS Konsylium">',
+  '<meta name="apple-mobile-web-app-status-bar-style" content="default">',
+  '<meta name="theme-color" content="#E6EBEE">',
+  '<meta name="format-detection" content="telephone=no">',
+  '<link rel="manifest" href="manifest.webmanifest">',
+  '<link rel="apple-touch-icon" href="apple-touch-icon.png">',
+  '<script>' + readFileSync(join(tu, 'app', 'ipad-most.js'), 'utf8').replace(/<\/script/gi, '<\\/script') + '</script>'
+].join('\n');
+writeFileSync(join(build, 'app', 'ipad.html'), powloka.replace(CSP_WIN, () => CSP_IPAD).replace('<!--IPAD-GLOWA-->', () => glowaIpad));
+copyFileSync(join(tu, 'serwer-ipad.js'), join(build, 'serwer-ipad.js'));
+copyFileSync(join(tu, 'node_modules', 'qrcode-generator', 'dist', 'qrcode.js'), join(build, 'qrcode.js'));
 copyFileSync(join(tu, 'main.js'), join(build, 'main.js'));
 copyFileSync(join(tu, 'preload.js'), join(build, 'preload.js'));
 copyFileSync(join(tu, 'zasoby', 'ikona.png'), join(build, 'ikona.png'));

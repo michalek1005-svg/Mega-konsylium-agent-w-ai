@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; frame-src file:">
+<!--IPAD-GLOWA-->
 <title>MS Konsylium</title>
 <style>
 /*@@FONT@@*/
@@ -62,6 +63,34 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
 .folder .rzad { display: flex; gap: 6px; flex-wrap: wrap; }
 .folder .brak-f { color: var(--alarm); }
 .folder .uwaga { font-size: 11.5px; }
+/* Udostępnienie dla iPada (okno Windows) */
+.ipad-panel { width: 360px; transform: translateY(-50%); max-height: calc(100% - 40px); overflow-y: auto; }
+.ipad-panel .qr { width: 168px; height: 168px; align-self: center; border-radius: 14px; background: #fff; padding: 6px; box-shadow: var(--panel-cien); }
+.ipad-panel .qr img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.ipad-panel .adres { font: 12px ui-monospace, Consolas, monospace; color: var(--ink); word-break: break-all; user-select: all; }
+.ipad-panel ol { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
+.ipad-panel .wl { color: var(--petrol); font-weight: 750; }
+.stan .lan { color: var(--petrol); font-weight: 750; font-size: 10.5px; line-height: 1.15; }
+/* ── iPad (Safari, ekran dotykowy): ta sama tafla, mniejsze marginesy, większe cele dotyku ── */
+html.ipad, html.ipad body { height: 100%; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+html.ipad body { overscroll-behavior: none; touch-action: manipulation; }
+html.ipad .tafla-glowna { width: calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)); height: calc(100vh - 24px); height: calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); border-radius: 34px; }
+html.ipad body.pelny .tafla-glowna { width: calc(100vw - 12px); height: calc(100dvh - 12px); border-radius: 28px; }
+html.ipad .logo-k { left: 18px; top: 10px; }
+html.ipad nav.pasek { left: 16px; gap: 8px; padding: 9px; }
+html.ipad nav.pasek button { width: 48px; height: 48px; }
+html.ipad nav.pasek button svg { width: 21px; height: 21px; }
+html.ipad nav.pasek .podpis { display: none; }
+html.ipad main { inset: 8px 8px 8px 90px; border-radius: 0 28px 28px 0; }
+html.ipad .stan { left: 18px; width: 56px; bottom: 14px; }
+html.ipad .folder { left: 96px; }
+html.ipad .folder .nk-button, html.ipad .rozlaczony .nk-button { min-height: 44px; }
+html.ipad .stan .offline.brak-pc { color: var(--alarm); }
+html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow: 0 0 0 3px color-mix(in srgb, var(--alarm) 25%, transparent); }
+.rozlaczony { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); z-index: 130; max-width: min(560px, calc(100% - 140px)); padding: 12px 16px; border-radius: 18px;
+  background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); font-size: 13px; color: var(--ink); display: flex; gap: 12px; align-items: center; }
+.rozlaczony b { color: var(--alarm); }
+@media (orientation: portrait) { html.ipad body.pelny .tafla-glowna { height: calc(100dvh - 12px); } }
 </style>
 </head>
 <body>
@@ -77,6 +106,7 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
     <button class="modul" type="button" data-modul="pokoj" aria-label="Pokój lekarski"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="podpis">Pokój lekarski<small>konsylium na żywo i wnioski</small></span></button>
     <div class="kreska"></div>
     <button type="button" id="folder-przycisk" aria-label="Folder Konsylium" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span class="podpis">Folder Konsylium<small id="folder-podpis">nie wybrano</small></span></button>
+    <button type="button" id="ipad-przycisk" aria-label="iPad" aria-pressed="false" hidden><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg><span class="podpis">iPad<small id="ipad-podpis">wyłączony</small></span></button>
     <button type="button" id="motyw" aria-label="Motyw jasny / ciemny"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span class="podpis">Motyw jasny / ciemny</span></button>
   </nav>
   <div class="folder" id="folder-panel" hidden>
@@ -86,6 +116,24 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
     <div class="rzad"><button class="nk-button nk-on" type="button" id="folder-wybierz">Wybierz folder…</button>
     <button class="nk-button" type="button" id="folder-otworz" hidden>Otwórz</button></div>
   </div>
+  <div class="folder ipad-panel" id="ipad-panel" hidden>
+    <b>MS Konsylium na iPadzie</b>
+    <span class="uwaga">iPad otwiera tę samą aplikację w Safari przez Twoją sieć Wi‑Fi. Dane zostają na tym komputerze, nic nie idzie do internetu.</span>
+    <div class="rzad"><button class="nk-button nk-on" type="button" id="ipad-wlacz">Udostępnij na iPadzie</button>
+    <button class="nk-button" type="button" id="ipad-wylacz" hidden>Wyłącz</button></div>
+    <div id="ipad-wlaczony" hidden>
+      <div class="qr"><img id="ipad-qr" alt="Kod QR z adresem dla iPada"></div>
+    </div>
+    <span class="adres" id="ipad-adres" hidden></span>
+    <ol id="ipad-kroki" hidden>
+      <li>Na iPadzie otwórz Aparat i zeskanuj kod (iPad w tej samej sieci Wi‑Fi).</li>
+      <li>W Safari stuknij Udostępnij → „Do ekranu początkowego”.</li>
+      <li>Przy pierwszym włączeniu Windows zapyta o zaporę: zezwól dla sieci prywatnych.</li>
+    </ol>
+    <span class="uwaga" id="ipad-info"></span>
+    <div class="rzad"><button class="nk-button" type="button" id="ipad-nowy" hidden title="Stary kod przestanie działać na wszystkich iPadach">Nowy kod</button></div>
+  </div>
+  <div class="rozlaczony" id="rozlaczony" hidden role="alert"><span id="rozlaczony-tekst"></span><button class="nk-button" type="button" id="rozlaczony-odswiez">Odśwież</button></div>
   <main>
     <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
   </main>
@@ -110,6 +158,7 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
     f.addEventListener('load', function () {
       gotowe[id] = true;
       wyslijMotyw(f);
+      if (window.msIpadSchowek) window.msIpadSchowek(f.contentWindow);
       (kolejka[id] || []).forEach(function (m) { f.contentWindow.postMessage(m, '*'); });
       kolejka[id] = [];
     });
@@ -148,7 +197,7 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
   var OPERACJE = {
     ping: function () { return 'ms-powloka-1'; },
     folder: function () { return P ? P.folder() : null; },
-    wybierzFolder: function () { return P ? P.wybierzFolder().then(function (f) { pokazFolder(f); return f; }) : null; },
+    wybierzFolder: function () { return P && P.wybierzFolder ? P.wybierzFolder().then(function (f) { pokazFolder(f); return f; }) : (P ? P.folder() : null); },
     czytaj: function (a) { return P.czytaj(a[0]); },
     zapisz: function (a) { return P.zapisz(a[0], a[1]); },
     lista: function (a) { return P.lista(a[0]); },
@@ -180,11 +229,71 @@ html.ai-aktywne .logo-k svg { filter: contrast(1.2) drop-shadow(0 0 10px color-m
   function pokazPanelFolderu(t) { $fpan.hidden = !t; $fb.setAttribute('aria-pressed', String(!!t)); }
   $fb.addEventListener('click', function () { pokazPanelFolderu($fpan.hidden); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pokazPanelFolderu(false); });
-  if (P) {
+  if (P && window.MS_IPAD) {
+    // iPad: folder wybiera się na komputerze; tu tylko pokazujemy, który jest używany
+    $fw.hidden = true; $fo.hidden = true;
+    P.folder().then(function (f) { pokazFolder(f); $fo.hidden = true; if (!f) { $fs.textContent = 'Na komputerze nie wybrano folderu Konsylium. Wybierz go w aplikacji na komputerze.'; pokazPanelFolderu(true); } }, function () {});
+  } else if (P) {
     P.folder().then(function (f) { pokazFolder(f); if (!f) pokazPanelFolderu(true); });
     $fw.addEventListener('click', function () { P.wybierzFolder().then(function (f) { pokazFolder(f); Object.keys(ramki).forEach(function (k) { doModulu(k, { typ: 'ms-dane', od: 'powloka', dane: { folder: f } }); }); }); });
     $fo.addEventListener('click', function () { P.otworzFolder(); });
   } else $fb.hidden = true;
+
+  // ── iPad: udostępnienie w sieci lokalnej (okno Windows) ──
+  (function () {
+    var I = P && P.ipad, $b = document.getElementById('ipad-przycisk'), $p = document.getElementById('ipad-panel');
+    if (!I || window.MS_IPAD) return;
+    $b.hidden = false;
+    var $wl = document.getElementById('ipad-wlacz'), $wy = document.getElementById('ipad-wylacz'), $nw = document.getElementById('ipad-nowy');
+    var $qr = document.getElementById('ipad-qr'), $ad = document.getElementById('ipad-adres'), $kr = document.getElementById('ipad-kroki');
+    var $in = document.getElementById('ipad-info'), $on = document.getElementById('ipad-wlaczony'), $pp = document.getElementById('ipad-podpis');
+    var $off = document.querySelector('.stan .offline');
+    function pokazStan(s) {
+      var wl = !!(s && s.wlaczony);
+      $wl.hidden = wl; $wy.hidden = !wl; $nw.hidden = !wl; $kr.hidden = !wl || !s.url; $on.hidden = !wl || !s.qr; $ad.hidden = !wl || !s.url;
+      if (s && s.qr) $qr.src = s.qr;
+      $ad.textContent = s && s.url ? s.url : '';
+      var info = '';
+      if (s && s.blad) info = s.blad;
+      else if (wl && s.polaczone && s.polaczone.length) info = 'Połączony iPad: ' + s.polaczone.map(function (x) { return x.adres; }).join(', ') + '.';
+      else if (wl && !s.url) info = 'Komputer nie jest podłączony do sieci lokalnej (Wi‑Fi lub kabel).';
+      else if (wl) info = 'Czekam na iPada.';
+      $in.textContent = info; $in.className = 'uwaga' + (s && s.blad ? ' brak-f' : wl ? ' wl' : '');
+      $pp.textContent = wl ? 'udostępniony' : 'wyłączony';
+      // Tafla mówi prawdę: przy udostępnieniu aplikacja nie jest już „Offline”, tylko w sieci lokalnej
+      $off.textContent = wl ? 'Sieć lokalna' : 'Offline';
+      $off.title = wl ? 'Udostępniono dla iPada w sieci lokalnej; bez internetu' : 'Bez sieci';
+    }
+    function pokazPanel(t) { $p.hidden = !t; $b.setAttribute('aria-pressed', String(!!t)); if (t) { pokazPanelFolderu(false); I.stan().then(pokazStan); } }
+    $b.addEventListener('click', function () { pokazPanel($p.hidden); });
+    document.getElementById('folder-przycisk').addEventListener('click', function () { if (!$fpan.hidden) pokazPanel(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') pokazPanel(false); });
+    document.querySelectorAll('button.modul').forEach(function (b) { b.addEventListener('click', function () { pokazPanel(false); }); });
+    $wl.addEventListener('click', function () { $wl.disabled = true; I.ustaw(true).then(function (s) { $wl.disabled = false; pokazStan(s); }); });
+    $wy.addEventListener('click', function () { I.ustaw(false).then(pokazStan); });
+    $nw.addEventListener('click', function () { I.nowyKod().then(pokazStan); });
+    I.naZmiane(function () { I.stan().then(pokazStan); });
+    I.stan().then(pokazStan);
+  })();
+  // ── iPad: stan połączenia z komputerem ──
+  (function () {
+    if (!window.MS_IPAD) return;
+    var $r = document.getElementById('rozlaczony'), $t = document.getElementById('rozlaczony-tekst'), $off = document.querySelector('.stan .offline');
+    $off.textContent = 'Komputer';
+    document.getElementById('rozlaczony-odswiez').addEventListener('click', function () { location.reload(); });
+    function pokaz(s) {
+      $off.classList.toggle('brak-pc', s !== 'ok');
+      $off.textContent = s === 'ok' ? 'Komputer' : 'Brak PC';
+      $off.title = s === 'ok' ? 'Połączono z aplikacją na komputerze' : 'Brak połączenia z komputerem';
+      if (s === 'ok') { $r.hidden = true; return; }
+      $t.innerHTML = s === 'klucz'
+        ? '<b>iPad nie jest połączony.</b> W aplikacji na komputerze stuknij ikonę iPada i zeskanuj kod QR.'
+        : '<b>Brak połączenia z komputerem.</b> Włącz MS Konsylium na komputerze (udostępnianie dla iPada) i sprawdź Wi‑Fi.';
+      $r.hidden = false;
+    }
+    window.addEventListener('ms-ipad-stan', function (e) { pokaz(e.detail); });
+    if (window.msIpad && !window.msIpad.maKlucz()) pokaz('klucz');
+  })();
 
   var start = 'wywiad';
   try { start = localStorage.getItem('ms-modul') || 'wywiad'; } catch (e) {}

@@ -1,9 +1,12 @@
-// Powłoka Windows dla narzędzi Konsylium (wywiad, anonimizator).
-// Zasada: działa wyłącznie offline. Każde żądanie sieciowe jest blokowane.
+// Powłoka Windows dla narzędzi Konsylium (wywiad, anonimizator, pokój lekarski).
+// Zasada: działa wyłącznie offline. Każde żądanie sieciowe okna jest blokowane. Jedyny wyjątek to
+// włączane ręcznie udostępnienie dla iPada w sieci lokalnej (serwer-ipad.js), które niczego nie pobiera.
 'use strict';
 const { app, BrowserWindow, session, ipcMain, dialog, shell } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
+const crypto = require('node:crypto');
+const { utworzSerwer, adresySieci } = require('./serwer-ipad.js');
 
 app.setName('MS Konsylium Narzędzia');
 // testy automatyczne: osobny katalog danych aplikacji (localStorage, ustawienia)
@@ -72,37 +75,23 @@ const TEKSTOWE = /\.(md|json|jsonl|txt)$/i;
 const MAX_PLIK = 4 * 1024 * 1024;
 function czekajSync(ms) { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); }
 
-function podepnijPliki(okno) {
-  const tylkoNasze = (e) => {
-    if (e.sender !== okno.webContents || e.senderFrame !== okno.webContents.mainFrame) throw new Error('Odmowa.');
-  };
-  ipcMain.handle('ms:folder', (e) => { tylkoNasze(e); return korzen(); });
-  ipcMain.handle('ms:wybierz-folder', async (e) => {
-    tylkoNasze(e);
-    const w = await dialog.showOpenDialog(okno, {
-      title: 'Wybierz folder Konsylium (kopia repo Konsylium na tym komputerze)',
-      defaultPath: korzen() || app.getPath('documents'), properties: ['openDirectory', 'createDirectory']
-    });
-    if (w.canceled || !w.filePaths[0]) return korzen();
-    zapiszUstawienia({ ...ustawienia(), folderKonsylium: w.filePaths[0] });
-    return w.filePaths[0];
-  });
-  ipcMain.handle('ms:czytaj', (e, wzgl) => {
-    tylkoNasze(e);
+// Operacje na plikach folderu Konsylium: te same dla okna Windows (IPC) i dla iPada (serwer-ipad.js)
+const PLIKI = {
+  folder: () => korzen(),
+  czytaj(wzgl) {
     const abs = wFolderze(wzgl);
     if (!TEKSTOWE.test(abs)) throw new Error('Tylko pliki tekstowe.');
     let st; try { st = fs.statSync(abs); } catch { return null; }
     if (!st.isFile() || st.size > MAX_PLIK) return null;
     return { tekst: fs.readFileSync(abs, 'utf8'), zmiana: st.mtimeMs };
-  });
-  ipcMain.handle('ms:zapisz', (e, wzgl, tekst) => {
-    tylkoNasze(e);
+  },
+  zapisz(wzgl, tekst) {
     const abs = wFolderze(wzgl);
     if (!TEKSTOWE.test(abs)) throw new Error('Tylko pliki tekstowe.');
     if (tekst.length > MAX_PLIK) throw new Error('Za duży plik.');
     fs.mkdirSync(path.dirname(abs), { recursive: true });
     // zapis przez plik tymczasowy, żeby Claude nigdy nie przeczytał połowy pliku
-    const tmp = abs + '.' + process.pid + '.tmp';
+    const tmp = abs + '.' + process.pid + '.' + crypto.randomBytes(3).toString('hex') + '.tmp';
     fs.writeFileSync(tmp, tekst, 'utf8');
     for (let i = 0; ; i++) {
       try { fs.renameSync(tmp, abs); break; } catch (err) {
@@ -111,18 +100,16 @@ function podepnijPliki(okno) {
       }
     }
     return true;
-  });
-  ipcMain.handle('ms:lista', (e, wzgl) => {
-    tylkoNasze(e);
+  },
+  lista(wzgl) {
     const abs = wFolderze(wzgl);
     let wpisy; try { wpisy = fs.readdirSync(abs, { withFileTypes: true }); } catch { return []; }
     return wpisy.filter((d) => !d.name.startsWith('.') && !d.name.endsWith('.tmp')).map((d) => {
       let zmiana = 0; try { zmiana = fs.statSync(path.join(abs, d.name)).mtimeMs; } catch {}
       return { nazwa: d.name, katalog: d.isDirectory(), zmiana };
     });
-  });
-  ipcMain.handle('ms:czytaj-folder', (e, wzgl) => {
-    tylkoNasze(e);
+  },
+  czytajFolder(wzgl) {
     const abs = wFolderze(wzgl), out = [];
     (function idz(kat, pref, glab) {
       if (glab > 4 || out.length > 400) return;
@@ -137,8 +124,85 @@ function podepnijPliki(okno) {
       }
     })(abs, '', 0);
     return out;
+  }
+};
+
+// ── iPad: udostępnienie w sieci lokalnej (domyślnie wyłączone) ──
+const IPAD_PORT = Number(process.env.MS_IPAD_PORT) || 8765;
+let ipad = { serwer: null, blad: null, polaczone: [] };
+function kluczIpad(nowy) {
+  const u = ustawienia();
+  if (nowy || !u.ipadKlucz) { u.ipadKlucz = crypto.randomBytes(18).toString('base64url'); zapiszUstawienia(u); }
+  return u.ipadKlucz;
+}
+function qrSvg(tekst) {
+  let qrcode; try { qrcode = require('./qrcode.js'); } catch { qrcode = require('qrcode-generator'); }
+  const q = qrcode(0, 'M'); q.addData(tekst); q.make();
+  return q.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+}
+function stanIpad() {
+  // MS_IPAD_ADRES: testy w kontenerze bez sieci domowej
+  const adresy = process.env.MS_IPAD_ADRES ? [{ adres: process.env.MS_IPAD_ADRES, nazwa: 'test', wirtualna: false }] : adresySieci();
+  const klucz = ustawienia().ipadKlucz || '';
+  const url = (a) => 'http://' + a + ':' + IPAD_PORT + '/?k=' + klucz;
+  const s = { wlaczony: !!ipad.serwer, blad: ipad.blad, port: IPAD_PORT, polaczone: ipad.polaczone.slice(-5), adresy: adresy.map((x) => ({ ...x, url: url(x.adres) })) };
+  if (s.wlaczony && adresy[0]) { s.url = url(adresy[0].adres); s.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.url)).toString('base64'); }
+  return s;
+}
+function wlaczIpad(okno) {
+  if (ipad.serwer) return Promise.resolve(stanIpad());
+  kluczIpad(false);
+  ipad.blad = null;
+  const serwer = utworzSerwer({
+    katalogApp: path.join(__dirname, 'app'), ikona: path.join(__dirname, 'ikona.png'), pliki: PLIKI,
+    klucz: () => ustawienia().ipadKlucz,
+    naZdarzenie: (z) => {
+      if (z.typ === 'polaczenie') { ipad.polaczone.push({ adres: z.adres, czas: Date.now() }); if (okno && !okno.isDestroyed()) okno.webContents.send('ms:ipad-zmiana'); }
+    }
   });
+  return new Promise((ok) => {
+    serwer.once('error', (err) => {
+      ipad.serwer = null;
+      ipad.blad = err.code === 'EADDRINUSE' ? 'Port ' + IPAD_PORT + ' jest zajęty przez inny program.' : 'Nie udało się włączyć: ' + err.message;
+      ok(stanIpad());
+    });
+    serwer.listen(IPAD_PORT, '0.0.0.0', () => { ipad.serwer = serwer; ok(stanIpad()); });
+  });
+}
+function wylaczIpad() {
+  if (ipad.serwer) { ipad.serwer.close(); ipad.serwer.closeAllConnections && ipad.serwer.closeAllConnections(); }
+  ipad.serwer = null; ipad.polaczone = [];
+  return stanIpad();
+}
+
+function podepnijPliki(okno) {
+  const tylkoNasze = (e) => {
+    if (e.sender !== okno.webContents || e.senderFrame !== okno.webContents.mainFrame) throw new Error('Odmowa.');
+  };
+  ipcMain.handle('ms:folder', (e) => { tylkoNasze(e); return PLIKI.folder(); });
+  ipcMain.handle('ms:wybierz-folder', async (e) => {
+    tylkoNasze(e);
+    const w = await dialog.showOpenDialog(okno, {
+      title: 'Wybierz folder Konsylium (kopia repo Konsylium na tym komputerze)',
+      defaultPath: korzen() || app.getPath('documents'), properties: ['openDirectory', 'createDirectory']
+    });
+    if (w.canceled || !w.filePaths[0]) return korzen();
+    zapiszUstawienia({ ...ustawienia(), folderKonsylium: w.filePaths[0] });
+    return w.filePaths[0];
+  });
+  ipcMain.handle('ms:czytaj', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytaj(wzgl); });
+  ipcMain.handle('ms:zapisz', (e, wzgl, tekst) => { tylkoNasze(e); return PLIKI.zapisz(wzgl, tekst); });
+  ipcMain.handle('ms:lista', (e, wzgl) => { tylkoNasze(e); return PLIKI.lista(wzgl); });
+  ipcMain.handle('ms:czytaj-folder', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytajFolder(wzgl); });
   ipcMain.handle('ms:otworz-folder', (e) => { tylkoNasze(e); const k = korzen(); if (k) shell.openPath(k); return !!k; });
+  // iPad (sieć lokalna): stan, włącz/wyłącz, nowy kod parowania (stare iPady tracą dostęp)
+  ipcMain.handle('ms:ipad-stan', (e) => { tylkoNasze(e); return stanIpad(); });
+  ipcMain.handle('ms:ipad-ustaw', async (e, wl) => {
+    tylkoNasze(e);
+    zapiszUstawienia({ ...ustawienia(), ipad: !!wl });
+    return wl ? wlaczIpad(okno) : wylaczIpad();
+  });
+  ipcMain.handle('ms:ipad-nowy-kod', (e) => { tylkoNasze(e); kluczIpad(true); ipad.polaczone = []; return stanIpad(); });
 }
 
 app.whenReady().then(() => {
@@ -147,8 +211,10 @@ app.whenReady().then(() => {
   session.defaultSession.on('will-download', (_e, item) => {
     item.setSaveDialogOptions({ title: 'Zapisz plik', defaultPath: path.join(app.getPath('documents'), item.getFilename()) });
   });
-  podepnijPliki(utworzOkno());
+  const okno = utworzOkno();
+  podepnijPliki(okno);
+  if (ustawienia().ipad || process.env.MS_IPAD === '1') wlaczIpad(okno);
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) utworzOkno(); });
 });
 
-app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+app.on('window-all-closed', () => { wylaczIpad(); if (process.platform !== 'darwin') app.quit(); });
