@@ -68,6 +68,28 @@ await r.locator('#glos-tekst').fill('Druga uwaga.');
 await r.locator('#glos-wyslij').click();
 await p.waitForTimeout(500);
 assert.equal((await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').length, 2, 'dwa wpisy w pliku');
+// panele na żywo: alarm 112, plakietka asystentów, pytanie konsylium z przyciskami → odpowiedź w uwagi-lekarza.jsonl
+await p.evaluate(() => {
+  const k = 'sprawy/2026-10-31-02/_log.jsonl', t = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');
+  window.__pliki[k] = window.__pliki[k].replace(/\n?$/, '\n') + [
+    { ts: t, zdarzenie: 'alarm', tekst: 'Podejrzenie ostrego zespołu wieńcowego – rozważ 112 teraz' },
+    { ts: t, zdarzenie: 'asystenci', rola: 'bayes', liczba: 2 },
+    { ts: t, zdarzenie: 'pytanie', id: 'P1', tekst: 'Czy ból promieniuje do pleców?', bo: 'rozstrzyga spór', opcje: ['tak', 'nie', 'nie wiem'] },
+  ].map((z) => JSON.stringify(z)).join('\n') + '\n';
+});
+await p.waitForTimeout(3600);
+assert.equal(await r.locator('#alarm').isVisible(), true, 'pasek alarmu 112 widoczny');
+assert.match(await r.locator('#alarm').innerText(), /zespołu wieńcowego/);
+assert.match(await r.locator('#plakietka').innerText(), /konsultuje się \(2\)/, 'plakietka asystentów na drzwiach');
+assert.equal(await r.locator('#pytanie').isVisible(), true, 'karta pytania widoczna');
+await r.locator('#pytanie-opcje button', { hasText: 'nie wiem' }).click();
+await p.waitForTimeout(600);
+const odp = (await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').map((l) => JSON.parse(l)).pop();
+assert.equal(odp.pytanie_id, 'P1'); assert.equal(odp.odpowiedz, 'nie wiem');
+assert.equal(await r.locator('#pytanie').isVisible(), false, 'karta znika po odpowiedzi');
+await p.waitForTimeout(3600);
+assert.equal(await r.locator('#pytanie').isVisible(), false, 'karta nie wraca po odświeżeniu');
+await p.screenshot({ path: join(tu, '..', '_panele.png') });
 assert.equal(await r.locator('#plakat').count(), 1, 'plakat z serduszkiem na ścianie');
 assert.equal(await r.locator('#dym').count(), 1, 'warstwa dymu');
 assert.deepEqual(siec, [], 'zero żądań sieciowych');
