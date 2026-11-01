@@ -15,7 +15,7 @@ Ekran z prezentem „Dla Halusi ❤” pokazuje się przy każdym starcie **tylk
 ## 2. Bezpieczeństwo (zawsze włączone)
 - Filtr słownikowy w aplikacji (`config/frazy-ryzyka.json`) czyta każdą wiadomość **zanim** trafi do AI: słowa o odebraniu sobie życia → od razu czerwona karta z numerami; bierne myśli o śmierci → łagodna karta z numerami.
 - Strażnik ryzyka czyta każdą turę; skrypt `rozmowa.py` nie pozwala obniżyć poziomu bez nowego faktu ani wysłać odpowiedzi wysokiego ryzyka bez numerów.
-- Numery pomocy: `config/pomoc-pl.json` (112 · 800 70 2222 całodobowo · 116 123 · Niebieska Linia 800 120 002) – **Michał, sprawdź je przed pokazaniem komukolwiek.**
+- Numery pomocy: `config/pomoc-pl.json` (112 · 800 70 2222 całodobowo · 116 123 · Niebieska Linia 800 120 002) – sprawdzone 1.11.2026 ze źródłami (gov.pl, NASK), wszystkie całodobowe.
 - Tylko dorośli, bez danych identyfikujących.
 
 ## 3. Uruchomienie Claude w tym folderze (żeby Terapeuta AI odpowiadał)

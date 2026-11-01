@@ -175,7 +175,7 @@ Dodatkowe flagi z tym samym mechanizmem przerwania: zagrożenie dla innych z kon
 Ważne: narzędzia przesiewowe mają niską wartość predykcyjną dodatnią na poziomie jednostki (duże badanie C‑SSRS w VHA: [DOI](https://doi.org/10.1080/13811118.2026.2628074)), dlatego poziom jest **progiem reakcji**, nie prognozą. Aplikacja nigdy nie pisze „ryzyko wykluczone”.
 
 ### 6.3 Plan bezpieczeństwa (Stanley–Brown)
-Sześć kroków: sygnały ostrzegawcze, własne sposoby radzenia sobie, osoby i miejsca odciągające uwagę, osoby do poproszenia o pomoc, profesjonaliści i numery (112, 116 123 w godz. 14–22, 800 70 2222 całodobowo, 116 111 dla młodzieży, Niebieska Linia 800 120 002), ograniczenie dostępu do środków. Krótkie interwencje z planem bezpieczeństwa i kontaktem po wizycie zmniejszały liczbę prób samobójczych (przegląd 4 badań, 3412 osób; McCabe 2018, [DOI](https://doi.org/10.1186/s12888-018-1663-5)). Generuje go prowadzący **z danych wywiadu** (konkretne osoby i sposoby), a nie jako szablon.
+Sześć kroków: sygnały ostrzegawcze, własne sposoby radzenia sobie, osoby i miejsca odciągające uwagę, osoby do poproszenia o pomoc, profesjonaliści i numery (112, 116 123 całodobowo, 800 70 2222 całodobowo, 116 111 dla młodzieży, Niebieska Linia 800 120 002), ograniczenie dostępu do środków. Krótkie interwencje z planem bezpieczeństwa i kontaktem po wizycie zmniejszały liczbę prób samobójczych (przegląd 4 badań, 3412 osób; McCabe 2018, [DOI](https://doi.org/10.1186/s12888-018-1663-5)). Generuje go prowadzący **z danych wywiadu** (konkretne osoby i sposoby), a nie jako szablon.
 
 ### 6.4 Granice porady (egzekwuje Sprawdzający etyki, w obu trybach)
 1. Nie stawia diagnozy klientowi; terapeucie podaje „hipotezę roboczą wg ICD‑11” z pewnością.
@@ -228,7 +228,7 @@ Test z 1.11.2026 (chmura claude.ai). Zwykłe `curl` do czegokolwiek zwraca 403 (
 | **Psychiatria Polska** i **Psychoterapia** (kwartalnik Sekcji Naukowej Psychoterapii PTP) | **działa** (PDF, część otwarta) | polskie piśmiennictwo do sprawdzania adaptacji kulturowych i standardów |
 | **PTTPB** (standardy szkolenia 2018/2021, stanowiska) | **działa** (pttpb.pl, cbt.pl) | brak wytycznych klinicznych; są standardy kompetencji i superwizji |
 | **Komitet Psychologii PAN, uchwała 5/2025** o regulacji psychoterapii | **działa** | kontekst prawny: psychoterapia w Polsce nadal bez ustawy, projekt ustawy o zawodzie psychologa w Sejmie (druk 1344) |
-| **Numery kryzysowe** (czp.org.pl) | **działa** | 112; 116 123 (14–22); 800 70 2222 (24 h); 116 111 (młodzież); 800 120 002 (Niebieska Linia) |
+| **Numery kryzysowe** (czp.org.pl) | **działa** | 112; 116 123 (24 h, sprawdzono 1.11.2026); 800 70 2222 (24 h); 116 111 (młodzież); 800 120 002 (Niebieska Linia) |
 
 Luka: w Polsce nie ma jednej instytucji wydającej wytyczne psychoterapii (odpowiednika NICE), więc biblioteka polska będzie zbiorem: PTP (etyka, diagnoza), PTP/NIL depresja, standardy PTTPB, artykuły z *Psychiatrii Polskiej* i *Psychoterapii*, a dla farmakoterapii standardy Polskiego Towarzystwa Psychiatrycznego (książkowe, Michał musiałby dodać PDF). Pliki pobiera Michał, konwertuje Kodujący (jak w `zrodla/`).
 

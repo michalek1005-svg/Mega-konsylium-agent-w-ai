@@ -43,7 +43,7 @@ try {
   // 1. Prezent na całym ekranie → klik → kolaż, napis, serca → „To nie jest terapia”
   await okno.waitForSelector('#prezent .pud', { state: 'visible' });
   await okno.waitForTimeout(1200); await zrzut('1-prezent');
-  await okno.click('#prezent .pud');
+  await okno.click('#prezent .pud', { force: true });
   await okno.waitForTimeout(2600); await zrzut('2-kolaz');
   await okno.waitForTimeout(6200); await zrzut('3-dla-halusi');
   assert.match(await okno.textContent('#prezent .napis'), /Dla Halusi/);

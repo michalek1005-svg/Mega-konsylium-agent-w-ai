@@ -54,7 +54,7 @@ W każdej turze (wywiad, konsylium, Porada) wypowiedź czyta `straznik-ryzyka` (
 |---|---|
 | Zagrożenie życia | **112** |
 | Kryzys psychiczny, całodobowo | **800 70 2222** — Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym |
-| Telefon zaufania dla dorosłych | **116 123** (godziny pracy sprawdzić — koncepcja podaje 14–22; nie przedstawiać jako całodobowy) |
+| Telefon zaufania dla dorosłych | **116 123** (całodobowo, 7 dni – sprawdzono 1.11.2026: gov.pl, NASK 28.09.2026; dawne „14–22” nieaktualne) |
 | Przemoc domowa | **800 120 002** — „Niebieska Linia” |
 | Pomoc bez skierowania | psychiatra (NFZ, bez skierowania), Centrum Zdrowia Psychicznego w rejonie, izba przyjęć szpitala psychiatrycznego |
 

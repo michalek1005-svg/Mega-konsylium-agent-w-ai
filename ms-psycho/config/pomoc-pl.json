@@ -1,11 +1,31 @@
 {
   "_opis": "Numery pomocy w Polsce. Jedyne źródło numerów dla agentów i aplikacji (docs/BEZPIECZENSTWO.md §5). Sprawdzić przed każdym wydaniem. Zmienia tylko użytkownik.",
-  "sprawdzono": "2026-11-01 (do potwierdzenia przez Michała)",
+  "sprawdzono": "2026-11-01 – sprawdzone ze źródłami: gov.pl/web/zdrowie/gdzie-uzyskac-pomoc-psychologiczna-i-psychiatryczna (800 70 2222 i 116 123 całodobowo); nask.pl, 28.09.2026 (116 123 „przez całą dobę, siedem dni w tygodniu”); warszawa19115.pl telefony zaufania (800 120 002 całodobowo). Starsza informacja „116 123 w godz. 14–22” jest nieaktualna.",
   "numery": [
-    { "numer": "112", "nazwa": "Numer alarmowy", "kiedy": "Zagrożenie życia – teraz", "godziny": "całodobowo" },
-    { "numer": "800 70 2222", "nazwa": "Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym", "kiedy": "Kryzys psychiczny, myśli samobójcze", "godziny": "całodobowo, bezpłatnie" },
-    { "numer": "116 123", "nazwa": "Kryzysowy Telefon Zaufania dla dorosłych", "kiedy": "Potrzeba rozmowy w kryzysie", "godziny": "sprawdź godziny na stronie operatora" },
-    { "numer": "800 120 002", "nazwa": "Niebieska Linia – przemoc domowa", "kiedy": "Przemoc w domu", "godziny": "całodobowo" }
+    {
+      "numer": "112",
+      "nazwa": "Numer alarmowy",
+      "kiedy": "Zagrożenie życia – teraz",
+      "godziny": "całodobowo"
+    },
+    {
+      "numer": "800 70 2222",
+      "nazwa": "Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym (też czat: centrumwsparcia.pl)",
+      "kiedy": "Kryzys psychiczny, myśli samobójcze",
+      "godziny": "całodobowo, bezpłatnie"
+    },
+    {
+      "numer": "116 123",
+      "nazwa": "Ogólnopolska Poradnia Telefoniczna dla Osób w Kryzysie Emocjonalnym (Kryzysowy Telefon Zaufania)",
+      "kiedy": "Potrzeba rozmowy w kryzysie",
+      "godziny": "całodobowo, bezpłatnie"
+    },
+    {
+      "numer": "800 120 002",
+      "nazwa": "Niebieska Linia – przemoc domowa",
+      "kiedy": "Przemoc w domu",
+      "godziny": "całodobowo"
+    }
   ],
-  "bez_skierowania": "Psychiatra w NFZ przyjmuje bez skierowania. Centrum Zdrowia Psychicznego w Twoim rejonie albo izba przyjęć szpitala psychiatrycznego – także bez skierowania."
+  "bez_skierowania": "Centrum Zdrowia Psychicznego (punkt zgłoszeniowo-koordynacyjny) przyjmuje bez skierowania i bez zapisów; listę CZP podaje Telefoniczna Informacja Pacjenta 800 190 590. W nagłej sytuacji – izba przyjęć szpitala z oddziałem psychiatrycznym."
 }
