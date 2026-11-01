@@ -147,6 +147,12 @@
     linie.push('_Źródło: ' + (bank.zrodlo || 'adaptacyjna ankieta MS') + (meta.kod ? ' · kod ' + meta.kod : '') +
       (meta.data ? ' · ' + meta.data : '') + '_');
     linie.push('');
+    // Wiek i płeć zawsze w nagłówku (z odpowiedzi albo z opisu pacjenta); brak = NIEZNANE (Michał 1.11: „zniknęły wiek i płeć”)
+    var plecTxt = { k: 'kobieta', m: 'mężczyzna', x: 'płeć nie podana' }[stan.o.plec];
+    var wiekTxt = typeof stan.o.wiek === 'number' && stan.o.wiek >= 0 ? stan.o.wiek + ' ' + lata(stan.o.wiek) : null;
+    linie.push('**Pacjent:** ' + (plecTxt || 'płeć NIEZNANA') + ', ' + (wiekTxt || 'wiek NIEZNANY') +
+      (stan.zOpisu.wiek || stan.zOpisu.plec ? ' (z opisu pacjenta)' : ''));
+    linie.push('');
     linie.push('## Czerwone flagi (reguły ankiety)');
     if (stan.flagi.length === 0) linie.push('- brak');
     stan.flagi.forEach(function (f) {
@@ -174,6 +180,8 @@
         return czyNieznane(h.wartosc) && !(q && q.bezNieznanych && h.wartosc !== NIE_WIEM);
       })
       .map(function (h) { return (pytanieWg(bank, h.id) || {}).krotko || h.id; });
+    if (!wiekTxt) nieznane.push('wiek');
+    if (!plecTxt || stan.o.plec === 'x') nieznane.push('płeć');
     nieznane = nieznane.concat(bank.zawszeNieznane || []);
     nieznane.forEach(function (n) { linie.push('- ' + n); });
     linie.push('');

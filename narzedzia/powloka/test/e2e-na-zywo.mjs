@@ -41,7 +41,7 @@ try {
   const w = await ramka('wywiad');
   await w.waitForSelector('[data-tryb="zywo"]:not([disabled])');
   await w.click('[data-tryb="zywo"]');
-  await w.fill('#pole-opis', 'Nazywam się Jan Kowalski, PESEL 85010112345. Od wczoraj boli mnie brzuch pod prawymi żebrami, gorzej po tłustym.');
+  await w.fill('#pole-opis', 'Nazywam się Jan Kowalski, PESEL 85010112345, mam 44 lata, jestem mężczyzną. Od wczoraj boli mnie brzuch pod prawymi żebrami, gorzej po tłustym.');
   await w.click('#dalej');
   await w.waitForSelector('text=Dobieram kolejne pytania', { timeout: 8000 });
   const katalogi = () => execFileSync('ls', [join(folder, 'wywiad-na-zywo')], { encoding: 'utf8' }).trim().split('\n');
@@ -104,9 +104,13 @@ try {
   assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), /Wywiad wysłany/);
 
   // 7. Konsylium pisze dymki z pełną treścią, Pokój lekarski pokazuje je na żywo
-  const sprawa = join(folder, 'sprawy', '2026-10-31-99');
-  mkdirSync(sprawa, { recursive: true });
-  writeFileSync(join(sprawa, '01-wywiad.md'), md);
+  // aplikacja sama założyła czystą sprawę dla tego wywiadu (Michał 1.11: „znowu miesza sprawy”)
+  const idSprawy = (await czekaj(() => existsSync(join(kat, 'sprawa.txt')) && readFileSync(join(kat, 'sprawa.txt'), 'utf8').trim(), 5000, 'sprawa.txt'));
+  assert.match(idSprawy, /^\d{4}-\d{2}-\d{2}-\d{2}$/, 'nazwa sprawy RRRR-MM-DD-NN');
+  const sprawa = join(folder, 'sprawy', idSprawy);
+  assert.ok(existsSync(join(sprawa, '00-surowe.md')) && existsSync(join(sprawa, '01-wywiad.md')) && existsSync(join(sprawa, '_log.jsonl')), 'sprawa z wywiadem i logiem');
+  assert.match(readFileSync(join(sprawa, '01-wywiad.md'), 'utf8'), /\*\*Pacjent:\*\*/, 'wiek i płeć w nagłówku wywiadu');
+  assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), new RegExp('ZAŁOŻYŁA JUŻ sprawę sprawy/' + idSprawy));
   py('dymek.py', sprawa, '--rola', 'ordynator', '--faza', 'Wywiad', '--temat', 'Ból w prawym podżebrzu po tłustym posiłku', '--skrot', 'Zaczynamy.',
     '--tresc', 'Pacjent z bólem w prawym podżebrzu nasilającym się po posiłku tłustym, bez żółtaczki i gorączki. Zaczynamy od triage.');
   await okno.click('button.modul[data-modul="pokoj"]');

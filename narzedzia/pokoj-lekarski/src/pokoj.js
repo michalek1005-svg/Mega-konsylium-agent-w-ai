@@ -666,8 +666,8 @@ ${podpisy(wpisy)}`;
     zLogiem.sort((a, b) => b.nazwa.localeCompare(a.nazwa) || b.zmiana - a.zmiana);
     return zLogiem[0];
   }
-  async function zywoZPowloki(tylkoSwieza) {
-    const s = await najnowszaSprawa().catch(() => null);
+  async function zywoZPowloki(tylkoSwieza, wskazana) {
+    const s = wskazana ? { nazwa: wskazana, zmiana: Date.now() } : await najnowszaSprawa().catch(() => null);
     if (!s) { if (!tylkoSwieza) $('opis-sprawy').textContent = 'W folderze Konsylium nie ma jeszcze spraw (sprawy/…). Pokój poczeka na pierwszą.'; return false; }
     if (tylkoSwieza && Date.now() - s.zmiana > 3 * 3600 * 1000) return false;
     zatrzymajZywo();
@@ -704,7 +704,8 @@ ${podpisy(wpisy)}`;
     nowy.addEventListener('click', () => { if (zywoTimer) zatrzymajZywo(); else zywoZPowloki(false); });
     if (await window.MsMost.folder().catch(() => null)) zywoZPowloki(false);
     else $('opis-sprawy').textContent = 'Wybierz folder Konsylium (ikona folderu po lewej), a Pokój pokaże najnowszą sprawę.';
-    window.MsMost.naDane((od, d) => { if (d && d.zywo) zywoZPowloki(false); });
+    // wywiad wysłał sprawę: Pokój przełącza się na nią natychmiast (nie czeka na odpytywanie co 15 s)
+    window.MsMost.naDane((od, d) => { if (d && d.zywo) zywoZPowloki(false, typeof d.sprawa === 'string' && /^\d{4}-\d{2}-\d{2}-\d+$/.test(d.sprawa) ? d.sprawa : null); });
   });
   window.addEventListener('message', (e) => {
     if (!e.data) return;

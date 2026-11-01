@@ -145,6 +145,13 @@
     if (bledy.length) return { bledy: bledy };
 
     var opisQ = B.pytania.filter(function (q) { return q.id === 'opis'; })[0];
+    // wiek i płeć muszą trafić do wywiadu: jeśli Claude o nie nie zapytał, pytają pytania bazowe
+    // (silnik pomija je, gdy pacjent podał wiek/płeć w opisie)
+    ['plec', 'wiek'].forEach(function (id) {
+      if (pytania.some(function (q) { return q.id === id; })) return;
+      var q = B.pytania.filter(function (x) { return x.id === id; })[0];
+      if (q) pytania.unshift(Object.assign({}, q, { modul: 'ankieta', priorytet: 99 }));
+    });
     var bank = {
       analizuj: B.analizuj,
       wersja: 'ankieta AI' + (tekst(dane.kod, 20) ? ' · ' + dane.kod : ''),

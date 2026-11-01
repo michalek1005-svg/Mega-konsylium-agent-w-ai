@@ -126,7 +126,7 @@ try {
   await w.waitForSelector('[data-tryb="zywo"]:not([disabled])', { timeout: 8000 });
   await zrzut(ipad, 'wywiad-pion');
   await w.tap('[data-tryb="zywo"]');
-  await w.fill('#pole-opis', 'Nazywam się Jan Kowalski, PESEL 85010112345. Od wczoraj boli mnie brzuch pod prawymi żebrami, gorzej po tłustym.');
+  await w.fill('#pole-opis', 'Nazywam się Jan Kowalski, PESEL 85010112345, mam 44 lata, jestem mężczyzną. Od wczoraj boli mnie brzuch pod prawymi żebrami, gorzej po tłustym.');
   await w.tap('#dalej');
   await w.waitForSelector('text=Dobieram kolejne pytania', { timeout: 8000 });
   const kod = await czekaj(() => existsSync(join(folder, 'wywiad-na-zywo')) && readdirSync(join(folder, 'wywiad-na-zywo'))[0], 5000, 'katalog wywiadu');
@@ -158,9 +158,13 @@ try {
   assert.ok(!/85010112345|Kowalski/.test(md));
 
   // 5. Pokój lekarski na iPadzie: dymki na żywo i Wnioski
-  const sprawa = join(folder, 'sprawy', '2026-10-31-98');
-  mkdirSync(sprawa, { recursive: true });
-  writeFileSync(join(sprawa, '01-wywiad.md'), md);
+  // aplikacja sama założyła czystą sprawę dla tego wywiadu (Michał 1.11: „znowu miesza sprawy”)
+  const idSprawy = (await czekaj(() => existsSync(join(kat, 'sprawa.txt')) && readFileSync(join(kat, 'sprawa.txt'), 'utf8').trim(), 5000, 'sprawa.txt'));
+  assert.match(idSprawy, /^\d{4}-\d{2}-\d{2}-\d{2}$/, 'nazwa sprawy RRRR-MM-DD-NN');
+  const sprawa = join(folder, 'sprawy', idSprawy);
+  assert.ok(existsSync(join(sprawa, '00-surowe.md')) && existsSync(join(sprawa, '01-wywiad.md')) && existsSync(join(sprawa, '_log.jsonl')), 'sprawa z wywiadem i logiem');
+  assert.match(readFileSync(join(sprawa, '01-wywiad.md'), 'utf8'), /\*\*Pacjent:\*\*/, 'wiek i płeć w nagłówku wywiadu');
+  assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), new RegExp('ZAŁOŻYŁA JUŻ sprawę sprawy/' + idSprawy));
   py('dymek.py', sprawa, '--rola', 'ordynator', '--faza', 'Wywiad', '--temat', 'Ból w prawym podżebrzu po tłustym posiłku', '--skrot', 'Zaczynamy.',
     '--tresc', 'Pacjent z bólem w prawym podżebrzu nasilającym się po posiłku tłustym, bez żółtaczki i gorączki. Zaczynamy od triage.');
   await ipad.tap('button.modul[data-modul="pokoj"]');

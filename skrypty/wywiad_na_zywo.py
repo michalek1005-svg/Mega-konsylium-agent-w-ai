@@ -81,7 +81,11 @@ def podsumuj(kat: Path, stan: dict) -> str:
     elif stan.get("etap") == "pytania":
         l.append(f"Pacjent odpowiada; w kolejce zostało pytań: {stan.get('pozostaloPytan')}. Możesz dopisać kolejne, zanim skończy.")
     if stan.get("etap") == "wyslano" or (kat / "01-wywiad.md").is_file():
-        l.append(f"Wywiad wysłany: {kat / '01-wywiad.md'} — zacznij konsylium (docs/NA-ZYWO.md, krok 4).")
+        sprawa = (kat / "sprawa.txt").read_text(encoding="utf-8").strip() if (kat / "sprawa.txt").is_file() else stan.get("sprawa")
+        if sprawa:
+            l.append(f"Wywiad wysłany. Aplikacja ZAŁOŻYŁA JUŻ sprawę sprawy/{sprawa}/ (00-surowe.md, 01-wywiad.md) — NIE zakładaj nowej, prowadź konsylium w tym katalogu (docs/NA-ZYWO.md, §3).")
+        else:
+            l.append(f"Wywiad wysłany: {kat / '01-wywiad.md'} — zacznij konsylium (docs/NA-ZYWO.md, krok 4).")
     l.append(f"ankieta: wersja {stan.get('ankietaWersja')}" + (" · lekarz zakończył ręcznie" if stan.get("zakonczonoRecznie") else ""))
     fl = stan.get("flagi") or []
     l.append("flagi: " + ("; ".join(f"[{f.get('poziom')}] {f.get('dlaLekarza')}" for f in fl) if fl else "brak"))

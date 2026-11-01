@@ -1643,6 +1643,12 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     linie.push('_Źródło: ' + (bank.zrodlo || 'adaptacyjna ankieta MS') + (meta.kod ? ' · kod ' + meta.kod : '') +
       (meta.data ? ' · ' + meta.data : '') + '_');
     linie.push('');
+    // Wiek i płeć zawsze w nagłówku (z odpowiedzi albo z opisu pacjenta); brak = NIEZNANE (Michał 1.11: „zniknęły wiek i płeć”)
+    var plecTxt = { k: 'kobieta', m: 'mężczyzna', x: 'płeć nie podana' }[stan.o.plec];
+    var wiekTxt = typeof stan.o.wiek === 'number' && stan.o.wiek >= 0 ? stan.o.wiek + ' ' + lata(stan.o.wiek) : null;
+    linie.push('**Pacjent:** ' + (plecTxt || 'płeć NIEZNANA') + ', ' + (wiekTxt || 'wiek NIEZNANY') +
+      (stan.zOpisu.wiek || stan.zOpisu.plec ? ' (z opisu pacjenta)' : ''));
+    linie.push('');
     linie.push('## Czerwone flagi (reguły ankiety)');
     if (stan.flagi.length === 0) linie.push('- brak');
     stan.flagi.forEach(function (f) {
@@ -1670,6 +1676,8 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
         return czyNieznane(h.wartosc) && !(q && q.bezNieznanych && h.wartosc !== NIE_WIEM);
       })
       .map(function (h) { return (pytanieWg(bank, h.id) || {}).krotko || h.id; });
+    if (!wiekTxt) nieznane.push('wiek');
+    if (!plecTxt || stan.o.plec === 'x') nieznane.push('płeć');
     nieznane = nieznane.concat(bank.zawszeNieznane || []);
     nieznane.forEach(function (n) { linie.push('- ' + n); });
     linie.push('');
@@ -1884,6 +1892,13 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     if (bledy.length) return { bledy: bledy };
 
     var opisQ = B.pytania.filter(function (q) { return q.id === 'opis'; })[0];
+    // wiek i płeć muszą trafić do wywiadu: jeśli Claude o nie nie zapytał, pytają pytania bazowe
+    // (silnik pomija je, gdy pacjent podał wiek/płeć w opisie)
+    ['plec', 'wiek'].forEach(function (id) {
+      if (pytania.some(function (q) { return q.id === id; })) return;
+      var q = B.pytania.filter(function (x) { return x.id === id; })[0];
+      if (q) pytania.unshift(Object.assign({}, q, { modul: 'ankieta', priorytet: 99 }));
+    });
     var bank = {
       analizuj: B.analizuj,
       wersja: 'ankieta AI' + (tekst(dane.kod, 20) ? ' · ' + dane.kod : ''),
@@ -2611,6 +2626,7 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
     return {
       format: 'ms-na-zywo-1', kod: stan.kod, numer: ++Z.numer, zapisano: new Date().toISOString(),
       etap: !maOpis ? 'opis-pisze' : stan.wyslano ? 'wyslano' : (r.pytanie ? 'pytania' : (stan.koniecAI ? 'koniec' : 'czeka-na-pytania')),
+      sprawa: stan.sprawa || null,
       czekaNaPytania: maOpis && !r.pytanie && !stan.koniecAI,
       pozostaloPytan: st.kandydaci.length,
       biezacePytanie: r.pytanie ? r.pytanie.id : null,
@@ -2669,12 +2685,36 @@ window.WykrywanieDanych = { KATEGORIE, ETYKIETY, normalizuj, peselPoprawny, wier
       else rysujLekarzaTeraz();
     }, function (e) { Z.blad = 'Nie da się czytać folderu: ' + e.message; rysujLekarzaTeraz(); });
   }
+  // Każdy wysłany wywiad zakłada CZYSTĄ sprawę sprawy/<RRRR-MM-DD-NN>/ (Michał 1.11: „znowu miesza sprawy”):
+  // 00-surowe.md i 01-wywiad.md z tego wywiadu, _log.jsonl z kodem; Pokój przełącza się na nią od razu.
+  function nowyIdSprawy() {
+    var dzis = new Date(), d = dzis.getFullYear() + '-' + ('0' + (dzis.getMonth() + 1)).slice(-2) + '-' + ('0' + dzis.getDate()).slice(-2);
+    return MsMost.lista('sprawy').then(function (l) {
+      var n = 0;
+      (l || []).forEach(function (x) { var m = x.katalog && new RegExp('^' + d + '-(\\d+)$').exec(x.nazwa); if (m) n = Math.max(n, +m[1]); });
+      return d + '-' + ('0' + (n + 1)).slice(-2);
+    });
+  }
   function wyslijDoKonsylium() {
     var potw = document.getElementById('potw-koniec');
     var md = doKonsylium().tekst;
-    MsMost.zapisz(Z.katalog() + '/01-wywiad.md', md).then(function () {
-      stan.wyslano = new Date().toISOString(); zapisz(); synchronizuj(); rysuj();
-      var p2 = document.getElementById('potw-koniec'); if (p2) p2.textContent = 'Zapisano w folderze Konsylium. Claude zaczyna konsylium.';
+    var gotowe = stan.sprawa ? Promise.resolve(stan.sprawa) : nowyIdSprawy();
+    gotowe.then(function (id) {
+      var naglowek = '<!-- wywiad ' + stan.kod + ' · sprawa założona przez aplikację MS Konsylium ' + new Date().toISOString() + ' -->\n';
+      return MsMost.zapisz(Z.katalog() + '/01-wywiad.md', md)
+        .then(function () { return MsMost.zapisz('sprawy/' + id + '/00-surowe.md', naglowek + md); })
+        .then(function () { return MsMost.zapisz('sprawy/' + id + '/01-wywiad.md', naglowek + md); })
+        .then(function () {
+          if (stan.sprawa) return;
+          var z = { ts: new Date().toISOString(), zdarzenie: 'wywiad', kod: stan.kod, zrodlo: 'aplikacja', skrot: 'Wywiad ' + stan.kod + ' wysłany z aplikacji. Sprawa założona, czekam na konsylium.' };
+          return MsMost.zapisz('sprawy/' + id + '/_log.jsonl', JSON.stringify(z) + '\n');
+        })
+        .then(function () { return MsMost.zapisz(Z.katalog() + '/sprawa.txt', id + '\n'); })
+        .then(function () { return id; });
+    }).then(function (id) {
+      stan.sprawa = id; stan.wyslano = new Date().toISOString(); zapisz(); synchronizuj(); rysuj();
+      var p2 = document.getElementById('potw-koniec'); if (p2) p2.textContent = 'Zapisano. Założono sprawę ' + id + ' w folderze Konsylium – Claude zaczyna konsylium, Pokój lekarski ją pokazuje.';
+      MsMost.wyslij('pokoj', { zywo: true, sprawa: id }).catch(function () {});
     }, function (e) { if (potw) potw.textContent = 'Nie udało się zapisać: ' + e.message; });
   }
   function startZywo() {

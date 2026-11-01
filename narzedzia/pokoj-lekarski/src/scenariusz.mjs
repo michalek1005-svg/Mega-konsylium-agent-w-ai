@@ -238,6 +238,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
   const zdarzenia = log(pliki);
   const zywe = zLogu(zdarzenia);
   const triage = json(pliki, '02-triage.json');
+  const zAplikacji = zdarzenia.find((z) => z.zdarzenie === 'wywiad' && z.kod);
   const agregat = json(pliki, '03-opinie/_agregat-synonimy.json') || json(pliki, '03-opinie/_agregat.json');
   const tablica = {
     tryb: triage?.tryb || null,
@@ -272,7 +273,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     const niezn = (wywiad.split(/##\s*NIEZNANE/i)[1] || '').split('\n').filter((l) => /^\s*-\s/.test(l));
     sceny.push({
       id: 'wywiad', tytul: 'Wywiad', czas: czasZdarzenia(zdarzenia, 'wywiad', 'start'),
-      temat: 'Ordynator zbiera wywiad: co wiemy o pacjencie, a czego wciąż nie wiemy.',
+      temat: zAplikacji ? `Wywiad ${zAplikacji.kod} przyszedł z aplikacji. Czekam, aż konsylium (Claude) zacznie pracę nad tą sprawą.` : 'Ordynator zbiera wywiad: co wiemy o pacjencie, a czego wciąż nie wiemy.',
       wypowiedzi: [wyp('ordynator',
         `Wywiad zamknięty po ${tury} ${tury === 1 ? 'turze' : 'turach'}. Zostaje ${niezn.length} rzeczy NIEZNANYCH, m.in. ${bezMarkdown(niezn[0] || '').replace(/^-\s*/, '') || 'brak'}.`,
         niezn.join('\n') || wywiad, '01-wywiad.md')],

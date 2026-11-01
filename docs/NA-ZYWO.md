@@ -23,7 +23,7 @@ Do Claude trafiają tylko teksty po anonimizacji (PESEL, imię i nazwisko, adres
 2. Wywiad → **Na żywo z Konsylium**. Pacjent opisuje dolegliwości własnymi słowami. Aplikacja zapisuje `stan.json` z etapem `czeka-na-pytania` i pokazuje pacjentowi „Dobieram kolejne pytania…”.
 3. Claude czyta stan, dopisuje 2–4 pytania do `ankieta.json`. Aplikacja sprawdza plik co 1,5 s i od razu pokazuje pytanie. Po każdej odpowiedzi nadpisuje `stan.json`. Gdy pytania się skończą, pacjent znowu widzi „Dobieram…”, a Claude dopisuje kolejne. Ostatnia partia ma `"koniec": true`.
 4. Lekarz w trakcie może kliknąć **Dołącz wyniki badań**: otwiera się anonimizator, a **Dołącz do wywiadu** wraca z zanonimizowanym tekstem. Wyniki są w `stan.json` (`wyniki`) i w `01-wywiad.md`.
-5. Na końcu **Wyślij do Konsylium** zapisuje `01-wywiad.md`. Claude zakłada `sprawy/<ID>/`, kopiuje wywiad i prowadzi konsylium, zapisując dymki skryptem `skrypty/dymek.py`.
+5. Na końcu **Wyślij do Konsylium** zapisuje `01-wywiad.md` i zakłada nową sprawę `sprawy/<ID>/` (zawsze czystą, jedna sprawa = jeden wywiad). Claude prowadzi w niej konsylium, zapisując dymki skryptem `skrypty/dymek.py`.
 6. Zakładka **Pokój lekarski** sama pokazuje najnowszą sprawę z `sprawy/` i dociąga dymki na żywo. Gdy konsylium zapisze `09-FINAL.md`, pokój sam otwiera ekran **Wnioski** (rekomendacja, pilność, plan B, czego nie wiemy, kiedy wrócić, źródła); przycisk „Wnioski” otwiera go ponownie.
 
 ## 2. Instrukcja dla Claude (pętla wywiadu)
@@ -53,7 +53,7 @@ Zasady:
 
 Gdy podsumowanie mówi „Wywiad wysłany”:
 
-1. Załóż `sprawy/<RRRR-MM-DD-NN>/`, skopiuj `wywiad-na-zywo/<KOD>/01-wywiad.md` jako `00-surowe.md` i `01-wywiad.md` (wywiad już jest zamknięty: lista NIEZNANE jedzie dalej, bez dodatkowych tur pytań, chyba że lekarz dopisze odpowiedzi w czacie).
+1. **Sprawę zakłada aplikacja** przy „Wyślij do Konsylium” (od 1.11.2026): `sprawy/<RRRR-MM-DD-NN>/` z `00-surowe.md`, `01-wywiad.md` i `_log.jsonl` (zdarzenie `wywiad` z kodem); nazwa sprawy jest w `wywiad-na-zywo/<KOD>/sprawa.txt` i w podsumowaniu skryptu. **Nie zakładaj drugiej sprawy** — pracuj w tej. Każdy wywiad = osobna, czysta sprawa; Pokój lekarski przełącza się na nią od razu. (Wywiad jest zamknięty: lista NIEZNANE jedzie dalej, bez dodatkowych tur pytań, chyba że lekarz dopisze odpowiedzi w czacie.)
 2. Prowadź konsylium według `CLAUDE.md` i `PROMPT-NADZORCA.md`, z modelami jak w `.claude/agents/`.
 3. **Dymki od razu po każdej wypowiedzi**, nie po całym kroku: `python skrypty/dymek.py sprawy/<ID> --rola … --faza "…" --skrot "…" [--info "…"]`. Skrót to 1–2 pełne zdania językiem medycznym (do 400 znaków), a `--info` to linia z liczbami, skalami i wytycznymi (docs/DYMKI.md). Na początku każdej fazy dymek ordynatora z `--temat`.
 4. **Dymki tylko z treścią medyczną** (docs/DYMKI.md): opinie i zdania lekarzy, bez wag, agregacji i opisu procesu. Etapy techniczne dostają najwyżej jeden dymek ordynatora z `--temat`.
