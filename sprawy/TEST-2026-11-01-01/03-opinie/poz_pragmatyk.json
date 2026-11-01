@@ -1,0 +1,110 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "polekowa reakcja z eozynofilią i objawami układowymi wywołana allopurynolem",
+      "p": 0.7,
+      "za": [
+        "allopurynol włączony ok. miesiąc temu: latencja typowa dla tej reakcji (ok. 2–8 tygodni) [wiedza modelu, niezweryfikowane]",
+        "eozynofilia 2,1 G/l (15%), limfocyty atypowe w rozmazie",
+        "zajęcie wątroby (ALT 186 U/l, AST 140 U/l) i nerek (kreatynina 1,6 mg/dl wobec 1,0 mg/dl pół roku temu, oliguria, ciemny mocz)",
+        "gorączka do 38,5°C, rozległa swędząca osutka plamisto-grudkowa zlewająca się, obrzęk twarzy z przewagą okolic oczu",
+        "zgłaszane powiększone, bolesne węzły chłonne szyi, pach i pachwin (niezbadane fizykalnie)",
+        "szacunkowo RegiSCAR ok. 7–8 pkt = przypadek pewny (≥6 pkt), choć brak badania przedmiotowego i wykluczenia innych przyczyn [punktacja: wiedza modelu, niezweryfikowane; skala: PMID 23855313]",
+        "allopurynol to jeden z najczęstszych sprawców ciężkich reakcji skórnych; ryzyko rośnie przy upośledzonej czynności nerek i u nosicieli HLA-B*58:01 (PMID 23873481, 21393610, 28509689)"
+      ],
+      "przeciw": [
+        "brak badania fizykalnego, ocenianej powierzchni zmian i błon śluzowych",
+        "nie wykluczono infekcji wirusowej (EBV, CMV, HHV-6) ani hepatitis — pierwotne zakażenie EBV potrafi naśladować tę reakcję (PMID 36819351)",
+        "nie znamy kreatyniny wyjściowej tuż przed włączeniem allopurynolu"
+      ]
+    },
+    {
+      "nazwa": "polekowa reakcja z eozynofilią i objawami układowymi wywołana amoksycyliną",
+      "p": 0.08,
+      "za": [
+        "osutka 1–3 dni po zakończeniu 5-dniowej kuracji amoksycyliną z kwasem klawulanowym lub amoksycyliną (Duomox)",
+        "aminopenicyliny są opisywanym czynnikiem dodatkowo nasilającym reakcję allopurynolową (PMID 30042109)"
+      ],
+      "przeciw": [
+        "latencja ok. 6–8 dni od pierwszej dawki jest za krótka jak na typową reakcję tego typu [wiedza modelu, niezweryfikowane]",
+        "wcześniej brała ten antybiotyk bez problemu"
+      ]
+    },
+    {
+      "nazwa": "pierwotne zakażenie wirusem Epsteina-Barr z osutką po aminopenicylinie",
+      "p": 0.07,
+      "za": [
+        "ból gardła tydzień wcześniej, limfadenopatia uogólniona, limfocyty atypowe, wzrost aminotransferaz",
+        "osutka po amoksycylinie w mononukleozie zakaźnej jest częsta (PMID 40512251)"
+      ],
+      "przeciw": [
+        "wiek 71 lat — pierwotne zakażenie EBV rzadkie (PMID 2536952)",
+        "eozynofilia 2,1 G/l nietypowa dla mononukleozy [wiedza modelu, niezweryfikowane]",
+        "brak zachorowań w otoczeniu"
+      ]
+    },
+    {
+      "nazwa": "niepowikłana osutka plamisto-grudkowa polekowa",
+      "p": 0.05,
+      "za": [
+        "osutka plamisto-grudkowa swędząca po antybiotyku"
+      ],
+      "przeciw": [
+        "zajęcie wątroby i nerek, eozynofilia i limfadenopatia wykraczają poza prostą osutkę"
+      ]
+    },
+    {
+      "nazwa": "zakażenie bakteryjne uogólnione z ostrym uszkodzeniem nerek",
+      "p": 0.04,
+      "za": [
+        "gorączka, leukocytoza 14,2 G/l, CRP 48 mg/l, oliguria, zawroty ortostatyczne"
+      ],
+      "przeciw": [
+        "eozynofilia, limfocyty atypowe i obrzęk twarzy przemawiają za reakcją polekową; ustąpienie bólu gardła"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "objawy ze strony błon śluzowych i pęcherze/złuszczanie naskórka — w ankiecie zaprzeczone (wymaga potwierdzenia oglądaniem, bo przesądza o zespole Stevensa-Johnsona lub toksycznej nekrolizie naskórka)",
+    "kontakt z osobami z gorączką i wysypką — zaprzeczony"
+  ],
+  "red_flags_otwarte": [
+    "ostre uszkodzenie nerek z oligurią (kreatynina 1,6 mg/dl wobec 1,0 mg/dl) u pacjentki przyjmującej ramipryl",
+    "zawroty ortostatyczne przy gorączce — możliwa hipotensja i odwodnienie (parametry życiowe NIEZNANE)",
+    "polekowe uszkodzenie wątroby (ALT 186 U/l, ok. 5× górnej granicy normy) [próg normy: wiedza modelu, niezweryfikowane]",
+    "eozynofilia 2,1 G/l — ryzyko zajęcia serca i płuc (nieoceniane: brak EKG, osłuchiwania, saturacji)",
+    "uogólniona osutka — powierzchnia ciała i błony śluzowe niezbadane"
+  ],
+  "nastepny_krok": "Dziś odstawić allopurynol na stałe (i wstrzymać ramipryl), zbadać w gabinecie ciśnienie, tętno, saturację, temperaturę, błony śluzowe i zrobić EKG, a następnie wystawić skierowanie do szpitala w trybie pilnym (izba przyjęć/SOR, oddział chorób wewnętrznych lub dermatologii) z rozpoznaniem roboczym L27.0 „uogólniona osutka polekowa — podejrzenie DRESS po allopurynolu” i dołączonymi wynikami z wczoraj.",
+  "co_zmieniloby_zdanie": "Prawidłowe parametry życiowe, diureza wracająca do normy i spadek kreatyniny w kontroli po nawodnieniu i odstawieniu ramiprylu pozwoliłyby rozważyć ścisłą kontrolę ambulatoryjną w 24–48 h zamiast przyjęcia; przeciwnie, ciśnienie skurczowe <90 mmHg, saturacja <92%, zmiany na błonach śluzowych lub pęcherze oznaczają wezwanie Zespołu Ratownictwa Medycznego (pilność 1) — odległość do SOR i dostępność transportu są NIEZNANE.",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "pomiar RR na leżąco i stojąco, tętno, SpO2, temperatura; obejrzeć jamę ustną, spojówki, narządy płciowe (wykluczyć zajęcie błon śluzowych); oszacować odsetek powierzchni ciała z osutką; zbadać węzły chłonne i wątrobę",
+      "EKG 12-odprowadzeniowe (eozynofilia, gorączka, możliwe zaburzenia elektrolitowe przy uszkodzeniu nerek)",
+      "odstawić allopurynol natychmiast i bezterminowo; nie podawać ponownie amoksycyliny do czasu oceny alergologicznej",
+      "wstrzymać ramipryl (ostre uszkodzenie nerek, oliguria, zawroty ortostatyczne); amlodypinę wstrzymać, jeśli RR skurczowe <110 mmHg [próg: wiedza modelu, niezweryfikowane]",
+      "na gorączkę tylko paracetamol w zredukowanej dawce (nie więcej niż 2 g/dobę przy uszkodzeniu wątroby) [wiedza modelu, niezweryfikowane]; bez niesteroidowych leków przeciwzapalnych",
+      "nie włączać w POZ glikokortykosteroidu ogólnie ani nowego antybiotyku przed przyjęciem — leczenie zależy od zakresu zajęcia narządów, a nowe leki zaciemniają obraz (PMID 23602183, 37133714) [szczegół: wiedza modelu, niezweryfikowane]"
+    ],
+    "zlecic": "Nie zlecać ambulatoryjnie dalszej diagnostyki z oczekiwaniem na wynik — wczorajsze wyniki wystarczają do skierowania. Jeśli pacjentka odmówi szpitala: dziś morfologia z rozmazem, ALT, AST, bilirubina, kreatynina z eGFR, sód, potas, badanie ogólne moczu, CRP, i kontrola jutro.",
+    "skierowanie": "Skierowanie do szpitala, tryb pilny (dziś): oddział chorób wewnętrznych lub dermatologii, przez izbę przyjęć/SOR; w skierowaniu: allopurynol od ok. miesiąca, amoksycylina 5 dni zakończona 1–3 dni przed osutką, eozynofilia 2,1 G/l, limfocyty atypowe, ALT 186 U/l, kreatynina 1,6 mg/dl (wcześniej 1,0), oliguria. Przy niestabilności — wezwanie Zespołu Ratownictwa Medycznego zamiast skierowania.",
+    "wykonalnosc": "71-letnia, osłabiona pacjentka z zawrotami ortostatycznymi nie powinna jechać sama ani prowadzić — transport przez rodzinę leżąco/siedząco, a gdy brak opiekuna lub parametry niestabilne — Zespół Ratownictwa Medycznego. Jeśli nie zgodzi się na szpital: pisemna odmowa w dokumentacji, kontrola osobista lub teleporada z wynikami nazajutrz.",
+    "kontrola": "Po wypisie wizyta w POZ w ciągu 7 dni: kreatynina, ALT, morfologia z rozmazem; dalej co 2–4 tygodnie przez ok. 3 miesiące oraz TSH po 2–3 miesiącach (możliwe nawroty i późne autoimmunologiczne zapalenie tarczycy) [wiedza modelu, niezweryfikowane]; decyzja o ponownym włączeniu ramiprylu po stabilizacji czynności nerek.",
+    "dokumentacja": "Wpisać w karcie i na recepcie alergię/nadwrażliwość: allopurynol (podejrzenie zespołu DRESS) — przeciwwskazanie bezwzględne; amoksycylina — podejrzenie, do weryfikacji. Zgłosić działanie niepożądane do Urzędu Rejestracji Produktów Leczniczych. Dna moczanowa: leczenie obniżające stężenie kwasu moczowego dopiero po wyzdrowieniu, bez allopurynolu, po ocenie reumatologa.",
+    "co_powiedziec_pacjentce": "To najpewniej ciężka reakcja na lek na dnę (allopurynol), która już uderza w wątrobę i nerki, więc dziś musi Pani pojechać do szpitala i nigdy więcej nie brać allopurynolu."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i koszyka badań POZ dla tej sytuacji (same przykłady)",
+    "pamiec/zespol.md — brak realiów lokalnych (odległość do SOR, dostępność EKG nieuzupełnione)",
+    "Zapytanie 1 (WebSearch pubmed.ncbi.nlm.nih.gov): 'allopurinol DRESS syndrome renal impairment risk factors HLA-B*58:01' → PMID 23873481 (przegląd systematyczny nadwrażliwości na allopurynol 1950–2012), 21393610 (HLA-B58 a włączanie allopurynolu w przewlekłej niewydolności nerek), 28509689 (czynniki ryzyka ciężkich reakcji skórnych po allopurynolu), 30042109 (DRESS po allopurynolu nasilony antybiotykami), 26416594",
+    "Zapytanie 2: 'RegiSCAR scoring system DRESS validation' → PMID 23855313 (prospektywne badanie RegiSCAR), 21592453 (przegląd DRESS)",
+    "Zapytanie 3: 'DRESS management systemic corticosteroids hospitalization review' → PMID 23602183 (DRESS cz. II: leczenie), 37133714 (glikokortykosteroidy ogólne vs miejscowe, metaanaliza), 35338896 (przegląd dla medycyny ratunkowej)",
+    "Zapytanie 4: 'amoxicillin rash infectious mononucleosis Epstein-Barr virus older adults' → PMID 40512251 (osutka po antybiotyku w mononukleozie, metaanaliza), 36819351 (pierwotne zakażenie EBV naśladujące DRESS), 2536952 (EBV u osób starszych)",
+    "Uwaga: PMID wzięte wyłącznie z adresów wyników wyszukiwania; treść abstraktów nieczytana — szczegółowe liczby (latencja, punktacja RegiSCAR, dawki, progi) oznaczone jako wiedza modelu, niezweryfikowane"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: pilność 2 -> 1. Skąpomocz z kreatyniną 1,6 mg/dl (wyjściowo 1,0) przy ramiprylu, zawroty ortostatyczne i nieznane parametry życiowe u 71-latki; w realiach POZ tryb 'dziś' grozi odroczeniem. U starszych chorych z DRESS zajęcie nerek i sepsa są częstsze, a allopurynol to najczęstszy sprawca (PMID 37669109). p bez zmian (0,70)."
+}

@@ -1,0 +1,180 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "Polekowa reakcja z eozynofilią i objawami ogólnymi wywołana allopurynolem",
+      "p": 0,
+      "za": [
+        "allopurynol włączony ok. 4 tygodnie temu: typowa latencja tej reakcji 2–8 tygodni [wiedza modelu, niezweryfikowane]",
+        "gorączka 38,5 °C, rozlana odropodobna wysypka >50% powierzchni ciała, obrzęk twarzy, limfadenopatia",
+        "eozynofile 2,1 G/l (15%), limfocyty atypowe",
+        "zajęcie wątroby (ALT 186 U/l) i nerek (kreatynina 1,6 vs 1,0 mg/dl)",
+        "przewlekła choroba nerek/nadciśnienie to znany czynnik ryzyka ciężkiej reakcji na allopurynol (PMID 42499701, 21393610, 30580048)"
+      ],
+      "przeciw": [
+        "brak biopsji i badania fizykalnego",
+        "nie wiadomo, od kiedy dokładnie są eozynofile (pojedynczy pomiar)"
+      ]
+    },
+    {
+      "nazwa": "Polekowa reakcja z eozynofilią i objawami ogólnymi wywołana amoksycyliną",
+      "p": 0,
+      "za": [
+        "ekspozycja na amoksycylinę w ciągu ostatnich 2 tygodni",
+        "wysypka 1–3 dni po ostatniej tabletce"
+      ],
+      "przeciw": [
+        "latencja ok. 8–10 dni krótka jak na tę reakcję [wiedza modelu, niezweryfikowane]",
+        "wcześniej tolerowała ten antybiotyk"
+      ]
+    },
+    {
+      "nazwa": "Wysypka po aminopenicylinie w przebiegu mononukleozy zakaźnej",
+      "p": 0,
+      "za": [
+        "ból gardła przed antybiotykiem",
+        "limfocyty atypowe, limfadenopatia, podwyższone aminotransferazy",
+        "zjawisko dobrze opisane (PMID 40512251)"
+      ],
+      "przeciw": [
+        "wiek 71 lat: pierwotne zakażenie EBV rzadkie",
+        "eozynofilia 15% i ostre uszkodzenie nerek nie pasują",
+        "obrzęk twarzy i narastanie po odstawieniu antybiotyku przemawiają za reakcją typu DRESS"
+      ]
+    },
+    {
+      "nazwa": "Wirusowa osutka z gorączką",
+      "p": 0,
+      "za": [
+        "gorączka, wysypka plamisto-grudkowa"
+      ],
+      "przeciw": [
+        "brak kontaktu z chorymi",
+        "eozynofilia, uszkodzenie wątroby i nerek"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "zajęcie błon śluzowych i pęcherze/nadżerki skóry według ankiety nieobecne (mniej prawdopodobny zespół Stevensa-Johnsona/toksyczna nekroliza naskórka; wymaga potwierdzenia w badaniu przedmiotowym)",
+    "małopłytkowość (PLT 210 G/l)"
+  ],
+  "red_flags_otwarte": [
+    "ostre uszkodzenie nerek z oligurią i ciemnym moczem (kreatynina 1,6 mg/dl, wzrost o 60% w pół roku) u chorej na ramiprylu",
+    "zawroty ortostatyczne: możliwa hipowolemia/hipotensja; parametry życiowe NIEZNANE",
+    "polekowe zapalenie wątroby (ALT 186 U/l); bilirubina i INR NIEZNANE",
+    "zajęcie serca (zapalenie mięśnia sercowego w przebiegu reakcji, opisywane jako przyczyna zgonów: PMID 39086788, 33777581) niewykluczone",
+    "dalsza ekspozycja na allopurynol, jeśli chora nadal go przyjmuje"
+  ],
+  "nastepny_krok": "Dziś: odstawić allopurynol (i nie wznawiać amoksycyliny), wstrzymać ramipryl i skierować chorą na izbę przyjęć szpitala z oddziałem dermatologii lub chorób wewnętrznych z rozpoznaniem wstępnym DRESS z zajęciem wątroby i nerek; w POZ nie zlecać przed tym żadnych dodatkowych badań.",
+  "co_zmieniloby_zdanie": "Gdyby w badaniu przedmiotowym chora miała prawidłowe ciśnienie bez spadku ortostatycznego, prawidłową diurezę, a powtórna kreatynina i ALT spadały po odstawieniu leków, dopuściłbym codzienną kontrolę ambulatoryjną zamiast hospitalizacji, ale przy tych danych to mało realne.",
+  "badania": [
+    {
+      "nazwa": "Parametry życiowe: ciśnienie (z próbą ortostatyczną), tętno, temperatura, saturacja; ocena skóry i błon śluzowych",
+      "cel": "ocena hipowolemii i wstrząsu, wykluczenie pęcherzy/zajęcia śluzówek",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "zero kosztu, w gabinecie, 5 minut; hipotensja lub SpO2 <92% = transport medyczny, pilność 1"
+    },
+    {
+      "nazwa": "EKG 12-odprowadzeniowe",
+      "cel": "przesiew zajęcia serca i zaburzeń elektrolitowych przy ostrym uszkodzeniu nerek",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "tylko jeśli dostępne w gabinecie od ręki; nie opóźniać skierowania"
+    },
+    {
+      "nazwa": "W szpitalu: morfologia z rozmazem, ALT, AST, bilirubina, INR, albumina, kreatynina, sód, potas, badanie ogólne moczu z osadem",
+      "cel": "stopień ciężkości zajęcia narządów, kwalifikacja do glikokortykosteroidów ogólnych, monitorowanie",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "powtarzane seryjnie; zestaw ten rozstrzyga o leczeniu, reszta jest dodatkiem"
+    },
+    {
+      "nazwa": "W szpitalu: troponina sercowa",
+      "cel": "wykluczenie zapalenia mięśnia sercowego w przebiegu reakcji",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "tanie, rozstrzyga o monitorowaniu kardiologicznym i echokardiografii; echo tylko przy podwyższonej troponinie lub objawach"
+    },
+    {
+      "nazwa": "W szpitalu: USG nerek",
+      "cel": "wykluczenie przeszkody w odpływie moczu u chorej z oligurią",
+      "zmienia_decyzje": true,
+      "kolejnosc": 4,
+      "uwagi": "bez promieniowania; uzasadnione przy oligurii, nie dla samej diagnostyki reakcji"
+    },
+    {
+      "nazwa": "W szpitalu: posiew krwi przed włączeniem glikokortykosteroidów",
+      "cel": "wykluczenie bakteriemii u gorączkującej 71-latki przed immunosupresją",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "dodatni wynik zmienia leczenie; prokalcytonina zamiast posiewów nie"
+    },
+    {
+      "nazwa": "Serologia EBV (VCA IgM/IgG, EBNA)",
+      "cel": "różnicowanie z mononukleozą zakaźną z wysypką po aminopenicylinie",
+      "zmienia_decyzje": false,
+      "kolejnosc": 5,
+      "uwagi": "dodatni wynik nie zmienia dziś niczego: allopurynol i tak odstawiony na stałe, hospitalizacja i tak wskazana z powodu nerek; tanie, może zrobić szpital"
+    },
+    {
+      "nazwa": "Konsultacja alergologiczna z testami płatkowymi i/lub testem transformacji limfocytów",
+      "cel": "identyfikacja leku sprawczego (allopurynol vs amoksycylina) dla przyszłych zaleceń",
+      "zmienia_decyzje": true,
+      "kolejnosc": 6,
+      "uwagi": "dopiero po pełnym ustąpieniu reakcji, zwykle po kilku miesiącach [wiedza modelu, niezweryfikowane]; użyteczność opisana w PMID 20136879, 42014364; rozstrzyga, czy w przyszłości można stosować aminopenicyliny"
+    }
+  ],
+  "nie_zlecac": [
+    {
+      "nazwa": "Wymaz z gardła, ASO, szybki test na paciorkowca",
+      "powod": "gardło już nie boli, po pełnej kuracji antybiotykiem; wynik nie zmienia postępowania"
+    },
+    {
+      "nazwa": "Genotypowanie HLA-B*58:01 w ostrej fazie",
+      "powod": "allopurynol i tak przeciwwskazany na stałe po tej reakcji; wynik nie zmienia leczenia dziś (sens ma przesiew przed włączeniem leku, PMID 30580048)"
+    },
+    {
+      "nazwa": "Swoiste IgE na penicyliny, tryptaza, testy skórne natychmiastowe",
+      "powod": "reakcja późna, komórkowa (typ IV), a nie natychmiastowa; ujemne IgE fałszywie uspokoją"
+    },
+    {
+      "nazwa": "Prokalcytonina",
+      "powod": "nie zmienia decyzji: hospitalizacja i posiew krwi niezależnie od wyniku; w reakcji polekowej bywa podwyższona"
+    },
+    {
+      "nazwa": "Panel autoimmunologiczny (ANA, ANCA), elektroforeza białek",
+      "powod": "brak przesłanek; ryzyko przypadkowych dodatnich wyników i kaskady"
+    },
+    {
+      "nazwa": "Tomografia komputerowa jamy brzusznej lub klatki piersiowej",
+      "powod": "promieniowanie, kontrast jodowy obciążający nerki przy kreatyninie 1,6 mg/dl; bez objawów miejscowych nie zmienia leczenia"
+    },
+    {
+      "nazwa": "PCR HHV-6/CMV w pierwszej dobie",
+      "powod": "reaktywacja należy do przebiegu reakcji i nie zmienia leczenia początkowego; ewentualnie przy przebiegu przedłużonym lub nawrocie"
+    },
+    {
+      "nazwa": "Rutynowa biopsja skóry",
+      "powod": "przy jednoznacznym obrazie i braku pęcherzy/zajęcia śluzówek nie zmienia leczenia; wskazana tylko, gdy pojawią się pęcherze lub nadżerki"
+    },
+    {
+      "nazwa": "Diagnostyka ambulatoryjna w POZ przed skierowaniem (kontrolne badania krwi za 2–3 dni)",
+      "powod": "czekanie na wyniki u chorej z oligurią i ostrym uszkodzeniem nerek nie jest bezpieczne; komplet badań zrobi szpital w jednym miejscu"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskiej wytycznej dla polekowych reakcji skórnych (tylko przykłady); pamiec/zespol.md: brak wniosków dla tej prezentacji",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'allopurinol DRESS renal impairment HLA-B*58:01 latency' → PMID 42499701, 21393610, 30580048, 23873481, 27362322",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'DRESS syndrome RegiSCAR scoring diagnosis management corticosteroids review' → PMID 37082745, 23602183, 36479739, 21592453",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'DRESS myocarditis cardiac involvement troponin screening' → brak trafnych wyników (nieskuteczne)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'drug reaction with eosinophilia and systemic symptoms myocarditis' → PMID 39086788, 33777581, 39422393",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'amoxicillin rash infectious mononucleosis incidence Epstein-Barr adults' → PMID 40512251, 37526456",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'patch testing timing after DRESS culprit drug identification' → PMID 20136879, 42014364",
+    "Latencja 2–8 tygodni, czas testów płatkowych po ustąpieniu reakcji: [wiedza modelu, niezweryfikowane]"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Pilność 2→1: skąpomocz z ostrym uszkodzeniem nerek przy ramiprylu, potas NIEZNANY (hiperkaliemia niewykluczalna w POZ bez laboratorium; ACEi/ARB po AKI u starszych: hiperkaliemia aHR 1,69, hipotensja aHR 1,38, PMID 41387369, DOI 10.1002/bcp.70408), zawroty ortostatyczne i brak badania fizykalnego (ankieta w aplikacji). Czekanie bez parametrów życiowych nie jest bezpieczne. Powrót do 2 tylko przy prawidłowym RR bez spadku ortostatycznego, EKG bez cech hiperkaliemii i braku zmian śluzówkowych w badaniu."
+}

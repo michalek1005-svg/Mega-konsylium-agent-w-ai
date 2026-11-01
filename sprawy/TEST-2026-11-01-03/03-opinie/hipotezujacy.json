@@ -1,0 +1,101 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Zatorowość płucna wtórna do zakrzepicy żył głębokich lewej kończyny dolnej",
+      "p": 0.72,
+      "za": [
+        "Objawy kliniczne zakrzepicy żył głębokich lewej łydki: łydka grubsza, cieplejsza, bolesna przy ucisku, ból narastał stopniowo bez urazu, od 4 dni po 14-godzinnej podróży autokarem",
+        "Nowy ból opłucnowy (kłucie przy głębokim wdechu) z prawej strony, męczliwość, kaszel, pojawiły się kilka dni po objawach łydki",
+        "Tachykardia 104/min i SpO2 94% w spoczynku (pomiar domowy)",
+        "Stan przedomdleniowy od wczoraj ('ciemno przed oczami, prawie zemdlałam'), co przy zatorowości sugeruje większą masę zatoru",
+        "Czynniki ryzyka: długa podróż (ryzyko żylnej choroby zakrzepowo-zatorowej ok. 2,8 razy większe, +18% na każde 2 h podróży; PMID 19581633), doustna hormonalna terapia menopauzalna, zakrzepica u krewnego pierwszego stopnia",
+        "Skala Wellsa 7,5 pkt (objawy zakrzepicy żył głębokich 3, brak lepszego rozpoznania alternatywnego 3, tętno >100/min 1,5) = wysokie prawdopodobieństwo kliniczne (>6; PMID 10744147)"
+      ],
+      "przeciw": [
+        "Duszność dopiero przy większym wysiłku (2 piętra), objawy bez narastania od rana",
+        "Ciśnienie skurczowe 132 mmHg, brak hipotensji; parametry z domowych urządzeń, bez badania fizykalnego (NIEZNANE)",
+        "Estradiol z dydrogesteronem to schemat doustny o najmniejszym ryzyku zakrzepowym (OR 1,18; 95% CI 0,98–1,42; PMID 30626577), więc hormonoterapia jest tu kofaktorem, nie głównym wyzwalaczem"
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z niezależną przyczyną bólu opłucnowego",
+      "p": 0.08,
+      "za": [
+        "Typowy obraz zakrzepicy łydki po długiej podróży u kobiety z dodatnim wywiadem rodzinnym",
+        "Duszność tylko przy dużym wysiłku i ból opłucnowy bez narastania mogą mieć inne źródło (np. wirusowe zapalenie opłucnej przy kaszlu)"
+      ],
+      "przeciw": [
+        "Tachykardia, SpO2 94% i stan przedomdleniowy trudno wyjaśnić izolowaną zakrzepicą łydki",
+        "Zbieżność w czasie objawów z łydki i z klatki piersiowej przemawia za jednym procesem"
+      ]
+    },
+    {
+      "nazwa": "Pozaszpitalne zapalenie płuc z odczynem opłucnowym",
+      "p": 0.07,
+      "za": [
+        "Kaszel, prawostronny ból opłucnowy, tachykardia i SpO2 94% pasują do zapalenia płuc z zajęciem opłucnej ('coś częstego o nietypowym obrazie')",
+        "Podróż zbiorowa autokarem sprzyja zakażeniom dróg oddechowych"
+      ],
+      "przeciw": [
+        "Nie wiadomo o gorączce ani o odkrztuszaniu (NIEZNANE); ibuprofen mógł maskować gorączkę",
+        "Nie tłumaczy jednostronnego obrzęku, ocieplenia i tkliwości łydki"
+      ]
+    },
+    {
+      "nazwa": "Pęknięta torbiel podkolanowa (zespół rzekomozakrzepowy) z bólem mięśniowo-szkieletowym klatki piersiowej",
+      "p": 0.04,
+      "za": [
+        "Pęknięcie torbieli Bakera daje ból, obrzęk i zaczerwienienie łydki imitujące zakrzepicę (PMID 30249236)",
+        "Pacjentka sama łączy ból łydki ze spacerem po podróży"
+      ],
+      "przeciw": [
+        "Brak wywiadu choroby stawu kolanowego i brak nagłego początku; ból narastał stopniowo",
+        "Nie wyjaśnia tachykardii, spadku SpO2 ani stanu przedomdleniowego; różnicowanie i tak wymaga ultrasonografii, a zakrzepicę żył głębokich trzeba wykluczyć najpierw (PMID 17017274)"
+      ]
+    },
+    {
+      "nazwa": "Naciągnięcie mięśnia brzuchatego łydki i nerwoból międzyżebrowy",
+      "p": 0.03,
+      "za": [
+        "Hipoteza lekarza prowadzącego i pacjentki: spacer po podróży, kłujący ból klatki zależny od oddychania"
+      ],
+      "przeciw": [
+        "Brak momentu urazu, ból narastał stopniowo; łydka cieplejsza i grubsza, co przemawia za procesem zakrzepowym lub zapalnym, a nie za naciągnięciem",
+        "Nerwoból międzyżebrowy nie wyjaśnia tachykardii 104/min, SpO2 94%, męczliwości i stanu przedomdleniowego; to rozpoznanie z wykluczenia"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Duszność wysiłkowa z czynnikami ryzyka zakrzepicy (podróż 14 h, doustna hormonoterapia, wywiad rodzinny) - zatorowość płucna niewykluczona",
+    "Stan przedomdleniowy od wczoraj - przy podejrzeniu zatorowości możliwy zator o większej masie; w badaniu PESIT zatorowość stwierdzono u 17,3% hospitalizowanych z pierwszym omdleniem (PMID 27797317)",
+    "SpO2 94% i tętno 104/min w spoczynku",
+    "Jednostronny obrzęk, ocieplenie i tkliwość łydki po podróży >4 h - podejrzenie zakrzepicy żył głębokich",
+    "Brak badania fizykalnego, EKG, gazometrii i jakichkolwiek badań laboratoryjnych (NIEZNANE)"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na szpitalny oddział ratunkowy transportem medycznym (nie samodzielnie) w celu angiografii tomografii komputerowej tętnic płucnych; przy wysokim prawdopodobieństwie klinicznym (Wells 7,5) D-dimer w POZ nie wyklucza zatorowości i nie powinien opóźniać skierowania.",
+  "co_zmieniloby_zdanie": "Prawidłowa angiografia tomografii komputerowej tętnic płucnych przy ujemnym ultrasonograficznym badaniu uciskowym żył lewej kończyny dolnej obniżyłoby zatorowość poniżej 5% i przesunęło różnicowanie w stronę zapalenia płuc z odczynem opłucnowym lub torbieli podkolanowej.",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak polskiej wytycznej dla żylnej choroby zakrzepowo-zatorowej w bibliotece (tylko przykłady)",
+    "pamiec/zespol.md - brak wpisu dotyczącego tej prezentacji",
+    "PubMed zapytanie 1: 'hormone replacement therapy venous thromboembolism risk oral transdermal nested case-control' -> PMID 30626577 (streszczenie sprawdzone)",
+    "PubMed zapytanie 2: 'long-distance travel venous thromboembolism meta-analysis' -> PMID 19581633 (streszczenie sprawdzone)",
+    "PubMed zapytanie 3: 'syncope pulmonary embolism prevalence hospitalized first episode' -> PMID 27797317, 29513729 (streszczenia sprawdzone)",
+    "PubMed zapytanie 4: 'Wells score pulmonary embolism D-dimer diagnostic strategy prospective management study' -> 14 wyników, nie wykorzystane",
+    "PubMed zapytanie 5: '2019 ESC Guidelines diagnosis management acute pulmonary embolism[Title]' -> PMID 32100729 (bez streszczenia), 31920149 (streszczenie ogólne) - nie powołuję się na liczby z wytycznych ESC",
+    "PubMed zapytanie 6: 'Wells PS[Author] AND pulmonary embolism AND simple clinical model D-dimer[Title/Abstract]' -> PMID 10744147, 11453709 (streszczenia sprawdzone)",
+    "PubMed zapytanie 7: 'ruptured Baker cyst pseudothrombophlebitis deep vein thrombosis differential ultrasound' -> PMID 30249236, 17017274 (streszczenia sprawdzone)",
+    "Vinogradova Y i wsp. BMJ 2019;364:k4810. PMID 30626577. DOI 10.1136/bmj.k4810 - doustna hormonoterapia menopauzalna: OR 1,58 dla żylnej choroby zakrzepowo-zatorowej; estradiol + dydrogesteron OR 1,18 (0,98–1,42), najniższe ryzyko; przezskórna OR 0,93",
+    "Chandra D i wsp. Ann Intern Med 2009;151:180-90. PMID 19581633. DOI 10.7326/0003-4819-151-3-200908040-00129 - podróż: RR 2,8 (2,2–3,7), +18% ryzyka na każde 2 h podróży dowolnym środkiem transportu",
+    "Prandoni P i wsp. N Engl J Med 2016;375:1524-31. PMID 27797317. DOI 10.1056/NEJMoa1602172 - zatorowość płucna u 17,3% hospitalizowanych z pierwszym omdleniem (badanie PESIT; średni wiek 76 lat)",
+    "Epstein D i wsp. PLoS One 2018;13:e0193725. PMID 29513729. DOI 10.1371/journal.pone.0193725 - kontrargument: bez podejrzenia klinicznego rutynowa diagnostyka zatorowości po omdleniu nie jest zalecana (tu podejrzenie kliniczne jest wysokie)",
+    "Wells PS i wsp. Thromb Haemost 2000;83:416-20. PMID 10744147 (DOI niepodany w PubMed) - punktacja skali Wellsa; >6 pkt wysokie prawdopodobieństwo, >4 'zatorowość prawdopodobna'",
+    "Wells PS i wsp. Ann Intern Med 2001;135:98-107. PMID 11453709. DOI 10.7326/0003-4819-135-2-200107170-00010 - zatorowość u 37,5% w grupie wysokiego prawdopodobieństwa; tylko niskie prawdopodobieństwo + ujemny D-dimer pozwalało pominąć obrazowanie",
+    "Mülkoğlu C i wsp. BMC Musculoskelet Disord 2018;19:345. PMID 30249236. DOI 10.1186/s12891-018-2263-8 - pęknięta torbiel Bakera imituje zakrzepicę żył głębokich; różnicowanie ultrasonograficzne",
+    "Fink ML, Stoneman PD. J Orthop Sports Phys Ther 2006;36:686-97. PMID 17017274. DOI 10.2519/jospt.2006.2251 - po długiej podróży samochodem ból kończyny różnicowany z torbielą Bakera okazał się zakrzepicą z obustronną zatorowością",
+    "[wiedza modelu, niezweryfikowane] - przy wysokim prawdopodobieństwie klinicznym zatorowości wytyczne ESC 2019 zalecają bezpośrednio angiografię tomografii komputerowej, bez D-dimeru"
+  ]
+}

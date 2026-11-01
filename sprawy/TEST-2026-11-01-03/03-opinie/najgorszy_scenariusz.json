@@ -1,0 +1,106 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Zatorowość płucna wtórna do zakrzepicy żył głębokich lewej kończyny dolnej",
+      "p": 0.7,
+      "za": [
+        "Objawy zakrzepicy żył głębokich lewej łydki: obwód większy niż prawej, cieplejsza, tkliwa przy ucisku, ból narastający stopniowo bez urazu, od 4 dni",
+        "Podróż autokarem 14 godzin przed początkiem objawów; metaanaliza: podróż zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej ok. 2,8-krotnie, o 18% na każde 2 godziny (PMID 19581633)",
+        "Doustna hormonalna terapia menopauzalna (estradiol 1 mg + dydrogesteron 10 mg) i zakrzepica u krewnych pierwszego stopnia",
+        "Nowy ból opłucnowy po prawej, kaszel, męczliwość, tachykardia 104/min, SpO2 94% w spoczynku",
+        "Stan przedomdleniowy od wczoraj; w kohorcie PESIT zatorowość płucną stwierdzono u 17,3% hospitalizowanych z pierwszym omdleniem (PMID 27797317)",
+        "Wells dla zatorowości płucnej: objawy zakrzepicy żył głębokich 3 + zatorowość najbardziej prawdopodobna 3 + tętno >100/min 1,5 = 7,5 pkt (wysokie prawdopodobieństwo kliniczne) [punktacja: wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Ciśnienie skurczowe 132 mmHg, brak wstrząsu",
+        "Duszność dopiero przy większym wysiłku (2 piętra)",
+        "Objawy stabilne od rana",
+        "Estradiol z dydrogesteronem to najmniej zakrzepotwórczy doustny schemat w dużym badaniu kliniczno-kontrolnym (OR 1,18; 95% CI 0,98–1,42; PMID 30626577)"
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z inną przyczyną bólu w klatce piersiowej",
+      "p": 0.08,
+      "za": [
+        "Pełny obraz kliniczny zakrzepicy łydki",
+        "Ból w klatce może mieć przyczynę niezależną (zapalenie opłucnej, uraz mięśniowy)"
+      ],
+      "przeciw": [
+        "Współwystępowanie bólu opłucnowego, tachykardii, SpO2 94% i stanu przedomdleniowego tłumaczy się najprościej zatorowością"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie płuc z odczynem opłucnowym",
+      "p": 0.06,
+      "za": [
+        "Kaszel, ból opłucnowy, tachykardia, SpO2 94%"
+      ],
+      "przeciw": [
+        "Nie zgłoszono gorączki ani odkrztuszania (temperatura NIEZNANA)",
+        "Nie tłumaczy objawów zakrzepicy łydki"
+      ]
+    },
+    {
+      "nazwa": "Naciągnięcie mięśnia łydki i nerwoból międzyżebrowy",
+      "p": 0.05,
+      "za": [
+        "Hipoteza pacjentki i lekarza prowadzącego: spacer po podróży"
+      ],
+      "przeciw": [
+        "Brak momentu urazu, ból narastający stopniowo",
+        "Obrzęk i ocieplenie łydki nie pasują do naciągnięcia",
+        "Nerwoból nie wywołuje tachykardii, spadku SpO2 ani stanu przedomdleniowego",
+        "To rozpoznanie z wykluczenia: wolno je przyjąć dopiero po wykluczeniu zakrzepicy i zatorowości"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy",
+      "p": 0.02,
+      "za": [
+        "Kobieta 52 lata z nadciśnieniem, stan przedomdleniowy, męczliwość"
+      ],
+      "przeciw": [
+        "Ból kłujący, zależny od oddechu, jednostronny"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Wstrząs i zatorowość płucna wysokiego ryzyka w chwili ankiety: ciśnienie skurczowe 132 mmHg (pomiar domowy, jednorazowy)",
+    "Zaostrzona niewydolność oddechowa: SpO2 94%, nie poniżej 90%, duszność dopiero przy większym wysiłku"
+  ],
+  "red_flags_otwarte": [
+    "Zatorowość płucna (Wells 7,5 pkt [wiedza modelu, niezweryfikowane]): nie wyklucza jej nic w wywiadzie; wykluczyłaby ją tylko ujemna angiografia tomografii komputerowej tętnic płucnych. Przy Wells >4 D-dimer nie wystarcza do wykluczenia (strategia z wykluczeniem wymaga Wells ≤4 i ujemnego D-dimeru, PMID 25845618)",
+    "Przeciążenie prawej komory przy zatorowości (ryzyko pośrednie): stan przedomdleniowy wiąże się z niestabilnością hemodynamiczną (OR 3,50) i dysfunkcją prawej komory w echokardiografii (OR 2,10) (PMID 30339253); wykluczyłyby to prawidłowe troponina, NT-proBNP i echokardiografia",
+    "Zakrzepica żył głębokich lewej kończyny dolnej: wykluczyłaby ją ujemna ultrasonografia uciskowa",
+    "Ostry zespół wieńcowy i zaburzenia rytmu jako przyczyna stanu przedomdleniowego: wykluczyłyby je EKG i troponina",
+    "Zapalenie płuc, w tym zakaźne dla otoczenia (grypa, COVID-19): wykluczyłyby je RTG klatki piersiowej, temperatura i test antygenowy",
+    "Maskowanie objawów przez ibuprofen (od 4 dni); ryzyko krwawienia przy łączeniu niesteroidowego leku przeciwzapalnego z antykoagulacją [wiedza modelu, niezweryfikowane]",
+    "Parametry z domowego pulsoksymetru i ciśnieniomierza, brak badania fizykalnego i osłuchiwania (NIEZNANE)"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na SOR transportem Zespołu Ratownictwa Medycznego (stan przedomdleniowy) z rozpoznaniem wstępnym zatorowości płucnej, w celu angiografii tomografii komputerowej tętnic płucnych, troponiny, NT-proBNP, EKG i echokardiografii; jeśli w gabinecie dostępna jest heparyna drobnocząsteczkowa i nie ma przeciwwskazań, pierwszą dawkę terapeutyczną (np. enoksaparyna 1 mg/kg podskórnie) podać przed transportem [wiedza modelu, niezweryfikowane: ESC 2019 zaleca rozpoczęcie antykoagulacji przy wysokim prawdopodobieństwie klinicznym w trakcie diagnostyki].",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność tylko po ujemnej angiografii tomografii komputerowej tętnic płucnych i ujemnej ultrasonografii uciskowej lewej kończyny dolnej; ujemny D-dimer przy Wells 7,5 pkt nie wystarczy.",
+  "nie_podawac": [
+    {
+      "lek": "Silniejsze leki przeciwbólowe na łydkę (opioidy, kolejne niesteroidowe leki przeciwzapalne) jako odpowiedź na pytanie lekarza",
+      "powod": "Leczenie objawowe bez diagnostyki opóźnia rozpoznanie stanu zagrażającego życiu; niesteroidowe leki przeciwzapalne zwiększają ryzyko krwawienia po włączeniu antykoagulacji [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Kontynuacja doustnej hormonalnej terapii menopauzalnej do czasu wyjaśnienia",
+      "powod": "Doustna terapia hormonalna zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej (dla schematów złożonych OR 1,73; PMID 30626577); w razie potwierdzenia rozważyć drogę przezskórną, która nie zwiększała ryzyka (OR 0,93)"
+    }
+  ],
+  "zrodla": [
+    "PubMed zapytanie 1: '2019 ESC Guidelines acute pulmonary embolism[Title]' (21 wyników; top-5 bez wytycznej źródłowej - nieskuteczne); wytyczna pobrana bezpośrednio: Konstantinides SV i wsp. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. Eur Heart J 2020;41:543-603. PMID 31504429, DOI 10.1093/eurheartj/ehz405 - streszczenie niedostępne w PubMed, więc treść wytycznej (skala Wells, sPESI, antykoagulacja przed diagnostyką) oznaczona [wiedza modelu, niezweryfikowane]",
+    "PubMed zapytanie 2: 'syncope pulmonary embolism prevalence hospitalized first episode' - Prandoni P i wsp. Prevalence of Pulmonary Embolism among Patients Hospitalized for Syncope (PESIT). N Engl J Med 2016;375:1524-31. PMID 27797317, DOI 10.1056/NEJMoa1602172 - streszczenie sprawdzone: częstość 17,3%",
+    "PubMed zapytanie 3: 'long-haul travel venous thrombosis risk meta-analysis' - nieskuteczne (wyniki nietrafne: pończochy uciskowe, pacjenci chirurgiczni)",
+    "PubMed zapytanie 4: 'hormone replacement therapy oral transdermal venous thromboembolism risk nested case-control' - Vinogradova Y i wsp. Use of hormone replacement therapy and risk of venous thromboembolism. BMJ 2019;364:k4810. PMID 30626577, DOI 10.1136/bmj.k4810 - streszczenie sprawdzone: doustna OR 1,58; złożona 1,73; estradiol + dydrogesteron 1,18 (0,98-1,42); przezskórna 0,93",
+    "PubMed zapytanie 5: 'travel[Title] AND venous thromboembolism[Title] AND (meta-analysis OR systematic review)' - Chandra D i wsp. Meta-analysis: travel and risk for venous thromboembolism. Ann Intern Med 2009;151:180-90. PMID 19581633, DOI 10.7326/0003-4819-151-3-200908040-00129 - streszczenie sprawdzone: RR 2,8 (2,2-3,7), +18% na każde 2 h podróży dowolnym środkiem transportu",
+    "PubMed zapytanie 6: 'syncope[Title] AND pulmonary embolism[Title] AND prognosis AND meta-analysis' - Barco S i wsp. Differential impact of syncope on the prognosis of patients with acute pulmonary embolism. Eur Heart J 2018;39:4186-95. PMID 30339253, DOI 10.1093/eurheartj/ehy631 - streszczenie sprawdzone: niestabilność hemodynamiczna OR 3,50, dysfunkcja prawej komory OR 2,10, zgon wczesny OR 1,73; de Winter MA i wsp. Ann Emerg Med 2020;76:527-41. PMID 32461009, DOI 10.1016/j.annemergmed.2020.03.026 - streszczenie sprawdzone: omdlenie u 10-20% chorych z zatorowością, śmiertelność OR 1,82, zależna od niestabilności hemodynamicznej",
+    "PubMed zapytanie 7: 'Wells rule D-dimer pulmonary embolism primary care[Title/Abstract] diagnostic accuracy' - Lucassen WAM i wsp. J Thromb Haemost 2015;13:1004-9. PMID 25845618, DOI 10.1111/jth.12951 - streszczenie sprawdzone: w POZ wykluczenie zatorowości tylko przy Wells ≤4 i ujemnym D-dimerze; częstość zatorowości wśród podejrzewanych w POZ 12,2%",
+    "zrodla/MANIFEST.md - brak polskiej wytycznej dotyczącej żylnej choroby zakrzepowo-zatorowej w bibliotece (same przykładowe wiersze)",
+    "Punktacja Wells i sPESI, dawka enoksaparyny 1 mg/kg, interakcja niesteroidowych leków przeciwzapalnych z antykoagulacją - [wiedza modelu, niezweryfikowane]"
+  ]
+}

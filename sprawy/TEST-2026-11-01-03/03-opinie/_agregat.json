@@ -1,0 +1,136 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Zatorowość płucna wtórna do zakrzepicy żył głębokich lewej kończyny dolnej",
+      "p": 0.771,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — żylna choroba zakrzepowo-zatorowa (zakrzepica żył głębokich lewego podudzia z zatorowością płucną) współwywołana doustną terapią hormonalną menopauzy (estradiol 1 mg + dydrogesteron 10 mg)",
+      "p": 0.017,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z bólem opłucnowym innego pochodzenia",
+      "p": 0.016,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z inną przyczyną bólu w klatce piersiowej",
+      "p": 0.014,
+      "wymienili": [
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z niezależną przyczyną bólu opłucnowego",
+      "p": 0.013,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.78,
+  "flagi": [],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Badanie fizykalne i parametry w gabinecie NIEZNANE",
+      "Brak badania fizykalnego, EKG, gazometrii i jakichkolwiek badań laboratoryjnych (NIEZNANE)",
+      "Brak badania fizykalnego, EKG, ponownego pomiaru parametrów przez personel medyczny (NIEZNANE)",
+      "Brak masy ciała, eGFR, morfologii z płytkami, ALT — niezbędne do doboru i dawki antykoagulantu (NIEZNANE)",
+      "Ból opłucnowy i nowa duszność wysiłkowa przy klinicznych objawach zakrzepicy żył głębokich po podróży >4 h: zatorowość płucna niewykluczona",
+      "Doustna hormonalna terapia menopauzalna i dodatni wywiad rodzinny w kierunku zakrzepicy",
+      "Duszność wysiłkowa z czynnikami ryzyka zakrzepicy (podróż 14 h, doustna hormonoterapia, wywiad rodzinny) - zatorowość płucna niewykluczona",
+      "Ibuprofen maskuje ból i zwiększa ryzyko krwawienia przy planowanym leczeniu przeciwkrzepliwym",
+      "Jednostronny obrzęk, ocieplenie i tkliwość łydki po podróży >4 h - podejrzenie zakrzepicy żył głębokich",
+      "Jednostronny obrzęk, ocieplenie i tkliwość łydki po podróży >4 h — podejrzenie zakrzepicy żył głębokich",
+      "Kontynuowana doustna terapia estrogenowa przy podejrzeniu czynnej zakrzepicy",
+      "Kontynuowana doustna terapia hormonalna menopauzy przy podejrzeniu ŻChZZ i dodatnim wywiadzie rodzinnym",
+      "Maskowanie objawów przez ibuprofen (od 4 dni); ryzyko krwawienia przy łączeniu niesteroidowego leku przeciwzapalnego z antykoagulacją [wiedza modelu, niezweryfikowane]",
+      "Objawy zakrzepicy żył głębokich lewej łydki po 14-godzinnej podróży",
+      "Ostry zespół wieńcowy i zaburzenia rytmu jako przyczyna stanu przedomdleniowego: wykluczyłyby je EKG i troponina",
+      "Pacjentka bierze ibuprofen: po rozpoczęciu leczenia przeciwkrzepliwego zwiększa ryzyko krwawienia",
+      "Pacjentka przyjmuje ibuprofen: może maskować ból i gorączkę, a przy wdrożeniu antykoagulacji zwiększa ryzyko krwawienia",
+      "Parametry z domowego pulsoksymetru i ciśnieniomierza, brak badania fizykalnego i osłuchiwania (NIEZNANE)",
+      "Podejrzenie zatorowości płucnej przy wysokim prawdopodobieństwie klinicznym (Wells ok. 7,5)",
+      "Przeciążenie prawej komory przy zatorowości (ryzyko pośrednie): stan przedomdleniowy wiąże się z niestabilnością hemodynamiczną (OR 3,50) i dysfunkcją prawej komory w echokardiografii (OR 2,10) (PMID 30339253); wykluczyłyby to prawidłowe troponina, NT-proBNP i echokardiografia",
+      "SpO2 94% i tętno 104/min w spoczynku",
+      "Stan przedomdleniowy od wczoraj - przy podejrzeniu zatorowości możliwy zator o większej masie; w badaniu PESIT zatorowość stwierdzono u 17,3% hospitalizowanych z pierwszym omdleniem (PMID 27797317)",
+      "Stan przedomdleniowy od wczoraj przy tętnie 104/min i SpO2 94% — podejrzenie zatorowości płucnej z obciążeniem prawej komory; wymaga oceny natychmiast (szpitalny oddział ratunkowy)",
+      "Stan przedomdleniowy od wczoraj: wiąże się z dysfunkcją prawej komory i gorszym rokowaniem w zatorowości płucnej",
+      "Stan przedomdleniowy — możliwa przeciążona prawa komora (ZP pośredniego ryzyka) do oceny w szpitalu",
+      "Stan przedomdleniowy: w metaanalizach omdlenie w zatorowości płucnej wiąże się z częstszą niestabilnością hemodynamiczną i dysfunkcją prawej komory (PMID 30339253, 32461009)",
+      "Tętno 104/min i SpO2 94% w spoczynku (pomiar domowy)",
+      "Wysokie kliniczne prawdopodobieństwo zatorowości płucnej (Wells ok. 7,5) z tachykardią 104/min i SpO2 94%",
+      "Zakrzepica żył głębokich lewej kończyny dolnej (obrzęk, ocieplenie, tkliwość) bez potwierdzenia ultrasonograficznego",
+      "Zakrzepica żył głębokich lewej kończyny dolnej: wykluczyłaby ją ujemna ultrasonografia uciskowa",
+      "Zapalenie płuc, w tym zakaźne dla otoczenia (grypa, COVID-19): wykluczyłyby je RTG klatki piersiowej, temperatura i test antygenowy",
+      "Zatorowość płucna (Wells 7,5 pkt [wiedza modelu, niezweryfikowane]): nie wyklucza jej nic w wywiadzie; wykluczyłaby ją tylko ujemna angiografia tomografii komputerowej tętnic płucnych. Przy Wells >4 D-dimer nie wystarcza do wykluczenia (strategia z wykluczeniem wymaga Wells ≤4 i ujemnego D-dimeru, PMID 25845618)"
+    ],
+    "wykluczone": [
+      "Ciężka hipoksemia: SpO2 94%, nie <90%",
+      "Hipotensja: ciśnienie skurczowe 132 mmHg (pomiar domowy) — brak cech wstrząsu w chwili ankiety",
+      "Niestabilność hemodynamiczna na moment ankiety: ciśnienie skurczowe 132 mmHg (pomiar domowy, jednorazowy)",
+      "Wstrząs i zatorowość płucna wysokiego ryzyka w chwili ankiety: ciśnienie skurczowe 132 mmHg (pomiar domowy, jednorazowy)",
+      "Wstrząs lub hipotensja: wstępnie nie (skurczowe 132 mmHg w pomiarze domowym; wymaga potwierdzenia przy przyjęciu)",
+      "Zaostrzona niewydolność oddechowa: SpO2 94%, nie poniżej 90%, duszność dopiero przy większym wysiłku"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

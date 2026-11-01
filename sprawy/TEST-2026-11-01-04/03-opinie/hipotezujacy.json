@@ -1,0 +1,98 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Krwotok podpajęczynówkowy z pęknięcia tętniaka wewnątrzczaszkowego",
+      "p": 0.50,
+      "za": [
+        "Ból piorunujący: pełne nasilenie w kilka sekund, 'najgorszy w życiu', w potylicy, w trakcie dźwigania (wysiłek z próbą Valsalvy)",
+        "Jednorazowe wymioty w chwili zachorowania",
+        "Utrzymujące się od 3 dób objawy oponowe: ograniczenie zgięcia karku (nie dotyka brodą mostka) i światłowstręt",
+        "Czynniki ryzyka: nieleczone nadciśnienie tętnicze, palenie 20 papierosów/d, duże ilości alkoholu w ostatnich 2 tygodniach",
+        "Ojciec zmarł nagle w wieku 52 lat z powodu 'wylewu' nieokreślonego typu (możliwy rodzinny tętniak)",
+        "Reguła Ottawa dla krwotoku podpajęczynówkowego dodatnia w kilku kryteriach: wiek ≥40 lat, ból/sztywność karku, początek przy wysiłku, ból piorunujący, ograniczone zgięcie karku (PMID 29133539, 25511365)",
+        "Poprzednie bóle głowy 'zupełnie inne, słabsze' – nowy typ bólu"
+      ],
+      "przeciw": [
+        "Ból ustąpił po ibuprofenie w ciągu kilku godzin do 3/10 (choć ustąpienie bólu nie wyklucza przecieku ostrzegawczego – PMID 14984225, 14970066)",
+        "Brak utraty przytomności, brak gorączki, brak zgłaszanych objawów ogniskowych (badanie neurologiczne NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.12,
+      "za": [
+        "Ból piorunujący wyzwolony wysiłkiem fizycznym",
+        "Duże spożycie alkoholu w ostatnich 2 tygodniach – czynnik wyzwalający lub związany z odstawieniem (przyczyna substancjozależna)",
+        "Nadciśnienie tętnicze jako tło"
+      ],
+      "przeciw": [
+        "Jednorazowy epizod piorunujący bez nawrotów w ciągu 3 dób (w tym zespole typowe są nawracające uderzenia bólu)",
+        "Wyraźne objawy oponowe lepiej pasują do krwi w przestrzeni podpajęczynówkowej (choć zespół może dawać płaszczyznowy krwotok podpajęczynówkowy w bruździe)"
+      ]
+    },
+    {
+      "nazwa": "Rozwarstwienie tętnicy kręgowej",
+      "p": 0.10,
+      "za": [
+        "Początek podczas dźwigania mebli (uraz przeciążeniowy szyi)",
+        "Ból potyliczny z utrzymującym się bólem karku – izolowany ból szyi i potylicy bywa jedynym objawem (PMID 23542792, 11977915, 22931728)",
+        "Palenie i nadciśnienie"
+      ],
+      "przeciw": [
+        "Ograniczenie zgięcia karku i światłowstręt (objawy oponowe) wskazują raczej na krwotok podpajęczynówkowy – choć rozwarstwienie wewnątrzczaszkowe odcinka V4 może sam krwotok wywołać",
+        "Brak zgłaszanych objawów z tylnego unaczynienia (zawroty, podwójne widzenie, ataksja) – badanie NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Okołośródmózgowiowy krwotok podpajęczynówkowy bez tętniaka",
+      "p": 0.08,
+      "za": [
+        "Ten sam obraz piorunującego bólu z objawami oponowymi bez utraty przytomności",
+        "Stosunkowo łagodny przebieg (ból 3/10 po 3 dobach, przytomny, bez deficytów)"
+      ],
+      "przeciw": [
+        "Klinicznie nieodróżnialny od tętniakowego – rozróżnia dopiero angiografia; obciążenie rodzinne i nadciśnienie przesuwają ku tętniakowi"
+      ]
+    },
+    {
+      "nazwa": "Pierwotny wysiłkowy ból głowy z naciągnięciem mięśni szyi",
+      "p": 0.07,
+      "za": [
+        "Związek z dźwiganiem, ustąpienie w ciągu godzin",
+        "Interpretacja pacjenta (naciągnięcie karku) – 'coś częstego o nietypowym obrazie'"
+      ],
+      "przeciw": [
+        "Rozpoznanie z wykluczenia: wymaga ujemnej diagnostyki obrazowej i płynu mózgowo-rdzeniowego przy pierwszym epizodzie piorunującym",
+        "Naciągnięcie mięśni nie tłumaczy wymiotów, światłowstrętu ani ograniczenia zgięcia karku (ograniczenie zgięcia przy zachowanej rotacji przemawia za oponowym, nie mięśniowym tłem)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Gorączka i dreszcze (zaprzecza) – zapalenie opon mniej prawdopodobne, ale nie wykluczone bez badania",
+    "Utrata przytomności w chwili zachorowania (zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "Ból piorunujący, najsilniejszy w życiu, przy wysiłku, 3 doby temu, bez jakiegokolwiek badania głowy",
+    "Objawy oponowe obecne dziś: ograniczenie zgięcia karku i światłowstręt",
+    "Ryzyko ponownego krwawienia z tętniaka w pierwszych dniach (przeciek ostrzegawczy) – PMID 14984225, 37212182",
+    "Nieleczone nadciśnienie tętnicze, wartości po epizodzie NIEZNANE",
+    "Badanie neurologiczne, parametry życiowe i stan świadomości NIEZNANE",
+    "Nagła śmierć ojca z powodu 'wylewu' w wieku 52 lat",
+    "Ibuprofen 1–2 tabletki/d może maskować ból i upośledzać hemostazę płytkową [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na szpitalny oddział ratunkowy (transport medyczny, bez zwłoki do kolejnej wizyty) z rozpoznaniem roboczym 'podejrzenie krwotoku podpajęczynówkowego' w celu tomografii komputerowej głowy bez kontrastu z angiografią tomografii komputerowej, a przy ujemnej tomografii – nakłucia lędźwiowego z oceną ksantochromii; nie przepisywać leku na kark ani nie wystawiać zwolnienia jako jedynego działania.",
+  "co_zmieniloby_zdanie": "Prawidłowa tomografia z angiografią naczyń głowy i szyi oraz płyn mózgowo-rdzeniowy bez ksantochromii i erytrocytów obniżyłyby p krwotoku podpajęczynówkowego poniżej 0,02 i przesunęły różnicowanie ku zespołowi odwracalnego skurczu naczyń lub pierwotnemu wysiłkowemu bólowi głowy (wtedy wskazana kontrolna angiografia przy nawrotach bólu).",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskiej wytycznej dla bólu piorunującego / krwotoku podpajęczynówkowego w bibliotece (tylko wiersze przykładowe)",
+    "Zapytanie (WebSearch, pubmed.ncbi.nlm.nih.gov): 'Ottawa subarachnoid hemorrhage rule validation acute headache' → PMID 29133539 (walidacja reguły Ottawa), 25511365 (walidacja zewnętrzna), 24065011, 35192492",
+    "Zapytanie: 'sensitivity CT subarachnoid hemorrhage time from headache onset days lumbar puncture xanthochromia' → PMID 34819306 (czułość wielorzędowej tomografii w kolejnych przedziałach czasu od początku bólu), 21768192 (tomografia w ≤6 h), 40034490 (porównanie z NICE 2022), 29437311 (nakłucie przy prawidłowej tomografii)",
+    "Zapytanie: 'reversible cerebral vasoconstriction syndrome thunderclap headache exertion cervical artery dissection differential' → PMID 28456915, 17200220, 17324359 (ból piorunujący – podejście)",
+    "Zapytanie: 'sentinel headache warning leak aneurysm misdiagnosis subarachnoid hemorrhage' → PMID 14984225 (przegląd systematyczny bólu ostrzegawczego), 14970066 (błędne wstępne rozpoznanie a wynik leczenia), 7914965",
+    "Zapytanie: 'vertebral artery dissection presenting with neck pain occipital headache without neurological deficit' → PMID 23542792, 11977915, 22931728 (przegląd systematyczny objawów rozwarstwienia tętnicy kręgowej)",
+    "Zapytanie: '2023 guideline management aneurysmal subarachnoid hemorrhage American Heart Association' → PMID 37212182 (wytyczne AHA/ASA 2023)",
+    "Spadek czułości tomografii z upływem dób od zachorowania i przydatność ksantochromii od ok. 12 h do ok. 2 tygodni [wiedza modelu, niezweryfikowane – konkretnych wartości z abstraktów nie odczytano]"
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "sprawdzajacy-faktow",
+    "data": "2026-11-01",
+    "uwaga_ogolna": "zrodla/ zawiera wyłącznie MANIFEST.md z wpisami przykładowymi — poziom 1 milczy dla DRESS, AKI, allopurynolu, paracetamolu i ACEi. Wszystkie streszczenia PMID z 05-projekt.md pobrane narzędziem mcp__PubMed__get_article_metadata i przeczytane. Żadnego SPRZECZNE ani NIEAKTUALNE. BEZ_ZRODLA dotyczą progów i zaleceń nieliczbowych (nie dawek) → ŻÓŁTA: FINAL przechodzi, ale wskazane wpisy muszą mieć etykietę [wiedza modelu, niezweryfikowane].",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Latencja DRESS: mediana 22 dni, IQR 17–31 (allopurynol ~4 tyg. w oknie, amoksycylina ~7 dni poza oknem)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23855313, doi:10.1111/bjd.12501 (Kardaun 2013, RegiSCAR)",
+        "cytat": "The median time interval after drug intake was 22 days (interquartile range 17-31) for all drugs with (very) probable causality",
+        "co_mowi_zrodlo": "Streszczenie dodaje: 'with differences between drugs' — IQR jest dla wszystkich leków łącznie; wniosek o amoksycylinie poza oknem jest wnioskowaniem ordynatora, nie zdaniem źródła."
+      },
+      {
+        "twierdzenie": "W DRESS eozynofilia u 95%, allopurynol sprawcą w 18%, łagodne zajęcie śluzówek u 56%",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23855313, doi:10.1111/bjd.12501",
+        "cytat": "eosinophilia (95%), visceral involvement (91%), high fever (90%), atypical lymphocytes (67%), mild mucosal involvement (56%) ... allopurinol in 18%"
+      },
+      {
+        "twierdzenie": "Latencja DRESS 2–8 tygodni; zajęcie narządów wewnętrznych u ~90% chorych",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31662996, doi:10.1155/2019/7863815 (Taweesedt 2019)",
+        "cytat": "febrile skin eruption with lymphadenopathy and malaise between two and eight weeks following drug exposure. Internal organ involvement occurs in close to 90 percent"
+      },
+      {
+        "twierdzenie": "Eozynofilia 2,1 G/l (15%) z limfocytami atypowymi przemawia przeciw zakażeniu, za DRESS",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23855313 (eozynofilia 95%, limfocyty atypowe 67% w DRESS); kryterium RegiSCAR eozynofile ≥1,5 G/l = +2 pkt [poziom 3, z pamięci]",
+        "cytat": "the main features were eosinophilia (95%) ... atypical lymphocytes (67%)",
+        "co_mowi_zrodlo": "Źródło potwierdza częstość w DRESS; twierdzenie 'przeciw zakażeniu' (eozynopenia w sepsie) nie ma osobnego źródła — w opiniach słusznie oznaczone jako wiedza modelu."
+      },
+      {
+        "twierdzenie": "Kreatynina 1,6 vs 1,0 mg/dl = 1,6× wartości wyjściowej ≥1,5× = ostre uszkodzenie nerek wg KDIGO",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31703649, doi:10.1186/s12885-019-6233-9 (definicja w metodach; praca onkologiczna — słabe źródło pośrednie); lepsze: PMID 23394211, doi:10.1186/cc11454 (Kellum 2013, streszczenie wytycznej KDIGO 2012)",
+        "cytat": "AKI was defined as increase in serum creatinine (sCr) of ≥1.5 times baseline or by ≥0.3 mg/dL (≥26.5 μmol/L) using the Kidney Disease Improving Global Outcomes (KDIGO) classification",
+        "co_mowi_zrodlo": "Arytmetyka poprawna (1,6/1,0 = 1,6). Zalecam w FINAL cytować PMID 23394211 zamiast pracy o cisplatynie. Stopień AKI przy oligurii — słusznie odłożony do szpitala."
+      },
+      {
+        "twierdzenie": "U chorych ≥65 lat DRESS częściej przebiega z zajęciem nerek i sepsą, allopurynol najczęstszym sprawcą",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 37669109, doi:10.1089/derm.2022.0032 (Bahloul 2023, n=55)",
+        "cytat": "Renal impairment was more frequent in the elderly ... significantly associated with the occurrence of sepsis ... Allopurinol was the most common culprit",
+        "co_mowi_zrodlo": "Badanie retrospektywne, 55 chorych, 17 w grupie ≥65 lat — mała próba, kierunek zgodny."
+      },
+      {
+        "twierdzenie": "Zajęcie serca w DRESS rzadkie, lecz śmiertelne; wiek >65 lat związany ze zgonem",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 35160164, doi:10.3390/jcm11030704 (Radovanovic 2022, przegląd 42 opisów)",
+        "cytat": "Cardiac involvement ... is rare but associated with high mortality ... older age (above 65 years) was associated with death",
+        "co_mowi_zrodlo": "Przegląd opisów przypadków (42 chorych); allopurynol 12% sprawców."
+      },
+      {
+        "twierdzenie": "ACEi/ARB po AKI u ≥85 lat: hiperkaliemia aHR 1,69, hipotensja aHR 1,38",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 41387369, doi:10.1002/bcp.70408 (Chen 2025, TriNetX)",
+        "cytat": "ACEi/ARB use was associated with a higher risk of hypotension (aHR = 1.38; p < 0.01) and hyperkalaemia (aHR = 1.69; p < 0.01)",
+        "co_mowi_zrodlo": "Populacja: ≥85 lat PO DIALIZOWANYM AKI, lek włączany po wypisie; w tej samej pracy ACEi/ARB zmniejszały śmiertelność (aHR 0,64). Ekstrapolacja na 71-latkę z niedializowanym AKI w fazie ostrej — liczby prawdziwe, ale cytowane jako argument za wstrzymaniem ramiprylu wykraczają poza wniosek źródła. W FINAL podać 'po dializowanym AKI' albo nie opierać decyzji o wstrzymaniu na tym PMID."
+      },
+      {
+        "twierdzenie": "Leczenie DRESS: natychmiastowe odstawienie leku sprawczego, steroid ogólny zwykle wymagany, ok. 10% zgonów",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23602183, doi:10.1016/j.jaad.2013.01.032 (Husain 2013)",
+        "cytat": "immediate cessation of the causative medication(s) ... systemic steroid therapy is generally required ... approximately 10% die, primarily from visceral organ compromise"
+      },
+      {
+        "twierdzenie": "Decyzja o glikokortykosteroidzie w szpitalu, po posiewie krwi; nie podawać steroidu w POZ",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "PMID 23602183 potwierdza tylko leczenie w warunkach szpitalnych (OIT/oddział oparzeń) i kontrolę zakażeń",
+        "cytat": "Patients with DRESS syndrome should be managed in an intensive care or burn unit for appropriate care and infection control",
+        "co_mowi_zrodlo": "Kolejność 'posiew krwi przed steroidem' i zakaz steroidu w POZ to rozsądna praktyka, ale nie zdanie źródła. Twierdzenie nieliczbowe → etykieta [wiedza modelu, niezweryfikowane] w FINAL."
+      },
+      {
+        "twierdzenie": "Nie podawać NLPZ ani nowego antybiotyku w POZ w ostrej fazie DRESS",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w 05-projekt.md; farmakolog powołuje PMID 30042109, 17039674 (streszczeń nie sprawdzano w tej turze)",
+        "co_mowi_zrodlo": "NLPZ przy AKI z oligurią — przeciwwskazanie oczywiste klinicznie, ale bez źródła z poziomu 1–3 w projekcie. Nieliczbowe → etykieta."
+      },
+      {
+        "twierdzenie": "Paracetamol na gorączkę maks. 2 g/d przy cytolizie wątrobowej",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 24309482, doi:10.1016/j.gastrohep.2013.05.007 (Ojeda 2013, przegląd — marskość)",
+        "cytat": "The first-line drug is paracetamol, which is safe at doses of 2-3g/day",
+        "co_mowi_zrodlo": "Źródło dotyczy marskości, nie ostrego polekowego zapalenia wątroby; 2 g/d mieści się w dolnej granicy. Brak ChPL w zrodla/. Etykieta [wiedza modelu] w projekcie może zostać zastąpiona tym PMID z zastrzeżeniem ekstrapolacji."
+      },
+      {
+        "twierdzenie": "Dawka startowa allopurynolu ≥1,5 mg na ml/min eGFR wiąże się z zespołem nadwrażliwości na allopurynol",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 22488501, doi:10.1002/art.34488 (Stamp 2012)",
+        "cytat": "91% of AHS cases and 36% of controls received a starting dose of allopurinol of ≥1.5 mg per unit of estimated GFR (mg/ml/minute)",
+        "co_mowi_zrodlo": "Uwaga: 100 mg/d przy eGFR ~60 ml/min = ~1,67 mg/ml/min, czyli POWYŻEJ progu Stamp — farmakolog pisze 'dawkowanie było poprawne'; to interpretacja, nie fakt. eGFR z CKD-EPI 2021 to obliczenie własne, niezweryfikowane."
+      },
+      {
+        "twierdzenie": "Punktacja RegiSCAR ≈7 pkt; >5 pkt = przypadek pewny",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Kardaun 2007, Br J Dermatol 156:609-11, PMID 17300272, doi:10.1111/j.1365-2133.2006.07704.x — list bez streszczenia w PubMed; progi (<2 wykluczony, 2–3 możliwy, 4–5 prawdopodobny, >5 pewny) Z PAMIĘCI MODELU",
+        "co_mowi_zrodlo": "PMID 23855313 potwierdza istnienie 'standardized scoring system' RegiSCAR, nie podaje progów. Etykieta [wiedza modelu, niezweryfikowane] w projekcie jest prawidłowa i ma zostać. Składowe punktacji liczone bez badania fizykalnego i bez wykluczenia innych przyczyn (słusznie zaznaczone)."
+      },
+      {
+        "twierdzenie": "Progi PLAN B: RR skurczowe <90 mmHg, SpO2 <92%, potas >5,5 mmol/l, gorączka ≥39 °C = ZRM",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/, brak PMID w projekcie; PubMed bez trafień dla progu hiperkaliemii",
+        "co_mowi_zrodlo": "Progi operacyjne, nie dawki — nie wymuszają CZERWONEJ. Wymagają etykiety [wiedza modelu, niezweryfikowane] w FINAL (obecnie nieoznaczone)."
+      },
+      {
+        "twierdzenie": "Po DRESS późne autoimmunologiczne zapalenie tarczycy — TSH po 2–3 miesiącach; kontrola co 2–4 tyg. przez 3 mies.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 25623158, doi:10.1111/1346-8138.12770 (Kano 2015, ASCAR, n=145) — tylko fakt następstw tarczycowych",
+        "cytat": "Graves' disease (n = 2), Hashimoto's disease (n = 3), painless thyroiditis (n = 2), fulminant type 1 diabetes mellitus (n = 5) ... require careful long-term follow-up",
+        "co_mowi_zrodlo": "Harmonogram (2–4 tyg., 3 mies., TSH po 2–3 mies.) nie wynika ze źródła — etykieta [wiedza modelu] w projekcie ma zostać dla harmonogramu."
+      },
+      {
+        "twierdzenie": "Ramipryl nie jest kofaktorem DRESS po allopurynolu (pojedyncze opisy, brak mechanizmu)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38333456, doi:10.7759/cureus.51899 (Fabian 2024, przegląd narracyjny)",
+        "cytat": "no definitive evidence of a pharmacokinetic interaction between allopurinol and ACE inhibitors. We were only able to find one case report",
+        "co_mowi_zrodlo": "Źródło dotyczy SJS, nie DRESS; wniosek o braku mechanizmu zgodny."
+      },
+      {
+        "twierdzenie": "Allopurynol: nadwrażliwość w ~90% w ciągu 60 dni od włączenia; upośledzona czynność nerek i niedawne włączenie to czynniki ryzyka (opinie 03)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23873481, doi:10.1007/s40264-013-0084-0 (Ramasamy 2013, przegląd systematyczny 1950–2012)",
+        "cytat": "Approximately 90 % (489/538) of patients developed AH within 60 days of initiating allopurinol therapy ... pre-existing renal impairment and recent initiation",
+        "co_mowi_zrodlo": "Śmiertelność całkowita 14% w tej serii (opisy przypadków)."
+      },
+      {
+        "twierdzenie": "Latencja i zajęcie narządów w DRESS różnią się zależnie od leku sprawczego (opinie 03, PMID 31044478)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31044478, doi:10.1002/pds.4774 (Sim 2019, rejestr koreański)",
+        "cytat": "Latency period differed among culprit drugs (P < 0.0001), being shorter in vancomycin and cephalosporin"
+      },
+      {
+        "twierdzenie": "Pilność 1 (natychmiast) — AKI z oligurią + ramipryl + potas NIEZNANY + zawroty ortostatyczne",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23602183 (leczenie szpitalne OIT/oparzeniowy), PMID 37669109 (nerki, sepsa u starszych), PMID 23394211 (AKI wg KDIGO)",
+        "cytat": "Patients with DRESS syndrome should be managed in an intensive care or burn unit",
+        "co_mowi_zrodlo": "Nie oceniam, czy pilność jest 'dobra'; stwierdzam, że wskazanie do hospitalizacji w DRESS z zajęciem narządów ma źródło. Weto najgorszego scenariusza — proces, nie fakty."
+      }
+    ]
+  }
+}

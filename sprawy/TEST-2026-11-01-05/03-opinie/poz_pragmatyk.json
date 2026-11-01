@@ -1,0 +1,126 @@
+{
+  "rola": "poz_pragmatyk",
+  "uwaga_o_p": "p = prawdopodobieństwo, że dana jednostka jest DOMINUJĄCYM wyjaśnieniem objawów (zmęczenie, wypadanie włosów, koncentracja); jednostki mogą współistnieć — zwłaszcza niedobór żelaza i subkliniczna niedoczynność tarczycy.",
+  "rozpoznania": [
+    {
+      "nazwa": "Niedokrwistość z niedoboru żelaza w przebiegu obfitych krwawień miesiączkowych",
+      "p": 0.72,
+      "za": [
+        "Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml — mikrocytoza z wyczerpanymi zapasami żelaza",
+        "obfite miesiączki od ponad roku: zmiana podpaski częściej niż co 2 h, skrzepy większe niż moneta 5 zł",
+        "dieta wegetariańska od 2 lat (mniejsza podaż żelaza hemowego)",
+        "łamliwe paznokcie, pękające kąciki ust, wypadanie włosów, zmęczenie, słaba koncentracja — typowe dla niedoboru żelaza"
+      ],
+      "przeciw": [
+        "brak badania fizykalnego i wywiadu o innych źródłach utraty krwi (przewód pokarmowy)"
+      ]
+    },
+    {
+      "nazwa": "Subkliniczna niedoczynność tarczycy w przebiegu przewlekłego autoimmunologicznego zapalenia tarczycy",
+      "p": 0.14,
+      "za": [
+        "TSH 5,4 mIU/l przy FT4 1,1 ng/dl (w normie)",
+        "choroba tarczycy w rodzinie I stopnia"
+      ],
+      "przeciw": [
+        "pojedynczy pomiar TSH, nie powtórzony",
+        "anty-TPO nieoznaczone",
+        "TSH < 10 mIU/l i prawidłowe FT4 — nawet potwierdzona nie tłumaczy dobrze nasilenia objawów, które w pełni wyjaśnia ciężki niedobór żelaza"
+      ]
+    },
+    {
+      "nazwa": "Przemijające podwyższenie stężenia tyreotropiny",
+      "p": 0.07,
+      "za": [
+        "jeden pomiar w laboratorium prywatnym; TSH ma dużą zmienność wewnątrzosobniczą i dobową",
+        "niedobór żelaza upośledza czynność peroksydazy tarczycowej i bywa związany z wyższym TSH (PMID 38923898, 12097675 — model zwierzęcy)",
+        "część podwyższeń TSH ≤ 10 mIU/l normalizuje się samoistnie w kontroli (PMID 15811925, 26342200)"
+      ],
+      "przeciw": [
+        "obciążony wywiad rodzinny w kierunku choroby tarczycy"
+      ]
+    },
+    {
+      "nazwa": "Celiakia jako współprzyczyna niedoboru żelaza",
+      "p": 0.04,
+      "za": [
+        "ferrytyna 8 ng/ml przy diecie wegetariańskiej — możliwy element złego wchłaniania",
+        "częstsze współwystępowanie z autoimmunologicznym zapaleniem tarczycy [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "obfite miesiączki wystarczająco tłumaczą utratę żelaza; brak objawów jelitowych w ankiecie (nie pytano wprost)"
+      ]
+    },
+    {
+      "nazwa": "Wrodzona skaza krwotoczna (choroba von Willebranda)",
+      "p": 0.02,
+      "za": [
+        "obfite miesiączki z niedokrwistością"
+      ],
+      "przeciw": [
+        "obfite miesiączki dopiero od ok. roku, nie od menarche; brak danych o innych krwawieniach"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "masywne krwawienie obecnie (pacjentka nie miesiączkuje teraz)",
+    "ciąża obecnie (pacjentka zaprzecza; bez testu)",
+    "myśli samobójcze w ostatnich 2 tygodniach",
+    "zmiany w okolicy szyi (guzek, wole, dysfagia) — pacjentka zaprzecza",
+    "czerwone flagi z listy ankiety — brak"
+  ],
+  "red_flags_otwarte": [
+    "nieznane parametry życiowe i badanie fizykalne (tętno, ciśnienie, bladość, objawy niewydolności krążenia przy niedokrwistości)",
+    "nieznana przyczyna obfitych krwawień od roku (mięśniaki, polip, rozrost endometrium, zaburzenia krzepnięcia) — nie było oceny ginekologicznej",
+    "nie wykluczono utraty krwi z przewodu pokarmowego (smoliste stolce, krew w stolcu — nie pytano)",
+    "planowana ciąża przy nieuzupełnionym niedoborze żelaza i niepotwierdzonym statusie tarczycy"
+  ],
+  "nastepny_krok": "Dziś w gabinecie: zbadać pacjentkę (RR, tętno, bladość, tarczyca), wystawić receptę na doustny siarczan żelaza (ok. 60–100 mg żelaza elementarnego, jedna dawka rano co drugi dzień lub codziennie, na czczo z witaminą C), zalecić kwas foliowy 0,4 mg/d przed ciążą i wystawić skierowanie na badania w POZ za 4 tygodnie: TSH, FT4, przeciwciała anty-TPO, morfologia z retikulocytami — bez włączania lewotyroksyny na tym etapie.",
+  "co_zmieniloby_zdanie": "Gdyby w powtórnym badaniu TSH było ≥ 4 mIU/l z dodatnimi anty-TPO (lub ≥ 10 mIU/l albo z obniżonym FT4), włączyłbym lewotyroksynę w małej dawce jeszcze przed zajściem w ciążę, a gdyby test ciążowy był dodatni — już dziś (TSH 5,4 przekracza próg leczenia w ciąży).",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "badanie przedmiotowe: RR, tętno, bladość skóry i błon śluzowych, palpacja tarczycy, ocena kącików ust i paznokci",
+      "dopytać: krew w stolcu / smoliste stolce, objawy jelitowe, krwawienia z nosa/dziąseł, łatwe siniaczenie, krwawienia w rodzinie, data ostatniej miesiączki",
+      "test ciążowy z moczu przed decyzją (zmienia próg leczenia tarczycy) — jeśli jest dostępny w gabinecie; jeśli nie, beta-hCG w skierowaniu",
+      "recepta: siarczan żelaza doustnie (np. 60–100 mg żelaza elementarnego, jedna dawka rano, co drugi dzień lub codziennie przy dobrej tolerancji; z witaminą C/sokiem pomarańczowym; nie z kawą, herbatą, nabiałem) — dawkowanie co drugi dzień zwiększa frakcję wchłoniętego żelaza i zmniejsza objawy uboczne (PMID 29032957, 31413088)",
+      "kwas foliowy 0,4 mg/d — planowana ciąża [wiedza modelu, niezweryfikowane]",
+      "nie wystawiać recepty na lewotyroksynę do czasu potwierdzenia TSH i oznaczenia anty-TPO"
+    ],
+    "zlecic": [
+      "za 4 tygodnie (skierowanie z POZ): TSH, FT4, przeciwciała przeciw peroksydazie tarczycowej (anty-TPO), morfologia krwi z retikulocytami",
+      "za 3 miesiące: morfologia krwi, ferrytyna (cel: normalizacja Hb i ferrytyna wyraźnie > 30 ng/ml przed ciążą) [wiedza modelu, niezweryfikowane]",
+      "przeciwciała przeciw transglutaminazie tkankowej IgA z całkowitym IgA — jeśli brak odpowiedzi na żelazo po 4–8 tygodniach albo przy objawach jelitowych (badanie z koszyka opieki koordynowanej lub odpłatnie — sprawdzić lokalny wykaz; w zrodla/ brak wykazu badań POZ)",
+      "dostępność anty-TPO w koszyku POZ/opieki koordynowanej: zrodla/ nie zawiera wykazu — [wiedza modelu, niezweryfikowane]; jeśli niedostępne, koszt prywatnie jest niewielki"
+    ],
+    "skierowac": [
+      "ginekolog — tryb stabilny, ale w ciągu kilku tygodni: przyczyna obfitych krwawień od roku (USG przezpochwowe, ocena mięśniaków/polipów), opcje zmniejszenia krwawień zgodne z planem ciąży (np. kwas traneksamowy w dniach krwawienia); w Polsce do ginekologa nie jest potrzebne skierowanie [wiedza modelu, niezweryfikowane]",
+      "endokrynolog — NIE rutynowo; tylko jeśli powtórne TSH potwierdzi nieprawidłowość u kobiety planującej ciążę i lekarz POZ nie czuje się pewnie w prowadzeniu, albo przy niejasnej konstelacji (TSH wysokie przy niskim FT4, wole, guzek)"
+    ],
+    "kontrola": "Wizyta po wynikach za 4–6 tygodni: przyrost Hb ≥ 1 g/dl po 4 tygodniach potwierdza skuteczność żelaza doustnego; decyzja o lewotyroksynie na podstawie powtórnego TSH i anty-TPO. Pacjentka powinna zgłosić się wcześniej, gdy zajdzie w ciążę (wtedy TSH 5,4 → włączyć lewotyroksynę bez zwłoki).",
+    "jednym_zdaniem_dla_pacjentki": "Pani zmęczenie, wypadanie włosów i łamliwe paznokcie najlepiej tłumaczy duży niedobór żelaza z obfitych miesiączek, więc zaczynamy od żelaza i wizyty u ginekologa, a tarczycę sprawdzimy ponownie za miesiąc razem z przeciwciałami, zanim zdecydujemy o hormonach — i proszę dać znać od razu, jeśli zajdzie Pani w ciążę.",
+    "wykonalnosc": "Plan wykonalny: 34-letnia, samodzielna, zmotywowana pacjentka; żelazo doustne i kwas foliowy tanie, badania krwi z POZ, ginekolog bez skierowania. Ryzyko: nietolerancja żelaza (zaparcia, nudności) — wtedy dawkowanie co drugi dzień; brak przyrostu Hb po 4–8 tygodniach mimo przyjmowania → celiakia lub żelazo dożylne (szpital/hematolog).",
+    "uwaga_interakcja": "Jeśli lewotyroksyna zostanie włączona, przyjmować ją na czczo, co najmniej 4 godziny odstępu od żelaza (żelazo zmniejsza wchłanianie lewotyroksyny) [wiedza modelu, niezweryfikowane]."
+  },
+  "odpowiedz_na_pytanie_lekarza": "Nie dziś. Najpierw leczyć niedobór żelaza i potwierdzić TSH z anty-TPO za ok. 4 tygodnie; lewotyroksynę włączyć przed ciążą, jeśli TSH pozostaje podwyższone (szczególnie z dodatnimi anty-TPO), a natychmiast, jeśli pacjentka zajdzie w ciążę.",
+  "uzasadnienie_progow": [
+    "Wytyczne ATA 2017 (Thyroid 2017;27:315-389; omówienie PMID 28257275, komentarz PMID 28657477): leczenie lewotyroksyną w ciąży przy TSH powyżej zakresu dla ciąży (orientacyjnie > 4,0 mIU/l), szczególnie z dodatnimi anty-TPO; u kobiet planujących ciążę z subkliniczną niedoczynnością tarczycy można rozważyć małą dawkę lewotyroksyny — siła zaleceń słaba; konkretne progi przytoczone z pamięci [wiedza modelu, niezweryfikowane]",
+    "Metaanaliza RCT lewotyroksyny w subklinicznej niedoczynności tarczycy a płodność i wyniki ciąży (PMID 38368537) — korzyść niepewna/ograniczona głównie do określonych grup (wnioski szczegółowe z abstraktu nieodczytane) [wiedza modelu, niezweryfikowane co do kierunku efektu]",
+    "Subkliniczna niedoczynność tarczycy i autoimmunizacja nie były związane z płodnością, poronieniem ani żywym urodzeniem w kohorcie EAGeR (PMID 27023447)",
+    "Samoistna normalizacja TSH w subklinicznej niedoczynności tarczycy (PMID 15811925, 26342200) — uzasadnia powtórzenie pomiaru przed decyzją",
+    "Niedobór żelaza a funkcja tarczycy u kobiet z niedoczynnością i zapaleniem limfocytarnym — przegląd systematyczny (PMID 38923898)",
+    "Obfite krwawienia miesiączkowe jako główna przyczyna niedoboru żelaza u kobiet (PMID 37538011, 30019973); leczenie niedoboru żelaza u kobiet miesiączkujących (PMID 39530462)"
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani wykazu badań POZ w bibliotece (tylko przykładowe wiersze); pamiec/zespol.md — brak realiów lokalnych i wniosków dotyczących tej sytuacji",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): 'levothyroxine subclinical hypothyroidism women trying to conceive TSH 2.5-10 randomized trial' → PMID 38368537, 27023447, 25312747, 28249134",
+    "Zapytanie 2: 'iron deficiency anemia heavy menstrual bleeding women reproductive age diagnosis management review' → PMID 37538011, 30019973, 24912842",
+    "Zapytanie 3: 'iron deficiency thyroid function TSH thyroid peroxidase iron supplementation hypothyroidism' → PMID 38923898, 12097675, 40995708",
+    "Zapytanie 4: 'alternate day oral iron dosing absorption hepcidin iron-depleted women' → PMID 29032957, 31413088, 39530462",
+    "Zapytanie 5: '2017 Guidelines of the American Thyroid Association for diagnosis and management of thyroid disease during pregnancy and the postpartum' → PMID 28257275, 28657477, 28716848",
+    "Zapytanie 6: 'subclinical hypothyroidism repeat TSH normalization spontaneous follow-up adults' → PMID 15811925, 26342200, 26904793",
+    "Uwaga: PMID z adresów wyników wyszukiwania; treści abstraktów nie odczytano w całości (PubMed MCP niedostępny) — szczegółowe liczby efektów oznaczone jako wiedza modelu",
+    "Dawki żelaza i kwasu foliowego, próg ferrytyny przed ciążą, odstęp lewotyroksyna–żelazo, dostępność anty-TPO w koszyku POZ, brak skierowania do ginekologa — [wiedza modelu, niezweryfikowane]"
+  ]
+}

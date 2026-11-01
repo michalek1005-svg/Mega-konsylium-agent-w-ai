@@ -1,0 +1,108 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesiączkowych",
+      "p": 0.65,
+      "za": [
+        "Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml: obraz mikrocytarnej niedokrwistości z wyczerpanymi zapasami żelaza",
+        "Obfite miesiączki od ponad roku: zmiana środka higienicznego częściej niż co 2 h, skrzepy większe niż moneta 5 zł",
+        "Objawy niedoboru żelaza: wypadanie włosów, łamliwe paznokcie, pękające kąciki ust, zmęczenie, słaba koncentracja",
+        "Dieta wegetariańska od 2 lat zmniejsza podaż żelaza hemowego [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Przyczyna obfitych krwawień nieustalona: brak badania ginekologicznego i USG (NIEZNANE)",
+        "Nie wykluczono współistniejącej utraty krwi lub złego wchłaniania z przewodu pokarmowego"
+      ]
+    },
+    {
+      "nazwa": "Subkliniczna niedoczynność tarczycy w przebiegu przewlekłego autoimmunologicznego zapalenia tarczycy",
+      "p": 0.15,
+      "za": [
+        "TSH 5,4 mIU/l przy FT4 1,1 ng/dl w zakresie referencyjnym (0,9–1,7)",
+        "Choroba tarczycy w rodzinie pierwszego stopnia",
+        "Niedoczynność tarczycy może nasilać krwawienia miesiączkowe [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Pojedynczy pomiar TSH, tylko nieznacznie podwyższony; anty-TPO nie oznaczano",
+        "Ciężki niedobór żelaza upośledza syntezę hormonów tarczycy i wiąże się z wyższym TSH; część podwyższenia może być wtórna (PMID 38923898, 38344555)",
+        "Objawy (zmęczenie, wypadanie włosów, koncentracja) w pełni tłumaczy niedokrwistość z niedoboru żelaza"
+      ]
+    },
+    {
+      "nazwa": "Wrodzona skaza krwotoczna, głównie choroba von Willebranda",
+      "p": 0.08,
+      "za": [
+        "Obfite krwawienia miesiączkowe ze skrzepami i niedokrwistością to typowa prezentacja choroby von Willebranda u kobiet (PMID 40955497, 41348644)",
+        "Kwestionariusze w kierunku skaz krwotocznych u kobiet z przewlekłymi obfitymi krwawieniami mają realną wydajność (PMID 41080354)"
+      ],
+      "przeciw": [
+        "Brak danych o krwawieniach z innych miejsc (nos, dziąsła, siniaki, po ekstrakcji zęba, po zabiegach) – NIEZNANE, nie ujemne",
+        "Krwawienia obfite dopiero od ponad roku, a nie od menarche (wg ankiety)"
+      ]
+    },
+    {
+      "nazwa": "Celiakia",
+      "p": 0.05,
+      "za": [
+        "Celiakię stwierdza się u kilku procent chorych z niedokrwistością z niedoboru żelaza (PMID 29689265, 23161292)",
+        "Choroby autoimmunologiczne tarczycy w rodzinie i możliwe autoimmunologiczne zapalenie tarczycy zwiększają ryzyko celiakii [wiedza modelu, niezweryfikowane]",
+        "Bardzo niska ferrytyna mimo diety mogącej zawierać żelazo niehemowe"
+      ],
+      "przeciw": [
+        "Obfite miesiączki wystarczająco tłumaczą niedobór żelaza",
+        "Brak danych o objawach jelitowych (biegunki, wzdęcia, chudnięcie) – NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Rozrost lub nowotwór błony śluzowej trzonu macicy",
+      "p": 0.02,
+      "za": [
+        "Przetrwałe nieprawidłowe krwawienia maciczne od ponad roku bez diagnostyki; u kobiet ≤45 lat z nieprawidłowymi krwawieniami rozrost atypowy i rak trzonu macicy występują, choć rzadko (PMID 39348761, 29696944, 27766759)"
+      ],
+      "przeciw": [
+        "Wiek 34 lata",
+        "Brak znanych czynników ryzyka niezrównoważonej estrogenizacji (otyłość i cykle bezowulacyjne – NIEZNANE)",
+        "Krwawienia opisane jako obfite miesiączki, a nie krwawienia międzymiesiączkowe"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Czynne masywne krwawienie maciczne teraz – wykluczone: pacjentka obecnie nie miesiączkuje",
+    "Ciężka niedokrwistość wymagająca przetoczenia – wykluczona wynikiem sprzed 2 tygodni: Hb 10,8 g/dl (niedokrwistość łagodna do umiarkowanej); zastrzeżenie: brak aktualnej morfologii i parametrów życiowych",
+    "Ryzyko samobójcze – pacjentka zaprzecza myślom rezygnacyjnym i samobójczym w ostatnich 2 tygodniach",
+    "Poporodowe zapalenie tarczycy – wykluczone: brak porodu ani poronienia w ostatnim roku",
+    "Polekowe zaburzenia czynności tarczycy – wykluczone w zakresie listy ankiety (pacjentka nie przyjmowała leków z listy)",
+    "Jawna niedoczynność tarczycy i śpiączka hipometaboliczna – wykluczone: FT4 w normie",
+    "Guz lub wole szyi zgłaszane przez pacjentkę – nie zgłasza zmian w szyi (badanie palpacyjne NIEZNANE)"
+  ],
+  "red_flags_otwarte": [
+    "Ciąża niewykluczona testem: pacjentka stara się o dziecko; wykluczy test beta-hCG przed jakimkolwiek leczeniem i obrazowaniem",
+    "Strukturalna przyczyna obfitych krwawień (polip, mięśniak, adenomioza, rozrost lub nowotwór błony śluzowej trzonu macicy) – nie oceniono; wykluczy badanie ginekologiczne z USG przezpochwowym, przy grubym lub niejednorodnym endometrium biopsja; status cytologii lub testu HPV NIEZNANY",
+    "Wrodzona skaza krwotoczna (choroba von Willebranda) – wykluczy ustrukturyzowany kwestionariusz krwawień, a przy dodatnim wyniku APTT, PT, czynnik von Willebranda (antygen i aktywność) i czynnik VIII; ważne także przed porodem",
+    "Utrata krwi lub złe wchłanianie z przewodu pokarmowego, w tym celiakia – wykluczy tTG-IgA z IgA całkowitym oraz wywiad w kierunku smolistych stolców, krwi w stolcu, biegunek i chudnięcia (NIEZNANE)",
+    "Niedobór witaminy B12 u wegetarianki od 2 lat, maskowany mikrocytozą z niedoboru żelaza – ryzyko nieodwracalnych powikłań neurologicznych i znaczenie przed ciążą (PMID 24667752, 23356638); wykluczy oznaczenie witaminy B12 (ewentualnie holotranskobalaminy)",
+    "Autoimmunologiczne zapalenie tarczycy u kobiety planującej ciążę – brak anty-TPO; przy dodatnich przeciwciałach i potwierdzonym TSH powyżej 2,5 mIU/l przed ciążą wytyczne sugerują rozważenie lewotyroksyny (PMID 29850652, 28716848, 33718252; progi [wiedza modelu, niezweryfikowane])",
+    "Pierwotna niedoczynność kory nadnerczy przed włączeniem lewotyroksyny – niskie prawdopodobieństwo; nie wykluczają jej dane: zmęczenie, ciśnienie tętnicze i sód NIEZNANE; przy hipotonii, przebarwieniach, hiponatremii oznaczyć kortyzol przed lewotyroksyną [wiedza modelu, niezweryfikowane]",
+    "Parametry życiowe NIEZNANE (tachykardia, hipotonia ortostatyczna, duszność wysiłkowa przy niedokrwistości)"
+  ],
+  "nastepny_krok": "W tym tygodniu ustalić i leczyć źródło utraty krwi: test beta-hCG i skierowanie na badanie ginekologiczne z USG przezpochwowym, z jednoczesnym włączeniem doustnego żelaza; lewotyroksynę odłożyć do wyniku anty-TPO i powtórnego TSH z FT4 za około 4 tygodnie, nie dłużej, bo pacjentka stara się o ciążę.",
+  "co_zmieniloby_zdanie": "Podniósłbym pilność do 2 lub 1 przy obecnym krwawieniu przemakającym podpaskę w ciągu godziny, Hb poniżej 8 g/dl, objawach niewydolności krążenia lub omdleniach, dodatnim teście ciążowym z bólem lub krwawieniem, albo smolistych stolcach; obniżyłbym ją do 4, gdyby badanie ginekologiczne, kwestionariusz krwawień i tTG-IgA były prawidłowe, a hemoglobina rosła na żelazie.",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskich wytycznych w bibliotece dla niedoczynności tarczycy, niedokrwistości ani nieprawidłowych krwawień macicznych (tylko przykładowe wiersze)",
+    "pamiec/zespol.md – brak wpisów dotyczących tej prezentacji",
+    "WebSearch (pubmed.ncbi.nlm.nih.gov) zapytanie 1: 'heavy menstrual bleeding iron deficiency anemia von Willebrand disease screening women' → PMID 40955497, 41080354, 41348644, 40994886",
+    "WebSearch zapytanie 2: 'iron deficiency anemia thyroid function TSH elevated iron supplementation subclinical hypothyroidism' → PMID 38923898, 38344555",
+    "WebSearch zapytanie 3: 'celiac disease prevalence iron deficiency anemia premenopausal women serologic screening' → PMID 29689265, 23161292, 18465236",
+    "WebSearch zapytanie 4: 'subclinical hypothyroidism TPO antibodies preconception levothyroxine women planning pregnancy guidelines' → PMID 29850652, 33718252, 36051566",
+    "WebSearch zapytanie 5: '2017 Guidelines of the American Thyroid Association ... Pregnancy and the Postpartum' → sam dokument wytycznych nie pojawił się w wynikach; trafne przeglądy PMID 28716848, 34054992",
+    "WebSearch zapytanie 6: 'endometrial hyperplasia cancer premenopausal women under 45 abnormal uterine bleeding risk factors endometrial sampling' → PMID 39348761, 29696944, 27766759",
+    "WebSearch zapytanie 7: 'vitamin B12 deficiency vegetarians prevalence systematic review' → PMID 24667752, 23356638",
+    "Uwaga: z wyników wyszukiwania widziano tytuły, nie pełne streszczenia; konkretne progi (TSH 2,5 mIU/l przed ciążą, częstość celiakii) oznaczone [wiedza modelu, niezweryfikowane]",
+    "PubMed get_article_metadata (runda 1): PMID 26342200 (Rosário 2015, Clin Endocrinol, DOI 10.1111/cen.12939) — 252 kobiety z TSH 4,5–10 mIU/l, 5 lat: 22,8% samoistna normalizacja, 19% wymagało LT4; TSH ≤8 i brak zapalenia tarczycy predyktorami normalizacji; PMID 15811925 (Díez 2005, DOI 10.1210/jc.2005-0375)"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: podniesiono p niedokrwistości z niedoboru żelaza z 0,50 do 0,65 i obniżono p subklinicznej niedoczynności tarczycy z 0,25 do 0,15 — obiektywne wyniki (Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml) w pełni tłumaczą objawy (zgodnie z opiniami bayes i poz_pragmatyk), a TSH 4,5–10 mIU/l u kobiet często normalizuje się samoistnie (22,8% w 5 lat; PMID 26342200, DOI 10.1111/cen.12939). Pilność 3 bez zmian: flagi otwarte (ciąża, przyczyna strukturalna, skaza, B12) nie zostały jawnie wykluczone."
+}

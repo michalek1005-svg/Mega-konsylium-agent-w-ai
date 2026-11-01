@@ -1,0 +1,132 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — magnez (przyjmowany doraźnie)",
+      "p": 0.01,
+      "za": [
+        "jedyny zgłoszony suplement; magnez upośledza wchłanianie żelaza i lewotyroksyny przy jednoczesnym przyjęciu"
+      ],
+      "przeciw": [
+        "magnez nie wywołuje zmęczenia, wypadania włosów, niedokrwistości ani wzrostu TSH",
+        "przyjmowany tylko czasami",
+        "pacjentka zaprzecza innym lekom (lista z ankiety: nic), w tym NLPZ, antykoagulantom, amiodaronowi, litowi, biotynie",
+        "objawy w pełni tłumaczy niedokrwistość z niedoboru żelaza (Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml) przy obfitych miesiączkach od ponad roku i diecie wegetariańskiej"
+      ]
+    },
+    {
+      "nazwa": "niedokrwistość z niedoboru żelaza",
+      "p": 0.0,
+      "za": [
+        "Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml; obfite miesiączki ze skrzepami od ponad roku; dieta wegetariańska od 2 lat; łamliwe paznokcie, zajady",
+        "p=0 celowo — rozpoznania niepolekowe należą do internistów konsylium; podaję jako kontekst dla planu"
+      ],
+      "przeciw": []
+    },
+    {
+      "nazwa": "subkliniczna niedoczynność tarczycy",
+      "p": 0.0,
+      "za": [
+        "TSH 5,4 mIU/l przy FT4 1,1 ng/dl (w zakresie), wywiad rodzinny choroby tarczycy",
+        "p=0 celowo; uwaga farmakologiczna: jedno oznaczenie, brak anty-TPO, a ciężki niedobór żelaza sam wiąże się z wyższym TSH (PMID 33716980)"
+      ],
+      "przeciw": [
+        "pojedynczy pomiar TSH, nieznana pora pobrania i stan anty-TPO"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "obecnie brak krwawienia z przesiąkaniem podpaski co godzinę",
+    "ciąża — pacjentka deklaruje, że nie może być w ciąży (bez testu)",
+    "myśli samobójcze w ostatnich 2 tygodniach — zaprzecza",
+    "objawy uciskowe/guz szyi — zaprzecza",
+    "leki zwiększające krwawienie (antykoagulanty, NLPZ) lub zaburzające czynność tarczycy (amiodaron, lit, biotyna) — zaprzecza"
+  ],
+  "red_flags_otwarte": [
+    "nierozpoznana przyczyna obfitych miesiączek od ponad roku (mięśniaki, polipy, koagulopatia, np. choroba von Willebranda) — wymaga oceny ginekologicznej z USG przezpochwowym przed leczeniem objawowym kwasem traneksamowym",
+    "planowanie ciąży w ciągu roku przy niewyrównanej niedokrwistości i niepotwierdzonym statusie tarczycy",
+    "brak anty-TPO i powtórnego TSH",
+    "nieznany poziom witaminy B12 przy diecie wegetariańskiej (składowa mieszana niedokrwistości możliwa)",
+    "badanie fizykalne i parametry życiowe NIEZNANE"
+  ],
+  "nastepny_krok": "Włączyć dziś doustne żelazo (siarczan żelaza(II) 80–100 mg żelaza elementarnego raz dziennie lub co drugi dzień, na czczo) i w tym samym dniu zlecić anty-TPO, a powtórne TSH z FT4 za 4–6 tygodni razem z kontrolną morfologią, ferrytyną i witaminą B12 — decyzję o lewotyroksynie podjąć dopiero na podstawie powtórnego TSH i anty-TPO.",
+  "co_zmieniloby_zdanie": "Potwierdzone w powtórnym badaniu TSH powyżej górnej granicy zakresu (orientacyjnie >4,0 mIU/l) albo TSH >2,5 mIU/l przy dodatnich anty-TPO u kobiety starającej się o ciążę przesunęłoby mnie do włączenia lewotyroksyny 25–50 µg/d przed koncepcją bez czekania na wyrównanie żelaza; TSH >10 mIU/l lub FT4 poniżej zakresu — lewotyroksyna bezwarunkowo.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "siarczan żelaza(II) (np. preparat o przedłużonym uwalnianiu 80 mg Fe2+)",
+      "dawka": "60–120 mg żelaza elementarnego raz dziennie rano albo co drugi dzień (schemat co drugi dzień daje większe wchłanianie frakcyjne i mniej objawów żołądkowo-jelitowych)",
+      "droga": "doustnie, na czczo lub 1 h przed posiłkiem, popić wodą lub sokiem pomarańczowym; nie popijać herbatą, kawą, mlekiem",
+      "czas": "do normalizacji Hb, a następnie jeszcze około 3 miesiące w celu uzupełnienia zapasów (cel ferrytyna >30–50 ng/ml przed koncepcją)",
+      "uwagi": "kontrola morfologii z retikulocytami po 4 tygodniach — oczekiwany wzrost Hb o około 1–2 g/dl; brak odpowiedzi → ocenić przestrzeganie, utratę krwi, celiakię (dieta, możliwa autoimmunologia tarczycy), rozważyć żelazo dożylne (karboksymaltozę żelaza) przed ciążą; magnez i wapń przyjmować co najmniej 2 h od żelaza; jeśli zostanie włączona lewotyroksyna — żelazo co najmniej 4 h po niej (np. wieczorem)",
+      "zrodlo": "schemat co drugi dzień: PMID 29032957, 31413088, 26289639; leczenie u miesiączkujących kobiet: PMID 39530462; czas leczenia, cel ferrytyny i wzrost Hb [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "kwas foliowy",
+      "dawka": "0,4 mg/d",
+      "droga": "doustnie",
+      "czas": "od teraz (co najmniej 12 tygodni przed planowaną koncepcją) do końca I trymestru",
+      "uwagi": "standardowa profilaktyka wad cewy nerwowej u kobiety planującej ciążę; przy diecie wegetariańskiej sprawdzić B12 przed lub równolegle (kwas foliowy może maskować hematologiczne objawy niedoboru B12)",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] — rekomendacje PTGiP dotyczące suplementacji przed ciążą"
+    },
+    {
+      "lek": "jod (jodek potasu)",
+      "dawka": "150 µg/d",
+      "droga": "doustnie",
+      "czas": "od okresu planowania ciąży, przez ciążę i laktację",
+      "uwagi": "polskie kobiety w ciąży często mają niedobór jodu mimo zaleceń; dodatnie anty-TPO nie są przeciwwskazaniem do dawki profilaktycznej",
+      "zrodlo": "niedobór jodu u Polek w ciąży: PMID 37396162; dawka 150 µg [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "lewotyroksyna — WARUNKOWO (tylko po potwierdzeniu wskazań w powtórnym TSH i anty-TPO)",
+      "dawka": "25–50 µg/d (subkliniczna niedoczynność, bez choroby serca)",
+      "droga": "doustnie, rano na czczo, 30–60 min przed śniadaniem, popić wodą",
+      "czas": "przewlekle w okresie starań i ciąży; ocena konieczności po porodzie",
+      "uwagi": "kontrola TSH po 6 tygodniach; cel TSH <2,5 mIU/l przed koncepcją; po dodatnim teście ciążowym zwiększyć dawkę o około 25–30% (np. 2 dodatkowe tabletki tygodniowo) i pilnie oznaczyć TSH; odstęp ≥4 h od żelaza, wapnia, magnezu; u eutyreotycznych kobiet z anty-TPO lewotyroksyna nie zwiększa odsetka żywych urodzeń (TABLET, T4LIFE) — wskazaniem jest więc potwierdzone podwyższone TSH, nie same przeciwciała",
+      "zrodlo": "interakcja z żelazem: PMID 1443969, 9191742, 28153426, 37384019; brak korzyści u eutyreotycznych anty-TPO+: PMID 30907987, 31617987, 35298917; progi TSH 2,5/4,0, dawka i zwiększenie w ciąży [wiedza modelu, niezweryfikowane — wytyczne ATA 2017 i PTE 2021, nie zweryfikowane w tej sesji]; planowanie ciąży: PMID 28716848"
+    },
+    {
+      "lek": "kwas traneksamowy — WARUNKOWO (po ocenie ginekologicznej)",
+      "dawka": "1 g 3 razy dziennie",
+      "droga": "doustnie",
+      "czas": "tylko w dni obfitego krwawienia, maksymalnie 4–5 dni cyklu",
+      "uwagi": "zmniejsza utratę krwi miesiączkowej i nie wpływa na płodność, więc pasuje do kobiety starającej się o ciążę (w przeciwieństwie do leczenia hormonalnego); przeciwwskazany przy przebytej żylnej chorobie zakrzepowo-zatorowej lub trombofilii; ostrożnie z antykoncepcją złożoną (tu nie dotyczy)",
+      "zrodlo": "skuteczność: PMID 20859150, 22229782; dawkowanie i przeciwwskazania [wiedza modelu, niezweryfikowane — ChPL nie ma w zrodla/]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "lewotyroksyna empirycznie na podstawie jednego TSH 5,4 mIU/l",
+      "powod": "jeden pomiar przy prawidłowym FT4, nieznane anty-TPO i ciężki niedobór żelaza, który sam podnosi TSH (PMID 33716980); objawy (zmęczenie, wypadanie włosów, koncentracja) tłumaczy niedokrwistość — leczenie LT4 ich nie usunie i opóźni właściwe leczenie; wyjątek: brak możliwości powtórzenia badań przed koncepcją"
+    },
+    {
+      "lek": "lewotyroksyna przyjmowana razem z żelazem, magnezem lub wapniem",
+      "powod": "chelatacja i spadek wchłaniania lewotyroksyny, wzrost TSH (PMID 1443969, 37384019) — wymagany odstęp ≥4 h"
+    },
+    {
+      "lek": "biotyna (suplementy na włosy i paznokcie) w ciągu 2–3 dni przed oznaczeniem TSH/FT4",
+      "powod": "interferencja z immunotestami streptawidyna–biotyna: fałszywie niskie TSH i wysokie FT4 [wiedza modelu, niezweryfikowane] — pacjentka z wypadaniem włosów może po nie sięgnąć"
+    },
+    {
+      "lek": "selen i „suplementy na Hashimoto”",
+      "powod": "brak dowodów na korzyść kliniczną przy niepotwierdzonej chorobie; nie zastępują leczenia niedoboru żelaza [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "leczenie hormonalne obfitych miesiączek (złożona antykoncepcja, system wewnątrzmaciczny z lewonorgestrelem)",
+      "powod": "sprzeczne z planem ciąży w ciągu roku — decyzja należy do ginekologa i pacjentki"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i ChPL dla tej sytuacji (tylko przykładowe wiersze)",
+    "WebSearch pubmed: 'iron deficiency subclinical hypothyroidism women TSH iron supplementation' → PMID 33716980 (metaanaliza: niedobór żelaza a zaburzenia tarczycy u kobiet w wieku rozrodczym), 39944206",
+    "WebSearch pubmed: 'levothyroxine absorption iron sulfate interaction separate administration' → PMID 1443969, 9191742, 28153426, 37384019",
+    "WebSearch pubmed: 'alternate day oral iron dosing iron-depleted women fractional absorption hepcidin' → PMID 29032957, 31413088, 26289639, 39530462",
+    "WebSearch pubmed: 'levothyroxine thyroid peroxidase antibodies euthyroid women TABLET trial live birth' → PMID 30907987 (TABLET), 31617987, 35298917 (T4LIFE)",
+    "WebSearch pubmed: 'Polish Society of Endocrinology recommendations thyroid disease pregnancy 2021' → PMID 37396162 (niedobór jodu u Polek w ciąży), 41498154",
+    "WebSearch pubmed: 'Hubalewska-Dydejczyk 2021 guidelines ... thyroid diseases pregnancy' → bez trafienia w docelową wytyczną PTE 2021 (zapytanie nieskuteczne)",
+    "WebSearch pubmed: '2017 American Thyroid Association guidelines ... pregnancy' → PMID 28716848 (postępowanie w chorobach tarczycy u kobiet planujących ciążę); sama wytyczna ATA 2017 niezweryfikowana",
+    "WebSearch pubmed: 'tranexamic acid heavy menstrual bleeding randomized trial menstrual blood loss' → PMID 20859150, 22229782",
+    "Progi TSH przed ciążą (2,5/4,0 mIU/l), dawki LT4, jodu, kwasu foliowego i kwasu traneksamowego: [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — żylna choroba zakrzepowo-zatorowa (zakrzepica żył głębokich lewego podudzia z zatorowością płucną) współwywołana doustną terapią hormonalną menopauzy (estradiol 1 mg + dydrogesteron 10 mg)",
+      "p": 0.3,
+      "za": [
+        "Doustny estrogen od roku: doustna terapia hormonalna menopauzy zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej (skorygowany iloraz szans 1,58; estradiol z dydrogesteronem 1,18, 95% CI 0,98–1,42) — Vinogradova 2019, PMID 30626577",
+        "Duńska kohorta 2026: doustny estrogen HR 1,6 (1,5–1,8) dla żylnej choroby zakrzepowo-zatorowej niezależnie od dawki i czasu stosowania — Berggreen 2026, PMID 42778212",
+        "Nałożenie się czynników: 14 h podróży autokarem, zakrzepica u krewnych pierwszego stopnia, doustny estrogen",
+        "Obraz kliniczny: jednostronnie obrzęknięta, cieplejsza, tkliwa łydka narastająco od 4 dni, potem kłucie opłucnowe po prawej, kaszel, męczliwość, stan przedomdleniowy, tętno 104/min, SpO2 94%"
+      ],
+      "przeciw": [
+        "Lek jest czynnikiem współsprawczym, nie jedyną przyczyną: podróż i wywiad rodzinny same w sobie dają ryzyko",
+        "Estradiol z dydrogesteronem to w badaniu Vinogradovej schemat doustny o najniższym ryzyku (przedział ufności obejmuje 1)",
+        "Brak jakiegokolwiek badania obrazowego i laboratoryjnego (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — obrzęk podudzia po amlodypinie",
+      "p": 0.02,
+      "za": [
+        "Amlodypina powoduje obrzęki okolicy kostek zależnie od dawki [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Obrzęk po amlodypinie jest obustronny, niebolesny, bez ocieplenia; tu obrzęk jednostronny, ciepły i tkliwy",
+        "Lek nie tłumaczy bólu opłucnowego, tachykardii ani spadku SpO2"
+      ]
+    },
+    {
+      "nazwa": "zatorowość płucna (rozpoznanie niepolekowe — ocenia internista)",
+      "p": 0,
+      "za": ["Farmakolog ma wagę 0 w torze rozpoznania; obraz wymaga pilnego wykluczenia, patrz red_flags_otwarte"],
+      "przeciw": []
+    },
+    {
+      "nazwa": "naciągnięcie mięśnia łydki i nerwoból międzyżebrowy (hipoteza lekarza prowadzącego)",
+      "p": 0,
+      "za": ["Poza zakresem roli; farmakologicznie: leczenie przeciwbólowe niesteroidowym lekiem przeciwzapalnym pod tę hipotezę jest niebezpieczne, dopóki żylna choroba zakrzepowo-zatorowa nie jest wykluczona"],
+      "przeciw": ["Brak urazu, ból narastał stopniowo, obrzęk i ocieplenie łydki, objawy płucne i hemodynamiczne"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Stan przedomdleniowy od wczoraj przy tętnie 104/min i SpO2 94% — podejrzenie zatorowości płucnej z obciążeniem prawej komory; wymaga oceny natychmiast (szpitalny oddział ratunkowy)",
+    "Jednostronny obrzęk, ocieplenie i tkliwość łydki po podróży >4 h — podejrzenie zakrzepicy żył głębokich",
+    "Pacjentka przyjmuje ibuprofen: może maskować ból i gorączkę, a przy wdrożeniu antykoagulacji zwiększa ryzyko krwawienia",
+    "Kontynuowana doustna terapia estrogenowa przy podejrzeniu czynnej zakrzepicy",
+    "Brak masy ciała, eGFR, morfologii z płytkami, ALT — niezbędne do doboru i dawki antykoagulantu (NIEZNANE)"
+  ],
+  "nastepny_krok": "Skierować pacjentkę natychmiast na szpitalny oddział ratunkowy transportem medycznym (stan przedomdleniowy) w kierunku zatorowości płucnej, a do tego czasu odstawić estradiol z dydrogesteronem i ibuprofen; na ból wyłącznie paracetamol.",
+  "co_zmieniloby_zdanie": "Wykluczenie zatorowości płucnej w angio-TK i zakrzepicy w USG uciskowym żył kończyny dolnej lewej przy prawidłowym D-dimerze — wtedy ibuprofen na krótko jest dopuszczalny, a powrót do terapii hormonalnej to decyzja ginekologa (preferencyjnie droga przezskórna).",
+  "plan_farmakologiczny": [
+    {
+      "lek": "paracetamol",
+      "dawka": "1 g co 6–8 h, maks. 4 g/dobę (maks. 3 g/dobę przy masie ciała <50 kg lub chorobie wątroby)",
+      "droga": "doustnie",
+      "czas": "doraźnie do czasu diagnostyki i przez pierwsze dni leczenia",
+      "uwagi": "Bez interakcji klinicznie istotnej z apiksabanem, rywaroksabanem, heparyną drobnocząsteczkową i amlodypiną. Lek nie ma 'leczyć' bólu w domu zamiast diagnostyki.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] — brak ChPL paracetamolu w zrodla/"
+    },
+    {
+      "lek": "apiksaban (preferowany doustny antykoagulant, jeśli SOR potwierdzi zatorowość płucną bez niestabilności hemodynamicznej i bez przeciwwskazań)",
+      "dawka": "10 mg 2×/dobę przez 7 dni, potem 5 mg 2×/dobę",
+      "droga": "doustnie",
+      "czas": "co najmniej 3 miesiące (czynniki przejściowe: podróż, estrogen); przedłużenie rozważyć ze względu na wywiad rodzinny — decyzja hematologa/internisty",
+      "uwagi": "Badanie AMPLIFY: nie gorszy od enoksaparyny z warfaryną, poważne krwawienia 0,6% vs 1,8% (RR 0,31). Wybór apiksabanu zamiast rywaroksabanu u kobiety na progestagenie: przy rywaroksabanie częstsze nieprawidłowe krwawienia z macicy (HR 2,13 vs enoksaparyna/VKA, Martinelli 2015). Przed startem: masa ciała, kreatynina z eGFR, morfologia z płytkami, ALT. Amlodypina — brak istotnej interakcji (słaby substrat CYP3A4) [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "Agnelli 2013, NEJM, PMID 23808982, DOI 10.1056/NEJMoa1302507; Martinelli 2015, Blood, PMID 26696010, DOI 10.1182/blood-2015-08-665927; czas leczenia — [wiedza modelu, niezweryfikowane: ESC 2019]"
+    },
+    {
+      "lek": "rywaroksaban (alternatywa dla apiksabanu)",
+      "dawka": "15 mg 2×/dobę przez 3 tygodnie, potem 20 mg 1×/dobę",
+      "droga": "doustnie, z posiłkiem",
+      "czas": "jak wyżej",
+      "uwagi": "EINSTEIN-PE: nie gorszy od standardu, poważne krwawienia 1,1% vs 2,2%. Przyjmowanie z posiłkiem przy dawkach 15–20 mg [wiedza modelu, niezweryfikowane — ChPL brak w zrodla/].",
+      "zrodlo": "EINSTEIN-PE Investigators 2012, NEJM, PMID 22449293, DOI 10.1056/NEJMoa1113572"
+    },
+    {
+      "lek": "enoksaparyna (gdy wysokie prawdopodobieństwo kliniczne, a obrazowanie się opóźnia, lub gdy doustny antykoagulant przeciwwskazany)",
+      "dawka": "1 mg/kg co 12 h (masa ciała NIEZNANA)",
+      "droga": "podskórnie",
+      "czas": "do potwierdzenia/wykluczenia rozpoznania lub zamiany na doustny antykoagulant",
+      "uwagi": "Antykoagulację pozajelitową zaczyna się przed wynikiem obrazowania przy wysokim prawdopodobieństwie klinicznym — decyzja SOR, nie POZ w domu. Korekta przy klirensie kreatyniny <30 ml/min.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane: ESC 2019, ChPL enoksaparyny]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "ibuprofen i inne niesteroidowe leki przeciwzapalne (ketoprofen, diklofenak, naproksen) — także 'coś mocniejszego' z tej grupy",
+      "powod": "Przy antykoagulacji w żylnej chorobie zakrzepowo-zatorowej zwiększają poważne krwawienia: 6,5 vs 2,0 na 100 pacjento-lat, HR 2,37 (1,51–3,75); klinicznie istotne krwawienia HR 1,77. Ponadto maskują ból opłucnowy i łydki, który jest objawem do monitorowania.",
+      "zrodlo": "Davidson 2014, JAMA Intern Med, PMID 24733305, DOI 10.1001/jamainternmed.2014.946"
+    },
+    {
+      "lek": "estradiol 1 mg + dydrogesteron 10 mg (doustna terapia hormonalna menopauzy)",
+      "powod": "Odstawić od dziś. Czynna lub podejrzewana zakrzepica jest przeciwwskazaniem do estrogenów w ChPL [wiedza modelu, niezweryfikowane]; doustny estrogen zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej (OR 1,58; HR 1,6). Uwaga: u kobiet <60 lat na pełnej antykoagulacji kontynuacja hormonów nie zwiększała nawrotów (HR 0,56; 0,23–1,39), więc najważniejsze jest ryzyko po zakończeniu antykoagulacji. Po leczeniu, jeśli objawy naczynioruchowe wymagają terapii, rozważyć tylko drogę przezskórną (OR 0,93; 0,87–1,01) — decyzja ginekologa.",
+      "zrodlo": "Vinogradova 2019, BMJ, PMID 30626577, DOI 10.1136/bmj.k4810; Berggreen 2026, BMJ, PMID 42778212, DOI 10.1136/bmj-2026-100688; Martinelli 2015, Blood, PMID 26696010"
+    },
+    {
+      "lek": "tramadol i inne opioidy przed diagnostyką",
+      "powod": "Przy stanie przedomdleniowym i SpO2 94% ryzyko sedacji, hipotonii i depresji oddechowej; maskowanie objawów opóźnia rozpoznanie.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "kwas acetylosalicylowy jako zamiennik antykoagulacji",
+      "powod": "Nie leczy ostrej zakrzepicy; w połączeniu z antykoagulantem zwiększa klinicznie istotne krwawienia (HR 1,70).",
+      "zrodlo": "Davidson 2014, PMID 24733305"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla żylnej choroby zakrzepowo-zatorowej i brak ChPL leków z tej sprawy (tylko wiersze przykładowe)",
+    "pamiec/zespol.md — brak wniosków dotyczących zakrzepicy",
+    "PubMed zapytanie 1: 'hormone replacement therapy venous thromboembolism oral transdermal nested case-control' → PMID 30626577, 42778212",
+    "PubMed zapytanie 2: 'Davidson BL[Author] AND NSAID AND bleeding AND rivaroxaban' → PMID 24733305",
+    "PubMed zapytanie 3: 'apixaban AND acute venous thromboembolism AND randomized[Title/Abstract] AND Agnelli G[Author]' → PMID 23808982",
+    "PubMed zapytanie 4: 'hormonal therapy AND anticoagulation AND venous thromboembolism AND (recurrence OR uterine bleeding) AND Martinelli I[Author]' → PMID 26696010",
+    "PubMed zapytanie 5: 'oral rivaroxaban for the treatment of symptomatic pulmonary embolism[Title]' → PMID 22449293",
+    "Vinogradova Y, Coupland C, Hippisley-Cox J. BMJ 2019;364:k4810. PMID 30626577. DOI 10.1136/bmj.k4810 (streszczenie sprawdzone)",
+    "Berggreen J i wsp. BMJ 2026;394:e100688. PMID 42778212. DOI 10.1136/bmj-2026-100688 (streszczenie sprawdzone)",
+    "Davidson BL i wsp. JAMA Intern Med 2014;174(6):947-53. PMID 24733305. DOI 10.1001/jamainternmed.2014.946 (streszczenie sprawdzone)",
+    "Agnelli G i wsp. (AMPLIFY) N Engl J Med 2013;369(9):799-808. PMID 23808982. DOI 10.1056/NEJMoa1302507 (streszczenie sprawdzone)",
+    "Martinelli I i wsp. Blood 2016;127(11):1417-25. PMID 26696010. DOI 10.1182/blood-2015-08-665927 (streszczenie sprawdzone)",
+    "EINSTEIN-PE Investigators. N Engl J Med 2012;366(14):1287-97. PMID 22449293. DOI 10.1056/NEJMoa1113572 (streszczenie sprawdzone)",
+    "[wiedza modelu, niezweryfikowane]: wytyczne ESC 2019 dotyczące zatorowości płucnej (czas leczenia, antykoagulacja przed obrazowaniem), ChPL paracetamolu, enoksaparyny, rywaroksabanu (posiłek), estradiolu (przeciwwskazania), interakcje amlodypiny"
+  ]
+}

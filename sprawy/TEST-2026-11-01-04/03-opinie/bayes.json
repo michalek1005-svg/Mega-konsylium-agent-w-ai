@@ -1,0 +1,109 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Krwotok podpajęczynówkowy (najpewniej z pękniętego tętniaka, ewentualnie okołośródmózgowiowy nietętniakowy)",
+      "p": 0.40,
+      "za": [
+        "Pretest: nagły ból głowy kierowany z podstawowej opieki zdrowotnej do oceny – krwotok podpajęczynówkowy u około 10–25% (badania prospektywne: Linn 1994, PMID 7914965; Landtblom 2002, PMID 12110111) [odsetki: wiedza modelu, niezweryfikowane] → punkt wyjścia ~0,15",
+        "Szczyt bólu w kilka sekund, 'najgorszy w życiu' → podnosi → umiarkowanie (kryterium reguły Ottawa; samo 'najgorszy w życiu' ma słabe LR, PMID 27306497)",
+        "Początek podczas wysiłku (dźwiganie mebli, manewr Valsalvy) → podnosi → umiarkowanie (kryterium reguły Ottawa, PMID 29133539)",
+        "Obecnie ograniczenie zgięcia karku i światłowstręt po 3 dobach, bez gorączki → podnosi → silnie (sztywność karku LR+ około 4 w metaanalizie, PMID 27306497) [wartość LR: wiedza modelu, niezweryfikowane]; obraz chemicznego zapalenia opon przez krew w płynie mózgowo-rdzeniowym",
+        "Jednorazowe wymioty w chwili zachorowania → podnosi → słabo",
+        "Wiek 47 lat (≥40, kryterium reguły Ottawa) → podnosi → słabo",
+        "Nieleczone nadciśnienie tętnicze, palenie 20 papierosów dziennie, duże ilości alkoholu w ostatnich 2 tygodniach → podnosi (czynniki ryzyka tętniaka i jego pęknięcia) → umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Ojciec zmarł nagle w wieku 52 lat z powodu 'wylewu' nieznanego typu → podnosi → słabo do umiarkowanie (możliwy rodzinny tętniak; typ krwotoku NIEZNANY)",
+        "Ustąpienie ostrego bólu po kilku godzinach z pozostałym bólem 3/10 → NIE obniża: typowy przebieg krwawienia ostrzegawczego (sentinel headache), które często jest błędnie rozpoznawane (PMID 14984225, 15549540, 14970066)"
+      ],
+      "przeciw": [
+        "Brak utraty przytomności → obniża → słabo",
+        "Brak deficytów neurologicznych zgłoszonych w ankiecie → obniża → słabo (badanie fizykalne NIEZNANE)",
+        "Obecny ból jedynie 3/10 i stabilny od doby → obniża → słabo",
+        "Pacjent miewał wcześniej bóle głowy (ale 'zupełnie inne, słabsze') → praktycznie neutralne"
+      ]
+    },
+    {
+      "nazwa": "Pierwotny piorunujący lub wysiłkowy ból głowy",
+      "p": 0.20,
+      "za": [
+        "Pretest: większość piorunujących bólów głowy w badaniach okazuje się łagodna (PMID 12803675, 39303457) → punkt wyjścia wysoki",
+        "Wyzwolenie wysiłkiem → podnosi → słabo",
+        "Szybkie ustąpienie ostrego bólu po kilku godzinach → podnosi → słabo"
+      ],
+      "przeciw": [
+        "Utrzymujące się po 3 dobach objawy oponowe (ograniczenie zgięcia karku, światłowstręt) → obniża → silnie",
+        "To rozpoznanie z wykluczenia – wymaga uprzedniego wykluczenia krwotoku podpajęczynówkowego i przyczyn naczyniowych"
+      ]
+    },
+    {
+      "nazwa": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.10,
+      "za": [
+        "Piorunujący ból wyzwolony wysiłkiem/Valsalvą → podnosi → umiarkowanie (typowe wyzwalacze, PMID 27015869, 24580731)",
+        "Duże ilości alkoholu w ostatnich 2 tygodniach → podnosi → słabo (czynnik wyzwalający) [wiedza modelu, niezweryfikowane]",
+        "Wiek średni → neutralne do słabo podnosi"
+      ],
+      "przeciw": [
+        "Pojedynczy epizod (typowo nawracające piorunujące bóle przez 1–2 tygodnie) → obniża → umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Płeć męska (częstszy u kobiet) → obniża → słabo [wiedza modelu, niezweryfikowane]",
+        "Wyraźne objawy oponowe → obniża → słabo (chyba że towarzyszy ograniczony krwotok podpajęczynówkowy wypukłości)"
+      ]
+    },
+    {
+      "nazwa": "Rozwarstwienie tętnicy kręgowej lub szyjnej wewnętrznej",
+      "p": 0.08,
+      "za": [
+        "Ból potyliczny z bólem karku po wysiłku z obciążeniem szyi (dźwiganie) → podnosi → umiarkowanie; ból może być jedynym objawem rozwarstwienia (PMID 16820416, 35302384)",
+        "Nadciśnienie tętnicze i palenie → podnosi → słabo"
+      ],
+      "przeciw": [
+        "Brak zgłoszonych objawów niedokrwienia tylnego krążenia ani zespołu Hornera → obniża → słabo (badanie NIEZNANE)",
+        "Światłowstręt i ograniczenie zgięcia karku lepiej tłumaczy krew w przestrzeni podpajęczynówkowej → obniża → słabo"
+      ]
+    },
+    {
+      "nazwa": "Naciągnięcie mięśni karku z bólem głowy typu napięciowego",
+      "p": 0.07,
+      "za": [
+        "Pretest: ból karku po dźwiganiu w podstawowej opiece zdrowotnej jest bardzo częsty → wysoki punkt wyjścia dla samego bólu karku",
+        "Hipoteza pacjenta, związek z dźwiganiem mebli → podnosi → słabo"
+      ],
+      "przeciw": [
+        "Ból głowy narastający w sekundy, 'najgorszy w życiu' → obniża → silnie (nie pasuje do naciągnięcia mięśni)",
+        "Wymioty i światłowstręt → obniża → umiarkowanie",
+        "Ograniczenie zgięcia karku przy braku urazu → obniża → umiarkowanie",
+        "Błąd zakotwiczenia: rozpoznanie 'bólu karku' jest typową przyczyną przeoczenia krwawienia ostrzegawczego (PMID 14970066)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Gorączka i dreszcze (pacjent zaprzecza) – zmniejsza prawdopodobieństwo bakteryjnego zapalenia opon, nie wyklucza krwotoku",
+    "Utrata przytomności w chwili zachorowania (zaprzecza)",
+    "Leki przeciwkrzepliwe i przeciwpłytkowe na stałe (nie przyjmuje)"
+  ],
+  "red_flags_otwarte": [
+    "Piorunujący, najsilniejszy w życiu ból głowy podczas wysiłku 3 doby temu bez żadnej diagnostyki obrazowej",
+    "Objawy oponowe obecne dziś: ograniczenie zgięcia karku i światłowstręt",
+    "Nieleczone nadciśnienie tętnicze, wartości ciśnienia od epizodu NIEZNANE",
+    "Nagła śmierć ojca w wieku 52 lat z powodu 'wylewu' nieznanego typu",
+    "Badanie neurologiczne i parametry życiowe NIEZNANE",
+    "Ryzyko ponownego krwawienia z tętniaka jest największe w pierwszych dniach po krwawieniu ostrzegawczym [wiedza modelu, niezweryfikowane]",
+    "Reguła Ottawa dla krwotoku podpajęczynówkowego: dodatnie co najmniej 5 z 6 kryteriów (wiek ≥40, ból/sztywność karku, początek przy wysiłku, szczyt natychmiastowy, ograniczone zgięcie karku); reguła ma czułość około 100%, ale niską swoistość, więc służy do wykluczania, a nie potwierdzania (PMID 29133539, 24065011)"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie do szpitalnego oddziału ratunkowego transportem medycznym (nie samodzielnie samochodem) z rozpoznaniem 'podejrzenie krwotoku podpajęczynówkowego – krwawienie ostrzegawcze 3 doby temu', z prośbą o tomografię komputerową głowy bez kontrastu i angio-TK, a przy ujemnym wyniku nakłucie lędźwiowe z oceną ksantochromii; bez przepisywania leków rozluźniających mięśnie i bez zwolnienia z rozpoznaniem bólu karku.",
+  "co_zmieniloby_zdanie": "Prawidłowa angio-TK łącznie z płynem mózgowo-rdzeniowym bez ksantochromii (nie sam ujemny TK, którego czułość po 3 dobach spada do około 85–90%, przez co p krwotoku zostaje około 0,08–0,10) obniżyłyby krwotok podpajęczynówkowy poniżej 0,01 i przesunęły ciężar na pierwotny piorunujący ból głowy lub zespół odwracalnego skurczu naczyń.",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskich wytycznych dla piorunującego bólu głowy w bibliotece (tylko przykładowe wiersze)",
+    "pamiec/zespol.md – brak wpisów dotyczących bólu głowy",
+    "Narzędzie PubMed MCP niedostępne (proxy); użyto WebSearch ograniczonego do pubmed.ncbi.nlm.nih.gov",
+    "Zapytanie 1: 'prevalence subarachnoid hemorrhage thunderclap headache primary care' → PMID 12110111 (Landtblom 2002, nagły ból głowy – częstość i przyczyny), 12803675 (Dodick, przegląd przyczyn piorunującego bólu głowy), 39303457 (nietętniakowy piorunujący ból głowy), 27306497 (Carpenter 2016, metaanaliza trafności wywiadu, badania, TK i nakłucia), 24065011 (reguły decyzyjne)",
+    "Zapytanie 2: 'Ottawa subarachnoid hemorrhage rule sensitivity validation' → PMID 29133539 (Perry 2017, walidacja reguły Ottawa), 25511365, 34408235",
+    "Zapytanie 3: 'sentinel headache warning leak aneurysmal subarachnoid hemorrhage misdiagnosis' → PMID 7914965 (Linn 1994, prospektywne badanie bólu ostrzegawczego w praktyce ogólnej), 14984225 (przegląd systematyczny częstości bólu ostrzegawczego), 15549540, 14970066 (Kowalski 2004, błędne wstępne rozpoznanie a wynik)",
+    "Zapytanie 4: 'CT sensitivity subarachnoid hemorrhage time from headache onset days' → PMID 34819306 (czułość wielorzędowej TK w kolejnych przedziałach czasu od zachorowania), 21768192 (Perry 2011, TK w ciągu 6 h), 40034490",
+    "Zapytanie 5: 'reversible cerebral vasoconstriction syndrome thunderclap headache exertion' → PMID 27015869 (wyzwalacze piorunującego bólu w zespole odwracalnego skurczu), 24580731",
+    "Zapytanie 6: 'cervical artery dissection thunderclap headache neck pain presentation' → PMID 16820416 (ból jako jedyny objaw rozwarstwienia), 35302384",
+    "Konkretne wartości LR, odsetki i czułości TK w przedziałach czasowych podane z pamięci, nie z przeczytanych abstraktów: [wiedza modelu, niezweryfikowane]"
+  ]
+}

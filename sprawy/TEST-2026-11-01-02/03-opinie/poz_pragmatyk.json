@@ -1,0 +1,113 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał bez uniesienia ST lub niestabilna dławica piersiowa)",
+      "p": 0.55,
+      "za": [
+        "pierwszy w życiu epizod 'zgagi' od wczoraj wieczorem, oporny na leki zobojętniające (Rennie)",
+        "pieczenie w dołku/pod mostkiem nasila się przy wchodzeniu po schodach i słabnie w spoczynku (równoważnik dławicy)",
+        "zimny pot bez powodu oraz ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami od wczoraj",
+        "nowa duszność wysiłkowa (pierwsze piętro) od wczoraj, nudności, skrajne zmęczenie",
+        "kobieta 66 lat z cukrzycą typu 2, nadciśnieniem, hipercholesterolemią, paląca; nieregularnie przyjmowana statyna",
+        "u kobiet z cukrzycą ostry zespół wieńcowy częściej przebiega bez typowego bólu w klatce (PMID 18482629, 35268411, 26956231)"
+      ],
+      "przeciw": [
+        "pacjentka zaprzecza bólowi w klatce piersiowej",
+        "obecnie objawy z szyi/żuchwy i zimny pot ustąpiły",
+        "brak EKG, troponiny, parametrów życiowych i badania fizykalnego (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zawał serca z uniesieniem odcinka ST lub w fazie dokonanej",
+      "p": 0.07,
+      "za": [
+        "objawy trwające godzinami od wczoraj wieczorem, z zimnym potem i promieniowaniem",
+        "duszność wysiłkowa może odpowiadać dysfunkcji lewej komory po przebytym niedokrwieniu"
+      ],
+      "przeciw": [
+        "przebieg epizodyczny, w spoczynku bez duszności i aktualnie bez objawów towarzyszących",
+        "rozstrzyga wyłącznie EKG, którego nie ma"
+      ]
+    },
+    {
+      "nazwa": "Choroba refluksowa przełyku",
+      "p": 0.12,
+      "za": [
+        "pieczenie w dołku/za mostkiem, nudności",
+        "metformina może dawać dolegliwości dyspeptyczne"
+      ],
+      "przeciw": [
+        "pierwszy epizod w wieku 66 lat, brak odpowiedzi na leki zobojętniające",
+        "zależność od wysiłku i ustępowanie w spoczynku, zimny pot, promieniowanie do szyi i żuchwy, nowa duszność — nie tłumaczą się refluksem"
+      ]
+    },
+    {
+      "nazwa": "Niewydolność serca de novo",
+      "p": 0.06,
+      "za": [
+        "nowa duszność wysiłkowa, zmęczenie, wiele czynników ryzyka sercowo-naczyniowego"
+      ],
+      "przeciw": [
+        "nagły początek od wczoraj, bez duszności spoczynkowej i bez danych o obrzękach (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Niedokrwistość nasilająca niedokrwienie mięśnia sercowego",
+      "p": 0.05,
+      "za": [
+        "w morfologii lub HbA1c z ostatniego roku 'coś było nieprawidłowe' — wynik nieznany",
+        "duszność wysiłkowa i zmęczenie"
+      ],
+      "przeciw": [
+        "nagły początek od wczoraj bardziej przemawia za ostrym zdarzeniem wieńcowym niż za przewlekłą niedokrwistością"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "duszność spoczynkowa (pacjentka w spoczynku oddycha normalnie)",
+    "wymioty"
+  ],
+  "red_flags_otwarte": [
+    "zimny pot i ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami od wczoraj — reguła ankiety 'NATYCHMIAST 112'",
+    "pieczenie zależne od wysiłku, ustępujące w spoczynku — równoważnik dławicy",
+    "nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą",
+    "brak EKG, troponiny, ciśnienia tętniczego, tętna, saturacji",
+    "nieznany nieprawidłowy wynik morfologii z ostatniego roku (niedokrwistość?)"
+  ],
+  "nastepny_krok": "Nie leczyć jak refluksu: wezwać zespół ratownictwa medycznego (112/999) do transportu na szpitalny oddział ratunkowy z ośrodkiem kardiologii inwazyjnej, a do czasu przyjazdu — jeśli pacjentka jest w gabinecie — wykonać 12-odprowadzeniowe EKG spoczynkowe, zmierzyć ciśnienie, tętno, saturację i podać do rozgryzienia kwas acetylosalicylowy 150–300 mg (przy braku uczulenia i czynnego krwawienia); jeśli kontakt jest zdalny (aplikacja/telefon) — zadzwonić do pacjentki teraz i polecić wezwanie 112, bez jazdy własnym samochodem.",
+  "co_zmieniloby_zdanie": "Obniżenie pilności poniżej 1 uzasadniłby dopiero prawidłowy szpitalny algorytm troponiny wysokoczułej 0/1 h lub 0/2 h z seryjnym EKG — prawidłowe pojedyncze EKG w gabinecie ani przyłóżkowy test troponiny w POZ tego nie wykluczają; potrzebna też informacja, jak daleko (km/min) jest najbliższy SOR i czy pacjentka jest teraz fizycznie w gabinecie.",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "Jeśli pacjentka jest na miejscu: położyć/posadzić, nie wypuszczać z przychodni; EKG 12-odprowadzeniowe w ciągu 10 minut, RR na obu ramionach, tętno, SpO2, glikemia z glukometru.",
+      "Wezwać ZRM niezależnie od wyniku EKG (EKG z gabinetu przekazać zespołowi; uniesienie ST = ścieżka STEMI, ale prawidłowe EKG nie zmienia decyzji o transporcie).",
+      "Kwas acetylosalicylowy 150–300 mg doustnie do rozgryzienia (ESC 2023: dawka nasycająca ASA w podejrzeniu OZW; PMID 38032511, 38783672; korzyść podania przedszpitalnego — PMID 12417813, 36304434), jeśli brak uczulenia na ASA, czynnego krwawienia z przewodu pokarmowego i leczenia przeciwkrzepliwego.",
+      "Nitrogliceryna podjęzykowo tylko przy nawrocie bólu/pieczenia i skurczowym RR >90 mmHg [wiedza modelu, niezweryfikowane]; nie podawać rutynowo, gdy objawów teraz brak.",
+      "Dostęp żylny, jeśli personel gabinetu zabiegowego jest dostępny; nie opóźniać tym transportu.",
+      "Nie zlecać 'pilnej' troponiny z laboratorium POZ z odbiorem jutro i nie wysyłać do domu z IPP — to strata czasu w możliwym zawale."
+    ],
+    "kontakt_zdalny": "Jeśli to tylko zgłoszenie z aplikacji: zadzwonić do pacjentki teraz, zapytać o aktualne objawy, polecić wezwanie 112 (lub wezwać ZRM samemu z adresem pacjentki); doradzić rozgryzienie 300 mg aspiryny, jeśli ma w domu i nie jest uczulona; nie jechać samodzielnie ani autobusem; nie czekać do jutra na wizytę.",
+    "zlecic": "Badania diagnostyczne (troponina wysokoczuła seryjnie, morfologia, kreatynina/eGFR, elektrolity, echokardiografia) wykonuje szpital — w POZ nie zlecać niczego, co opóźnia transport. Przyłóżkowy test troponiny w POZ nie wyklucza OZW (PMID 30115777, 28462739; ocenia się dopiero strategie z testem hs w badaniach — PMID 37290947).",
+    "skierowanie": "ZRM → SOR/izba przyjęć szpitala z pracownią hemodynamiki, tryb natychmiastowy (pilność 1). Skierowanie na kartce nie jest potrzebne przy transporcie ZRM; w notatce/karcie dla zespołu: objawy od wczoraj wieczorem, zimny pot, promieniowanie do szyi/żuchwy, duszność wysiłkowa, cukrzyca na metforminie i gliklazydzie, godzina podania ASA.",
+    "leki_przewlekle": "Metformax (metformina) — przekazać szpitalowi, decyzja o wstrzymaniu przed koronarografią po stronie szpitala; Diaprel MR (gliklazyd) — przy nudnościach i ograniczonym jedzeniu ryzyko hipoglikemii, monitorować glikemię [wiedza modelu, niezweryfikowane]. Nie odstawiać niczego samodzielnie w POZ dziś.",
+    "kontrola": "Wizyta w POZ po wypisie ze szpitala (karta informacyjna): wtórna prewencja — przestrzeganie statyny (obecnie 'czasem zapominam'), zaprzestanie palenia, kontrola wyrównania cukrzycy (glikemia 214 mg/dl), weryfikacja zaleceń przeciwpłytkowych i ewentualnej osłony IPP. Przy okazji sprawdzić w systemie, który wynik (morfologia czy HbA1c) był nieprawidłowy.",
+    "jesli_pacjentka_odmawia_karetki": "Udokumentować odmowę z podpisem po wyjaśnieniu ryzyka zawału; wersja minimalnie wykonalna: transport przez rodzinę bezpośrednio na SOR teraz (nie jutro, nie samodzielnie za kierownicą), z wydrukiem EKG i informacją o objawach.",
+    "co_powiedziec_pacjentce": "To nie wygląda na zwykłą zgagę — pieczenie przy wysiłku z zimnym potem i dusznością u osoby z cukrzycą może być zawałem serca, więc teraz jedzie Pani karetką do szpitala, a leki na żołądek mogą poczekać.",
+    "wykonalnosc": "Plan wykonalny w każdym gabinecie POZ (EKG + ASA + telefon 112); nie wymaga specjalistycznych zasobów. Główna bariera: oczekiwanie pacjentki ('chcę tabletki na zgagę') i normalizacja objawów — dlatego jedno jasne zdanie i decyzja lekarza, nie propozycja."
+  },
+  "nie_zlecac": [
+    {"co": "IPP jako jedyne postępowanie z kontrolą 'jeśli nie przejdzie'", "dlaczego": "maskuje i odracza rozpoznanie możliwego OZW; dolegliwości zależne od wysiłku nie są refluksem do czasu wykluczenia niedokrwienia"},
+    {"co": "Troponina z laboratorium przychodni lub przyłóżkowy test troponiny jako podstawa do zostawienia pacjentki w domu", "dlaczego": "pojedynczy pomiar nie wyklucza OZW, a czas do wyniku opóźnia leczenie (PMID 30115777)"},
+    {"co": "Skierowanie do poradni kardiologicznej (AOS) w trybie pilnym", "dlaczego": "termin rzędu tygodni — przesunięcie decyzji, nie decyzja; właściwy tryb to SOR dziś"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików z polskimi wytycznymi dla OZW i brak wykazu badań POZ (tylko przykłady); pamiec/zespol.md — brak uzupełnionych realiów lokalnych (odległość do SOR NIEZNANA); wniosek PRZYKLAD-001: EKG w gabinecie przed planem.",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'atypical presentation acute coronary syndrome women diabetes dyspepsia dyspnea' → PMID 18482629 (objawy OZW u kobiet z cukrzycą, przegląd), PMID 35268411 (objawy zawału u kobiet, metaanaliza), PMID 26956231 (atypowy ból w OZW – pułapka u kobiet), PMID 29300792 (OZW u chorych na cukrzycę)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: '2023 ESC guidelines management of acute coronary syndromes' → PMID 38032511, PMID 38783672 (omówienia wytycznych ESC 2023 dotyczących OZW), PMID 38610650 (krytyczna analiza wytycznych ESC 2023)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'prehospital aspirin suspected acute myocardial infarction primary care general practitioner' → PMID 36304434 (przegląd systematyczny: przedszpitalna aspiryna i nitrogliceryna w podejrzeniu OZW), PMID 12417813 (lepszy wynik przy przedszpitalnym podaniu aspiryny), PMID 29779296 (ocena bólu w klatce w POZ)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'point-of-care troponin primary care rule out acute coronary syndrome diagnostic accuracy' → PMID 30115777 (BET: przedszpitalne testy troponiny nie wykluczają OZW), PMID 28462739 (troponina przyłóżkowa w POZ – opinia lekarzy rodzinnych), PMID 37290947 (protokół RCT POB HELP – hs-cTnI w POZ)",
+    "Dawka ASA 150–300 mg wg omówień ESC 2023 (PMID 38032511, 38783672 — znane tylko z tytułów/abstraktów, dokładna dawka [wiedza modelu, niezweryfikowane]); warunek RR >90 mmHg dla nitrogliceryny [wiedza modelu, niezweryfikowane]."
+  ]
+}

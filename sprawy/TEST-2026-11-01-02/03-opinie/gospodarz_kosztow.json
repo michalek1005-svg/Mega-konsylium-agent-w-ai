@@ -1,0 +1,122 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "ostry zespół wieńcowy bez uniesienia odcinka ST (zawał lub niestabilna dławica piersiowa)",
+      "p": 0,
+      "za": ["66-letnia kobieta z cukrzycą typu 2, nadciśnieniem, hipercholesterolemią i paleniem tytoniu", "pierwszy w życiu epizod 'zgagi' od wczoraj wieczorem, oporny na Rennie", "pieczenie nasila się przy wysiłku i słabnie w spoczynku", "zimny pot oraz ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami w ciągu ostatniej doby (ustąpiły)", "nowa duszność wysiłkowa od wczoraj, nudności, silne zmęczenie"],
+      "przeciw": ["brak bólu w klatce piersiowej (u kobiet z cukrzycą nie wyklucza zawału)", "brak duszności spoczynkowej"]
+    },
+    {
+      "nazwa": "choroba refluksowa przełyku",
+      "p": 0,
+      "za": ["pieczenie w dołku i za mostkiem", "nudności"],
+      "przeciw": ["pierwszy epizod w 66. roku życia", "brak odpowiedzi na leki zobojętniające", "zależność od wysiłku", "objawy towarzyszące: zimny pot, promieniowanie, duszność wysiłkowa"]
+    },
+    {
+      "nazwa": "ostra niewydolność serca",
+      "p": 0,
+      "za": ["nowa duszność wysiłkowa", "zmęczenie", "wysokie ryzyko sercowo-naczyniowe"],
+      "przeciw": ["brak duszności spoczynkowej", "brak danych o obrzękach i orthopnoe (NIEZNANE)"]
+    },
+    {
+      "nazwa": "zatorowość płucna",
+      "p": 0,
+      "za": ["nagła nowa duszność wysiłkowa", "zmęczenie"],
+      "przeciw": ["brak danych o czynnikach ryzyka zakrzepicy", "objawy dobrze tłumaczy niedokrwienie mięśnia sercowego"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "hipoglikemia jako przyczyna zimnego potu i osłabienia (glikemia 214 mg/dl w dniu ankiety)",
+    "wymioty (tylko nudności)"
+  ],
+  "red_flags_otwarte": [
+    "ostry zespół wieńcowy: równoważnik dławicowy zależny od wysiłku, epizod zimnego potu i bólu promieniującego do szyi/żuchwy/ramienia/łopatek w ciągu ostatniej doby",
+    "zawał z uniesieniem odcinka ST — nie wykluczony bez elektrokardiogramu",
+    "nowa duszność wysiłkowa od wczoraj: niewydolność serca lub zatorowość płucna do wykluczenia",
+    "parametry życiowe, badanie fizykalne i elektrokardiogram — NIEZNANE",
+    "wcześniejszy 'nieprawidłowy' wynik morfologii lub HbA1c o nieznanej treści (możliwa niedokrwistość jako czynnik niedokrwienia typu 2) — NIEZNANE"
+  ],
+  "nastepny_krok": "Wezwać Zespół Ratownictwa Medycznego (112) i przekazać pacjentkę do szpitala z całodobową pracownią hemodynamiki; elektrokardiogram 12-odprowadzeniowy wykonać w gabinecie w ciągu 10 minut tylko wtedy, gdy nie opóźnia wezwania, a nie jako warunek decyzji.",
+  "co_zmieniloby_zdanie": "Rezygnację z natychmiastowego przekazania do szpitala uzasadniłoby dopiero potwierdzenie, że objawy wysiłkowe, zimny pot i promieniowanie są błędem w ankiecie (lekarz w rozmowie ustala, że pieczenie nie zależy od wysiłku i nie było objawów towarzyszących) — wtedy uprawniona jest wciąż ta sama doba: EKG plus troponina wysokoczuła dziś, nie leczenie próbne IPP.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla ostrego zespołu wieńcowego w bibliotece (tylko wiersze przykładowe)",
+    "pamiec/zespol.md — wniosek z PRZYKLAD-001: EKG w gabinecie przed planem planowym u kobiety 50+ z czynnikami ryzyka sercowego",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): 'high-sensitivity troponin 0/1-hour algorithm rule-out NSTEMI emergency department' → PMID 30071991 (prospektywna walidacja algorytmu 0/1 h), PMID 32995203 (algorytm 0/1 h z troponiną wysokoczułą), PMID 41592427 (algorytm ESC 0/1 h przy prawidłowym vs nieprawidłowym EKG)",
+    "Zapytanie 2: 'atypical presentation myocardial infarction women diabetes without chest pain dyspnea nausea' → PMID 18482629 (objawy OZW u kobiet z cukrzycą, przegląd integracyjny), PMID 38287984 (objawy zawału u chorych z cukrzycą), PMID 11602537 (gorsze rokowanie zawału bez bólu w klatce piersiowej), PMID 26956231 (nietypowy ból w OZW jako pułapka u kobiet)",
+    "Zapytanie 3: 'point-of-care troponin testing primary care acute coronary syndrome rule-out accuracy' → PMID 42481217 (metaanaliza algorytmów POC hs-troponiny w SOR), PMID 30115777 (BET: przedszpitalna troponina POC do wykluczania OZW), PMID 37290947 (POB HELP — protokół RCT wykluczania OZW w POZ testem POC; dowód dla POZ wciąż w trakcie badań)",
+    "Zapytanie 4: 'missed acute myocardial infarction misdiagnosis gastrointestinal symptoms dyspepsia emergency' → PMID 29540019 (pominięte rozpoznania zawału w SOR wg cech pacjenta), PMID 38765342 (zawał maskujący się jako nieżyt żołądkowo-jelitowy)",
+    "Zapytanie 5: 'initial electrocardiogram nondiagnostic sensitivity NSTEMI normal ECG proportion' → PMID 32714696 (częstość NSTEMI przy prawidłowym EKG), PMID 42626118 (NSTE-OZW z prawidłowym EKG — przegląd)",
+    "Wytyczne ESC 2023 dotyczące ostrych zespołów wieńcowych (algorytm 0/1 h lub 0/2 h, dawka nasycająca kwasu acetylosalicylowego) [wiedza modelu, niezweryfikowane — brak pliku w zrodla/]"
+  ],
+  "badania": [
+    {
+      "nazwa": "elektrokardiogram 12-odprowadzeniowy (w gabinecie POZ lub przez ZRM)",
+      "cel": "wykrycie zawału z uniesieniem ST lub równoważnika — kieruje do bezpośredniej ścieżki pierwotnej angioplastyki",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Zmienia ścieżkę (uniesienie ST → transport bezpośrednio do pracowni hemodynamiki; brak uniesienia → SOR/izba przyjęć kardiologiczna), ale NIE zmienia decyzji o przekazaniu do szpitala: prawidłowy zapis nie wyklucza NSTEMI (PMID 32714696, 42626118). Wykonać równolegle z wezwaniem 112, nigdy zamiast. Koszt minimalny, wynik w minutach."
+    },
+    {
+      "nazwa": "troponina sercowa wysokoczuła oznaczana seryjnie (algorytm 0/1 h lub 0/2 h) w szpitalu",
+      "cel": "rozstrzygnięcie zawał bez uniesienia ST vs brak uszkodzenia mięśnia sercowego",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "To jest badanie rozstrzygające top-2 (OZW vs przyczyna przełykowa). Wynik w ciągu 1–2 godzin (PMID 30071991, 32995203). Dodatni → leczenie OZW i koronarografia; ujemny przy niskim ryzyku → dalsza diagnostyka niedokrwienia planowo i dopiero wtedy ścieżka dyspeptyczna. Uwaga: przy wysokim ryzyku klinicznym i nawracających objawach koronarografia bywa wskazana niezależnie od troponiny [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "morfologia krwi, kreatynina z eGFR, elektrolity w szpitalu",
+      "cel": "niedokrwistość jako przyczyna niedokrwienia typu 2; bezpieczeństwo leczenia przeciwkrzepliwego i kontrastu; decyzja o wstrzymaniu metforminy przed koronarografią",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "Pacjentka miała wcześniej 'nieprawidłowy' wynik o nieznanej treści — w szpitalu pobiera się w pakiecie z troponiną, bez dodatkowego czasu. Nie zlecać osobno w POZ."
+    },
+    {
+      "nazwa": "echokardiografia przyłóżkowa w szpitalu",
+      "cel": "zaburzenia kurczliwości odcinkowej, frakcja wyrzutowa, różnicowanie z niewydolnością serca i przeciążeniem prawej komory",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "Warunkowo: gdy EKG i troponina są niediagnostyczne albo gdy duszność nie jest wytłumaczona."
+    },
+    {
+      "nazwa": "D-dimery (ewentualnie angio-TK tętnic płucnych)",
+      "cel": "wykluczenie zatorowości płucnej jako przyczyny nowej duszności",
+      "zmienia_decyzje": true,
+      "kolejnosc": 4,
+      "uwagi": "Tylko po wykluczeniu OZW i przy prawdopodobieństwie klinicznym zatorowości; u 66-latki D-dimery często fałszywie dodatnie → kaskada TK z promieniowaniem i kontrastem. Stosować próg zależny od wieku [wiedza modelu, niezweryfikowane]."
+    }
+  ],
+  "nie_zlecac": [
+    {
+      "nazwa": "próbne leczenie inhibitorem pompy protonowej jako 'test diagnostyczny' przed wykluczeniem OZW",
+      "powod": "Odpowiedź na IPP nie wyklucza niedokrwienia (objawy niedokrwienne i tak bywają falujące), a odroczenie o kilka dni przy zawale to utracone okno leczenia; zawał maskujący się jako dolegliwość żołądkowa to klasyczny mechanizm pominięcia rozpoznania (PMID 29540019, 38765342). IPP można dołączyć dopiero po wykluczeniu OZW lub w szpitalu jako osłonę do leczenia przeciwpłytkowego."
+    },
+    {
+      "nazwa": "pojedyncza troponina przyłóżkowa (POC) w POZ jako podstawa do pozostawienia pacjentki w domu",
+      "powod": "Wynik dodatni → szpital; wynik ujemny → i tak szpital (objawy typowe dla niestabilnej dławicy, epizod zimnego potu z promieniowaniem, wysokie ryzyko, niestabilna dławica bywa troponino-ujemna). X = Y, więc badanie nie zmienia decyzji. Dowody dla POC w POZ są wciąż na etapie badań (PMID 37290947, 30115777)."
+    },
+    {
+      "nazwa": "troponina lub NT-proBNP z laboratorium POZ (wynik za kilka godzin lub jutro)",
+      "powod": "Czas oczekiwania jest kosztem samym w sobie: pacjentka z możliwym OZW nie może czekać w domu na wynik. Te same oznaczenia szpital wykona w 1 godzinę."
+    },
+    {
+      "nazwa": "gastroskopia teraz",
+      "powod": "Nie rozstrzyga pilnego pytania, kolejka liczona w tygodniach, wynik (np. zapalenie przełyku) nie wyklucza współistniejącego OZW. Wraca do rozważenia planowo po wykluczeniu przyczyny sercowej — nowa dyspepsja po 60. roku życia jest wtedy wskazaniem do oceny endoskopowej [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "test w kierunku Helicobacter pylori, USG jamy brzusznej",
+      "powod": "Nie zmieniają decyzji dziś; brak cech kolki żółciowej; ujemny lub dodatni wynik nie zwalnia z wykluczenia OZW. Ewentualnie planowo po etapie kardiologicznym."
+    },
+    {
+      "nazwa": "próba wysiłkowa EKG lub inne testy obciążeniowe przed wykluczeniem OZW",
+      "powod": "Przeciwwskazane przy podejrzeniu aktywnego OZW (objawy od <24 h); miejsce dopiero po ujemnym seryjnym oznaczeniu troponiny [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "lipidogram, HbA1c, RTG klatki piersiowej zlecane z POZ dziś",
+      "powod": "Nie zmieniają decyzji o przekazaniu do szpitala; lipidogram i HbA1c — planowo po epizodzie ostrym; RTG wykona szpital, jeśli będzie potrzebne."
+    }
+  ],
+  "uwagi_gospodarza": "Najkrótsza ścieżka: 112 → (EKG w gabinecie równolegle) → szpital: EKG + troponina wysokoczuła 0/1 h + morfologia/kreatynina → echokardiografia warunkowo → dopiero po wykluczeniu OZW ścieżka dyspeptyczna. Najdroższa opcja to pozorna oszczędność: IPP i obserwacja w domu. Gdy otwarta jest czerwona flaga OZW, badanie ją wykluczające jest zawsze uzasadnione, niezależnie od kosztu. Transport karetką, nie własnym samochodem. Dawka nasycająca kwasu acetylosalicylowego przed transportem przy braku przeciwwskazań — domena farmakologa [wiedza modelu, niezweryfikowane]. Metformina: wstrzymać w szpitalu przed podaniem kontrastu zależnie od eGFR [wiedza modelu, niezweryfikowane]."
+}

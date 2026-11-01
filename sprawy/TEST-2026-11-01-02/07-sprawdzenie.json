@@ -1,0 +1,176 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "uwagi_ogolne": "Sprawdzono 05-projekt.md i 03-opinie/*.json. zrodla/ zawiera wylacznie MANIFEST.md z wierszami przykladowymi - brak polskiej wytycznej OZW, PTD, ChPL metforminy/gliklazydu/ASA; poziom 1 niedostepny dla zadnego twierdzenia. Pelny tekst wytycznych ESC 2023 (PMID 37622654) nie ma streszczenia w PubMed - liczby z ESC potwierdzono streszczeniami prac wtornych (PMID 38264959, 30620215). Zadnego twierdzenia SPRZECZNEGO ani NIEAKTUALNEGO. Kartka ZOLTA: dwa zalecenia nieliczbowe w 05-projekt.md bez zrodla (wstrzymanie gliklazydu dzis; zakaz dojazdu wlasnym autem) - FINAL przechodzi pod warunkiem etykiety [wiedza modelu, niezweryfikowane] albo usuniecia. Dawki z opinii, ktore NIE weszly do projektu (nitrogliceryna 0,4-0,5 mg, klopidogrel 300-600 mg, atorwastatyna 80 mg, metformina 48 h po kontrascie, insulina >180 mg/dl, LDL <55 mg/dl) pozostaja bez zrodla - nie moga trafic do 09-FINAL.md bez etykiety lub zrodla.",
+    "twierdzenia": [
+      {
+        "twierdzenie": "U kobiet zawal/OZW czesciej przebiega z dusznoscia, nudnosciami, zmeczeniem (zamiast lub obok bolu w klatce) - PMID 35268411",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 35268411, https://doi.org/10.3390/jcm11051319 (Cardeillac 2022, metaanaliza 15 badan, n=10 730)",
+        "cytat": "women present more dyspnea, arm pain, nausea and vomiting, fatigue, palpitations and pain at the shoulder than men, RR 1.13, 1.30, 1.40, 1.08, 1.67, 1.78",
+        "co_mowi_zrodlo": "Roznice sa istotne, ale umiarkowane (RR 1,08-1,78); autorzy odradzaja podzial 'typowe/nietypowe'."
+      },
+      {
+        "twierdzenie": "Cukrzyca jest niezaleznym predyktorem nietypowej prezentacji zawalu u kobiet; dusznosc moze byc waznym objawem OZW u kobiet z cukrzyca - PMID 18482629",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 18482629, https://doi.org/10.1016/j.hrtlng.2007.05.006 (Stephen 2008, przeglad integracyjny 8 badan)",
+        "cytat": "Diabetes is an independent predictor of atypical presentation of acute myocardial infarction in women ... shortness of breath may be an important ACS symptom in women with diabetes",
+        "co_mowi_zrodlo": "Wyniki badan sprzeczne, literatura uboga; wniosek sformulowany ostroznie."
+      },
+      {
+        "twierdzenie": "Zawal bez bolu w klatce to ok. 20% zawalow; smiertelnosc 30-dniowa ok. 49% vs 18% przy typowym bolu - PMID 11602537",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 11602537, https://doi.org/10.1136/heart.86.5.494 (Dorsch 2001, rejestr Yorkshire, n=2096)",
+        "cytat": "20.2% ... presented with symptoms other than chest pain ... higher 30 and 365 day mortality (49.2% and 61.0%) compared with ... chest pain (17.9% and 26.2%)",
+        "co_mowi_zrodlo": "Dane z 2001 r. (era przed powszechna PCI); HR skorygowany 1,60. Grupa bez bolu starsza (76,6 vs 69,1 lat) i czesciej z niewydolnoscia serca - liczby bezwzgledne zawyzone wzgledem 66-letniej pacjentki."
+      },
+      {
+        "twierdzenie": "Algorytm ESC 0/1 h z troponina wysokoczula: NPV 99,8% dla wykluczenia NSTEMI - PMID 30071991",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30071991, https://doi.org/10.1016/j.jacc.2018.05.040 (Twerenbold 2018, APACE/BACC, n=4368 hs-cTnT)",
+        "cytat": "safety of rule-out (NPV 99.8%, 2,488 of 2,493) ... hs-cTnI ... NPV 99.7%",
+        "co_mowi_zrodlo": "NPV 99,8% dotyczy hs-cTnT; dla hs-cTnI 99,7%. Walidacja w SOR, nie w POZ."
+      },
+      {
+        "twierdzenie": "Wytyczne ESC 2023 dot. OZW (Byrne, Eur Heart J 2023) sa aktualnym dokumentem referencyjnym dla EKG, troponiny i ASA - PMID 37622654",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 37622654, https://doi.org/10.1093/eurheartj/ehad191; omowienia: PMID 38032511 https://doi.org/10.1007/s00059-023-05222-1, PMID 38783672 https://doi.org/10.53738/REVMED.2024.20.875.1026",
+        "cytat": "2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J 2023;44(38):3720-3826",
+        "co_mowi_zrodlo": "Istnienie i zakres dokumentu potwierdzone; streszczenie niedostepne w PubMed, pelny tekst nieczytany w tej sesji - liczby szczegolowe potwierdzone przez prace wtorne (ponizej). Brak polskiej wytycznej w zrodla/ - ESC jest wlasciwym poziomem 3 wg MANIFEST."
+      },
+      {
+        "twierdzenie": "EKG 12-odprowadzeniowe w ciagu 10 minut od pierwszego kontaktu medycznego przy podejrzeniu OZW - PMID 30620215",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30620215, https://doi.org/10.1177/1474515118821023 (O'Donnell 2019)",
+        "cytat": "international guidelines indicate that an Electrocardiogram (ECG) should be performed within 10 min of first medical contact",
+        "co_mowi_zrodlo": "Zrodlo wtorne (badanie aplikacji triazowej w SOR), cytuje wytyczne miedzynarodowe; prog 10 min zgodny z ESC 2023 [tekst wytycznej nieczytany]."
+      },
+      {
+        "twierdzenie": "Kwas acetylosalicylowy 150-300 mg doustnie (do rozgryzienia) jako dawka nasycajaca wg wytycznych - PMID 38264959",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 38264959, https://doi.org/10.1111/eci.14173 (Ndrepepa 2024, n=3100)",
+        "cytat": "aspirin loading (a single oral [or chewed] or intravenous dose of 150-300 mg) ... at the guideline-recommended doses",
+        "co_mowi_zrodlo": "Dawka potwierdzona jako 'zalecana w wytycznych'. Uwaga: glowny wynik pracy to zwiazek nasycenia ASA z no-reflow po PCI (OR 4,5; hipoteza, mala liczba zdarzen) - nie podwaza zalecenia, ale projekt cytuje te prace tylko dla dawki. Brak ChPL ASA w zrodla/."
+      },
+      {
+        "twierdzenie": "Przedszpitalne podanie ASA wiaze sie z nizsza smiertelnoscia 30-dniowa, OR 0,59, pewnosc dowodow bardzo niska - PMID 36304434",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 36304434, https://doi.org/10.1253/circrep.CR-22-0060 (Nakayama 2022, przeglad systematyczny, 3 badania retrospektywne)",
+        "cytat": "lower 30-day and 1-year mortality ... odds ratios (OR) of 0.59 (95% CI 0.35-0.99) and 0.47 ... certainty of evidence was very low",
+        "co_mowi_zrodlo": "Porownanie: ASA przedszpitalnie vs po przyjeciu; podawane przez personel nielekarski. Zgodne z projektem."
+      },
+      {
+        "twierdzenie": "ASA przeciwwskazany przy uczuleniu i czynnym krwawieniu",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak ChPL ASA w zrodla/; przeciwwskazania ogolnie znane [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne z ChPL preparatow ASA wg pamieci modelu. Wymaga etykiety w FINAL albo dodania ChPL do zrodla/."
+      },
+      {
+        "twierdzenie": "Decyzja o metforminie w szpitalu wg eGFR; przy eGFR >60 ml/min/1,73 m2 kontynuacja metforminy przy koronarografii nie zwieksza ryzyka kwasicy - PMID 29957756",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29957756, https://doi.org/10.23750/abm.v89i2.5446 (Namazi 2018, RCT n=162); PMID 37130786, https://doi.org/10.3121/cmr.2022.1759 (metaanaliza, 2235 pacjentow); PMID 29868840, https://doi.org/10.1001/jamainternmed.2018.0292",
+        "cytat": "metformin continuation in diabetic patients with a GFR of more than 60 ml/min per 1.73 m2 undergoing coronary angiography does not enhance the risk of MALA",
+        "co_mowi_zrodlo": "Zrodla wspieraja 'decyzja wg eGFR w szpitalu' i brak powodu do odraczania rewaskularyzacji. NIE wspieraja wprost polecenia 'nie podawac dzis kolejnej dawki metforminy' - to decyzja ostroznosciowa przy NIEZNANYM eGFR (ryzyko kwasicy rosnie dopiero przy eGFR <30 wg PMID 29868840). Zapis w FINAL dopuszczalny, jesli sformulowany jako ostroznosc, nie jako zalecenie wytycznych."
+      },
+      {
+        "twierdzenie": "Nie podawac dzis kolejnej dawki gliklazydu (ryzyko hipoglikemii przy glodzeniu przed procedura)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak ChPL gliklazydu w zrodla/; brak cytowanej publikacji; [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe (wstrzymanie, nie dawka). PMID 16209987 (https://doi.org/10.1016/j.ahj.2004.12.020) mowi o szkodliwosci hiperglikemii >198 mg/dl w zawale, nie o odstawianiu pochodnych sulfonylomocznika. Wymaga etykiety w FINAL."
+      },
+      {
+        "twierdzenie": "Przy klopidogrelu wybrac pantoprazol, nie omeprazol (omeprazol oslabia efekt przeciwplytkowy przez CYP2C19) - PMID 21464720",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 21464720, https://doi.org/10.1097/MEG.0b013e3283460110 (Fontes-Carvalho 2011, RCT crossover n=34)",
+        "cytat": "omeprazole coadministration showed a significant pharmacodynamic interaction with clopidogrel, whereas pantoprazole did not",
+        "co_mowi_zrodlo": "Punkt koncowy farmakodynamiczny (PRU), male badanie; kierunek zgodny z projektem."
+      },
+      {
+        "twierdzenie": "Nowa dyspepsja po 60. r.z. jest wskazaniem do gastroskopii (po wykluczeniu OZW)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "PubMed PMID 28631728, https://doi.org/10.1038/ajg.2017.154 (ACG/CAG Clinical Guideline: Management of Dyspepsia, 2017)",
+        "cytat": "patients >=60 years of age presenting with dyspepsia are investigated with upper gastrointestinal endoscopy to exclude organic pathology. This is a conditional recommendation",
+        "co_mowi_zrodlo": "Projekt oznaczyl to jako [wiedza modelu] - mozna zastapic cytowaniem ACG/CAG 2017 (zalecenie warunkowe, prog >=60 lat). Brak polskiej wytycznej dyspepsji w zrodla/."
+      },
+      {
+        "twierdzenie": "Dolegliwosc wywolywana wysilkiem i promieniujaca do ramienia/szyi/zuchwy zwieksza prawdopodobienstwo OZW (rownowaznik dlawicy) - PMID 16304077, 9786377",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 16304077, https://doi.org/10.1001/jama.294.20.2623 (Swap 2005); PMID 9786377, https://doi.org/10.1001/jama.280.14.1256 (Panju 1998)",
+        "cytat": "chest pain that radiates to one shoulder or both shoulders or arms or is precipitated by exertion is associated with LRs (2.3-4.7)",
+        "co_mowi_zrodlo": "LR dla promieniowania do obu ramion 7,1 (Panju). Streszczenia NIE podaja LR dla zimnego potu ani nudnosci - wartosci LR dla tych cech w opinii bayes pozostaja [wiedza modelu, niezweryfikowane] (opinia sama tak je oznaczyla)."
+      },
+      {
+        "twierdzenie": "Pilnosc 1 (natychmiast, 112, SOR z pracownia hemodynamiki) przy podejrzeniu OZW z objawami wysilkowymi, zimnym potem i nowa dusznoscia",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ESC 2023 (PMID 37622654) - z pamieci: pacjent z podejrzeniem OZW kierowany przez system ratownictwa do osrodka z PCI; PMID 11602537 (opoznione rozpoznanie = wyzsza smiertelnosc)",
+        "cytat": "Atypical presentation of myocardial infarction without chest pain is common and associated with increased mortality",
+        "co_mowi_zrodlo": "Werdykt pilnosci zgodny z weto 'najgorszego scenariusza' i agregatem (pilnosc 1, mediana 1,0). Tekst ESC nieczytany - poziom 3 z pamieci."
+      },
+      {
+        "twierdzenie": "Jesli pacjentka odmawia karetki - dowoz przez rodzine bezposrednio na SOR, 'nie wlasnym autem'",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak; [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Zalecenie organizacyjne, nieliczbowe; zgodne z duchem ESC (transport przez ZRM), ale forma 'nie wlasnym autem' nie ma cytowanego zrodla. Etykieta w FINAL."
+      },
+      {
+        "twierdzenie": "Nieprawidlowa morfologia (NIEZNANE) - niedokrwistosc nasilalaby niedokrwienie i tlumaczyla dusznosc",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak cytowanego zrodla; [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie patofizjologiczne, nieliczbowe, w sekcji CZEGO NIE WIEMY; nie wplywa na dawki/pilnosc."
+      },
+      {
+        "twierdzenie": "[opinie, NIE w projekcie] Nitrogliceryna 0,4-0,5 mg podjezykowo, powtarzac co 5 min, tylko przy RR skurczowym >90 mmHg; przeciwwskazana po inhibitorze PDE5 w ostatnich 24-48 h",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak ChPL nitrogliceryny w zrodla/; opinie oznaczyly jako [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Dawka bez zrodla - NIE weszla do 05-projekt.md, wiec nie obniza kartki. Gdyby trafila do FINAL bez ChPL/ESC - CZERWONA."
+      },
+      {
+        "twierdzenie": "[opinie, NIE w projekcie] Klopidogrel 300-600 mg nasycajaco; atorwastatyna 20 -> 80 mg/d; LDL <55 mg/dl; insulina przy glikemii >180 mg/dl (10 mmol/l); metformina wstrzymana 48 h po kontrascie",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak plikow w zrodla/ (PTD, PTK/PTL, ChPL); opinie oznaczyly jako [wiedza modelu, niezweryfikowane]; wyszukiwanie PubMed 'metformin contrast 48 hours guideline' bez trafien",
+        "cytat": "",
+        "co_mowi_zrodlo": "Liczby zgodne z ESC/PTD wg pamieci modelu, ale niezweryfikowane w tej sesji. Projekt ich nie zawiera (pisze ogolnie 'statyna wysokiej intensywnosci', 'wg eGFR') - poprawnie. Nie przenosic do FINAL bez zrodla."
+      },
+      {
+        "twierdzenie": "[opinie] Hiperglikemia przy przyjeciu (>198 mg/dl) wiaze sie z wyzsza smiertelnoscia wewnatrzszpitalna w zawale - PMID 16209987",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 16209987, https://doi.org/10.1016/j.ahj.2004.12.020 (Ishihara 2005, n=1253)",
+        "cytat": "inhospital mortality rate was significantly higher in patients with acute hyperglycemia than in patients without (16% vs 6%)",
+        "co_mowi_zrodlo": "Glikemia 214 mg/dl pacjentki przekracza prog 198 mg/dl z tego badania; projekt nie formuluje z tego liczby - zgodne."
+      },
+      {
+        "twierdzenie": "Ryzyko kwasicy mleczanowej przy metforminie rosnie istotnie dopiero przy eGFR <30 ml/min/1,73 m2 - PMID 29868840",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29868840, https://doi.org/10.1001/jamainternmed.2018.0292 (Lazarus 2018, kohorta n=75 413)",
+        "cytat": "metformin use was associated with acidosis only at eGFR less than 30 mL/min/1.73 m2",
+        "co_mowi_zrodlo": "Wspiera, ze przy nieznanym eGFR ryzyko jednej dawki jest male; argument 'nie podawac dzis' jest ostroznosciowy, nie dowodowy."
+      }
+    ]
+  }
+}

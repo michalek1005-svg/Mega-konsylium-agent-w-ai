@@ -1,0 +1,94 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Krwotok podpajęczynówkowy (najpewniej z pękniętego tętniaka)",
+      "p": 0.5,
+      "za": [
+        "ból piorunujący: szczyt w kilka sekund, najgorszy w życiu, w potylicy",
+        "początek przy wysiłku (dźwiganie mebli, próba Valsalvy)",
+        "wymioty przy zachorowaniu",
+        "trzecia doba: utrzymujący się ból 3/10, sztywność karku, ograniczenie zgięcia (nie dotyka brodą mostka), światłowstręt = objawy oponowe bez gorączki",
+        "wiek 47 lat, nieleczone nadciśnienie tętnicze, palenie 20 papierosów/dobę, duże ilości alkoholu w ostatnich 2 tygodniach",
+        "ojciec zmarł nagle w wieku 52 lat z powodu „wylewu” (rodzaj nieznany)",
+        "reguła Ottawa dla krwotoku podpajęczynówkowego dodatnia w co najmniej 4 kryteriach (wiek ≥40, ból/sztywność karku, początek przy wysiłku, ból piorunujący); reguła wymaga tylko jednego kryterium do dalszej diagnostyki (PMID 29133539, 24065011)"
+      ],
+      "przeciw": [
+        "brak utraty przytomności",
+        "ból częściowo ustąpił po ibuprofenie, obecnie 3/10",
+        "pacjent chodzi i sam wypełnia ankietę (prawdopodobnie dobry stan neurologiczny, ale badania fizykalnego brak — NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.12,
+      "za": ["ból piorunujący przy wysiłku", "duże ilości alkoholu w ostatnich 2 tygodniach", "nadciśnienie tętnicze"],
+      "przeciw": ["zwykle nawracające bóle piorunujące w kolejnych dniach, tu jeden epizod", "objawy oponowe przemawiają raczej za krwią w przestrzeni podpajęczynówkowej"]
+    },
+    {
+      "nazwa": "Rozwarstwienie tętnicy kręgowej",
+      "p": 0.1,
+      "za": ["nagły ból potylicy i karku przy dźwiganiu", "palenie, nadciśnienie tętnicze", "ból karku utrzymujący się od 3 dni"],
+      "przeciw": ["brak zgłoszonych objawów z tylnego unaczynienia (zawroty, podwójne widzenie, zaburzenia mowy) — wg ankiety „nic z tych rzeczy”"]
+    },
+    {
+      "nazwa": "Naciągnięcie mięśni karku",
+      "p": 0.08,
+      "za": ["dźwiganie mebli", "pacjent sam tak interpretuje objawy"],
+      "przeciw": ["naciągnięcie mięśni nie daje bólu głowy „najgorszego w życiu” ze szczytem w sekundy, wymiotów ani światłowstrętu", "to rozpoznanie z wykluczenia — dopuszczalne dopiero po wykluczeniu krwawienia"]
+    },
+    {
+      "nazwa": "Pierwotny ból głowy związany z wysiłkiem fizycznym",
+      "p": 0.05,
+      "za": ["początek przy wysiłku"],
+      "przeciw": ["rozpoznanie z wykluczenia; utrzymująca się sztywność karku i światłowstręt po 3 dobach przemawiają przeciw"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "gorączka i dreszcze (zaprzecza; zapalenie opon mniej prawdopodobne, ale nie wykluczone bez badania)",
+    "utrata przytomności w chwili zachorowania (zaprzecza)",
+    "przyjmowanie leków przeciwkrzepliwych i przeciwpłytkowych na stałe (zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "ból piorunujący przy wysiłku, najgorszy w życiu, 3 doby temu, bez żadnej diagnostyki obrazowej",
+    "objawy oponowe: ograniczenie zgięcia karku i światłowstręt w 3. dobie",
+    "nieleczone nadciśnienie tętnicze, wartości ciśnienia od epizodu NIEZNANE",
+    "ryzyko powtórnego krwawienia z tętniaka (największe w pierwszych dniach) — każda godzina zwłoki ma znaczenie",
+    "stan neurologiczny i parametry życiowe NIEZNANE (ankieta nie obejmuje badania)",
+    "wywiad rodzinny: nagła śmierć ojca w wieku 52 lat z powodu „wylewu”",
+    "pacjent przyjmuje ibuprofen 1–2 tabletki/dobę (działanie przeciwpłytkowe przy możliwym krwawieniu)"
+  ],
+  "nastepny_krok": "Dziś w gabinecie (lub telefonicznie, jeśli pacjent jest w domu): pomiar ciśnienia tętniczego i szybkie badanie neurologiczne, następnie wezwanie Zespołu Ratownictwa Medycznego (112/999) z rozpoznaniem wstępnym „podejrzenie krwotoku podpajęczynówkowego, ból piorunujący 3 doby temu, objawy oponowe” i przekazanie do szpitalnego oddziału ratunkowego z tomografią komputerową głowy (najlepiej szpital z neurologią/neurochirurgią) — bez recepty na kark i bez odsyłania do domu.",
+  "co_zmieniloby_zdanie": "Prawidłowa tomografia komputerowa głowy oraz prawidłowy płyn mózgowo-rdzeniowy bez ksantochromii (albo prawidłowa angiografia tomografii komputerowej) wykonane w szpitalu — dopiero wtedy naciągnięcie mięśni karku lub pierwotny ból wysiłkowy stają się realne; do ustalenia lokalnie: odległość i czas dojazdu do najbliższego szpitalnego oddziału ratunkowego z tomografem i czy jest tam neurochirurgia (pamiec/zespol.md: puste).",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "Pomiar ciśnienia tętniczego na obu ramionach, tętna, saturacji, temperatury; ocena przytomności (Glasgow) i krótkie badanie neurologiczne (źrenice, ruchy gałek ocznych, siła kończyn, mowa, objawy oponowe).",
+      "Nie podawać i odstawić ibuprofen oraz inne niesteroidowe leki przeciwzapalne i kwas acetylosalicylowy; doraźnie do czasu transportu wyłącznie paracetamol [wiedza modelu, niezweryfikowane].",
+      "Nie obniżać agresywnie ciśnienia w gabinecie i nie podawać leków uspokajających ani rozluźniających mięśnie (zaciemniają ocenę neurologiczną) [wiedza modelu, niezweryfikowane]; leczenie ciśnienia należy do szpitala (AHA/ASA 2023, PMID 37212182).",
+      "Jeśli pacjent jest w domu: polecić nie przyjeżdżać samodzielnie do gabinetu, tylko wezwać 112 lub przyjechać do szpitalnego oddziału ratunkowego z osobą towarzyszącą (nie prowadzi sam)."
+    ],
+    "co_zlecic": "Nic w trybie POZ. Badania z koszyka POZ (morfologia, CRP, OB) nie zmieniają decyzji i opóźniają transport. Tomografii komputerowej głowy nie da się zlecić z POZ w trybie natychmiastowym — wykonuje ją szpitalny oddział ratunkowy.",
+    "dokad_i_tryb": "Szpitalny oddział ratunkowy w trybie natychmiastowym, transport Zespołem Ratownictwa Medycznego. Na skierowaniu/notatce: „ból głowy piorunujący przy wysiłku 3 doby temu (data, godzina), wymioty, obecnie sztywność karku i światłowstręt; reguła Ottawa dodatnia; prośba o tomografię komputerową głowy, przy wyniku ujemnym nakłucie lędźwiowe z oceną ksantochromii lub angiografia tomografii komputerowej”. Wykonanie tomografii w 3. dobie ma niższą czułość niż w ciągu 6 godzin (czułość ≈100% w ciągu 6 h, PMID 21768192; spada z czasem, PMID 34819306), więc ujemna tomografia sama nie zamyka sprawy.",
+    "gdy_pacjent_odmawia_ZRM": "Wersja wykonalna minimum: pisemne skierowanie do szpitala z powyższym opisem, transport przez rodzinę natychmiast z gabinetu (nie wraca do domu, nie prowadzi sam), odnotowanie w dokumentacji poinformowania o ryzyku zgonu i odmowy transportu medycznego.",
+    "kontrola": "Telefon do pacjenta lub rodziny jeszcze dziś wieczorem — potwierdzić, że dotarł do szpitala i co wykazała tomografia. Po wypisie: wizyta w POZ w ciągu tygodnia — leczenie nadciśnienia tętniczego, interwencja antynikotynowa, ocena spożycia alkoholu.",
+    "zwolnienie_lekarskie": "Tak — wystawić zaświadczenie o czasowej niezdolności do pracy od dziś (pacjent prosi); dalsze wystawi szpital. Zakaz dźwigania i wysiłku do czasu diagnostyki.",
+    "co_powiedziec_pacjentowi": "Taki nagły, najgorszy w życiu ból głowy ze sztywnym karkiem może oznaczać krwawienie z naczynia w mózgu, które może się powtórzyć i zabić, dlatego dziś musi Pan mieć tomografię głowy w szpitalu, a nie lek na kark.",
+    "wykonalnosc": "Pacjent 47 lat, samodzielny, bez barier wiekowych; barierą jest jego przekonanie, że to „naciągnięty kark”, i oczekiwanie recepty — rozmowę zacząć od wystawienia zwolnienia (spełnia jego oczekiwanie), potem jasno przekazać powód skierowania. Transport Zespołem Ratownictwa Medycznego jest bezpłatny i usuwa problem dojazdu."
+  },
+  "nie_zlecac": [
+    {"co": "Leki rozluźniające mięśnie, niesteroidowe leki przeciwzapalne, recepta „na kark”", "dlaczego": "Utrwalają błędne rozpoznanie; początkowe błędne rozpoznanie krwotoku podpajęczynówkowego wiąże się z gorszym wynikiem (PMID 14970066, 29217366)."},
+    {"co": "Skierowanie na RTG kręgosłupa szyjnego lub fizjoterapię", "dlaczego": "Nie odpowiada na pytanie kliniczne i opóźnia diagnostykę."},
+    {"co": "Skierowanie do poradni neurologicznej w trybie pilnym/AOS", "dlaczego": "Termin w dniach–tygodniach; przy podejrzeniu krwotoku jedyną właściwą drogą jest szpitalny oddział ratunkowy dziś."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani wykazu badań POZ dla tej sytuacji (tylko przykładowe wiersze); pamiec/zespol.md — realia lokalne (odległość do SOR) nieuzupełnione",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): „Ottawa subarachnoid hemorrhage rule validation acute headache” → PMID 29133539 (walidacja reguły Ottawa), 24065011 (reguły decyzyjne wykluczania krwotoku podpajęczynówkowego), 25511365, 35192492",
+    "Zapytanie 2: „sensitivity of computed tomography subarachnoid haemorrhage within 6 hours of headache onset” → PMID 21768192 (czułość tomografii w ciągu 6 h, prospektywna kohorta), 34819306 (czułość wielorzędowej tomografii w kolejnych przedziałach czasu od początku bólu), 26797666 (metaanaliza)",
+    "Zapytanie 3: „missed diagnosis subarachnoid hemorrhage sentinel headache misdiagnosis outcome” → PMID 14970066 (początkowe błędne rozpoznanie a wynik), 29217366 (przeoczone/opóźnione rozpoznanie, badanie ogólnokrajowe w Japonii)",
+    "Zapytanie 4: „aneurysm rebleeding risk timing first days aneurysmal subarachnoid hemorrhage” → PMID 24911172 (metaanaliza czynników ryzyka powtórnego krwawienia), 31984231 (zapobieganie złemu wynikowi z powodu powtórnego krwawienia przez pilne zaopatrzenie tętniaka)",
+    "Zapytanie 5: „2023 guideline management aneurysmal subarachnoid hemorrhage American Heart Association” → PMID 37212182 (wytyczne AHA/ASA 2023)",
+    "Dokładne wartości czułości tomografii w 3. dobie (orientacyjnie ok. 85–90%) oraz odsetek powtórnych krwawień w pierwszych dobach — [wiedza modelu, niezweryfikowane]; abstraktów nie odczytano, oparto się na tytułach wyników"
+  ]
+}

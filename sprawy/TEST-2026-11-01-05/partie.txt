@@ -1,0 +1,6 @@
+1: ciezkie_objawy, krwawienie_teraz, ciaza, mysli
+2: objawy_ogolne, szyja, miesiaczki_jak
+3: miesiaczki_od_kiedy, badania_jakie, tsh_wartosc
+4: wyniki_przy_sobie, tsh_powtorzone, ciaza_plany
+5: porod, suplementy, leki_stale
+6: choroby, rodzina, obawy (koniec)

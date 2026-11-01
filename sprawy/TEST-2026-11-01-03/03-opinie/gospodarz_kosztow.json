@@ -1,0 +1,112 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "Zatorowość płucna",
+      "p": 0,
+      "za": ["ból opłucnowy po prawej i nowa duszność wysiłkowa 4 dni po 14-godzinnej podróży autokarem", "objawy zakrzepicy żył głębokich lewej łydki (obrzęk, ocieplenie, tkliwość, ból narastający bez urazu)", "tętno 104/min, SpO2 94%, stan przedomdleniowy", "doustna hormonalna terapia menopauzalna (estradiol 1 mg + dydrogesteron 10 mg) i zakrzepica u krewnych pierwszego stopnia", "skala Wells dla zatorowości płucnej około 7,5 pkt (objawy zakrzepicy 3 + zatorowość najbardziej prawdopodobna 3 + tętno >100/min 1,5) [obliczenie z ankiety; badanie fizykalne NIEZNANE]"],
+      "przeciw": ["skurczowe 132 mmHg w pomiarze domowym, duszność dopiero przy 2 piętrach", "brak badania fizykalnego i pomiarów w gabinecie (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Zakrzepica żył głębokich lewej kończyny dolnej",
+      "p": 0,
+      "za": ["jednostronny obrzęk, ocieplenie i tkliwość łydki po długiej podróży", "ból narastający stopniowo, bez momentu urazu"],
+      "przeciw": ["brak badania fizykalnego i obrazowego (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Nerwoból międzyżebrowy",
+      "p": 0,
+      "za": ["kłucie przy głębokim wdechu"],
+      "przeciw": ["towarzysząca tachykardia, SpO2 94% i stan przedomdleniowy nie pasują do nerwobólu", "rozpoznanie z wykluczenia: wolno je postawić dopiero po wykluczeniu zatorowości płucnej"]
+    },
+    {
+      "nazwa": "Naciągnięcie mięśnia brzuchatego łydki",
+      "p": 0,
+      "za": ["spacer po podróży, ból łydki"],
+      "przeciw": ["brak urazu, ból narastający stopniowo, ocieplenie i obrzęk łydki"]
+    },
+    {
+      "nazwa": "Zapalenie płuc z zajęciem opłucnej",
+      "p": 0,
+      "za": ["kaszel, ból opłucnowy"],
+      "przeciw": ["brak gorączki w ankiecie; nie tłumaczy objawów łydki"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Wstrząs lub hipotensja: wstępnie nie (skurczowe 132 mmHg w pomiarze domowym; wymaga potwierdzenia przy przyjęciu)"
+  ],
+  "red_flags_otwarte": [
+    "Ból opłucnowy i nowa duszność wysiłkowa przy klinicznych objawach zakrzepicy żył głębokich po podróży >4 h: zatorowość płucna niewykluczona",
+    "Stan przedomdleniowy od wczoraj: wiąże się z dysfunkcją prawej komory i gorszym rokowaniem w zatorowości płucnej",
+    "Tętno 104/min i SpO2 94% w spoczynku (pomiar domowy)",
+    "Doustna hormonalna terapia menopauzalna i dodatni wywiad rodzinny w kierunku zakrzepicy",
+    "Badanie fizykalne i parametry w gabinecie NIEZNANE"
+  ],
+  "nastepny_krok": "Natychmiast skierować pacjentkę do szpitalnego oddziału ratunkowego transportem medycznym (nie samodzielnie, bez prowadzenia auta), bez wykonywania w POZ D-dimeru ani innych badań, które opóźniają transport; w SOR pierwszym badaniem jest angio-TK tętnic płucnych.",
+  "co_zmieniloby_zdanie": "Dopiero prawidłowa angio-TK tętnic płucnych przesunęłaby priorytet na proksymalne USG uciskowe lewej kończyny i leczenie izolowanej zakrzepicy; nic w ankiecie nie uzasadnia oszczędzania na obrazowaniu ani leczenia objawowego bólu.",
+  "badania": [
+    {
+      "nazwa": "Angiografia tętnic płucnych metodą tomografii komputerowej",
+      "cel": "Potwierdzić lub wykluczyć zatorowość płucną i ocenić prawą komorę (stosunek RV/LV) w tym samym badaniu",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Dodatnia → leczenie przeciwkrzepliwe i stratyfikacja ryzyka; ujemna → USG uciskowe kończyny i szukanie innej przyczyny. Przy Wells 'zatorowość prawdopodobna' algorytm Christopher kierował chorych prosto na TK bez D-dimeru (PMID 16403929). Badanie wykluczające red flag jest tu zawsze uzasadnione, mimo promieniowania i kontrastu. Jeśli TK opóźniona, ESC 2019 zaleca rozpocząć antykoagulację przed obrazowaniem przy wysokim prawdopodobieństwie klinicznym [wiedza modelu, niezweryfikowane: streszczenie wytycznych PMID 31504429 niedostępne]."
+    },
+    {
+      "nazwa": "Morfologia krwi, kreatynina z eGFR, INR i APTT",
+      "cel": "Dobór leku przeciwkrzepliwego i dawki, bezpieczeństwo kontrastu",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Pobrać w SOR razem z wkłuciem przed TK; wynik zmienia wybór leku (heparyna drobnocząsteczkowa vs doustny antykoagulant vs heparyna niefrakcjonowana) i dawkę [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "Troponina sercowa i NT-proBNP (oraz ocena prawej komory w TK lub echokardiografia)",
+      "cel": "Stratyfikacja ryzyka po potwierdzeniu zatorowości płucnej",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "Robić dopiero po potwierdzeniu zatorowości. Omdlenie lub stan przedomdleniowy w zatorowości wiąże się z dysfunkcją prawej komory (OR 2,10) i zdarzeniami niepożądanymi (OR 2,00; PMID 30339253); różnica śmiertelności zależy od niestabilności hemodynamicznej (PMID 32461009). Wynik decyduje: monitorowany oddział i gotowość do ratunkowej reperfuzji vs wczesny wypis. Echokardiografia osobno tylko przy niestabilności albo gdy TK niedostępna."
+    },
+    {
+      "nazwa": "Proksymalne USG uciskowe żył lewej kończyny dolnej",
+      "cel": "Potwierdzić zakrzepicę żył głębokich, gdy angio-TK jest ujemna, niedostępna lub przeciwwskazana",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "Gdy angio-TK dodatnia, USG nie zmienia leczenia ostrego (X = Y) i można je pominąć. Gdy TK niedostępna lub przeciwwskazana, dodatnie proksymalne USG wystarcza do rozpoczęcia leczenia [ESC 2019, wiedza modelu, niezweryfikowane]. Proksymalne USG było dodatnie u 10% chorych z podejrzeniem zatorowości, a badanie żył dystalnych dawało dużo wyników fałszywie dodatnich (swoistość 94%, czułość 22%; PMID 19143927) — badać odcinek proksymalny."
+    },
+    {
+      "nazwa": "EKG 12-odprowadzeniowe",
+      "cel": "Wykluczyć arytmię i ostry zespół wieńcowy jako przyczynę stanu przedomdleniowego; cechy przeciążenia prawej komory",
+      "zmienia_decyzje": false,
+      "kolejnosc": 1,
+      "uwagi": "W POZ nie zmienia decyzji (każdy wynik = SOR), więc nie może opóźnić transportu; wykona je zespół ratownictwa lub SOR. W SOR uzasadnione z powodu stanu przedomdleniowego."
+    }
+  ],
+  "nie_zlecac": [
+    {"nazwa": "D-dimer (w POZ i w SOR)", "powod": "Wells około 7,5 = zatorowość prawdopodobna: wynik dodatni → angio-TK, ujemny → nadal angio-TK (w algorytmie Christopher D-dimer stosowano tylko u chorych z 'zatorowością mało prawdopodobną', PMID 16403929). X = Y, a oznaczenie w POZ opóźnia transport."},
+    {"nazwa": "RTG klatki piersiowej w POZ jako badanie pierwszego rzutu", "powod": "Nie wyklucza ani nie potwierdza zatorowości; każdy wynik kończy się angio-TK, a skierowanie na RTG opóźnia rozpoznanie o dni [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Badania w kierunku trombofilii teraz", "powod": "Nie zmieniają leczenia ostrego; wyniki zaburza ostra zakrzepica i antykoagulacja. Testy zarezerwowane dla wybranych chorych (PMID 27638626), a ich wartość dla oceny nawrotu jest sporna (PMID 26314364). Wrócić do tematu przy decyzji o czasie leczenia, gdy wywiad rodzinny będzie istotny."},
+    {"nazwa": "Tomografia jamy brzusznej i miednicy w poszukiwaniu ukrytego nowotworu", "powod": "W badaniu SOME dodanie TK do ograniczonego badania przesiewowego nie zmniejszyło liczby przeoczonych nowotworów ani śmiertelności (PMID 26095467); tu epizod ma czynniki prowokujące (podróż, doustna terapia hormonalna). Wystarczą przesiewy właściwe dla wieku."},
+    {"nazwa": "USG lub MRI mięśni łydki w kierunku naderwania", "powod": "Nie odpowiada na pytanie o zakrzepicę i zatorowość; ból bez urazu, z obrzękiem i ociepleniem nie uzasadnia diagnostyki mięśniowej przed wykluczeniem zakrzepicy."},
+    {"nazwa": "Silniejsze leczenie przeciwbólowe zamiast diagnostyki", "powod": "Leczenie objawowe 'nerwobólu' i 'naciągnięcia' maskuje objawy i opóźnia rozpoznanie zatorowości; to najdroższy wariant (koszt przeoczenia). Decyzję o lekach zostawiam farmakologowi."}
+  ],
+  "uwagi_kosztowe": [
+    "Najkrótsza ścieżka: transport do SOR → morfologia, kreatynina, koagulogram i angio-TK tętnic płucnych → po dodatnim wyniku troponina, NT-proBNP i ocena prawej komory → USG uciskowe tylko przy ujemnej lub niedostępnej TK.",
+    "Doustna terapia hormonalna: w badaniu Vinogradova estradiol z dydrogesteronem miał najniższe ryzyko wśród preparatów doustnych (OR 1,18; 95% CI 0,98–1,42), a preparaty przezskórne nie zwiększały ryzyka (OR 0,93) (PMID 30626577). Decyzja o odstawieniu lub zmianie drogi podania należy do zespołu po potwierdzeniu rozpoznania.",
+    "Odroczenie badania obrazowego pod osłoną leczenia przeciwkrzepliwego okazało się bezpieczne tylko w podejrzeniu izolowanej zakrzepicy żył głębokich (rywaroksaban, USG w ciągu 24 h; PMID 32502267). Przy podejrzeniu zatorowości ze stanem przedomdleniowym tej ścieżki nie stosować."
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak plików dla zatorowości płucnej i zakrzepicy (same przykłady), więc poziom 1 milczy",
+    "PubMed: zapytanie '2019 ESC Guidelines acute pulmonary embolism diagnosis management[Title]' → 0 wyników (nieskuteczne)",
+    "PubMed: zapytanie 'Konstantinides SV[Author] AND pulmonary embolism AND guidelines AND 2020[pdat]' → PMID 31504429, DOI 10.1093/eurheartj/ehz405 (ESC 2019; streszczenie niedostępne, treść cytowana jako wiedza modelu)",
+    "PubMed: zapytanie 'syncope pulmonary embolism prognosis mortality meta-analysis' → PMID 30339253, DOI 10.1093/eurheartj/ehy631 (streszczenie sprawdzone); PMID 32461009, DOI 10.1016/j.annemergmed.2020.03.026 (streszczenie sprawdzone)",
+    "PubMed: zapytanie 'van Belle A[Author] AND pulmonary embolism AND JAMA[Journal] AND 2006[pdat]' → PMID 16403929, DOI 10.1001/jama.295.2.172 (streszczenie sprawdzone)",
+    "PubMed: zapytanie 'compression ultrasonography suspected pulmonary embolism deep vein thrombosis diagnostic yield' → PMID 19143927, DOI 10.1111/j.1538-7836.2008.03264.x; PMID 32502267, DOI 10.1182/bloodadvances.2020001556 (streszczenia sprawdzone)",
+    "PubMed: zapytania 'Screening for occult cancer in unprovoked venous thromboembolism[Title]' i 'Carrier M[Author] AND occult cancer AND unprovoked venous thromboembolism AND 2015[pdat]' → PMID 26095467, DOI 10.1056/NEJMoa1506623 (streszczenie sprawdzone)",
+    "PubMed: zapytanie 'Vinogradova Y[Author] AND hormone replacement therapy AND venous thromboembolism' → PMID 30626577, DOI 10.1136/bmj.k4810 (streszczenie sprawdzone)",
+    "PubMed: zapytanie 'thrombophilia testing AND recurrent venous thromboembolism AND risk[Title] AND first venous thrombosis' → PMID 27638626, DOI 10.1007/5584_2016_120; PMID 26314364, DOI 10.1024/0301-1526/a000447 (streszczenia sprawdzone)",
+    "PubMed: zapytania nieskuteczne: 'Christopher Study Investigators[Corporate Author] OR ...' (wyniki nietrafne), 'thrombophilia ... Coppens' (0), 'hormone replacement therapy ... nested case-control[Title/Abstract]' (0)",
+    "Skala Wells dla zatorowości płucnej, ścieżka z rozpoczęciem antykoagulacji przed obrazowaniem i wystarczalność dodatniego proksymalnego USG uciskowego: [wiedza modelu, niezweryfikowane] (wytyczne ESC 2019, PMID 31504429, bez dostępnego streszczenia)"
+  ]
+}

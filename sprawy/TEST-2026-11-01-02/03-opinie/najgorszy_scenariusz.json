@@ -1,0 +1,97 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Ostry zespół wieńcowy (zawał serca bez uniesienia odcinka ST lub niestabilna dławica piersiowa)",
+      "p": 0.5,
+      "za": [
+        "pierwszy w życiu epizod 'zgagi' od wczoraj wieczorem, w dołku i pod mostkiem, trwający godzinami, bez ulgi po Rennie (lek zobojętniający)",
+        "pieczenie nasila się przy wchodzeniu po schodach i szybkim chodzie, słabnie w spoczynku: równoważnik dławicy",
+        "od wczoraj zimny pot bez powodu oraz ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami (epizody ustąpiły, ale pieczenie nawraca)",
+        "nowa duszność wysiłkowa od wczoraj (pierwsze piętro), nudności i wyraźne zmęczenie: typowy obraz u kobiet i osób z cukrzycą bez bólu w klatce; kobiety z zawałem rzadziej zgłaszają ból w klatce piersiowej (PMID 17118824, 35268411, 19850241)",
+        "obciążenie: kobieta 66 lat, cukrzyca typu 2 (glikemia 214 mg/dl), nadciśnienie tętnicze, hipercholesterolemia, palenie tytoniu, nieregularne przyjmowanie atorwastatyny",
+        "u chorych na cukrzycę niedokrwienie bywa nieme lub skąpoobjawowe (PMID 12957755, 30725600)"
+      ],
+      "przeciw": [
+        "pacjentka zaprzecza bólowi w klatce piersiowej",
+        "brak duszności spoczynkowej",
+        "brak EKG, troponiny i parametrów życiowych — przeciwwskazania nie da się postawić, można tylko wykluczyć badaniami"
+      ]
+    },
+    {
+      "nazwa": "Choroba refluksowa przełyku",
+      "p": 0.15,
+      "za": [
+        "pieczenie w dołku i za mostkiem, pacjentka sama nazywa je zgagą",
+        "nudności"
+      ],
+      "przeciw": [
+        "pierwszy epizod w wieku 66 lat (objaw alarmowy dyspepsji o nowym początku po 55–60 r.ż. [wiedza modelu, niezweryfikowane])",
+        "brak efektu leku zobojętniającego",
+        "zależność od wysiłku, zimny pot, promieniowanie do szyi/żuchwy/ramienia i nowa duszność nie pasują do refluksu"
+      ]
+    },
+    {
+      "nazwa": "Ostra niewydolność serca w przebiegu niedokrwienia mięśnia sercowego",
+      "p": 0.05,
+      "za": [
+        "nowa duszność wysiłkowa i znaczne zmęczenie od wczoraj",
+        "wieloczynnikowe ryzyko sercowo-naczyniowe"
+      ],
+      "przeciw": [
+        "brak duszności spoczynkowej i orthopnoë w ankiecie (orthopnoë, obrzęki, osłuchiwanie płuc: NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zatorowość płucna",
+      "p": 0.04,
+      "za": [
+        "nagła, nowa duszność wysiłkowa od wczoraj",
+        "palenie tytoniu, wiek"
+      ],
+      "przeciw": [
+        "pieczenie zależne od wysiłku z promieniowaniem lepiej tłumaczy niedokrwienie",
+        "brak danych o unieruchomieniu, objawach zakrzepicy żył głębokich, krwioplucia (NIEZNANE, nie wykluczone)"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół aortalny (rozwarstwienie aorty)",
+      "p": 0.02,
+      "za": [
+        "dolegliwości między łopatkami",
+        "nadciśnienie tętnicze, palenie"
+      ],
+      "przeciw": [
+        "charakter pieczenia, a nie nagłego rozdzierającego bólu",
+        "zależność od wysiłku i nawracanie przez godziny"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "hipoglikemia jako przyczyna zimnego potu i osłabienia — glikemia 214 mg/dl (przy gliklazydzie wykluczona tylko w momencie pomiaru)",
+    "duszność spoczynkowa / niewydolność oddechowa w spoczynku — pacjentka w spoczynku oddycha normalnie (nie wyklucza zawału)",
+    "krwawienie z górnego odcinka przewodu pokarmowego z wymiotami krwistymi — brak wymiotów (smoliste stolce: niezapytane)"
+  ],
+  "red_flags_otwarte": [
+    "ostry zespół wieńcowy / zawał serca: zimny pot, promieniowanie do szyi/żuchwy/ramienia/między łopatki, pieczenie wysiłkowe, nowa duszność wysiłkowa u 66-letniej chorej na cukrzycę z nadciśnieniem, dyslipidemią i paleniem; wykluczyłoby to dopiero prawidłowe EKG 12-odprowadzeniowe i seryjna troponina wysokoczuła wg algorytmu 0/1 h lub 0/2 h ESC 2023 (PMID 38032511, 38783672)",
+    "ostra niewydolność serca / niedokrwienna dysfunkcja lewej komory: wykluczyłyby parametry życiowe, osłuchiwanie, peptyd natriuretyczny, echokardiografia",
+    "zaburzenia rytmu lub przewodzenia (np. blok przedsionkowo-komorowy, migotanie przedsionków) jako przyczyna duszności i zmęczenia: wykluczy EKG",
+    "zatorowość płucna: wykluczyłyby SpO2, tętno, ocena prawdopodobieństwa klinicznego i D-dimer/angio-TK, jeśli EKG i troponina nie wyjaśnią duszności",
+    "ostry zespół aortalny (ból międzyłopatkowy przy nadciśnieniu): wykluczyłoby ciśnienie na obu ramionach, charakter początku bólu, w razie wątpliwości obrazowanie aorty",
+    "niedokrwistość (w morfologii 'coś było nieprawidłowe' — NIEZNANE co) nasilająca niedokrwienie lub tłumacząca duszność; krwawienie z przewodu pokarmowego: wykluczy aktualna morfologia i pytanie o smoliste stolce",
+    "kwasica mleczanowa przy metforminie 2000 mg/d lub hiperglikemia z ketozą (nudności, zmęczenie, duszność): eGFR, gazometria, ketony NIEZNANE — mało prawdopodobne, sprawdzić na SOR",
+    "zakaźne dla otoczenia: brak sygnałów; gorączka i kaszel NIEZNANE (zapalenie płuc / zakażenie wirusowe jako tło duszności nie wykluczone formalnie)"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) z rozpoznaniem wstępnym 'podejrzenie ostrego zespołu wieńcowego — równoważnik dławicy z zimnym potem i promieniowaniem u chorej na cukrzycę', z transportem do ośrodka z całodobową pracownią hemodynamiki; nie leczyć empirycznie inhibitorem pompy protonowej i nie odsyłać do domu przed EKG i troponiną (EKG w gabinecie tylko równolegle, bez opóźniania transportu; kwas acetylosalicylowy 150–300 mg doustnie, jeśli brak przeciwwskazań [dawka: wiedza modelu, niezweryfikowane — zgodna z ESC 2023 wg pamięci modelu])",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność dopiero po prawidłowym EKG 12-odprowadzeniowym i ujemnej seryjnej troponinie wysokoczułej (algorytm 0/1 h ESC 2023) przy stabilnych parametrach życiowych; samo ustąpienie objawów lub odpowiedź na inhibitor pompy protonowej niczego nie wyklucza.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrego zespołu wieńcowego w bibliotece (tylko przykłady); pamiec/zespol.md: reguła PRZYKLAD-001 — EKG przed planem planowym u kobiety 50+ z czynnikami ryzyka przy dolegliwościach nadbrzusza",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 1: 'atypical symptoms acute myocardial infarction women diabetes dyspnea nausea fatigue' → PMID 17118824 (kobiety z zawałem rzadziej mają objawy w klatce), PMID 35268411 (przegląd systematyczny z metaanalizą objawów zawału u kobiet), PMID 19850241 (objawy pierwszego zawału u kobiet i mężczyzn), PMID 38287984 (objawy zawału u chorych na cukrzycę vs bez cukrzycy), PMID 15215788, PMID 8285384",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 2: 'acute coronary syndrome misdiagnosed as gastroesophageal reflux dyspepsia' → PMID 15344548 (diagnostyka różnicowa choroby refluksowej i chorób sercowo-naczyniowych), PMID 32153681 (dławica naczynioskurczowa mylona z refluksem), PMID 38765342 (zawał maskujący się jako nieżyt żołądkowo-jelitowy)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 3: '2023 ESC guidelines management of acute coronary syndromes' → PMID 38032511, PMID 38783672 (omówienia wytycznych ESC 2023 dotyczących ostrych zespołów wieńcowych), PMID 38610650",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 4: 'anginal equivalent dyspnea prognosis diabetes women myocardial ischemia' → PMID 12957755 (nieme niedokrwienie u chorych z cukrzycą i bez), PMID 30725600 (nieme niedokrwienie mięśnia sercowego), PMID 2229758 (wydłużony próg odczuwania dławicy w cukrzycy)",
+    "Uwaga: treść publikacji oceniana na podstawie tytułów z wyników wyszukiwania; szczegółowe progi (dawka kwasu acetylosalicylowego, odstępy algorytmu troponinowego) [wiedza modelu, niezweryfikowane] poza ogólnym odwołaniem do ESC 2023"
+  ]
+}

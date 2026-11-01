@@ -1,0 +1,6 @@
+1: oddech_gardlo, skora_alarm, sluzowki, przytomnosc
+2: kiedy_wysypka, antybiotyk_wziety, mocz
+3: wyglad_wysypki, wezly_stawy, gardlo_teraz
+4: uczulenia, inne_leki_ostatnio, leki_stale
+5: choroby, otoczenie, badania
+6: badania_jakie, obawy (koniec)

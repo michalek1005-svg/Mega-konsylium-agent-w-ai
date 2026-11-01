@@ -1,0 +1,94 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesiączkowych, nasilona dietą wegetariańską",
+      "p": 0.55,
+      "za": [
+        "Hemoglobina 10,8 g/dl, średnia objętość krwinki czerwonej 76 fl i ferrytyna 8 ng/ml sprzed 2 tygodni: obraz mikrocytarnej niedokrwistości z wyczerpanymi zapasami żelaza.",
+        "Obfite miesiączki od ponad roku: zmiana podpaski częściej niż co 2 godziny, skrzepy większe niż moneta 5 zł.",
+        "Objawy typowe dla niedoboru żelaza, nie tarczycy: łamliwe paznokcie, pękające kąciki ust, wypadanie włosów, zmęczenie, słaba koncentracja.",
+        "Dieta wegetariańska od 2 lat zmniejsza podaż żelaza hemowego."
+      ],
+      "przeciw": [
+        "Brak badania fizykalnego i oceny źródeł utraty krwi innych niż miesiączka (przewód pokarmowy — NIEZNANE).",
+        "Niedobór żelaza może współistnieć z chorobą tarczycy, więc nie wyklucza drugiej przyczyny objawów."
+      ]
+    },
+    {
+      "nazwa": "Subkliniczna niedoczynność tarczycy w przebiegu autoimmunologicznego zapalenia tarczycy typu Hashimoto",
+      "p": 0.15,
+      "za": [
+        "Hormon tyreotropowy 5,4 mIU/l przy prawidłowej wolnej tyroksynie 1,1 ng/dl (zakres 0,9–1,7).",
+        "Choroba tarczycy u krewnych pierwszego stopnia; kobieta 34 lata — grupa największej częstości zapalenia autoimmunologicznego.",
+        "Obfite miesiączki i zmęczenie mogą być częściowo tarczycowe."
+      ],
+      "przeciw": [
+        "Pojedynczy pomiar; przeciwciała przeciw peroksydazie tarczycowej nieoznaczone — rozpoznanie Hashimoto niepotwierdzone.",
+        "Wolna tyroksyna w dolnej, ale prawidłowej części zakresu; łagodny wzrost hormonu tyreotropowego często wraca do normy w powtórnym badaniu [wiedza modelu, niezweryfikowane].",
+        "Ciężki niedobór żelaza upośledza syntezę hormonów tarczycy (peroksydaza tarczycowa jest enzymem hemowym) i sam może podnosić hormon tyreotropowy; wyrównanie niedoboru poprawiało czynność tarczycy (PMID 19070025, 38923898)."
+      ]
+    },
+    {
+      "nazwa": "Obfite krwawienia miesiączkowe na tle zmiany strukturalnej macicy (mięśniak, polip endometrialny, adenomioza)",
+      "p": 0.12,
+      "za": [
+        "Obfite miesiączki z dużymi skrzepami pojawiły się ponad rok temu, więc są nabyte, nie od pierwszej miesiączki.",
+        "Wiek 34 lat to okres narastającej częstości mięśniaków [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Brak danych o bólu miesiączkowym, krwawieniach międzymiesiączkowych, ucisku na pęcherz; brak badania ginekologicznego i USG — NIEZNANE.",
+        "Niedoczynność tarczycy lub zaburzenia owulacji mogą dawać taki sam obraz bez zmiany strukturalnej."
+      ]
+    },
+    {
+      "nazwa": "Celiakia z upośledzonym wchłanianiem żelaza",
+      "p": 0.05,
+      "za": [
+        "Bardzo niska ferrytyna mimo braku innych niż miesiączka źródeł utraty; celiakia jest częsta u osób z niedokrwistością z niedoboru żelaza (PMID 29689265, 23161292).",
+        "Współistnienie z autoimmunologicznym zapaleniem tarczycy (PMID 25351758, 9872614); celiakia upośledza też wchłanianie lewotyroksyny [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Obfite miesiączki dobrze tłumaczą niedobór żelaza bez dodatkowej przyczyny; brak danych o objawach jelitowych."
+      ]
+    },
+    {
+      "nazwa": "Choroba von Willebranda lub inna wrodzona skaza krwotoczna",
+      "p": 0.05,
+      "za": [
+        "Obfite miesiączki ze skrzepami i niedokrwistością; skaza krwotoczna występuje u istotnego odsetka kobiet z obfitymi miesiączkami (PMID 15198765, 15981234)."
+      ],
+      "przeciw": [
+        "Obfite miesiączki od ponad roku, a nie od pierwszej miesiączki; brak danych o krwawieniach z nosa, dziąseł, po zabiegach i porodzie w rodzinie — NIEZNANE."
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Masywne czynne krwawienie teraz (pacjentka nie miesiączkuje).",
+    "Myśli samobójcze w ostatnich 2 tygodniach (zaprzecza).",
+    "Zmiany w okolicy szyi zauważone przez pacjentkę (brak; bez badania fizykalnego).",
+    "Ostre objawy alarmowe z listy ankiety (zaprzecza).",
+    "Przyczyna polekowa: brak leków wpływających na tarczycę lub krwawienie; magnez okazjonalnie bez znaczenia."
+  ],
+  "red_flags_otwarte": [
+    "Brak badania fizykalnego i parametrów życiowych (tętno, ciśnienie, tolerancja wysiłku przy hemoglobinie 10,8 g/dl).",
+    "Ciąża wykluczona tylko z deklaracji, nie testem — pacjentka stara się o dziecko.",
+    "Nieocenione inne źródła utraty krwi (przewód pokarmowy: smoliste stolce, krew w stolcu).",
+    "Niewyjaśniona przyczyna obfitych miesiączek (brak badania ginekologicznego i USG)."
+  ],
+  "nastepny_krok": "Nie włączać teraz lewotyroksyny; zlecić jednym pobraniem za 2–4 tygodnie powtórne TSH z FT4 oraz przeciwciała przeciw peroksydazie tarczycowej (z beta-hCG), a lewotyroksynę rozważyć dopiero po potwierdzeniu TSH powyżej zakresu laboratoryjnego, zwłaszcza przy dodatnich przeciwciałach u kobiety planującej ciążę.",
+  "co_zmieniloby_zdanie": "Potwierdzone w powtórnym badaniu TSH powyżej zakresu laboratoryjnego z dodatnimi przeciwciałami przeciw peroksydazie tarczycowej podniosłoby p zapalenia Hashimoto do około 0,30 jako współprzyczyny i uzasadniło lewotyroksynę przed ciążą, a niedokrwistość nadal pozostałaby główną przyczyną objawów.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych (PTE, PTGiP) dla tej sytuacji w bibliotece; zalecenia wytycznych [wiedza modelu, niezweryfikowane].",
+    "pamiec/zespol.md — brak wniosku dotyczącego tej prezentacji.",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): 'subclinical hypothyroidism women planning pregnancy levothyroxine TSH guideline' → PMID 29850652, 38368537, 31088853, 37024331.",
+    "Zapytanie 2: 'iron deficiency anemia heavy menstrual bleeding fatigue hair loss women' → PMID 37538011, 37538015, 33682105.",
+    "Zapytanie 3: 'iron deficiency thyroid function TSH iron supplementation hypothyroidism' → PMID 19070025, 38923898, 40995708.",
+    "Zapytanie 4: 'celiac disease screening iron deficiency anemia autoimmune thyroiditis' → PMID 29689265, 23161292, 25351758, 9872614.",
+    "Zapytanie 5: 'von Willebrand disease prevalence women heavy menstrual bleeding bleeding disorder screening' → PMID 15198765, 15981234.",
+    "Zapytanie 6: 'thyroid peroxidase antibodies TSH 2.5 preconception levothyroxine miscarriage TABLET trial' → PMID 31617987 (TABLET), 30907987; wynik: lewotyroksyna u kobiet eutyreotycznych z przeciwciałami nie zwiększała liczby żywych urodzeń [wiedza modelu, niezweryfikowane — streszczeń nie czytano].",
+    "Progi TSH przed ciążą (górna granica zakresu laboratoryjnego; 2,5 mIU/l jako dawny cel) wg wytycznych ATA 2017 i ETA 2014 [wiedza modelu, niezweryfikowane]."
+  ]
+}

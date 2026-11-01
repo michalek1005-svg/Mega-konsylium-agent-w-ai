@@ -1,0 +1,180 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "ostry zespół wieńcowy (rozpoznanie niepolekowe, ocena poza kompetencją farmakologa)",
+      "p": 0,
+      "za": [
+        "zgaga pierwszy raz w życiu, nieustępująca po leku zobojętniającym (Rennie)",
+        "pieczenie nasila się przy wysiłku i słabnie w spoczynku",
+        "zimny pot oraz ucisk/pieczenie szyi, żuchwy, ramienia lub między łopatkami od wczoraj",
+        "nowa duszność wysiłkowa od wczoraj",
+        "kobieta 66 lat, cukrzyca typu 2, nadciśnienie tętnicze, hipercholesterolemia, palenie tytoniu",
+        "objawy nietypowe (dyspepsja, nudności, duszność, zmęczenie) są częste u kobiet i chorych na cukrzycę z zawałem serca (PMID 38287984, PMID 26956231)"
+      ],
+      "przeciw": [
+        "brak bólu w klatce piersiowej (nie wyklucza u kobiety z cukrzycą)",
+        "objawy towarzyszące w chwili ankiety ustąpiły"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — metformina (nietolerancja żołądkowo-jelitowa)",
+      "p": 0.03,
+      "za": [
+        "nudności i dyskomfort w nadbrzuszu to najczęstsze działania niepożądane metforminy [wiedza modelu, niezweryfikowane]",
+        "dawka 1000 mg 2 razy na dobę (2000 mg/d) — górny zakres dawek typowych"
+      ],
+      "przeciw": [
+        "leczenie przewlekłe, objawy nagłe od wczoraj, brak zmiany dawki w wywiadzie",
+        "nietolerancja metforminy nie tłumaczy duszności wysiłkowej, zimnego potu ani promieniowania do żuchwy/ramienia",
+        "brak biegunki"
+      ]
+    },
+    {
+      "nazwa": "kwasica mleczanowa związana z metforminą",
+      "p": 0.02,
+      "za": [
+        "triada nudności, osłabienie, duszność u chorej na metforminie",
+        "czynność nerek NIEZNANA — ryzyko kwasicy mleczanowej rośnie przy spadku eGFR (PMID 29868840)"
+      ],
+      "przeciw": [
+        "brak duszności spoczynkowej (oddech Kussmaula byłby obecny w spoczynku)",
+        "brak wymiotów, biegunki, odwodnienia, ostrej choroby nerek w wywiadzie",
+        "glikemia 214 mg/dl bez cech ciężkiej dekompensacji"
+      ]
+    },
+    {
+      "nazwa": "niedokrwistość z niedoboru witaminy B12 związana z metforminą jako czynnik współistniejący",
+      "p": 0.03,
+      "za": [
+        "długotrwałe stosowanie metforminy zwiększa ryzyko niedoboru witaminy B12 (PMID 26900641, PMID 37611751)",
+        "w morfologii lub HbA1c w ostatnim roku 'coś było nieprawidłowe' — który parametr, NIEZNANE",
+        "niedokrwistość nasila zmęczenie i duszność wysiłkową oraz może wywołać niedokrwienie mięśnia sercowego typu 2"
+      ],
+      "przeciw": [
+        "niedokrwistość z niedoboru B12 narasta tygodniami–miesiącami, a objawy pojawiły się nagle od wczoraj",
+        "nie tłumaczy zgagi wysiłkowej, zimnego potu ani promieniowania bólu"
+      ]
+    },
+    {
+      "nazwa": "hipoglikemia polekowa — gliklazyd",
+      "p": 0.01,
+      "za": [
+        "pochodna sulfonylomocznika, zimny pot i osłabienie mogą być objawem hipoglikemii"
+      ],
+      "przeciw": [
+        "glikemia dziś 214 mg/dl",
+        "objawy trwają godzinami i mają charakter wysiłkowy, nie są związane z posiłkami"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "duszność spoczynkowa (pacjentka zaprzecza)",
+    "hipoglikemia w chwili pomiaru (glikemia 214 mg/dl)",
+    "wymioty (brak)"
+  ],
+  "red_flags_otwarte": [
+    "zimny pot bez wyraźnej przyczyny od wczoraj",
+    "ucisk/pieczenie promieniujące do szyi, żuchwy, ramienia lub między łopatki",
+    "pieczenie zamostkowe/w nadbrzuszu nasilające się przy wysiłku i ustępujące w spoczynku (równoważnik dławicy)",
+    "nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą i 4 czynnikami ryzyka sercowo-naczyniowego",
+    "parametry życiowe, EKG i troponina NIEZNANE",
+    "czynność nerek (eGFR) NIEZNANA — warunkuje bezpieczeństwo metforminy, kontrastu i dawkowania leków przeciwkrzepliwych",
+    "nieprawidłowy wynik HbA1c lub morfologii z ostatniego roku — NIEZNANE który"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) i do jego przyjazdu podać kwas acetylosalicylowy 300 mg w tabletce niepowlekanej do rozgryzienia (o ile brak uczulenia i czynnego krwawienia), nie wdrażając inhibitora pompy protonowej jako leczenia.",
+  "co_zmieniloby_zdanie": "Dopiero prawidłowe EKG i dwa oznaczenia troponiny wysokoczułej w odstępie wg algorytmu 0/1 h lub 0/2 h, przy prawidłowym eGFR i morfologii, pozwoliłyby rozważyć leczenie dyspepsji inhibitorem pompy protonowej i szukać polekowej przyczyny objawów.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "kwas acetylosalicylowy (preparat niepowlekany, np. 300 mg)",
+      "dawka": "150–300 mg jednorazowo (dawka nasycająca), do rozgryzienia",
+      "droga": "doustnie",
+      "czas": "teraz, przed transportem; dalej 75–100 mg/d wg decyzji szpitala",
+      "uwagi": "Przeciwwskazania: uczulenie na ASA, czynne krwawienie z przewodu pokarmowego. Tabletka dojelitowa (np. Acard) działa wolniej — gdy tylko ona jest dostępna, rozgryźć. Inhibitory P2Y12 (klopidogrel, tikagrelor, prasugrel) zostawić szpitalowi: w zawale bez uniesienia ST rutynowe leczenie wstępne przed koronarografią nie jest zalecane.",
+      "zrodlo": "ESC 2023 ACS, PMID 37622654 (zakres dawki i brak rutynowego pretreatmentu P2Y12 wg treści wytycznej) [szczegóły z pamięci treści wytycznej, pełny tekst niezweryfikowany w tej sesji]"
+    },
+    {
+      "lek": "nitrogliceryna",
+      "dawka": "0,4–0,5 mg podjęzykowo, można powtórzyć co 5 min, maks. 3 dawki",
+      "droga": "podjęzykowo (aerozol lub tabletka)",
+      "czas": "tylko przy nawrocie bólu/pieczenia w czasie oczekiwania na ZRM",
+      "uwagi": "Nie podawać przy ciśnieniu skurczowym <90 mmHg, bradykardii, podejrzeniu zawału prawej komory, po inhibitorze fosfodiesterazy typu 5 w ostatnich 24–48 h. Ustąpienie po nitroglicerynie nie różnicuje niedokrwienia od skurczu przełyku.",
+      "zrodlo": "ESC 2023 ACS, PMID 37622654; dawki [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "metformina (Metformax 1000 mg 2×/d)",
+      "dawka": "wstrzymać",
+      "droga": "—",
+      "czas": "od teraz do czasu koronarografii z kontrastem jodowym i co najmniej 48 h po niej; wznowić po potwierdzeniu stabilnego eGFR",
+      "uwagi": "Ryzyko kwasicy mleczanowej przy ostrym uszkodzeniu nerek pokontrastowym, wstrząsie kardiogennym lub hipoksji; eGFR NIEZNANE. U chorych z eGFR >60 ml/min/1,73 m² konieczność odstawienia jest dyskutowana (PMID 29957756), ale w ostrym zespole wieńcowym z niestabilną hemodynamiką wstrzymanie jest bezpieczniejsze.",
+      "zrodlo": "PMID 29957756, PMID 29868840; reguła 48 h po kontraście [wiedza modelu, niezweryfikowane — ChPL metforminy brak w zrodla/]"
+    },
+    {
+      "lek": "gliklazyd MR (Diaprel MR 60 mg)",
+      "dawka": "wstrzymać na czas hospitalizacji",
+      "droga": "—",
+      "czas": "do stabilizacji; glikemię w ostrym zespole wieńcowym kontroluje szpital (insulina przy glikemii >180 mg/dl / 10 mmol/l, unikać hipoglikemii)",
+      "uwagi": "Ryzyko hipoglikemii przy głodzeniu przed zabiegiem. Hiperglikemia przy przyjęciu pogarsza rokowanie w zawale (PMID 16209987).",
+      "zrodlo": "ESC 2023 ACS, PMID 37622654 (próg glikemii >10 mmol/l) [z pamięci treści wytycznej]; PMID 16209987"
+    },
+    {
+      "lek": "atorwastatyna",
+      "dawka": "zwiększyć z 20 mg do 80 mg/d (statyna dużej intensywności)",
+      "droga": "doustnie",
+      "czas": "od przyjęcia, bezterminowo",
+      "uwagi": "Pacjentka zapomina dawek — po zdarzeniu wieńcowym edukacja o przestrzeganiu zaleceń; cel LDL <55 mg/dl wg ESC (dla Polski zgodnie z wytycznymi PTK/PTL, brak pliku w zrodla/).",
+      "zrodlo": "ESC 2023 ACS, PMID 37622654 [cel LDL z pamięci treści wytycznej]"
+    },
+    {
+      "lek": "peryndopryl (Prestarium 5 mg)",
+      "dawka": "kontynuować 5 mg/d, o ile ciśnienie skurczowe ≥100 mmHg i brak ostrego uszkodzenia nerek",
+      "droga": "doustnie",
+      "czas": "przewlekle",
+      "uwagi": "Wstrzymać przy hipotensji, wstrząsie lub wzroście kreatyniny po kontraście; kontrola potasu i kreatyniny.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "pantoprazol (jeśli po wykluczeniu/leczeniu OZW potrzebny inhibitor pompy protonowej)",
+      "dawka": "20–40 mg/d",
+      "droga": "doustnie",
+      "czas": "w czasie podwójnej terapii przeciwpłytkowej u chorej z ryzykiem krwawienia z przewodu pokarmowego",
+      "uwagi": "Jako ochrona żołądka przy terapii przeciwpłytkowej, nie jako leczenie obecnych objawów. Jeśli szpital wybierze klopidogrel — pantoprazol zamiast omeprazolu/esomeprazolu (interakcja przez CYP2C19 osłabia działanie klopidogrelu: PMID 21464720).",
+      "zrodlo": "PMID 21464720; ESC 2023 ACS, PMID 37622654 (IPP przy terapii przeciwpłytkowej i wysokim ryzyku krwawienia)"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "inhibitor pompy protonowej jako jedyne leczenie przed wykluczeniem niedokrwienia",
+      "powod": "Wysiłkowy charakter pieczenia, zimny pot i promieniowanie do żuchwy/ramienia przemawiają za równoważnikiem dławicy; próba leczenia IPP opóźnia rozpoznanie zawału, a ewentualna 'poprawa' bywa przypadkowa i utrwala błąd zakotwiczenia."
+    },
+    {
+      "lek": "niesteroidowe leki przeciwzapalne (ibuprofen, ketoprofen, diklofenak, metamizol w dużych dawkach z ostrożności)",
+      "powod": "NLPZ zwiększają ryzyko zdarzeń sercowo-naczyniowych i krwawień przy leczeniu przeciwpłytkowym; ibuprofen osłabia przeciwpłytkowe działanie ASA [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "inhibitor P2Y12 w POZ (klopidogrel 300–600 mg, tikagrelor) przed koronarografią",
+      "powod": "Decyzja należy do szpitala; w zawale bez uniesienia ST rutynowe leczenie wstępne nie jest zalecane (ESC 2023, PMID 37622654), a może utrudnić ewentualne pomostowanie aortalno-wieńcowe."
+    },
+    {
+      "lek": "kolejne dawki gliklazydu i metforminy w dniu transportu",
+      "powod": "Ryzyko hipoglikemii przy głodzeniu oraz kwasicy mleczanowej przy kontraście jodowym i nieznanym eGFR."
+    },
+    {
+      "lek": "ondansetron lub metoklopramid 'na mdłości' w POZ",
+      "powod": "Leczenie objawowe maskuje obraz; ondansetron wydłuża odstęp QT u chorej z możliwym niedokrwieniem i nieznanymi elektrolitami [wiedza modelu, niezweryfikowane]."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — sprawdzono: brak plików polskich wytycznych ani ChPL dla tej sytuacji (tylko przykładowe wiersze)",
+    "pamiec/zespol.md — wniosek z PRZYKLAD-001: EKG przed planem u kobiety 50+ z czynnikami ryzyka sercowego",
+    "WebSearch (pubmed.ncbi.nlm.nih.gov) zapytanie 1: '2023 ESC guidelines acute coronary syndromes aspirin loading dose' → PMID 37622654 (2023 ESC Guidelines for the management of acute coronary syndromes), PMID 37738449, PMID 24762255",
+    "WebSearch zapytanie 2: 'atypical presentation myocardial infarction women diabetes dyspepsia nausea dyspnea' → PMID 38287984, PMID 26956231, PMID 35268411, PMID 18482629",
+    "WebSearch zapytanie 3: 'metformin vitamin B12 deficiency anemia long-term use' → PMID 26900641 (DPPOS), PMID 37611751 (EMBER)",
+    "WebSearch zapytanie 4: 'clopidogrel omeprazole interaction CYP2C19 pantoprazole' → PMID 21464720 (omeprazol, nie pantoprazol, osłabia klopidogrel)",
+    "WebSearch zapytanie 5: 'metformin iodinated contrast lactic acidosis guideline withhold eGFR coronary angiography' → PMID 29957756, PMID 29868840, PMID 37130786",
+    "WebSearch zapytanie 6: 'sulfonylurea gliclazide acute myocardial infarction mortality hyperglycemia admission' → PMID 16209987, PMID 37130824",
+    "Uwaga: wtyczka PubMed MCP niedostępna (proxy); PMID wyłącznie z adresów wyników WebSearch; treść abstraktów i pełnych tekstów niezweryfikowana w tej sesji — liczby z wytycznej ESC 2023 podane z pamięci treści i oznaczone"
+  ]
+}

@@ -1,0 +1,6 @@
+1: objawy_neuro, bol_teraz, narastanie, goraczka
+2: przytomnosc, kark, bol_skala
+3: lekarz_badania, wynik_badania, wczesniej
+4: cisnienie, cisnienie_wartosc, rodzina
+5: krzepliwosc, ostatnie_srodki, leki_stale
+6: przeciwbolowe, alergie, alergie_jakie, obawy (koniec)

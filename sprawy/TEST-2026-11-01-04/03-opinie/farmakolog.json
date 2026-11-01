@@ -1,0 +1,129 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "zespół odwracalnego skurczu naczyń mózgowych wywołany substancją — alkohol",
+      "p": 0.04,
+      "za": ["piorunujący ból głowy przy wysiłku (dźwiganie)", "„dużo alkoholu” w ostatnich 2 tygodniach — alkohol i wysiłek opisywane jako wyzwalacze zespołu (PMID 27015869, 39522671)", "palenie 20 papierosów dziennie"],
+      "przeciw": ["epizod jednorazowy, bez nawracających piorunujących bólów w ciągu 3 dób", "objawy oponowe (ból przy zgięciu karku, światłowstręt) bardziej przemawiają za krwią w przestrzeni podpajęczynówkowej", "brak typowych leków wyzwalających (sympatykomimetyki, leki serotoninergiczne) — pacjent zaprzecza"]
+    },
+    {
+      "nazwa": "ból głowy w zespole odstawienia alkoholu",
+      "p": 0.02,
+      "za": ["duże spożycie alkoholu w ostatnich 2 tygodniach"],
+      "przeciw": ["szczyt bólu w kilka sekund — nie pasuje do bólu z odstawienia", "brak drżenia, potów, pobudzenia w zgłoszeniu", "sztywność karku i światłowstręt niewyjaśnialne odstawieniem"]
+    },
+    {
+      "nazwa": "objawy polekowe — ibuprofen",
+      "p": 0.01,
+      "za": ["przyjmuje 1–2 tabletki dziennie od epizodu"],
+      "przeciw": ["ból wystąpił przed pierwszą dawką", "ibuprofen nie wywołuje bólu piorunującego ani objawów oponowych; aseptyczne zapalenie opon po ibuprofenie jest rzadkie i nie tłumaczy początku w kilka sekund [wiedza modelu, niezweryfikowane]", "ustąpienie bólu po ibuprofenie nie wyklucza krwotoku podpajęczynówkowego [wiedza modelu, niezweryfikowane]"]
+    },
+    {
+      "nazwa": "krwotok podpajęczynówkowy",
+      "p": 0,
+      "za": ["rozpoznanie niepolekowe — p ustawione na 0 zgodnie z rolą farmakologa; oceniają je lekarze toru rozpoznania"],
+      "przeciw": []
+    },
+    {
+      "nazwa": "naciągnięcie mięśni karku",
+      "p": 0,
+      "za": ["rozpoznanie niepolekowe — p ustawione na 0 zgodnie z rolą; z perspektywy leczenia: nie wolno go przyjąć jako roboczego bez wykluczenia krwotoku podpajęczynówkowego"],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "przyjmowanie leków przeciwkrzepliwych lub przeciwpłytkowych (pacjent zaprzecza; brak stałych leków)",
+    "uczulenia na leki (zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "piorunujący, najsilniejszy w życiu ból głowy przy wysiłku 3 doby temu, bez tomografii komputerowej głowy",
+    "objawy oponowe teraz: ból przy zgięciu karku i światłowstręt",
+    "nieleczone nadciśnienie tętnicze, wartości po epizodzie NIEZNANE",
+    "nagły zgon ojca w wieku 52 lat z powodu „wylewu”, palenie 20 papierosów dziennie, duże spożycie alkoholu",
+    "ciągłe przyjmowanie ibuprofenu (hamowanie czynności płytek) przy niewykluczonym krwawieniu śródczaszkowym",
+    "ryzyko zespołu odstawienia alkoholu po przyjęciu do szpitala"
+  ],
+  "nastepny_krok": "Odstawić ibuprofen i nie przepisywać żadnego leku „na kark” — skierować pacjenta dziś, bezzwłocznie, transportem medycznym na Szpitalny Oddział Ratunkowy z rozpoznaniem roboczym „podejrzenie krwotoku podpajęczynówkowego” (tomografia komputerowa głowy, a przy wyniku ujemnym nakłucie lędźwiowe lub angiografia tomografii komputerowej), do tego czasu doraźnie wyłącznie paracetamol.",
+  "co_zmieniloby_zdanie": "Prawidłowa tomografia komputerowa głowy i prawidłowy płyn mózgowo-rdzeniowy (bez ksantochromii) oraz angiografia bez tętniaka i skurczu naczyń — dopiero wtedy dopuściłbym leczenie objawowe karku, w tym niesteroidowe leki przeciwzapalne.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "paracetamol",
+      "dawka": "1 g doraźnie, nie częściej niż co 6 h; maksymalnie 3 g/dobę z powodu dużego spożycia alkoholu (zamiast standardowych 4 g)",
+      "droga": "doustnie (w szpitalu ewentualnie dożylnie)",
+      "czas": "do czasu oceny w Szpitalnym Oddziale Ratunkowym, potem wg oddziału",
+      "uwagi": "jedyny lek przeciwbólowy dopuszczalny przed wykluczeniem krwawienia; nie hamuje płytek, nie sedatuje; przy przewlekłym nadużywaniu alkoholu ryzyko hepatotoksyczności — w szpitalu oznaczyć aminotransferazy",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] — brak ChPL paracetamolu w zrodla/"
+    },
+    {
+      "lek": "nimodypina",
+      "dawka": "60 mg co 4 h; przy spadkach ciśnienia podział na 30 mg co 2 h",
+      "droga": "doustnie lub przez zgłębnik",
+      "czas": "21 dni od zachorowania (tu już dzień 3–4 — rozpocząć bez zwłoki po potwierdzeniu krwotoku podpajęczynówkowego)",
+      "uwagi": "wyłącznie w szpitalu po potwierdzeniu krwotoku tętniakowego; monitorować ciśnienie tętnicze (hipotensja pogarsza perfuzję mózgu); substrat CYP3A4 — unikać silnych inhibitorów i induktorów oraz soku grejpfrutowego; alkohol może nasilać hipotensję",
+      "zrodlo": "AHA/ASA 2023, PMID 37212182 (zalecenie doustnej nimodypiny); ESO/EANS/ESMINT, PMID 42095754; dawkowanie zmodyfikowane: PMID 34775086; dawki liczbowe [wiedza modelu, niezweryfikowane] — brak ChPL nimodypiny w zrodla/"
+    },
+    {
+      "lek": "lek hipotensyjny dożylny miareczkowany (labetalol lub urapidyl)",
+      "dawka": "miareczkowanie do ciśnienia skurczowego poniżej 160 mmHg do czasu zabezpieczenia tętniaka, bez gwałtownych spadków",
+      "droga": "dożylnie",
+      "czas": "do zabezpieczenia tętniaka",
+      "uwagi": "pacjent z nieleczonym nadciśnieniem — nie startować w POZ doustnego leczenia przewlekłego przed diagnostyką; w szpitalu unikać nitroprusydku i nitrogliceryny (wzrost ciśnienia śródczaszkowego)",
+      "zrodlo": "kierunek: AHA/ASA 2023, PMID 37212182; próg 160 mmHg i wybór leków [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "tiamina",
+      "dawka": "100–300 mg na dobę",
+      "droga": "dożylnie, przed podaniem roztworów glukozy",
+      "czas": "przez pierwsze dni hospitalizacji",
+      "uwagi": "profilaktyka encefalopatii Wernickego przy dużym spożyciu alkoholu; monitorować objawy odstawienia skalą CIWA-Ar — przy ich narastaniu benzodiazepina w najmniejszej skutecznej dawce, bo sedacja utrudnia ocenę neurologiczną",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "ondansetron",
+      "dawka": "4 mg doraźnie",
+      "droga": "dożylnie lub doustnie",
+      "czas": "doraźnie przy wymiotach",
+      "uwagi": "przed podaniem elektrokardiogram (odstęp QT) i potas oraz magnez — u osób pijących dużo alkoholu częste niedobory elektrolitowe",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "niesteroidowe leki przeciwzapalne (ibuprofen — odstawić; ketoprofen, diklofenak, naproksen) i kwas acetylosalicylowy",
+      "powod": "do wykluczenia krwotoku podpajęczynówkowego: hamowanie czynności płytek przy możliwym tętniaku w okresie wysokiego ryzyka ponownego krwawienia; wpływ leków przeciwpłytkowych przed zachorowaniem na przebieg krwotoku badany w PMID 34282988, 36917361 (mechanizm i zalecenie odstawienia: [wiedza modelu, niezweryfikowane])"
+    },
+    {
+      "lek": "leki zwiotczające mięśnie szkieletowe (tolperyzon, tyzanidyna, baklofen, tiokolchikozyd)",
+      "powod": "leczą fałszywe rozpoznanie i utrwalają u pacjenta przekonanie o naciągnięciu, opóźniając diagnostykę; tyzanidyna i baklofen sedatują i obniżają ciśnienie, z alkoholem sumują depresję ośrodkowego układu nerwowego [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "opioidy (tramadol, kodeina) i benzodiazepiny w POZ",
+      "powod": "sedacja zaciera ocenę świadomości przed tomografią; depresja oddechowa z hiperkapnią podnosi ciśnienie śródczaszkowe; interakcja z alkoholem; tramadol dodatkowo obniża próg drgawkowy i działa serotoninergicznie [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "tryptany i pochodne sporyszu",
+      "powod": "leki obkurczające naczynia — przeciwwskazane przy podejrzeniu krwotoku podpajęczynówkowego, zespołu odwracalnego skurczu naczyń mózgowych i w nieleczonym nadciśnieniu [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "sympatykomimetyki (pseudoefedryna, fenylefryna w lekach na przeziębienie) oraz nowo włączane leki serotoninergiczne",
+      "powod": "znane wyzwalacze zespołu odwracalnego skurczu naczyń mózgowych (PMID 27015869, 39522671); pseudoefedryna dodatkowo podnosi ciśnienie u chorego z nieleczonym nadciśnieniem"
+    },
+    {
+      "lek": "kwas traneksamowy rutynowo",
+      "powod": "w badaniu ULTRA ultrawczesny kwas traneksamowy nie poprawił wyniku czynnościowego w krwotoku podpajęczynówkowym (PMID 33357465); w analizie post hoc gorszy wynik u mężczyzn (PMID 42616160)"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej i ChPL dla tej sytuacji (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wniosków dotyczących bólu głowy",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): „nimodipine aneurysmal subarachnoid hemorrhage outcome systematic review” — PMID 35419702, 34311705, 34775086, 31103551",
+    "Zapytanie 2: „antiplatelet or NSAID use before aneurysmal subarachnoid hemorrhage rebleeding outcome” — PMID 34282988, 36917361, 37778047, 42095754 (wytyczna ESO/EANS/ESMINT o krwotoku podpajęczynówkowym tętniakowym)",
+    "Zapytanie 3: „reversible cerebral vasoconstriction syndrome triggers alcohol thunderclap headache exertion” — PMID 27015869, 29274685, 39522671",
+    "Zapytanie 4: „tranexamic acid aneurysmal subarachnoid haemorrhage ULTRA trial” — PMID 33357465, 42616160",
+    "Zapytanie 5: „2023 guideline management of patients with aneurysmal subarachnoid hemorrhage American Heart Association” — PMID 37212182",
+    "Uwaga: artykuły znane z tytułów wyników wyszukiwania; szczegółowe liczby dawek bez ChPL w zrodla/ oznaczone [wiedza modelu, niezweryfikowane]"
+  ]
+}

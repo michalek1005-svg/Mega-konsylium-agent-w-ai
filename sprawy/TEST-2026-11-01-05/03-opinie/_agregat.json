@@ -1,0 +1,157 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesiączkowych",
+      "p": 0.222,
+      "wymienili": [
+        "bayes",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "Subkliniczna niedoczynność tarczycy w przebiegu przewlekłego autoimmunologicznego zapalenia tarczycy",
+      "p": 0.091,
+      "wymienili": [
+        "bayes",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesiączkowych, nasilona dietą wegetariańską",
+      "p": 0.088,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Niedokrwistość z niedoboru żelaza w przebiegu obfitych krwawień miesiączkowych",
+      "p": 0.051,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Subkliniczna niedoczynność tarczycy w przebiegu autoimmunologicznego zapalenia tarczycy typu Hashimoto",
+      "p": 0.046,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.111,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 3,
+    "mediana_wazona": 3.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Autoimmunologiczne zapalenie tarczycy u kobiety planującej ciążę – brak anty-TPO; przy dodatnich przeciwciałach i potwierdzonym TSH powyżej 2,5 mIU/l przed ciążą wytyczne sugerują rozważenie lewotyroksyny (PMID 29850652, 28716848, 33718252; progi [wiedza modelu, niezweryfikowane])",
+      "Brak badania fizykalnego i parametrów życiowych (tętno, ciśnienie, bladość, tarczyca w badaniu palpacyjnym) — NIEZNANE",
+      "Brak badania fizykalnego i parametrów życiowych (tętno, ciśnienie, tolerancja wysiłku przy hemoglobinie 10,8 g/dl).",
+      "Ciąża niewykluczona badaniem: pacjentka deklaruje, że nie jest w ciąży, ale stara się o dziecko — przed jakąkolwiek decyzją tarczycową potrzebny test (beta-hCG), bo w ciąży progi TSH i wskazania do lewotyroksyny są inne",
+      "Ciąża niewykluczona testem: pacjentka stara się o dziecko; wykluczy test beta-hCG przed jakimkolwiek leczeniem i obrazowaniem",
+      "Ciąża wykluczona tylko z deklaracji, nie testem — pacjentka stara się o dziecko.",
+      "Dynamika Hb od 2 tygodni nieznana przy trwających obfitych krwawieniach",
+      "Niedobór witaminy B12 u wegetarianki od 2 lat, maskowany mikrocytozą z niedoboru żelaza – ryzyko nieodwracalnych powikłań neurologicznych i znaczenie przed ciążą (PMID 24667752, 23356638); wykluczy oznaczenie witaminy B12 (ewentualnie holotranskobalaminy)",
+      "Nieocenione inne źródła utraty krwi (przewód pokarmowy: smoliste stolce, krew w stolcu).",
+      "Niewyjaśniona przyczyna obfitych miesiączek (brak badania ginekologicznego i USG).",
+      "Parametry życiowe NIEZNANE (tachykardia, hipotonia ortostatyczna, duszność wysiłkowa przy niedokrwistości)",
+      "Pierwotna niedoczynność kory nadnerczy przed włączeniem lewotyroksyny – niskie prawdopodobieństwo; nie wykluczają jej dane: zmęczenie, ciśnienie tętnicze i sód NIEZNANE; przy hipotonii, przebarwieniach, hiponatremii oznaczyć kortyzol przed lewotyroksyną [wiedza modelu, niezweryfikowane]",
+      "Przyczyna obfitych krwawień miesiączkowych nieustalona (mięśniaki, adenomioza, polip, skaza krwotoczna) — brak badania ginekologicznego i USG przezpochwowego",
+      "Strukturalna przyczyna obfitych krwawień (polip, mięśniak, adenomioza, rozrost lub nowotwór błony śluzowej trzonu macicy) – nie oceniono; wykluczy badanie ginekologiczne z USG przezpochwowym, przy grubym lub niejednorodnym endometrium biopsja; status cytologii lub testu HPV NIEZNANY",
+      "Utrata krwi lub złe wchłanianie z przewodu pokarmowego, w tym celiakia – wykluczy tTG-IgA z IgA całkowitym oraz wywiad w kierunku smolistych stolców, krwi w stolcu, biegunek i chudnięcia (NIEZNANE)",
+      "Utrata krwi z przewodu pokarmowego i zaburzenia wchłaniania niewykluczone (niskie prawdopodobieństwo przy jawnym źródle; do weryfikacji, jeśli brak odpowiedzi na żelazo)",
+      "Wrodzona skaza krwotoczna (choroba von Willebranda) – wykluczy ustrukturyzowany kwestionariusz krwawień, a przy dodatnim wyniku APTT, PT, czynnik von Willebranda (antygen i aktywność) i czynnik VIII; ważne także przed porodem",
+      "badanie fizykalne i parametry życiowe NIEZNANE",
+      "brak anty-TPO i powtórnego TSH",
+      "ciąża niewykluczona obiektywnie — pacjentka deklaruje 'nie', ale jednocześnie stara się o dziecko; test ciążowy jest tani i zmienia cel TSH i dalsze postępowanie",
+      "nie wykluczono utraty krwi z przewodu pokarmowego (smoliste stolce, krew w stolcu — nie pytano)",
+      "nierozpoznana przyczyna obfitych miesiączek od ponad roku (mięśniaki, polipy, koagulopatia, np. choroba von Willebranda) — wymaga oceny ginekologicznej z USG przezpochwowym przed leczeniem objawowym kwasem traneksamowym",
+      "nieznana przyczyna obfitych krwawień od roku (mięśniaki, polip, rozrost endometrium, zaburzenia krzepnięcia) — nie było oceny ginekologicznej",
+      "nieznane parametry życiowe i badanie fizykalne (tętno, ciśnienie, bladość, objawy niewydolności krążenia przy niedokrwistości)",
+      "nieznany poziom witaminy B12 przy diecie wegetariańskiej (składowa mieszana niedokrwistości możliwa)",
+      "objawowość niedokrwistości (tętno, ciśnienie, duszność wysiłkowa) — brak badania fizykalnego (NIEZNANE)",
+      "planowana ciąża przy nieuzupełnionym niedoborze żelaza i niepotwierdzonym statusie tarczycy",
+      "planowanie ciąży w ciągu roku przy niewyrównanej niedokrwistości i niepotwierdzonym statusie tarczycy",
+      "strukturalna przyczyna krwotocznych miesiączek nieoceniona (brak USG przezpochwowego / badania ginekologicznego)"
+    ],
+    "wykluczone": [
+      "Aktywny masywny krwotok z dróg rodnych (obecnie brak miesiączki)",
+      "Ciężka niedokrwistość wymagająca pilnej interwencji (Hb 10,8 g/dl — umiarkowana; zastrzeżenie: wynik sprzed 2 tygodni, krwawienia trwają)",
+      "Ciężka niedokrwistość wymagająca przetoczenia – wykluczona wynikiem sprzed 2 tygodni: Hb 10,8 g/dl (niedokrwistość łagodna do umiarkowanej); zastrzeżenie: brak aktualnej morfologii i parametrów życiowych",
+      "Czynne masywne krwawienie maciczne teraz – wykluczone: pacjentka obecnie nie miesiączkuje",
+      "Guz lub wole szyi zgłaszane przez pacjentkę – nie zgłasza zmian w szyi (badanie palpacyjne NIEZNANE)",
+      "Jawna niedoczynność tarczycy i śpiączka hipometaboliczna – wykluczone: FT4 w normie",
+      "Masywne czynne krwawienie teraz (pacjentka nie miesiączkuje).",
+      "Myśli rezygnacyjne lub samobójcze w ostatnich 2 tygodniach (zaprzecza)",
+      "Myśli samobójcze w ostatnich 2 tygodniach (zaprzecza).",
+      "Ostre objawy alarmowe z listy ankiety (zaprzecza).",
+      "Polekowe zaburzenia czynności tarczycy – wykluczone w zakresie listy ankiety (pacjentka nie przyjmowała leków z listy)",
+      "Poporodowe zapalenie tarczycy – wykluczone: brak porodu ani poronienia w ostatnim roku",
+      "Przyczyna polekowa: brak leków wpływających na tarczycę lub krwawienie; magnez okazjonalnie bez znaczenia.",
+      "Ryzyko samobójcze – pacjentka zaprzecza myślom rezygnacyjnym i samobójczym w ostatnich 2 tygodniach",
+      "Wole, guzek lub dolegliwości szyi (pacjentka nie zgłasza nic z listy)",
+      "Zmiany w okolicy szyi zauważone przez pacjentkę (brak; bez badania fizykalnego).",
+      "aktualne masywne krwawienie (obecnie brak miesiączki)",
+      "ciąża obecnie (pacjentka zaprzecza; bez testu)",
+      "ciąża — pacjentka deklaruje, że nie może być w ciąży (bez testu)",
+      "czerwone flagi z listy ankiety — brak",
+      "leki zwiększające krwawienie (antykoagulanty, NLPZ) lub zaburzające czynność tarczycy (amiodaron, lit, biotyna) — zaprzecza",
+      "masywne krwawienie obecnie (pacjentka nie miesiączkuje teraz)",
+      "myśli samobójcze w ostatnich 2 tygodniach",
+      "myśli samobójcze w ostatnich 2 tygodniach (zaprzecza)",
+      "myśli samobójcze w ostatnich 2 tygodniach — zaprzecza",
+      "obecnie brak krwawienia z przesiąkaniem podpaski co godzinę",
+      "objawy uciskowe/guz szyi — zaprzecza",
+      "zmiany w okolicy szyi (guzek, wole, dysfagia) — pacjentka zaprzecza",
+      "zmiany w okolicy szyi (wole, guzek, ucisk — zaprzecza)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

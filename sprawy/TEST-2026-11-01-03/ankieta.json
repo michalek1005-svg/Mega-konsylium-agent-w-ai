@@ -1,0 +1,676 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T3-FFF",
+  "tytul": "Ból łydki i kłucie w klatce przy oddechu",
+  "opis": "Od 4 dni boli mnie lewa łydka, myślałam, że naciągnęłam ją na spacerze po powrocie z wycieczki autokarem (14 godzin jazdy). Dziś rano kłuje mnie z prawej strony klatki przy głębszym oddechu i szybciej się męczę.",
+  "pytania": [
+    {
+      "id": "dusznosc",
+      "typ": "jeden",
+      "tekst": "Kiedy brakuje Ci tchu?",
+      "krotko": "duszność – próg wysiłku",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie brakuje mi tchu"
+        },
+        {
+          "w": "schody",
+          "t": "Dopiero przy większym wysiłku, np. 2 piętra schodów"
+        },
+        {
+          "w": "mieszkanie",
+          "t": "Już przy chodzeniu po mieszkaniu lub ubieraniu się"
+        },
+        {
+          "w": "spoczynek",
+          "t": "Także w spoczynku albo przy mówieniu"
+        }
+      ],
+      "bo": "Nasilenie duszności (NYHA/mMRC) przy podejrzeniu zatorowości płucnej po długiej podróży i bólu łydki; duszność spoczynkowa = możliwy masywny/submasywny ZP."
+    },
+    {
+      "id": "objawy_nagle",
+      "typ": "wiele",
+      "tekst": "Czy od wczoraj wystąpiło u Ciebie któreś z poniższych?",
+      "krotko": "objawy alarmowe",
+      "opcje": [
+        {
+          "w": "omdlenie",
+          "t": "Omdlenie albo chwilowa utrata przytomności"
+        },
+        {
+          "w": "prawie_omdlenie",
+          "t": "Ciemno przed oczami, prawie zemdlałam/zemdlałem"
+        },
+        {
+          "w": "kolatanie",
+          "t": "Szybkie lub nierówne bicie serca"
+        },
+        {
+          "w": "krew",
+          "t": "Odkrztuszanie krwi lub różowej plwociny"
+        },
+        {
+          "w": "sinica",
+          "t": "Sine usta lub palce"
+        },
+        {
+          "w": "pot",
+          "t": "Zimny pot, uczucie silnego osłabienia"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Omdlenie, sinica, tachykardia, krwioplucie i objawy wstrząsu to cechy ZP wysokiego ryzyka (ESC 2019)."
+    },
+    {
+      "id": "bol_klatki",
+      "typ": "jeden",
+      "tekst": "Który opis najlepiej pasuje do bólu w klatce piersiowej teraz?",
+      "krotko": "charakter bólu w klatce",
+      "opcje": [
+        {
+          "w": "wdech",
+          "t": "Kłucie tylko przy głębokim wdechu lub kaszlu"
+        },
+        {
+          "w": "staly",
+          "t": "Boli cały czas, także przy spokojnym oddychaniu"
+        },
+        {
+          "w": "ucisk",
+          "t": "Ucisk, gniecenie lub pieczenie za mostkiem"
+        },
+        {
+          "w": "promieniuje",
+          "t": "Ból idzie do lewej ręki, szczęki lub pleców"
+        },
+        {
+          "w": "brak",
+          "t": "Teraz nie boli"
+        }
+      ],
+      "bo": "Ból opłucnowy vs wieńcowy/aortalny; ból stały i ucisk zamostkowy wymagają wykluczenia OZW i rozwarstwienia."
+    },
+    {
+      "id": "przebieg",
+      "typ": "jeden",
+      "tekst": "Jak zmieniają się kłucie i zmęczenie od rana?",
+      "krotko": "dynamika od rana",
+      "opcje": [
+        {
+          "w": "gorzej",
+          "t": "Jest coraz gorzej"
+        },
+        {
+          "w": "tak_samo",
+          "t": "Bez zmian"
+        },
+        {
+          "w": "lepiej",
+          "t": "Jest lepiej"
+        }
+      ],
+      "bo": "Narastanie objawów w ciągu godzin przemawia za pilną diagnostyką tego samego dnia."
+    },
+    {
+      "id": "pomiar",
+      "typ": "jeden",
+      "tekst": "Czy masz pod ręką pulsoksymetr (klips na palec) albo ciśnieniomierz?",
+      "krotko": "dostępny pomiar",
+      "opcje": [
+        {
+          "w": "pulsoks",
+          "t": "Tak, pulsoksymetr"
+        },
+        {
+          "w": "cisn",
+          "t": "Tylko ciśnieniomierz"
+        },
+        {
+          "w": "oba",
+          "t": "Mam oba"
+        },
+        {
+          "w": "nie",
+          "t": "Nie mam żadnego"
+        }
+      ],
+      "bo": "SpO2, tętno i RR to elementy skal sPESI/Wells; pozwalają ocenić stabilność zdalnie."
+    },
+    {
+      "id": "saturacja",
+      "typ": "liczba",
+      "tekst": "Załóż pulsoksymetr na palec, posiedź spokojnie minutę. Jaki wynik SpO2 (%) pokazuje?",
+      "krotko": "SpO2 w spoczynku",
+      "min": 50,
+      "max": 100,
+      "krok": 1,
+      "jednostka": "%",
+      "gdy": {
+        "pytanie": "pomiar",
+        "jest": [
+          "pulsoks",
+          "oba"
+        ]
+      },
+      "bo": "SpO2 < 90% = kryterium sPESI i hipoksemia; < 94% w spoczynku u osoby bez chorób płuc niepokojące."
+    },
+    {
+      "id": "tetno",
+      "typ": "liczba",
+      "tekst": "Jakie tętno (uderzenia na minutę) pokazuje urządzenie?",
+      "krotko": "tętno w spoczynku",
+      "min": 30,
+      "max": 220,
+      "krok": 1,
+      "jednostka": "/min",
+      "gdy": {
+        "pytanie": "pomiar",
+        "jest": [
+          "pulsoks",
+          "cisn",
+          "oba"
+        ]
+      },
+      "bo": "Tętno > 100/min: Wells (+1,5), sPESI; ≥ 110 = cecha ciężkości."
+    },
+    {
+      "id": "cisnienie_skurczowe",
+      "typ": "liczba",
+      "tekst": "Jaka jest górna (pierwsza) liczba ciśnienia?",
+      "krotko": "RR skurczowe",
+      "min": 50,
+      "max": 260,
+      "krok": 1,
+      "jednostka": "mmHg",
+      "gdy": {
+        "pytanie": "pomiar",
+        "jest": [
+          "cisn",
+          "oba"
+        ]
+      },
+      "bo": "RR skurczowe < 90 mmHg = wstrząs/ZP wysokiego ryzyka; < 100 = kryterium sPESI."
+    },
+    {
+      "id": "lydka_wyglad",
+      "typ": "wiele",
+      "tekst": "Co zauważyłaś/zauważyłeś na lewej łydce?",
+      "krotko": "wygląd lewej łydki",
+      "opcje": [
+        {
+          "w": "obrzek",
+          "t": "Jest grubsza niż prawa albo spuchnięta"
+        },
+        {
+          "w": "kostka",
+          "t": "Puchnie też kostka lub stopa"
+        },
+        {
+          "w": "zaczerwienienie",
+          "t": "Jest zaczerwieniona lub sinawa"
+        },
+        {
+          "w": "ciepla",
+          "t": "Jest cieplejsza niż prawa"
+        },
+        {
+          "w": "ucisk",
+          "t": "Boli przy ucisku na tył łydki"
+        },
+        {
+          "w": "zylki",
+          "t": "Widać na niej więcej żyłek"
+        },
+        {
+          "w": "nic",
+          "t": "Wygląda tak samo jak prawa",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Kryteria Wells DVT: obrzęk całej łydki, asymetria, tkliwość wzdłuż żył głębokich, widoczne żyły powierzchowne."
+    },
+    {
+      "id": "lydka_uraz",
+      "typ": "jeden",
+      "tekst": "Czy pamiętasz konkretny moment, w którym łydka zaczęła boleć (szarpnięcie, upadek, uderzenie)?",
+      "krotko": "uraz łydki",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak, pamiętam taki moment"
+        },
+        {
+          "w": "nie",
+          "t": "Nie, ból narastał stopniowo"
+        }
+      ],
+      "bo": "Brak urazu osłabia hipotezę naciągnięcia mięśnia; Wells: „inne rozpoznanie równie prawdopodobne” (−2)."
+    },
+    {
+      "id": "goraczka_kaszel",
+      "typ": "wiele",
+      "tekst": "Czy masz teraz któryś z tych objawów?",
+      "krotko": "objawy infekcyjne",
+      "opcje": [
+        {
+          "w": "goraczka",
+          "t": "Gorączka powyżej 38 °C lub dreszcze"
+        },
+        {
+          "w": "kaszel",
+          "t": "Kaszel"
+        },
+        {
+          "w": "plwocina",
+          "t": "Odkrztuszanie żółtej lub zielonej wydzieliny"
+        },
+        {
+          "w": "katar",
+          "t": "Katar lub ból gardła"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Różnicowanie z zapaleniem płuc/opłucnej; niewielka gorączka bywa też w ZP."
+    },
+    {
+      "id": "ryzyko",
+      "typ": "wiele",
+      "tekst": "Czy dotyczy Cię któraś z tych sytuacji?",
+      "krotko": "czynniki ryzyka zakrzepicy",
+      "opcje": [
+        {
+          "w": "hormony",
+          "t": "Biorę hormony: tabletki antykoncepcyjne lub hormonalną terapię menopauzy"
+        },
+        {
+          "w": "zakrzepica_ja",
+          "t": "Miałam/miałem kiedyś zakrzepicę lub zator"
+        },
+        {
+          "w": "zakrzepica_rodzina",
+          "t": "Zakrzepica u rodziców lub rodzeństwa"
+        },
+        {
+          "w": "operacja",
+          "t": "Operacja, gips lub uraz nogi w ostatnich 3 miesiącach"
+        },
+        {
+          "w": "lezenie",
+          "t": "Leżenie w łóżku ponad 3 dni w ostatnim miesiącu"
+        },
+        {
+          "w": "nowotwor",
+          "t": "Nowotwór leczony teraz lub w ostatnich 6 miesiącach"
+        },
+        {
+          "w": "zylaki",
+          "t": "Duże żylaki nóg"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Wells/Geneva: przebyta ZŻG/ZP, unieruchomienie/operacja, aktywny nowotwór; estrogeny i trombofilia rodzinna zwiększają ryzyko ŻChZZ."
+    },
+    {
+      "id": "choroby",
+      "typ": "wiele",
+      "tekst": "Na które z tych chorób chorujesz?",
+      "krotko": "choroby przewlekłe",
+      "opcje": [
+        {
+          "w": "serce",
+          "t": "Choroba serca lub niewydolność serca"
+        },
+        {
+          "w": "nadcisnienie",
+          "t": "Nadciśnienie"
+        },
+        {
+          "w": "pluca",
+          "t": "Astma lub POChP"
+        },
+        {
+          "w": "nerki",
+          "t": "Choroba nerek"
+        },
+        {
+          "w": "watroba",
+          "t": "Choroba wątroby"
+        },
+        {
+          "w": "wrzody",
+          "t": "Wrzody żołądka lub krwawienie z przewodu pokarmowego"
+        },
+        {
+          "w": "cukrzyca",
+          "t": "Cukrzyca"
+        },
+        {
+          "w": "brak",
+          "t": "Żadna z tych",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Choroby serca/płuc (sPESI); nerki, wątroba i krwawienia z p. pokarmowego decydują o wyborze leku przeciwkrzepliwego i przeciwbólowego (NLPZ)."
+    },
+    {
+      "id": "przeciwkrzepliwe",
+      "typ": "jeden",
+      "tekst": "Czy bierzesz leki rozrzedzające krew?",
+      "krotko": "leki przeciwkrzepliwe/przeciwpłytkowe",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "aspiryna",
+          "t": "Tylko aspirynę (np. Acard, Polocard)"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Wpływa na interpretację i leczenie; łączenie z NLPZ zwiększa ryzyko krwawienia."
+    },
+    {
+      "id": "przeciwbolowe",
+      "typ": "wiele",
+      "tekst": "Co już brałaś/brałeś na ból od początku objawów?",
+      "krotko": "leki przeciwbólowe dotąd",
+      "opcje": [
+        {
+          "w": "paracetamol",
+          "t": "Paracetamol (np. Apap, Panadol)"
+        },
+        {
+          "w": "ibuprofen",
+          "t": "Ibuprofen (np. Ibuprom, Nurofen)"
+        },
+        {
+          "w": "ketoprofen",
+          "t": "Ketoprofen lub diklofenak (tabletki)"
+        },
+        {
+          "w": "metamizol",
+          "t": "Metamizol (Pyralgina)"
+        },
+        {
+          "w": "masc",
+          "t": "Maść lub żel na łydkę"
+        },
+        {
+          "w": "nic",
+          "t": "Nic nie brałam/brałem",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Lekarz pyta o analgezję; NLPZ mogą maskować ból i zwiększają ryzyko krwawienia przy antykoagulacji."
+    },
+    {
+      "id": "alergie",
+      "typ": "wiele",
+      "tekst": "Czy masz uczulenie na leki?",
+      "krotko": "alergie na leki",
+      "opcje": [
+        {
+          "w": "nlpz",
+          "t": "Na leki przeciwbólowe (aspiryna, ibuprofen itp.)"
+        },
+        {
+          "w": "metamizol",
+          "t": "Na metamizol (Pyralgina)"
+        },
+        {
+          "w": "antybiotyki",
+          "t": "Na antybiotyki"
+        },
+        {
+          "w": "kontrast",
+          "t": "Na kontrast do badań"
+        },
+        {
+          "w": "inne",
+          "t": "Na inne leki"
+        },
+        {
+          "w": "brak",
+          "t": "Nie mam uczuleń",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Alergia na kontrast jodowy istotna przed angio-TK; alergie na leki przeciwbólowe przed zaleceniem analgezji."
+    },
+    {
+      "id": "leki_stale",
+      "typ": "tekst",
+      "tekst": "Jakie leki i hormony bierzesz na stałe? Wpisz nazwy z opakowania.",
+      "krotko": "leki stałe",
+      "podpowiedz": "Na przykład: Femoston 1/10, Bisocard 5 mg",
+      "bo": "Nazwa preparatu hormonalnego (estrogen doustny vs przezskórny) i interakcje."
+    },
+    {
+      "id": "badania",
+      "typ": "wiele",
+      "tekst": "Czy od początku tych objawów miałaś/miałeś jakieś badania?",
+      "krotko": "badania od początku objawów",
+      "opcje": [
+        {
+          "w": "krew",
+          "t": "Badania krwi"
+        },
+        {
+          "w": "usg",
+          "t": "USG nogi"
+        },
+        {
+          "w": "ekg",
+          "t": "EKG"
+        },
+        {
+          "w": "rtg",
+          "t": "Zdjęcie RTG klatki piersiowej"
+        },
+        {
+          "w": "tk",
+          "t": "Tomografia klatki piersiowej"
+        },
+        {
+          "w": "nie",
+          "t": "Nie miałam/miałem badań",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Jeśli tak: lekarz może dołączyć wyniki (przycisk „Dołącz wyniki badań”), np. D-dimery, USG uciskowe, EKG."
+    },
+    {
+      "id": "badania_wynik",
+      "typ": "jeden",
+      "tekst": "Czy masz wyniki tych badań przy sobie (kartka, zdjęcie, aplikacja)?",
+      "krotko": "wyniki dostępne",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak, mogę je pokazać"
+        },
+        {
+          "w": "nie",
+          "t": "Nie mam ich przy sobie"
+        },
+        {
+          "w": "czekam",
+          "t": "Czekam na wyniki"
+        }
+      ],
+      "gdy": {
+        "nie": {
+          "pytanie": "badania",
+          "jest": "nie"
+        }
+      },
+      "bo": "Sygnał dla lekarza, by dołączył wyniki przez anonimizator zamiast pytać o nie pacjenta tekstem."
+    },
+    {
+      "id": "obawy",
+      "typ": "tekst",
+      "tekst": "Czego najbardziej się obawiasz i czego oczekujesz od tej wizyty?",
+      "krotko": "obawy i oczekiwania",
+      "bezNieznanych": true
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Duszność spoczynkowa po długiej podróży z bólem łydki: podejrzenie zatorowości płucnej wysokiego ryzyka.",
+      "gdy": {
+        "pytanie": "dusznosc",
+        "jest": "spoczynek"
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Omdlenie, sinica lub krwioplucie przy podejrzeniu ZP: wysokie ryzyko, transport ZRM.",
+      "gdy": {
+        "pytanie": "objawy_nagle",
+        "jest": [
+          "omdlenie",
+          "sinica",
+          "krew"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Ucisk zamostkowy lub ból promieniujący: wykluczyć OZW/rozwarstwienie aorty, także masywny ZP.",
+      "gdy": {
+        "pytanie": "bol_klatki",
+        "jest": [
+          "ucisk",
+          "promieniuje"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "SpO2 < 90% w spoczynku: hipoksemia, kryterium sPESI.",
+      "gdy": {
+        "pytanie": "saturacja",
+        "max": 89
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "RR skurczowe < 90 mmHg: niestabilność hemodynamiczna (ZP wysokiego ryzyka).",
+      "gdy": {
+        "pytanie": "cisnienie_skurczowe",
+        "max": 89
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Tętno ≥ 130/min lub ≤ 40/min: niestabilność, ocena ZRM.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "tetno",
+            "min": 130
+          },
+          {
+            "pytanie": "tetno",
+            "max": 40
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Duszność przy niewielkim wysiłku lub narastanie objawów: ocena tego samego dnia (D-dimer/angio-TK, USG uciskowe).",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "dusznosc",
+            "jest": [
+              "mieszkanie",
+              "schody"
+            ]
+          },
+          {
+            "pytanie": "przebieg",
+            "jest": "gorzej"
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Stan przedomdleniowy, kołatanie lub zimny pot: ocena tego samego dnia z EKG.",
+      "gdy": {
+        "pytanie": "objawy_nagle",
+        "jest": [
+          "prawie_omdlenie",
+          "kolatanie",
+          "pot"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Ból stały w klatce: wymaga oceny tego samego dnia.",
+      "gdy": {
+        "pytanie": "bol_klatki",
+        "jest": "staly"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "SpO2 90–94% lub tętno > 100/min: Wells/sPESI, pilna diagnostyka ZP.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "saturacja",
+            "min": 90,
+            "max": 94
+          },
+          {
+            "pytanie": "tetno",
+            "min": 101,
+            "max": 129
+          },
+          {
+            "pytanie": "cisnienie_skurczowe",
+            "min": 90,
+            "max": 99
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Asymetryczny obrzęk/tkliwość łydki po podróży > 4 h: podejrzenie ZŻG, USG uciskowe tego samego dnia.",
+      "gdy": {
+        "pytanie": "lydka_wyglad",
+        "jest": [
+          "obrzek",
+          "kostka",
+          "ucisk",
+          "ciepla",
+          "zaczerwienienie"
+        ]
+      }
+    }
+  ]
+}

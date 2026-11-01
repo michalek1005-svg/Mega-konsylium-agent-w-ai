@@ -1,0 +1,101 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesiączkowych",
+      "p": 0.72,
+      "za": [
+        "Pretest: kobieta 34 lata w POZ ze zmęczeniem i wypadaniem włosów → niedobór żelaza to jedna z najczęstszych przyczyn tej konstelacji u miesiączkujących kobiet → silnie (PMID 24912842, 27262832 — niedobór żelaza i zmęczenie/jakość życia przy obfitych miesiączkach; częstości [wiedza modelu, niezweryfikowane])",
+        "Ferrytyna 8 ng/ml → niedobór żelaza praktycznie potwierdzony; ferrytyna <15 ng/ml ma swoistość ok. 99% i LR+ rzędu 50 [wiedza modelu, niezweryfikowane] → bardzo silnie",
+        "Hb 10,8 g/dl, MCV 76 fl → niedokrwistość mikrocytowa zgodna z niedoborem żelaza → silnie",
+        "Obfite miesiączki od ponad roku: zmiana podpaski częściej niż co 2 h, skrzepy większe niż moneta 5 zł → oba to uznane predyktory utraty krwi miesiączkowej >80 ml [wiedza modelu, niezweryfikowane] → silnie, wskazują źródło utraty żelaza",
+        "Łamliwe paznokcie, pękające kąciki ust, wypadanie włosów → typowe objawy niedoboru żelaza → umiarkowanie",
+        "Dieta wegetariańska od 2 lat → mniejsza podaż żelaza hemowego, dokłada się do strat → umiarkowanie"
+      ],
+      "przeciw": [
+        "Brak badania fizykalnego i parametrów życiowych (NIEZNANE) → nie wiemy o tachykardii, bladości, powiększeniu macicy → słabo",
+        "Przyczyna samych obfitych krwawień nieustalona (zaburzenia owulacji, mięśniaki, adenomioza, polip, skaza krwotoczna) → nie obniża p niedoboru, ale zostawia otwarte pytanie o jego źródło (PMID 22448610, 37832698)"
+      ]
+    },
+    {
+      "nazwa": "Subkliniczna niedoczynność tarczycy w przebiegu przewlekłego autoimmunologicznego zapalenia tarczycy",
+      "p": 0.10,
+      "za": [
+        "TSH 5,4 mIU/l przy FT4 1,1 ng/dl (w zakresie, w dolnej połowie) → biochemiczny obraz subklinicznej niedoczynności → umiarkowanie",
+        "Choroba tarczycy u krewnego pierwszego stopnia → podnosi pretest autoimmunologicznego zapalenia tarczycy → umiarkowanie",
+        "Niedoczynność tarczycy może nasilać obfite miesiączki i zmęczenie → słabo"
+      ],
+      "przeciw": [
+        "Pojedynczy pomiar TSH → istotna część łagodnie podwyższonych TSH normalizuje się w kolejnych oznaczeniach (PMID 15811925, 26342200) → umiarkowanie obniża",
+        "Głęboki niedobór żelaza upośledza syntezę hormonów tarczycy (peroksydaza tarczycowa jest enzymem hemowym) i wiąże się z wyższym TSH; wyrównanie niedoboru żelaza poprawiało funkcję tarczycy (PMID 19070025, 42381353, 39944206) → umiarkowanie obniża, część podwyższenia TSH może być wtórna",
+        "Anty-TPO nieoznaczone (NIEZNANE) → nie można potwierdzić podłoża autoimmunologicznego",
+        "TSH 5,4 przy prawidłowym FT4 rzadko sam tłumaczy nasilone zmęczenie i wypadanie włosów; niedokrwistość z ferrytyną 8 wyjaśnia je lepiej (błąd reprezentatywności: „TSH za wysoko = Hashimoto = objawy”) → umiarkowanie obniża jako GŁÓWNA przyczyna objawów",
+        "Uwaga: p 0,10 dotyczy roli wiodącej przyczyny dolegliwości. Szacunkowe prawdopodobieństwo, że subkliniczna niedoczynność zostanie potwierdzona w powtórnym badaniu, to ok. 0,5, a że będzie miała podłoże autoimmunologiczne (anty-TPO dodatnie) — ok. 0,3–0,35 [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Celiakia z zaburzeniem wchłaniania żelaza",
+      "p": 0.05,
+      "za": [
+        "Ferrytyna 8 ng/ml przy diecie wegetariańskiej i krwawieniach → przy niewielkiej odpowiedzi na żelazo doustne trzeba myśleć o złym wchłanianiu → słabo",
+        "Choroby autoimmunologiczne tarczycy w rodzinie i możliwe zapalenie tarczycy → celiakia współwystępuje z autoimmunologicznym zapaleniem tarczycy [wiedza modelu, niezweryfikowane] → słabo",
+        "Pękające kąciki ust, łamliwe paznokcie → niespecyficzne, zgodne też z niedoborami przy złym wchłanianiu → słabo"
+      ],
+      "przeciw": [
+        "Jest oczywiste, wystarczające źródło utraty żelaza (obfite miesiączki) → silnie obniża",
+        "Brak danych o objawach jelitowych (biegunki, wzdęcia, utrata masy ciała) — NIEZNANE, nie zakładać że ich nie ma"
+      ]
+    },
+    {
+      "nazwa": "Zaburzenia snu lub depresja jako współprzyczyna zmęczenia i osłabienia koncentracji",
+      "p": 0.04,
+      "za": [
+        "Zły sen, budzenie się niewyspaną → słabo-umiarkowanie",
+        "Pretest zaburzeń nastroju u kobiet 30–40 lat w POZ ze zmęczeniem jest niemały [wiedza modelu, niezweryfikowane] → słabo"
+      ],
+      "przeciw": [
+        "Zaprzecza myślom rezygnacyjnym i samobójczym w ostatnich 2 tygodniach → słabo obniża (nie wyklucza depresji)",
+        "Obiektywna niedokrwistość z ferrytyną 8 lepiej tłumaczy objawy → umiarkowanie obniża"
+      ]
+    },
+    {
+      "nazwa": "Choroba von Willebranda jako przyczyna obfitych krwawień miesiączkowych",
+      "p": 0.03,
+      "za": [
+        "Obfite krwawienia ze skrzepami od ponad roku z niedoborem żelaza → wrodzona skaza krwotoczna występuje u części kobiet z obfitymi miesiączkami (PMID 40697484) → słabo"
+      ],
+      "przeciw": [
+        "Brak danych o krwawieniach od młodości, po zabiegach stomatologicznych, porodach, łatwych siniakach (NIEZNANE) → nie można podnieść",
+        "Obfitość od ponad roku (nie od menarche) sugeruje raczej przyczynę nabytą (strukturalną lub hormonalną) → umiarkowanie obniża"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Aktywny masywny krwotok z dróg rodnych (obecnie brak miesiączki)",
+    "Myśli rezygnacyjne lub samobójcze w ostatnich 2 tygodniach (zaprzecza)",
+    "Wole, guzek lub dolegliwości szyi (pacjentka nie zgłasza nic z listy)",
+    "Ciężka niedokrwistość wymagająca pilnej interwencji (Hb 10,8 g/dl — umiarkowana; zastrzeżenie: wynik sprzed 2 tygodni, krwawienia trwają)"
+  ],
+  "red_flags_otwarte": [
+    "Ciąża niewykluczona badaniem: pacjentka deklaruje, że nie jest w ciąży, ale stara się o dziecko — przed jakąkolwiek decyzją tarczycową potrzebny test (beta-hCG), bo w ciąży progi TSH i wskazania do lewotyroksyny są inne",
+    "Przyczyna obfitych krwawień miesiączkowych nieustalona (mięśniaki, adenomioza, polip, skaza krwotoczna) — brak badania ginekologicznego i USG przezpochwowego",
+    "Brak badania fizykalnego i parametrów życiowych (tętno, ciśnienie, bladość, tarczyca w badaniu palpacyjnym) — NIEZNANE",
+    "Dynamika Hb od 2 tygodni nieznana przy trwających obfitych krwawieniach",
+    "Utrata krwi z przewodu pokarmowego i zaburzenia wchłaniania niewykluczone (niskie prawdopodobieństwo przy jawnym źródle; do weryfikacji, jeśli brak odpowiedzi na żelazo)"
+  ],
+  "nastepny_krok": "Nie włączać teraz lewotyroksyny na podstawie pojedynczego TSH 5,4 mIU/l: w tym tygodniu rozpocząć doustne leczenie niedoboru żelaza i zlecić w ciągu 2–4 tygodni powtórne TSH z FT4 i anty-TPO (wraz z beta-hCG, tTG-IgA z IgA całkowitym oraz skierowaniem do ginekologa z USG przezpochwowym z powodu obfitych miesiączek); lewotyroksynę przed planowaną ciążą włączyć, jeśli powtórne TSH pozostanie podwyższone, zwłaszcza przy dodatnich anty-TPO.",
+  "co_zmieniloby_zdanie": "Dodatni test ciążowy (wtedy TSH 5,4 jest wskazaniem do lewotyroksyny od razu) albo powtórne TSH >10 mIU/l lub FT4 poniżej zakresu przesunęłyby decyzję w stronę natychmiastowego leczenia tarczycy; brak wzrostu Hb po 4 tygodniach żelaza doustnego podniósłby celiakię i inne źródła utraty krwi.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików z polskimi wytycznymi dla tarczycy, niedokrwistości ani krwawień miesiączkowych (tylko przykłady); oparcie na PubMed i wiedzy modelu",
+    "pamiec/zespol.md — brak wniosków dla tej prezentacji",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): 'subclinical hypothyroidism TSH 4-10 women trying to conceive levothyroxine TPO antibodies live birth trial' → PMID 38368537 (metaanaliza RCT: lewotyroksyna a płodność i ciąża w subklinicznej niedoczynności), PMID 40978523 (przegląd parasolowy metaanaliz RCT lewotyroksyny w ciąży), PMID 27023447 (subkliniczna niedoczynność i autoimmunizacja tarczycy niezwiązane z płodnością, poronieniem ani urodzeniem żywego dziecka), PMID 42391291 (nieleczona subkliniczna niedoczynność TSH <6,0 a wyniki rozrodu wspomaganego)",
+    "Zapytanie 2: 'iron deficiency anemia effect on thyroid function TSH elevated iron supplementation' → PMID 19070025 (wyrównanie niedoboru żelaza a funkcja tarczycy u dziewcząt z niedoborem żelaza), PMID 42381353 (niedobór żelaza a funkcja tarczycy, badanie populacyjne), PMID 39944206 (metaanaliza: wskaźniki gospodarki żelazem a hormony tarczycy w ciąży)",
+    "Zapytanie 3: 'single elevated TSH repeat measurement normalization subclinical hypothyroidism spontaneous resolution' → PMID 15811925 (samoistna normalizacja TSH w subklinicznej niedoczynności), PMID 26342200 (historia naturalna subklinicznej niedoczynności z TSH ≤10 mIU/l, badanie prospektywne)",
+    "Zapytanie 4: 'heavy menstrual bleeding iron deficiency prevalence women reproductive age ferritin threshold' → PMID 27262832 (niedobór żelaza bez niedokrwistości u młodych kobiet z obfitymi miesiączkami), PMID 24912842 (niedokrwistość i niedobór żelaza a jakość życia przy obfitych miesiączkach), PMID 40697484 (obfite miesiączki i niedobór żelaza w chorobie von Willebranda)",
+    "Zapytanie 5: '2017 American Thyroid Association guidelines thyroid disease pregnancy preconception TSH TPO antibody levothyroxine' → PMID 28657477 (korespondencja do wytycznych ATA 2017, Thyroid 2017;27:315-389), PMID 34054992 (przegląd: badania przesiewowe tarczycy przed ciążą i w ciąży), PMID 35719785 (lewotyroksyna we wczesnej ciąży przy subklinicznej niedoczynności)",
+    "Zapytanie 6: 'uterine fibroids prevalence heavy menstrual bleeding women 30-40 years ultrasound abnormal uterine bleeding causes' → PMID 22448610 (częstość i objawy mięśniaków macicy, ankieta 21 746 kobiet), PMID 37832698 (rola obrazowania w nieprawidłowych krwawieniach z macicy w wieku rozrodczym)",
+    "Swoistość ferrytyny <15 ng/ml (ok. 99%), LR+ ok. 50; predyktory obfitej utraty krwi miesiączkowej (skrzepy >2,5 cm, zmiana środka higienicznego częściej niż co 2 h); docelowe TSH przed ciążą <2,5 mIU/l przy leczeniu; współwystępowanie celiakii z autoimmunologicznym zapaleniem tarczycy; częstość dodatnich anty-TPO w subklinicznej niedoczynności — [wiedza modelu, niezweryfikowane]"
+  ]
+}

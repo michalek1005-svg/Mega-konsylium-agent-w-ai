@@ -1,0 +1,164 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Reguła Ottawa SAH: czułość 100%, swoistość 13,6% (walidacja)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 29133539, DOI 10.1503/cmaj.170072",
+        "cytat": "The Ottawa SAH Rule had 100% sensitivity (95% CI 94.6%-100%) with a specificity of 13.6%",
+        "co_mowi_zrodlo": "Walidacja prospektywna, 1153 pacjentów, 67 z krwotokiem; dotyczy chorych przytomnych bez deficytu, ból szczytujący w ciągu 1 h."
+      },
+      {
+        "twierdzenie": "Kryteria reguły Ottawa: wiek ≥40, ból/sztywność karku, początek przy wysiłku, ból piorunujący, ograniczone zgięcie karku (pacjent 47 lat spełnia 5 z 6; 6. = utrata przytomności, wykluczona wywiadem)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 24065011, DOI 10.1001/jama.2013.278018",
+        "cytat": "age 40 years or older, neck pain or stiffness, witnessed loss of consciousness, or onset during exertion ... Adding thunderclap headache and limited neck flexion",
+        "co_mowi_zrodlo": "Derywacja reguły: 6 kryteriów, czułość 100%, swoistość 15,3%. Uwaga redakcyjna: projekt pisze „co najmniej 4 kryteriach”, a wymienia 5 — liczba do ujednolicenia (5/6)."
+      },
+      {
+        "twierdzenie": "Czułość TK dla krwotoku podpajęczynówkowego: 100% w ≤6 h od początku bólu, ogółem 92,9%",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 21768192, DOI 10.1136/bmj.d4277",
+        "cytat": "sensitivity of computed tomography overall ... was 92.9% ... within six hours ... sensitivity of 100% (97.0% to 100.0%)",
+        "co_mowi_zrodlo": "Prospektywna kohorta 3132 pacjentów, TK III generacji, odczyt przez radiologa."
+      },
+      {
+        "twierdzenie": "Nowoczesne wielorzędowe TK: czułość 99,6% do 48 h dla krwotoku tętniakowego; brak danych dla 72 h",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34819306, DOI 10.1136/emermed-2020-211068",
+        "cytat": "sensitivity of MSCT was 99.6% (95% CI 97.6 to 100) for aneurysmal SAH ... at 48 hours ... At 24 hours ... 100%",
+        "co_mowi_zrodlo": "Retrospektywne, jednoośrodkowe (260 krwotoków tętniakowych); streszczenie podaje tylko punkty 24 h i 48 h — twierdzenie „brak danych dla 72 h” zgodne ze streszczeniem. Koryguje szacunek ról „ok. 85% w 3. dobie”."
+      },
+      {
+        "twierdzenie": "Błędne pierwsze rozpoznanie krwotoku: 12% ogółem, 19% u chorych z prawidłowym stanem świadomości",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 14970066, DOI 10.1001/jama.291.7.866",
+        "cytat": "Fifty-six patients (12%) were initially misdiagnosed, including 42 of 221 (19%) of those with normal mental status",
+        "co_mowi_zrodlo": "Kohorta 482 chorych, jeden ośrodek, 1996–2001."
+      },
+      {
+        "twierdzenie": "Najczęstsze błędne rozpoznanie: migrena/ból napięciowy; w 73% błędów nie wykonano TK",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 14970066, DOI 10.1001/jama.291.7.866",
+        "cytat": "Migraine or tension headache (36%) was the most common incorrect diagnosis, and failure to obtain a CT scan was the most common diagnostic error (73%)",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Ponowne krwawienie u 21% błędnie rozpoznanych; błędne rozpoznanie wiąże się z większą śmiertelnością i niesprawnością",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 14970066, DOI 10.1001/jama.291.7.866",
+        "cytat": "12 patients (21%) who experienced rebleeding ... misdiagnosis was associated with ... increased risk of death or severe disability at 12 months",
+        "co_mowi_zrodlo": "Gorsze rokowanie dotyczy podgrupy z prawidłowym stanem świadomości przy pierwszym kontakcie — jak u tego pacjenta."
+      },
+      {
+        "twierdzenie": "Ból ostrzegawczy poprzedza 10–43% krwotoków tętniakowych",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 14984225, DOI 10.1046/j.1468-2982.2003.00596.x",
+        "cytat": "Nine studies of good quality ... gave rates of 10% to 43%",
+        "co_mowi_zrodlo": "Przegląd systematyczny; autor zaznacza, że prawdziwa częstość zależy od odsetka błędnych rozpoznań w danej populacji."
+      },
+      {
+        "twierdzenie": "Ponowne krwawienie najczęstsze w pierwszych 6 h; wysokie ciśnienie skurczowe czynnik ryzyka (OR 1,93)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 24911172, DOI 10.1371/journal.pone.0099536",
+        "cytat": "Higher rebleeding rates were observed < 6 h after the initial aSAH (OR = 3.22) ... high systolic blood pressure (OR = 1.93, 95% CI = 1.31-2.83)",
+        "co_mowi_zrodlo": "Metaanaliza 14 badań, 5693 pacjentów."
+      },
+      {
+        "twierdzenie": "Przy potwierdzonym krwotoku: zabezpieczenie tętniaka i nimodypina doustnie wg AHA/ASA 2023",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "PMID 37212182, DOI 10.1161/STR.0000000000000436 (treść zaleceń z pamięci — streszczenie nie wymienia nimodypiny)",
+        "cytat": "The 2023 guideline is intended to provide ... recommendations ... to prevent, diagnose, and manage patients with aneurysmal subarachnoid hemorrhage",
+        "co_mowi_zrodlo": "Istnienie i zakres wytycznej potwierdzone w PubMed; konkretne zalecenie o nimodypinie doustnej i wczesnym zabezpieczeniu tętniaka pochodzi z pamięci modelu o treści tej wytycznej. Dawki w projekcie nie podano, więc nie wymaga ChPL."
+      },
+      {
+        "twierdzenie": "Przy ujemnym TK po >6 h (tu 3. doba) konieczne nakłucie lędźwiowe z oceną ksantochromii lub angio-TK",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34819306 (DOI 10.1136/emermed-2020-211068); PMID 26022754 (DOI 10.1016/j.ajem.2015.05.012); PMID 19295996 (DOI 10.4321/s0212-71992008000700008)",
+        "cytat": "Beyond this time frame, if the CT is negative for blood, a lumbar puncture is often performed",
+        "co_mowi_zrodlo": "Ksantochromia obecna u 84% chorych z krwotokiem tętniakowym po nakłuciu, erytrocyty >2000/µl lub ksantochromia: czułość 100% (PMID 26022754). Nakłucie zalecane >12 h od początku objawów; ksantochromia wykrywalna nawet po 18 dniach (opis przypadku, PMID 19295996). „Okno ksantochromii” w projekcie pozostaje z etykietą — brak twardej liczby w pobranych streszczeniach."
+      },
+      {
+        "twierdzenie": "Doraźnie paracetamol do 3 g/dobę z uwagi na alkohol (oznaczone [wiedza modelu, niezweryfikowane])",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 17593074 (DOI 10.1111/j.1365-2036.2007.03368.x); PMID 36561959 (DOI 10.1016/j.toxrep.2022.04.025)",
+        "cytat": "4 g of paracetamol ... daily for 10 days ... No subject developed symptoms of liver injury or met predefined criteria for hepatotoxicity",
+        "co_mowi_zrodlo": "Potwierdzenie pośrednie: RCT u osób pijących 1–3 drinki/d — 4 g/d przez 10 dni bez klinicznego uszkodzenia wątroby (wzrost ALT o 8,7 IU/l); przegląd 2022 opisuje 3 g jako obniżoną maksymalną dawkę dobową. Dawka 3 g nie jest sprzeczna z literaturą. Brak ChPL paracetamolu w zrodla/ — etykieta w FINAL ma pozostać; przy nadużywaniu alkoholu ChPL polskich preparatów bywają bardziej restrykcyjne (do sprawdzenia po dodaniu ChPL do biblioteki)."
+      },
+      {
+        "twierdzenie": "Nie podawać leków zwiotczających, opioidów, benzodiazepin, tryptanów do czasu diagnostyki (oznaczone [wiedza modelu, niezweryfikowane])",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — zrodla/ nie zawiera ChPL ani wytycznej; twierdzenie nieliczbowe, poprawnie oznaczone w projekcie",
+        "co_mowi_zrodlo": "Uzasadnienia (sedacja zaciera ocenę świadomości, tryptany obkurczają naczynia, interakcja z alkoholem) są spójne z wiedzą farmakologiczną, ale nie sprawdzono ich wobec źródła poziomu 1–3. Etykieta musi zostać w 09-FINAL.md."
+      },
+      {
+        "twierdzenie": "Odstawić ibuprofen do czasu wykluczenia krwotoku (w 05-projekt.md bez etykiety; uzasadnienie w 04 — hamowanie płytek — oznaczone jako wiedza modelu)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak źródła poziomu 1–3 dla zalecenia odstawienia; farmakolog cytuje PMID 34282988, 36917361 jako badania wpływu leków przeciwpłytkowych na przebieg krwotoku, bez odczytania streszczeń",
+        "co_mowi_zrodlo": "Zalecenie nieliczbowe, zachowawcze, nie szkodzi. W 09-FINAL.md wymaga etykiety [wiedza modelu, niezweryfikowane] albo dopisania do istniejącej linii etykiet w ŹRÓDŁA."
+      },
+      {
+        "twierdzenie": "Nie obniżać gwałtownie ciśnienia w gabinecie przed transportem",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "AHA/ASA 2023, PMID 37212182 (z pamięci — streszczenie nie zawiera progów ciśnienia)",
+        "co_mowi_zrodlo": "Wytyczna zaleca unikanie hipotensji i kontrolę ciśnienia w warunkach monitorowania; projekt nie podaje liczby, więc nie wymaga źródła liczbowego."
+      },
+      {
+        "twierdzenie": "Nawroty piorunującego bólu w ciągu 2–3 tygodni typowe dla zespołu odwracalnego skurczu naczyń",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 18025032 (DOI 10.1093/brain/awm256); PMID 27015869 (DOI 10.1111/head.12797)",
+        "cytat": "multiple thunderclap headaches recurring over a mean period of 1 week ... recurring over a few days to weeks",
+        "co_mowi_zrodlo": "Ducros 2007: 94% chorych — wielokrotne bóle piorunujące, średnio przez 1 tydzień; powikłania krwotoczne głównie w 1. tygodniu, niedokrwienne w 2. tygodniu. Okno 2–3 tygodni w projekcie jest konserwatywne i zgodne."
+      },
+      {
+        "twierdzenie": "Angio-TK głowy i szyi ocenia rozwarstwienie tętnicy kręgowej/szyjnej i zespół skurczu naczyń",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 27015869, DOI 10.1111/head.12797 (RCVS: angiografia); rozwarstwienie — z pamięci",
+        "cytat": "diagnosis of 'probable RCVS' in patients with such a headache pattern, normal cerebral angiography, and no other cause",
+        "co_mowi_zrodlo": "Dla RCVS angiografia jest kryterium rozpoznania; dla rozwarstwienia tętnic szyjnych angio-TK szyi jako badanie pierwszego rzutu — wiedza ogólna, nie sprawdzona wobec streszczenia."
+      },
+      {
+        "twierdzenie": "Krwotok podpajęczynówkowy w rodzinie (ojciec, zgon nagły w 52 r.ż.) zwiększa prawdopodobieństwo tętniaka",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34670818 (DOI 10.1212/WNL.0000000000012885); PMID 37414571 (DOI 10.1212/WNL.0000000000207475)",
+        "cytat": "Screening for unruptured intracranial aneurysms is effective for first-degree relatives of patients with aneurysmal subarachnoid hemorrhage",
+        "co_mowi_zrodlo": "Rodzinne tętniaki mają 2,5× wyższe ryzyko pęknięcia (HR 2,56); u krewnych I stopnia palących i nadużywających alkoholu ryzyko tętniaka najwyższe (do 14,7%). Typ „wylewu” u ojca pozostaje NIEZNANE, co projekt poprawnie zaznacza."
+      },
+      {
+        "twierdzenie": "Pilność 1 — natychmiastowe skierowanie do SOR z TK przy podejrzeniu krwotoku podpajęczynówkowego",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 14970066 (DOI 10.1001/jama.291.7.866); PMID 24911172 (DOI 10.1371/journal.pone.0099536); PMID 29133539 (DOI 10.1503/cmaj.170072)",
+        "cytat": "A low threshold for CT scanning of patients with mild symptoms that are suggestive of SAH may reduce the frequency of misdiagnosis",
+        "co_mowi_zrodlo": "Opóźnienie rozpoznania wiąże się z ponownym krwawieniem i gorszym rokowaniem; dodatnia reguła Ottawa wymaga diagnostyki obrazowej."
+      },
+      {
+        "twierdzenie": "Naciągnięcie karku jako rozpoznanie z wykluczenia — zgodność 6/6 ról; pilność 1 u 6/6 ról",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/TEST-2026-11-01-04/03-opinie/*.json, 04-konsylium.md, _agregat.json",
+        "cytat": "pilnosc: wynik 1, mediana_wazona 1.0 (wszystkie 6 opinii: pilnosc 1)",
+        "co_mowi_zrodlo": "Zgodne z plikami sprawy. Flaga NISKA_ZGODA w agregacie to artefakt nazewnictwa, wyjaśniony w 04-konsylium.md §1."
+      }
+    ]
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Jedno oznaczenie TSH 4,5–10 mIU/l: u 22,8 % kobiet normalizuje się samoistnie; tylko TSH >8 mIU/l przewiduje potrzebę lewotyroksyny",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 26342200, DOI 10.1111/cen.12939 (Rosário 2015, Clin Endocrinol)",
+        "cytat": "46 (19%) required levothyroxine, 55 (22.8%) had spontaneous normalization of serum TSH; only initial TSH >8 mIU/l was a predictor of the need for L-T4",
+        "co_mowi_zrodlo": "252 kobiety, 5 lat obserwacji. Uwaga: 19 % wymagało LT4, 58 % pozostało w łagodnej SCH; ujemne anty-TPO i prawidłowe USG przewidywały normalizację."
+      },
+      {
+        "twierdzenie": "Mediana czasu samoistnej normalizacji TSH 18 miesięcy",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 15811925, DOI 10.1210/jc.2005-0375 (Díez 2005, JCEM)",
+        "cytat": "Normalization occurred at a median time of 18 months (range, 6-60 months)",
+        "co_mowi_zrodlo": "n=40, średni wiek 62,8 lat; populacja znacznie starsza niż pacjentka."
+      },
+      {
+        "twierdzenie": "Leczenie przedkoncepcyjne subklinicznej niedoczynności nie poprawia odsetka ciąż ani żywych urodzeń (RR 1,41; 0,84–2,36)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38368537, DOI 10.1089/thy.2023.0546 (Thyroid 2024, metaanaliza RCT)",
+        "cytat": "Pre-conception LT4 treatment had no significant effect in improving rates of live births and pregnancies: RR 1.41 (0.84-2.36), 1.73 (0.88-3.39)",
+        "co_mowi_zrodlo": "RR 1,41 dotyczy żywych urodzeń; ciąże RR 1,73 (0,88–3,39). Tylko 5 badań przedkoncepcyjnych (768 uczestniczek), dla TSH >4,0 dane słabe (1 badanie wysokie ryzyko błędu, drugie n=64)."
+      },
+      {
+        "twierdzenie": "Korzyść LT4 w ciąży dla porodu przedwczesnego tylko przy TSH >4,0 mIU/l",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38368537, DOI 10.1089/thy.2023.0546",
+        "cytat": "a positive effect was shown in the subgroup with TSH >4.0 mU/L (RR 0.47, 0.20-1.10), no significant effect in TSH 2.5-4.0",
+        "co_mowi_zrodlo": "Przedział ufności RR 0,47 (0,20–1,10) obejmuje 1; różnica między podgrupami p=0,04. Efekt kierunkowy, nie w pełni istotny."
+      },
+      {
+        "twierdzenie": "U eutyreotycznych kobiet z anty-TPO LT4 nie zwiększa żywych urodzeń (37,4 % vs 37,9 %)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 30907987, DOI 10.1056/NEJMoa1812537 (TABLET, NEJM 2019)",
+        "cytat": "The live-birth rate was 37.4% in the levothyroxine group and 37.9% in the placebo group (relative risk, 0.97)",
+        "co_mowi_zrodlo": "Populacja: kobiety z anty-TPO i wywiadem poronienia lub niepłodności, dawka 50 µg/d od okresu przedkoncepcyjnego."
+      },
+      {
+        "twierdzenie": "Niedobór żelaza podnosi TSH tylko u ciężarnych (MD 0,12 mIU/l), nie u kobiet w wieku rozrodczym",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33716980, DOI 10.3389/fendo.2021.629831 (Front Endocrinol 2021)",
+        "cytat": "pregnant women with ID had increased serum TSH levels (MD: 0.12; 95% CI: 0.07, 0.17)",
+        "co_mowi_zrodlo": "W tej samej metaanalizie: u kobiet w wieku rozrodczym niedobór żelaza zwiększa ryzyko dodatnich anty-TPO (OR 1,89; 1,17–3,06) — projekt tego nie wspomina."
+      },
+      {
+        "twierdzenie": "Żelazo doustne co drugi dzień, pojedyncza dawka rano, wchłania się lepiej niż codziennie/dzielone",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 29032957, DOI 10.1016/S2352-3026(17)30182-5; PMID 31413088, DOI 10.3324/haematol.2019.220830 (Stoffel 2017, 2020)",
+        "cytat": "fractional iron absorption on days 2 and 5 was 40-50% higher than on day 3; alternate day dosing may be preferable",
+        "co_mowi_zrodlo": "Badania wchłaniania izotopowego (n=40 i n=19), nie punktów końcowych klinicznych (Hb)."
+      },
+      {
+        "twierdzenie": "Dawka: siarczan żelaza(II) 80–100 mg żelaza elementarnego co drugi dzień",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31413088, DOI 10.3324/haematol.2019.220830 (Haematologica 2020)",
+        "cytat": "alternate-day administration of 100 and 200 mg iron ... to provide the same total amount of iron with alternate day dosing, twice the daily target dose should be given",
+        "co_mowi_zrodlo": "Badano 100 i 200 mg co drugi dzień w IDA; 80 mg to dawka polskich preparatów (brak ChPL w zrodla/). Autorzy sugerują podwojenie dawki co drugi dzień dla tej samej dawki łącznej — projekt wybrał dolny zakres."
+      },
+      {
+        "twierdzenie": "Siarczan żelaza wiąże tyroksynę i podnosi TSH (zmniejsza skuteczność LT4)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 1443969, DOI 10.7326/0003-4819-117-12-1010 (Campbell 1992, Ann Intern Med)",
+        "cytat": "mean level of serum TSH rose from 1.6 to 5.4 mU/L; a poorly soluble purple complex indicated the binding of iron to thyroxine",
+        "co_mowi_zrodlo": "n=14, jednoczesne przyjmowanie 300 mg FeSO4 z LT4 przez 12 tyg."
+      },
+      {
+        "twierdzenie": "Odstęp ≥4 h między żelazem a lewotyroksyną",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42438581, DOI 10.7759/cureus.112442 (Cureus 2026, opis przypadku cytujący standardowe zalecenie); poziom 3 z pamięci: ATA 2014 hypothyroidism guidelines",
+        "cytat": "ensuring a separation interval of at least four hours in accordance with standard recommendations",
+        "co_mowi_zrodlo": "Słabe źródło (opis przypadku), ale potwierdza, że 4 h to standard; ten sam przypadek pokazuje, że interakcja może utrzymywać się mimo odstępu. Etykieta [wiedza modelu] może zostać."
+      },
+      {
+        "twierdzenie": "Lewotyroksyna 25–50 µg/d jako dawka startowa (ciąża / przed koncepcją)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "50 µg/d: PMID 30907987 (TABLET, schemat RCT); 25 µg dolna granica: poziom 3 z pamięci — ATA 2017 (PMID 28056690) i PTE 2021 (PMID 34855189), streszczenia nie podają dawek",
+        "cytat": "randomly assigned 952 women to receive either 50 μg once daily of levothyroxine or placebo before conception through the end of pregnancy",
+        "co_mowi_zrodlo": "50 µg/d udokumentowane w RCT u kobiet przed koncepcją; zakres 25–50 z pamięci. Etykieta [wiedza modelu, niezweryfikowane] w projekcie uzasadniona i ma pozostać."
+      },
+      {
+        "twierdzenie": "TSH 5,4 mIU/l przekracza próg leczenia w ciąży; próg 4,0 mIU/l (zwłaszcza z anty-TPO), >10 bezwzględnie",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci modelu: ATA 2017 (PMID 28056690, DOI 10.1089/thy.2016.0457) oraz PTE 2021 'Choroby tarczycy w ciąży' (PMID 34855189, DOI 10.5603/EP.a2021.0089); progi nie są w streszczeniach",
+        "cytat": "[streszczenie ATA 2017] recommendations regarding ... hypothyroidism in pregnancy ... thyroid considerations in infertile women",
+        "co_mowi_zrodlo": "Z pamięci: ATA 2017 — anty-TPO(+) z TSH > górnej granicy zakresu (≈4,0): leczyć; anty-TPO(−) z TSH 4,0–10: rozważyć; TSH >10: leczyć. Istnieją polskie wytyczne PTE 2021 (ciąża) i PTE 2022 (płodność, PMID 36059162) — projekt cytuje tylko ATA; hierarchia §5 wymaga przywołania PTE jako źródła nadrzędnego."
+      },
+      {
+        "twierdzenie": "Cel TSH <2,5 mIU/l u kobiety leczonej LT4 planującej ciążę; kontrola TSH po 6 tygodniach",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Z pamięci modelu: ATA 2017 (PMID 28056690) i PTE 2021 (PMID 34855189); kontrola 4–6 tyg. — standard wytycznych",
+        "cytat": "[nie w streszczeniu]",
+        "co_mowi_zrodlo": "Etykieta [wiedza modelu, niezweryfikowane] w projekcie prawidłowa; ma pozostać."
+      },
+      {
+        "twierdzenie": "Powtórne TSH 2,5–4,0 mIU/l nawet z anty-TPO → bez lewotyroksyny przed koncepcją",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 30907987 (TABLET); PMID 38368537 (podgrupa TSH 2,5–4,0: brak efektu, RR porodu przedwczesnego 1,35; 0,79–2,31)",
+        "cytat": "no significant effect was observed in the subgroup with TSH 2.5-4.0 mU/L (RR 1.35, 0.79-2.31)",
+        "co_mowi_zrodlo": "Zgodne z dowodami; uwaga: ATA 2017 z pamięci dopuszcza rozważenie LT4 przy anty-TPO(+) i TSH >2,5 u kobiet z niepłodnością/poronieniami — nie dotyczy tej pacjentki (brak takiego wywiadu)."
+      },
+      {
+        "twierdzenie": "Serologia celiakii (tTG-IgA + IgA całkowite) u dorosłych z niedokrwistością z niedoboru żelaza — BSG 2021",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "PMID 34497146, DOI 10.1136/gutjnl-2021-325210 (istnienie wytycznej potwierdzone); treść zalecenia z pamięci modelu",
+        "cytat": "optimal management of IDA requires IRT in combination with appropriate investigation to establish the underlying cause",
+        "co_mowi_zrodlo": "Streszczenie nie wymienia celiakii wprost; z pamięci BSG 2021 zaleca serologię celiakii u wszystkich z IDA. Twierdzenie nieliczbowe — wymaga etykiety lub zapisu 'z pamięci'."
+      },
+      {
+        "twierdzenie": "Próg braku odpowiedzi: przyrost Hb <1 g/dl po 4 tygodniach żelaza doustnego",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; PubMed bez trafienia; oznaczone w projekcie [wiedza modelu, niezweryfikowane]",
+        "cytat": "",
+        "co_mowi_zrodlo": "Z pamięci: BSG 2021 i NICE CKS podają przyrost ≥1–2 g/dl w 2–4 tyg. jako potwierdzenie odpowiedzi; wartości i horyzont czasowy różnią się między źródłami. Etykieta musi pozostać w FINAL."
+      },
+      {
+        "twierdzenie": "Kwas foliowy 0,4 mg/d od teraz (planowanie ciąży)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 41432531, DOI 10.5603/gpl.105802 (Ginekol Pol 2025, przegląd rekomendacji PTGiP/EFSA/ACOG)",
+        "cytat": "Folate supplementation is universally recommended to reduce the risk of NTDs, with dosage recommendations typically ranging from 0.4 to 0.8 mg daily",
+        "co_mowi_zrodlo": "Dawka 0,4 mg/d mieści się w zakresie rekomendowanym przez PTGiP; brak pliku PTGiP w zrodla/. Etykieta może zostać zmieniona na cytowanie poziomu 2."
+      },
+      {
+        "twierdzenie": "Ponowne oznaczenie TSH, FT4, anty-TPO po 4 tygodniach (nie dziś)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak; wytyczne (ATA 2017, ETA 2013 — z pamięci) zalecają powtórzenie TSH przed decyzją, bez sztywnego odstępu 4 tyg.",
+        "cytat": "",
+        "co_mowi_zrodlo": "Odstęp 4 tyg. nie jest sprzeczny z żadnym źródłem; wymaga etykiety [wiedza modelu] lub uzasadnienia logistycznego (równoległa kontrola Hb)."
+      },
+      {
+        "twierdzenie": "Próg eskalacji Hb <8 g/dl w kontroli; pilność 3 przy Hb 10,8 g/dl bez objawów hemodynamicznych",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak źródła dla progu 8 g/dl; pilność 3 zgodna z wetem Najgorszego scenariusza (04-konsylium.md, pilność 3)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Próg 8 g/dl to zwyczajowy próg rozważania przetoczenia/pilnej oceny; w FINAL wymaga etykiety [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "Brak polskich wytycznych (PTE, PTGiP, PTHiT) dla tej sytuacji",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34855189, DOI 10.5603/EP.a2021.0089 (PTE 2021: Choroby tarczycy w ciąży); PMID 36059162, DOI 10.5603/EP.a2022.0069 (PTE 2022: Choroby tarczycy a zaburzenia płodności)",
+        "cytat": "Thyroid diseases in pregnancy: guidelines of the Polish Society of Endocrinology ... women planning pregnancy, pregnant women",
+        "co_mowi_zrodlo": "Prawdą jest, że w zrodla/ ich nie ma; nieprawdą, że nie istnieją. PTE 2021 obejmuje kobiety planujące ciążę, PTE 2022 — SCH i anty-TPO a płodność. Nie dotyczy dawki/przeciwwskazania/pilności → nie obniża kartki do czerwonej, ale FINAL powinien przeformułować zdanie i przywołać PTE 2021/2022 (poziom 2, treść z pamięci) zamiast samego ATA 2017."
+      },
+      {
+        "twierdzenie": "[Pominięte dowody] Przy współistnieniu IDA i SCH żelazo doustne bez LT4 daje słabą odpowiedź Hb (RCT, n=51: +0,4 vs +1,9 g/dl z LT4 75 µg)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 18984662, DOI 10.1210/jc.2008-1440 (Cinemre 2009, JCEM, RCT podwójnie zaślepione)",
+        "cytat": "hemoglobin increased by 0.4 g/dl in the iron group whereas it increased by a mean of 1.9 g/dl in the iron/levothyroxine group",
+        "co_mowi_zrodlo": "Nie jest twierdzeniem projektu — to dowód, którego projekt nie cytuje, a który dotyczy wprost Planu B (brak przyrostu Hb po 4 tyg.). Nie oceniam klinicznie; sygnalizuję lukę w udokumentowaniu."
+      }
+    ]
+  }
+}

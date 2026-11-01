@@ -1,0 +1,100 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Krwotok podpajęczynówkowy z pęknięcia tętniaka (w tym krwawienie ostrzegawcze)",
+      "p": 0.40,
+      "za": [
+        "Ból piorunujący: pełne nasilenie w kilka sekund, 'najgorszy w życiu', początek podczas dźwigania (wysiłek, próba Valsalvy)",
+        "Jednorazowe wymioty w chwili zachorowania",
+        "Utrzymujące się objawy oponowe w 3. dobie: ograniczenie zgięcia karku (nie dotknie brodą mostka) i światłowstręt",
+        "Reguła Ottawa dla krwotoku podpajęczynówkowego dodatnia w kilku kryteriach (wiek ≥40 lat, ból/sztywność karku, początek przy wysiłku, ograniczone zgięcie karku); reguła ma czułość ~100% i nakazuje diagnostykę (PMID 29133539, 24065011)",
+        "Czynniki ryzyka tętniaka i jego pęknięcia: nieleczone nadciśnienie tętnicze, palenie 20 papierosów/dobę, duże spożycie alkoholu w ostatnich 2 tygodniach",
+        "Ojciec zmarł nagle w wieku 52 lat z powodu 'wylewu' nieznanego typu — możliwe obciążenie rodzinne",
+        "Ból inny niż dotychczasowe bóle głowy",
+        "Częściowa poprawa po ibuprofenie NIE wyklucza krwotoku — krwawienie ostrzegawcze typowo ustępuje w ciągu godzin-dni [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak utraty przytomności",
+        "Brak zgłoszonych objawów ogniskowych (wg ankiety, bez badania neurologicznego)",
+        "Ból obecnie słaby (3/10) i stabilny"
+      ]
+    },
+    {
+      "nazwa": "Pierwotny ból głowy wysiłkowy z towarzyszącym przeciążeniem mięśni karku",
+      "p": 0.25,
+      "za": [
+        "Początek przy dźwiganiu mebli",
+        "Ustąpienie głównego bólu po kilku godzinach i po ibuprofenie",
+        "Brak gorączki, utraty przytomności i deklarowanych objawów ogniskowych"
+      ],
+      "przeciw": [
+        "To rozpoznanie z wykluczenia — wolno je postawić dopiero po ujemnej diagnostyce w kierunku krwotoku podpajęczynówkowego",
+        "Przeciążenie mięśni nie tłumaczy światłowstrętu ani wymiotów w chwili zachorowania"
+      ]
+    },
+    {
+      "nazwa": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.12,
+      "za": [
+        "Ból piorunujący wywołany wysiłkiem/Valsalvą — typowy wyzwalacz (PMID 27015869, 29274685)",
+        "Duże spożycie alkoholu w ostatnich 2 tygodniach",
+        "Nieleczone nadciśnienie tętnicze"
+      ],
+      "przeciw": [
+        "Zwykle nawracające bóle piorunujące w ciągu 1–2 tygodni; tu opisano jeden epizod",
+        "Objawy oponowe bardziej przemawiają za krwią w przestrzeni podpajęczynówkowej (choć zespół może dawać powierzchowny krwotok podpajęczynówkowy w bruździe) [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Rozwarstwienie tętnicy szyjnej lub kręgowej",
+      "p": 0.08,
+      "za": [
+        "Potyliczny ból głowy z bólem karku po wysiłku z obciążeniem szyi (dźwiganie)",
+        "Palenie tytoniu, nadciśnienie tętnicze",
+        "Może poprzedzać udar niedokrwienny tylnego krążenia o dni [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak zgłoszonych objawów z tylnego krążenia (zawroty, podwójne widzenie, zaburzenia mowy, chwiejność) — wg ankiety, niezweryfikowane badaniem",
+        "Brak zespołu Hornera w wywiadzie (nie badano)"
+      ]
+    },
+    {
+      "nazwa": "Krwotok śródmózgowy nadciśnieniowy",
+      "p": 0.05,
+      "za": [
+        "Nieleczone nadciśnienie, alkohol, nagły początek z wymiotami"
+      ],
+      "przeciw": [
+        "Brak deklarowanych objawów ogniskowych i zaburzeń świadomości przez 3 doby"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Leczenie przeciwkrzepliwe/przeciwpłytkowe na stałe — wykluczone wywiadem (nie przyjmuje żadnych leków na stałe); uwaga: ibuprofen 1–2 tabl./dobę od epizodu",
+    "Utrata przytomności w chwili zachorowania — wykluczona wywiadem (zaprzecza, nikt nie widział 'nieobecności')",
+    "Bakteryjne zapalenie opon mózgowo-rdzeniowych jako stan zakaźny dla otoczenia — wysoce mało prawdopodobne: brak gorączki i dreszczy przez 3 doby, nagły piorunujący początek, poprawa samoistna; nie wymaga izolacji, ale gorączka lub pogorszenie świadomości otwierają flagę ponownie"
+  ],
+  "red_flags_otwarte": [
+    "Krwotok podpajęczynówkowy z pęknięcia tętniaka (krwawienie ostrzegawcze) — NIE wykluczony. Wykluczyłoby go: TK głowy bez kontrastu bez krwi ORAZ (wobec >6 h od początku) prawidłowy płyn mózgowo-rdzeniowy bez ksantochromii lub angio-TK bez tętniaka. W 3. dobie czułość TK spada (prawie 100% tylko w ≤6 h, PMID 21768192, 26797666), więc samo ujemne TK nie wystarcza",
+    "Ryzyko ponownego krwawienia z niezabezpieczonego tętniaka — największe w pierwszych dniach, ze śmiertelnością wysoką; błędne rozpoznanie przy pierwszym kontakcie wiąże się z gorszym rokowaniem (PMID 14970066, 29675720; wytyczne AHA/ASA 2023, PMID 37212182)",
+    "Rozwarstwienie tętnicy szyjnej/kręgowej — NIE wykluczone; wykluczy angio-TK naczyń szyi i głowy (wykonywalne w tym samym badaniu)",
+    "Zespół odwracalnego skurczu naczyń mózgowych — NIE wykluczony; ocenia angio-TK/angio-MR, ryzyko udaru i krwotoku",
+    "Nieznane ciśnienie tętnicze od epizodu u chorego z nieleczonym nadciśnieniem — wymaga pomiaru przed transportem",
+    "Brak badania neurologicznego i parametrów życiowych (NIEZNANE) — objawy ogniskowe deklarowane tylko w ankiecie"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na SOR transportem medycznym (pacjent nie prowadzi sam) z rozpoznaniem roboczym krwotoku podpajęczynówkowego w celu wykonania TK głowy bez kontrastu z angio-TK naczyń głowy i szyi, a przy ujemnym obrazowaniu nakłucia lędźwiowego z oceną ksantochromii; do tego czasu nie leczyć jako naciągnięcia karku (bez kolejnych NLPZ i leków zwiotczających), zmierzyć ciśnienie tętnicze i ocenić stan neurologiczny przed transportem.",
+  "co_zmieniloby_zdanie": "Pilność obniżyłbym dopiero po prawidłowym TK głowy wraz z prawidłowym angio-TK naczyń głowy i szyi lub płynem mózgowo-rdzeniowym bez ksantochromii i erytrocytów — samo ustąpienie bólu ani prawidłowe badanie w gabinecie tej flagi nie zamyka.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla bólu piorunującego/krwotoku podpajęczynówkowego w bibliotece (tylko przykładowe wiersze)",
+    "pamiec/zespol.md — brak wniosków dotyczących tej prezentacji",
+    "WebSearch (pubmed.ncbi.nlm.nih.gov), zapytanie 1: 'Ottawa subarachnoid hemorrhage rule acute headache validation' → PMID 29133539 (walidacja reguły Ottawa, Perry 2017), PMID 24065011 (reguły kliniczne wykluczania krwotoku), PMID 25511365",
+    "WebSearch, zapytanie 2: 'sensitivity computed tomography within 6 hours headache onset subarachnoid haemorrhage' → PMID 21768192 (czułość TK ≤6 h), PMID 26797666 (metaanaliza wczesnego TK), PMID 34819306 (czułość wielorzędowego TK w kolejnych przedziałach czasu), PMID 27306497 (metaanaliza wywiadu, badania, TK, nakłucia lędźwiowego)",
+    "WebSearch, zapytanie 3: 'misdiagnosis of subarachnoid hemorrhage delayed diagnosis outcome rebleeding' → PMID 14970066 (błędne rozpoznanie wstępne a rokowanie), PMID 29675720, PMID 21682568",
+    "WebSearch, zapytanie 4: '2023 guideline management aneurysmal subarachnoid hemorrhage American Heart Association' → PMID 37212182 (wytyczne AHA/ASA 2023)",
+    "WebSearch, zapytanie 5: 'thunderclap headache causes reversible cerebral vasoconstriction syndrome cervical artery dissection' → PMID 29274685, PMID 27015869, PMID 26252591 (ból piorunujący, zespół odwracalnego skurczu naczyń)",
+    "Spadek czułości TK do ok. 85% w 3.–5. dobie, ksantochromia od ~12 h, wpływ ibuprofenu na płytki — [wiedza modelu, niezweryfikowane]"
+  ]
+}

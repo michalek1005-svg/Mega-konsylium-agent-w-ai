@@ -1,0 +1,146 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał serca bez uniesienia ST lub niestabilna dławica piersiowa) o nietypowym obrazie",
+      "p": 0.112,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał serca bez uniesienia ST lub niestabilna dławica piersiowa)",
+      "p": 0.102,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Choroba refluksowa przełyku lub dyspepsja czynnościowa",
+      "p": 0.057,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał bez uniesienia ST lub niestabilna dławica piersiowa)",
+      "p": 0.054,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "choroba refluksowa przełyku",
+      "p": 0.053,
+      "wymienili": [
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.035,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Brak EKG, troponiny i parametrów życiowych (ciśnienie, tętno, saturacja) — NIEZNANE",
+      "Brak EKG, troponiny wysokoczułej, ciśnienia tętniczego, tętna i saturacji (NIEZNANE)",
+      "Nieprawidłowość w morfologii o nieznanym charakterze (możliwa niedokrwistość lub krwawienie)",
+      "Nieznany charakter nieprawidłowości w morfologii/HbA1c (możliwa niedokrwistość)",
+      "Nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą",
+      "Nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą i wieloma czynnikami ryzyka",
+      "Pieczenie nasilające się przy wysiłku i ustępujące w spoczynku — równoważnik dławicy de novo",
+      "Pieczenie w dołku nasilające się przy wysiłku i ustępujące w spoczynku - równoważnik dławicy",
+      "Ucisk lub pieczenie w szyi, żuchwie, ramieniu albo między łopatkami (epizody ustąpiły, ale wystąpiły)",
+      "Ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami (ankieta: NATYCHMIAST 112)",
+      "Zimny pot bez wyraźnego powodu od wczoraj (ankieta: NATYCHMIAST 112)",
+      "Zimny pot bez wyraźnej przyczyny od wczoraj (reguła ankiety: NATYCHMIAST 112)",
+      "brak EKG, troponiny, ciśnienia tętniczego, tętna, saturacji",
+      "czynność nerek (eGFR) NIEZNANA — warunkuje bezpieczeństwo metforminy, kontrastu i dawkowania leków przeciwkrzepliwych",
+      "kwasica mleczanowa przy metforminie 2000 mg/d lub hiperglikemia z ketozą (nudności, zmęczenie, duszność): eGFR, gazometria, ketony NIEZNANE — mało prawdopodobne, sprawdzić na SOR",
+      "niedokrwistość (w morfologii 'coś było nieprawidłowe' — NIEZNANE co) nasilająca niedokrwienie lub tłumacząca duszność; krwawienie z przewodu pokarmowego: wykluczy aktualna morfologia i pytanie o smoliste stolce",
+      "nieprawidłowy wynik HbA1c lub morfologii z ostatniego roku — NIEZNANE który",
+      "nieznany nieprawidłowy wynik morfologii z ostatniego roku (niedokrwistość?)",
+      "nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą",
+      "nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą i 4 czynnikami ryzyka sercowo-naczyniowego",
+      "nowa duszność wysiłkowa od wczoraj: niewydolność serca lub zatorowość płucna do wykluczenia",
+      "ostra niewydolność serca / niedokrwienna dysfunkcja lewej komory: wykluczyłyby parametry życiowe, osłuchiwanie, peptyd natriuretyczny, echokardiografia",
+      "ostry zespół aortalny (ból międzyłopatkowy przy nadciśnieniu): wykluczyłoby ciśnienie na obu ramionach, charakter początku bólu, w razie wątpliwości obrazowanie aorty",
+      "ostry zespół wieńcowy / zawał serca: zimny pot, promieniowanie do szyi/żuchwy/ramienia/między łopatki, pieczenie wysiłkowe, nowa duszność wysiłkowa u 66-letniej chorej na cukrzycę z nadciśnieniem, dyslipidemią i paleniem; wykluczyłoby to dopiero prawidłowe EKG 12-odprowadzeniowe i seryjna troponina wysokoczuła wg algorytmu 0/1 h lub 0/2 h ESC 2023 (PMID 38032511, 38783672)",
+      "ostry zespół wieńcowy: równoważnik dławicowy zależny od wysiłku, epizod zimnego potu i bólu promieniującego do szyi/żuchwy/ramienia/łopatek w ciągu ostatniej doby",
+      "parametry życiowe, EKG i troponina NIEZNANE",
+      "parametry życiowe, badanie fizykalne i elektrokardiogram — NIEZNANE",
+      "pieczenie zależne od wysiłku, ustępujące w spoczynku — równoważnik dławicy",
+      "pieczenie zamostkowe/w nadbrzuszu nasilające się przy wysiłku i ustępujące w spoczynku (równoważnik dławicy)",
+      "ucisk/pieczenie promieniujące do szyi, żuchwy, ramienia lub między łopatki",
+      "wcześniejszy 'nieprawidłowy' wynik morfologii lub HbA1c o nieznanej treści (możliwa niedokrwistość jako czynnik niedokrwienia typu 2) — NIEZNANE",
+      "zaburzenia rytmu lub przewodzenia (np. blok przedsionkowo-komorowy, migotanie przedsionków) jako przyczyna duszności i zmęczenia: wykluczy EKG",
+      "zakaźne dla otoczenia: brak sygnałów; gorączka i kaszel NIEZNANE (zapalenie płuc / zakażenie wirusowe jako tło duszności nie wykluczone formalnie)",
+      "zatorowość płucna: wykluczyłyby SpO2, tętno, ocena prawdopodobieństwa klinicznego i D-dimer/angio-TK, jeśli EKG i troponina nie wyjaśnią duszności",
+      "zawał z uniesieniem odcinka ST — nie wykluczony bez elektrokardiogramu",
+      "zimny pot bez wyraźnej przyczyny od wczoraj",
+      "zimny pot i ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami od wczoraj — reguła ankiety 'NATYCHMIAST 112'"
+    ],
+    "wykluczone": [
+      "Duszność spoczynkowa (pacjentka w spoczynku oddycha normalnie)",
+      "Wymioty",
+      "duszność spoczynkowa (pacjentka w spoczynku oddycha normalnie)",
+      "duszność spoczynkowa (pacjentka zaprzecza)",
+      "duszność spoczynkowa / niewydolność oddechowa w spoczynku — pacjentka w spoczynku oddycha normalnie (nie wyklucza zawału)",
+      "hipoglikemia jako przyczyna zimnego potu i osłabienia (glikemia 214 mg/dl w dniu ankiety)",
+      "hipoglikemia jako przyczyna zimnego potu i osłabienia — glikemia 214 mg/dl (przy gliklazydzie wykluczona tylko w momencie pomiaru)",
+      "hipoglikemia w chwili pomiaru (glikemia 214 mg/dl)",
+      "krwawienie z górnego odcinka przewodu pokarmowego z wymiotami krwistymi — brak wymiotów (smoliste stolce: niezapytane)",
+      "wymioty",
+      "wymioty (brak)",
+      "wymioty (tylko nudności)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "wysoka"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

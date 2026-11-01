@@ -1,0 +1,150 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.164,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Krwotok podpajęczynówkowy z pęknięcia tętniaka wewnątrzczaszkowego",
+      "p": 0.095,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Krwotok podpajęczynówkowy (najpewniej z pękniętego tętniaka, ewentualnie okołośródmózgowiowy nietętniakowy)",
+      "p": 0.086,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Pierwotny piorunujący lub wysiłkowy ból głowy",
+      "p": 0.061,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Rozwarstwienie tętnicy kręgowej",
+      "p": 0.061,
+      "wymienili": [
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.046,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Badanie neurologiczne i parametry życiowe NIEZNANE",
+      "Badanie neurologiczne, parametry życiowe i stan świadomości NIEZNANE",
+      "Brak badania neurologicznego i parametrów życiowych (NIEZNANE) — objawy ogniskowe deklarowane tylko w ankiecie",
+      "Ból piorunujący, najsilniejszy w życiu, przy wysiłku, 3 doby temu, bez jakiegokolwiek badania głowy",
+      "Ibuprofen 1–2 tabletki/d może maskować ból i upośledzać hemostazę płytkową [wiedza modelu, niezweryfikowane]",
+      "Krwotok podpajęczynówkowy z pęknięcia tętniaka (krwawienie ostrzegawcze) — NIE wykluczony. Wykluczyłoby go: TK głowy bez kontrastu bez krwi ORAZ (wobec >6 h od początku) prawidłowy płyn mózgowo-rdzeniowy bez ksantochromii lub angio-TK bez tętniaka. W 3. dobie czułość TK spada (prawie 100% tylko w ≤6 h, PMID 21768192, 26797666), więc samo ujemne TK nie wystarcza",
+      "Nagła śmierć ojca w wieku 52 lat z powodu 'wylewu' nieznanego typu",
+      "Nagła śmierć ojca z powodu 'wylewu' w wieku 52 lat",
+      "Nieleczone nadciśnienie tętnicze, wartości ciśnienia od epizodu NIEZNANE",
+      "Nieleczone nadciśnienie tętnicze, wartości po epizodzie NIEZNANE",
+      "Nieznane ciśnienie tętnicze od epizodu u chorego z nieleczonym nadciśnieniem — wymaga pomiaru przed transportem",
+      "Objawy oponowe obecne dziś: ograniczenie zgięcia karku i światłowstręt",
+      "Piorunujący, najsilniejszy w życiu ból głowy podczas wysiłku 3 doby temu bez żadnej diagnostyki obrazowej",
+      "Reguła Ottawa dla krwotoku podpajęczynówkowego: dodatnie co najmniej 5 z 6 kryteriów (wiek ≥40, ból/sztywność karku, początek przy wysiłku, szczyt natychmiastowy, ograniczone zgięcie karku); reguła ma czułość około 100%, ale niską swoistość, więc służy do wykluczania, a nie potwierdzania (PMID 29133539, 24065011)",
+      "Rozwarstwienie tętnicy szyjnej/kręgowej — NIE wykluczone; wykluczy angio-TK naczyń szyi i głowy (wykonywalne w tym samym badaniu)",
+      "Ryzyko ponownego krwawienia z niezabezpieczonego tętniaka — największe w pierwszych dniach, ze śmiertelnością wysoką; błędne rozpoznanie przy pierwszym kontakcie wiąże się z gorszym rokowaniem (PMID 14970066, 29675720; wytyczne AHA/ASA 2023, PMID 37212182)",
+      "Ryzyko ponownego krwawienia z tętniaka jest największe w pierwszych dniach po krwawieniu ostrzegawczym [wiedza modelu, niezweryfikowane]",
+      "Ryzyko ponownego krwawienia z tętniaka w pierwszych dniach (przeciek ostrzegawczy) – PMID 14984225, 37212182",
+      "Zespół odwracalnego skurczu naczyń mózgowych — NIE wykluczony; ocenia angio-TK/angio-MR, ryzyko udaru i krwotoku",
+      "badanie neurologiczne i parametry życiowe NIEZNANE",
+      "ból piorunujący najgorszy w życiu przy wysiłku 3 doby temu, bez żadnego badania głowy",
+      "ból piorunujący przy wysiłku, najgorszy w życiu, 3 doby temu, bez żadnej diagnostyki obrazowej",
+      "ciągłe przyjmowanie ibuprofenu (hamowanie czynności płytek) przy niewykluczonym krwawieniu śródczaszkowym",
+      "możliwy rodzinny wywiad tętniaka (nagła śmierć ojca w wieku 52 lat, 'wylew')",
+      "nagły zgon ojca w wieku 52 lat z powodu „wylewu”, palenie 20 papierosów dziennie, duże spożycie alkoholu",
+      "nieleczone nadciśnienie tętnicze, wartości ciśnienia od epizodu NIEZNANE",
+      "nieleczone nadciśnienie tętnicze, wartości po epizodzie NIEZNANE",
+      "nieleczone nadciśnienie, nieznane wartości ciśnienia od epizodu",
+      "objawy oponowe teraz: ból przy zgięciu karku i światłowstręt",
+      "objawy oponowe: ograniczenie zgięcia karku i światłowstręt",
+      "objawy oponowe: ograniczenie zgięcia karku i światłowstręt w 3. dobie",
+      "pacjent przyjmuje ibuprofen 1–2 tabletki/dobę (działanie przeciwpłytkowe przy możliwym krwawieniu)",
+      "piorunujący, najsilniejszy w życiu ból głowy przy wysiłku 3 doby temu, bez tomografii komputerowej głowy",
+      "ryzyko powtórnego krwawienia z tętniaka (największe w pierwszych dniach) — każda godzina zwłoki ma znaczenie",
+      "ryzyko zespołu odstawienia alkoholu po przyjęciu do szpitala",
+      "stan neurologiczny i parametry życiowe NIEZNANE (ankieta nie obejmuje badania)",
+      "wymioty przy początku bólu",
+      "wywiad rodzinny: nagła śmierć ojca w wieku 52 lat z powodu „wylewu”"
+    ],
+    "wykluczone": [
+      "Bakteryjne zapalenie opon mózgowo-rdzeniowych jako stan zakaźny dla otoczenia — wysoce mało prawdopodobne: brak gorączki i dreszczy przez 3 doby, nagły piorunujący początek, poprawa samoistna; nie wymaga izolacji, ale gorączka lub pogorszenie świadomości otwierają flagę ponownie",
+      "Gorączka i dreszcze (pacjent zaprzecza) – zmniejsza prawdopodobieństwo bakteryjnego zapalenia opon, nie wyklucza krwotoku",
+      "Gorączka i dreszcze (zaprzecza) – zapalenie opon mniej prawdopodobne, ale nie wykluczone bez badania",
+      "Leczenie przeciwkrzepliwe/przeciwpłytkowe na stałe — wykluczone wywiadem (nie przyjmuje żadnych leków na stałe); uwaga: ibuprofen 1–2 tabl./dobę od epizodu",
+      "Leki przeciwkrzepliwe i przeciwpłytkowe na stałe (nie przyjmuje)",
+      "Utrata przytomności w chwili zachorowania (zaprzecza)",
+      "Utrata przytomności w chwili zachorowania — wykluczona wywiadem (zaprzecza, nikt nie widział 'nieobecności')",
+      "gorączka i dreszcze (zaprzecza; zapalenie opon mniej prawdopodobne, ale nie wykluczone bez badania)",
+      "przyjmowanie leków przeciwkrzepliwych i przeciwpłytkowych na stałe (zaprzecza)",
+      "przyjmowanie leków przeciwkrzepliwych lub przeciwpłytkowych (pacjent zaprzecza; brak stałych leków)",
+      "uczulenia na leki (zaprzecza)",
+      "utrata przytomności w chwili zachorowania (zaprzecza)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "wysoka",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "wysoka"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

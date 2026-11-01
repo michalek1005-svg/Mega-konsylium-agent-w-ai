@@ -1,0 +1,142 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "s_fakty",
+    "data": "2026-11-01",
+    "uwaga_ogolna": "zrodla/ zawiera tylko wiersze przykładowe (brak polskiej wytycznej ŻChZZ/ZP, brak ChPL) — poziom 1 milczy dla wszystkich twierdzeń. Wszystkie liczby cytowane w 05-projekt.md z PubMed zgadzają się ze streszczeniami. Kartka żółta z powodu twierdzeń bez źródła, które w projekcie NIE mają etykiety [wiedza modelu, niezweryfikowane]: czas antykoagulacji ≥3 mies., progi eskalacji tętno >120/min i SpO2 <90%, przeciwwskazanie opioidów. Dawki paracetamolu i enoksaparyny, oznaczone w projekcie jako wiedza modelu, zostały potwierdzone w PubMed (poziom 2) — etykietę można zastąpić cytowaniem.",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Skala Wellsa dla ZP: objawy ZŻG 3 pkt + brak alternatywnego rozpoznania 3 pkt + tętno >100/min 1,5 pkt = 7,5 pkt; >6 = wysokie prawdopodobieństwo",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 10744147 (Wells PS i wsp. Thromb Haemost 2000;83:416-20; brak DOI w rekordzie)",
+        "cytat": "Clinical symptoms of DVT (3.0), no alternative diagnosis (3.0), heart rate >100 (1.5) ... high if the score was over 6.0.",
+        "co_mowi_zrodlo": "Punktacja i próg >6 zgodne; arytmetyka 3+3+1,5=7,5 poprawna. W tym samym źródle 'ZP prawdopodobna' = >4 pkt."
+      },
+      {
+        "twierdzenie": "Przy Wells 'ZP prawdopodobna' pacjent idzie od razu na angio-TK bez D-dimeru",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 16403929, DOI 10.1001/jama.295.2.172 (van Belle A i wsp., Christopher, JAMA 2006)",
+        "cytat": "Patients classified as unlikely had D-dimer testing ... All other patients underwent CT.",
+        "co_mowi_zrodlo": "W algorytmie Christopher D-dimer wykonuje się tylko w grupie 'ZP mało prawdopodobna' (≤4 pkt); grupa 'prawdopodobna' idzie bezpośrednio na TK. Zgodne."
+      },
+      {
+        "twierdzenie": "Omdlenie/stan przedomdleniowy w ZP wiąże się z niestabilnością hemodynamiczną OR 3,50 i dysfunkcją prawej komory OR 2,10",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30339253, DOI 10.1093/eurheartj/ehy631 (Barco S i wsp. Eur Heart J 2018;39:4186-95)",
+        "cytat": "Syncope was associated with higher prevalence of haemodynamic instability [OR 3.50; CI 2.67-4.58] ... RV dysfunction (OR 2.10; CI 1.60-2.77).",
+        "co_mowi_zrodlo": "Liczby zgodne. Uwaga: metaanaliza dotyczy omdlenia (syncope), nie stanu przedomdleniowego — ekstrapolacja projektu na 'stan przedomdleniowy' jest interpretacją kliniczną, nie treścią źródła."
+      },
+      {
+        "twierdzenie": "NLPZ przy antykoagulacji: poważne krwawienia 6,5 vs 2,0/100 pacjento-lat, HR 2,37",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 24733305, DOI 10.1001/jamainternmed.2014.946 (Davidson BL i wsp. JAMA Intern Med 2014;174:947-53)",
+        "cytat": "Major bleeding during NSAID-anticoagulant treatment occurred with an event rate of 6.5 per 100 patient-years, compared to 2.0 ... (HR, 2.37 [95% CI, 1.51-3.75]).",
+        "co_mowi_zrodlo": "Liczby zgodne (dane EINSTEIN, rywaroksaban lub enoksaparyna/VKA)."
+      },
+      {
+        "twierdzenie": "Doustna HTZ: aOR 1,58 dla ŻChZZ; przezskórna aOR 0,93",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30626577, DOI 10.1136/bmj.k4810 (Vinogradova Y i wsp. BMJ 2019;364:k4810)",
+        "cytat": "oral therapy ... adjusted odds ratio 1.58, 95% CI 1.52 to 1.64 ... Transdermal ... overall adjusted odds ratio 0.93, 0.87 to 1.01.",
+        "co_mowi_zrodlo": "Liczby zgodne. Doprecyzowanie: dla preparatu pacjentki (estradiol + dydrogesteron) to samo źródło podaje najniższe ryzyko wśród doustnych: aOR 1,18 (0,98–1,42), nieistotne statystycznie. Projekt cytuje wartość dla całej doustnej HTZ, co jest prawdziwe, ale nie jest wartością dla tego preparatu."
+      },
+      {
+        "twierdzenie": "Apiksaban 10 mg 2×/d przez 7 dni, potem 5 mg 2×/d; poważne krwawienia 0,6% vs 1,8% (AMPLIFY)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 23808982, DOI 10.1056/NEJMoa1302507 (Agnelli G i wsp. N Engl J Med 2013;369:799-808)",
+        "cytat": "apixaban (at a dose of 10 mg twice daily for 7 days, followed by 5 mg twice daily for 6 months) ... Major bleeding occurred in 0.6% ... and in 1.8%.",
+        "co_mowi_zrodlo": "Dawkowanie i odsetki zgodne. W badaniu leczono 6 miesięcy."
+      },
+      {
+        "twierdzenie": "Antykoagulacja po ZP co najmniej 3 miesiące",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 3,
+        "zrodlo": "ESC 2019 (PMID 31504429, DOI 10.1093/eurheartj/ehz405) — streszczenie niedostępne w PubMed; z pamięci modelu. Wyszukiwanie PubMed 'anticoagulation duration at least 3 months ... guideline' → 0 wyników. AMPLIFY (PMID 23808982) leczyło 6 mies.",
+        "cytat": "[Abstract not available]",
+        "co_mowi_zrodlo": "Wytyczna ESC 2019 zaleca ≥3 miesiące u wszystkich chorych z ZP (z pamięci, niezweryfikowane streszczeniem). W projekcie liczba '3 miesiące' stoi BEZ etykiety [wiedza modelu, niezweryfikowane] — wymaga etykiety lub cytowania ESC 2019 jako poziom 3."
+      },
+      {
+        "twierdzenie": "Podróż >4 h / długa podróż: RR 2,8 dla ŻChZZ, +18% ryzyka na każde 2 h",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 19581633, DOI 10.7326/0003-4819-151-3-200908040-00129 (Chandra D i wsp. Ann Intern Med 2009;151:180-90)",
+        "cytat": "pooled relative risk for VTE in travelers was 2.8 (CI, 2.2 to 3.7) ... 18% higher risk for VTE for each 2-hour increase in duration of travel by any mode.",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Paracetamol doraźnie 1 g, maks. 4 g/dobę",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 23420266, DOI 10.1093/ageing/afs200 (British Geriatrics Society/British Pain Society, Age Ageing 2013;42 Suppl 1:i1-57). Brak ChPL w zrodla/.",
+        "cytat": "It is, however, important that the maximum daily dose (4 g/24 h) is not exceeded.",
+        "co_mowi_zrodlo": "Maks. 4 g/24 h potwierdzone; dawka jednorazowa 1 g nie jest podana wprost w streszczeniu (standardowa, mieści się w 4 g/d). Uwaga: PMID 36561959 (DOI 10.1016/j.toxrep.2022.04.025) opisuje obniżenie zalecanej dawki maks. do 3 g/d w USA dla tabletek 500 mg — w Polsce ChPL nadal 4 g/d [wiedza modelu]. Etykieta [wiedza modelu] w projekcie może zostać zastąpiona cytowaniem poziomu 2."
+      },
+      {
+        "twierdzenie": "Enoksaparyna dawka terapeutyczna 1 mg/kg s.c. (pierwsza dawka)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 25888639, DOI 10.1177/1078155215583374 (King AC i wsp. J Oncol Pharm Pract 2015;22:265-70); także PMID 34617959, DOI 10.1001/jamainternmed.2021.6203 (1 mg/kg s.c. 2×/d przy klirensie ≥30 ml/min, 0,5 mg/kg 2×/d przy 15–29). Brak ChPL w zrodla/.",
+        "cytat": "Enoxaparin 1 mg/kg subcutaneously (SC) twice daily and enoxaparin 1.5 mg/kg SC once daily are both FDA-approved dosing regimens for the treatment of pulmonary embolism (PE).",
+        "co_mowi_zrodlo": "Dawka 1 mg/kg s.c. (co 12 h) potwierdzona jako zarejestrowany schemat leczenia ZP. Projekt podaje tylko pierwszą dawkę, bez częstości — poprawne. Redukcja do 0,5 mg/kg przy klirensie 15–29 ml/min — eGFR NIEZNANE, projekt słusznie zastrzega 'brak przeciwwskazań'."
+      },
+      {
+        "twierdzenie": "ESC 2019 zaleca rozpoczęcie antykoagulacji przed obrazowaniem przy wysokim prawdopodobieństwie klinicznym ZP",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 3,
+        "zrodlo": "ESC 2019 (PMID 31504429, DOI 10.1093/eurheartj/ehz405) — streszczenie niedostępne w PubMed; z pamięci modelu",
+        "cytat": "[Abstract not available]",
+        "co_mowi_zrodlo": "Treść zgodna z pamięcią modelu o ESC 2019 (klasa I, poziom C). W projekcie prawidłowo oznaczone [wiedza modelu, niezweryfikowane] — etykieta wystarcza."
+      },
+      {
+        "twierdzenie": "Opioidy przeciwwskazane doraźnie (sedacja/hipotonia przy stanie przedomdleniowym)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; nie szukano w PubMed (twierdzenie farmakologiczne ogólne, nieliczbowe)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Rozumowanie kliniczne bez cytowanego źródła i bez etykiety w projekcie. Twierdzenie nieliczbowe — wymaga etykiety [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "Progi eskalacji do przyjazdu ZRM: SpO2 <90%, tętno >120/min, RR skurczowe <90 mmHg",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 3,
+        "zrodlo": "RR skurczowe <90 mmHg = definicja niestabilności hemodynamicznej ESC 2019 (PMID 31504429, z pamięci); SpO2 <90% = kryterium sPESI (PMID 20696966, DOI 10.1001/archinternmed.2010.199 — streszczenie wymienia zmienne, bez progów); tętno >120/min — próg ustalony przez zespół, nie z wytycznej (sPESI używa ≥110/min)",
+        "cytat": "simplified PESI that contained the variables of age, cancer, chronic cardiopulmonary disease, heart rate, systolic blood pressure, and oxyhemoglobin saturation levels.",
+        "co_mowi_zrodlo": "Progi są konserwatywne i nie są sprzeczne z żadnym źródłem, ale w projekcie stoją bez etykiety. Wymagają etykiety [wiedza modelu, niezweryfikowane] lub przypisu do ESC 2019/sPESI jako poziom 3."
+      },
+      {
+        "twierdzenie": "Wstępnie wykluczony wstrząs/hipotensja (RR 132 mmHg) i ciężka hipoksemia (SpO2 94%, nie <90%)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ESC 2019 (PMID 31504429) definicja niestabilności: RR skurczowe <90 mmHg — z pamięci; dane pacjentki z 01-wywiad.md",
+        "cytat": "RR 132 mmHg; SpO2 94%; tętno 104/min (01-wywiad.md, pomiar domowy)",
+        "co_mowi_zrodlo": "Liczby z wywiadu przepisane poprawnie do projektu. Zastrzeżenie 'pomiar domowy, jednorazowy' obecne w CZEGO NIE WIEMY."
+      },
+      {
+        "twierdzenie": "Wells 2000 i Christopher: PMID/DOI/czasopisma/strony w sekcji ŹRÓDŁA",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed: 10744147 (Thromb Haemost 2000;83:416-20), 16403929 (JAMA 2006;295:172-9), 30339253 (Eur Heart J 2018;39:4186-95), 24733305 (JAMA Intern Med 2014;174:947-53), 30626577 (BMJ 2019;364:k4810), 23808982 (N Engl J Med 2013;369:799-808), 19581633 (Ann Intern Med 2009;151:180-90), 31504429 (Eur Heart J 2020;41:543-603)",
+        "cytat": "wszystkie 8 rekordów pobrane get_article_metadata; tomy, strony i DOI zgodne z projektem",
+        "co_mowi_zrodlo": "Bibliografia projektu poprawna. Dla PMID 10744147 PubMed nie podaje DOI — projekt słusznie go nie wymyśla."
+      }
+    ],
+    "podsumowanie": {
+      "POTWIERDZONE": 11,
+      "SPRZECZNE": 0,
+      "BEZ_ZRODLA": 4,
+      "NIEAKTUALNE": 0
+    },
+    "wymagane_etykiety_w_FINAL": [
+      "co najmniej 3 miesiące antykoagulacji → [wiedza modelu, niezweryfikowane] lub przypis ESC 2019 (poziom 3)",
+      "tętno >120/min, SpO2 <90%, RR <90 mmHg jako progi eskalacji → etykieta lub przypis ESC 2019/sPESI",
+      "opioidy przeciwwskazane (sedacja/hipotonia) → etykieta",
+      "opcjonalnie: dawki paracetamolu (PMID 23420266) i enoksaparyny (PMID 25888639) można cytować zamiast etykiety"
+    ]
+  }
+}

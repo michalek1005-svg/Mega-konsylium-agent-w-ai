@@ -1,0 +1,98 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał serca bez uniesienia ST lub niestabilna dławica piersiowa)",
+      "p": 0.50,
+      "za": [
+        "Pretest: pieczenie w nadbrzuszu/za mostkiem u kobiety 66 lat w POZ — sama choroba wieńcowa jako przyczyna to kilka procent [wiedza modelu, niezweryfikowane]; czynniki ryzyka przesuwają pretest wyraźnie w górę",
+        "Cukrzyca typu 2 + nadciśnienie tętnicze + hipercholesterolemia + palenie tytoniu + wiek 66 lat → podnosi → silnie (wysokie ryzyko sercowo-naczyniowe; cukrzyca i płeć żeńska zwiększają odsetek nietypowych prezentacji: PMID 39130937, 18482629, 35268411)",
+        "Pieczenie nasila się przy wchodzeniu po schodach / szybkim marszu i słabnie w spoczynku → podnosi → silnie (wysiłkowy charakter dolegliwości; Swap i Nagurney PMID 16304077: ból wysiłkowy LR ok. 2,4 [wartość z pamięci modelu, niezweryfikowane])",
+        "Zimny pot bez powodu od wczoraj → podnosi → umiarkowanie (Panju PMID 9786377: potliwość LR ok. 2,0 [wartość z pamięci modelu, niezweryfikowane])",
+        "Ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami → podnosi → silnie (promieniowanie do ramienia/obu ramion LR ok. 2–7 w PMID 9786377, 16304077 [wartości z pamięci modelu, niezweryfikowane])",
+        "Nowa duszność wysiłkowa od wczoraj (1. piętro), bez duszności spoczynkowej → podnosi → umiarkowanie (równoważnik dławicy u kobiet i chorych na cukrzycę; PMID 26956231)",
+        "Nudności bez wymiotów + skrajne zmęczenie → podnosi → słabo–umiarkowanie (nudności LR ok. 1,9 w PMID 9786377 [wartość z pamięci modelu, niezweryfikowane]; zmęczenie częstsze u kobiet z OZW, PMID 15215788)",
+        "Pierwszy w życiu epizod zgagi w wieku 66 lat → podnosi kardiologiczne, obniża refluks → umiarkowanie",
+        "Brak ulgi po leku zobojętniającym (Rennie) → słabo podnosi; ulga po środkach zobojętniających nie różnicuje wiarygodnie [wiedza modelu, niezweryfikowane]",
+        "Początek objawów wysiłkowych od wczoraj = dławica de novo, czyli z definicji niestabilna dławica, jeśli troponina prawidłowa (ESC 2023, PMID 37622654)"
+      ],
+      "przeciw": [
+        "Brak bólu w klatce piersiowej w opisie pacjentki → obniża → słabo (MI bez bólu w klatce częstszy u starszych kobiet i chorych na cukrzycę, z gorszym rokowaniem: PMID 22357832, 11602537, 23194485)",
+        "Objawy obecnie ustąpiły → obniża ryzyko STEMI w toku, nie wyklucza NSTE-ACS → słabo",
+        "Brak EKG, troponiny i parametrów życiowych (NIEZNANE) → nie przesuwa, poszerza niepewność"
+      ]
+    },
+    {
+      "nazwa": "Choroba refluksowa przełyku lub dyspepsja czynnościowa",
+      "p": 0.15,
+      "za": [
+        "Pretest: najczęstsza przyczyna zgagi i pieczenia w nadbrzuszu w POZ → wysoki wyjściowo",
+        "Lokalizacja w dołku podsercowym i pod mostkiem, nudności → słabo podnosi",
+        "Metformina może dawać dolegliwości dyspeptyczne i nudności → słabo podnosi [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Pierwszy epizod w wieku 66 lat → obniża → umiarkowanie",
+        "Związek z wysiłkiem i ustępowanie w spoczynku → obniża → silnie",
+        "Towarzysząca nowa duszność wysiłkowa, zimny pot i promieniowanie → obniża → silnie",
+        "Brak ulgi po leku zobojętniającym → słabo obniża"
+      ]
+    },
+    {
+      "nazwa": "Ostra lub nowo rozpoznana niewydolność serca",
+      "p": 0.07,
+      "za": [
+        "Nowa duszność wysiłkowa, męczliwość → podnosi → umiarkowanie",
+        "Cukrzyca, nadciśnienie tętnicze, palenie → podnosi tło (najczęściej niedokrwienna)"
+      ],
+      "przeciw": [
+        "Brak duszności spoczynkowej, brak danych o obrzękach, ortopnoe → obniża → słabo",
+        "Ostry początek od wczoraj z pieczeniem wysiłkowym lepiej tłumaczy niedokrwienie jako przyczyna pierwotna"
+      ]
+    },
+    {
+      "nazwa": "Niedokrwistość z wtórnym niedokrwieniem mięśnia sercowego z niedoboru tlenu",
+      "p": 0.05,
+      "za": [
+        "W ostatnim roku 'coś było nieprawidłowe' w morfologii lub hemoglobinie glikowanej (NIEZNANE, które) → słabo podnosi",
+        "Męczliwość, duszność wysiłkowa → słabo podnosi",
+        "Metformina przewlekle → niedobór witaminy B12 [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Ostry początek od wczoraj słabo pasuje do przewlekłej niedokrwistości (chyba że krwawienie z przewodu pokarmowego — brak danych o smolistych stolcach)"
+      ]
+    },
+    {
+      "nazwa": "Zatorowość płucna",
+      "p": 0.04,
+      "za": [
+        "Nagła duszność wysiłkowa od wczoraj, zmęczenie → słabo podnosi"
+      ],
+      "przeciw": [
+        "Brak duszności spoczynkowej, brak bólu opłucnowego, brak danych o czynnikach ryzyka żylnej choroby zakrzepowo-zatorowej → obniża",
+        "Pieczenie wysiłkowe z promieniowaniem lepiej tłumaczy niedokrwienie"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Zimny pot bez wyraźnego powodu od wczoraj (ankieta: NATYCHMIAST 112)",
+    "Ucisk/pieczenie w szyi, żuchwie, ramieniu lub między łopatkami (ankieta: NATYCHMIAST 112)",
+    "Pieczenie nasilające się przy wysiłku i ustępujące w spoczynku — równoważnik dławicy de novo",
+    "Nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą",
+    "Brak EKG, troponiny i parametrów życiowych (ciśnienie, tętno, saturacja) — NIEZNANE",
+    "Nieznany charakter nieprawidłowości w morfologii/HbA1c (możliwa niedokrwistość)"
+  ],
+  "nastepny_krok": "Nie włączać inhibitora pompy protonowej; natychmiast skontaktować się z pacjentką i wezwać zespół ratownictwa medycznego (112) do transportu na SOR/oddział z pracownią hemodynamiki w celu EKG 12-odprowadzeniowego i troponiny wysokoczułej (ESC 2023, PMID 37622654); jeśli pacjentka jest w gabinecie — EKG w ciągu 10 minut i kwas acetylosalicylowy 150–300 mg do rozgryzienia przy braku przeciwwskazań, bez opóźniania transportu.",
+  "co_zmieniloby_zdanie": "Prawidłowe EKG i dwa prawidłowe oznaczenia troponiny wysokoczułej w algorytmie 0/1 h lub 0/2 h, przy braku nawrotu dolegliwości wysiłkowych, obniżyłyby ostry zespół wieńcowy poniżej 10% i przesunęły diagnostykę do trybu planowego (stabilna choroba wieńcowa kontra refluks).",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrego zespołu wieńcowego/dyspepsji w bibliotece (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — wpis PRZYKLAD-001: EKG przed planem planowym u kobiety 50+ z czynnikami ryzyka sercowego przy dolegliwościach w nadbrzuszu",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): 'atypical symptoms acute coronary syndrome women diabetes dyspnea epigastric' → PMID 26956231, 15215788, 39130937, 18482629, 35268411",
+    "Zapytanie 2: 'likelihood ratio chest pain features acute myocardial infarction diaphoresis radiation exertional' → PMID 9786377 (Panju, JAMA Rational Clinical Examination), 16304077 (Swap i Nagurney), 18307844, 11874776",
+    "Zapytanie 3: 'myocardial infarction without chest pain presentation mortality registry' → PMID 22357832, 11602537, 23194485",
+    "Zapytanie 4: '2023 ESC Guidelines for the management of acute coronary syndromes' → PMID 37622654",
+    "Wartości LR podane z pamięci modelu na podstawie tytułów prac — [wiedza modelu, niezweryfikowane] do potwierdzenia przez Sprawdzającego faktów"
+  ]
+}

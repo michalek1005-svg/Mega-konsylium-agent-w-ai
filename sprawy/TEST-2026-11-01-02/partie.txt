@@ -1,0 +1,7 @@
+1: dusznosc_teraz, objawy_alarmowe, krew_przewod, zgaga_wysilek
+2: objawy_teraz, zgaga_przebieg, zgaga_wczesniej
+3: zgaga_gdzie, schody_od_kiedy, inne_objawy
+4: nudnosci, cukier_pomiar, cukier_wynik
+5: cukrzyca_leczenie, choroby, leki_ostatnio
+6: leki_stale, badania, badania_wynik
+7: obawy (--koniec)

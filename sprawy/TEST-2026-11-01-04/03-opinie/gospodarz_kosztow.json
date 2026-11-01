@@ -1,0 +1,99 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "krwotok podpajęczynówkowy (najpewniej z pękniętego tętniaka)",
+      "p": 0,
+      "za": ["ból piorunujący, szczyt w kilka sekund, najgorszy w życiu, przy wysiłku (dźwiganie)", "wymioty", "sztywność karku z ograniczeniem zgięcia i światłowstręt utrzymujące się 3 doby", "nieleczone nadciśnienie, palenie 20 papierosów/dobę, dużo alkoholu w ostatnich 2 tygodniach", "ojciec zmarł nagle w wieku 52 lat z powodu 'wylewu'", "reguła Ottawa SAH dodatnia w wielu kryteriach (wiek ≥40, sztywność/ograniczenie zgięcia karku, początek przy wysiłku, ból piorunujący)"],
+      "przeciw": ["brak utraty przytomności i objawów ogniskowych w ankiecie", "ból obecnie 3/10 i częściowo ustąpił po ibuprofenie (nie wyklucza: ból wartowniczy też ustępuje)"]
+    },
+    {
+      "nazwa": "zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0,
+      "za": ["ból piorunujący wywołany wysiłkiem", "alkohol w dużych ilościach"],
+      "przeciw": ["pojedynczy epizod bez nawrotów piorunującego bólu", "objawy oponowe przemawiają raczej za krwią w przestrzeni podpajęczynówkowej"]
+    },
+    {
+      "nazwa": "rozwarstwienie tętnicy szyjnej lub kręgowej",
+      "p": 0,
+      "za": ["ból potyliczny i karku po wysiłku z obciążeniem", "nadciśnienie, palenie"],
+      "przeciw": ["brak objawów ogniskowych, zespołu Hornera, zawrotów w ankiecie (badanie fizykalne NIEZNANE)"]
+    },
+    {
+      "nazwa": "naciągnięcie mięśni karku",
+      "p": 0,
+      "za": ["wysiłek fizyczny, interpretacja pacjenta"],
+      "przeciw": ["naciągnięcie mięśni nie daje bólu głowy z piorunującym początkiem, wymiotów ani światłowstrętu; to rozpoznanie z wykluczenia, niedopuszczalne przed diagnostyką obrazową"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "ból piorunujący najgorszy w życiu przy wysiłku 3 doby temu, bez żadnego badania głowy",
+    "objawy oponowe: ograniczenie zgięcia karku i światłowstręt",
+    "wymioty przy początku bólu",
+    "nieleczone nadciśnienie, nieznane wartości ciśnienia od epizodu",
+    "możliwy rodzinny wywiad tętniaka (nagła śmierć ojca w wieku 52 lat, 'wylew')",
+    "badanie neurologiczne i parametry życiowe NIEZNANE"
+  ],
+  "nastepny_krok": "Skierowanie natychmiast do SOR szpitala z dostępem do tomografii komputerowej i neurochirurgii/neuroradiologii interwencyjnej z rozpoznaniem 'podejrzenie krwotoku podpajęczynówkowego', bez prób leczenia objawowego karku i bez diagnostyki ambulatoryjnej w POZ.",
+  "co_zmieniloby_zdanie": "Nic w wywiadzie nie uzasadnia odroczenia; jedynie prawidłowa tomografia komputerowa głowy uzupełniona prawidłowym płynem mózgowo-rdzeniowym (bez ksantochromii) lub prawidłową angiotomografią zamknęłaby ścieżkę krwotoku.",
+  "badania": [
+    {
+      "nazwa": "tomografia komputerowa głowy bez kontrastu (SOR, dziś)",
+      "cel": "wykrycie krwi w przestrzeni podpajęczynówkowej",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Wynik dodatni → angiotomografia/angiografia, neurochirurgia, zabezpieczenie tętniaka. Wynik ujemny → NIE zamyka sprawy, bo po >6 h, a tym bardziej po ~72 h, czułość tomografii spada (w pierwszych 6 h bliska 100% przy nowoczesnym aparacie; po 3 dobach rzędu 85% [wiedza modelu, niezweryfikowane]) → krok 2. PMID 26797666, 34819306, 22821609, 33838968."
+    },
+    {
+      "nazwa": "nakłucie lędźwiowe z oceną ksantochromii (spektrofotometria) i erytrocytów w kolejnych probówkach",
+      "cel": "wykluczenie krwotoku przy ujemnej tomografii po >6 h od początku bólu",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "Tylko gdy tomografia ujemna. Dzień 3 to okno, w którym ksantochromia jest najbardziej wiarygodna (ok. 12 h do ok. 2 tygodni [wiedza modelu, niezweryfikowane]), więc nakłucie ma tu wysoką wartość i niski koszt. Dodatnie → angiotomografia/angiografia; ujemne → krwotok praktycznie wykluczony, dalej rozważyć zespół skurczu naczyń/rozwarstwienie. PMID 8870753, 18191293, 23756363."
+    },
+    {
+      "nazwa": "angiotomografia tętnic głowy i szyi",
+      "cel": "lokalizacja tętniaka po potwierdzeniu krwotoku; alternatywa dla nakłucia przy ujemnej tomografii; wykrycie rozwarstwienia i skurczu naczyń",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "Obowiązkowa po dodatniej tomografii lub dodatnim płynie. Jako zamiennik nakłucia przy ujemnej tomografii — dopuszczalna, gdy nakłucie niemożliwe/odmowa; minus: przypadkowe małe tętniaki (rzędu kilku procent populacji [wiedza modelu, niezweryfikowane]) generują kaskadę konsultacji i niepewność. Przy tej prezentacji (podejrzenie rozwarstwienia, zespołu skurczu) angiotomografia głowy i szyi ma dodatkową wartość, więc decyzję o kolejności 2 vs 3 zostawiam SOR/neurologowi. PMID 20370785, 26827168, 35258819, 23448246."
+    },
+    {
+      "nazwa": "pomiar ciśnienia tętniczego, badanie neurologiczne, ocena objawów oponowych (w gabinecie, jeśli pacjent jest fizycznie obecny, przed transportem)",
+      "cel": "zabezpieczenie transportu i przekazanie danych SOR",
+      "zmienia_decyzje": false,
+      "kolejnosc": 0,
+      "uwagi": "Nie zmienia decyzji o skierowaniu (skierowanie i tak natychmiast), ale wpływa na tryb transportu: zaburzenia świadomości, objawy ogniskowe lub bardzo wysokie ciśnienie → zespół ratownictwa medycznego zamiast transportu własnego. Nie może opóźniać wyjazdu."
+    },
+    {
+      "nazwa": "morfologia, koagulogram (INR, APTT), elektrolity, kreatynina, glukoza",
+      "cel": "przygotowanie do nakłucia/kontrastu/zabiegu",
+      "zmienia_decyzje": false,
+      "kolejnosc": 1,
+      "uwagi": "Wykonać w SOR równolegle z tomografią, nie w POZ przed skierowaniem."
+    }
+  ],
+  "nie_zlecac": [
+    {"nazwa": "RTG kręgosłupa szyjnego", "powod": "Nie zmienia decyzji, promieniowanie, a prawidłowy lub zwyrodnieniowy wynik fałszywie uspokaja i utrwala błędne rozpoznanie 'naciągnięcia karku'."},
+    {"nazwa": "rezonans magnetyczny kręgosłupa szyjnego / skierowanie do ortopedy lub fizjoterapeuty", "powod": "Odpowiada na niewłaściwe pytanie; kolejka tygodniowa nic nie rozstrzyga dziś."},
+    {"nazwa": "ambulatoryjne zlecenie tomografii głowy w trybie planowym lub 'pilnym' z POZ", "powod": "Każdy dzień zwłoki to ryzyko ponownego krwawienia z tętniaka; ponadto po ujemnej tomografii potrzebne jest nakłucie lędźwiowe w tym samym ciągu diagnostycznym, czego POZ nie zapewni."},
+    {"nazwa": "CRP, OB, D-dimer, badania kontrolne krwi w POZ przed skierowaniem", "powod": "Wynik nie zmienia decyzji o SOR, opóźnia wyjazd."},
+    {"nazwa": "próba leczenia objawowego (leki zwiotczające, niesteroidowe leki przeciwzapalne, opioidy) z kontrolą za kilka dni", "powod": "To najdroższa ścieżka: maskuje objawy i odracza rozpoznanie; ponadto niesteroidowe leki przeciwzapalne upośledzają agregację płytek przy możliwym krwawieniu [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "zwolnienie lekarskie z rozpoznaniem bólu karku bez diagnostyki", "powod": "Dokumentuje błędne rozpoznanie; zwolnienie wystawi szpital po rozpoznaniu."},
+    {"nazwa": "angiografia klasyczna (cyfrowa subtrakcyjna) jako pierwsze badanie", "powod": "Inwazyjna i dostępna później; zarezerwować na po angiotomografii/neurochirurgii."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla bólu piorunującego/krwotoku podpajęczynówkowego (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wpisów dotyczących bólu głowy",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'computed tomography sensitivity subarachnoid hemorrhage time from headache onset beyond 6 hours' → PMID 26797666 (metaanaliza czułości wczesnej tomografii), 34819306 (czułość wielorzędowej tomografii w kolejnych punktach czasowych), 22821609 (zależność czułości od czasu), 33838968 (nakłucie po >6 h), 8870753 (nakłucie nadal potrzebne przy prawidłowej tomografii), 27306497 (metaanaliza wywiadu, badania, obrazowania i nakłucia)",
+    "WebSearch: 'Ottawa subarachnoid hemorrhage rule validation acute headache' → PMID 29133539 (walidacja reguły Ottawa), 25511365, 24065011",
+    "WebSearch: 'CT angiography versus lumbar puncture after negative CT subarachnoid hemorrhage' → PMID 20370785, 26827168 (koszt-efektywność angiotomografii vs nakłucia), 35258819 (EPIC-ACT: przypadkowe tętniaki w angiotomografii), 18191293, 23756363, 23448246",
+    "WebSearch: 'missed subarachnoid hemorrhage misdiagnosis delayed diagnosis outcome rebleeding' → PMID 14970066 (błędne rozpoznanie wstępne a wynik leczenia), 29675720, 21682568",
+    "WebSearch: '2023 guideline management aneurysmal subarachnoid hemorrhage American Heart Association' → PMID 37212182 (wytyczne AHA/ASA 2023)",
+    "WebSearch: 'thunderclap headache causes reversible cerebral vasoconstriction syndrome cervical artery dissection imaging' → PMID 26252591, 29274685",
+    "Dokładne wartości czułości tomografii po 72 h, okno ksantochromii i częstość przypadkowych tętniaków: [wiedza modelu, niezweryfikowane] — PMID wskazują badania tematyczne, liczby nie zostały odczytane z abstraktów"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Reakcja polekowa z eozynofilią i objawami ogólnymi wywołana allopurynolem",
+      "p": 0.113,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Reakcja polekowa z eozynofilią i objawami układowymi (zespół DRESS) wywołana allopurynolem",
+      "p": 0.093,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Objawy polekowe — allopurynol: reakcja polekowa z eozynofilią i objawami ogólnoustrojowymi (DRESS)",
+      "p": 0.068,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Reakcja polekowa z eozynofilią i objawami układowymi (zespół DRESS) wywołana allopurynolem, z zajęciem wątroby i nerek",
+      "p": 0.05,
+      "wymienili": [
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "polekowa reakcja z eozynofilią i objawami układowymi wywołana allopurynolem",
+      "p": 0.049,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.035,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Hemofagocytowa limfohistiocytoza wtórna do zespołu DRESS (PMID 32964443, 36438790). Wykluczy: ferrytyna, triglicerydy, fibrynogen, kontrola morfologii (cytopenie)",
+      "Hiperkaliemia — ramipril przy ostrym uszkodzeniu nerek; potas nieznany",
+      "Hipowolemia / hipotensja ortostatyczna (zawroty przy wstawaniu, gorączka, oliguria, amlodypina + ramipryl) — parametry życiowe NIEZNANE. Wykluczy: ciśnienie tętnicze leżąc/stojąc, tętno, saturacja, ocena nawodnienia",
+      "Kontynuowanie allopurynolu — każda kolejna dawka podtrzymuje reakcję; czy pacjentka nadal go przyjmuje: NIEZNANE",
+      "Nakładanie z zespołem Stevensa-Johnsona / toksyczną nekrolizą naskórka — pęcherze i zmiany na błonach śluzowych niezweryfikowane badaniem",
+      "Ostre uszkodzenie nerek (kreatynina 1,6 vs 1,0 mg/dl = 1,6×, KDIGO stopień 1 [wiedza modelu, niezweryfikowane]; eGFR CKD-EPI 2021 ok. 34 ml/min/1,73 m² wyliczony z kreatyniny) z oligurią i ciemnym moczem — w tym składowa hemodynamiczna ramiprilu przy odwodnieniu",
+      "Ostre uszkodzenie nerek (kreatynina 1,6 vs 1,0 mg/dl, ×1,6) ze skąpomoczem i bardzo ciemnym moczem — możliwe śródmiąższowe zapalenie nerek w DRESS nałożone na komponent przednerkowy (odwodnienie, ramipryl)",
+      "Ostre uszkodzenie nerek z oligurią (kreatynina 1,6 vs 1,0 mg/dl; ≥1,5 × wartości wyjściowej = co najmniej stopień 1 wg KDIGO, oliguria może oznaczać wyższy stopień [wiedza modelu, niezweryfikowane]) przy jednoczesnym ramiprylu — ryzyko szybkiej progresji i hiperkaliemii; potas NIEZNANY. Wykluczy: aktualna kreatynina, potas, gazometria, diureza godzinowa w szpitalu",
+      "Ostre uszkodzenie nerek: kreatynina 1,6 mg/dl (wyjściowo 1,0) z oligurią i ciemnym moczem",
+      "Pewność co do leku sprawczego: allopurynol vs amoksycylina — ważne dla dalszego unikania obu leków",
+      "Polekowe zapalenie wątroby (ALT 186 U/l, AST 140 U/l) — bilirubina i INR nieznane",
+      "Polekowe zapalenie wątroby z ryzykiem ostrej niewydolności wątroby (ALT 186, AST 140 U/l). Wykluczy: bilirubina, INR, albumina, powtórne ALT w ciągu 24–48 h",
+      "Ramipryl i ewentualnie inne leki nefrotoksyczne przy ostrym uszkodzeniu nerek i odwodnieniu",
+      "Ryzyko dalszego postępu DRESS (zajęcie serca, płuc, cytopenie, reaktywacja HHV-6) przy kontynuowaniu allopurynolu",
+      "Sepsa bakteryjna — nie wykluczona bez badania i posiewów krwi",
+      "Wczesny zespół Stevensa-Johnsona / toksyczne martwicze oddzielanie się naskórka (nakładanie z DRESS, PMID 39416556). Wykluczy: badanie skóry (objaw Nikolskiego, pęcherze, odsetek powierzchni ciała) i błon śluzowych przez lekarza",
+      "Zajęcie innych narządów w DRESS (serce, płuca, tarczyca) — nieocenione",
+      "Zajęcie serca (zapalenie mięśnia sercowego) i płuc w DRESS — nieocenione (PMID 33777581)",
+      "Zajęcie wątroby: ALT 186 U/l, AST 140 U/l - brak bilirubiny i INR",
+      "Zapalenie mięśnia sercowego w przebiegu zespołu DRESS — rzadkie, ale najczęstsza przyczyna zgonu późnego, bywa piorunujące (PMID 21658796, 39086788, 39422393). Wykluczy: EKG, troponina, NT-proBNP; echokardiografia przy nieprawidłowościach",
+      "Zapalenie wątroby polekowe (ALT 186, AST 140 U/l) — bilirubina, INR, fosfataza zasadowa nieznane",
+      "Zawroty ortostatyczne przy gorączce - możliwa hipotensja i odwodnienie; parametry życiowe NIEZNANE",
+      "Zawroty ortostatyczne przy gorączce — możliwa hipotensja i odwodnienie; parametry życiowe NIEZNANE",
+      "Zawroty ortostatyczne — możliwa hipowolemia lub hipotensja nasilana przez ramipril i amlodypinę; brak pomiaru ciśnienia i tętna",
+      "dalsza ekspozycja na allopurynol, jeśli chora nadal go przyjmuje",
+      "eozynofilia 2,1 G/l — ryzyko zajęcia serca i płuc (nieoceniane: brak EKG, osłuchiwania, saturacji)",
+      "ostre uszkodzenie nerek z oligurią (kreatynina 1,6 mg/dl wobec 1,0 mg/dl) u pacjentki przyjmującej ramipryl",
+      "ostre uszkodzenie nerek z oligurią i ciemnym moczem (kreatynina 1,6 mg/dl, wzrost o 60% w pół roku) u chorej na ramiprylu",
+      "polekowe uszkodzenie wątroby (ALT 186 U/l, ok. 5× górnej granicy normy) [próg normy: wiedza modelu, niezweryfikowane]",
+      "polekowe zapalenie wątroby (ALT 186 U/l); bilirubina i INR NIEZNANE",
+      "uogólniona osutka — powierzchnia ciała i błony śluzowe niezbadane",
+      "zajęcie serca (zapalenie mięśnia sercowego w przebiegu reakcji, opisywane jako przyczyna zgonów: PMID 39086788, 33777581) niewykluczone",
+      "zawroty ortostatyczne przy gorączce — możliwa hipotensja i odwodnienie (parametry życiowe NIEZNANE)",
+      "zawroty ortostatyczne: możliwa hipowolemia/hipotensja; parametry życiowe NIEZNANE"
+    ],
+    "wykluczone": [
+      "Istotna niedokrwistość — Hb 12,9 g/dl",
+      "Małopłytkowość (PLT 210 G/l) — brak cech zespołu hemofagocytowego na dziś",
+      "Objawy martwicy naskórka/zespołu Stevensa-Johnsona w ankiecie nieobecne (pacjentka zaprzeczyła zmianom skórnym z listy alarmowej) - wykluczenie tylko wstępne, bez badania fizykalnego błon śluzowych",
+      "Pęcherze, nadżerki błon śluzowych, złuszczanie naskórka (zespół Stevensa-Johnsona / toksyczna nekroliza naskórka) — pacjentka w ankiecie zaprzecza zmianom skórnym z listy; wykluczenie tylko wstępne, bez badania fizykalnego",
+      "Trombocytopenia — PLT 210 G/l",
+      "Wcześniejsza reakcja nadwrażliwości na amoksycylinę — zaprzeczona (lek tolerowany w przeszłości)",
+      "Zakażenie od kontaktu (brak chorujących z gorączką i osutką w otoczeniu) - słabo",
+      "ciężkie zakażenie zakaźne dla otoczenia (odra, ospa) — mało prawdopodobne: brak kontaktu z chorymi z gorączką i wysypką; nie wymaga izolacji na tym etapie (nie wykluczone formalnie, ale nie podnosi pilności)",
+      "kontakt z osobami z gorączką i wysypką — zaprzeczony",
+      "małopłytkowość (PLT 210 G/l)",
+      "nawrót zapalenia gardła / ropień okołomigdałkowy — gardło obecnie nie boli",
+      "objawy ze strony błon śluzowych i pęcherze/złuszczanie naskórka — w ankiecie zaprzeczone (wymaga potwierdzenia oglądaniem, bo przesądza o zespole Stevensa-Johnsona lub toksycznej nekrolizie naskórka)",
+      "uprzednio znana alergia na antybiotyk — brak; ten sam antybiotyk tolerowany wcześniej (osłabia hipotezę amoksycyliny jako przyczyny DRESS)",
+      "zajęcie błon śluzowych i pęcherze/nadżerki skóry według ankiety nieobecne (mniej prawdopodobny zespół Stevensa-Johnsona/toksyczna nekroliza naskórka; wymaga potwierdzenia w badaniu przedmiotowym)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "wysoka",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

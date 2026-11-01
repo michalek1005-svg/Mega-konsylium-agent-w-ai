@@ -1,0 +1,7 @@
+1: dusznosc, objawy_nagle, bol_klatki, przebieg
+2: pomiar, saturacja, tetno
+3: cisnienie_skurczowe, lydka_wyglad, lydka_uraz
+4: goraczka_kaszel, ryzyko
+5: choroby, przeciwkrzepliwe, przeciwbolowe
+6: alergie, leki_stale
+7: badania, badania_wynik, obawy (--koniec)

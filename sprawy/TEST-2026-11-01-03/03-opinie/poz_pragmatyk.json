@@ -1,0 +1,128 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Zatorowość płucna wtórna do zakrzepicy żył głębokich lewej kończyny dolnej",
+      "p": 0.62,
+      "za": [
+        "Jednostronny obrzęk, ocieplenie i tkliwość tylnej powierzchni lewej łydki, ból narastający stopniowo, bez urazu (objawy kliniczne zakrzepicy żył głębokich)",
+        "14 godzin jazdy autokarem 4–5 dni przed objawami",
+        "Doustna terapia hormonalna menopauzy (estradiol 1 mg + dydrogesteron 10 mg) od roku",
+        "Żylna choroba zakrzepowo-zatorowa u krewnych pierwszego stopnia",
+        "Nowy ból opłucnowy prawostronny, kaszel, spadek tolerancji wysiłku",
+        "Tętno 104/min i SpO2 94% w spoczynku (pomiar domowy)",
+        "Stan przedomdleniowy od wczoraj",
+        "Skala Wellsa dla zatorowości płucnej ok. 7,5 pkt (objawy zakrzepicy żył głębokich 3 + zatorowość najbardziej prawdopodobna 3 + tętno >100/min 1,5) = wysokie prawdopodobieństwo kliniczne [punktacja: wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Ciśnienie skurczowe 132 mmHg, brak wstrząsu",
+        "Duszność dopiero przy większym wysiłku (2 piętra)",
+        "Objawy stabilne od rana",
+        "Brak badania fizykalnego i pomiarów w gabinecie (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z inną przyczyną bólu w klatce piersiowej",
+      "p": 0.12,
+      "za": [
+        "Obraz łydki typowy dla zakrzepicy",
+        "Kaszel może sugerować infekcję dróg oddechowych z odczynem opłucnowym"
+      ],
+      "przeciw": [
+        "Tachykardia, SpO2 94% i stan przedomdleniowy trudno wytłumaczyć samą zakrzepicą łydki"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie płuc z odczynem opłucnowym",
+      "p": 0.07,
+      "za": [
+        "Kaszel, ból opłucnowy, SpO2 94%, tachykardia"
+      ],
+      "przeciw": [
+        "Nie podano gorączki ani odkrztuszania",
+        "Nie tłumaczy objawów z łydki"
+      ]
+    },
+    {
+      "nazwa": "Naderwanie mięśnia brzuchatego łydki i ból mięśniowo-szkieletowy ściany klatki piersiowej",
+      "p": 0.04,
+      "za": [
+        "Interpretacja pacjentki i lekarza prowadzącego (spacer po podróży)"
+      ],
+      "przeciw": [
+        "Brak momentu urazu, ból narastający stopniowo",
+        "Ocieplenie i obrzęk łydki",
+        "Tachykardia, desaturacja, stan przedomdleniowy"
+      ]
+    },
+    {
+      "nazwa": "Pęknięta torbiel podkolanowa",
+      "p": 0.02,
+      "za": [
+        "Ból i obrzęk łydki"
+      ],
+      "przeciw": [
+        "Nie tłumaczy objawów oddechowych ani hemodynamicznych"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Niestabilność hemodynamiczna na moment ankiety: ciśnienie skurczowe 132 mmHg (pomiar domowy, jednorazowy)"
+  ],
+  "red_flags_otwarte": [
+    "Podejrzenie zatorowości płucnej przy wysokim prawdopodobieństwie klinicznym (Wells ok. 7,5)",
+    "Stan przedomdleniowy: w metaanalizach omdlenie w zatorowości płucnej wiąże się z częstszą niestabilnością hemodynamiczną i dysfunkcją prawej komory (PMID 30339253, 32461009)",
+    "SpO2 94% i tętno 104/min w spoczynku",
+    "Zakrzepica żył głębokich lewej kończyny dolnej (obrzęk, ocieplenie, tkliwość) bez potwierdzenia ultrasonograficznego",
+    "Brak badania fizykalnego, EKG, ponownego pomiaru parametrów przez personel medyczny (NIEZNANE)",
+    "Pacjentka bierze ibuprofen: po rozpoczęciu leczenia przeciwkrzepliwego zwiększa ryzyko krwawienia"
+  ],
+  "nastepny_krok": "Teraz telefon do pacjentki: wezwać Zespół Ratownictwa Medycznego (112/999) z rozpoznaniem roboczym „podejrzenie zatorowości płucnej, zakrzepica żył głębokich lewej kończyny dolnej, stan przedomdleniowy”; pacjentka nie jedzie sama samochodem, nie czeka na wizytę ani na D-dimer w Podstawowej Opiece Zdrowotnej, zabiera listę leków.",
+  "co_zmieniloby_zdanie": "Pilność obniżyłbym do 2 (Szpitalny Oddział Ratunkowy dziś, transportem rodziny) tylko wtedy, gdyby w gabinecie badanie wykazało SpO2 ≥96%, tętno <100/min, brak cech zakrzepicy łydki, a stan przedomdleniowy okazał się mieć inną jasną przyczynę; nie znam też odległości do Szpitalnego Oddziału Ratunkowego i tego, czy pacjentka jest sama w domu.",
+  "plan_poz": {
+    "teraz_w_gabinecie_lub_telefonicznie": [
+      "Kontakt z pacjentką od razu (teleporada); jeśli jest w gabinecie: pomiar ciśnienia, tętna, SpO2, EKG 12-odprowadzeniowe, jeśli dostępne bez zwłoki — ale nie opóźniać wezwania karetki",
+      "Wezwanie Zespołu Ratownictwa Medycznego: uzasadnienie dla dyspozytora — stan przedomdleniowy, tętno 104/min, SpO2 94%, ból opłucnowy, jednostronny obrzęk łydki po 14-godzinnej podróży, doustna terapia hormonalna",
+      "Skierowanie/notatka do Szpitalnego Oddziału Ratunkowego: podejrzenie zatorowości płucnej (I26.9) i zakrzepicy żył głębokich lewej kończyny dolnej (I80.2), Wells ok. 7,5, leki: estradiol 1 mg + dydrogesteron 10 mg, amlodypina 5 mg, ibuprofen doraźnie od 4 dni; brak alergii",
+      "Wstrzymać doustną terapię hormonalną menopauzy (estradiol + dydrogesteron) do decyzji szpitala",
+      "Odstawić ibuprofen; doraźnie paracetamol 1 g, maks. 4 g/dobę [wiedza modelu, niezweryfikowane]; nie zalecać „mocniejszego” leku przeciwbólowego ani opioidu w domu — maskuje objawy i opóźnia diagnostykę",
+      "Jeżeli pacjentka jest w gabinecie, transport się przeciąga, a gabinet ma enoksaparynę: rozważenie dawki terapeutycznej (1 mg/kg podskórnie) przed transportem z adnotacją w skierowaniu — zgodnie z zasadą wczesnej antykoagulacji przy wysokim prawdopodobieństwie klinicznym [ESC 2019, PMID 31504429 — brak streszczenia w PubMed, wiedza modelu, niezweryfikowane]"
+    ],
+    "nie_zlecac": [
+      "D-dimeru w Podstawowej Opiece Zdrowotnej: przy wysokim prawdopodobieństwie klinicznym wskazane jest badanie obrazowe, nie D-dimer (PMID 41838990); wynik z laboratorium POZ przyjdzie za późno i nie zmieni decyzji",
+      "Planowego USG Doppler żył kończyn dolnych z terminem",
+      "RTG klatki piersiowej w trybie ambulatoryjnym jako badania rozstrzygającego"
+    ],
+    "do_kogo_i_tryb": "Szpitalny Oddział Ratunkowy, tryb natychmiastowy, transportem Zespołu Ratownictwa Medycznego (angiografia tomografii komputerowej tętnic płucnych, USG uciskowe, troponina, NT-proBNP, echokardiografia — niedostępne w POZ).",
+    "kontrola": "Wizyta w POZ w ciągu 7 dni od wypisu: kontynuacja leczenia przeciwkrzepliwego (realny dostęp i koszt leku), stała rezygnacja z doustnej estrogenoterapii, decyzja o dalszym leczeniu objawów menopauzy z ginekologiem, edukacja o profilaktyce w kolejnych długich podróżach.",
+    "zdanie_dla_pacjentki": "To nie wygląda na naciągnięty mięsień ani nerwoból — objawy pasują do zakrzepu w nodze, który mógł przemieścić się do płuc, dlatego proszę teraz wezwać karetkę, nie prowadzić samochodu i nie brać więcej ibuprofenu.",
+    "wykonalnosc": "Plan jest wykonalny: pacjentka ma pulsoksymetr i ciśnieniomierz, sama zgłosiła się przez aplikację; jedyna bariera to możliwe zbagatelizowanie przez dyspozytora — dlatego lekarz POZ dzwoni sam lub podaje pacjentce konkretne parametry do przekazania. Gdyby odmówiła karetki: transport osobą towarzyszącą do najbliższego Szpitalnego Oddziału Ratunkowego od razu, nigdy samodzielnie za kierownicą.",
+    "odpowiedz_na_pytanie_lekarza": "Nie — do czasu wykluczenia zatorowości płucnej nie wolno rozpoznawać bólu mięśniowego i nerwobólu międzyżebrowego; „mocniejszy lek przeciwbólowy” jest tu błędem, ibuprofen należy odstawić."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla zatorowości płucnej i koszyka badań POZ (same przykłady); pamiec/zespol.md — brak realiów lokalnych (odległość do SOR nieznana)",
+    "Zapytanie PubMed 1: 'pulmonary embolism diagnosis primary care Wells rule D-dimer' (od 2010) — skuteczne",
+    "Zapytanie PubMed 2: 'oral estrogen hormone replacement therapy venous thromboembolism risk dydrogesterone' (od 2015) — skuteczne",
+    "Zapytanie PubMed 3: 'syncope pulmonary embolism prognosis mortality' (od 2015) — niesprawdzone streszczenia, nie liczę",
+    "Zapytanie PubMed 4: 'syncope[Title] AND pulmonary embolism[Title] AND (meta-analysis OR systematic review)' — skuteczne",
+    "Zapytanie PubMed 5: 'long-haul travel[Title/Abstract] AND venous thrombosis[MeSH Terms] AND risk' — skuteczne",
+    "Zapytanie PubMed 6: '2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism[Title]' — bez oryginału w pierwszych wynikach, nie liczę",
+    "Zapytanie PubMed 7: 'nonsteroidal anti-inflammatory drugs anticoagulant venous thromboembolism bleeding risk' (od 2015) — niesprawdzone, nie liczę",
+    "Zapytanie PubMed 8: 'NSAID[Title] AND bleeding[Title] AND venous thromboembolism[Title] AND anticoagulation' — 0 wyników",
+    "Zapytanie PubMed 9: 'anti-inflammatory drugs[Title] AND bleeding AND (EINSTEIN OR rivaroxaban) AND venous thromboembolism' — skuteczne",
+    "PMID 41838990 — Greenberg J i wsp. Chest Pain: Evaluation in the Office Setting. FP Essent 2026 (brak DOI w rekordzie): w POZ ocena zatorowości skalą Wellsa; niskie/pośrednie ryzyko → D-dimer, wysokie → badanie obrazowe; stany zagrożenia życia transportować na SOR przez zespół ratownictwa (streszczenie sprawdzone)",
+    "PMID 39915029 — YEARS w POZ, Holandia, BMJ Open 2025, DOI 10.1136/bmjopen-2024-091543: częstość zatorowości wśród podejrzanych w POZ 5,5% (streszczenie sprawdzone; tło — u tej pacjentki prawdopodobieństwo przedtestowe znacznie wyższe)",
+    "PMID 35077453 — IPD metaanaliza strategii wykluczania zatorowości w różnych miejscach opieki, PLoS Med 2022, DOI 10.1371/journal.pmed.1003905 (streszczenie sprawdzone; tło)",
+    "PMID 30626577 — Vinogradova Y i wsp. BMJ 2019, DOI 10.1136/bmj.k4810: doustna HTZ aOR 1,58 dla żylnej choroby zakrzepowo-zatorowej; estradiol + dydrogesteron aOR 1,18 (0,98–1,42); preparaty przezskórne bez wzrostu ryzyka (streszczenie sprawdzone)",
+    "PMID 33757918 — CNGOF/GEMVi 2021, DOI 10.1016/j.gofs.2021.03.018: doustna estrogenoterapia zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej o ok. 70%; u kobiet z ryzykiem zakrzepowym doustna HTZ przeciwwskazana (streszczenie sprawdzone)",
+    "PMID 30339253 — Barco S i wsp. Eur Heart J 2018, DOI 10.1093/eurheartj/ehy631: omdlenie w zatorowości płucnej — niestabilność hemodynamiczna OR 3,50, dysfunkcja prawej komory OR 2,10, wczesny zgon OR 1,73 (streszczenie sprawdzone)",
+    "PMID 32461009 — de Winter MA i wsp. Ann Emerg Med 2020, DOI 10.1016/j.annemergmed.2020.03.026: omdlenie u 10–20% chorych z zatorowością; śmiertelność OR 1,82, zależna od niestabilności hemodynamicznej (streszczenie sprawdzone)",
+    "PMID 40015328 — Papadakis E i wsp. Semin Thromb Hemost 2025, DOI 10.1055/s-0045-1805038: długa podróż zwiększa ryzyko zakrzepicy, szczególnie przy dodatkowych czynnikach ryzyka, m.in. trombofilii (streszczenie sprawdzone)",
+    "PMID 24733305 — Davidson BL i wsp. JAMA Intern Med 2014, DOI 10.1001/jamainternmed.2014.946: NLPZ + antykoagulant w żylnej chorobie zakrzepowo-zatorowej — duże krwawienia HR 2,37 (streszczenie sprawdzone)",
+    "PMID 39492109 — Zheng Y i wsp. Thromb Res 2023, DOI 10.1016/j.thromres.2023.10.011: NLPZ + doustny antykoagulant zwiększają ryzyko krwawień z przewodu pokarmowego (streszczenie sprawdzone)",
+    "PMID 31504429 — Konstantinides SV i wsp. 2019 ESC Guidelines acute pulmonary embolism, Eur Heart J 2020, DOI 10.1093/eurheartj/ehz405: brak streszczenia w PubMed — zalecenia dot. wczesnej antykoagulacji i punktacji Wellsa [wiedza modelu, niezweryfikowane]",
+    "Dawkowanie paracetamolu i enoksaparyny — [wiedza modelu, niezweryfikowane]; brak ChPL w zrodla/"
+  ]
+}

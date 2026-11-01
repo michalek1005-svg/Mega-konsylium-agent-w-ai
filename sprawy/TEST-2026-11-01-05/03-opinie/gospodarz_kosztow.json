@@ -1,0 +1,130 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "Niedokrwistość z niedoboru żelaza wtórna do obfitych krwawień miesięcznych",
+      "p": 0,
+      "za": ["Hb 10,8 g/dl, MCV 76 fl, ferrytyna 8 ng/ml — rozpoznanie postawione już istniejącymi wynikami", "obfite miesiączki ze skrzepami i zmianą podpaski częściej niż co 2 h od ponad roku", "dieta wegetariańska od 2 lat", "łamliwe paznokcie, zajady, wypadanie włosów, zmęczenie"],
+      "przeciw": ["brak badania fizykalnego i parametrów życiowych (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Subkliniczna niedoczynność tarczycy (niepotwierdzona, jednorazowy pomiar)",
+      "p": 0,
+      "za": ["TSH 5,4 mIU/l przy FT4 1,1 ng/dl w normie", "choroba tarczycy w rodzinie"],
+      "przeciw": ["pojedynczy pomiar — znaczna część łagodnych podwyższeń TSH normalizuje się samoistnie", "niedobór żelaza upośledza czynność peroksydazy tarczycowej i może sam podnosić TSH", "anty-TPO nieoznaczone"]
+    },
+    {
+      "nazwa": "Przewlekłe autoimmunologiczne zapalenie tarczycy (choroba Hashimoto)",
+      "p": 0,
+      "za": ["wywiad rodzinny choroby tarczycy", "TSH powyżej normy laboratoryjnej"],
+      "przeciw": ["brak oznaczenia anty-TPO — rozpoznanie na razie niemożliwe"]
+    },
+    {
+      "nazwa": "Strukturalna przyczyna obfitych krwawień miesięcznych (mięśniak, polip endometrium)",
+      "p": 0,
+      "za": ["krwawienia obfite ze skrzepami narastające od ponad roku, nie od pierwszej miesiączki"],
+      "przeciw": ["brak badania ginekologicznego i obrazowego"]
+    },
+    {
+      "nazwa": "Celiakia jako współprzyczyna niedoboru żelaza",
+      "p": 0,
+      "za": ["niedobór żelaza u dorosłej; autoimmunizacja tarczycy w rodzinie zwiększa ryzyko"],
+      "przeciw": ["jest wystarczające wyjaśnienie: obfite miesiączki i dieta wegetariańska"]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "aktualne masywne krwawienie (obecnie brak miesiączki)",
+    "myśli samobójcze w ostatnich 2 tygodniach (zaprzecza)",
+    "zmiany w okolicy szyi (wole, guzek, ucisk — zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "ciąża niewykluczona obiektywnie — pacjentka deklaruje 'nie', ale jednocześnie stara się o dziecko; test ciążowy jest tani i zmienia cel TSH i dalsze postępowanie",
+    "objawowość niedokrwistości (tętno, ciśnienie, duszność wysiłkowa) — brak badania fizykalnego (NIEZNANE)",
+    "strukturalna przyczyna krwotocznych miesiączek nieoceniona (brak USG przezpochwowego / badania ginekologicznego)"
+  ],
+  "nastepny_krok": "Na tej wizycie: test ciążowy z moczu, badanie fizykalne z tętnem i ciśnieniem, włączenie doustnego żelaza (preferencyjnie co drugi dzień) i kwasu foliowego; jednym pobraniem za 6–8 tygodni: TSH + FT4 + anty-TPO + morfologia + ferrytyna — lewotyroksyny dziś nie włączać.",
+  "co_zmieniloby_zdanie": "Dodatni test ciążowy (wtedy TSH 5,4 przekracza zakres ciążowy i lewotyroksyna jest wskazana od razu, bez czekania na powtórkę) albo powtórne TSH ≥4–5 mIU/l z dodatnimi anty-TPO przed planowanym poczęciem.",
+  "badania": [
+    {
+      "nazwa": "Test ciążowy z moczu (lub beta-hCG z krwi)",
+      "cel": "Obiektywne wykluczenie ciąży u kobiety starającej się o dziecko",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Dodatni → lewotyroksyna od razu (TSH 5,4 > zakres ciążowy), pilne potwierdzenie i opieka położnicza, żelazo jak w ciąży. Ujemny → ścieżka przedkoncepcyjna z powtórką TSH. Koszt kilka złotych, wynik w minutach."
+    },
+    {
+      "nazwa": "Badanie fizykalne z tętnem, ciśnieniem, oceną szyi",
+      "cel": "Ocena tolerancji niedokrwistości i palpacyjna ocena tarczycy",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Tachykardia spoczynkowa / hipotonia ortostatyczna → szybsza ścieżka (żelazo dożylne, pilniejsza ginekologia). Wyczuwalny guzek → dopiero wtedy USG tarczycy."
+    },
+    {
+      "nazwa": "Anty-TPO",
+      "cel": "Rozstrzyga autoimmunologiczne tło podwyższonego TSH i ryzyko progresji",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "U kobiety planującej ciążę to jedyne badanie tarczycowe, które realnie zmienia postępowanie: dodatnie + TSH >2,5 przedkoncepcyjnie → rozważenie lewotyroksyny [wiedza modelu, niezweryfikowane — ATA 2017]; ujemne + TSH w normie po wyrównaniu żelaza → bez leczenia. Pobierać razem z powtórnym TSH, nie osobno."
+    },
+    {
+      "nazwa": "Powtórne TSH + FT4",
+      "cel": "Potwierdzenie subklinicznej niedoczynności — jedno podwyższenie nie wystarcza",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "Za 6–8 tygodni, rano, po kilku tygodniach suplementacji żelaza; bez biotyny 48 h przed pobraniem [wiedza modelu, niezweryfikowane]. Łagodne podwyższenia TSH często normalizują się samoistnie (PMID 15811925, 26342200)."
+    },
+    {
+      "nazwa": "Morfologia + ferrytyna (kontrola)",
+      "cel": "Ocena odpowiedzi na żelazo doustne",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "To samo pobranie co TSH. Wzrost Hb ≥1 g/dl po ok. 4 tyg. = skuteczność [wiedza modelu, niezweryfikowane]; brak wzrostu → celiakia, nietolerancja, dalsza utrata → żelazo dożylne. Wcześniejsza oddzielna kontrola (np. po 2 tyg.) nie zmienia decyzji."
+    },
+    {
+      "nazwa": "Przeciwciała przeciw transglutaminazie tkankowej IgA z IgA całkowitym",
+      "cel": "Wykluczenie celiakii jako współprzyczyny niedoboru żelaza",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "BSG 2021 zaleca serologię celiakii u wszystkich dorosłych z niedokrwistością z niedoboru żelaza (PMID 34497146); tanie, a dodatni wynik zmienia leczenie i wpływa na płodność. Można dołączyć do pierwszego pobrania; bezwzględnie jeśli brak odpowiedzi na żelazo."
+    },
+    {
+      "nazwa": "Witamina B12",
+      "cel": "Niedobór współistniejący przy diecie wegetariańskiej przed ciążą",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "Tania; niski wynik → suplementacja przed koncepcją. Mikrocytoza z niedoboru żelaza może maskować komponentę makrocytarną."
+    },
+    {
+      "nazwa": "USG przezpochwowe + konsultacja ginekologiczna",
+      "cel": "Przyczyna obfitych krwawień (mięśniaki, polipy, adenomioza) i leczenie źródła utraty żelaza",
+      "zmienia_decyzje": true,
+      "kolejnosc": 2,
+      "uwagi": "Bez zahamowania utraty krwi suplementacja żelaza gasi pożar przy otwartym kranie. Planowo (tygodnie), nie pilnie, o ile brak niestabilności; skierowanie wystawić na tej wizycie, bo kolejka jest kosztem czasu."
+    }
+  ],
+  "nie_zlecac": [
+    {"nazwa": "USG tarczycy", "powod": "Brak wyczuwalnych zmian i objawów szyjnych; wynik (np. obraz zapalny, drobne guzki) nie zmienia decyzji o lewotyroksynie, a przypadkowe guzki uruchamiają kaskadę biopsji i kontroli."},
+    {"nazwa": "FT3", "powod": "Przy prawidłowym FT4 i łagodnie podwyższonym TSH nie zmienia ani rozpoznania, ani leczenia."},
+    {"nazwa": "Anty-TG (przeciwciała przeciw tyreoglobulinie)", "powod": "Rutynowo nie zmienia postępowania — decyzję opiera się na anty-TPO i TSH [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "TSH jutro / natychmiastowa powtórka", "powod": "Powtórka przed 6 tygodniami i przed wyrównaniem niedoboru żelaza nie odróżni przejściowego od trwałego podwyższenia TSH (niedobór żelaza wiąże się z zaburzeniami czynności tarczycy, PMID 33716980)."},
+    {"nazwa": "Pełny panel krzepnięcia / czynnik von Willebranda rutynowo", "powod": "Krwawienia obfite od roku, nie od menarche; najpierw ustrukturyzowane pytania przesiewowe o skazę (krwawienia z dziąseł, po zabiegach, rodzinne) — testy dopiero przy dodatnim wywiadzie (PMID 39644046)."},
+    {"nazwa": "Kwas foliowy w surowicy", "powod": "Suplementacja kwasu foliowego jest wskazana przedkoncepcyjnie niezależnie od wyniku — oznaczenie nie zmienia decyzji."},
+    {"nazwa": "Endoskopia przewodu pokarmowego", "powod": "U 34-latki przed menopauzą z jawną utratą miesiączkową i bez objawów z przewodu pokarmowego niewskazana na start; dopiero przy braku odpowiedzi na żelazo lub dodatniej serologii celiakii (PMID 34497146)."},
+    {"nazwa": "Lewotyroksyna 'na próbę' dziś", "powod": "Leczenie jednorazowego TSH 5,4 bez anty-TPO, przy ciężkim niedoborze żelaza mogącym podnosić TSH, grozi dożywotnim leczeniem bez wskazań; u nieciężarnej czekanie 6–8 tygodni jest bezpieczne. Lewotyroksyna nie poprawiła liczby żywych urodzeń u eutyreotycznych kobiet z anty-TPO (TABLET, PMID 30907987)."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych tarczycowych/hematologicznych w bibliotece (tylko przykłady)",
+    "pamiec/zespol.md — brak wpisów dotyczących tarczycy ani niedokrwistości",
+    "WebSearch (pubmed.ncbi.nlm.nih.gov): '2017 American Thyroid Association guidelines thyroid disease pregnancy postpartum' — trafienia przeglądowe (PMID 29246752, 36958843); samej wytycznej ATA 2017 nie znaleziono → odniesienia do ATA oznaczone [wiedza modelu, niezweryfikowane]",
+    "WebSearch: 'levothyroxine thyroid peroxidase antibodies euthyroid women miscarriage TABLET trial' — PMID 30907987 (TABLET, NEJM 2019), 31617987 (raport HTA TABLET)",
+    "WebSearch: 'iron deficiency thyroid function TSH thyroid peroxidase activity women' — PMID 33716980 (metaanaliza: niedobór żelaza czynnikiem ryzyka zaburzeń tarczycy u kobiet w wieku rozrodczym), 38923898",
+    "WebSearch: 'alternate day oral iron supplementation absorption iron-deficient women hepcidin' — PMID 31413088, 29032957, 26289639",
+    "WebSearch: 'British Society of Gastroenterology guidelines iron deficiency anaemia adults 2021 coeliac serology' — PMID 34497146 (BSG 2021)",
+    "WebSearch: 'subclinical hypothyroidism repeat TSH normalization spontaneous follow-up' — PMID 15811925, 26342200",
+    "WebSearch: 'heavy menstrual bleeding assessment transvaginal ultrasound von Willebrand screening women guideline' — PMID 39644046",
+    "WebSearch: '2014 European Thyroid Association guidelines subclinical hypothyroidism pregnancy and children' — PMID 25114871 (ETA 2014)",
+    "Próg TSH >2,5 mIU/l przedkoncepcyjnie przy dodatnich anty-TPO, Hb ≥1 g/dl po 4 tyg., biotyna 48 h — [wiedza modelu, niezweryfikowane]"
+  ]
+}

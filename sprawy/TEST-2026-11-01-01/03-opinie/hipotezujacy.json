@@ -1,0 +1,96 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Reakcja polekowa z eozynofilią i objawami układowymi (zespół DRESS) wywołana allopurynolem",
+      "p": 0.7,
+      "za": [
+        "Allopurynol włączony około 4 tygodnie temu: okres utajenia typowy dla DRESS (2–8 tygodni) [wiedza modelu, niezweryfikowane]; allopurynol należy do najczęstszych przyczyn DRESS (PMID 23855313, 23873481, 41868441).",
+        "Pełny obraz zespołu: gorączka 38,5 °C, rozlana osutka plamisto-grudkowa zlewająca się, obrzęk twarzy wokół oczu, powiększone węzły chłonne w kilku okolicach, eozynofilia 2,1 G/l (15%), limfocyty atypowe, ALT 186 U/l, AST 140 U/l, wzrost kreatyniny z 1,0 do 1,6 mg/dl.",
+        "Wstępna punktacja RegiSCAR około 6–7 pkt (gorączka 0, węzły +1, eozynofilia ≥1,5 G/l +2, limfocyty atypowe +1, osutka >50% powierzchni ciała +1, zajęcie wątroby i nerek +2) = DRESS pewny (>5 pkt) [wiedza modelu, niezweryfikowane; skala z badania RegiSCAR, PMID 23855313]; węzły tylko z relacji pacjentki.",
+        "Czynniki ryzyka reakcji na allopurynol: wiek 71 lat, wyjściowy eGFR około 60 ml/min/1,73 m² (CKD-EPI 2021 dla kreatyniny 1,0 mg/dl), dawka startowa 100 mg na granicy proponowanej bezpiecznej dawki 1,5 mg na 1 ml/min eGFR (PMID 22488501; obliczenie [wiedza modelu, niezweryfikowane]).",
+        "Ból gardła tydzień temu mógł być objawem prodromalnym DRESS (zapalenie gardła i gorączka często poprzedzają wysypkę), a nie zakażeniem paciorkowcowym [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Wysypka pojawiła się 1–3 dni po zakończeniu amoksycyliny — zbieżność czasowa kieruje uwagę na antybiotyk (ryzyko błędnego przypisania leku sprawczego).",
+        "Brak badania fizykalnego: nie potwierdzono nacieku skóry, wielkości węzłów ani obrzęku twarzy; brak wykluczenia innych przyczyn (serologia wirusowa, posiew krwi, przeciwciała przeciwjądrowe)."
+      ]
+    },
+    {
+      "nazwa": "Zespół DRESS lub opóźniona reakcja nadwrażliwości wywołana amoksycyliną",
+      "p": 0.1,
+      "za": [
+        "Ekspozycja na amoksycylinę 5 dni, osutka 1–3 dni po ostatniej tabletce (około 6–8 dni od pierwszej dawki) — typowy czas dla opóźnionej osutki po aminopenicylinie [wiedza modelu, niezweryfikowane].",
+        "Opisano reakcje na aminopenicyliny z reaktywacją ludzkiego herpeswirusa typu 6 naśladujące DRESS (PMID 31606023)."
+      ],
+      "przeciw": [
+        "Pacjentka wcześniej przyjmowała ten sam antybiotyk bez reakcji.",
+        "Okres utajenia około tygodnia jest krótki jak na DRESS, a w tym samym czasie przyjmuje lek o znacznie wyższym ryzyku (allopurynol) we właściwym oknie czasowym."
+      ]
+    },
+    {
+      "nazwa": "Mononukleoza zakaźna (pierwotne zakażenie wirusem Epsteina-Barr lub cytomegalowirusem) z osutką po amoksycylinie",
+      "p": 0.06,
+      "za": [
+        "Ból gardła, gorączka, limfadenopatia, limfocyty atypowe i zapalenie wątroby — triada mononukleozy; osutka po aminopenicylinie w mononukleozie jest dobrze opisana (PMID 40512251, 35577680).",
+        "Obrzęk powiek bywa objawem mononukleozy (objaw Hoaglanda) [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Wiek 71 lat: pierwotne zakażenie wirusem Epsteina-Barr bardzo rzadkie [wiedza modelu, niezweryfikowane].",
+        "Eozynofilia 2,1 G/l nie pasuje do mononukleozy, a pasuje do reakcji polekowej; gardło obecnie nie boli, a gorączka narasta."
+      ]
+    },
+    {
+      "nazwa": "Uogólnione zakażenie bakteryjne (posocznica) z osutką i dysfunkcją narządową",
+      "p": 0.04,
+      "za": [
+        "Gorączka, leukocytoza 14,2 G/l, CRP 48 mg/l, osłabienie, zawroty ortostatyczne i skąpomocz — mogą odpowiadać hipoperfuzji.",
+        "Niedawne zapalenie gardła (możliwa etiologia paciorkowcowa, zakażenie niewyleczone)."
+      ],
+      "przeciw": [
+        "Eozynofilia 15% i limfocyty atypowe przemawiają przeciw zakażeniu bakteryjnemu; CRP tylko umiarkowanie podwyższone.",
+        "Świąd i obrzęk twarzy typowe dla reakcji nadwrażliwości, nie dla posocznicy."
+      ]
+    },
+    {
+      "nazwa": "Chłoniak T-komórkowy angioimmunoblastyczny",
+      "p": 0.01,
+      "za": [
+        "Starszy wiek, uogólniona limfadenopatia, osutka, gorączka i eozynofilia — opisywany jako naśladowca DRESS (PMID 28611626, 35659145)."
+      ],
+      "przeciw": [
+        "Ostry początek w ciągu 3 dni, wyraźny potencjalny czynnik polekowy; rozważyć dopiero, gdy objawy nie ustępują po odstawieniu leku."
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Pęcherze, nadżerki błon śluzowych, złuszczanie naskórka (zespół Stevensa-Johnsona / toksyczna nekroliza naskórka) — pacjentka w ankiecie zaprzecza zmianom skórnym z listy; wykluczenie tylko wstępne, bez badania fizykalnego",
+    "Małopłytkowość (PLT 210 G/l) — brak cech zespołu hemofagocytowego na dziś"
+  ],
+  "red_flags_otwarte": [
+    "Ostre uszkodzenie nerek (kreatynina 1,6 vs 1,0 mg/dl, ×1,6) ze skąpomoczem i bardzo ciemnym moczem — możliwe śródmiąższowe zapalenie nerek w DRESS nałożone na komponent przednerkowy (odwodnienie, ramipryl)",
+    "Polekowe zapalenie wątroby (ALT 186 U/l, AST 140 U/l) — bilirubina i INR nieznane",
+    "Zawroty ortostatyczne przy gorączce — możliwa hipotensja i odwodnienie; parametry życiowe NIEZNANE",
+    "Zajęcie innych narządów w DRESS (serce, płuca, tarczyca) — nieocenione",
+    "Pewność co do leku sprawczego: allopurynol vs amoksycylina — ważne dla dalszego unikania obu leków",
+    "Zapalenie mięśnia sercowego w DRESS: w przeglądzie systematycznym wiek >65 lat i latencja <15 dni wiązały się ze zgonem; allopurynol 12% przypadków (PMID 35160164, doi:10.3390/jcm11030704). Wykluczy: EKG, troponina"
+  ],
+  "nastepny_krok": "Odstawić allopurynol natychmiast i skierować pacjentkę tego samego dnia do szpitala (oddział chorób wewnętrznych lub dermatologii, przez szpitalny oddział ratunkowy) jako podejrzenie zespołu DRESS z ostrym uszkodzeniem nerek i wątroby.",
+  "co_zmieniloby_zdanie": "Gdyby okazało się, że allopurynol przyjmowany jest od wielu miesięcy (a nie od miesiąca) albo wynik przeciwciał VCA IgM dla wirusa Epsteina-Barr był dodatni bez eozynofilii w kontroli, przesunąłbym prawdopodobieństwo w stronę amoksycyliny lub mononukleozy.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla DRESS/reakcji polekowych w bibliotece (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wniosków dotyczących reakcji polekowych",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'allopurinol DRESS latency renal impairment risk factors' → PMID 23873481 (przegląd systematyczny nadwrażliwości na allopurynol 1950–2012), 22488501 (dawka startowa jako czynnik ryzyka, bezpieczna dawka startowa), 42499701 (DRESS po allopurynolu w przewlekłej chorobie nerek)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'RegiSCAR scoring system DRESS validation Kardaun' → PMID 23855313 (prospektywne badanie RegiSCAR, Kardaun 2013), 21592453 (przegląd DRESS)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'amoxicillin rash infectious mononucleosis adults incidence' → PMID 40512251 (metaanaliza osutki po antybiotyku w mononukleozie), 35577680",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'DRESS latency period antibiotics shorter than anticonvulsants allopurinol' → PMID 41868441 (przegląd systematyczny DRESS po allopurynolu)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'angioimmunoblastic T-cell lymphoma mimicking DRESS drug reaction eosinophilia' → PMID 28611626, 35659145 (chłoniak angioimmunoblastyczny naśladujący DRESS), 31606023 (reakcja na aminopenicylinę z HHV-6 naśladująca DRESS)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov: 'HLA-B*58:01 allopurinol severe cutaneous adverse reactions European meta-analysis' → PMID 40841814 (żywy przegląd systematyczny HLA-B*58:01), 41160012 (HLA-B*58:01 w USA)",
+    "Uwaga: PMID z wyników wyszukiwania (tytuły); streszczeń nie czytano. Punktacja RegiSCAR, okresy utajenia i obliczenia eGFR — [wiedza modelu, niezweryfikowane]",
+    "Runda 1: mcp__PubMed__search_articles 'allopurinol DRESS latency systematic review' → PMID 35160164, 31662996; streszczenia przeczytane (get_article_metadata) wraz z PMID 41868441"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: p DRESS po allopurynolu 0,62→0,70 — latencja 2–8 tygodni i zajęcie narządów wewnętrznych w ok. 90% potwierdzone w streszczeniu (PMID 31662996, doi:10.1155/2019/7863815), zbieżna punktacja RegiSCAR ≈7 w innych opiniach; amoksycylina 0,12→0,10, mononukleoza 0,07→0,06, chłoniak angioimmunoblastyczny 0,02→0,01. Pilność bez zmian (1)."
+}

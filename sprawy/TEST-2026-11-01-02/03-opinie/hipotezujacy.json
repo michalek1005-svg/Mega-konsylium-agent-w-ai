@@ -1,0 +1,93 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Ostry zespół wieńcowy bez uniesienia odcinka ST (zawał serca bez uniesienia ST lub niestabilna dławica piersiowa) o nietypowym obrazie",
+      "p": 0.6,
+      "za": [
+        "Pieczenie w dołku i pod mostkiem nasila się przy wchodzeniu po schodach lub szybkim chodzie i słabnie w spoczynku: wzorzec wysiłkowy typowy dla niedokrwienia, nie dla refluksu.",
+        "Od wczoraj epizody zimnego potu oraz ucisku/pieczenia w szyi, żuchwie, ramieniu lub między łopatkami (obecnie ustąpiły) - objawy towarzyszące niedokrwieniu mięśnia sercowego.",
+        "Nowa duszność wysiłkowa od wczoraj (pierwsze piętro), mdłości i znaczne zmęczenie - równoważniki dławicy częste u kobiet i u chorych na cukrzycę (PMID 19850241, 38287984, 39584283).",
+        "Pierwszy w życiu epizod 'zgagi', bez odpowiedzi na leki zobojętniające (Rennie).",
+        "Wysokie ryzyko sercowo-naczyniowe: kobieta 66 lat, cukrzyca typu 2 z hiperglikemią 214 mg/dl, nadciśnienie, hipercholesterolemia z niepełnym przestrzeganiem statyny, palenie tytoniu."
+      ],
+      "przeciw": [
+        "Pacjentka zaprzecza bólowi w klatce piersiowej, a dolegliwość opisuje jako 'zgagę' w dołku.",
+        "Brak EKG, troponiny i parametrów życiowych (NIEZNANE) - rozpoznanie wyłącznie z wywiadu ankietowego.",
+        "Pieczenie bywa wielogodzinne, co bez nasilenia wysiłkowego pasowałoby bardziej do przyczyny przełykowej."
+      ]
+    },
+    {
+      "nazwa": "Choroba refluksowa przełyku lub ostre zapalenie błony śluzowej żołądka",
+      "p": 0.1,
+      "za": [
+        "Pieczenie w dołku i za mostkiem z mdłościami - częsta przyczyna w tej grupie wiekowej.",
+        "Pacjentka sama interpretuje objawy jako 'żołądkowe'; metformina może dawać dolegliwości dyspeptyczne i mdłości."
+      ],
+      "przeciw": [
+        "Brak poprawy po leku zobojętniającym i brak wcześniejszych podobnych epizodów.",
+        "Choroba refluksowa nie tłumaczy nasilenia przy wysiłku, ustępowania w spoczynku, nowej duszności wysiłkowej, zimnego potu ani promieniowania do szyi/żuchwy/ramienia."
+      ]
+    },
+    {
+      "nazwa": "Niedokrwistość, w tym z utajonego krwawienia z górnego odcinka przewodu pokarmowego lub z niedoboru witaminy B12 związanego z metforminą",
+      "p": 0.07,
+      "za": [
+        "W morfologii z ostatniego roku 'coś było nieprawidłowe' (szczegóły NIEZNANE) - niedokrwistość tłumaczy zmęczenie i duszność wysiłkową oraz może wywołać niedokrwienie typu 2.",
+        "Dolegliwości w nadbrzuszu z mdłościami mogą być objawem owrzodzenia trawiennego z krwawieniem; wieloletnia metformina sprzyja niedoborowi witaminy B12 [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Ostry początek od wczoraj wieczorem i zimne poty z promieniowaniem bólu przemawiają raczej za pierwotnym incydentem wieńcowym.",
+        "Pacjentka nie zgłasza smolistych stolców ani wymiotów (pytanie o krwawienie w ankiecie wprost NIEZNANE)."
+      ]
+    },
+    {
+      "nazwa": "Zatorowość płucna",
+      "p": 0.04,
+      "za": [
+        "Nagła, nowa duszność wysiłkowa z osłabieniem u palącej 66-latki.",
+        "Możliwe zimne poty i dyskomfort zamostkowy."
+      ],
+      "przeciw": [
+        "Brak duszności spoczynkowej; dominuje pieczenie wysiłkowe w dołku; brak danych o unieruchomieniu, zabiegu, obrzęku kończyny (NIEZNANE)."
+      ]
+    },
+    {
+      "nazwa": "Kwasica mleczanowa związana z metforminą",
+      "p": 0.02,
+      "za": [
+        "Przyczyna polekowa: metformina 2000 mg/dobę; mdłości, osłabienie i duszność mogą być wczesnymi objawami kwasicy, zwłaszcza przy nierozpoznanym pogorszeniu czynności nerek (eGFR NIEZNANE) [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Duszność tylko wysiłkowa, bez oddechu kwasiczego w spoczynku; brak wymiotów i biegunki; objawy wysiłkowe ustępujące w spoczynku lepiej tłumaczy niedokrwienie."
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Duszność spoczynkowa (pacjentka w spoczynku oddycha normalnie)",
+    "Wymioty"
+  ],
+  "red_flags_otwarte": [
+    "Zimny pot bez wyraźnej przyczyny od wczoraj (reguła ankiety: NATYCHMIAST 112)",
+    "Ucisk lub pieczenie w szyi, żuchwie, ramieniu albo między łopatkami (epizody ustąpiły, ale wystąpiły)",
+    "Pieczenie w dołku nasilające się przy wysiłku i ustępujące w spoczynku - równoważnik dławicy",
+    "Nowa duszność wysiłkowa od wczoraj u 66-latki z cukrzycą i wieloma czynnikami ryzyka",
+    "Brak EKG, troponiny wysokoczułej, ciśnienia tętniczego, tętna i saturacji (NIEZNANE)",
+    "Nieprawidłowość w morfologii o nieznanym charakterze (możliwa niedokrwistość lub krwawienie)"
+  ],
+  "nastepny_krok": "Nie leczyć empirycznie inhibitorem pompy protonowej: natychmiast wezwać Zespół Ratownictwa Medycznego (112) z wykonaniem EKG 12-odprowadzeniowego w ciągu 10 minut od kontaktu i transportem na SOR do oznaczenia troponiny wysokoczułej (algorytm 0/1 h wg ESC 2023, PMID 37622654).",
+  "co_zmieniloby_zdanie": "Prawidłowe seryjne EKG i dwukrotnie prawidłowa troponina wysokoczuła w algorytmie 0/1 h przy prawidłowej morfologii obniżyłyby ostry zespół wieńcowy poniżej 0,15 i przesunęły rozpoznanie w stronę niedokrwistości lub przyczyny przełykowej, z pilną diagnostyką wieńcową w trybie ambulatoryjnym.",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak plików z polskimi wytycznymi dla tej sytuacji (tylko przykłady); oparcie na ESC 2023",
+    "pamiec/zespol.md - wniosek PRZYKLAD-001: EKG zawsze przed planem planowym u kobiety 50+ z czynnikami ryzyka sercowego przy dolegliwościach w nadbrzuszu",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 1: 'atypical symptoms myocardial infarction women diabetes dyspnea nausea fatigue without chest pain' -> PMID 19850241 (objawy pierwszego zawału u kobiet i mężczyzn), PMID 38287984 (objawy zawału u chorych na cukrzycę), PMID 26956231 (atypowy ból w OZW - pułapka u kobiet), PMID 8285384 (częstość zawału atypowego)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 2: 'acute myocardial infarction presenting without chest pain prevalence mortality registry' -> PMID 22357832 (wiek i płeć a obraz objawowy i śmiertelność wewnątrzszpitalna zawału), PMID 39584283 (metaanaliza: OZW z objawami atypowymi - charakterystyka i rokowanie), PMID 17694458 (NSTEMI bez bólu: mniej agresywne leczenie, wyższa śmiertelność), PMID 11602537 (złe rokowanie zawału bez bólu w klatce)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 3: '2023 ESC guidelines management of acute coronary syndromes' -> PMID 38032511, PMID 38610650 (omówienia wytycznych ESC 2023)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 4: 'Byrne 2023 ESC Guidelines for the management of acute coronary syndromes European Heart Journal' -> PMID 37622654 (2023 ESC Guidelines for the management of acute coronary syndromes)",
+    "WebSearch pubmed.ncbi.nlm.nih.gov, zapytanie 5: 'anginal equivalent dyspnea women diabetes chronic coronary syndrome dyspnea prognosis' -> PMID 31753585 (duszność przy przyjęciu w OZW - częstość i rokowanie), PMID 27478454 (ból vs duszność jako objaw wskazujący do koronarografii a 2-letnia śmiertelność)",
+    "Próg 'EKG w ciągu 10 minut' i algorytm troponiny 0/1 h przypisane ESC 2023 (PMID 37622654) - tekst wytycznych nieczytany w tej sesji, liczby [wiedza modelu, niezweryfikowane]",
+    "Niedobór witaminy B12 przy metforminie, kwasica mleczanowa związana z metforminą - [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Reakcja polekowa z eozynofilią i objawami układowymi (zespół DRESS) wywołana allopurynolem, z zajęciem wątroby i nerek",
+      "p": 0.75,
+      "za": [
+        "allopurynol włączony około 4 tygodnie temu — typowa latencja zespołu DRESS 2–8 tygodni [wiedza modelu, niezweryfikowane]; allopurynol jest jedną z najczęstszych przyczyn zespołu DRESS i ciężkich polekowych reakcji skórnych (PMID 41868441, 27362322, 23873481)",
+        "gorączka 38,5 °C, rozlana świądowa osutka plamisto-grudkowa zlewająca się, obejmująca prawie całe ciało, obrzęk twarzy z przewagą okołooczodołową (cecha sugerująca DRESS)",
+        "eozynofilia 2,1 G/l (15%), limfocyty atypowe w rozmazie, limfadenopatia w kilku okolicach (szyja, pachy, pachwiny — wg pacjentki)",
+        "zajęcie wątroby: ALT 186 U/l, AST 140 U/l (ok. 4–5 × górna granica normy przy założeniu GGN ≈ 40 U/l) [wiedza modelu, niezweryfikowane co do GGN laboratorium]",
+        "zajęcie nerek: kreatynina 1,6 mg/dl wobec 1,0 mg/dl pół roku temu (wzrost 1,6 ×), oliguria, ciemny mocz",
+        "wstępna punktacja RegiSCAR ok. 7–8 pkt (eozynofilia ≥1,5 G/l +2, limfocyty atypowe +1, limfadenopatia +1, osutka >50% powierzchni ciała +1, obrzęk twarzy +1, zajęcie ≥2 narządów +2, gorączka ≥38,5 °C 0) = rozpoznanie pewne (>5 pkt) [wiedza modelu, niezweryfikowane; skala opisana w przeglądach PMID 21592453, 31299851]",
+        "wiek >70 lat i obniżona czynność nerek — czynniki ryzyka ciężkiego przebiegu i gorszego rokowania zespołu DRESS (PMID 37669109, 42499701, 23873481)",
+        "ból gardła tydzień temu mógł być prodromem zespołu DRESS, a nie zakażeniem paciorkowcowym — gorączka i zapalenie gardła często poprzedzają osutkę [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "brak badania fizykalnego i biopsji skóry; limfadenopatia zgłoszona przez pacjentkę, niepotwierdzona badaniem",
+        "nie wykluczono innych przyczyn (serologie wirusowe HAV/HBV/HCV, EBV/CMV, posiewy krwi, przeciwciała przeciwjądrowe) — kryterium RegiSCAR „wykluczenie innych przyczyn” niespełnione",
+        "jednoczasowa ekspozycja na amoksycylinę i paracetamol zaciera związek przyczynowy z jednym lekiem"
+      ]
+    },
+    {
+      "nazwa": "Reakcja polekowa na amoksycylinę (osutka plamisto-grudkowa lub zespół DRESS po amoksycylinie)",
+      "p": 0.08,
+      "za": [
+        "osutka 1–3 dni po zakończeniu 5-dniowego leczenia amoksycyliną (Duomox — amoksycylina w tabletkach do sporządzania zawiesiny [wiedza modelu, niezweryfikowane]); aminopenicyliny są częstą przyczyną osutek polekowych",
+        "amoksycylina może nasilać reaktywację HHV-6/EBV w przebiegu DRESS (współczynnik, nie przyczyna) [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "łączna latencja ok. 6–8 dni od pierwszej dawki jest zbyt krótka dla zespołu DRESS przy pierwszej ekspozycji; pacjentka wcześniej przyjmowała ten antybiotyk bez reakcji",
+        "zwykła osutka plamisto-grudkowa po amoksycylinie nie daje eozynofilii 2,1 G/l, zapalenia wątroby i ostrego uszkodzenia nerek jednocześnie"
+      ]
+    },
+    {
+      "nazwa": "Ostre zakażenie wirusowe (mononukleoza zakaźna wywołana wirusem Epsteina-Barr lub zakażenie cytomegalowirusem) z osutką po aminopenicylinie",
+      "p": 0.06,
+      "za": [
+        "zapalenie gardła, gorączka, limfadenopatia, limfocyty atypowe, zapalenie wątroby, osutka po amoksycylinie"
+      ],
+      "przeciw": [
+        "wiek 71 lat — pierwotna mononukleoza rzadka",
+        "eozynofilia 2,1 G/l nietypowa dla mononukleozy; obrzęk twarzy i ostre uszkodzenie nerek lepiej pasują do zespołu DRESS",
+        "brak kontaktu z osobami gorączkującymi z wysypką"
+      ]
+    },
+    {
+      "nazwa": "Zespół Stevensa-Johnsona lub toksyczne martwicze oddzielanie się naskórka we wczesnej fazie (zespół nakładania z zespołem DRESS)",
+      "p": 0.03,
+      "za": [
+        "allopurynol jest wiodącą przyczyną zespołu Stevensa-Johnsona i toksycznego martwiczego oddzielania się naskórka (PMID 27362322, 28509689)",
+        "osutka szybko się szerzy, chora bardzo osłabiona; opisano nakładanie DRESS i toksycznego martwiczego oddzielania się naskórka (PMID 39416556)"
+      ],
+      "przeciw": [
+        "pacjentka zaprzeczyła zmianom skórnym z listy ankiety i objawom ze strony błon śluzowych (o ile lista zawierała pęcherze, nadżerki jamy ustnej, spojówek, narządów płciowych) — wymaga potwierdzenia badaniem",
+        "eozynofilia, limfocyty atypowe i obrzęk twarzy przemawiają za fenotypem DRESS"
+      ]
+    },
+    {
+      "nazwa": "Sepsa bakteryjna z niewydolnością wielonarządową (np. inwazyjne zakażenie paciorkowcowe)",
+      "p": 0.03,
+      "za": [
+        "gorączka, leukocytoza 14,2 G/l, ostre uszkodzenie nerek, zawroty ortostatyczne, wcześniejsze zapalenie gardła"
+      ],
+      "przeciw": [
+        "CRP tylko 48 mg/l, eozynofilia 2,1 G/l i limfocyty atypowe nietypowe dla sepsy bakteryjnej",
+        "osutka świądowa z obrzękiem twarzy, bez wybroczyn (wg ankiety)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "ciężkie zakażenie zakaźne dla otoczenia (odra, ospa) — mało prawdopodobne: brak kontaktu z chorymi z gorączką i wysypką; nie wymaga izolacji na tym etapie (nie wykluczone formalnie, ale nie podnosi pilności)",
+    "nawrót zapalenia gardła / ropień okołomigdałkowy — gardło obecnie nie boli",
+    "uprzednio znana alergia na antybiotyk — brak; ten sam antybiotyk tolerowany wcześniej (osłabia hipotezę amoksycyliny jako przyczyny DRESS)"
+  ],
+  "red_flags_otwarte": [
+    "Ostre uszkodzenie nerek z oligurią (kreatynina 1,6 vs 1,0 mg/dl; ≥1,5 × wartości wyjściowej = co najmniej stopień 1 wg KDIGO, oliguria może oznaczać wyższy stopień [wiedza modelu, niezweryfikowane]) przy jednoczesnym ramiprylu — ryzyko szybkiej progresji i hiperkaliemii; potas NIEZNANY. Wykluczy: aktualna kreatynina, potas, gazometria, diureza godzinowa w szpitalu",
+    "Hipowolemia / hipotensja ortostatyczna (zawroty przy wstawaniu, gorączka, oliguria, amlodypina + ramipryl) — parametry życiowe NIEZNANE. Wykluczy: ciśnienie tętnicze leżąc/stojąc, tętno, saturacja, ocena nawodnienia",
+    "Polekowe zapalenie wątroby z ryzykiem ostrej niewydolności wątroby (ALT 186, AST 140 U/l). Wykluczy: bilirubina, INR, albumina, powtórne ALT w ciągu 24–48 h",
+    "Zapalenie mięśnia sercowego w przebiegu zespołu DRESS — rzadkie, ale najczęstsza przyczyna zgonu późnego, bywa piorunujące (PMID 21658796, 39086788, 39422393). Wykluczy: EKG, troponina, NT-proBNP; echokardiografia przy nieprawidłowościach",
+    "Hemofagocytowa limfohistiocytoza wtórna do zespołu DRESS (PMID 32964443, 36438790). Wykluczy: ferrytyna, triglicerydy, fibrynogen, kontrola morfologii (cytopenie)",
+    "Wczesny zespół Stevensa-Johnsona / toksyczne martwicze oddzielanie się naskórka (nakładanie z DRESS, PMID 39416556). Wykluczy: badanie skóry (objaw Nikolskiego, pęcherze, odsetek powierzchni ciała) i błon śluzowych przez lekarza",
+    "Kontynuowanie allopurynolu — każda kolejna dawka podtrzymuje reakcję; czy pacjentka nadal go przyjmuje: NIEZNANE",
+    "Sepsa bakteryjna — nie wykluczona bez badania i posiewów krwi"
+  ],
+  "nastepny_krok": "Natychmiast skierować pacjentkę do szpitala (SOR lub oddział chorób wewnętrznych/dermatologii z dostępem do nefrologii) z rozpoznaniem wstępnym „podejrzenie zespołu DRESS po allopurynolu z ostrym uszkodzeniem nerek i zapaleniem wątroby”, z poleceniem bezwzględnego odstawienia allopurynolu (i wstrzymania ramiprylu) już teraz.",
+  "co_zmieniloby_zdanie": "Pilność obniżyłbym do 2 (przyjęcie do szpitala dziś, bez transportu ratunkowego) tylko przy prawidłowych parametrach życiowych bez spadku ciśnienia w pionizacji, zachowanej diurezie, prawidłowym potasie i braku pęcherzy oraz zmian na błonach śluzowych w badaniu lekarskim — rozpoznania DRESS i wskazania do hospitalizacji to nie zmienia.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla zespołu DRESS / ciężkich polekowych reakcji skórnych w bibliotece (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wniosków dotyczących reakcji polekowych",
+    "Zapytanie 1 (WebSearch, pubmed.ncbi.nlm.nih.gov): „allopurinol DRESS renal involvement mortality elderly” → PMID 37669109 (DRESS u osób starszych, 55 chorych), 42499701 (DRESS po allopurynolu w przewlekłej chorobie nerek, przegląd), 41868441 (przegląd systematyczny DRESS po allopurynolu), 41943455, 27843869, 19049711 (ostra niewydolność nerek i wątroby po allopurynolu)",
+    "Zapytanie 2: „RegiSCAR DRESS validation scoring system Kardaun” → PMID 21592453 (DRESS — przegląd literatury), 31299851 (DRESS Syndrome — przegląd); oryginalnej pracy walidacyjnej RegiSCAR nie znaleziono — punktacja RegiSCAR podana z wiedzy modelu",
+    "Zapytanie 3: „DRESS syndrome myocarditis fulminant mortality” → PMID 21658796 (przegląd zapalenia mięśnia sercowego w DRESS), 39086788 (zgon z powodu zapalenia mięśnia sercowego w DRESS), 39422393, 23602182 (DRESS cz. I — perspektywa kliniczna)",
+    "Zapytanie 4: „allopurinol severe cutaneous adverse reactions HLA-B*58:01 renal impairment risk” → PMID 27362322 (immunopatogeneza i czynniki ryzyka ciężkich reakcji skórnych po allopurynolu), 23873481 (przegląd systematyczny nadwrażliwości na allopurynol 1950–2012), 28509689, 41160012, 21393610",
+    "Zapytanie 5: „allopurinol starting dose relation to hypersensitivity syndrome Stamp” → PMID 22488501 (dawka początkowa jako czynnik ryzyka zespołu nadwrażliwości na allopurynol), 29272508",
+    "Zapytanie 6: „DRESS syndrome hemophagocytic lymphohistiocytosis complication” → PMID 32964443 (nakładanie HLH i DRESS — przegląd), 36438790, 39416556 (toksyczne martwicze oddzielanie się naskórka nałożone na DRESS z HLH)",
+    "Latencja DRESS 2–8 tygodni, kryteria KDIGO, punktacja RegiSCAR, skład preparatu Duomox — [wiedza modelu, niezweryfikowane]"
+  ]
+}

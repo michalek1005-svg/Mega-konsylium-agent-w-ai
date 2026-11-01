@@ -1,0 +1,199 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawy polekowe — allopurynol: reakcja polekowa z eozynofilią i objawami ogólnoustrojowymi (DRESS)",
+      "p": 0.7,
+      "za": [
+        "Allopurynol włączony ok. 4 tygodnie temu — typowa latencja DRESS 2–8 tygodni [wiedza modelu, niezweryfikowane]; allopurynol jest jedną z najczęstszych przyczyn DRESS (PMID 23855313, 23873481)",
+        "Gorączka 38,5 °C, rozlana świądowa wysypka plamisto-grudkowa zlewna (>50% powierzchni ciała wg opisu), obrzęk twarzy i okolicy oczu, powiększone węzły chłonne w kilku okolicach",
+        "Eozynofilia 2,1 G/l (15%), limfocyty atypowe, ALT 186 U/l / AST 140 U/l, wzrost kreatyniny 1,0 → 1,6 mg/dl — zajęcie wątroby i nerek",
+        "Wstępna punktacja RegiSCAR (gorączka 0, limfadenopatia +1, eozynofile ≥1,5 G/l +2, limfocyty atypowe +1, wysypka >50% +1, 2 narządy +2) ≈ 7 pkt = DRESS pewny (>5 pkt); kryteria wg PMID 23855313 [punktacja wyliczona z opisu pacjentki, bez badania skóry i bez wykluczenia innych przyczyn]",
+        "Czynniki ryzyka ciężkiej nadwrażliwości na allopurynol: wiek >60 lat, upośledzona czynność nerek (dodatkowo ostre pogorszenie), początek leczenia w ostatnich miesiącach (PMID 23873481, 26416594, 27362322)"
+      ],
+      "przeciw": [
+        "Dawka startowa niska (100 mg/d) i bazowy eGFR ok. 60 ml/min/1,73 m² — dawkowanie było poprawne",
+        "Brak badania fizykalnego i biopsji skóry; nie wykluczono infekcji (EBV, CMV, HHV-6, wirusowe zapalenia wątroby)",
+        "Bliska czasowo ekspozycja na amoksycylinę zaburza przypisanie leku sprawczego"
+      ]
+    },
+    {
+      "nazwa": "Objawy polekowe — amoksycylina: reakcja polekowa z eozynofilią i objawami ogólnoustrojowymi lub opóźniona osutka z zajęciem narządów",
+      "p": 0.08,
+      "za": [
+        "Wysypka 1–3 dni po ostatniej z 5 dawek (ok. 6.–8. doba od pierwszej tabletki)",
+        "Aminopenicyliny opisywane jako przyczyna lub kofaktor DRESS, także w powiązaniu z reaktywacją HHV-6 (PMID 31606023); antybiotyki nasilały przebieg DRESS po allopurynolu (PMID 30042109)"
+      ],
+      "przeciw": [
+        "Latencja ok. 7 dni poza rozstępem międzykwartylowym latencji DRESS (mediana 22 dni, IQR 17–31; PMID 23855313, doi:10.1111/bjd.12501)",
+        "Wcześniej tolerowała ten sam antybiotyk bez reakcji",
+        "Allopurynol w oknie czasowym typowym dla DRESS jest silniejszym kandydatem"
+      ]
+    },
+    {
+      "nazwa": "Objawy polekowe — amoksycylina: prosta osutka plamisto-grudkowa w przebiegu zakażenia wirusowego (mononukleoza zakaźna lub reaktywacja herpeswirusa)",
+      "p": 0.06,
+      "za": [
+        "Ból gardła tydzień temu, limfocyty atypowe, limfadenopatia, podwyższone aminotransferazy — klasyczna osutka po aminopenicylinie w zakażeniu EBV [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Wiek 71 lat — pierwotne zakażenie EBV mało prawdopodobne [wiedza modelu, niezweryfikowane]",
+        "Eozynofilia 15% i obrzęk twarzy przemawiają za DRESS, nie za osutką wirusową",
+        "Ból gardła mógł być objawem prodromalnym DRESS"
+      ]
+    },
+    {
+      "nazwa": "Objawy polekowe — paracetamol: polekowe uszkodzenie wątroby",
+      "p": 0.01,
+      "za": [
+        "Przyjmowała paracetamol; ALT 186 U/l"
+      ],
+      "przeciw": [
+        "Brak danych o przedawkowaniu; paracetamol nie tłumaczy wysypki, eozynofilii ani limfadenopatii; obraz cytolizy umiarkowany"
+      ]
+    },
+    {
+      "nazwa": "Zakażenie wirusowe lub bakteryjne bez udziału leków",
+      "p": 0.0,
+      "za": [
+        "Ocena poza zakresem farmakologa — p=0 zgodnie z rolą; ocenę zostawiam internistom zespołu"
+      ],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Trombocytopenia — PLT 210 G/l",
+    "Istotna niedokrwistość — Hb 12,9 g/dl",
+    "Wcześniejsza reakcja nadwrażliwości na amoksycylinę — zaprzeczona (lek tolerowany w przeszłości)"
+  ],
+  "red_flags_otwarte": [
+    "Ostre uszkodzenie nerek (kreatynina 1,6 vs 1,0 mg/dl = 1,6×, KDIGO stopień 1 [wiedza modelu, niezweryfikowane]; eGFR CKD-EPI 2021 ok. 34 ml/min/1,73 m² wyliczony z kreatyniny) z oligurią i ciemnym moczem — w tym składowa hemodynamiczna ramiprilu przy odwodnieniu",
+    "Zawroty ortostatyczne — możliwa hipowolemia lub hipotensja nasilana przez ramipril i amlodypinę; brak pomiaru ciśnienia i tętna",
+    "Zapalenie wątroby polekowe (ALT 186, AST 140 U/l) — bilirubina, INR, fosfataza zasadowa nieznane",
+    "Hiperkaliemia — ramipril przy ostrym uszkodzeniu nerek; potas nieznany",
+    "Nakładanie z zespołem Stevensa-Johnsona / toksyczną nekrolizą naskórka — pęcherze i zmiany na błonach śluzowych niezweryfikowane badaniem",
+    "Zajęcie serca (zapalenie mięśnia sercowego) i płuc w DRESS — nieocenione (PMID 33777581)"
+  ],
+  "nastepny_krok": "Natychmiast i na stałe odstawić allopurynol, wstrzymać ramipril i skierować pacjentkę dziś w trybie pilnym do szpitala (oddział chorób wewnętrznych lub dermatologii) z rozpoznaniem roboczym DRESS po allopurynolu z zajęciem wątroby i nerek.",
+  "co_zmieniloby_zdanie": "Dodatni wynik serologii lub PCR świeżego zakażenia EBV/CMV przy normalizującej się eozynofilii obniżyłby p DRESS po allopurynolu, a ujawnienie innego leku włączonego w ciągu ostatnich 2–8 tygodni zmieniłoby przypisanie leku sprawczego.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "allopurynol",
+      "dawka": "odstawić",
+      "droga": "—",
+      "czas": "na stałe; bez ponownej ekspozycji i bez odczulania",
+      "uwagi": "Wpisać do dokumentacji jako ciężką nadwrażliwość (DRESS); zgłosić działanie niepożądane do URPL. Ryzyko ciężkich reakcji rośnie z wiekiem, przy niewydolności nerek i z inhibitorem konwertazy angiotensyny.",
+      "zrodlo": "PMID 23873481, 26416594, 27362322"
+    },
+    {
+      "lek": "amoksycylina (i inne aminopenicyliny)",
+      "dawka": "nie stosować",
+      "droga": "—",
+      "czas": "do diagnostyki alergologicznej",
+      "uwagi": "Lek współpodejrzany; oznaczyć jako możliwy alergen. Testy płatkowe/śródskórne z odczytem późnym nie wcześniej niż ok. 6 miesięcy po ustąpieniu reakcji [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 31606023; [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "ramipril",
+      "dawka": "wstrzymać",
+      "droga": "—",
+      "czas": "do powrotu kreatyniny do wartości wyjściowej i ustąpienia hipowolemii",
+      "uwagi": "Ostre uszkodzenie nerek, oliguria, zawroty ortostatyczne, ryzyko hiperkaliemii. Związek z ciężkimi reakcjami po allopurynolu słabo udokumentowany (pojedyncze opisy, PMID 38333456) — nie jest powodem wstrzymania.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]; PMID 38333456"
+    },
+    {
+      "lek": "amlodypina",
+      "dawka": "5 mg/d — wstrzymać, jeśli skurczowe ciśnienie <110 mmHg lub spadek ortostatyczny",
+      "droga": "doustnie",
+      "czas": "decyzja po pomiarze ciśnienia",
+      "uwagi": "Nie jest podejrzewana o DRESS; decyzja wyłącznie hemodynamiczna.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "glikokortykosteroid układowy (np. prednizon lub metyloprednizolon ekwiwalentnie)",
+      "dawka": "0,5–1 mg/kg/d prednizonu (masa ciała NIEZNANA)",
+      "droga": "doustnie lub dożylnie",
+      "czas": "do poprawy klinicznej i laboratoryjnej, potem powolne zmniejszanie przez co najmniej 6–8 tygodni (zbyt szybkie odstawienie grozi nawrotem)",
+      "uwagi": "Leczenie DRESS z zajęciem narządów — decyzja i rozpoczęcie w szpitalu, nie w POZ. Monitorować glikemię, ciśnienie, reaktywacje herpeswirusów (HHV-6, CMV, EBV) — kortykosteroidy wpływają na ich dynamikę. W steroidozależności lub przeciwwskazaniach alternatywą jest cyklosporyna.",
+      "zrodlo": "PMID 23602183 (przegląd leczenia DRESS), 32162382, 24749495, 27438540, 36695042; dawka i czas: [wiedza modelu, niezweryfikowane w treści abstraktów]"
+    },
+    {
+      "lek": "paracetamol",
+      "dawka": "maks. 2 g/d (500 mg co 6–8 h)",
+      "droga": "doustnie",
+      "czas": "doraźnie przy gorączce",
+      "uwagi": "Zmniejszona dawka z powodu cytolizy (ALT 186 U/l) i wieku; jedyny lek przeciwgorączkowy do zaakceptowania na tym etapie.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]; brak ChPL w zrodla/"
+    },
+    {
+      "lek": "cetyryzyna",
+      "dawka": "5 mg raz na dobę",
+      "droga": "doustnie",
+      "czas": "objawowo na świąd",
+      "uwagi": "Dawka zmniejszona o połowę przy eGFR 30–49 ml/min [wiedza modelu, niezweryfikowane]; miejscowo emolienty i silny glikokortykosteroid miejscowy wg dermatologa.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]; brak ChPL w zrodla/"
+    },
+    {
+      "lek": "leczenie obniżające stężenie kwasu moczowego w przyszłości (febuksostat)",
+      "dawka": "nie teraz",
+      "droga": "—",
+      "czas": "rozważyć dopiero po pełnym ustąpieniu DRESS, w ośrodku specjalistycznym",
+      "uwagi": "Opisano reakcje skórne na febuksostat u części chorych z wcześniejszą reakcją na allopurynol; po DRESS ostrożność i decyzja reumatologa. Napady dny w ostrej fazie: bez niesteroidowych leków przeciwzapalnych; kolchicyna ostrożnie przy eGFR ok. 34 i uszkodzeniu wątroby.",
+      "zrodlo": "PMID 26709250, 30681751, 32687746; [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "allopurynol",
+      "powod": "Prawdopodobny lek sprawczy DRESS — ponowna ekspozycja zagraża życiu (PMID 23873481)."
+    },
+    {
+      "lek": "amoksycylina, ampicylina, amoksycylina z klawulanianem",
+      "powod": "Lek współpodejrzany do czasu diagnostyki alergologicznej."
+    },
+    {
+      "lek": "niesteroidowe leki przeciwzapalne (ibuprofen, ketoprofen, diklofenak)",
+      "powod": "Ostre uszkodzenie nerek z oligurią, wiek 71 lat; dodatkowo jako nowe leki w trakcie DRESS [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "nowe, niekonieczne leki (w tym empiryczne antybiotyki bez udokumentowanego zakażenia, metamizol)",
+      "powod": "W ostrej fazie DRESS rośnie ryzyko neosensytyzacji i nasilenia reakcji; antybiotyki opisywano jako czynnik zaostrzający DRESS po allopurynolu (PMID 30042109, 17039674)."
+    },
+    {
+      "lek": "sedujące leki przeciwhistaminowe (hydroksyzyna, klemastyna)",
+      "powod": "Wiek 71 lat, zawroty ortostatyczne — ryzyko upadku i działania antycholinergicznego [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "ramipril (do odwołania)",
+      "powod": "Ostre uszkodzenie nerek, hipowolemia, ryzyko hiperkaliemii."
+    }
+  ],
+  "badania": [
+    {
+      "badanie": "Monitorowanie w szpitalu: morfologia z rozmazem, ALT, AST, bilirubina, INR, kreatynina, potas, badanie ogólne moczu, troponina, EKG; PCR HHV-6/CMV/EBV",
+      "cel": "Ocena zajęcia narządów i reaktywacji herpeswirusów",
+      "zrodlo": "PMID 24749495, 37591509; [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "badanie": "TSH i glikemia w obserwacji odległej (2–3 miesiące, do roku)",
+      "cel": "Późne powikłania autoimmunologiczne po DRESS (zapalenie tarczycy, cukrzyca)",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych ani ChPL dla allopurynolu, amoksycyliny, DRESS (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wniosków dotyczących tej prezentacji",
+    "WebSearch (pubmed.ncbi.nlm.nih.gov) zapytanie 1: 'allopurinol DRESS renal impairment HLA-B*58:01 risk factors' → PMID 23873481, 26416594, 27362322, 21393610, 30042109",
+    "WebSearch zapytanie 2: 'DRESS syndrome treatment systemic corticosteroids taper duration' → PMID 23602183, 27438540, 36695042",
+    "WebSearch zapytanie 3: 'allopurinol hypersensitivity ACE inhibitor diuretic concomitant risk' → PMID 38333456, 16259349",
+    "WebSearch zapytanie 4: 'amoxicillin DRESS syndrome latency HHV-6 reactivation' → PMID 31606023, 32162382, 37591509, 24749495, 33777581, 17039674",
+    "WebSearch zapytanie 5: 'febuxostat after allopurinol severe cutaneous adverse reaction cross-reactivity' → PMID 26709250, 30681751, 32687746",
+    "WebSearch zapytanie 6: 'RegiSCAR scoring system DRESS validation Kardaun' → PMID 23855313, 21592453",
+    "PMID cytowane na podstawie tytułów wyników wyszukiwania (abstrakty nieczytane — wtyczka PubMed niedostępna); dawki i progi bez PMID oznaczone [wiedza modelu, niezweryfikowane]",
+    "eGFR wyliczony wzorem CKD-EPI 2021 (kobieta, 71 lat): kreatynina 1,6 mg/dl → ok. 34; 1,0 mg/dl → ok. 60 ml/min/1,73 m² [obliczenie własne]"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: zweryfikowana w PubMed mediana latencji DRESS 22 dni (IQR 17–31; PMID 23855313) — allopurynol (~28 dni) w oknie, amoksycylina (~7 dni) poza nim: allopurynol 0,65→0,70, amoksycylina 0,12→0,08. Usunięto inhibitor konwertazy jako kofaktor (PMID 38333456: pojedyncze opisy, brak mechanizmu PK); ramipril nadal wstrzymany z powodu ostrego uszkodzenia nerek. Pilność bez zmian (1)."
+}

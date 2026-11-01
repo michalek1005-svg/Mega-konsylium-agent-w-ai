@@ -1,0 +1,108 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Zatorowość płucna wtórna do zakrzepicy żył głębokich lewej kończyny dolnej",
+      "p": 0.62,
+      "za": [
+        "Pretest wyjściowy: u kobiety 52 lat w POZ ból łydki + kłucie opłucnowe to zwykle przyczyny mięśniowo-szkieletowe; żylna choroba zakrzepowo-zatorowa rzadka (zapadalność ok. 1,25/1000/rok u kobiet 40–59 lat, PMID 33757918) — ale kombinacja objawów w krótkim odstępie przesuwa populację do 'podejrzenie ZP'",
+        "Wells dla ZP liczony z ankiety ok. 7,5 pkt (objawy ZŻG 3 + ZP najbardziej prawdopodobna 3 + tętno 104/min 1,5) → kategoria wysoka; w metaanalizie częstość ZP w kategorii wysokiej Wellsa 49% (95% CI 43–56), PMID 20149072 → to mój punkt startu",
+        "Jednostronny obrzęk, ocieplenie i tkliwość tylnej łydki, ból narastający stopniowo bez urazu → silnie podnosi ZŻG, obniża naciągnięcie mięśnia",
+        "Podróż autokarem 14 h przed objawami → umiarkowanie: RR żylnej choroby zakrzepowo-zatorowej po podróży ok. 2,8 (2,2–3,7), +18% na każde 2 h podróży (PMID 19581633)",
+        "Doustna terapia hormonalna menopauzy (estradiol 1 mg + dydrogesteron 10 mg) → słabo: dla tego połączenia aOR 1,18 (0,98–1,42), dla doustnej HTZ ogółem 1,58 (PMID 30626577)",
+        "Zakrzepica u krewnych pierwszego stopnia → umiarkowanie (trombofilia wrodzona możliwa) [wiedza modelu, niezweryfikowane co do wielkości LR]",
+        "Stan przedomdleniowy od wczoraj → umiarkowanie-silnie; w PESIT ZP u 17,3% hospitalizowanych z pierwszym omdleniem, 25,4% gdy brak innego wyjaśnienia (PMID 27797317; populacja starsza, średnio 76 lat — kierunek, nie wartość bezwzględna)",
+        "SpO2 94% w spoczynku i tętno 104/min (pomiar domowy) → umiarkowanie podnosi; zmęczenie/duszność wysiłkowa nowa",
+        "Ból opłucnowy po stronie przeciwnej do zajętej łydki nie przeczy ZP (zator nie jest stronny względem kończyny) [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak krwioplucia, brak nowotworu i przebytej ŻChZZ w wywiadzie (nie dodają punktów Wellsa)",
+        "Duszność dopiero przy 2 piętrach, objawy stabilne od rana → słabo obniża rozległą ZP, nie obniża ZP jako takiej",
+        "Pomiary domowe (pulsoksymetr, tętno) mogą być niedokładne; brak badania fizykalnego, obwodu łydek, D-dimeru, EKG — dane NIEZNANE, nie 'w normie'",
+        "Kaszel może sugerować infekcję jako alternatywę (słabo)"
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica żył głębokich lewej kończyny dolnej bez zatorowości płucnej, z bólem opłucnowym innego pochodzenia",
+      "p": 0.14,
+      "za": [
+        "Łydka spełnia obraz ZŻG niezależnie od klatki piersiowej (obrzęk, ocieplenie, tkliwość, podróż, HTZ, wywiad rodzinny) → wysokie prawdopodobieństwo samej ZŻG",
+        "Kaszel → mogłoby to być zakażenie dróg oddechowych z odczynem opłucnowym, współistniejące przypadkowo"
+      ],
+      "przeciw": [
+        "Koincydencja ZŻG + nowy ból opłucnowy + tachykardia + SpO2 94% + stan przedomdleniowy tego samego dnia jest mniej prawdopodobna niż jedno wspólne wyjaśnienie (ZP)"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie płuc z odczynem opłucnowym i współistniejący uraz mięśnia łydki",
+      "p": 0.07,
+      "za": [
+        "Kaszel → słabo podnosi",
+        "Spadek SpO2 i tachykardia pasują też do zapalenia płuc"
+      ],
+      "przeciw": [
+        "Brak gorączki w zgłoszeniu (nie pytano wprost — częściowo nieznane)",
+        "Brak momentu urazu łydki, objawy zapalne łydki (ocieplenie, obrzęk) słabo pasują do naciągnięcia"
+      ]
+    },
+    {
+      "nazwa": "Ból mięśniowy łydki i nerwoból międzyżebrowy",
+      "p": 0.04,
+      "za": [
+        "Najczęstsze przyczyny tych objawów w ogólnej populacji POZ (wysoki pretest bez kontekstu)",
+        "Spacer po podróży — możliwe przeciążenie"
+      ],
+      "przeciw": [
+        "Obrzęk i ocieplenie łydki, brak urazu → silnie obniża",
+        "Tachykardia, SpO2 94%, stan przedomdleniowy i nowa męczliwość nie są wyjaśnione przez nerwoból → silnie obniża",
+        "Ibuprofen nie przyniósł ustąpienia objawów"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy lub zapalenie osierdzia",
+      "p": 0.03,
+      "za": [
+        "Kobieta 52 lata z nadciśnieniem, tachykardia, stan przedomdleniowy"
+      ],
+      "przeciw": [
+        "Ból typowo opłucnowy (tylko przy głębokim wdechu i kaszlu), boczny, bez ucisku zamostkowego",
+        "Objawy łydki wskazują na inne wspólne wyjaśnienie"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Hipotensja: ciśnienie skurczowe 132 mmHg (pomiar domowy) — brak cech wstrząsu w chwili ankiety",
+    "Ciężka hipoksemia: SpO2 94%, nie <90%"
+  ],
+  "red_flags_otwarte": [
+    "Wysokie kliniczne prawdopodobieństwo zatorowości płucnej (Wells ok. 7,5) z tachykardią 104/min i SpO2 94%",
+    "Stan przedomdleniowy — możliwa przeciążona prawa komora (ZP pośredniego ryzyka) do oceny w szpitalu",
+    "Objawy zakrzepicy żył głębokich lewej łydki po 14-godzinnej podróży",
+    "Kontynuowana doustna terapia hormonalna menopauzy przy podejrzeniu ŻChZZ i dodatnim wywiadzie rodzinnym",
+    "Ibuprofen maskuje ból i zwiększa ryzyko krwawienia przy planowanym leczeniu przeciwkrzepliwym"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na SOR (transport medyczny ze względu na stan przedomdleniowy) z rozpoznaniem 'podejrzenie zatorowości płucnej, wysokie prawdopodobieństwo kliniczne' w celu angio-TK tętnic płucnych bez czekania na D-dimer; pacjentka nie jedzie sama samochodem.",
+  "co_zmieniloby_zdanie": "Prawidłowe angio-TK tętnic płucnych i ujemne USG uciskowe żył lewej kończyny dolnej obniżyłyby ZP poniżej 5% i przywróciły rozpoznania infekcyjne lub mięśniowo-szkieletowe; samo ujemne USG kończyny nie wyklucza ZP.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ZP/ŻChZZ w bibliotece (tylko przykładowe wiersze); oparcie na ESC i PubMed",
+    "PubMed zapytanie 1 (0 wyników, nieskuteczne): 'Wells rule pulmonary embolism validation D-dimer outpatients[Title/Abstract] AND (Wells[Title])'",
+    "PubMed zapytanie 2 (wyniki ogólne, nieużyte): 'travel venous thrombosis risk meta-analysis'",
+    "PubMed zapytanie 3: 'oral estrogen hormone replacement therapy venous thromboembolism risk dydrogesterone' → PMID 30626577, 33757918, 21489728",
+    "PubMed zapytanie 4: 'syncope pulmonary embolism prevalence hospitalized first episode' → PMID 27797317",
+    "PubMed zapytanie 5: '\"travel\"[Title] AND \"venous thromboembolism\"[Title] AND meta-analysis' → PMID 19581633",
+    "PubMed zapytanie 6: 'Wells score pulmonary embolism prevalence clinical probability categories meta-analysis' → PMID 20149072",
+    "PubMed zapytanie 7: '2019 ESC Guidelines acute pulmonary embolism European Respiratory Society[Title]' → PMID 31504429",
+    "PubMed zapytanie 8 (wyniki nietrafne — dokładność obrazowania, nie objawów): 'diagnostic accuracy symptoms signs pulmonary embolism systematic review likelihood ratio'",
+    "Ceriani E i wsp. Clinical prediction rules for pulmonary embolism: systematic review and meta-analysis. J Thromb Haemost 2010;8:957-70. PMID 20149072, DOI 10.1111/j.1538-7836.2010.03801.x — streszczenie sprawdzone: Wells wysokie 49% (43–56), pośrednie 23%, niskie 6%",
+    "Chandra D i wsp. Meta-analysis: travel and risk for venous thromboembolism. Ann Intern Med 2009;151:180-90. PMID 19581633, DOI 10.7326/0003-4819-151-3-200908040-00129 — streszczenie sprawdzone: RR 2,8 (2,2–3,7), +18% na 2 h podróży",
+    "Vinogradova Y i wsp. HRT and risk of VTE: nested case-control (QResearch, CPRD). BMJ 2019;364:k4810. PMID 30626577, DOI 10.1136/bmj.k4810 — streszczenie sprawdzone: doustna HTZ aOR 1,58; estradiol + dydrogesteron 1,18 (0,98–1,42); przezskórna 0,93",
+    "Hugon-Rodin J i wsp. Menopause and risk of thromboembolic events. CNGOF/GEMVi guidelines. Gynecol Obstet Fertil Senol 2021;49:455-61. PMID 33757918, DOI 10.1016/j.gofs.2021.03.018 — streszczenie sprawdzone: zapadalność ŻChZZ 1,25/1000 kobiet 40–59 lat/rok; doustny estrogen u kobiet z ryzykiem ŻChZZ przeciwwskazany, preferowany przezskórny",
+    "Tremollieres F i wsp. EMAS position statement: menopausal women with personal or family history of VTE. Maturitas 2011;69:195-8. PMID 21489728, DOI 10.1016/j.maturitas.2011.03.011 — streszczenie sprawdzone: wywiad osobniczy lub rodzinny ŻChZZ = silne przeciwwskazanie do doustnej HT, rozważyć estrogen przezskórny",
+    "Prandoni P i wsp. Prevalence of pulmonary embolism among patients hospitalized for syncope (PESIT). N Engl J Med 2016;375:1524-31. PMID 27797317, DOI 10.1056/NEJMoa1602172 — streszczenie sprawdzone: ZP 17,3%, 25,4% bez alternatywnego wyjaśnienia; średni wiek 76 lat",
+    "Konstantinides SV i wsp. 2019 ESC Guidelines for acute pulmonary embolism (ERS). Eur Heart J 2020;41:543-603. PMID 31504429, DOI 10.1093/eurheartj/ehz405 — brak streszczenia w PubMed; treści przypisane wytycznej (wysokie prawdopodobieństwo → angio-TK bez D-dimeru, antykoagulacja bez zwłoki w trakcie diagnostyki, sPESI) = [wiedza modelu, niezweryfikowane]",
+    "Punktacja Wellsa dla ZP (3/3/1,5/1,5/1,5/1/1) i sPESI = [wiedza modelu, niezweryfikowane]",
+    "Przeciwbólowo: paracetamol zamiast dalszego ibuprofenu do czasu decyzji o antykoagulacji = [wiedza modelu, niezweryfikowane]"
+  ]
+}
