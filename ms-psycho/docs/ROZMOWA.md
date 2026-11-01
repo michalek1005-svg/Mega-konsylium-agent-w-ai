@@ -36,9 +36,21 @@ Gdy `czekaj` zgłasza **ZWOŁAŁ KONSYLIUM**: aplikacja założyła już `sprawy
 **Szybkość (decyzja Michała 1.11.2026 07:45):** strażnik ryzyka i klient‑sędzia pracują na Opus (szybciej niż Fable), terapeuci bez zmian. **Krótka ścieżka:** gdy `czekaj` wypisze „KRÓTKA ŚCIEŻKA” (krótka wiadomość typu „dzięki 🙂”, „spróbuję”, bez pytania, przy ryzyku 0 w filtrze i w poprzedniej turze) – tylko strażnik i prowadzący, odpowiedź 1–3 zdania, bez panelu i sędziego. Cel: 40–70 s na zwykłą turę, kilkanaście sekund na krótką.
 5. **Rzecznik normalności** tylko co kilka tur i milczy od ryzyka ≥1 i przy PHQ‑9 ≥15 (poprawka 2).
 
+## 3a. Tempo – Rozmowa jak poradnik (Michał 1.11.2026 07:47)
+„Co można odpowiedzieć szybko – odpowiadamy; jeżeli wymaga przemyślenia – dajmy sobie ten czas.” `czekaj` wypisuje TEMPO; prowadzący może je zmienić z powodem (pole `tempo` w odp.json).
+
+| Tempo | Kiedy | Kto pracuje | Odpowiedź |
+|---|---|---|---|
+| **krótko** | „dzięki 🙂”, „spróbuję” – bez nowej treści, ryzyko 0 | strażnik + prowadzący | 1–3 zdania, kilkanaście sekund |
+| **szybko** | jedno proste pytanie (≤30 słów), ryzyko 0 – np. „ile trwa terapia CBT?”, „co to jest ACT?” | strażnik + 1 podejście (albo diagnosta/psychiatra przy pytaniu medycznym) | 40–120 słów, bez sędziego |
+| **normalnie** | zwykła wiadomość o sobie lub sytuacji | strażnik + panel ≤4 + klient‑sędzia | 80–220 słów |
+| **do namysłu** | długa wiadomość (>120 słów), kilka pytań, „dlaczego…”, „pomóż mi zrozumieć…”, trudna decyzja, tryb konsultacji | strażnik + panel 4–5 + źródła (PubMed, Europe PMC) + klient‑sędzia | do ok. 450 słów, z akapitami; pasek: „zespół przemyśla dokładniej” |
+
+Bezpieczeństwo jest ponad tempem: ryzyko ≥1 nigdy nie idzie ścieżką „krótko” ani „szybko”.
+
 ## 4. Odpowiedź – reguły (zgrane z przypadki-testowe/KRYTERIA-OCENY.md; poprawka 3)
 
-- **80–220 słów** (krótsza, gdy użytkownik pisze krótko; ≤80 w ostrym kryzysie). Treść bezpieczeństwa (pytanie o myśli i środki, numer pomocy, most do lekarza) **nie liczy się** do limitu.
+- **Długość wg tempa (§3a)**: krótko 1–3 zdania, szybko 40–120, normalnie 80–220, do namysłu do ok. 450 słów; ≤80 w ostrym kryzysie. Treść bezpieczeństwa (pytanie o myśli i środki, numer pomocy, most do lekarza) **nie liczy się** do limitu.
 - **Zawsze odpowiedz na pytanie użytkownika** w tej turze (choćby: „decyzję o pracy warto odłożyć, aż poczujesz się lepiej”).
 - **Sprawdź ramę** („wypalenie”, „to przez szefa”): czy objawy są też poza stresorem (urlop, wolne). Jeśli tak, nazwij delikatnie, że to może być więcej niż reakcja na sytuację, i nie doradzaj decyzji życiowych.
 - Jeden konkretny krok albo jedno pytanie (najwyżej jedno pytanie na turę). Bez list „z jednej strony… z drugiej strony” bez wyboru.

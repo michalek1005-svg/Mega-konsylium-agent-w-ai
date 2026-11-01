@@ -1,4 +1,4 @@
-# Gotowe pliki aplikacji MS Konsylium Psychologiczne 0.1.3 (bez budowania)
+# Gotowe pliki aplikacji MS Konsylium Psychologiczne 0.1.4 (bez budowania)
 
 Wynik `node aplikacja/powloka/zbuduj.mjs` = zawartość `resources\app`. Generowany automatycznie – nie edytować ręcznie (po zmianach: zbudować i skopiować `aplikacja/powloka/build/` tutaj).
 

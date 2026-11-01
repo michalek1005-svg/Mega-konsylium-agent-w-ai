@@ -31,6 +31,8 @@ zrodla-psycho/           biblioteka źródeł (ZRODLA-PSYCHO.md, ok. 90 pozycji 
 przypadki-testowe/       syntetyczne przypadki PSY-01…10 (klucze oceny NIE są w tym folderze i nie mogą tu trafić)
 ```
 
+**Cel Pokoju (Michał 1.11.2026 07:47):** diagnostyka problemu i nakierowanie na rozwiązanie i leczenie (psychoterapia, psychiatria, ogólnie medycznie). **Rozmowa** 1:1 jest poradnikiem – docs/ROZMOWA.md.
+
 ## 3. Zespół (`.claude/agents/`)
 | Rola (plik) | Na scenie | Zadanie |
 |---|---|---|
@@ -45,7 +47,7 @@ przypadki-testowe/       syntetyczne przypadki PSY-01…10 (klucze oceny NIE są
 Każda rola = osobne wywołanie subagenta z modelem z definicji (bez samowolnej zamiany na tańszy). Definicje zmienia tylko Michał.
 
 ## 4. Konsylium – protokół (szczegóły: docs/KONCEPCJA.md §4)
-1. **Wywiad**: najpierw bezpieczeństwo (przesiew C‑SSRS, bezpieczeństwo w domu), potem PHQ‑9, GAD‑7, AUDIT‑C, sen, substancje, leki, choroby, wcześniejsze terapie, wsparcie, cel, gotowość 0–10, **pytanie wiodące**. Klikalnie; pytania otwarte najwyżej 2–3.
+1. **Wywiad**: najpierw bezpieczeństwo (przesiew C‑SSRS, bezpieczeństwo w domu), potem PHQ‑9, GAD‑7, AUDIT‑C, sen, substancje, leki, choroby, wcześniejsze terapie, wsparcie, cel, gotowość 0–10, **pytanie wiodące**. Przesiewy i skale klikalnie, a o sytuację, myśli, uczucia, relacje i cel – **pytania otwarte bez limitu** (w psychologii słowa osoby są materiałem; zasada „mało pisać” dotyczy tylko konsylium lekarskiego, Michał 1.11 07:47).
 2. **Ryzyko i triage**: strażnik ryzyka, złożoność, niepewność – równolegle. `eskaluj: true` → tor bezpieczeństwa (docs/BEZPIECZENSTWO.md §3), bez zwykłych Wniosków.
 3. **Ślepa tura formulacji**: 7 klinicystów osobno, `03-formulacje/<rola>.json` (schemat w docs/WSPOLNE-TERAPEUTA.md pkt 3), min. 3 skuteczne zapytania PubMed na rolę.
 4. **Mapa zgody**: wspólne czynniki podtrzymujące po tabeli tłumaczeń (docs/SIEC-AGENTOW.md §2), różnice zmieniające postępowanie.
@@ -55,13 +57,15 @@ Każda rola = osobne wywołanie subagenta z modelem z definicji (bez samowolnej 
 FORMULACJA: <≤120 słów, zrozumiale dla klienta, bez etykiety w pierwszym zdaniu; pierwsze zdanie odpowiada na pytanie wiodące>
 KIERUNEK PRACY: <jedno zdanie: jedno podejście wiodące albo jawna integracja z powodem>
 CO NAJPIERW: <≤3 kroki na 2–4 tygodnie>
+HIPOTEZA ROBOCZA: <rozpoznanie robocze ICD‑11 z kodem i pewnością (niska/średnia/wysoka) + 1–2 różnicowania; „to hipoteza do potwierdzenia przez specjalistę”>
+LECZENIE: <psychoterapia: nurt, forma, częstość i orientacyjny czas; czy i jak pilnie konsultacja psychiatryczna i farmakoterapia (bez nazw dawek); co zrobić w POZ / badania wykluczające>
 CZEGO NIE PRZEOCZYĆ: <medyczne, psychiatryczne, prawne; kto i kiedy>
 PLAN BEZPIECZEŃSTWA: <gdy ryzyko ≥1, wg Stanley–Brown, z danych wywiadu; gdy 0: „nie dotyczy, przesiew ujemny dnia …”>
 ZDANIE ODRĘBNE: <jeśli było: czyje i dlaczego>
 NIEZNANE: <lista>
 WRÓĆ / ESKALUJ GDY: <konkretnie>
 ŹRÓDŁA: <≤5 przypisów z PMID/DOI>
-— Narzędzie testowe marki MS. To nie jest terapia ani diagnoza.
+— Narzędzie testowe marki MS. To nie jest terapia; hipoteza robocza nie zastępuje diagnozy specjalisty.
 ```
 7. **Dymki od razu po każdej wypowiedzi**: `python skrypty/dymek.py sprawy/<ID> --rola terapeuta-cbt --faza "Ślepa tura" --skrot "…" [--info "…"] [--temat "…"] [--tablica "…"]`. Fazy: Wywiad, Ryzyko, Ślepa tura, Mapa zgody, Konfrontacja · runda N, Projekt, Stażysta, Sprawdzenie, Wnioski. Dymek = 1–2 pełne zdania językiem klinicznym (≤400 znaków), bez wag i opisu procesu.
 8. **Terapeuta prowadzący** (użytkownik) dopisuje do dyskusji z Pokoju: `python skrypty/uwagi_lekarza.py sprawy/<ID>` przed każdą rundą; po FINAL czekaj 10 min (`--czekaj 600`).

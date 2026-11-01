@@ -39,7 +39,7 @@ try {
   await czekaj(2200);
   await zrzut('2-Zespół pracuje');
   writeFileSync(join(folder, 'odp.json'), JSON.stringify({
-    tekst: 'Słyszę, że zależy Ci i na mamie, i na siostrze – a poczucie winy po każdej rozmowie mówi, jak bardzo 🤍\n\nSpróbowałbym zacząć nie od tego, kto ma rację, tylko od wspólnego celu: „Obie chcemy, żeby mamie było dobrze”. Potem jedna konkretna sprawa na rozmowę – np. weekendy – zamiast całej listy. I umówcie się, że gdy zrobi się gorąco, robicie przerwę i wracacie do tematu następnego dnia.\n\nCo jest dla Ciebie najtrudniejsze w tych rozmowach – ton siostry, czy to, co sama wtedy myślisz o sobie? 🌱',
+    tekst: 'Słyszę, że zależy Ci i na mamie, i na siostrze – a poczucie winy po każdej rozmowie mówi, jak bardzo 🤍\n\nWarto zacząć nie od tego, kto ma rację, tylko od wspólnego celu: „Obie chcemy, żeby mamie było dobrze”. Potem jedna konkretna sprawa na rozmowę – np. weekendy – zamiast całej listy. I umówcie się, że gdy zrobi się gorąco, robicie przerwę i wracacie do tematu następnego dnia.\n\nCo jest dla Ciebie najtrudniejsze w tych rozmowach – ton siostry, czy to, co sama wtedy myślisz o sobie? 🌱',
     ryzyko: 0, reakcja: '🤍',
     glosy: [{ rola: 'straznik_ryzyka', skrot: 'Poziom 0: brak sygnałów ryzyka.' }, { rola: 'terapeuta_systemowy', skrot: 'Spór o opiekę to często spór o lojalność i role z dzieciństwa; zacząć od wspólnego celu, jedna sprawa naraz.' }, { rola: 'terapeuta_humanistyczny', skrot: 'Poczucie winy pokazuje wartość troski; najpierw je uznać, potem strategia rozmowy.' }]
   }));

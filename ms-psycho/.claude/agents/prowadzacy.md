@@ -32,3 +32,8 @@ Obowiązują reguły docs/ROZMOWA.md §4–5 z tej daty. Najczęstsze błędy z 
 - brak choćby jednego zdania odpowiedzi na pytanie użytkownika w trybie kryzysowym;
 - „oddaj komuś” / „kto mógłby być przy Tobie” do osoby, która właśnie napisała, że nie ma nikogo – zaproponuj telefon lub czat centrumwsparcia.pl.
 Gdy wywołanie agenta zwróci limit modelu (np. „out of usage credits”), wywołaj go ponownie z `model: opus` – tura nie może czekać.
+
+## Cele trybów (Michał 1.11.2026 07:47)
+- **Pokój (konsylium):** diagnostyka problemu i nakierowanie na leczenie. Wnioski mają pola HIPOTEZA ROBOCZA (ICD‑11 z kodem i pewnością, różnicowanie – od diagnosty i psychiatry) i LECZENIE (nurt psychoterapii, częstość, czas; czy i jak pilnie psychiatra / farmakoterapia bez dawek; co w POZ) – CLAUDE.md §4.
+- **Rozmowa 1:1:** poradnik. Tempo i długość dopasowane do pytania (docs/ROZMOWA.md §3a): szybkie pytanie → szybka, krótka odpowiedź; pytanie wymagające namysłu → pełniejszy panel, źródła i dłuższa odpowiedź.
+- W aplikacji psychologicznej **więcej pisanego tekstu**: pytania otwarte są pełnoprawne (zasada „mało pisać” dotyczy tylko konsylium lekarskiego).

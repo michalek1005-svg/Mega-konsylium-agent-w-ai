@@ -154,6 +154,17 @@ def podsumuj(s: dict) -> None:
     slowa = re.findall(r"[a-z]+", bez_ogonkow(tekst_nowych))
     krotka = (bool(s["nowe"]) and maks == 0 and ostatni == 0 and "?" not in tekst_nowych and len(slowa) <= 8
               and len([x for x in slowa if x not in GRZECZNOSCI]) <= 1)
+    if not krotka and s["nowe"]:
+        slow_n = len(tekst_nowych.split())
+        pytan = tekst_nowych.count("?")
+        namysl = (slow_n > 120 or pytan >= 2 or s["tryb"] == "konsultacja"
+                  or (slow_n > 25 and re.search(r"\b(dlaczego|czemu|pomoz mi zrozumiec|jak to rozumiec|co o tym myslisz|nie wiem co (robic|zrobic)|nie wiem,? czy|decyzj)", bez_ogonkow(tekst_nowych))))
+        if maks == 0 and ostatni == 0 and not namysl and slow_n <= 30 and pytan == 1:
+            print(f"TEMPO: SZYBKO (docs/ROZMOWA.md §3a) – jedno proste pytanie przy ryzyku 0: strażnik + 1 podejście, odpowiedź 40–120 słów, bez sędziego. W odp.json \"tempo\": \"szybko\".")
+        elif namysl:
+            print(f"TEMPO: DO NAMYSŁU (docs/ROZMOWA.md §3a) – strażnik + panel 4–5 + źródła (PubMed, Europe PMC) + klient-sędzia; odpowiedź do ok. 450 słów. Pasek: rozmowa.py pracuje … --etap \"przemyśla dokładniej\". W odp.json \"tempo\": \"namysl\".")
+        else:
+            print("TEMPO: NORMALNIE (docs/ROZMOWA.md §3a) – strażnik + panel ≤4 + klient-sędzia, 80–220 słów.")
     if krotka:
         print(f"KRÓTKA ŚCIEŻKA (docs/ROZMOWA.md §3): krótka wiadomość bez nowej treści przy ryzyku 0 – tylko strażnik ryzyka (szybko) i prowadzący, bez panelu i klienta‑sędziego; odpowiedź 1–3 zdania.\n1) rozmowa.py pracuje --rozmowa {s['id']} --panel straznik_ryzyka,prowadzacy   2) strażnik   3) prowadzący pisze krótko   4) rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
         return
@@ -237,7 +248,7 @@ def cmd_odpowiedz(a) -> None:
     na = max([w.get("n", 0) for w in s["ja"]] or [0])
     w = {"n": n, "odpowiedz_na": na, "ts": teraz(), "tekst": tekst, "ryzyko": ryz, "kryzys": bool(d.get("kryzys")),
          "glosy": glosy, "zrodla": [str(z) for z in d.get("zrodla", [])][:6]}
-    for pole in ("wyzwalacze", "powod", "eksploracja", "flagi"):  # docs/SIEC-AGENTOW.md §1 – materiał do pomiaru
+    for pole in ("wyzwalacze", "powod", "eksploracja", "flagi", "tempo"):  # docs/SIEC-AGENTOW.md §1 – materiał do pomiaru
         if d.get(pole) is not None:
             w[pole] = d[pole]
     if d.get("reakcja"):
@@ -256,12 +267,13 @@ def cmd_odpowiedz(a) -> None:
     with open(k / "_log.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": w["ts"], "zdarzenie": "odpowiedz", "n": n, "na": na, "ryzyko": ryz, "filtr": filtr, "slow": slow,
                             "panel": [g["rola"] for g in glosy], "szwy": ostrz,
-                            **{k: w[k] for k in ("wyzwalacze", "powod", "eksploracja", "flagi") if k in w}}, ensure_ascii=False) + "\n")
+                            **{k: w[k] for k in ("wyzwalacze", "powod", "eksploracja", "flagi", "tempo") if k in w}}, ensure_ascii=False) + "\n")
     print(f"OK: odpowiedź #{n} na wiadomość #{na} ({slow} słów, ryzyko {ryz}).")
     if ostrz:
         print(f"UWAGA (detektor szwów / granic): {ostrz} – sprawdź, czy jeden głos nie zdradza machinerii i nie łamie granic.")
-    if slow > 220 and not d.get("kryzys"):
-        print("UWAGA: ponad 220 słów (docs/ROZMOWA.md §4; treść bezpieczeństwa się nie liczy, ale sprawdź, czy da się krócej).")
+    limit = {"krotko": 60, "szybko": 120, "namysl": 450}.get(str(d.get("tempo") or ""), 220)
+    if slow > limit and not d.get("kryzys"):
+        print(f"UWAGA: {slow} słów przy tempie „{d.get('tempo') or 'normalnie'}” (limit ok. {limit}; docs/ROZMOWA.md §3a). Treść bezpieczeństwa się nie liczy.")
     if slow > 90 and ryz >= 4:
         print(f"UWAGA: poziom 4 – {slow} słów; cel ≤80, tylko tor bezpieczeństwa (docs/ROZMOWA.md §5).")
 

@@ -34,6 +34,9 @@ select.btn { appearance: none; padding-right: 14px; max-width: 220px; }
 .pracuje b { color: var(--ink); font-weight: 700; }
 .pracuje.spi { opacity: .75; }
 .kropki i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #a894d6; margin-right: 3px; animation: kr 1.3s ease-in-out infinite; }
+.kursor { display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: #7d63c2; animation: kursor .9s steps(1) infinite; }
+@keyframes kursor { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .kursor { animation: none; } }
 .kropki i:nth-child(2) { animation-delay: .2s; } .kropki i:nth-child(3) { animation-delay: .4s; }
 .spi .kropki i { animation: none; opacity: .4; }
 @keyframes kr { 50% { opacity: .25; transform: translateY(-3px); } }
@@ -249,6 +252,7 @@ var FRAZY = /*@@FRAZY@@*/null;
       }
       var reakcja = stan.reakcje[m.n];
       if (m.kryzys) { h += kryzysHtml(m.tekst, 'Terapeuta AI', m.kierunek); return; }
+      if (piszeTeraz(m)) { h += '<div class="msg zespol na-zywo" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(pisanie.czesci.slice(0, pisanie.ile).join('')) + '<span class="kursor" aria-hidden="true"></span></div>'; return; }
       h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(m.tekst);
       if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
       if (m.glosy && m.glosy.length) {
@@ -350,11 +354,26 @@ var FRAZY = /*@@FRAZY@@*/null;
     if (!pliki || stan.demo || !stan.id) return;
     Promise.all([most.czytaj(kat() + '/zespol.json'), most.czytaj(kat() + '/pracuje.json')]).then(function (r) {
       var zm = false;
-      try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { stan.zespol = w; zm = true; dzwiek(); } } catch (e) {}
+      try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { var bylo = stan.zespol.reduce(function (a, x) { return Math.max(a, x.n || 0); }, 0); stan.zespol = w; zm = true; dzwiek(); var ost = w[w.length - 1]; if (ost && ost.n > bylo && !ost.kryzys) zacznijPisanie(ost); } } catch (e) {}
       try { var p = r[1] && JSON.parse(r[1].tekst); if (JSON.stringify(p) !== JSON.stringify(stan.pracuje)) { stan.pracuje = p; zm = true; } } catch (e) {}
       if (zm) rysuj(); else if (czekaNaOdpowiedz()) rysuj();
     }).catch(function () {});
   }
+  // ---------- pisanie na żywo (Michał 1.11.2026 07:48): gotowa odpowiedź pojawia się słowo po słowie ----------
+  var pisanie = null;
+  function zacznijPisanie(m) {
+    try { if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) {}
+    var slowa = String(m.tekst || '').split(/(\s+)/);
+    if (pisanie && pisanie.timer) clearInterval(pisanie.timer);
+    pisanie = { n: m.n, czesci: slowa, ile: 0 };
+    var krok = Math.max(1, Math.round(slowa.length / 160));   // dłuższa odpowiedź pisze się szybciej; całość w ok. 4–8 s
+    pisanie.timer = setInterval(function () {
+      pisanie.ile += krok * 2;
+      if (pisanie.ile >= pisanie.czesci.length) { clearInterval(pisanie.timer); pisanie = null; }
+      rysuj(true);
+    }, 45);
+  }
+  function piszeTeraz(m) { return pisanie && pisanie.n === m.n; }
   var ostDzwiek = 0;
   function dzwiek() {
     if (Date.now() - ostDzwiek < 1500) return; ostDzwiek = Date.now();

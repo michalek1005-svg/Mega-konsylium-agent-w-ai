@@ -114,7 +114,7 @@ function log(pliki) {
 
 // pole „ETYKIETA: treść” z plików 05/09 (format FINAL)
 // Wnioski końcowe z 09-FINAL.md (format CLAUDE.md §6) → [{ etykieta, tresc }] dla ekranu „Wnioski”
-const POLA_FINAL = ['FORMULACJA', 'KIERUNEK PRACY', 'CO NAJPIERW', 'CZEGO NIE PRZEOCZYĆ', 'PLAN BEZPIECZEŃSTWA', 'ZDANIE ODRĘBNE', 'NIEZNANE', 'WRÓĆ / ESKALUJ GDY', 'ŹRÓDŁA', 'REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B', 'CZEGO NIE WIEMY'];
+const POLA_FINAL = ['FORMULACJA', 'KIERUNEK PRACY', 'HIPOTEZA ROBOCZA', 'LECZENIE', 'CO NAJPIERW', 'CZEGO NIE PRZEOCZYĆ', 'PLAN BEZPIECZEŃSTWA', 'ZDANIE ODRĘBNE', 'NIEZNANE', 'WRÓĆ / ESKALUJ GDY', 'ŹRÓDŁA', 'REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B', 'CZEGO NIE WIEMY'];
 export function wnioskiZFinal(md) {
   if (!md || !md.trim()) return null;
   const linie = md.replace(/\r/g, '').split('\n');
