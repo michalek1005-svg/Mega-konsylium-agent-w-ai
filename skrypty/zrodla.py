@@ -122,6 +122,12 @@ def lokalne(sprawa: Path, q: str, kto: str) -> None:
         zapisz(sprawa, {"typ": "lokalne", "id": rel, "tytul": tytul, "kto_pobral": kto})
 
 
+def normuj(t: str) -> str:
+    import unicodedata
+    t = unicodedata.normalize("NFKD", t.lower())
+    return "".join(c for c in t if c.isalnum())
+
+
 def rpl(sprawa: Path, inn: str | None, nazwa: str | None, kto: str) -> None:
     q = {"size": "100"}
     if nazwa:
@@ -130,12 +136,24 @@ def rpl(sprawa: Path, inn: str | None, nazwa: str | None, kto: str) -> None:
         q["commonName"] = inn
     d = pobierz("https://rejestrymedyczne.ezdrowie.gov.pl/api/rpl/medicinal-products/search/public?" + urllib.parse.urlencode(q))
     lista = d.get("content") or d.get("items") or (d if isinstance(d, list) else [])
+    # „Metforminum” nie łapie „Metformini hydrochloridum” (sole): dopytaj rdzeniem, gdy brak preparatu jednoskładnikowego
+    if inn and not nazwa and not any(not re.search(r"\+|,|;", str(x.get("commonName") or "")) for x in lista) and len(inn) > 7:
+        q2 = {"size": "100", "commonName": inn[:-3] if inn.lower().endswith("num") else inn[:7]}
+        d2 = pobierz("https://rejestrymedyczne.ezdrowie.gov.pl/api/rpl/medicinal-products/search/public?" + urllib.parse.urlencode(q2))
+        znane = {str(x.get("id")) for x in lista}
+        lista = lista + [x for x in (d2.get("content") or d2.get("items") or []) if str(x.get("id")) not in znane]
     if not lista:
         print("RPL: brak wyników. Uwaga: commonName to INN po łacinie (Metforminum, nie metformina).")
         return
     # najpierw preparaty jednoskładnikowe (commonName dokładnie jak zapytanie), potem złożone
     if inn and not nazwa:
-        lista = sorted(lista, key=lambda x: (str(x.get("commonName") or "").strip().lower() != inn.strip().lower(), str(x.get("medicinalProductName") or "")))
+        rdzen = normuj(inn)[:6]
+
+        def ile_substancji(x) -> int:
+            return len([c for c in re.split(r"\s*(?:\+|,|;|\bet\b|\bi\b)\s*", str(x.get("commonName") or "")) if c.strip()])
+
+        lista = sorted(lista, key=lambda x: (ile_substancji(x) > 1, rdzen not in normuj(str(x.get("commonName") or "")),
+                                             str(x.get("medicinalProductName") or "")))
     for x in lista[:15]:
         opis = f"{x.get('medicinalProductName')} · {x.get('commonName')} · {x.get('pharmaceuticalFormName') or x.get('pharmaceuticalForm') or ''} · {x.get('medicinalProductPower') or ''}"
         print(f"[RPL: {x.get('medicinalProductName')}] {opis}")

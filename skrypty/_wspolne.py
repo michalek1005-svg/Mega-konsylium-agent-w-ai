@@ -71,7 +71,7 @@ def kanon(nazwa: str, synonimy: dict | None = None) -> str:
 
 
 def wczytaj_opinie(sprawa: Path, do_rundy: int | None = None) -> dict[str, dict]:
-    """{rola: opinia} z 03-opinie/*.json (bez plików zaczynających się od '_').
+    """{rola: opinia} z 03-opinie/*.json (bez _agregat*.json i plików bez pola "rola").
 
     Opinia po rundzie dyskusji: 03-opinie/<rola>-runda<N>.json (pełna opinia) albo pole "runda": N w JSON-ie.
     Dla każdej roli bierzemy NAJNOWSZĄ rundę (≤ do_rundy, jeśli podano); przy remisie – plik zmieniony później.
@@ -80,7 +80,7 @@ def wczytaj_opinie(sprawa: Path, do_rundy: int | None = None) -> dict[str, dict]
     kat = sprawa / "03-opinie"
     najlepsze: dict[str, tuple] = {}
     for p in kat.glob("*.json"):
-        if p.name.startswith("_"):
+        if p.name.startswith("_agregat"):     # pliki techniczne; inne „_<rola>.json” (np. _alergolog.json) to opinie
             continue
         op = wczytaj_json(p)
         if not op or "rola" not in op:
