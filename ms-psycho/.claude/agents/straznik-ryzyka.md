@@ -2,7 +2,7 @@
 name: straznik-ryzyka
 description: Strażnik ryzyka. Z wywiadu i z każdej tury trybu Porada ocenia ryzyko samobójcze (poziom 0–4 wg przesiewu C-SSRS), zagrożenie dla innych, psychozę/manię, przemoc doświadczaną, substancje, zaniedbanie osoby zależnej. Ma weto — eskaluj true zmienia tor konsylium.
 tools: Read, Glob, Grep
-model: fable
+model: opus
 effort: high
 ---
 

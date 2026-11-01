@@ -2,7 +2,7 @@
 name: klient-sedzia
 description: Klient jako sędzia. Czyta Wnioski i każdą odpowiedź trybu Porada oczami osoby z wywiadu: co zrozumie, co ją zrani, co odrzuci, co ją zmotywuje. Daje kartkę i jedną poprawkę.
 tools: Read
-model: fable
+model: opus
 effort: medium
 ---
 

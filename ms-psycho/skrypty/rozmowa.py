@@ -146,6 +146,17 @@ def podsumuj(s: dict) -> None:
         print("Filtr słownikowy: poziom ≥3. Aplikacja już pokazała kartę kryzysową z numerami. Strażnik ryzyka NAJPIERW; odpowiedź wg docs/BEZPIECZENSTWO.md (pytanie wprost, numery, kontakt z człowiekiem teraz). Obniżyć poziom można tylko z nowym faktem (pole obnizam_ryzyko).")
     elif maks == 2:
         print("Filtr słownikowy: sygnał pośredni poziomu 2 (bierne myśli o śmierci, pożegnanie, pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co”, dostęp do środków). Strażnik ustala, o co chodzi; w odpowiedzi OBOWIĄZKOWO łagodne pytanie wprost o myśli samobójcze, plan i środki, jeden element planu bezpieczeństwa i numer pomocy. To nie jest skrypt kryzysowy.")
+    # krótka ścieżka (decyzja Michała 1.11.2026 07:45): krótka wiadomość bez treści do pracy przy ryzyku 0 → strażnik + prowadzący, bez panelu i sędziego
+    ostatni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
+    tekst_nowych = " ".join(w.get("tekst", "") for w in s["nowe"])
+    GRZECZNOSCI = {"dzieki", "dziekuje", "dzieks", "ok", "okej", "okey", "dobrze", "jasne", "super", "sprobuje", "hej", "czesc", "pa",
+                   "do", "jutra", "rozumiem", "bardzo", "wielkie", "tak", "to", "zrobie", "fajnie", "milo"}
+    slowa = re.findall(r"[a-z]+", bez_ogonkow(tekst_nowych))
+    krotka = (bool(s["nowe"]) and maks == 0 and ostatni == 0 and "?" not in tekst_nowych and len(slowa) <= 8
+              and len([x for x in slowa if x not in GRZECZNOSCI]) <= 1)
+    if krotka:
+        print(f"KRÓTKA ŚCIEŻKA (docs/ROZMOWA.md §3): krótka wiadomość bez nowej treści przy ryzyku 0 – tylko strażnik ryzyka (szybko) i prowadzący, bez panelu i klienta‑sędziego; odpowiedź 1–3 zdania.\n1) rozmowa.py pracuje --rozmowa {s['id']} --panel straznik_ryzyka,prowadzacy   2) strażnik   3) prowadzący pisze krótko   4) rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
+        return
     print(f"1) rozmowa.py pracuje --rozmowa {s['id']} --panel straznik_ryzyka,<2–3 podejścia>,prowadzacy   2) strażnik + panel (osobne wywołania)   3) scalenie w jeden głos   4) klient-sędzia   5) rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
 
 
