@@ -72,9 +72,20 @@ await p.screenshot({ path: join(tu, '..', '_zrzut-tablica.png') });
 await p.evaluate(() => document.getElementById('ramka').contentWindow.postMessage({ typ: 'ms-ai', aktywne: true, od: Date.now() - 30000 }, '*'));
 await p.waitForTimeout(400);
 assert.match(await r.locator('#chip-ai').innerText(), /AI pracuje · 0:3\d/i, 'chip z czasem pracy AI');
-await p.waitForTimeout(7500);
+await r.locator('body').evaluate(() => { window.__progWyjscia = 40000; }); // AI pracuje od 30 s → próg liczony od początku pracy AI mija 10 s po sygnale
+await p.waitForTimeout(5000);
+// etap 1 (Michał 1.11 04:05): lekarze zostają przy stole i piszą opinie na laptopach
+assert.equal(await r.locator('.pokoj.pisza').count(), 1, 'lekarze piszą opinie przy stole');
+assert.equal(await r.locator('.pokoj.przerwa').count(), 0, 'jeszcze nie wyszli');
+assert.match(await r.locator('#tablica').innerText(), /piszą opinie/i, 'tablica: lekarze piszą');
+assert.ok(await r.locator('.laptop').count() >= 6, 'laptopy na stole');
+await p.screenshot({ path: join(tu, '..', '_zrzut-pisza.png') });
+// etap 2: namysł dłuższy niż próg (w aplikacji 90 s od początku pracy AI, w teście 40 s) → wychodzą z pokoju
+await p.waitForTimeout(6500);
+assert.equal(await r.locator('.pokoj.pisza').count(), 0, 'koniec etapu pisania');
 assert.equal(await r.locator('.pokoj.przerwa').count(), 1, 'lekarze wyszli: pokój w przerwie');
 assert.match(await r.locator('#tablica').innerText(), /Konsylium pracuje/i, 'tablica pokazuje naradę');
+await p.waitForTimeout(3200); // lekarze idą do drzwi
 const op = await r.locator('.postac[data-kto="bayes"]').evaluate((el) => getComputedStyle(el).opacity);
 assert.ok(+op < .5, 'lekarz zniknął za drzwiami: ' + op);
 assert.equal(await r.locator('.postac[data-kto="lekarz_prowadzacy"]').evaluate((el) => getComputedStyle(el).opacity), '1', 'lekarz prowadzący zostaje');

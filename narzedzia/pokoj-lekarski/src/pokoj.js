@@ -65,8 +65,6 @@
     let podloga = '';
     for (let k = -12; k <= 12; k++) podloga += `<line x1="${600 + k * 22}" y1="338" x2="${600 + k * 140}" y2="700" stroke="var(--podloga-linia)" stroke-width="1.5"/>`;
     for (const y of [360, 392, 436, 494, 566, 652]) podloga += `<line x1="0" y1="${y}" x2="1200" y2="${y}" stroke="var(--podloga-linia)" stroke-width="1.5"/>`;
-    let gwiazdy = '';
-    [[905, 92], [960, 130], [1010, 84], [1080, 118], [1125, 96], [930, 190], [1050, 170], [1110, 210]].forEach(([x, y]) => { gwiazdy += `<circle cx="${x}" cy="${y}" r="1.6" fill="var(--okno-gwiazda)"/>`; });
 
     const zaStolem = wpisy.filter(([, m]) => m.w === 0).map(([id, m]) => figura(id, m, ROLE[id])).join('');
     const przedStolem = wpisy.filter(([, m]) => m.w === 1).map(([id, m]) => figura(id, m, ROLE[id])).join('');
@@ -79,12 +77,15 @@ ${[180, 360, 840, 1020].map((x) => `<rect x="${x}" y="0" width="2" height="330" 
 ${podloga}
 <rect x="0" y="328" width="${W}" height="10" fill="var(--listwa)"/>
 
-<!-- okno -->
-<rect x="876" y="56" width="280" height="200" rx="10" fill="var(--listwa)"/>
-<rect x="886" y="66" width="260" height="180" rx="5" fill="var(--okno-niebo)"/>${gwiazdy}
-<circle cx="1100" cy="104" r="14" fill="var(--okno-gwiazda)"/>
-<rect x="1013" y="66" width="6" height="180" fill="var(--listwa)"/><rect x="886" y="153" width="260" height="6" fill="var(--listwa)"/>
-<rect x="870" y="250" width="292" height="9" rx="3" fill="var(--listwa)"/>
+<!-- ekran na ścianie (Michał 1.11 04:09: zamiast okna): wykres prognoz po kliknięciu „Prognozy”; wygaszony pokazuje logo K -->
+<g id="ekran-sciana" role="button" aria-label="Ekran prognoz rozpoznań">
+<rect x="872" y="52" width="288" height="208" rx="10" fill="#1b2826"/>
+<rect x="882" y="62" width="268" height="188" rx="4" fill="#0f1918"/>
+<rect x="882" y="62" width="268" height="188" rx="4" fill="var(--petrol)" opacity=".08"/>
+<text x="1016" y="168" text-anchor="middle" font-family="var(--font)" font-size="44" font-weight="800" fill="var(--petrol)" opacity=".35">K</text>
+<text x="1016" y="196" text-anchor="middle" font-family="var(--font)" font-size="10" font-weight="700" letter-spacing="1.5" fill="var(--petrol)" opacity=".6">PROGNOZY · KLIKNIJ</text>
+<rect x="1004" y="260" width="24" height="10" fill="#1b2826"/><rect x="984" y="268" width="64" height="5" rx="2" fill="var(--listwa)"/>
+</g>
 
 <!-- plakat z serduszkiem: realistyczny rysunek pastelowy (src/plakat.js); kliknięcie pokazuje go w powiększeniu -->
 ${PLAKAT_DEFS}
@@ -128,14 +129,14 @@ ${zaStolem}
 <ellipse cx="600" cy="548" rx="306" ry="88" fill="var(--stol-krawedz)"/>
 <ellipse cx="600" cy="538" rx="300" ry="82" fill="var(--stol-blat)"/>
 <ellipse cx="600" cy="532" rx="270" ry="64" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/>
-<g opacity=".9">
+<g opacity=".95">
   <rect x="566" y="478" width="68" height="40" rx="4" fill="#1b2826"/><rect x="570" y="482" width="60" height="30" rx="2" fill="var(--petrol)" opacity=".35"/>
-  <rect x="452" y="500" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(-8 469 512)"/>
-  <rect x="712" y="500" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(7 729 512)"/>
-  <rect x="352" y="532" width="32" height="22" rx="2" fill="var(--fartuch)" transform="rotate(-14 368 543)"/>
-  <rect x="818" y="532" width="32" height="22" rx="2" fill="var(--fartuch)" transform="rotate(12 834 543)"/>
-  <rect x="488" y="568" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(4 505 580)"/>
-  <rect x="680" y="568" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(-5 697 580)"/>
+  <g class="laptop" transform="translate(469,512) rotate(-8)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(729,512) rotate(7)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(368,543) rotate(-14)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(834,543) rotate(12)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(505,580) rotate(4)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
+  <g class="laptop" transform="translate(697,580) rotate(-5)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/><rect x="-12" y="-12" width="9" height="1.6" fill="#fff" opacity=".6"/></g></g>
 </g>
 ${przedStolem}
 <!-- przerwa (AI pracuje): parujące kubki na stole i tabliczka „Narada” nad drzwiami – widoczne tylko w .pokoj.przerwa -->
@@ -143,6 +144,9 @@ ${przedStolem}
 <g class="narada-znak" transform="translate(10,14)" aria-hidden="true"><rect width="196" height="30" rx="15" fill="#0F5E58"/><circle class="narada-kropka" cx="16" cy="15" r="5" fill="#7ff0d9"/><text id="narada-czas" x="27" y="19.5" font-family="var(--font)" font-size="10.5" font-weight="800" fill="#fff">NARADA · AI pracuje</text></g>
 <g id="dym" aria-hidden="true"></g>
 
+<!-- biurko lekarza prowadzącego z laptopem (Michał 1.11 04:09) -->
+<g class="biurko-prowadzacego"><rect x="948" y="618" width="76" height="12" rx="3" fill="var(--stol-blat)"/><rect x="954" y="630" width="8" height="46" fill="var(--stol)"/><rect x="1010" y="630" width="8" height="46" fill="var(--stol)"/>
+  <g class="laptop" transform="translate(986,618) rotate(-6)"><rect x="-19" y="-2" width="38" height="12" rx="2" fill="#2b3a38"/><rect x="-16" y="0" width="32" height="7" rx="1" fill="#3b4a48"/><rect x="-17" y="-26" width="34" height="25" rx="2" fill="#1b2826"/><rect class="ekran" x="-15" y="-24" width="30" height="21" rx="1" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-12" y="-20" width="14" height="1.6" fill="#fff" opacity=".7"/><rect x="-12" y="-16" width="20" height="1.6" fill="#fff" opacity=".5"/></g></g></g>
 <!-- roślina -->
 <g transform="translate(1150,676)"><path d="M-22,0 L-18,-34 L18,-34 L22,0 Z" fill="var(--listwa)"/>
 <g fill="var(--g-zastepca)"><ellipse cx="-14" cy="-58" rx="10" ry="24" transform="rotate(-24 -14 -58)"/><ellipse cx="12" cy="-62" rx="10" ry="26" transform="rotate(20 12 -62)"/><ellipse cx="0" cy="-70" rx="9" ry="28"/></g></g>
@@ -226,7 +230,7 @@ ${podpisy(wpisy)}`;
       pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
       if (zywoTimer && naKoncu && !gra) ustawGre(true); // na żywo: nowe wypowiedzi odtwarzają się same
     };
-    if (przerwa) zakonczPrzerwe(dalej); else dalej(); // lekarze wracają z narady z gotową wypowiedzią
+    if (przerwa || pisza) zakonczPrzerwe(dalej); else dalej(); // lekarze wracają z narady z gotową wypowiedzią
   }
 
   function przygotuj(s) {
@@ -258,7 +262,7 @@ ${podpisy(wpisy)}`;
   function pokaz(n, bezPisania) {
     if (!kroki.length) return;
     i = Math.max(0, Math.min(kroki.length - 1, n));
-    if (przerwa) zakonczPrzerwe();
+    if (przerwa || pisza) zakonczPrzerwe();
     clearTimeout(przerwaTimer); przerwaTimer = null;
     const k = kroki[i], sc = scen.sceny[k.si], w = sc.wypowiedzi[k.wi];
     const pokoj = $('pokoj');
@@ -345,6 +349,10 @@ ${podpisy(wpisy)}`;
   // Na żywo, gdy odtwarzanie dogoniło ostatnią wypowiedź, a werdyktu jeszcze nie ma: lekarze wychodzą przez drzwi
   // (konsylium czyta literaturę i pisze opinie), tablica pokazuje czas narady; nowa wypowiedź sprowadza ich z powrotem.
   let przerwa = false, przerwaOd = 0, przerwaTimer = null, przerwaZegar = null, aiPracuje = false, aiOd = 0;
+  // Michał 1.11 04:05: „za często wychodzą” – najpierw lekarze PISZĄ opinie na laptopach przy stole (.pokoj.pisza);
+  // dopiero gdy namysł AI trwa dłużej niż 1,5 min, wychodzą z pokoju (.pokoj.przerwa). Test ustawia próg przez window.__progWyjscia.
+  let pisza = false, piszaOd = 0, piszaTimer = null;
+  const PROG_WYJSCIA = () => Number(window.__progWyjscia) || 90000;
   const WYCHODZA = (id) => !/^R\d$/.test(id) && id !== 'lekarz_prowadzacy';
   const DRZWI = { x: 104, y: 336 };
   const mmss = (ms) => { const s = Math.max(0, Math.floor(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
@@ -353,10 +361,20 @@ ${podpisy(wpisy)}`;
     if (przerwa || !naKoncuBezWerdyktu()) { clearTimeout(przerwaTimer); przerwaTimer = null; return; }
     if (przerwaTimer) return; // odliczanie już trwa (odświeżenie co 3 s go nie cofa)
     // z sygnałem „AI pracuje” po 4 s, bez sygnału po 12 s ciszy
-    przerwaTimer = setTimeout(() => { przerwaTimer = null; if (naKoncuBezWerdyktu() && !przerwa) zacznijPrzerwe(); }, aiPracuje ? 4000 : 12000);
+    przerwaTimer = setTimeout(() => { przerwaTimer = null; if (naKoncuBezWerdyktu() && !przerwa && !pisza) zacznijPisanie(); }, aiPracuje ? 4000 : 12000);
+  }
+  function zacznijPisanie() {
+    pisza = true; piszaOd = aiPracuje && aiOd ? aiOd : Date.now();
+    $('pokoj').classList.add('pisza');
+    $('dymki').querySelectorAll('.dymek').forEach((d) => { d.classList.add('stary'); setTimeout(() => d.remove(), 400); });
+    rysujPrzerwe(); clearInterval(przerwaZegar); przerwaZegar = setInterval(rysujPrzerwe, 1000);
+    clearTimeout(piszaTimer);
+    piszaTimer = setTimeout(() => { piszaTimer = null; if (pisza && naKoncuBezWerdyktu()) zacznijPrzerwe(); }, Math.max(0, PROG_WYJSCIA() - (Date.now() - piszaOd)));
   }
   function zacznijPrzerwe() {
-    przerwa = true; przerwaOd = aiPracuje && aiOd ? aiOd : Date.now();
+    clearTimeout(piszaTimer); piszaTimer = null;
+    przerwa = true; przerwaOd = pisza && piszaOd ? piszaOd : (aiPracuje && aiOd ? aiOd : Date.now());
+    pisza = false; $('pokoj').classList.remove('pisza');
     $('pokoj').classList.add('przerwa');
     $('dymki').querySelectorAll('.dymek').forEach((d) => { d.classList.add('stary'); setTimeout(() => d.remove(), 400); });
     document.querySelectorAll('.postac').forEach((el, n) => {
@@ -371,6 +389,12 @@ ${podpisy(wpisy)}`;
     rysujPrzerwe(); clearInterval(przerwaZegar); przerwaZegar = setInterval(rysujPrzerwe, 1000);
   }
   function rysujPrzerwe() {
+    if (pisza && !przerwa) {
+      const t = mmss(Date.now() - piszaOd);
+      $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><div class="narada"><b>Lekarze piszą opinie · ${t}</b><span>Czytają literaturę i liczą. Nowa wypowiedź pojawi się sama.</span></div><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
+      $('napisy').innerHTML = `<span class="nap-temat"><b>AI pracuje · ${t}</b>Lekarze piszą opinie przy stole.</span>`;
+      rysujChipAi(); return;
+    }
     if (!przerwa) return;
     const t = mmss(Date.now() - przerwaOd);
     $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><div class="narada"><b>Narada · ${t}</b><span>Lekarze czytają literaturę i piszą opinie. Wrócą z gotową wypowiedzią.</span></div><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
@@ -380,6 +404,8 @@ ${podpisy(wpisy)}`;
   }
   function zakonczPrzerwe(potem) {
     clearTimeout(przerwaTimer); przerwaTimer = null; clearInterval(przerwaZegar); przerwaZegar = null;
+    clearTimeout(piszaTimer); piszaTimer = null;
+    if (pisza) { pisza = false; $('pokoj').classList.remove('pisza'); }
     if (!przerwa) { if (potem) potem(); return; }
     przerwa = false; $('pokoj').classList.remove('przerwa');
     let najdluzej = 0;
@@ -405,11 +431,11 @@ ${podpisy(wpisy)}`;
   }
   function rysujChipAi() {
     const c = $('chip-ai'); if (!c) return;
-    const on = aiPracuje || przerwa;
+    const on = aiPracuje || przerwa || pisza;
     c.hidden = !on;
-    if (on) c.textContent = 'AI pracuje · ' + mmss(Date.now() - (przerwa ? przerwaOd : (aiOd || Date.now())));
+    if (on) c.textContent = 'AI pracuje · ' + mmss(Date.now() - (przerwa ? przerwaOd : pisza ? piszaOd : (aiOd || Date.now())));
   }
-  setInterval(() => { if (aiPracuje && !przerwa) rysujChipAi(); }, 1000);
+  setInterval(() => { if (aiPracuje && !przerwa && !pisza) rysujChipAi(); }, 1000);
 
   // ---------- bajer: ordynator od czasu do czasu pali fajkę; dym rozchodzi się po pokoju i znika ----------
   let dymTimer = null;
@@ -418,6 +444,9 @@ ${podpisy(wpisy)}`;
     const g = $('dym'), m = MIEJSCA_AKT.ordynator; if (!g || !m || bezRuchu() || document.hidden) return;
     const zar = document.querySelector('.postac[data-kto="ordynator"] .zar');
     if (zar) { zar.classList.add('zar-on'); setTimeout(() => zar.classList.remove('zar-on'), 1400); }
+    // Michał 1.11 04:11: ruch „pykania” fajką tylko wtedy, gdy idzie dym
+    const ord = document.querySelector('.postac[data-kto="ordynator"]');
+    if (ord) { ord.classList.add('pyka'); setTimeout(() => ord.classList.remove('pyka'), 2600); }
     const x0 = m.x + 28.5 * m.s, y0 = m.y - 104 * m.s; // z cybucha fajki
     // jeden wydech = kilka kłębów, każdy większy i wolniejszy; całość ok. 12–16 s
     for (let k = 0; k < 7; k++) {
@@ -531,8 +560,11 @@ ${podpisy(wpisy)}`;
   // Wykres jest opcjonalny (Michał 1.11: „ma być opcjonalny do wyświetlenia po kliknięciu”): przycisk „Prognoza %” w nagłówku.
   let prognozaWidoczna = false;
   $('prognoza-btn').addEventListener('click', () => { prognozaWidoczna = !prognozaWidoczna; $('prognoza-btn').setAttribute('aria-pressed', String(prognozaWidoczna)); $('prognoza-btn').classList.toggle('nk-on', prognozaWidoczna); if (kroki.length) rysujPrognoze(kroki[i].si); });
+  // ekran na ścianie (zamiast okna) też przełącza wykres; wygaszony pokazuje logo K
+  document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('#ekran-sciana, #prognoza')) $('prognoza-btn').click(); });
   function rysujPrognoze(si) {
     const el = $('prognoza'); if (!el) return;
+    document.querySelector('#ekran-sciana')?.classList.toggle('wlaczony', prognozaWidoczna && !!(scen && scen.tablica && scen.tablica.prognozy && scen.tablica.prognozy.length));
     const lista = (scen && scen.tablica && scen.tablica.prognozy) || [];
     const akt = lista.filter((p) => p.si <= si).pop();
     $('prognoza-btn').hidden = !akt || !akt.rozpoznania.length;

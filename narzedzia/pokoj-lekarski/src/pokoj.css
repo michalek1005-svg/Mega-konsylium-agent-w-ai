@@ -198,7 +198,7 @@ body {
 .glos.blad .glos-blad { display: block; }
 
 /* dymki */
-.dymki { position: absolute; inset: 0; pointer-events: none; }
+.dymki { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
 .dymek { position: absolute; width: max-content; max-width: 34cqw; min-width: 13cqw; max-height: 27cqw; overflow-y: auto; overscroll-behavior: contain; padding: .85cqw 1.15cqw; border-radius: 1.2cqw; background: var(--dymek); color: var(--dymek-txt);
   font-size: max(10px, 1.1cqw); line-height: 1.42; text-wrap: pretty; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(15,94,88,.12);
   transform: translate(-50%, -100%); transition: opacity .35s, transform .35s; pointer-events: auto; cursor: pointer; }
@@ -332,14 +332,33 @@ html.osadzony .legenda { display: none; }
 .pokoj .podpis { transition: opacity .8s; } .pokoj.przerwa .podpis { opacity: .35; }
 
 /* prognoza rozpoznań – mały wykres dla Lekarza prowadzącego (Michał 1.11); dane: scenariusz.tablica.prognozy */
-.prognoza { position: absolute; right: 1.2cqw; bottom: 1.2cqw; width: 22cqw; min-width: 150px; padding: .8cqw 1cqw; border-radius: 1cqw; background: var(--dymek); color: var(--dymek-txt); box-shadow: 0 .4cqw 1.4cqw rgba(10,54,52,.18); font-size: max(8.5px, .9cqw); line-height: 1.3; z-index: 4; }
+/* wykres prognoz = ekran na ścianie w miejscu okna (Michał 1.11 04:09), prostokąt 882–1150 × 62–250 sceny 1200×700 */
+.prognoza { position: absolute; left: 73.5%; top: 8.9%; width: 22.3%; height: 26.8%; padding: .6cqw .8cqw; border-radius: .4cqw; background: #0f1918; color: #e4eeeb; box-shadow: inset 0 0 0 1px rgba(92,200,187,.25), 0 0 1.2cqw rgba(92,200,187,.25); font-size: max(8px, .85cqw); line-height: 1.25; z-index: 2; overflow: hidden; cursor: pointer; }
+#ekran-sciana { cursor: pointer; } #ekran-sciana.wlaczony text { opacity: 0; }
 .prognoza .pr-gora { display: flex; flex-direction: column; gap: .1cqw; margin-bottom: .5cqw; }
-.prognoza .pr-gora b { font-size: max(9px, .95cqw); letter-spacing: .05em; text-transform: uppercase; color: var(--g-prowadzacy); }
-.prognoza .pr-gora span { color: var(--dymek-mut); font-size: max(8px, .8cqw); }
+.prognoza .pr-gora b { font-size: max(8.5px, .9cqw); letter-spacing: .06em; text-transform: uppercase; color: #5CC8BB; }
+.prognoza .pr-gora span { color: #93A9A4; font-size: max(7.5px, .75cqw); }
 .prognoza .pr-wiersz { display: grid; grid-template-columns: minmax(0, 1fr) 6cqw 3cqw; gap: .6cqw; align-items: center; margin-top: .25cqw; }
 .prognoza .pr-nazwa { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.prognoza .pr-belka { height: .6cqw; min-height: 5px; border-radius: 9px; background: rgba(184,98,46,.15); overflow: hidden; }
-.prognoza .pr-belka i { display: block; height: 100%; background: var(--g-prowadzacy); border-radius: 9px; transition: width .6s ease; }
-.prognoza .pr-p { font-family: var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--dymek-mut); }
+.prognoza .pr-belka { height: .55cqw; min-height: 4px; border-radius: 9px; background: rgba(92,200,187,.15); overflow: hidden; }
+.prognoza .pr-belka i { display: block; height: 100%; background: linear-gradient(90deg, #1b7a70, #5CC8BB); border-radius: 9px; transition: width .6s ease; }
+.prognoza .pr-p { font-family: var(--font-mono); font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; color: #e4eeeb; }
+.prognoza .pr-wiersz:first-of-type .pr-p { color: #5CC8BB; }
 .pokoj.przerwa .prognoza { opacity: .85; }
 @container (max-width: 620px) { .prognoza { display: none; } }
+/* laptopy przed lekarzami (Michał 1.11 04:05): gdy AI pracuje krócej niż 1,5 min, lekarze zostają i piszą opinie */
+.laptop .kursor { opacity: 0; }
+.pokoj.pisza .laptop .ekran { opacity: .75; animation: ekran 1.6s ease-in-out infinite; }
+.pokoj.pisza .laptop .kursor { opacity: 1; animation: pisanie-wiersze .9s steps(3) infinite; }
+.pokoj.pisza .postac:not([data-kto="lekarz_prowadzacy"]):not([data-kto^="R"]) .ciało { animation: stuka .22s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+.pokoj.pisza .laptop:nth-of-type(2) .kursor { animation-delay: .3s; } .pokoj.pisza .laptop:nth-of-type(4) .kursor { animation-delay: .6s; }
+@keyframes ekran { 50% { opacity: .5; } }
+@keyframes pisanie-wiersze { 0% { clip-path: inset(0 100% 0 0); } 100% { clip-path: inset(0 0 0 0); } }
+@keyframes stuka { to { transform: translateY(-.8px) rotate(.4deg); } }
+@media (prefers-reduced-motion: reduce) { .pokoj.pisza .laptop .ekran, .pokoj.pisza .laptop .kursor, .pokoj.pisza .postac .ciało { animation: none; } }
+/* pykanie fajką (Michał 1.11 04:11): fajka i głowa ruszają się tylko podczas wydechu dymu */
+.postac.pyka .fajka { animation: pyk .65s ease-in-out 4; transform-box: fill-box; transform-origin: 10% 50%; }
+.postac.pyka .ciało { animation: pyk-glowa .65s ease-in-out 4; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes pyk { 50% { transform: rotate(-6deg) translateY(-1px); } }
+@keyframes pyk-glowa { 50% { transform: rotate(-1.2deg); } }
+@media (prefers-reduced-motion: reduce) { .postac.pyka .fajka, .postac.pyka .ciało { animation: none; } }

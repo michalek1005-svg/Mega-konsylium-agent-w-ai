@@ -12,7 +12,7 @@ const POSTACIE_WYGLAD = {
   najgorszy_scenariusz: { fryzura: 'siwe', wlosy: '#8f8a84', broda: '#8f8a84', skora: 3 },
   poz_pragmatyk:        { fryzura: 'loki', wlosy: '#9b3e22', skora: 2 },
   gospodarz_kosztow:    { fryzura: 'przedzial', wlosy: '#d8b46a', okulary: 1 },
-  lekarz_prowadzacy:    { fryzura: 'kok', wlosy: '#4a3428', teczka: 1 },
+  lekarz_prowadzacy:    { fryzura: 'przedzial', wlosy: '#3a2a20', broda: '#3a2a20', teczka: 1, skora: 1 },
   z_zlozonosc:          { fryzura: 'krotkie', wlosy: '#3a2a20', broda: '#3a2a20' },
   z_bezpieczenstwo:     { fryzura: 'kucyk', wlosy: '#2f2a26', skora: 1 },
   z_niepewnosc:         { fryzura: 'siwe', wlosy: '#a9a39b', okulary: 1, skora: 3 },
