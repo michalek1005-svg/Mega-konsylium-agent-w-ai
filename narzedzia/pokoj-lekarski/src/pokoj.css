@@ -373,3 +373,10 @@ html.osadzony .legenda { display: none; }
 
 /* ekspres: para, gdy pokój żyje */
 .komoda .para { animation: para 3.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* powrót z narady: zielony znaczek „gotowe” nad lekarzem (makieta-3) */
+.postac .znak-gotowe { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.postac.gotowe .znak-gotowe { animation: gotowe 1.8s ease-out both; }
+@keyframes gotowe { 0% { opacity: 0; transform: translateY(6px) scale(.6); } 20% { opacity: 1; transform: translateY(0) scale(1.1); } 35% { transform: scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-8px); } }
+/* ściana wideo oświetla ścianę; LED odbija się w posadzce */
+.pokoj svg.rys { filter: none; }

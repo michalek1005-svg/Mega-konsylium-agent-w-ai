@@ -41,6 +41,7 @@
   <ellipse cx="0" cy="0" rx="${g === 'ordynator' ? 40 : 30}" ry="7" fill="var(--cien-postaci)"/>
   <ellipse class="halo" cx="0" cy="0" rx="${g === 'ordynator' ? 46 : 38}" ry="10" fill="none" stroke="var(--petrol)" stroke-width="3"/>
   <g class="ciało">${postacSVG(id, g, kol)}</g>
+  <g class="znak-gotowe" aria-hidden="true" transform="translate(24,-138)"><circle r="9" fill="#3fbf8a"/><path d="M-4.5,0 l3,3 l6,-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
 </g>`;
   }
 
@@ -447,6 +448,7 @@ ${podpisy(wpisy)}`;
       const d = 2200 + Math.random() * 700, op = 100 + n * 110;
       el.animate([{ transform: start, opacity: 0 }, { transform: start, opacity: 1, offset: .15 }, { transform: cel, opacity: 1 }], { duration: d, delay: op, easing: 'ease-in-out', fill: 'none' });
       najdluzej = Math.max(najdluzej, d + op);
+      setTimeout(() => { el.classList.add('gotowe'); setTimeout(() => el.classList.remove('gotowe'), 1800); }, d + op);
     });
     rysujChipAi();
     if (potem) setTimeout(potem, najdluzej);
