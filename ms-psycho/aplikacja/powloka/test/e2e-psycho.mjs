@@ -106,6 +106,33 @@ try {
   await r.click('.msg.zespol[data-n="2"] [data-e="🙏"]', { force: true });
   await czekaj(async () => JSON.parse(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')).reakcje["2"] === '🙏', 6000, 'reakcja');
 
+  // 3a. Sesja z ramą (0.2.0): start → otwarcie → zadanie (Biorę) → koniec z suwakami i terminem
+  await r.click('#sesja-btn');
+  await r.waitForSelector('.dzien >> text=Sesja · początek');
+  await r.waitForSelector('#faza:not([hidden]) span.on >> text=Otwarcie');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /SESJA 1 – OTWARCIE/);
+  writeFileSync(join(folder, 'zad.json'), JSON.stringify({ tekst: 'Dobrze, że jesteś 🙂 Proponuję na koniec jedno małe zadanie – jest na karcie pod rozmową. O czym dziś najważniejsze?', ryzyko: 0, tempo: 'krotko', zadanie: 'Zapisz dziś wieczorem, co padło na zebraniu i co sam wiesz o swoim raporcie – 10 minut.' }));
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'zad.json'));
+  await r.waitForSelector('#karta-zadania:not([hidden]) >> text=Biorę', { timeout: 8000 });
+  await zrzut('6a-sesja-zadanie');
+  await r.click('#karta-zadania [data-zadanie="biore"]');
+  await czekaj(async () => JSON.parse(readFileSync(join(folder, 'konta', konto, 'zadanie.json'), 'utf8')).status === 'biore', 6000, 'zadanie biorę');
+  await r.waitForSelector('#karta-zadania >> text=Zrobione');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ZADANIE – osoba kliknęła: biore/);
+  let drugie = false;
+  try { py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'zad.json')); } catch { drugie = true; }
+  assert.ok(drugie, 'drugie zadanie w tej samej sesji musi być odrzucone');
+  await r.click('#sesja-btn');
+  await r.waitForSelector('#suwaki-karta');
+  await r.fill('#su-s', '6'); await r.fill('#su-t', '8');
+  await zrzut('6b-sesja-suwaki');
+  await r.click('#sesja-koniec-tak');
+  await r.waitForSelector('.dzien >> text=Koniec sesji');
+  const su = await czekaj(async () => { try { return JSON.parse(readFileSync(join(folder, 'konta', konto, 'suwaki.json'), 'utf8')); } catch { return null; } }, 6000, 'suwaki.json');
+  assert.equal(su[0].trafnosc, 8);
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /SESJA ZAKOŃCZONA/);
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dziękuję za dziś 🙂 Trzymam kciuki za te 10 minut wieczorem – do zobaczenia za tydzień, a gdyby coś się działo wcześniej, pisz śmiało.', '--ryzyko', '0');
+
   // 4. Filtr ryzyka w aplikacji: karta kryzysowa od razu, bez modelu
   await r.fill('#tekst', 'Czasem myślę, żeby skończyć ze sobą.');
   await r.press('#tekst', 'Enter');
@@ -154,7 +181,7 @@ try {
   await zrzut('8-pokoj-psychologiczny');
 
   assert.deepEqual(sieci, [], 'aplikacja nie może łączyć się z siecią');
-  console.log('OK: prezent, zgoda, konto, Rozmowa (szybka odpowiedź, pamięć, odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
+  console.log('OK: prezent, zgoda, konto, Rozmowa (szybka odpowiedź, sesja z zadaniem i suwakami, pamięć, odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
 } finally {
   await app.close();
 }
