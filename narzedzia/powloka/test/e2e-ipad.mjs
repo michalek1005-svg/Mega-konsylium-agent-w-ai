@@ -107,6 +107,17 @@ try {
   await czekaj(async () => (await ipad.textContent('#folder-sciezka')).includes(folder), 8000, 'folder z komputera na iPadzie');
   assert.ok(await ipad.$eval('#folder-wybierz', (b) => b.hidden), 'na iPadzie folder wybiera się na komputerze');
   assert.equal((await ipad.textContent('.stan .offline')).trim(), 'Komputer');
+  // stałe połączenie: strumień zdarzeń otwarty, komputer widzi iPada od razu, znak „działa” po obu stronach
+  await czekaj(() => ipad.evaluate(() => window.msIpad && window.msIpad.polaczony()), 8000, 'strumień zdarzeń z komputera');
+  await czekaj(async () => /iPad połączony/.test(await pc.textContent('#ipad-info')), 8000, 'komputer widzi połączony iPad');
+  assert.equal((await pc.textContent('.stan .offline')).trim(), 'iPad ✓');
+  await czekaj(async () => (await pc.textContent('#dziala')).trim() === 'Działa', 8000, 'znak „Działa” na komputerze');
+  await czekaj(async () => (await ipad.textContent('#dziala')).trim() === 'Działa', 8000, 'znak „Działa” na iPadzie');
+  await pc.click('#dziala');
+  assert.match(await pc.textContent('#dziala-lista'), /Folder Konsylium[\s\S]*iPad połączony na stałe/);
+  await pc.click('#dziala');
+  const r403s = await fetch(baza + 'zdarzenia?k=zly');
+  assert.equal(r403s.status, 403, 'strumień tylko z kluczem');
   // cele dotyku co najmniej 44 pt (wytyczne Apple)
   for (const b of await ipad.$$('nav.pasek button:not([hidden])')) { const r = await b.boundingBox(); assert.ok(r.width >= 44 && r.height >= 44, 'przycisk paska ≥ 44 pt'); }
 
@@ -172,7 +183,7 @@ try {
   assert.equal(await an.evaluate(() => typeof navigator.clipboard.writeText), 'function');
 
   // 7. Na komputerze widać połączonego iPada
-  await czekaj(async () => /Połączony iPad/.test(await pc.textContent('#ipad-info')), 5000, 'informacja o iPadzie');
+  await czekaj(async () => /iPad połączony/.test(await pc.textContent('#ipad-info')), 5000, 'informacja o iPadzie');
 
   // 8. Wyłączenie: iPad pokazuje brak połączenia
   await pc.click('#ipad-wylacz');

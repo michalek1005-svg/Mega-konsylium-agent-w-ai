@@ -67,6 +67,30 @@ function utworzSerwer(o) {
     '/apple-touch-icon.png': [o.ikona, 'image/png']
   };
   const widziane = new Set();
+  // Stałe połączenie (Michał 1.11: „koniecznie popraw iPada na stałe połączenie”): iPad trzyma otwarty strumień
+  // zdarzeń GET /zdarzenia (Server-Sent Events, Safari wznawia go sam po zerwaniu), komputer co 5 s wysyła ping,
+  // więc obie strony wiedzą na bieżąco, czy są połączone; komputer może też pchać zdarzenia (rozglos).
+  const strumienie = new Set();
+  function strumien(req, res, kluczOk) {
+    if (!kluczOk) { naglowki(res, 'text/plain; charset=utf-8', { 'Cache-Control': 'no-store' }); return wyslij(req, res, 403, 'text/plain', 'Ten iPad nie jest sparowany z komputerem.'); }
+    const zdalny = String(req.socket.remoteAddress || '').replace(/^::ffff:/, '');
+    try { req.socket.setTimeout(0); req.socket.setNoDelay(true); req.socket.setKeepAlive(true, 10000); } catch {}
+    naglowki(res, 'text/event-stream; charset=utf-8', { 'Cache-Control': 'no-store', 'Connection': 'keep-alive', 'X-Accel-Buffering': 'no' });
+    res.writeHead(200);
+    const kl = { res, adres: zdalny, od: Date.now() };
+    const pisz = (s) => { try { res.write(s); } catch {} };
+    pisz('retry: 2000\n\n');
+    pisz('event: stan\ndata: ' + JSON.stringify({ polaczono: true, czas: Date.now() }) + '\n\n');
+    strumienie.add(kl);
+    if (o.naZdarzenie) o.naZdarzenie({ typ: 'polaczenie', adres: zdalny, stale: true });
+    const ping = setInterval(() => pisz(': ping ' + Date.now() + '\n\n'), 5000);
+    const koniec = () => {
+      if (!strumienie.has(kl)) return;
+      clearInterval(ping); strumienie.delete(kl);
+      if (o.naZdarzenie) o.naZdarzenie({ typ: 'rozlaczenie', adres: zdalny });
+    };
+    req.on('close', koniec); res.on('close', koniec); req.on('error', koniec);
+  }
 
   function naglowki(res, typ, extra) {
     res.setHeader('Content-Type', typ);
@@ -126,6 +150,7 @@ function utworzSerwer(o) {
     if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); res.end(); return; }
     const k = u.searchParams.get('k');
     const kluczOk = rowneKlucze(k, o.klucz());
+    if (p === '/zdarzenia') return strumien(req, res, kluczOk);
     if (p === '/manifest.webmanifest') {
       // start_url z kluczem: ikona na ekranie głównym iPada ma osobne ciasteczka i pamięć niż Safari
       const m = {
@@ -153,6 +178,10 @@ function utworzSerwer(o) {
   serwer.keepAliveTimeout = 5000;
   serwer.headersTimeout = 15000;
   serwer.requestTimeout = 60000;
+  // kto jest teraz połączony na stałe; rozgłoszenie zdarzenia do wszystkich iPadów
+  serwer.polaczeni = () => [...strumienie].map((k) => ({ adres: k.adres, od: k.od }));
+  serwer.rozglos = (nazwa, dane) => { const s = 'event: ' + String(nazwa).replace(/[^\w-]/g, '') + '\ndata: ' + JSON.stringify(dane == null ? null : dane) + '\n\n'; for (const k of strumienie) { try { k.res.write(s); } catch {} } };
+  serwer.on('close', () => { for (const k of strumienie) { try { k.res.end(); } catch {} } strumienie.clear(); });
   return serwer;
 }
 

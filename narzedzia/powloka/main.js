@@ -145,7 +145,7 @@ function stanIpad() {
   const adresy = process.env.MS_IPAD_ADRES ? [{ adres: process.env.MS_IPAD_ADRES, nazwa: 'test', wirtualna: false }] : adresySieci();
   const klucz = ustawienia().ipadKlucz || '';
   const url = (a) => 'http://' + a + ':' + IPAD_PORT + '/?k=' + klucz;
-  const s = { wlaczony: !!ipad.serwer, blad: ipad.blad, port: IPAD_PORT, polaczone: ipad.polaczone.slice(-5), adresy: adresy.map((x) => ({ ...x, url: url(x.adres) })) };
+  const s = { wlaczony: !!ipad.serwer, blad: ipad.blad, port: IPAD_PORT, polaczone: ipad.polaczone.slice(-5), aktywne: ipad.serwer && ipad.serwer.polaczeni ? ipad.serwer.polaczeni() : [], adresy: adresy.map((x) => ({ ...x, url: url(x.adres) })) };
   if (s.wlaczony && adresy[0]) { s.url = url(adresy[0].adres); s.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.url)).toString('base64'); }
   return s;
 }
@@ -157,7 +157,8 @@ function wlaczIpad(okno) {
     katalogApp: path.join(__dirname, 'app'), ikona: path.join(__dirname, 'ikona.png'), pliki: PLIKI,
     klucz: () => ustawienia().ipadKlucz,
     naZdarzenie: (z) => {
-      if (z.typ === 'polaczenie') { ipad.polaczone.push({ adres: z.adres, czas: Date.now() }); if (okno && !okno.isDestroyed()) okno.webContents.send('ms:ipad-zmiana'); }
+      if (z.typ === 'polaczenie' && !ipad.polaczone.some((x) => x.adres === z.adres)) ipad.polaczone.push({ adres: z.adres, czas: Date.now() });
+      if (okno && !okno.isDestroyed()) okno.webContents.send('ms:ipad-zmiana');
     }
   });
   return new Promise((ok) => {

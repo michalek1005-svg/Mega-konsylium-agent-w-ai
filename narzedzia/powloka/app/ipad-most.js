@@ -46,7 +46,23 @@
     lista: function (p) { return api('lista', [String(p || '')]); },
     czytajFolder: function (p) { return api('czytajFolder', [String(p || '')]); }
   };
-  window.msIpad = { maKlucz: function () { return !!klucz; }, stan: function () { return stan; } };
+  // Stałe połączenie: strumień zdarzeń z komputera (Server-Sent Events). Safari wznawia go sam po zerwaniu
+  // Wi‑Fi albo uśpieniu iPada; „Brak PC” pokazujemy dopiero, gdy przerwa trwa dłużej niż 4 s.
+  var zrodlo = null, brakTimer = null, ponowTimer = null, ostatniPing = 0;
+  function polacz() {
+    if (!klucz || typeof EventSource !== 'function') return;
+    try { zrodlo = new EventSource('zdarzenia?k=' + encodeURIComponent(klucz)); } catch (e) { return; }
+    zrodlo.onopen = function () { clearTimeout(brakTimer); brakTimer = null; ostatniPing = Date.now(); ustawStan('ok'); };
+    zrodlo.onerror = function () {
+      if (!brakTimer) brakTimer = setTimeout(function () { brakTimer = null; ustawStan('brak'); }, 4000);
+      if (zrodlo && zrodlo.readyState === 2) { clearTimeout(ponowTimer); ponowTimer = setTimeout(polacz, 3000); } // zamknięty (np. nowy kod na komputerze): spróbuj jeszcze raz
+    };
+    zrodlo.addEventListener('stan', function () { ostatniPing = Date.now(); });
+    zrodlo.onmessage = function () { ostatniPing = Date.now(); };
+  }
+  polacz();
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && zrodlo && zrodlo.readyState === 2) polacz(); });
+  window.msIpad = { maKlucz: function () { return !!klucz; }, stan: function () { return stan; }, polaczony: function () { return !!zrodlo && zrodlo.readyState === 1; } };
 
   // Schowek: Safari daje navigator.clipboard tylko na https, a iPad łączy się po http w sieci domowej.
   // Moduły (ta sama domena) dostają zastępstwo przez execCommand('copy') w swoim dokumencie.
