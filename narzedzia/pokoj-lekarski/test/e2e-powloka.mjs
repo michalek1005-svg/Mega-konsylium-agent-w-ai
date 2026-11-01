@@ -49,7 +49,7 @@ assert.match(await r.locator('#opis-sprawy').innerText(), /2026-10-31-02 · na �
 assert.equal(await r.locator('html.osadzony').count(), 1, 'tryb osadzony');
 assert.equal(await r.locator('#glos').isVisible(), true, 'pole lekarza prowadzącego widoczne na żywo');
 assert.equal(await r.locator('.postac[data-kto="lekarz_prowadzacy"]').count(), 1, 'lekarz prowadzący stoi w pokoju');
-assert.equal(await r.locator('.postac[data-kto="ordynator"] .papieros').count(), 1, 'ordynator ma papieros');
+assert.equal(await r.locator('.postac[data-kto="ordynator"] .papieros').count(), 1, 'ordynator ma fajkę');
 const wpisow = await r.locator('.wpis').count();
 await r.locator('#glos-tekst').fill('Proszę rozważyć krztusiec: pacjentka pracuje na oddziale, kaszel napadowy od 10 dni.');
 await r.locator('#glos-tekst').press('Enter');

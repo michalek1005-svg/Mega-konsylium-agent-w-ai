@@ -4,6 +4,8 @@ Dymek do Pokoju lekarskiego → dopisuje zdarzenie "wypowiedz" do sprawy/<ID>/_l
 
 Użycie (ordynator, po każdej wypowiedzi albo zbiorczo po kroku):
   python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "Tabletka widmo 0,70, pilność 4." [--info "p=0,70 · Bristol 6"] [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
+  python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
+    (--tablica zapisuje na tablicy w Pokoju najważniejsze ustalenie; --skresl skreśla odrzuconą hipotezę; można łączyć z dymkiem)
   python3 skrypty/dymek.py sprawy/<ID> --wiele dymki.jsonl     # wiele naraz: jedna linia JSON = jeden dymek (te same pola)
 
 Skrót: 1–2 pełne zdania językiem medycznym, najwyżej 400 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
@@ -17,6 +19,7 @@ import argparse
 import json
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -75,6 +78,18 @@ def wpis(d: dict) -> dict:
     return w
 
 
+def wpisy_tablicy(a) -> list:
+    """Zdarzenia 'tablica' z --tablica / --skresl: najważniejsze ustalenia i skreślenia w Pokoju lekarskim."""
+    out = []
+    for tekst, skreslone in [(x, False) for x in (a.tablica or [])] + [(x, True) for x in (a.skresl or [])]:
+        w = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "zdarzenie": "tablica",
+             "faza": faza(a.faza), "tekst": skroc(tekst, 140), "skreslone": skreslone}
+        if a.rola:
+            w["rola"] = rola(a.rola)
+        out.append(w)
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sprawa", type=Path)
@@ -82,9 +97,20 @@ def main() -> None:
     ap.add_argument("--info", help="liczby, skale, wytyczne (≤200 znaków)"); ap.add_argument("--tresc", help="dłuższa treść dymku (≤600 znaków)")
     ap.add_argument("--temat"); ap.add_argument("--plik"); ap.add_argument("--persona")
     ap.add_argument("--wiele", type=Path, help="plik JSONL z wieloma dymkami")
+    ap.add_argument("--tablica", action="append", help="zapisz na tablicy w Pokoju najważniejsze ustalenie (≤140 znaków; można podać kilka razy)")
+    ap.add_argument("--skresl", action="append", help="skreśl na tablicy odrzuconą hipotezę/ustalenie (ten sam tekst co wcześniej albo nowy, od razu skreślony)")
     a = ap.parse_args()
     if not a.sprawa.is_dir():
         sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")
+    if (a.tablica or a.skresl) and not (a.skrot or a.tresc or a.wiele):
+        # same wpisy na tablicę, bez dymka
+        if not a.faza:
+            sys.exit("Podaj --faza (etap, od którego wpis jest widoczny na tablicy).")
+        with open(a.sprawa / "_log.jsonl", "a", encoding="utf-8") as f:
+            for w in wpisy_tablicy(a):
+                f.write(json.dumps(w, ensure_ascii=False) + "\n")
+        sygnal_ai(a.sprawa, "pracuje")
+        return
     if a.wiele:
         dane = [json.loads(l) for l in a.wiele.read_text(encoding="utf-8").splitlines() if l.strip()]
     else:
@@ -97,7 +123,21 @@ def main() -> None:
     with open(a.sprawa / "_log.jsonl", "a", encoding="utf-8") as f:
         for w in wpisy:
             f.write(json.dumps(w, ensure_ascii=False) + "\n")
+        for w in wpisy_tablicy(a):
+            f.write(json.dumps(w, ensure_ascii=False) + "\n")
     print(f"Dopisano dymków: {len(wpisy)}")
+    sygnal_ai(a.sprawa, "pracuje" if not any(w.get("faza", "").lower().startswith(("werdykt", "follow")) for w in wpisy) else "czeka")
+
+
+def sygnal_ai(sprawa: Path, stan: str) -> None:
+    """Sygnał „AI pracuje” dla aplikacji (_ai-aktywnosc.json w folderze Konsylium = dwa poziomy nad sprawą).
+    Pokój po dymku wie, że konsylium dalej pracuje (lekarze wychodzą z pokoju i wracają z kolejną wypowiedzią);
+    po werdykcie sygnał gaśnie. Działa bez hooków Claude Code."""
+    try:
+        korzen = sprawa.resolve().parent.parent
+        (korzen / "_ai-aktywnosc.json").write_text(json.dumps({"stan": stan, "czas": int(time.time() * 1000), "sprawa": sprawa.name}), encoding="utf-8")
+    except OSError:
+        pass
 
 
 if __name__ == "__main__":

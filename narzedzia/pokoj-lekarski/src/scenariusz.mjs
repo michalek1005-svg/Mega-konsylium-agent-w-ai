@@ -413,6 +413,28 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
     wypowiedzi: [wyp('ordynator', `Potwierdzone: ${tablica.followup.rozpoznanie}. Decyzja była właściwa: ${tablica.followup.decyzja}.`, fu, '10-followup.md')] });
 
   const wnioski = wnioskiZFinal(pliki['09-FINAL.md']);
+  const wszystkie = zywe.length ? polacz(zywe, sceny) : sceny;
+  tablica.ustalenia = ustaleniaZLogu(zdarzenia, wszystkie);
   if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki', wnioski };
-  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: polacz(zywe, sceny), tablica, zrodlo: sceny.length ? 'log+pliki' : 'log', wnioski };
+  return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: wszystkie, tablica, zrodlo: sceny.length ? 'log+pliki' : 'log', wnioski };
+}
+
+// Tablica ustaleń (Michał 1.11): lekarze zapisują na tablicy najważniejsze rzeczy, odrzucone skreślają.
+// Zdarzenie w _log.jsonl: {"zdarzenie":"tablica","tekst":"…","skreslone":true|false,"faza":"…"} (skrypty/dymek.py --tablica / --skresl).
+// Każdy wpis dostaje numer sceny (si), od której jest widoczny; „skreśl” tego samego tekstu przekreśla wcześniejszy wpis.
+export function ustaleniaZLogu(zdarzenia, sceny) {
+  const out = [];
+  const norm = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  for (const z of zdarzenia) {
+    if (z.zdarzenie !== 'tablica' || !z.tekst) continue;
+    const f = z.faza ? fazaNaId(z.faza) : null;
+    let si = f ? sceny.findIndex((s) => s.id === f.id) : -1;
+    if (si < 0) si = f ? Math.max(0, sceny.findIndex((s) => fazaNaId(s.tytul).rz > f.rz) - 1) : sceny.length - 1;
+    if (si < 0) si = Math.max(0, sceny.length - 1);
+    const tekst = utnij(bezMarkdown(String(z.tekst)).replace(/\s+/g, ' ').trim(), 140);
+    const stary = z.skreslone ? out.find((u) => !u.skreslone && norm(u.tekst) === norm(tekst)) : null;
+    if (stary) { stary.skreslone = true; stary.siSkreslenia = si; continue; }
+    out.push({ tekst, skreslone: !!z.skreslone, si, siSkreslenia: z.skreslone ? si : null, kto: z.rola ? rola(z.rola) : null });
+  }
+  return out;
 }

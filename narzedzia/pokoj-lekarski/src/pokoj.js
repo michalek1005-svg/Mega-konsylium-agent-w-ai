@@ -75,7 +75,7 @@
     <circle cx="-29" cy="-58" r="5" fill="${skora}"/><circle cx="29" cy="-58" r="5" fill="${skora}"/>
     ${plakietka}
     </g>
-    ${stetoskop}${g === 'ordynator' ? '<g class="papieros"><rect x="42" y="-71" width="2.6" height="13" rx="1" fill="#f4f1ea" transform="rotate(-28 43 -58)"/><circle class="zar" cx="47" cy="-70" r="1.7" fill="#ff8a3d"/></g>' : ''}
+    ${stetoskop}${g === 'ordynator' ? '<g class="papieros fajka"><path d="M9,-113 Q20,-110 28,-100" fill="none" stroke="#3b2414" stroke-width="3.2" stroke-linecap="round"/><path d="M9,-113 Q20,-110 28,-100" fill="none" stroke="#8a5a37" stroke-width="1.2" stroke-linecap="round" opacity=".8"/><path d="M22,-102 h13 a2,2 0 0 1 2,2 v7 a6,6 0 0 1 -6,6 h-5 a6,6 0 0 1 -6,-6 v-7 a2,2 0 0 1 2,-2z" fill="#5a3a22" stroke="#2f1d10" stroke-width="1.2"/><ellipse cx="28.5" cy="-102" rx="7" ry="2.4" fill="#2a1a0f"/><circle class="zar" cx="28.5" cy="-102.5" r="2.4" fill="#ff8a3d"/></g>' : ''}
     <rect x="-6" y="-114" width="12" height="8" fill="${skora}"/>
     <circle cx="0" cy="-125" r="${gruby ? 19 : 17}" fill="${skora}"/>
     ${usta}${kolczyki}${fry}${okulary}
@@ -134,10 +134,10 @@ ${PLAKAT_DEFS}
 </g>
 
 <!-- tablica -->
-<rect x="366" y="34" width="468" height="234" rx="12" fill="var(--tablica-rama)"/>
-<rect x="374" y="42" width="452" height="218" rx="7" fill="var(--tablica)"/>
-<rect x="420" y="268" width="360" height="7" rx="3" fill="var(--tablica-rama)"/>
-<rect x="452" y="262" width="26" height="6" rx="2" fill="#0F5E58"/><rect x="484" y="262" width="26" height="6" rx="2" fill="#A83A38"/>
+<rect x="318" y="28" width="546" height="252" rx="12" fill="var(--tablica-rama)"/>
+<rect x="326" y="36" width="530" height="236" rx="7" fill="var(--tablica)"/>
+<rect x="400" y="280" width="390" height="7" rx="3" fill="var(--tablica-rama)"/>
+<rect x="432" y="274" width="26" height="6" rx="2" fill="#0F5E58"/><rect x="464" y="274" width="26" height="6" rx="2" fill="#A83A38"/>
 
 <!-- zegar: czas bieżącej fazy -->
 <g transform="translate(216,142)"><circle r="24" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
@@ -251,15 +251,18 @@ ${podpisy(wpisy)}`;
     s.tablica.liczbaRezydentow = ileRezydentow();
     kroki = [];
     s.sceny.forEach((sc, si) => sc.wypowiedzi.forEach((w, wi) => kroki.push({ si, wi })));
-    if (kroki.length === bylo && bylo) { if (i >= kroki.length - 1 && !gra) otworzCzekajaceWnioski(); return; }
+    if (kroki.length === bylo && bylo) { if (i >= kroki.length - 1 && !gra) { otworzCzekajaceWnioski(); if (s.wnioski) zakonczPrzerwe(); else planujPrzerwe(); } return; }
     if (s.tablica.liczbaRezydentow !== rez || !bylo) rysujPokoj();
-    rysujOs(); rysujListe();
+    rysujListe();
     if (bylo && Date.now() < cichoDo) { document.querySelectorAll('.wpis').forEach((el, n2) => { el.classList.toggle('biezacy', n2 === i); el.classList.toggle('przyszly', n2 > i); }); return; }
     if (!bylo) { rysujLegende(); const d = wAplikacji() ? pierwszyDyskusji() : -1; pokaz(d > 0 ? d : 0, true); return; }
     // na żywo w aplikacji: gdy trwa jeszcze etap techniczny, a pojawiła się dyskusja — przeskocz do niej
     if (wAplikacji() && techniczny(kroki[i])) { const d = pierwszyDyskusji(i); if (d > i) { pokaz(d); return; } }
-    pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
-    if (zywoTimer && naKoncu && !gra) ustawGre(true); // na żywo: nowe wypowiedzi odtwarzają się same
+    const dalej = () => {
+      pokaz(naKoncu ? Math.min(bylo, kroki.length - 1) : i, !naKoncu);
+      if (zywoTimer && naKoncu && !gra) ustawGre(true); // na żywo: nowe wypowiedzi odtwarzają się same
+    };
+    if (przerwa) zakonczPrzerwe(dalej); else dalej(); // lekarze wracają z narady z gotową wypowiedzią
   }
 
   function przygotuj(s) {
@@ -272,7 +275,7 @@ ${podpisy(wpisy)}`;
     $('opis-sprawy').textContent = s.sprawa ? `Sprawa ${s.sprawa}` : 'Sprawa bez nazwy';
     const chip = $('chip-tryb');
     chip.hidden = !s.tryb; chip.textContent = s.tryb === 'PELNY' ? 'pełne konsylium' : s.tryb === 'SZYBKI' ? 'tryb szybki' : (s.tryb || '');
-    rysujPokoj(); rysujOs(); rysujListe(); rysujLegende();
+    rysujPokoj(); rysujListe(); rysujLegende();
     pokaz(0, true);
   }
 
@@ -291,6 +294,8 @@ ${podpisy(wpisy)}`;
   function pokaz(n, bezPisania) {
     if (!kroki.length) return;
     i = Math.max(0, Math.min(kroki.length - 1, n));
+    if (przerwa) zakonczPrzerwe();
+    clearTimeout(przerwaTimer); przerwaTimer = null;
     const k = kroki[i], sc = scen.sceny[k.si], w = sc.wypowiedzi[k.wi];
     const pokoj = $('pokoj');
     pokoj.classList.add('mowi');
@@ -317,13 +322,7 @@ ${podpisy(wpisy)}`;
     ustawDymek(d, w.kto);
     if (ruch) setTimeout(() => { if (!d.isConnected) return; d.classList.remove('pisze'); d.innerHTML = tresc; ustawDymek(d, w.kto); }, Math.min(700, 900 / tempo));
     $('napisy').innerHTML = `<span class="nap-temat"><b>Teraz · ${esc(sc.tytul)}</b>${esc(sc.temat)}</span><span><b>${esc(r.nazwa)}</b>${esc(w.tresc || w.skrot)}${w.info ? ` <i>(${esc(w.info)})</i>` : ''}</span>`;
-    // oś i protokół
-    document.querySelectorAll('.odcinek').forEach((el, si) => {
-      el.classList.toggle('biezacy', si === k.si);
-      const ile = scen.sceny[si].wypowiedzi.length;
-      const zrob = si < k.si ? ile : si === k.si ? k.wi + 1 : 0;
-      el.querySelector('i').style.width = (100 * zrob / ile) + '%';
-    });
+    // protokół
     document.querySelectorAll('.wpis').forEach((el, n2) => { el.classList.toggle('biezacy', n2 === i); el.classList.toggle('przyszly', n2 > i); });
     const akt = document.querySelector('.wpis.biezacy');
     if (akt) { const l = $('lista'); const top = akt.offsetTop - l.offsetTop - l.clientHeight / 2; l.scrollTo({ top, behavior: ruch ? 'smooth' : 'auto' }); }
@@ -351,6 +350,7 @@ ${podpisy(wpisy)}`;
         const koniec = scen && scen.wnioski && ['final', 'followup'].includes(scen.sceny[kroki[i].si].id);
         const czekaj = koniec ? cmokPlakat((scen.sprawa || '') + '|' + i) : 0;
         if (czekaj) setTimeout(otworzCzekajaceWnioski, czekaj - 600); else otworzCzekajaceWnioski();
+        planujPrzerwe();
         return;
       }
       pokaz(i + 1);
@@ -359,17 +359,87 @@ ${podpisy(wpisy)}`;
   function ustawGre(v) {
     gra = v;
     const b = $('graj'); b.textContent = v ? '❚❚' : '▶︎ Odtwarzaj'; b.classList.toggle('nk-on', v);
-    if (v && i >= kroki.length - 1) pokaz(0); else zaplanuj();
+    // na żywo nie zaczynamy od nowa: nowa wypowiedź na końcu ma się odtworzyć, nie cała sprawa
+    if (v && i >= kroki.length - 1 && !zywoTimer) pokaz(0); else zaplanuj();
   }
 
-  // ---------- bajer: ordynator od czasu do czasu pali; dym rozchodzi się po pokoju i znika ----------
+  // ---------- przerwa: AI pracuje, lekarze wychodzą z pokoju i wracają z gotową wypowiedzią (Michał 1.11) ----------
+  // Na żywo, gdy odtwarzanie dogoniło ostatnią wypowiedź, a werdyktu jeszcze nie ma: lekarze wychodzą przez drzwi
+  // (konsylium czyta literaturę i pisze opinie), tablica pokazuje czas narady; nowa wypowiedź sprowadza ich z powrotem.
+  let przerwa = false, przerwaOd = 0, przerwaTimer = null, przerwaZegar = null, aiPracuje = false, aiOd = 0;
+  const WYCHODZA = (id) => !/^R\d$/.test(id) && id !== 'lekarz_prowadzacy';
+  const DRZWI = { x: 104, y: 336 };
+  const mmss = (ms) => { const s = Math.max(0, Math.floor(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  const naKoncuBezWerdyktu = () => !!(zywoTimer && scen && kroki.length && i >= kroki.length - 1 && !gra && !scen.wnioski);
+  function planujPrzerwe() {
+    if (przerwa || !naKoncuBezWerdyktu()) { clearTimeout(przerwaTimer); przerwaTimer = null; return; }
+    if (przerwaTimer) return; // odliczanie już trwa (odświeżenie co 3 s go nie cofa)
+    // z sygnałem „AI pracuje” po 4 s, bez sygnału po 12 s ciszy
+    przerwaTimer = setTimeout(() => { przerwaTimer = null; if (naKoncuBezWerdyktu() && !przerwa) zacznijPrzerwe(); }, aiPracuje ? 4000 : 12000);
+  }
+  function zacznijPrzerwe() {
+    przerwa = true; przerwaOd = aiPracuje && aiOd ? aiOd : Date.now();
+    $('pokoj').classList.add('przerwa');
+    $('dymki').querySelectorAll('.dymek').forEach((d) => { d.classList.add('stary'); setTimeout(() => d.remove(), 400); });
+    document.querySelectorAll('.postac').forEach((el, n) => {
+      const id = el.dataset.kto, m = MIEJSCA_AKT[id]; if (!WYCHODZA(id) || !m) return;
+      el.getAnimations().forEach((a) => a.cancel());
+      if (bezRuchu()) { el.style.opacity = 0; return; }
+      const start = `translate(${m.x}px, ${m.y}px) scale(${m.s})`;
+      const cel = `translate(${DRZWI.x + (n % 3 - 1) * 22}px, ${DRZWI.y}px) scale(${m.s * .62})`;
+      el.animate([{ transform: start, opacity: 1 }, { transform: cel, opacity: 1, offset: .82 }, { transform: cel, opacity: 0 }],
+        { duration: 2600 + Math.random() * 900, delay: 150 + n * 140, easing: 'ease-in-out', fill: 'forwards' });
+    });
+    rysujPrzerwe(); clearInterval(przerwaZegar); przerwaZegar = setInterval(rysujPrzerwe, 1000);
+  }
+  function rysujPrzerwe() {
+    if (!przerwa) return;
+    const t = mmss(Date.now() - przerwaOd);
+    $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><p class="temat">Lekarze wyszli się naradzić: czytają literaturę i piszą opinie. Wrócą z gotową wypowiedzią.</p><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
+    $('napisy').innerHTML = `<span class="nap-temat"><b>AI pracuje · ${t}</b>Lekarze są poza pokojem; nowa wypowiedź pojawi się sama.</span>`;
+    rysujChipAi();
+  }
+  function zakonczPrzerwe(potem) {
+    clearTimeout(przerwaTimer); przerwaTimer = null; clearInterval(przerwaZegar); przerwaZegar = null;
+    if (!przerwa) { if (potem) potem(); return; }
+    przerwa = false; $('pokoj').classList.remove('przerwa');
+    let najdluzej = 0;
+    document.querySelectorAll('.postac').forEach((el, n) => {
+      const id = el.dataset.kto, m = MIEJSCA_AKT[id]; if (!WYCHODZA(id) || !m) return;
+      el.getAnimations().forEach((a) => a.cancel()); el.style.opacity = '';
+      if (bezRuchu()) return;
+      const start = `translate(${DRZWI.x + (n % 3 - 1) * 22}px, ${DRZWI.y}px) scale(${m.s * .62})`, cel = `translate(${m.x}px, ${m.y}px) scale(${m.s})`;
+      const d = 2200 + Math.random() * 700, op = 100 + n * 110;
+      el.animate([{ transform: start, opacity: 0 }, { transform: start, opacity: 1, offset: .15 }, { transform: cel, opacity: 1 }], { duration: d, delay: op, easing: 'ease-in-out', fill: 'none' });
+      najdluzej = Math.max(najdluzej, d + op);
+    });
+    rysujChipAi();
+    if (potem) setTimeout(potem, najdluzej);
+  }
+  // sygnał „AI pracuje” z powłoki (plik _ai-aktywnosc.json: hooki Claude Code albo skrypty dymek.py / wywiad_na_zywo.py)
+  function ustawAi(aktywne, od) {
+    const bylo = aiPracuje;
+    aiPracuje = aktywne; if (aktywne && (!bylo || !aiOd)) aiOd = Number(od) || Date.now();
+    if (!aktywne) aiOd = 0;
+    if (aktywne && !bylo) { clearTimeout(przerwaTimer); przerwaTimer = null; planujPrzerwe(); }
+    rysujChipAi();
+  }
+  function rysujChipAi() {
+    const c = $('chip-ai'); if (!c) return;
+    const on = aiPracuje || przerwa;
+    c.hidden = !on;
+    if (on) c.textContent = 'AI pracuje · ' + mmss(Date.now() - (przerwa ? przerwaOd : (aiOd || Date.now())));
+  }
+  setInterval(() => { if (aiPracuje && !przerwa) rysujChipAi(); }, 1000);
+
+  // ---------- bajer: ordynator od czasu do czasu pali fajkę; dym rozchodzi się po pokoju i znika ----------
   let dymTimer = null;
   const bezRuchu = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   function klebDymu() {
     const g = $('dym'), m = MIEJSCA_AKT.ordynator; if (!g || !m || bezRuchu() || document.hidden) return;
     const zar = document.querySelector('.postac[data-kto="ordynator"] .zar');
     if (zar) { zar.classList.add('zar-on'); setTimeout(() => zar.classList.remove('zar-on'), 1400); }
-    const x0 = m.x + 48 * m.s, y0 = m.y - 72 * m.s;
+    const x0 = m.x + 28.5 * m.s, y0 = m.y - 104 * m.s; // z cybucha fajki
     // jeden wydech = kilka kłębów, każdy większy i wolniejszy; całość ok. 12–16 s
     for (let k = 0; k < 7; k++) {
       setTimeout(() => {
@@ -477,27 +547,41 @@ ${podpisy(wpisy)}`;
     });
   })();
 
-  // ---------- tablica ----------
+  // ---------- tablica ustaleń (Michał 1.11: zamiast paska etapów na dole) ----------
+  // Na tablicy: stan prac (etapy: zrobione ✓, bieżący, przed nami), temat, najważniejsze ustalenia zapisane przez
+  // lekarzy (zdarzenia „tablica” z _log.jsonl; odrzucone skreślone), ranking po agregacji, na końcu rekomendacja.
+  function rysujEtapy(si) {
+    const k = kroki[i] || { si, wi: 0 };
+    return `<div class="etapy" role="toolbar" aria-label="Stan prac">${scen.sceny.map((sc, n) => {
+      const ile = Math.max(1, sc.wypowiedzi.length);
+      const zrob = n < si ? ile : n === si ? Math.min(ile, k.wi + 1) : 0;
+      const kl = n < si ? 'zrobiony' : n === si ? 'biezacy' : 'przyszly';
+      return `<button class="etap ${kl}" type="button" data-si="${n}" title="${esc(sc.tytul)} · ${zrob}/${ile}"><i style="--p:${Math.round(100 * zrob / ile)}%"></i><span>${esc(sc.tytul)}</span></button>`;
+    }).join('')}</div>`;
+  }
   function rysujTablice(si) {
     const sc = scen.sceny[si], t = scen.tablica;
     const poAgregacji = scen.sceny.findIndex((s) => s.id === 'agregat');
     const final = ['final', 'followup'].includes(sc.id);
+    const ust = (t.ustalenia || []).filter((u) => u.si <= si).map((u) => ({ ...u, skreslone: u.skreslone && (u.siSkreslenia ?? u.si) <= si }));
     let dol = '';
-    if (final && t.werdykt) {
-      dol = `<div class="werdykt"><b>Rekomendacja:</b> ${esc(t.werdykt)}</div>`;
-    } else if (t.ranking.length && (poAgregacji === -1 || si >= poAgregacji)) {
-      dol = `<div class="ranking">${t.ranking.slice(0, 3).map((r) => `<div class="wiersz"><span title="${esc(r.nazwa)}">${esc(r.nazwa)}</span><span class="belka"><i style="width:${Math.round(r.p * 100)}%"></i></span><span class="p">${r.p.toFixed(2).replace('.', ',')}</span></div>`).join('')}</div>`;
-    } else {
-      dol = `<div class="ranking"><div class="wiersz"><span>Ranking pojawi się po ślepej turze</span><span></span><span></span></div></div>`;
+    if (ust.length) {
+      const widoczne = ust.slice(-6);
+      dol += `<ul class="ustalenia">${widoczne.map((u) => `<li class="${u.skreslone ? 'skreslone' : ''}" title="${esc(u.tekst)}">${u.skreslone ? `<s>${esc(u.tekst)}</s>` : esc(u.tekst)}</li>`).join('')}</ul>`;
     }
-    $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span><span class="czas">${hhmm(sc.czas)}</span></div><p class="temat">${esc(sc.temat)}</p>${dol}`;
+    if (final && t.werdykt) {
+      dol += `<div class="werdykt"><b>Rekomendacja:</b> ${esc(t.werdykt)}</div>`;
+    } else if (t.ranking.length && (poAgregacji === -1 || si >= poAgregacji)) {
+      dol += `<div class="ranking">${t.ranking.slice(0, ust.length ? 2 : 3).map((r) => `<div class="wiersz"><span title="${esc(r.nazwa)}">${esc(r.nazwa)}</span><span class="belka"><i style="width:${Math.round(r.p * 100)}%"></i></span><span class="p">${r.p.toFixed(2).replace('.', ',')}</span></div>`).join('')}</div>`;
+    } else if (!ust.length) {
+      dol += `<div class="ranking"><div class="wiersz"><span>Ustalenia i ranking pojawią się w trakcie konsylium</span><span></span><span></span></div></div>`;
+    }
+    const stan = `${scen.sceny.filter((_, n) => n < si).length}/${scen.sceny.length}`;
+    $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span><span class="stan" title="Etapy zakończone">${stan}</span><span class="czas">${hhmm(sc.czas)}</span></div>${rysujEtapy(si)}<p class="temat">${esc(sc.temat)}</p>${dol}`;
+    $('tablica').querySelectorAll('.etap').forEach((b) => b.addEventListener('click', () => { ustawGre(false); pokaz(kroki.findIndex((k) => k.si === +b.dataset.si), false); }));
   }
 
-  // ---------- oś, protokół, legenda ----------
-  function rysujOs() {
-    $('os').innerHTML = scen.sceny.map((sc, si) => `<button class="odcinek" type="button" style="--n:${Math.max(1, sc.wypowiedzi.length)}" data-si="${si}" title="${esc(sc.tytul)}"><span class="tor"><i></i></span><span class="et">${esc(sc.tytul)}</span></button>`).join('');
-    $('os').querySelectorAll('.odcinek').forEach((b) => b.addEventListener('click', () => { pokaz(kroki.findIndex((k) => k.si === +b.dataset.si), false); }));
-  }
+  // ---------- protokół, legenda ----------
   function rysujListe() {
     let html = '', n = 0;
     scen.sceny.forEach((sc) => {
@@ -551,7 +635,7 @@ ${podpisy(wpisy)}`;
 
   // ---------- na żywo: folder sprawy czytany co 3 s (File System Access API: Chrome, Edge, powłoka Windows) ----------
   let zywoTimer = null;
-  function zatrzymajZywo() { clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
+  function zatrzymajZywo() { zakonczPrzerwe(); clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
   async function czytajUchwyt(uchwyt, sciezka, pliki) {
     for await (const [nazwa, el] of uchwyt.entries()) {
       if (el.kind === 'directory') await czytajUchwyt(el, sciezka + nazwa + '/', pliki);
@@ -634,7 +718,11 @@ ${podpisy(wpisy)}`;
     else $('opis-sprawy').textContent = 'Wybierz folder Konsylium (ikona folderu po lewej), a Pokój pokaże najnowszą sprawę.';
     window.MsMost.naDane((od, d) => { if (d && d.zywo) zywoZPowloki(false); });
   });
-  window.addEventListener('message', (e) => { if (e.data && e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw); });
+  window.addEventListener('message', (e) => {
+    if (!e.data) return;
+    if (e.data.typ === 'ms-motyw') ustawMotyw(e.data.motyw);
+    if (e.data.typ === 'ms-ai') ustawAi(!!e.data.aktywne, e.data.od);
+  });
   $('folder').addEventListener('change', (e) => {
     const l = [...e.target.files].map((f) => ({ sciezka: f.webkitRelativePath || f.name, plik: f }));
     if (l.length) wczytajPliki(l);

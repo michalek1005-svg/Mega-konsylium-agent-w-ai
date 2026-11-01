@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "test:e2e": "node test/e2e.mjs && node test/e2e-powloka.mjs"
+    "test:e2e": "node test/e2e.mjs && node test/e2e-powloka.mjs && node test/e2e-przerwa.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0"

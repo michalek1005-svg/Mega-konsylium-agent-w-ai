@@ -24,7 +24,7 @@
   --cien-postaci: rgba(0,0,0,.45);
   --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
   --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a; --g-prowadzacy: #b8622e;
-  --dym: rgba(226,232,230,.55);
+  --dym: rgba(250,252,252,.72);
   --dymek: #f4f8f7; --dymek-txt: #14302D; --dymek-mut: #4d6762;
   --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace;
@@ -49,7 +49,7 @@
     --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
     --tablica: #ffffff; --tablica-rama: #8fa9a2;
     --cien-postaci: rgba(10,54,52,.22);
-    --dymek: #ffffff; --dym: rgba(90,110,106,.28);
+    --dymek: #ffffff; --dym: rgba(238,243,242,.4);
   }
 }
 :root[data-theme="light"], :root[data-motyw="jasny"] {
@@ -71,7 +71,7 @@
   --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
   --tablica: #ffffff; --tablica-rama: #8fa9a2;
   --cien-postaci: rgba(10,54,52,.22);
-  --dymek: #ffffff; --dym: rgba(90,110,106,.28);
+  --dymek: #ffffff; --dym: rgba(238,243,242,.4);
 }
 
 * { box-sizing: border-box; }
@@ -119,8 +119,25 @@ body {
 .pokoj svg.rys { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
 /* tablica na ścianie: o czym teraz dyskusja */
-.tablica { position: absolute; left: 31.5%; top: 6.6%; width: 37%; height: 30.5%; padding: 1.6cqw 1.9cqw; color: var(--tablica-txt);
-  display: flex; flex-direction: column; gap: .55cqw; overflow: hidden; }
+.tablica { position: absolute; left: 27.2%; top: 5.2%; width: 44.1%; height: 33.6%; padding: 1.1cqw 1.5cqw; color: var(--tablica-txt);
+  display: flex; flex-direction: column; gap: .45cqw; overflow: hidden; }
+.tablica .stan { margin-left: auto; font-family: var(--font-mono); font-size: max(9px, .95cqw); color: var(--tablica-mut); font-variant-numeric: tabular-nums; }
+.tablica .stan + .czas { margin-left: .8cqw; }
+/* stan prac: etapy konsylium jako kreski na tablicy (zrobione pełne, bieżący wypełnia się, przed nami puste) */
+.tablica .etapy { display: flex; gap: .35cqw; }
+.tablica .etap { flex: 1 1 0; min-width: 0; border: 0; padding: 0; background: none; cursor: pointer; font: inherit; color: var(--tablica-mut); display: flex; flex-direction: column; gap: .25cqw; text-align: left; }
+.tablica .etap i { display: block; height: .5cqw; min-height: 3px; border-radius: 9px; background: rgba(15,94,88,.14); position: relative; overflow: hidden; }
+.tablica .etap i::after { content: ""; position: absolute; inset: 0; width: var(--p, 0%); background: #0F5E58; border-radius: 9px; transition: width .5s ease; }
+.tablica .etap span { font-size: max(7px, .72cqw); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .02em; }
+.tablica .etap.biezacy span { color: #0F5E58; }
+.tablica .etap.przyszly span { opacity: .6; }
+/* ustalenia lekarzy: najważniejsze rzeczy zapisane kredą, odrzucone skreślone */
+.tablica .ustalenia { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .15cqw; font-size: max(8.5px, .98cqw); line-height: 1.3; }
+.tablica .ustalenia li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 1.1cqw; position: relative; }
+.tablica .ustalenia li::before { content: "•"; position: absolute; left: .1cqw; color: #0F5E58; }
+.tablica .ustalenia li.skreslone { color: var(--tablica-mut); }
+.tablica .ustalenia li.skreslone::before { content: "×"; color: #A83A38; }
+.tablica .ustalenia li s { text-decoration-color: #A83A38; text-decoration-thickness: .18cqw; }
 .tablica .gora { display: flex; align-items: baseline; gap: 1cqw; }
 .tablica .faza { font-size: max(9px, 1cqw); font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #0F5E58; }
 .tablica .czas { margin-left: auto; font-family: var(--font-mono); font-size: max(9px, .95cqw); color: var(--tablica-mut); font-variant-numeric: tabular-nums; }
@@ -146,7 +163,7 @@ body {
 .postac .podpis-maly, .podpis.podpis-maly { font-size: 9.5px; }
 
 /* dym z papierosa ordynatora (bajer): kłęby rosną, dryfują i znikają; żar jaśnieje przy wdechu */
-.dym-kleb { fill: var(--dym); transform-box: fill-box; transform-origin: center; pointer-events: none; filter: blur(1.5px); }
+.dym-kleb { fill: var(--dym); transform-box: fill-box; transform-origin: center; pointer-events: none; filter: blur(1.8px); mix-blend-mode: screen; }
 .papieros .zar { transition: fill .6s, filter .6s; }
 .serce { fill: #d9413f; transform-box: fill-box; transform-origin: center; pointer-events: none; }
 .postac { transform-box: view-box; transform-origin: 0 0; }
@@ -183,7 +200,7 @@ body {
 /* napisy pod pokojem (wąskie ekrany zamiast dymka) */
 .napisy { display: none; margin-top: 10px; padding: 10px 12px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 13px; line-height: 1.5; }
 .napisy b { display: block; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
-@container (max-width: 620px) { .dymek:not(.pisze) { display: none; } .tablica .ranking, .tablica .werdykt, .tablica .temat { display: none; } .tablica { justify-content: center; } .tablica .faza { font-size: 11px; } }
+@container (max-width: 620px) { .dymek:not(.pisze) { display: none; } .tablica .ranking, .tablica .werdykt, .tablica .temat, .tablica .ustalenia, .tablica .etap span { display: none; } .tablica { justify-content: center; } .tablica .faza { font-size: 11px; } }
 .napisy { flex-direction: column; gap: 8px; }
 .napisy .nap-temat { color: var(--mut); }
 @media (max-width: 680px) { .napisy { display: flex; } }
@@ -191,13 +208,8 @@ body {
 /* pasek odtwarzania */
 .sterowanie { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 6px 2px; }
 .sterowanie .nk-button { min-width: 40px; }
-.os { flex: 1 1 320px; display: flex; gap: 3px; min-width: 0; }
-.odcinek { flex: var(--n, 1) 1 0; min-width: 0; border: 0; padding: 0; background: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; text-align: left; font: inherit; color: var(--mut); }
-.odcinek .tor { height: 6px; border-radius: 9px; background: var(--btn); overflow: hidden; }
-.odcinek .tor i { display: block; height: 100%; width: 0; background: var(--petrol); border-radius: 9px; }
-.odcinek .et { font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.odcinek.biezacy .et { color: var(--petrol); }
-@media (max-width: 680px) { .odcinek .et { display: none; } }
+/* pasek etapów na dole usunięty (Michał 1.11: nieczytelny) — stan prac jest na tablicy w pokoju */
+.sterowanie { justify-content: center; }
 select.tempo { border: 0; border-radius: 22px; min-height: 38px; padding: 0 12px; background: var(--btn); color: var(--btn-txt); font: inherit; font-size: 12.5px; font-weight: 650; }
 
 /* protokół */
@@ -267,3 +279,13 @@ html.osadzony .legenda { display: none; }
 .plakat-duzy { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(20, 28, 30, .55); backdrop-filter: blur(6px); cursor: zoom-out; animation: plakat-wej .25s ease-out; }
 .plakat-duzy svg { height: min(86vh, 900px); max-width: 92vw; border-radius: 10px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
 @keyframes plakat-wej { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+
+/* przerwa: AI pracuje, lekarze poza pokojem */
+.pokoj.przerwa .postac { opacity: 1; }
+.tablica .ai-kropki { display: flex; gap: .7cqw; margin-top: auto; }
+.tablica .ai-kropki i { width: .9cqw; height: .9cqw; min-width: 6px; min-height: 6px; border-radius: 50%; background: #0F5E58; opacity: .35; animation: ai-kr 1.3s ease-in-out infinite; }
+.tablica .ai-kropki i:nth-child(2) { animation-delay: .22s; } .tablica .ai-kropki i:nth-child(3) { animation-delay: .44s; }
+@keyframes ai-kr { 50% { opacity: 1; transform: translateY(-2px); } }
+.chip-ai { background: var(--petrol); color: #fff; display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.chip-ai::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: ai-kr 1.3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .tablica .ai-kropki i, .chip-ai::before { animation: none; opacity: 1; } }

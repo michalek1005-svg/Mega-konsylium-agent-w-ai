@@ -43,3 +43,16 @@ Faza, która ma dymki, jest w pokoju pokazana z dymków. Faza bez dymków jest w
 ## Linia INFO (opcjonalnie)
 
 Pod treścią dymku może stać krótka linia z liczbami: skale, kryteria, wartości, wytyczne, np. „p=0,55 · Tokio 2018: kryteria niespełnione · USG w 24 h”. Agent podaje ją przed skrótem jako `INFO: …` (zastępcy JSON-owi: pole `"info"`), a ordynator zapisuje `--info "…"` (w `--wiele` pole `info`). Najwyżej 200 znaków. Pole `tresc` (do 600 znaków) jest dla dłuższej wersji, gdy skrót ma zostać krótki. W trybie na żywo (docs/NA-ZYWO.md) dymki zapisuje się od razu po każdej wypowiedzi.
+
+## Tablica ustaleń (od 1.11.2026)
+
+Lekarze zapisują na tablicy w Pokoju najważniejsze ustalenia, a odrzucone hipotezy skreślają. Tablica pokazuje też stan prac (etapy: zrobione, bieżący, przed nami) — zastąpiła pasek etapów pod sceną.
+
+```
+python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
+```
+
+Zdarzenie w `_log.jsonl`: `{"ts":"…","zdarzenie":"tablica","rola":"ordynator","faza":"Konsylium runda 1","tekst":"…","skreslone":false}`.
+`--tablica` i `--skresl` można podać kilka razy i łączyć z dymkiem (`--skrot`). Tekst ≤140 znaków, jedno konkretne ustalenie (rozpoznanie z prawdopodobieństwem, wykluczona red flag, kluczowy fakt z wywiadu, decyzja o badaniu).
+`--skresl` z tym samym tekstem co wcześniejszy wpis przekreśla tamten wpis; z nowym tekstem dopisuje go od razu skreślony. Na tablicy widać ostatnie 6 wpisów; `--faza` mówi, od którego etapu wpis jest widoczny przy odtwarzaniu.
+Ordynator zapisuje na tablicę co najmniej: lidera rankingu po agregacji, każdą jawnie wykluczoną red flag (skreśloną) i decyzję z projektu rekomendacji.
