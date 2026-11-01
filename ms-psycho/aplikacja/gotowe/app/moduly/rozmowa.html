@@ -188,6 +188,21 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
 .stopka b { color: var(--ink); }
 .panel-boczny { position: absolute; right: 24px; top: 84px; width: min(420px, 40vw); max-height: calc(100% - 180px); overflow: auto; padding: 16px 18px; border-radius: 22px; background: var(--panel); box-shadow: var(--panel-cien), 0 30px 60px -30px rgba(60,40,90,.6); z-index: 5; white-space: pre-wrap; font-size: 13px; }
 .panel-boczny h3 { margin: 0 0 8px; font-size: 14px; }
+/* konta lokalne (decyzja Michała 1.11.2026 15:42): pseudonim + wiek + płeć, opcjonalny PIN; pamięć rozmów na dysku */
+.konta-tlo { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgba(240,236,248,.55); backdrop-filter: blur(6px); }
+[data-motyw="ciemny"] .konta-tlo { background: rgba(20,16,30,.55); }
+.konta { width: min(440px, 92vw); max-height: 88%; overflow: auto; padding: 22px 24px; border-radius: 26px; background: var(--panel); box-shadow: var(--panel-cien), 0 30px 60px -30px rgba(60,40,90,.6); font-size: 13.5px; }
+.konta h2 { margin: 0 0 4px; font-size: 18px; } .konta p { margin: 4px 0 12px; color: var(--mut); }
+.konta .kto-lista { display: grid; gap: 8px; margin-bottom: 14px; }
+.konta .kto-lista button { text-align: left; border: 0; border-radius: 16px; padding: 10px 14px; background: var(--btn); color: var(--ink); font: inherit; cursor: pointer; display: flex; gap: 10px; align-items: center; }
+.konta .kto-lista button:hover { background: var(--btn-h); }
+.konta .kto-lista .aw { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 12px; background: linear-gradient(150deg, #8f7fd6, #5B4A8A); flex: none; }
+.konta label { display: block; margin: 8px 0 3px; font-weight: 650; font-size: 12.5px; }
+.konta input, .konta select { width: 100%; border: 1px solid var(--btn-h); border-radius: 12px; padding: 8px 10px; font: inherit; background: var(--bg, #fff); color: var(--ink); }
+.konta .rzad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.konta .akcje { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.konta .blad { color: #b5475c; min-height: 1.2em; margin: 6px 0 0; font-size: 12.5px; }
+.msg.zespol.wstepna { opacity: .97; }
 .potw { align-self: center; display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 13px; flex-wrap: wrap; justify-content: center; }
 @media (max-width: 900px) { .okno { padding-left: 24px; } .msg { max-width: 88%; } .wpis { grid-template-columns: 1fr auto; } .zwolaj { grid-column: 1 / -1; justify-content: center; } }
   .msg.kryzys small.nie-terapia{display:block;margin-top:8px;font-style:italic;opacity:.8}
@@ -206,6 +221,8 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
         <button type="button" data-tryb="rozmowa" aria-pressed="true" title="Mówisz o sobie albo o konkretnej sytuacji – terapeuta odpowiada Tobie">O mojej sytuacji</button>
         <button type="button" data-tryb="konsultacja" aria-pressed="false" title="Opisujesz przypadek jako terapeuta – zespół odpowiada jak kolega po fachu">Konsultacja przypadku</button>
       </div>
+      <button class="btn" type="button" id="konto-btn" hidden title="Twoje konto – zmień albo dodaj">👤 <span id="konto-nazwa"></span></button>
+      <button class="btn" type="button" id="pamiec-btn" hidden title="Co psychoterapeuta pamięta z wcześniejszych rozmów">Co pamiętam</button>
       <select class="btn" id="lista" aria-label="Wcześniejsze rozmowy" hidden></select>
       <button class="btn" type="button" id="formulacja-btn" hidden>Jak to rozumiemy</button>
       <button class="btn" type="button" id="nowa">Nowa rozmowa</button>
@@ -222,9 +239,10 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
       <button class="wyslij" id="wyslij" type="submit" aria-label="Wyślij" disabled><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></button>
       <button class="zwolaj" id="zwolaj" type="button" title="Cały zespół omawia tę rozmowę w Pokoju psychologicznym i pisze Wnioski">Zwołaj konsylium <span aria-hidden="true">→</span></button>
     </form>
-    <p class="stopka">Psychoterapia AI – <b>narzędzie testowe marki MS</b>, nie zastępuje psychoterapeuty. W kryzysie: <b>112</b> · <b>800 70 2222</b> · <b>116 123</b> (oba całodobowo).</p>
+    <p class="stopka">Psychoterapia AI – narzędzie testowe marki MS, nie zastępuje psychoterapeuty · w kryzysie <b>112</b> · <b>800 70 2222</b></p>
   </div>
   <div class="panel-boczny" id="formulacja" hidden></div>
+  <div class="konta-tlo" id="konta" hidden><div class="konta" id="konta-okno"></div></div>
 </div>
 <script>
 /*
@@ -300,7 +318,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   var REAKCJE = ['❤️', '👍', '🙏', '🤔', '😊'];
 
   var most = typeof MsMost !== 'undefined' ? MsMost : null;
-  var stan = { id: null, tryb: 'rozmowa', ja: [], zespol: [], reakcje: {}, pracuje: null, aiAktywne: false, aiBylo: 0, ostatniaWys: 0, demo: false, sprawa: null };
+  var stan = { id: null, tryb: 'rozmowa', ja: [], zespol: [], reakcje: {}, pracuje: null, aiAktywne: false, aiBylo: 0, ostatniaWys: 0, demo: false, sprawa: null, konto: null };
   var pliki = false;
 
   function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -328,7 +346,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
 
   // ---------- pliki rozmowy (docs/ROZMOWA.md) ----------
   function kat() { return 'rozmowy/' + stan.id; }
-  function nowyId() { var d = new Date(); var p = function (x) { return ('0' + x).slice(-2); }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + '-' + p(d.getHours()) + p(d.getMinutes()) + '-' + Math.random().toString(36).slice(2, 5); }
+  function nowyId() { var d = new Date(); var p = function (x) { return ('0' + x).slice(-2); }; return (stan.konto ? stan.konto.konto + '-' : '') + d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + '-' + p(d.getHours()) + p(d.getMinutes()) + '-' + Math.random().toString(36).slice(2, 5); }
   function zapiszJa() {
     if (!pliki || stan.demo) return Promise.resolve();
     var dane = { rozmowa: stan.id, tryb: stan.tryb, zmieniono: new Date().toISOString(), wiadomosci: stan.ja, reakcje: stan.reakcje };
@@ -336,11 +354,11 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   }
   function zapiszMeta() {
     if (!pliki || stan.demo) return Promise.resolve();
-    return most.zapisz(kat() + '/meta.json', JSON.stringify({ rozmowa: stan.id, tryb: stan.tryb, utworzono: stan.utworzono, aplikacja: 'MS Konsylium Psychologiczne' }, null, 2));
+    return most.zapisz(kat() + '/meta.json', JSON.stringify({ rozmowa: stan.id, konto: stan.konto ? stan.konto.konto : undefined, tryb: stan.tryb, utworzono: stan.utworzono, aplikacja: 'MS Konsylium Psychologiczne' }, null, 2));
   }
   function zaladuj(id) {
     stan.id = id; stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
-    try { localStorage.setItem('ms-rozmowa', id); } catch (e) {}
+    try { localStorage.setItem(stan.konto ? 'ms-rozmowa-' + stan.konto.konto : 'ms-rozmowa', id); } catch (e) {}
     if (!pliki) { rysuj(); return Promise.resolve(); }
     return Promise.all([most.czytaj(kat() + '/meta.json'), most.czytaj(kat() + '/uzytkownik.json'), most.czytaj(kat() + '/zespol.json')]).then(function (r) {
       try { var m = r[0] && JSON.parse(r[0].tekst); if (m) { stan.tryb = m.tryb || 'rozmowa'; stan.utworzono = m.utworzono; } } catch (e) {}
@@ -351,7 +369,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   }
   function nowa() {
     stan.id = nowyId(); stan.utworzono = new Date().toISOString(); stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
-    try { localStorage.setItem('ms-rozmowa', stan.id); } catch (e) {}
+    try { localStorage.setItem(stan.konto ? 'ms-rozmowa-' + stan.konto.konto : 'ms-rozmowa', stan.id); } catch (e) {}
     rysuj(true);
     if (pliki) zapiszMeta().then(zapiszJa).then(odswiezListe);
     $('tekst').focus();
@@ -359,11 +377,102 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   function odswiezListe() {
     if (!pliki) return;
     most.lista('rozmowy').then(function (l) {
-      var k = (l || []).filter(function (x) { return x.katalog && !/^[._]/.test(x.nazwa); }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
+      var pref = stan.konto ? stan.konto.konto + '-' : null;
+      var k = (l || []).filter(function (x) { return x.katalog && !/^[._]/.test(x.nazwa) && (pref ? x.nazwa.indexOf(pref) === 0 : !/^k[a-z0-9]{5}-/.test(x.nazwa)); }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
       var s = $('lista'); s.innerHTML = '';
-      k.forEach(function (x) { var o = document.createElement('option'); o.value = x.nazwa; o.textContent = 'Rozmowa ' + x.nazwa.slice(0, 16).replace(/-(\d\d)(\d\d)$/, ' $1:$2'); if (x.nazwa === stan.id) o.selected = true; s.appendChild(o); });
+      k.forEach(function (x) { var o = document.createElement('option'); o.value = x.nazwa; o.textContent = 'Rozmowa ' + x.nazwa.replace(/^k[a-z0-9]{5}-/, '').slice(0, 16).replace(/-(\d\d)(\d\d)$/, ' $1:$2'); if (x.nazwa === stan.id) o.selected = true; s.appendChild(o); });
       s.hidden = k.length < 2;
     }).catch(function () {});
+  }
+
+  // ---------- konta i pamięć (decyzja Michała 1.11.2026 15:42; docs/ROZMOWA.md §0b) ----------
+  function skrot(t) {
+    // SHA-256 PIN-u (WebCrypto); PIN chroni tylko przed przypadkowym wejściem na cudze konto na wspólnym komputerze
+    try { return crypto.subtle.digest('SHA-256', new TextEncoder().encode('ms-psycho:' + t)).then(function (b) { return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); }); }
+    catch (e) { var h = 5381; for (var i = 0; i < t.length; i++) h = ((h << 5) + h + t.charCodeAt(i)) | 0; return Promise.resolve('d' + (h >>> 0).toString(16)); }
+  }
+  function listaKont() {
+    return most.lista('konta').then(function (l) {
+      var k = (l || []).filter(function (x) { return x.katalog && /^k[a-z0-9]{5}$/.test(x.nazwa); });
+      return Promise.all(k.map(function (x) { return most.czytaj('konta/' + x.nazwa + '/profil.json').then(function (r) { try { return r && JSON.parse(r.tekst); } catch (e) { return null; } }); }));
+    }).then(function (p) { return (p || []).filter(Boolean).sort(function (a, b) { return String(b.ostatnio || '').localeCompare(String(a.ostatnio || '')); }); });
+  }
+  function pokazKonta(komunikat) {
+    var ok = $('konta-okno');
+    listaKont().then(function (konta) {
+      var h = '<h2>' + (konta.length ? 'Kto rozmawia?' : 'Załóż konto') + '</h2>';
+      h += '<p>' + esc(komunikat || 'Konto jest tylko na tym komputerze. Dzięki niemu psychoterapeuta pamięta wcześniejsze rozmowy. Bez imienia i nazwiska – wystarczy pseudonim, wiek i płeć.') + '</p>';
+      if (konta.length) h += '<div class="kto-lista">' + konta.map(function (k) { return '<button type="button" data-konto="' + esc(k.konto) + '"><span class="aw">' + esc((k.pseudonim || '?').slice(0, 2).toUpperCase()) + '</span><span><b>' + esc(k.pseudonim) + '</b><br><small>' + esc(k.wiek) + ' l. · ' + esc(k.plec) + (k.pin ? ' · 🔒 PIN' : '') + '</small></span></button>'; }).join('') + '</div>';
+      h += '<form id="konto-nowe" novalidate' + (konta.length ? ' hidden' : '') + '><label for="k-ps">Pseudonim</label><input id="k-ps" maxlength="24" required placeholder="np. Hala, Leśny, M.">'
+        + '<div class="rzad"><div><label for="k-wiek">Wiek</label><input id="k-wiek" type="number" min="18" max="110" required></div><div><label for="k-plec">Płeć</label><select id="k-plec"><option value="kobieta">kobieta</option><option value="mężczyzna">mężczyzna</option><option value="inna / wolę nie mówić">inna / wolę nie mówić</option></select></div></div>'
+        + '<label for="k-pin">PIN (opcjonalnie, 4–8 cyfr)</label><input id="k-pin" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" placeholder="zostaw puste, jeśli komputer jest tylko Twój">'
+        + '<p class="blad" id="k-blad"></p><div class="akcje"><button class="btn on" type="submit">Załóż konto</button>' + (konta.length ? '<button class="btn" type="button" id="k-wroc">Wróć</button>' : '') + '</div></form>';
+      if (konta.length) h += '<div class="akcje" id="k-dodaj-box"><button class="btn" type="button" id="k-dodaj">+ Nowe konto</button>' + (stan.konto ? '<button class="btn" type="button" id="k-zamknij">Zamknij</button>' : '') + '</div>';
+      ok.innerHTML = h; $('konta').hidden = false;
+      var f = $('konto-nowe');
+      if ($('k-dodaj')) $('k-dodaj').onclick = function () { f.hidden = false; $('k-dodaj-box').hidden = true; $('k-ps').focus(); };
+      if ($('k-wroc')) $('k-wroc').onclick = function () { f.hidden = true; $('k-dodaj-box').hidden = false; };
+      if ($('k-zamknij')) $('k-zamknij').onclick = function () { $('konta').hidden = true; };
+      f.onsubmit = function (e) {
+        e.preventDefault();
+        var ps = $('k-ps').value.trim(), wiek = parseInt($('k-wiek').value, 10), pin = $('k-pin').value.trim();
+        if (!ps) { $('k-blad').textContent = 'Wpisz pseudonim.'; return; }
+        if (!(wiek >= 18 && wiek <= 110)) { $('k-blad').textContent = 'Psychoterapia AI jest tylko dla dorosłych (18+).'; return; }
+        if (pin && !/^\d{4,8}$/.test(pin)) { $('k-blad').textContent = 'PIN: 4–8 cyfr albo puste.'; return; }
+        var id = 'k' + Math.random().toString(36).slice(2, 7).padEnd(5, '0');
+        (pin ? skrot(pin) : Promise.resolve(null)).then(function (hash) {
+          var p = { konto: id, pseudonim: ps.slice(0, 24), wiek: wiek, plec: $('k-plec').value, pin: hash || undefined, utworzono: new Date().toISOString(), ostatnio: new Date().toISOString() };
+          return most.zapisz('konta/' + id + '/profil.json', JSON.stringify(p, null, 2)).then(function () { wejdz(p, true); });
+        }).catch(function (er) { $('k-blad').textContent = 'Nie udało się zapisać konta: ' + er.message; });
+      };
+      ok.querySelectorAll('[data-konto]').forEach(function (b) {
+        b.onclick = function () {
+          var p = konta.filter(function (k) { return k.konto === b.dataset.konto; })[0];
+          if (!p.pin) return wejdz(p);
+          ok.querySelectorAll('.pin-box').forEach(function (x) { x.remove(); });
+          var d = document.createElement('form'); d.className = 'pin-box';
+          d.innerHTML = '<label>PIN dla ' + esc(p.pseudonim) + '</label><input inputmode="numeric" maxlength="8" autofocus><p class="blad"></p>';
+          b.after(d); d.querySelector('input').focus();
+          d.onsubmit = function (e) { e.preventDefault(); skrot(d.querySelector('input').value.trim()).then(function (h) { if (h === p.pin) wejdz(p); else d.querySelector('.blad').textContent = 'Zły PIN.'; }); };
+        };
+      });
+      if (!konta.length) $('k-ps').focus();
+    }).catch(function (e) { blad('Nie udało się odczytać kont: ' + e.message); });
+  }
+  function wejdz(p, nowe) {
+    stan.konto = p; $('konta').hidden = true;
+    try { localStorage.setItem('ms-konto', p.konto); } catch (e) {}
+    $('konto-btn').hidden = false; $('konto-nazwa').textContent = p.pseudonim;
+    p.ostatnio = new Date().toISOString();
+    most.zapisz('konta/' + p.konto + '/profil.json', JSON.stringify(p, null, 2)).catch(function () {});
+    return most.czytaj('konta/' + p.konto + '/pamiec.md').then(function (r) {
+      stan.maPamiec = !!(r && r.tekst.trim()); $('pamiec-btn').hidden = false;
+      if (nowe) return nowa();
+      var ost = null; try { ost = localStorage.getItem('ms-rozmowa-' + p.konto); } catch (e) {}
+      return most.lista('rozmowy').then(function (l) {
+        var moje = (l || []).filter(function (x) { return x.katalog && x.nazwa.indexOf(p.konto + '-') === 0; }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
+        if (ost && moje.some(function (x) { return x.nazwa === ost; })) return zaladuj(ost);
+        // ostatnia rozmowa z dziś → kontynuacja; starsza → nowa rozmowa (pamięć i tak jedzie)
+        if (moje[0] && moje[0].nazwa.slice(p.konto.length + 1, p.konto.length + 11) === new Date().toISOString().slice(0, 10)) return zaladuj(moje[0].nazwa);
+        nowa();
+      });
+    });
+  }
+  function pokazPamiec() {
+    var p = $('formulacja');
+    if (!p.hidden && p.dataset.co === 'pamiec') { p.hidden = true; return; }
+    most.czytaj('konta/' + stan.konto.konto + '/pamiec.md').then(function (r) {
+      var t = r && r.tekst.trim();
+      p.dataset.co = 'pamiec';
+      p.innerHTML = '<h3>Co pamiętam z naszych rozmów</h3>' + (t ? md(t) : 'Na razie nic. Po rozmowie zapiszę tu krótko, co ważne – żeby następnym razem nie zaczynać od zera.')
+        + '<div class="akcje" style="margin-top:12px;white-space:normal"><button class="btn" type="button" id="pamiec-czysc">Wyczyść pamięć</button> <button class="btn" type="button" id="pamiec-zamknij">Zamknij</button></div>';
+      p.hidden = false;
+      $('pamiec-zamknij').onclick = function () { p.hidden = true; };
+      $('pamiec-czysc').onclick = function () {
+        if ($('pamiec-czysc').dataset.potw !== '1') { $('pamiec-czysc').dataset.potw = '1'; $('pamiec-czysc').textContent = 'Na pewno? Kliknij jeszcze raz'; return; }
+        most.zapisz('konta/' + stan.konto.konto + '/pamiec.md', '').then(function () { stan.maPamiec = false; p.hidden = true; });
+      };
+    });
   }
 
   // ---------- rysowanie ----------
@@ -378,12 +487,15 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   function powitanie() {
     var t = stan.tryb === 'konsultacja'
       ? 'Dzień dobry 🙂 Opisz przypadek albo konkretną sytuację z pracy z klientem. Odpowiem jednym głosem, ale zanim odpowiem, omówi go zespół siedmiu podejść – od CBT po psychiatrę – a strażnik ryzyka przeczyta każdą wiadomość.'
-      : 'Cześć 🙂 Jestem psychoterapeutą AI. Możesz pisać o tym, co Cię teraz zajmuje – o sytuacji, relacji, emocji, o tym, co wraca. Pracujemy jak na psychoterapii: najpierw dobrze rozumiem, potem razem szukamy zmiany, a do ważnych wątków wracamy w kolejnych rozmowach. Odpowiadam jednym głosem, ale za mną w tle rozmawia, spiera się i wspiera zespół terapeutów różnych podejść 🌱';
+      : (stan.konto && stan.maPamiec
+        ? 'Cześć ' + stan.konto.pseudonim + ' 🙂 Dobrze, że jesteś. Pamiętam nasze wcześniejsze rozmowy – co u Ciebie słychać od ostatniego razu?'
+        : 'Cześć' + (stan.konto ? ' ' + stan.konto.pseudonim : '') + ' 🙂 Jestem tu, żeby Cię wysłuchać, zrozumieć i razem poszukać, co może pomóc. Odpowiem od razu, czasem dopytam, a w tle zbieram opinie zespołu terapeutów różnych podejść – ich wspólne zdanie przekażę Ci jednym głosem 🌱 Co Cię dziś do mnie przyprowadza?');
     return '<div class="msg zespol"><span class="kto">Psychoterapeuta AI</span>' + esc(t) + '<span class="czas">teraz</span></div>';
   }
   function rysuj(naDol) {
     var el = $('rozmowa'), byl = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
-    var h = '<div class="msg system"><b>Psychoterapia AI – narzędzie testowe marki MS.</b> Za jednym psychoterapeutą AI pracuje w tle zespół terapeutów różnych podejść. Nie zastępuje psychoterapeuty, psychologa ani lekarza. Jeśli ktoś jest w kryzysie, zadzwoń: <b>112</b> albo <b>800 70 2222</b> (całodobowo).</div>';
+    var h = stan.ja.length ? '' : '<div class="msg system">Psychoterapia AI – narzędzie testowe marki MS. Wspiera, ale nie zastępuje psychoterapeuty.</div>';
+    var byl2 = false;
     h += powitanie();
     stan._kropki = 0;
     wiadomosci().forEach(function (x) {
@@ -394,14 +506,14 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
         h += '<div class="msg ja"><span class="kto">Ty</span>' + md(m.tekst) + '<span class="czas">' + godz(m.ts) + '<span class="stan-wys" title="' + (odp ? 'Zespół odpowiedział' : 'Zapisane w folderze') + '">' + (odp ? ' ✓✓' : ' ✓') + '</span></span>' + (emoZespolu(m.n) ? '<span class="emo" title="Reakcja terapeuty">' + esc(emoZespolu(m.n)) + '</span>' : '') + '</div>';
         if (m.ryzykoLokalne >= 3 && m.przemoc) h += kryzysHtml('Z tego, co piszesz, możesz być teraz w niebezpieczeństwie ze strony innej osoby. Twoje bezpieczeństwo jest najważniejsze. Przy zagrożeniu dzwoń od razu pod 112. Niebieska Linia 800 120 002 pomaga całodobowo w sytuacji przemocy:', 'aplikacja', 'przemoc');
         else if (m.ryzykoLokalne && m.ryzykoLokalne >= 3) h += kryzysHtml('Widzę w Twojej wiadomości słowa, które mogą znaczyć, że jest Ci teraz bardzo ciężko. Twoje bezpieczeństwo jest najważniejsze. Jeśli myślisz o zrobieniu sobie krzywdy, porozmawiaj teraz z człowiekiem:', 'aplikacja');
-        else if (m.ryzykoLokalne === 2) h += '<div class="msg system">🤍 Dziękuję, że to napisałeś/napisałaś. Takie myśli warto traktować poważnie – zespół zaraz o nie dopyta. Gdyby zrobiły się silniejsze, możesz od razu zadzwonić: <b>800 70 2222</b> (całodobowo), <b>116 123</b>, a przy zagrożeniu życia <b>112</b>.</div>';
+        else if (m.ryzykoLokalne === 2 && !byl2) { byl2 = true; h += '<div class="msg system">🤍 Gdyby kiedyś zrobiło się bardzo ciężko: <b>800 70 2222</b> (całodobowo), przy zagrożeniu życia <b>112</b>.</div>'; }
         return;
       }
       var reakcja = stan.reakcje[m.n];
       if (m.kryzys) { h += kryzysHtml(m.tekst, 'Psychoterapeuta AI', m.kierunek); return; }
       if (czekaWKolejce(m)) { if (!pisanie || pisanie.pauza) { if (!stan._kropki) { stan._kropki = 1; h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>Psychoterapeuta pisze…</div>'; } } return; }
       if (piszeTeraz(m)) { h += '<div class="msg zespol na-zywo" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(pisanie.czesci.slice(0, pisanie.ile).join('')) + '<span class="kursor" aria-hidden="true"></span></div>'; return; }
-      h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(m.tekst);
+      h += '<div class="msg zespol' + (m.wstepna ? ' wstepna' : '') + '" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(m.tekst);
       if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
       if (m.glosy && m.glosy.length) {
         var otw = pokazaneGlosy[m.n];
@@ -416,6 +528,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
       h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>' + (p ? 'Terapeuta pisze – zespół ' + esc(stan.pracuje.etap || 'rozważa odpowiedź') : (stan.aiAktywne ? 'Zespół odbiera wiadomość…' : 'Wiadomość czeka na zespół…')) + '</div>';
       if (!p && !stan.aiAktywne && stan.ostatniaWys && Date.now() - stan.ostatniaWys > 25000) h += '<div class="msg system">Na tym komputerze nie widać teraz pracy Claude. Żeby terapeuta odpowiadał, w folderze Konsylium Psychologicznego musi działać sesja Claude z poleceniem z <b>START-TUTAJ.md</b> (krok „Rozmowa”). Wiadomość czeka zapisana.</div>';
     }
+    else if (zespolDopisuje()) h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>Zbieram jeszcze opinie zespołu – pełniejsza odpowiedź za chwilę. Możesz w tym czasie odpisać.</div>';
     if (stan.potwZwolaj) h += '<div class="potw">Zwołać konsylium nad tą rozmową? Cały zespół omówi ją w Pokoju psychologicznym (ok. 10–15 min) i napisze Wnioski. <button class="btn on" type="button" id="zwolaj-tak">Tak, zwołaj</button><button class="btn" type="button" id="zwolaj-nie">Nie teraz</button></div>';
     el.innerHTML = h;
     if (naDol || byl) el.scrollTop = el.scrollHeight;
@@ -438,6 +551,11 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
     if (!ost) return false;
     return !stan.zespol.some(function (z) { return z.odpowiedz_na >= ost.n; });
   }
+  function zespolDopisuje() {
+    // szybka odpowiedź wstępna poszła, pełna opinia zespołu jeszcze nie (docs/ROZMOWA.md §0a)
+    var ost = stan.zespol.slice().sort(function (a, b) { return (a.n || 0) - (b.n || 0); }).slice(-1)[0];
+    return !!(ost && ost.wstepna && świeże(ost.ts, 600));
+  }
   function rysujPracuje() {
     var p = stan.pracuje, el = $('pracuje'), t = $('pracuje-tekst'), aw = $('awatary');
     var aktywne = p && p.stan === 'pracuje' && świeże(p.ts, 180);
@@ -448,7 +566,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
       t.innerHTML = '<b>zespół pracuje: ' + panel.length + '</b> · ' + esc(panel.map(function (r) { return rola(r)[0]; }).join(', ')) + (p.etap ? ' – ' + esc(p.etap) : '');
       aw.innerHTML = panel.slice(0, 6).map(function (r) { var x = rola(r); return '<span class="aw myśli" title="' + esc(x[0]) + '" style="background:' + x[2] + '">' + esc(x[1]) + '</span>'; }).join('');
     } else {
-      t.textContent = czekaNaOdpowiedz() ? 'Wiadomość zapisana – zespół zaraz ją przeczyta' : (stan.aiAktywne ? 'Zespół jest obecny i czeka na Twoją wiadomość' : 'Zespół czeka na Twoją wiadomość');
+      t.textContent = zespolDopisuje() ? 'Psychoterapeuta zbiera opinie zespołu' : czekaNaOdpowiedz() ? 'Wiadomość zapisana – zespół zaraz ją przeczyta' : (stan.aiAktywne ? 'Zespół jest obecny i czeka na Twoją wiadomość' : 'Zespół czeka na Twoją wiadomość');
       aw.innerHTML = '';
     }
   }
@@ -569,6 +687,8 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   $('wpis').addEventListener('submit', function (e) { e.preventDefault(); wyslij(); });
   $('zwolaj').addEventListener('click', function () { stan.potwZwolaj = true; rysuj(true); });
   $('nowa').addEventListener('click', function () { if (stan.demo) { stan.ja = []; stan.zespol = []; rysuj(true); return; } nowa(); });
+  $('konto-btn').addEventListener('click', function () { if (pliki) pokazKonta('Zmień konto albo dodaj nowe. Rozmowy i pamięć każdego konta są osobno.'); });
+  $('pamiec-btn').addEventListener('click', function () { if (pliki && stan.konto) pokazPamiec(); });
   $('lista').addEventListener('change', function (e) { zaladuj(e.target.value); });
   $('rozmowa').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
@@ -582,6 +702,7 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
   $('formulacja-btn').addEventListener('click', function () {
     var p = $('formulacja'); if (!p.hidden) { p.hidden = true; return; }
     if (!pliki) return;
+    p.dataset.co = 'formulacja';
     most.czytaj(kat() + '/formulacja-robocza.md').then(function (r) { p.innerHTML = '<h3>Jak to rozumiemy (robocza formulacja zespołu)</h3>' + md(r ? r.tekst.replace(/^#.*\n/, '') : 'Zespół jeszcze nie zapisał formulacji. Pojawi się po kilku wiadomościach.'); p.hidden = false; });
   });
   setInterval(function () { if (!pliki || !stan.id) return; most.czytaj(kat() + '/formulacja-robocza.md').then(function (r) { $('formulacja-btn').hidden = !r; }).catch(function () {}); }, 6000);
@@ -598,11 +719,12 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
       return most.folder().then(function (f) {
         if (!f) { pliki = false; demo(); blad('Wybierz folder Konsylium Psychologicznego (ikona folderu po lewej), żeby rozmowa zapisywała się i trafiała do zespołu.'); return; }
         pliki = true; stan.demo = false;
-        var ost = null; try { ost = localStorage.getItem('ms-rozmowa'); } catch (e) {}
-        return most.lista('rozmowy').then(function (l) {
-          var jest = (l || []).some(function (x) { return x.nazwa === ost; });
-          if (ost && jest) return zaladuj(ost);
-          nowa();
+        // konto: ostatnio używane bez PIN-u → od razu; z PIN-em albo brak → wybór konta
+        var ostK = null; try { ostK = localStorage.getItem('ms-konto'); } catch (e) {}
+        return listaKont().then(function (konta) {
+          var p = konta.filter(function (k) { return k.konto === ostK; })[0];
+          if (p && !p.pin) return wejdz(p);
+          rysuj(true); pokazKonta();
         });
       });
     });

@@ -54,10 +54,23 @@ try {
 
   // 2. Rozmowa jest zakładką startową
   const r = await ramka('rozmowa');
+  // 2a. Konto lokalne (Michał 1.11.2026 15:42): pseudonim, wiek, płeć; wiek <18 odrzucony
+  await r.waitForSelector('#konto-nowe:not([hidden])');
+  await zrzut('4a-konto-nowe');
+  await r.fill('#k-ps', 'Leśny'); await r.fill('#k-wiek', '16'); await r.click('#konto-nowe button[type=submit]');
+  assert.match(await r.textContent('#k-blad'), /18\+/);
+  await r.fill('#k-wiek', '41'); await r.selectOption('#k-plec', 'mężczyzna'); await r.click('#konto-nowe button[type=submit]');
+  await r.waitForSelector('#konta', { state: 'hidden' });
+  const konto = readdirSync(join(folder, 'konta'))[0];
+  assert.match(konto, /^k[a-z0-9]{5}$/);
+  assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'profil.json'), 'utf8')).pseudonim, 'Leśny');
+  assert.match(await r.textContent('#konto-nazwa'), /Leśny/);
   await r.waitForSelector('.msg.zespol');
   await czekaj(async () => readdirSync(join(folder, 'rozmowy')).length === 1, 8000, 'katalog rozmowy');
   const id = readdirSync(join(folder, 'rozmowy'))[0];
   const kat = join(folder, 'rozmowy', id);
+  assert.ok(id.startsWith(konto + '-'), 'ID rozmowy z prefiksem konta');
+  assert.equal(JSON.parse(readFileSync(join(kat, 'meta.json'), 'utf8')).konto, konto);
   await r.click('.emoji button[data-e="😟"]');
   await r.type('#tekst', ' Wczoraj szefowa przy wszystkich powiedziała, że mój raport jest na poziomie stażysty. Jak mam jutro iść do pracy?');
   await r.press('#tekst', 'Enter');
@@ -65,6 +78,15 @@ try {
   assert.match(u.wiadomosci[0].tekst, /^😟 Wczoraj szefowa/);
   assert.equal(u.wiadomosci[0].ryzykoLokalne, undefined);
   assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /NOWE wiadomości[\s\S]*szefowa/);
+
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /KONTO: Leśny · 41 l\.[\s\S]*SZYBKO NAJPIERW/);
+  // 2b. Szybka odpowiedź wstępna z pytaniem (Michał 15:43) → pasek „zbiera opinie zespołu”
+  writeFileSync(join(folder, 'wst.json'), JSON.stringify({ tekst: 'Auć, to musiało zaboleć – zwłaszcza przy wszystkich. Co wtedy poczułeś najpierw: wstyd czy złość?', ryzyko: 0, wstepna: true }));
+  assert.match(py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'wst.json')), /OK: odpowiedź #1/);
+  await r.waitForSelector('.msg.zespol.wstepna[data-n="1"]', { timeout: 8000 });
+  await r.waitForSelector('text=Zbieram jeszcze opinie zespołu', { timeout: 8000 });
+  await zrzut('4b-szybka-odpowiedz');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /SZYBKA ODPOWIEDŹ JUŻ POSZŁA/);
 
   // 3. Zespół pracuje → jedna odpowiedź
   py('rozmowa.py', 'pracuje', '--rozmowa', id, '--panel', 'straznik_ryzyka,terapeuta_cbt,terapeuta_humanistyczny,prowadzacy', '--etap', 'rozważa odpowiedź');
@@ -75,14 +97,14 @@ try {
     ryzyko: 0, reakcja: '🤍',
     glosy: [{ rola: 'straznik_ryzyka', skrot: 'Poziom 0: brak sygnałów ryzyka.' }, { rola: 'terapeuta_cbt', skrot: 'Zapisać myśl automatyczną i dowody; nie unikać pójścia do pracy.' }, { rola: 'terapeuta_humanistyczny', skrot: 'Najpierw uznać upokorzenie, potem technika.' }]
   }));
-  assert.match(py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'odp.json')), /OK: odpowiedź #1/);
-  await r.waitForSelector('.msg.zespol[data-n="1"]', { timeout: 6000 });
-  await r.click('[data-glosy="1"]');
+  assert.match(py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'odp.json')), /OK: odpowiedź #2/);
+  await r.waitForSelector('.msg.zespol[data-n="2"]', { timeout: 6000 });
+  await r.click('[data-glosy="2"]');
   await r.waitForSelector('.glos');
   await zrzut('6-rozmowa-odpowiedz');
-  await r.hover('.msg.zespol[data-n="1"]');
-  await r.click('.msg.zespol[data-n="1"] [data-e="🙏"]', { force: true });
-  await czekaj(async () => JSON.parse(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')).reakcje['1'] === '🙏', 6000, 'reakcja');
+  await r.hover('.msg.zespol[data-n="2"]');
+  await r.click('.msg.zespol[data-n="2"] [data-e="🙏"]', { force: true });
+  await czekaj(async () => JSON.parse(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')).reakcje["2"] === '🙏', 6000, 'reakcja');
 
   // 4. Filtr ryzyka w aplikacji: karta kryzysowa od razu, bez modelu
   await r.fill('#tekst', 'Czasem myślę, żeby skończyć ze sobą.');
@@ -108,12 +130,21 @@ try {
   await r.waitForSelector('.msg.kryzys .kierunek');
   assert.match(await r.textContent('.msg.kryzys .kierunek'), /Niebieska Linia/);
 
+  // 4a. Pamięć konta: zapis przez rozmowa.py pamiec → panel „Co pamiętam”
+  writeFileSync(join(folder, 'pam.md'), '- Przychodzi z upokorzeniem po krytyce szefowej przy zespole.\n- Pomaga: zapisać, co padło, i co sam wie o raporcie.\n- Ostatni krok: rozmowa w cztery oczy, gdy emocje opadną.');
+  assert.match(py('rozmowa.py', 'pamiec', '--rozmowa', id, '--plik', join(folder, 'pam.md')), /OK: pamięć konta/);
+  await r.click('#pamiec-btn');
+  await r.waitForSelector('#formulacja:not([hidden]) >> text=Co pamiętam');
+  assert.match(await r.textContent('#formulacja'), /cztery oczy/);
+  await zrzut('7a-co-pamietam');
+  await r.click('#pamiec-zamknij');
+
   // 5. Zwołaj konsylium → sprawa → Pokój psychologiczny
   await r.click('#zwolaj');
   await r.click('#zwolaj-tak');
   const sprawa = await czekaj(async () => readdirSync(join(folder, 'sprawy')).find((x) => /^\d{4}-\d\d-\d\d-\d\d$/.test(x)), 8000, 'sprawa');
   assert.match(readFileSync(join(folder, 'sprawy', sprawa, '01-wywiad.md'), 'utf8'), /szefowa/);
-  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ZWOŁAŁ KONSYLIUM/);
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /PAMIĘĆ psychoterapeuty[\s\S]*cztery oczy[\s\S]*ZWOŁAŁ KONSYLIUM/);
   const p = await ramka('pokoj');
   await czekaj(async () => !(await okno.$('iframe[data-modul="pokoj"][hidden]')), 8000, 'Pokój widoczny');
   py('dymek.py', join('sprawy', sprawa), '--rola', 'terapeuta-cbt', '--faza', 'Ślepa tura', '--skrot', 'Upokorzenie przy zespole uruchomiło myśl „jestem niekompetentny”; unikanie jutrzejszego dnia podtrzyma lęk.', '--temat', 'Ślepa tura formulacji');
@@ -123,7 +154,7 @@ try {
   await zrzut('8-pokoj-psychologiczny');
 
   assert.deepEqual(sieci, [], 'aplikacja nie może łączyć się z siecią');
-  console.log('OK: prezent, zgoda, Rozmowa (odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
+  console.log('OK: prezent, zgoda, konto, Rozmowa (szybka odpowiedź, pamięć, odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
 } finally {
   await app.close();
 }

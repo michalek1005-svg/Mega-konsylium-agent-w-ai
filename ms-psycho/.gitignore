@@ -1,5 +1,6 @@
 # Dane rozmów, wywiadów i spraw zostają na dysku, nie w repo
 rozmowy/
+konta/
 wywiad-na-zywo/
 sprawy/*/
 _ai-aktywnosc.json*

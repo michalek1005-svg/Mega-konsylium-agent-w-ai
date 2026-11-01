@@ -15,6 +15,26 @@ Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza probl
 
 - **Jak mówimy i jak prowadzimy rozmowę:** `docs/SZTUKA-ROZMOWY.md` (dowody, schemat pierwszej rozmowy, struktura kolejnych, zasady języka, lista kontrolna sędziego).
 
+### 0′. Wsparcie, nie diagnostyka (Michał 1.11.2026 15:42 – nadrzędne wobec §0)
+„Psychoterapia to nie jedynie droga do rozpoznania – ja chcę wsparcia, zrozumienia i porad autentycznych. Do diagnostyki służy konsylium psychologiczne.”
+- Psychoterapia AI **wspiera, rozumie i doradza**. Nie stawia hipotez diagnostycznych, nie podaje kodów ICD, nie „bada” osoby kwestionariuszami w trakcie rozmowy. Diagnostyka = Pokój psychologiczny („Zwołaj konsylium”); terapeuta może to zaproponować jednym zdaniem, gdy osoba sama pyta „co mi jest?”.
+- **Porady autentyczne:** konkretne, osadzone w tym, co osoba powiedziała; terapeuta ma zdanie i je mówi („Ja bym zaczął od…”), zamiast samych pytań i odbijania.
+- **Jedna opinia:** efekt pracy wielu agentów to **jedna** wypowiedź psychoterapeuty – bez „z jednej strony / z drugiej”, bez list opcji.
+- **Mniej ostrzeżeń:** zastrzeżenie „narzędzie testowe, nie zastępuje psychoterapeuty” raz na początku rozmowy i w stopce. Numery pomocy w treści odpowiedzi **tylko** przy poziomie ≥2 i najwyżej raz w rozmowie (aplikacja pokazuje łagodną kartę 2 tylko przy pierwszym sygnale). Prawdziwa ścieżka kryzysowa (poziom ≥3: karta, pytanie wprost, kontakt z człowiekiem) – bez zmian, ale bez powtarzania i bez tonu formularza.
+
+### 0a. Szybko najpierw, pełniej potem (Michał 1.11.2026 15:43)
+„Nie powinno to trwać tak długo. Dawaj odpowiedzi w formie dodatkowych pytań – zagadując i dopytując – i dając sobie czas na zebranie opinii agentów.”
+1. `czekaj` wypisuje **SZYBKO NAJPIERW**. Prowadzący SAM (bez panelu), w kilka sekund, pisze **jedną** wiadomość: krótkie uznanie + jedno zagadujące, dopytujące pytanie (≤60 słów). `odp.json`: `{"tekst": "…", "ryzyko": <ocena wg filtra/poprzedniej tury>, "wstepna": true}` → `rozmowa.py odpowiedz`. Pasek pokazuje „Psychoterapeuta zbiera opinie zespołu”.
+2. Odpowiedź wstępna **nie zamyka tury**: strażnik + panel pracują w tle. Zanim wyślesz pełną odpowiedź, uruchom `rozmowa.py czekaj --rozmowa ID --limit 1` – jeśli osoba odpisała na pytanie wstępne, pełna odpowiedź uwzględnia **obie** wiadomości.
+3. Pełna odpowiedź (bez `wstepna`) = jedna opinia zespołu w jednym głosie; **nie powtarza** pytania z odpowiedzi wstępnej.
+4. Bez odpowiedzi wstępnej: KRÓTKA ŚCIEŻKA, filtr ≥3 / kryzys (od razu pełna odpowiedź bezpieczeństwa – `rozmowa.py` odrzuci `wstepna`). Przy TEMPO: SZYBKO można ją pominąć, jeśli pełna odpowiedź będzie gotowa w ok. 20 s.
+
+### 0b. Konto i pamięć rozmów (Michał 1.11.2026 15:42)
+- Aplikacja zakłada **lokalne konta**: `konta/<konto>/profil.json` (`konto` = `k` + 5 znaków, `pseudonim`, `wiek` ≥18, `plec`, opcjonalnie `pin` = SHA‑256 PIN‑u). Bez imienia, nazwiska i innych danych identyfikujących. Rozmowy konta mają ID z prefiksem konta (`kab123-2026-11-01-1600-xyz`), `meta.json` ma pole `konto`.
+- **Pamięć:** `konta/<konto>/pamiec.md` – pisze ją psychoterapeuta przez `python skrypty/rozmowa.py pamiec --rozmowa ID --plik pamiec.md` po każdej rozmowie (najpóźniej, gdy osoba się żegna, albo co 4–5 tur). Zwięźle (≤8000 znaków), w punktach: z czym osoba przychodzi; ważne osoby i wydarzenia (bez nazwisk, adresów, miejsc pracy); co pomogło, co nie; uzgodniony cel i ostatni krok; sygnały ryzyka i jak się skończyły; jak lubi rozmawiać (ton, długość). Bez hipotez diagnostycznych. Każda aktualizacja **zastępuje** plik (przepisz całość, nie dopisuj historii).
+- `czekaj` wypisuje profil i pamięć przed historią. W pierwszej turze nowej rozmowy nawiąż do pamięci jednym zdaniem („Ostatnio mówiłeś o… – jak to wygląda teraz?”).
+- Użytkownik widzi pamięć („Co pamiętam”) i może ją wyczyścić; pusty plik = zapomnieć, nie odtwarzaj jej z historii.
+
 ## 1. Pliki (aplikacja ↔ Claude)
 
 | Plik w `rozmowy/<ID>/` | Pisze | Treść |
@@ -24,6 +44,8 @@ Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza probl
 | `zespol.json` | `rozmowa.py odpowiedz` | `wiadomosci[]` (`n`, `odpowiedz_na`, `tekst`, `ryzyko`, `kryzys`, `glosy[]`, `zrodla[]`, `reakcja`) |
 | `pracuje.json` | `rozmowa.py pracuje` | pasek „zespół pracuje: N” z awatarami panelu |
 | `formulacja-robocza.md` | `rozmowa.py formulacja` | „Jak to rozumiemy” – aktualizuj co 3–4 tury |
+| `konta/<konto>/profil.json` | aplikacja | pseudonim, wiek, płeć, opcjonalny skrót PIN-u (§0b) |
+| `konta/<konto>/pamiec.md` | `rozmowa.py pamiec` | pamięć psychoterapeuty między rozmowami (§0b) |
 
 Aplikacja sprawdza pliki co 1,5 s. Filtr słownikowy ryzyka (`config/frazy-ryzyka.json`) działa **w aplikacji, zanim** wiadomość trafi do zespołu: poziom 3 → od razu karta kryzysowa z numerami; poziom 2 (bierne myśli o śmierci) → łagodna karta z numerami.
 
@@ -31,9 +53,11 @@ Aplikacja sprawdza pliki co 1,5 s. Filtr słownikowy ryzyka (`config/frazy-ryzyk
 
 ```
 python skrypty/rozmowa.py czekaj                     # czeka do 9 min na nową wiadomość; wypisuje historię i wynik filtra
+python skrypty/rozmowa.py odpowiedz --rozmowa ID --plik wstepna.json   # §0a: szybka odpowiedź z pytaniem ("wstepna": true), kilka sekund
 python skrypty/rozmowa.py pracuje --rozmowa ID --panel straznik_ryzyka,terapeuta_cbt,terapeuta_humanistyczny,prowadzacy --etap "rozważa odpowiedź"
    … strażnik ryzyka i panel (osobne wywołania subagentów, równolegle) → prowadzący scala → klient-sędzia (≤10 s) …
 python skrypty/rozmowa.py odpowiedz --rozmowa ID --plik odp.json
+python skrypty/rozmowa.py pamiec --rozmowa ID --plik pamiec.md        # §0b: co 4–5 tur i na pożegnanie
 python skrypty/rozmowa.py czekaj                     # i od nowa
 ```
 Cel: 30–90 s na turę. Użytkownik czeka przy ekranie: najpierw `pracuje` (pasek pokazuje, kto myśli), potem praca.

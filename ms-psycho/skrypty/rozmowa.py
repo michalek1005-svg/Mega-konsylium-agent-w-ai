@@ -12,6 +12,8 @@ Protokół i zasady: docs/ROZMOWA.md. Na Windows: python skrypty/rozmowa.py …
         dopisuje JEDNĄ odpowiedź terapeuty AI. odp.json: {"tekst": "...", "ryzyko": 0-4, "glosy": [{"rola": "...", "skrot": "..."}],
         "zrodla": ["PMID 123"], "reakcja": "🤍", "kryzys": false, "obnizam_ryzyko": "<nowy fakt, gdy poziom niższy niż filtr>"}
         albo krócej: --tekst "..." --ryzyko 0 [--reakcja "🙂"] [--kryzys]
+        "wstepna": true = SZYBKA PIERWSZA ODPOWIEDŹ (1–3 zdania + pytanie; nie zamyka tury – zespół pracuje dalej, docs/ROZMOWA.md §0a)
+  python skrypty/rozmowa.py pamiec --rozmowa ID --plik pamiec.md          pamięć konta (konta/<konto>/pamiec.md) – po każdej rozmowie
   python skrypty/rozmowa.py formulacja --rozmowa ID --plik formulacja.md    robocza formulacja (przycisk „Jak to rozumiemy”)
   python skrypty/rozmowa.py historia --rozmowa ID                           cała rozmowa
 """
@@ -30,6 +32,7 @@ from pathlib import Path
 
 KORZEN = Path(__file__).resolve().parent.parent
 ROZMOWY = KORZEN / "rozmowy"
+KONTA = KORZEN / "konta"
 WYWIADY = KORZEN / "wywiad-na-zywo"
 
 
@@ -122,10 +125,13 @@ def stan(rid: str) -> dict:
     m = czytaj(k / "meta.json", {}) or {}
     ja = [w for w in u.get("wiadomosci", []) if isinstance(w, dict)]
     ze = [w for w in z.get("wiadomosci", []) if isinstance(w, dict)]
-    odp = max([w.get("odpowiedz_na", 0) for w in ze] or [0])
+    odp = max([w.get("odpowiedz_na", 0) for w in ze if not w.get("wstepna")] or [0])  # szybka pierwsza odpowiedź nie zamyka tury
     nowe = [w for w in ja if w.get("n", 0) > odp and w.get("typ") != "zwolaj"]
     zwolania = [w for w in ja if w.get("typ") == "zwolaj" and w.get("n", 0) > odp]
-    return {"id": rid, "tryb": u.get("tryb") or m.get("tryb") or "rozmowa", "ja": ja, "zespol": ze, "nowe": nowe,
+    konto = str(m.get("konto") or "")
+    if not re.fullmatch(r"[\w-]{2,40}", konto):
+        konto = ""
+    return {"id": rid, "konto": konto, "tryb": u.get("tryb") or m.get("tryb") or "rozmowa", "ja": ja, "zespol": ze, "nowe": nowe,
             "zwolania": zwolania, "reakcje": u.get("reakcje", {}), "odp": odp}
 
 
@@ -153,6 +159,20 @@ def historia_txt(s: dict, ile: int = 30) -> str:
 
 def podsumuj(s: dict) -> None:
     print(f"=== ROZMOWA {s['id']} · tryb: {s['tryb']} ({'użytkownik = terapeuta, konsultacja przypadku' if s['tryb'] == 'konsultacja' else 'użytkownik mówi o sobie / o konkretnej sytuacji'})")
+    if s.get("konto"):
+        kk = KONTA / s["konto"]
+        prof = czytaj(kk / "profil.json", {}) or {}
+        print(f"--- KONTO: {prof.get('pseudonim') or s['konto']} · {prof.get('wiek') or '?'} l. · {prof.get('plec') or '?'} (bez danych identyfikujących) ---")
+        pm = kk / "pamiec.md"
+        if pm.is_file():
+            t = pm.read_text(encoding="utf-8").strip()
+            print("--- PAMIĘĆ psychoterapeuty z wcześniejszych rozmów (konta/" + s["konto"] + "/pamiec.md; użytkownik ją widzi i może usunąć) ---")
+            print(t[:6000] or "(pusta – użytkownik ją wyczyścił)")
+        else:
+            print("--- PAMIĘĆ: brak (pierwsza rozmowa na tym koncie) ---")
+        inne = [r for r in rozmowy() if r != s["id"] and (czytaj(ROZMOWY / r / "meta.json", {}) or {}).get("konto") == s["konto"]]
+        if inne:
+            print(f"   wcześniejsze rozmowy tego konta: {', '.join(inne[-5:])} (python skrypty/rozmowa.py historia --rozmowa ID)")
     print("--- historia (najstarsze u góry) ---")
     print(historia_txt(s) or "(pusta)")
     if s["reakcje"]:
@@ -204,6 +224,11 @@ def podsumuj(s: dict) -> None:
             print(f"TEMPO: DO NAMYSŁU (docs/ROZMOWA.md §3a) – strażnik + panel 4–5 + źródła (PubMed, Europe PMC) + klient-sędzia; odpowiedź do ok. 450 słów. Pasek: rozmowa.py pracuje … --etap \"przemyśla dokładniej\". W odp.json \"tempo\": \"namysl\".")
         else:
             print("TEMPO: NORMALNIE (docs/ROZMOWA.md §3a) – strażnik + panel ≤4 + klient-sędzia, 80–220 słów.")
+    wstepne = [x for x in s["zespol"] if x.get("wstepna") and x.get("odpowiedz_na", 0) > s["odp"]]
+    if s["nowe"] and not krotka and maks < 3 and not wstepne:
+        print(f"SZYBKO NAJPIERW (decyzja Michała 1.11.2026 15:43; docs/ROZMOWA.md §0a): zanim ruszy panel – prowadzący SAM, w kilka sekund, pisze 1–3 zdania: krótkie uznanie + jedno zagadujące/dopytujące pytanie; odp.json z \"wstepna\": true. Potem panel w tle, a pełna odpowiedź (bez \"wstepna\") uwzględnia też to, co osoba dopisze w międzyczasie.")
+    elif wstepne:
+        print("SZYBKA ODPOWIEDŹ JUŻ POSZŁA – teraz pełna opinia zespołu (bez \"wstepna\"); nie powtarzaj pytania z szybkiej odpowiedzi.")
     if krotka:
         print(f"KRÓTKA ŚCIEŻKA (docs/ROZMOWA.md §3): krótka wiadomość bez nowej treści przy ryzyku 0 – tylko strażnik ryzyka (szybko) i prowadzący, bez panelu i klienta‑sędziego; odpowiedź 1–3 zdania.\n1) rozmowa.py pracuje --rozmowa {s['id']} --panel straznik_ryzyka,prowadzacy   2) strażnik   3) prowadzący pisze krótko   4) rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
         return
@@ -248,6 +273,14 @@ def cmd_odpowiedz(a) -> None:
     if d.get("kryzys") and len(czesci) > 1:
         czesci = ["\n\n".join(czesci)]  # w kryzysie jedna wiadomość z kartą, nie seria dymków
     tekst = "\n\n".join(czesci).strip()
+    if d.get("wstepna"):
+        nowe_f = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["nowe"]] or [0])
+        if nowe_f >= 3 or d.get("kryzys"):
+            sys.exit("Przy poziomie ≥3 / kryzysie nie ma szybkiej odpowiedzi wstępnej – od razu pełna odpowiedź bezpieczeństwa.")
+        if len(tekst.split()) > 60 or len(czesci) > 1:
+            sys.exit("Szybka odpowiedź wstępna: jedna wiadomość, najwyżej ok. 60 słów (docs/ROZMOWA.md §0a).")
+        if "?" not in bez_cytatow(tekst):
+            sys.exit("Szybka odpowiedź wstępna ma zagadać i dopytać – zakończ jednym pytaniem.")
     if not tekst:
         sys.exit("Pusta odpowiedź.")
     ryz = int(d.get("ryzyko") if d.get("ryzyko") is not None else -1)
@@ -315,6 +348,8 @@ def cmd_odpowiedz(a) -> None:
         w["kierunek"] = str(d["kierunek"])
     if d.get("obnizam_ryzyko"):
         w["obnizam_ryzyko"] = str(d["obnizam_ryzyko"])
+    if d.get("wstepna"):
+        w["wstepna"] = True
     seria = []
     for i, cz in enumerate(czesci):
         x = dict(w) if i == len(czesci) - 1 else {"n": n + i, "odpowiedz_na": na, "ts": w["ts"], "tekst": cz, "ryzyko": ryz, "kryzys": False, "glosy": [], "zrodla": []}
@@ -328,7 +363,10 @@ def cmd_odpowiedz(a) -> None:
     zesp.setdefault("rozmowa", a.rozmowa)
     zesp.setdefault("wiadomosci", []).extend(seria)
     zapisz(k / "zespol.json", zesp)
-    zapisz(k / "pracuje.json", {"stan": "czeka", "ts": teraz(), "panel": [], "etap": ""})
+    if d.get("wstepna"):
+        zapisz(k / "pracuje.json", {"stan": "pracuje", "ts": teraz(), "panel": ["prowadzacy"], "etap": "zbiera opinie zespołu"})
+    else:
+        zapisz(k / "pracuje.json", {"stan": "czeka", "ts": teraz(), "panel": [], "etap": ""})
     with open(k / "_log.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": w["ts"], "zdarzenie": "odpowiedz", "n": n, "na": na, "ryzyko": ryz, "filtr": filtr, "slow": slow,
                             "panel": [g["rola"] for g in glosy], "szwy": ostrz,
@@ -341,6 +379,19 @@ def cmd_odpowiedz(a) -> None:
         print(f"UWAGA: {slow} słów przy tempie „{d.get('tempo') or 'normalnie'}” (limit ok. {limit}; docs/ROZMOWA.md §3a). Treść bezpieczeństwa się nie liczy.")
     if slow > 90 and ryz >= 4:
         print(f"UWAGA: poziom 4 – {slow} słów; cel ≤80, tylko tor bezpieczeństwa (docs/ROZMOWA.md §5).")
+
+
+def cmd_pamiec(a) -> None:
+    s = stan(a.rozmowa)
+    if not s.get("konto"):
+        sys.exit("Ta rozmowa nie ma konta (meta.json bez \"konto\") – pamięci nie zapisuję.")
+    t = Path(a.plik).read_text(encoding="utf-8").strip()
+    if len(t) > 8000:
+        sys.exit("Pamięć ma być zwięzła: najwyżej ok. 8000 znaków (docs/ROZMOWA.md §0b).")
+    p = KONTA / s["konto"] / "pamiec.md"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(t + f"\n\n*Zaktualizowano: {teraz()[:16].replace('T', ' ')} · rozmowa {s['id']}*\n", encoding="utf-8")
+    print(f"OK: pamięć konta {s['konto']} zapisana ({len(t)} znaków).")
 
 
 def cmd_formulacja(a) -> None:
@@ -361,6 +412,7 @@ def main() -> None:
     c = sub.add_parser("pracuje"); c.add_argument("--rozmowa", required=True); c.add_argument("--panel", default=""); c.add_argument("--etap"); c.add_argument("--koniec", action="store_true"); c.set_defaults(f=cmd_pracuje)
     c = sub.add_parser("odpowiedz"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik"); c.add_argument("--tekst"); c.add_argument("--ryzyko", type=int)
     c.add_argument("--reakcja"); c.add_argument("--kryzys", action="store_true"); c.set_defaults(f=cmd_odpowiedz)
+    c = sub.add_parser("pamiec"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_pamiec)
     c = sub.add_parser("formulacja"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_formulacja)
     c = sub.add_parser("historia"); c.add_argument("--rozmowa", required=True); c.set_defaults(f=cmd_historia)
     a = ap.parse_args()

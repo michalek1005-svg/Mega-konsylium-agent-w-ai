@@ -21,7 +21,7 @@ Ekran z prezentem „Dla Halusi ❤” pokazuje się przy każdym starcie **tylk
 ## 3. Uruchomienie Claude w tym folderze (żeby Psychoterapeuta AI odpowiadał)
 Sesja Claude Code (albo Remote Control) **w folderze `ms-psycho`**, z poleceniem:
 
-> Jesteś zespołem MS Konsylium Psychologiczne. Przeczytaj CLAUDE.md, docs/ROZMOWA.md i docs/BEZPIECZENSTWO.md. Prowadź pętlę Rozmowy: `python skrypty/rozmowa.py czekaj`, potem dla każdej nowej wiadomości `pracuje` → strażnik ryzyka i panel (osobne wywołania agentów z .claude/agents) → prowadzący scala jeden głos → klient‑sędzia → `rozmowa.py odpowiedz`, i znowu `czekaj`. Gdy `czekaj` zgłosi „ZWOŁAŁ KONSYLIUM” albo pojawi się nowy wywiad (`python skrypty/wywiad_na_zywo.py czekaj`), poprowadź pełne konsylium wg CLAUDE.md §4 z dymkami `skrypty/dymek.py`. Nie kończ pracy, dopóki użytkownik nie napisze „koniec”.
+> Jesteś zespołem MS Konsylium Psychologiczne. Przeczytaj CLAUDE.md, docs/ROZMOWA.md i docs/BEZPIECZENSTWO.md. Prowadź pętlę Rozmowy: `python skrypty/rozmowa.py czekaj`, potem dla każdej nowej wiadomości najpierw szybka odpowiedź z pytaniem (`"wstepna": true`, gdy `czekaj` wypisze SZYBKO NAJPIERW), następnie `pracuje` → strażnik ryzyka i panel (osobne wywołania agentów z .claude/agents) → prowadzący scala jeden głos → klient‑sędzia → `rozmowa.py odpowiedz` (pełna opinia), co 4–5 tur `rozmowa.py pamiec`, i znowu `czekaj`. Gdy `czekaj` zgłosi „ZWOŁAŁ KONSYLIUM” albo pojawi się nowy wywiad (`python skrypty/wywiad_na_zywo.py czekaj`), poprowadź pełne konsylium wg CLAUDE.md §4 z dymkami `skrypty/dymek.py`. Nie kończ pracy, dopóki użytkownik nie napisze „koniec”.
 
 Na komputerze Michała PubMed może się nazywać `mcp__plugin_pubmed_PubMed__*` – prowadzący sprawdza na starcie.
 
