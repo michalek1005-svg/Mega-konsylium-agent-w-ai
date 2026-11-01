@@ -380,3 +380,32 @@ html.osadzony .legenda { display: none; }
 @keyframes gotowe { 0% { opacity: 0; transform: translateY(6px) scale(.6); } 20% { opacity: 1; transform: translateY(0) scale(1.1); } 35% { transform: scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-8px); } }
 /* ściana wideo oświetla ścianę; LED odbija się w posadzce */
 .pokoj svg.rys { filter: none; }
+
+/* ---------- panele na żywo (Kodujący 1.11): alarm 112, pytanie konsylium do lekarza prowadzącego, plakietka asystentów ---------- */
+.alarm-pasek { position: absolute; left: 18%; right: 28%; top: 1.2%; z-index: 7; display: flex; align-items: center; gap: .8cqw; padding: .6cqw 1cqw; border-radius: 1cqw;
+  background: #B3261E; color: #fff; font-weight: 750; font-size: max(11px, 1.15cqw); line-height: 1.25; box-shadow: 0 .4cqw 1.6cqw rgba(179,38,30,.45); animation: alarm-puls 1.6s ease-in-out infinite; }
+.alarm-pasek[hidden] { display: none; }
+.alarm-ikona { flex-shrink: 0; font-family: var(--font-mono, monospace); font-weight: 900; background: #fff; color: #B3261E; border-radius: .6cqw; padding: .15cqw .55cqw; }
+.alarm-tekst { flex: 1 1 auto; }
+.alarm-dop { flex-shrink: 0; font-weight: 500; opacity: .85; font-size: .82em; }
+@keyframes alarm-puls { 50% { box-shadow: 0 .4cqw 2.4cqw rgba(179,38,30,.75); } }
+@media (prefers-reduced-motion: reduce) { .alarm-pasek { animation: none; } }
+
+.pytanie-karta { position: absolute; left: 50%; bottom: 4%; transform: translateX(-50%); z-index: 6; width: min(46%, 560px); padding: 1cqw 1.3cqw; border-radius: 1.2cqw;
+  background: color-mix(in srgb, var(--bg-viewport) 92%, transparent); color: var(--ink); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1cqw 3cqw rgba(15,94,88,.28), inset 0 0 0 2px var(--petrol); font-size: max(11px, 1.1cqw); }
+.pytanie-karta[hidden] { display: none; }
+.pytanie-karta .nk-label { margin: 0 0 .3cqw; color: var(--petrol); font-weight: 800; }
+.pytanie-t { margin: 0; font-weight: 750; font-size: 1.15em; line-height: 1.3; }
+.pytanie-bo { margin: .3cqw 0 0; opacity: .75; font-size: .9em; }
+.pytanie-bo[hidden] { display: none; }
+.pytanie-opcje { display: flex; flex-wrap: wrap; gap: .6cqw; margin-top: .8cqw; }
+.pytanie-opcje .nk-button { min-width: 7em; font-weight: 750; }
+.pytanie-blad { margin: .3cqw 0 0; color: #B3261E; font-size: .85em; }
+.pytanie-blad:empty { display: none; }
+
+.plakietka { position: absolute; left: 2.6%; top: 27%; z-index: 3; display: flex; align-items: center; gap: .45cqw; padding: .25cqw .7cqw; border-radius: 1cqw;
+  background: #0F5E58; color: #fff; font-weight: 800; font-size: max(9px, .85cqw); white-space: nowrap; box-shadow: 0 .2cqw .8cqw rgba(0,0,0,.25); }
+.plakietka[hidden] { display: none; }
+.plakietka-kropka { width: .6cqw; height: .6cqw; min-width: 6px; min-height: 6px; border-radius: 50%; background: #7ff0d9; animation: plak-puls 1.2s ease-in-out infinite; }
+@keyframes plak-puls { 50% { opacity: .35; } }

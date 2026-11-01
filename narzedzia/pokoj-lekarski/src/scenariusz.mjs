@@ -417,6 +417,7 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
   const wszystkie = zywe.length ? polacz(zywe, sceny) : sceny;
   tablica.ustalenia = ustaleniaZLogu(zdarzenia, wszystkie);
   tablica.prognozy = prognozy(pliki, zdarzenia, wszystkie, tablica);
+  Object.assign(tablica, panele(zdarzenia));
   if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki', wnioski };
   return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: wszystkie, tablica, zrodlo: sceny.length ? 'log+pliki' : 'log', wnioski };
 }
@@ -478,4 +479,37 @@ export function ustaleniaZLogu(zdarzenia, sceny) {
     out.push({ tekst, skreslone: !!z.skreslone, si, siSkreslenia: z.skreslone ? si : null, kto: z.rola ? rola(z.rola) : null, powod });
   }
   return out;
+}
+
+// Panele na żywo (ankieta zmian 1.11, opcje polecane):
+//  • alarm   – wczesny alarm po triage przy pilności 1: {"zdarzenie":"alarm","tekst":"Podejrzenie OZW – rozważ 112 teraz"}
+//              odwołanie: {"zdarzenie":"alarm","koniec":true}   (skrypty/alarm.py)
+//  • pytanie – jedno klikalne pytanie konsylium do lekarza prowadzącego, rozstrzygające spór:
+//              {"zdarzenie":"pytanie","id":"P1","tekst":"…","opcje":["tak","nie","nie wiem"],"bo":"…"}   (skrypty/pytanie_lekarza.py)
+//              odpowiedź z Pokoju trafia do uwagi-lekarza.jsonl: {"zdarzenie":"wypowiedz","pytanie_id":"P1","odpowiedz":"tak",…}
+//  • asystenci – ilu niewidocznych asystentów (dowody PubMed / polskie wytyczne) pracuje teraz:
+//              {"zdarzenie":"asystenci","rola":"bayes","liczba":2} (liczba 0 = skończyli)   (skrypty/dymek.py --asystenci)
+export function panele(zdarzenia) {
+  let alarm = null;
+  const pytania = new Map();
+  const asystenci = {};
+  for (const z of zdarzenia) {
+    if (z.zdarzenie === 'alarm') alarm = z.koniec ? null : { tekst: String(z.tekst || 'Podejrzenie stanu zagrożenia życia – rozważ 112 teraz'), ts: z.ts || null };
+    else if (z.zdarzenie === 'pytanie' && z.id && z.tekst) {
+      const opcje = Array.isArray(z.opcje) && z.opcje.length ? z.opcje.map(String).slice(0, 5) : ['tak', 'nie', 'nie wiem'];
+      pytania.set(String(z.id), { id: String(z.id), tekst: String(z.tekst), opcje, bo: z.bo ? String(z.bo) : '', odpowiedz: null, ts: z.ts || null });
+    } else if (z.zdarzenie === 'wypowiedz' && z.pytanie_id && pytania.has(String(z.pytanie_id))) {
+      pytania.get(String(z.pytanie_id)).odpowiedz = String(z.odpowiedz || z.skrot || '');
+    } else if (z.zdarzenie === 'asystenci') {
+      const n = Math.max(0, Math.min(9, parseInt(z.liczba, 10) || 0));
+      asystenci[z.rola || 'ordynator'] = n;
+    }
+  }
+  const lista = [...pytania.values()];
+  return {
+    alarm,
+    pytanie: lista.filter((p) => !p.odpowiedz).pop() || null,
+    pytania: lista,
+    asystenciPracuje: Object.values(asystenci).reduce((a, b) => a + b, 0),
+  };
 }

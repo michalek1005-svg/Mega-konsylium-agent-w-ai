@@ -122,3 +122,26 @@ test('wnioski końcowe z 09-FINAL.md', () => {
   assert.deepEqual(s.wnioski.pola.map((p) => p.etykieta).slice(0, 4), ['REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B']);
   assert.equal(zbudujScenariusz({}, 'pusty').wnioski, null);
 });
+
+test('panele: alarm 112, pytanie do lekarza prowadzącego, asystenci', () => {
+  const L = (...z) => z.map((x) => JSON.stringify(x)).join('\n');
+  const pliki = {
+    '_log.jsonl': L(
+      { ts: '2026-11-01T05:00:00+00:00', zdarzenie: 'alarm', tekst: 'Podejrzenie OZW – rozważ 112 teraz' },
+      { ts: '2026-11-01T05:00:05+00:00', zdarzenie: 'asystenci', rola: 'bayes', liczba: 2 },
+      { ts: '2026-11-01T05:00:06+00:00', zdarzenie: 'asystenci', rola: 'hipotezujacy', liczba: 1 },
+      { ts: '2026-11-01T05:01:00+00:00', zdarzenie: 'pytanie', id: 'P1', tekst: 'Czy ból promieniuje do pleców?', bo: 'rozstrzyga tętniak vs kolka' }),
+  };
+  let t = zbudujScenariusz(pliki, 'x').tablica;
+  assert.equal(t.alarm.tekst, 'Podejrzenie OZW – rozważ 112 teraz');
+  assert.equal(t.asystenciPracuje, 3);
+  assert.equal(t.pytanie.id, 'P1');
+  assert.deepEqual(t.pytanie.opcje, ['tak', 'nie', 'nie wiem']);
+  pliki['uwagi-lekarza.jsonl'] = L({ ts: '2026-11-01T05:02:00+00:00', zdarzenie: 'wypowiedz', faza: 'Konsylium · runda 1', skrot: 'Czy ból… – tak', pytanie_id: 'P1', odpowiedz: 'tak' });
+  pliki['_log.jsonl'] += '\n' + L({ ts: '2026-11-01T05:03:00+00:00', zdarzenie: 'alarm', koniec: true }, { ts: '2026-11-01T05:03:00+00:00', zdarzenie: 'asystenci', rola: 'bayes', liczba: 0 });
+  t = zbudujScenariusz(pliki, 'x').tablica;
+  assert.equal(t.pytanie, null);
+  assert.equal(t.pytania[0].odpowiedz, 'tak');
+  assert.equal(t.alarm, null);
+  assert.equal(t.asystenciPracuje, 1);
+});

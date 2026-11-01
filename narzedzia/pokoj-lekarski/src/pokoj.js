@@ -243,6 +243,7 @@ ${podpisy(wpisy)}`;
     wnioskiPokazane = wnioskiCzekaja; wnioskiCzekaja = null; $('wnioski').hidden = false;
   }
   function aktualizuj(s) {
+    rysujPanele(s);
     rysujWnioski(s, !!zywoTimer);
     const bylo = kroki.length, naKoncu = i >= bylo - 1;
     const rez = scen ? ileRezydentow() : 0;
@@ -274,7 +275,7 @@ ${podpisy(wpisy)}`;
     $('opis-sprawy').textContent = s.sprawa ? `Sprawa ${s.sprawa}` : 'Sprawa bez nazwy';
     const chip = $('chip-tryb');
     chip.hidden = !s.tryb; chip.textContent = s.tryb === 'PELNY' ? 'pełne konsylium' : s.tryb === 'SZYBKI' ? 'tryb szybki' : (s.tryb || '');
-    rysujPokoj(); rysujListe(); rysujLegende();
+    rysujPokoj(); rysujListe(); rysujLegende(); rysujPanele(s);
     pokaz(0, true);
   }
 
@@ -586,6 +587,57 @@ ${podpisy(wpisy)}`;
       finally { b.disabled = false; t.focus(); }
     });
   })();
+
+  // ---------- panele na żywo: alarm 112, pytanie konsylium do Ciebie, plakietka asystentów (ankieta zmian 1.11) ----------
+  let pytanieWyslane = null;
+  function rysujPanele(s) {
+    const t = (s && s.tablica) || {};
+    const a = $('alarm');
+    if (a) { a.hidden = !t.alarm; if (t.alarm) $('alarm-tekst').textContent = t.alarm.tekst; }
+    const pl = $('plakietka'), n = t.asystenciPracuje || 0;
+    if (pl) { pl.hidden = !n || !!(s && s.wnioski); $('plakietka-t').textContent = `konsultuje się (${n})`; }
+    const k = $('pytanie'), p = t.pytanie;
+    if (!k) return;
+    // pytanie pokazujemy tylko na żywo (odpowiedź musi trafić do folderu sprawy) i tylko dopóki nie ma odpowiedzi
+    if (!p || !sprawaZywa || pytanieWyslane === p.id) { k.hidden = true; return; }
+    if (k.dataset.id === p.id && !k.hidden) return;
+    k.dataset.id = p.id;
+    $('pytanie-t').textContent = p.tekst;
+    $('pytanie-bo').textContent = p.bo || '';
+    $('pytanie-bo').hidden = !p.bo;
+    k.querySelector('.pytanie-blad').textContent = '';
+    const box = $('pytanie-opcje'); box.innerHTML = '';
+    for (const o of p.opcje) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'nk-button'; b.textContent = o;
+      b.addEventListener('click', () => odpowiedzNaPytanie(p, o, b));
+      box.appendChild(b);
+    }
+    k.hidden = false;
+  }
+  async function odpowiedzNaPytanie(p, opcja, przycisk) {
+    if (!sprawaZywa || !window.MsMost) return;
+    $('pytanie-opcje').querySelectorAll('button').forEach((b) => { b.disabled = true; });
+    const sc = scen && kroki.length ? scen.sceny[kroki[kroki.length - 1].si] : null;
+    const faza = sc && !TECHNICZNE.has(sc.id) ? sc.tytul : 'Konsylium · runda 1';
+    const tekst = `${p.tekst} – ${opcja}`;
+    const wpis = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00'), zdarzenie: 'wypowiedz', rola: 'lekarz_prowadzacy', faza,
+      skrot: tekst.length > 400 ? tekst.slice(0, 399) + '…' : tekst, pelny: tekst, pytanie_id: p.id, odpowiedz: opcja };
+    const plik = 'sprawy/' + sprawaZywa + '/uwagi-lekarza.jsonl';
+    try {
+      let stare = '';
+      try { stare = String((await window.MsMost.czytaj(plik)) || ''); } catch { stare = ''; }
+      await window.MsMost.zapisz(plik, (stare && !stare.endsWith('\n') ? stare + '\n' : stare) + JSON.stringify(wpis) + '\n');
+      pytanieWyslane = p.id; $('pytanie').hidden = true;
+      cichoDo = Date.now() + 5000;
+      dymekTymczasowy('lekarz_prowadzacy', `Odpowiadam: ${opcja}.`, 'Lekarz prowadzący');
+      setTimeout(() => { cichoDo = 0; }, 5000);
+      if (odswiezZywo) setTimeout(odswiezZywo, 300);
+    } catch (err) {
+      $('pytanie-opcje').querySelectorAll('button').forEach((b) => { b.disabled = false; });
+      $('pytanie').querySelector('.pytanie-blad').textContent = 'Nie udało się zapisać odpowiedzi: ' + (err && err.message || err);
+    }
+  }
 
   // ---------- prognoza rozpoznań: mały wykres tylko dla Lekarza prowadzącego (Michał 1.11) ----------
   // Dymki nie mają procentów; prawdopodobieństwa są tylko tutaj: średnia opinii → agregacja → zdarzenia „prognoza”.

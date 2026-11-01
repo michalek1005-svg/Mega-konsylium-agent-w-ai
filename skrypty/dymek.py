@@ -6,6 +6,7 @@ Użycie (ordynator, po każdej wypowiedzi albo zbiorczo po kroku):
   python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "Tabletka widmo 0,70, pilność 4." [--info "p=0,70 · Bristol 6"] [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
   python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
     (--tablica zapisuje na tablicy w Pokoju najważniejsze ustalenie; --skresl skreśla odrzuconą hipotezę; można łączyć z dymkiem)
+  python3 skrypty/dymek.py sprawy/<ID> --rola bayes --asystenci 2     # plakietka na drzwiach „konsultuje się (n)”; 0 = asystenci skończyli
   python3 skrypty/dymek.py sprawy/<ID> --wiele dymki.jsonl     # wiele naraz: jedna linia JSON = jeden dymek (te same pola)
 
 Skrót: 1–2 pełne zdania językiem medycznym, najwyżej 400 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
@@ -117,9 +118,19 @@ def main() -> None:
     ap.add_argument("--skresl", action="append", help="skreśl na tablicy odrzuconą hipotezę/ustalenie (ten sam tekst co wcześniej albo nowy, od razu skreślony)")
     ap.add_argument("--powod", help="dlaczego odrzucono (≤120 znaków) – pokazuje się pod skreślonym wpisem")
     ap.add_argument("--prognoza", help='bieżące prawdopodobieństwa rozpoznań dla wykresu Lekarza prowadzącego: "Rozpoznanie=0,40;Inne=0,25" (do 5 pozycji)')
+    ap.add_argument("--asystenci", type=int, help="ilu niewidocznych asystentów tej roli pracuje teraz (0 = skończyli) – plakietka na drzwiach Pokoju")
     a = ap.parse_args()
     if not a.sprawa.is_dir():
         sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")
+    if a.asystenci is not None:
+        if not a.rola:
+            sys.exit("--asystenci wymaga --rola (czyi asystenci pracują).")
+        with open(a.sprawa / "_log.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps({"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "zdarzenie": "asystenci",
+                                "rola": rola(a.rola), "liczba": max(0, min(9, a.asystenci))}, ensure_ascii=False) + "\n")
+        sygnal_ai(a.sprawa, "pracuje")
+        if not (a.skrot or a.tresc or a.wiele or a.tablica or a.skresl or a.prognoza):
+            return
     if (a.tablica or a.skresl or a.prognoza) and not (a.skrot or a.tresc or a.wiele):
         # same wpisy na tablicę, bez dymka
         if not a.faza:

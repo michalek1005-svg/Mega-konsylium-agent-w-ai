@@ -7,7 +7,7 @@ role:
   bayes:                 {rozpoznanie: 1.0, pilnosc: 0.6, plan: 0.2}
   najgorszy_scenariusz:  {rozpoznanie: 0.5, pilnosc: 1.0, plan: 0.2, weto_pilnosci: true}
   poz_pragmatyk:         {rozpoznanie: 0.5, pilnosc: 0.6, plan: 1.0}
-  farmakolog:            {rozpoznanie: 0.0, pilnosc: 0.3, plan: 1.0}
+  farmakolog:            {rozpoznanie: 0.0, pilnosc: 0.3, plan: 1.0}   # bez rankingu: pole przyczyna_polekowa (tak|nie|mozliwa)
   gospodarz_kosztow:     {rozpoznanie: 0.0, pilnosc: 0.3, plan: 0.6}
 
 # Rozpoznania polekowe to wyjątek: farmakolog ma w nich głos. Skrypt stosuje tę wagę dla pozycji,
@@ -18,7 +18,7 @@ wyjatki:
 
 agregacja:
   epsilon_niewymienione: 0.02     # p przypisane rozpoznaniu, którego lekarz nie wymienił
-  prog_niskiej_zgody: 0.5         # zgoda < prog → flaga NISKA_ZGODA (dodatkowa runda)
+  prog_niskiej_zgody: 0.6         # zgoda (udział lekarzy z liderem na 1. miejscu) < prog → flaga NISKA_ZGODA
   top_n: 5
 
 kalibracja:
