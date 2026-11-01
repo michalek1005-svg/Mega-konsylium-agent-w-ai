@@ -57,7 +57,7 @@ try {
   writeFileSync(join(folder, 'odp.json'), JSON.stringify({
     wiadomosci: [
       'Ten mechanizm zna wiele osób: im dłuższa cisza, tym większy wstyd, a im większy wstyd, tym trudniej ją przerwać. To nie świadczy o tym, że przyjaciółka mało dla Ciebie znaczy – raczej o tym, że znaczy dużo.',
-      'Z doświadczenia: osoby po porodzie rzadko liczą dni bez wiadomości. Częściej po prostu cieszą się, że ktoś o nich pamięta.',
+      'Wiele osób w pierwszych tygodniach po porodzie w ogóle nie liczy dni bez wiadomości. Częściej cieszą się, że ktoś o nich pamięta.',
       'Może wystarczy jedno zdanie, bez tłumaczenia się: „Myślę o Tobie i małej, przepraszam, że tak długo – jak się macie?”. Co by się stało, gdybyś wysłała je dziś wieczorem? 🤍'
     ],
     ryzyko: 0, reakcja: '🤍', tempo: 'normalnie',

@@ -9,7 +9,7 @@
 - Słowa „gabinet” nie używamy. Miejsce to **Pokój psychologiczny**.
 
 ## 1. Dwa tryby, dwie zakładki aplikacji
-1. **Rozmowa** (zakładka „Rozmowa”, okno komunikatora): użytkownik pisze o sobie albo o konkretnej sytuacji (albo – w trybie „Konsultacja przypadku” – jako terapeuta o kliencie). Odpowiada **jeden Terapeuta AI jednym spójnym tekstem**, ale za każdą odpowiedzią stoi panel agentów i strażnik ryzyka. Pętla: `docs/ROZMOWA.md`, skrypt `skrypty/rozmowa.py`.
+1. **Psychoterapia AI** (dawniej „Rozmowa”; okno komunikatora): użytkownik pisze o sobie albo o konkretnej sytuacji (albo – w trybie „Konsultacja przypadku” – jako terapeuta o kliencie). Odpowiada **jeden Psychoterapeuta AI jednym spójnym głosem (1–4 wiadomości)**, ale za każdą odpowiedzią stoi panel agentów i strażnik ryzyka. Pętla: `docs/ROZMOWA.md`, skrypt `skrypty/rozmowa.py`.
 2. **Konsylium** (zakładka „Pokój psychologiczny”): pełna sprawa jak w MS Konsylium – wywiad, ryzyko, ślepa tura formulacji, mapa zgody, konfrontacja podejść, stażysta i klient‑sędzia, sprawdzenie, Wnioski. Dymki na scenie: `skrypty/dymek.py`. Sprawę zakłada aplikacja: z zakładki **Wywiad** („Wyślij do Konsylium”) albo z **Rozmowy** („Zwołaj konsylium”).
 
 ## 2. Struktura katalogów

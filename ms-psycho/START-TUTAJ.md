@@ -5,7 +5,7 @@
 ## 1. Co jest w aplikacji (pasek ikon po lewej)
 | Ikona | Zakładka | Do czego |
 |---|---|---|
-| 💬 | **Psychoterapia AI** (startowa) | Okno jak komunikator. Piszesz o sobie albo o konkretnej sytuacji („O mojej sytuacji”) albo jako terapeuta o kliencie („Konsultacja przypadku”). Odpowiada jeden **Terapeuta AI**; nad paskiem widać, kto z zespołu teraz myśli; pod odpowiedzią „Pokaż, kto co myślał”. Emotikony do wstawiania i reakcje na odpowiedzi. „Zwołaj konsylium” przenosi rozmowę do Pokoju. |
+| 💬 | **Psychoterapia AI** (startowa) | Okno jak komunikator. Piszesz o sobie albo o konkretnej sytuacji („O mojej sytuacji”) albo jako terapeuta o kliencie („Konsultacja przypadku”). Odpowiada jeden **Psychoterapeuta AI** (czasem w kilku wiadomościach po kolei); nad paskiem widać, kto z zespołu teraz myśli; pod odpowiedzią „Pokaż, kto co myślał”. Emotikony do wstawiania i reakcje na odpowiedzi. „Zwołaj konsylium” przenosi rozmowę do Pokoju. |
 | 📋 | **Wywiad** | Klikalny wywiad przed pełnym konsylium (opis własnymi słowami → pytania od AI na żywo → „Wyślij do Konsylium”). |
 | 👥 | **Pokój psychologiczny** | Krąg foteli: prowadzący z herbatą, 5 terapeutów różnych szkół, diagnosta, psychiatra; strażnik ryzyka i zastępcy przy ścianie, sprawdzający przy biurku, stażysta za szybą. Dymki, ściana z etapami, Wnioski. Pole „Terapeuta prowadzący” – Twój głos w dyskusji. |
 | 📁 | Folder | Wskaż folder `ms-psycho` (ten folder). |
@@ -18,7 +18,7 @@ Ekran z prezentem „Dla Halusi ❤” pokazuje się przy każdym starcie **tylk
 - Numery pomocy: `config/pomoc-pl.json` (112 · 800 70 2222 całodobowo · 116 123 · Niebieska Linia 800 120 002) – sprawdzone 1.11.2026 ze źródłami (gov.pl, NASK), wszystkie całodobowe.
 - Tylko dorośli, bez danych identyfikujących.
 
-## 3. Uruchomienie Claude w tym folderze (żeby Terapeuta AI odpowiadał)
+## 3. Uruchomienie Claude w tym folderze (żeby Psychoterapeuta AI odpowiadał)
 Sesja Claude Code (albo Remote Control) **w folderze `ms-psycho`**, z poleceniem:
 
 > Jesteś zespołem MS Konsylium Psychologiczne. Przeczytaj CLAUDE.md, docs/ROZMOWA.md i docs/BEZPIECZENSTWO.md. Prowadź pętlę Rozmowy: `python skrypty/rozmowa.py czekaj`, potem dla każdej nowej wiadomości `pracuje` → strażnik ryzyka i panel (osobne wywołania agentów z .claude/agents) → prowadzący scala jeden głos → klient‑sędzia → `rozmowa.py odpowiedz`, i znowu `czekaj`. Gdy `czekaj` zgłosi „ZWOŁAŁ KONSYLIUM” albo pojawi się nowy wywiad (`python skrypty/wywiad_na_zywo.py czekaj`), poprowadź pełne konsylium wg CLAUDE.md §4 z dymkami `skrypty/dymek.py`. Nie kończ pracy, dopóki użytkownik nie napisze „koniec”.

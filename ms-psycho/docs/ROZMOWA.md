@@ -8,6 +8,9 @@ Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza probl
 - **Najpierw rozumienie, potem zmiana:** odzwierciedlenie, pytania pogłębiające, nazywanie emocji i wzorców; technika (eksperyment, ćwiczenie, zadanie między rozmowami) dopiero, gdy jest zrozumienie i zgoda osoby.
 - **W tle zespół:** terapeuci różnych podejść **spierają się** (linia `SPÓR:`), **wspierają** (dopowiadają, co inny widzi trafnie) i dochodzą do **ostatecznej opinii**; prowadzący wybiera jedną drogę na tę turę. Nic z tej machinerii nie trafia do tekstu – tylko do „Pokaż, kto co myślał”.
 - **Jedna lub kilka wiadomości:** odpowiedź może przyjść jak w komunikatorze – `"wiadomosci": ["…", "…"]` w odp.json (najwyżej 4; każda 1–4 zdania; zwykle: 1) uznanie / odzwierciedlenie, 2) myśl lub obserwacja, 3) jedno pytanie albo propozycja). Aplikacja wyświetla je po kolei, z pauzą „pisze…”. Pojedynczy `"tekst"` nadal działa. W kryzysie zawsze jedna wiadomość z kartą.
+- **Kiedy seria, a kiedy jedna wiadomość:** seria przy tempie NORMALNIE i DO NAMYSŁU, gdy odpowiedź ma naturalne części; przy KRÓTKIEJ ŚCIEŻCE i SZYBKO – jedna. Pytanie do osoby tylko w **ostatniej** wiadomości (inaczej odpowie, zanim przeczyta resztę). Żadna wiadomość krótsza niż 6 słów. Gotowe zdanie do wysłania komuś piszemy w cudzysłowie „…” – jego znak zapytania nie liczy się jako pytanie w turze. `rozmowa.py` ostrzega o każdym z tych przypadków.
+- **Bez udawanego doświadczenia:** psychoterapeuta AI nie mówi „z mojego doświadczenia”, „moi klienci”, „w mojej praktyce” – mówi „wiele osób…”, „badania pokazują…” (z PMID w źródłach). Detektor szwów to wyłapuje.
+- **Wywiad:** jeśli w ostatnich 7 dniach był wywiad (zakładka Wywiad), `rozmowa.py czekaj` wypisuje jego flagi; strażnik bierze je pod uwagę, a prowadzący w turze 1 pyta, czy dotyczą tej samej osoby.
 - Tempo (§3a), bezpieczeństwo (§5) i granice („narzędzie testowe, nie zastępuje psychoterapeuty”) bez zmian.
 
 ## 1. Pliki (aplikacja ↔ Claude)
@@ -85,7 +88,7 @@ Bezpieczeństwo jest ponad tempem: ryzyko ≥1 nigdy nie idzie ścieżką „kr�
 
 **Flagi bez wątku samobójczego** (przemoc doświadczana, zagrożenie dla innych, mania/psychoza, intoksykacja, **pilny stan somatyczny lub cudzy lek** – np. tętno 120 w spoczynku, pożyczony propranolol): `kryzys: true` także przy poziomie samobójczym 0, z właściwym kierunkiem (112 / Niebieska Linia / lekarz lub SOR dziś). Filtr aplikacji już traktuje frazy przemocy jak poziom 3. W `odp.json` dodaj `"flagi": {…}` ze strażnika i `"kierunek": "przemoc" | "mania" | "somatyczny" | "inni"` – aplikacja pokaże kartę z właściwym kierunkiem (Niebieska Linia / CZP / lekarz lub SOR) zamiast samych numerów samobójczych; skrypt odrzuca flagę bez `kryzys: true`.
 
-**Wywiad a Rozmowa:** Rozmowa nie widzi ankiety z zakładki Wywiad; jeśli użytkownik wypełnił wywiad, prowadzący w turze 1 pyta krótko o najważniejsze fakty (bezpieczeństwo, leki, substancje), zamiast zakładać, że ich nie ma.
+**Wywiad a Rozmowa:** Rozmowa nie widzi całej ankiety z zakładki Wywiad (tylko flagi z ostatnich 7 dni, §0); jeśli użytkownik wypełnił wywiad, prowadzący w turze 1 pyta krótko o najważniejsze fakty (bezpieczeństwo, leki, substancje), zamiast zakładać, że ich nie ma.
 
 Przy poziomie ≥3 (próby PSY‑03 i PSY‑10, 1.11.2026):
 - **Każda tura** ma kontakt z człowiekiem lub specjalistą **dziś** (CZP albo izba przyjęć z oddziałem psychiatrycznym dziś, bez skierowania). Przy poziomie 4, alkoholu i dostępie do środków – **dziś, nie „jutro”**; przy impulsie 112.

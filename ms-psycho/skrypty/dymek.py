@@ -2,14 +2,16 @@
 """
 Dymek do Pokoju psychologicznego (MS Konsylium Psychologiczne; role psychologiczne, np. --rola terapeuta-cbt) → dopisuje zdarzenie "wypowiedz" do sprawy/<ID>/_log.jsonl (format: docs/DYMKI.md).
 
-Użycie (ordynator, po każdej wypowiedzi albo zbiorczo po kroku):
-  python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "Tabletka widmo 0,70, pilność 4." [--info "p=0,70 · Bristol 6"] [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
-  python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
-    (--tablica zapisuje na tablicy w Pokoju najważniejsze ustalenie; --skresl skreśla odrzuconą hipotezę; można łączyć z dymkiem)
+Użycie (prowadzący, po każdej wypowiedzi albo zbiorczo po kroku):
+  python3 skrypty/dymek.py sprawy/<ID> --rola terapeuta-cbt --faza "Ślepa tura" --skrot "Wzorzec unikania podtrzymywany przez ulgę krótkoterminową; hipoteza robocza: zaburzenie lękowe uogólnione." [--info "GAD-7 = 14"] [--temat "..."] [--plik 03-opinie/terapeuta_cbt.json] [--persona "..."]
+  python3 skrypty/dymek.py sprawy/<ID> --rola prowadzacy --faza "Konsylium · runda 1" --tablica "Wspólne: unikanie + wstyd (4 podejścia)" --skresl "Epizod depresyjny – brak anhedonii i spadku napędu"
+    (--tablica zapisuje na ścianie wideo w Pokoju najważniejsze ustalenie; --skresl skreśla odrzuconą hipotezę; można łączyć z dymkiem)
   python3 skrypty/dymek.py sprawy/<ID> --wiele dymki.jsonl     # wiele naraz: jedna linia JSON = jeden dymek (te same pola)
 
-Skrót: 1–2 pełne zdania językiem medycznym, najwyżej 400 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
-Info (opcjonalnie): dodatkowa linia pod dymkiem — liczby, skale, kryteria, wytyczne; najwyżej 200 znaków.
+Role psychologiczne (prowadzacy, terapeuta-cbt, terapeuta-psychodynamiczny, terapeuta-systemowy, terapeuta-act, terapeuta-humanistyczny,
+diagnosta, straznik-ryzyka, stazysta, klient-sedzia, …) są mapowane na miejsca na scenie (ALIASY niżej); wewnętrzne id zostały z MS Konsylium.
+Skrót: 1–2 pełne zdania językiem klinicznym psychologii, najwyżej 400 znaków, bez markdownu. Dłuższy jest skracany do pełnych słów z „…”.
+Info (opcjonalnie): dodatkowa linia pod dymkiem — skale, kryteria ICD-11, źródła; najwyżej 200 znaków.
 Tresc (opcjonalnie): dłuższa wersja do dymku (2–4 zdania, do 600 znaków), gdy skrót ma zostać krótki.
 Na Windows: python skrypty/dymek.py …
 """

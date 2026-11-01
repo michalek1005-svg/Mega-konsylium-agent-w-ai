@@ -30,13 +30,38 @@ from pathlib import Path
 
 KORZEN = Path(__file__).resolve().parent.parent
 ROZMOWY = KORZEN / "rozmowy"
+WYWIADY = KORZEN / "wywiad-na-zywo"
+
+
+def bez_cytatow(t: str) -> str:
+    """Tekst bez cytatów „…” i "…" – gotowe zdanie do wysłania komuś nie jest pytaniem do użytkownika."""
+    return re.sub(r"„[^”]*”|\"[^\"]*\"|«[^»]*»", " ", t or "")
+
+
+def wywiady_flagi(dni: int = 7) -> list[str]:
+    """Flagi z wywiadów z ostatnich dni (wywiad-na-zywo/<KOD>/stan.json) – Rozmowa sama ich nie widzi."""
+    if not WYWIADY.exists():
+        return []
+    lin, granica = [], time.time() - dni * 86400
+    for p in sorted(WYWIADY.glob("*/stan.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:3]:
+        if p.stat().st_mtime < granica:
+            continue
+        try:
+            st = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for f in st.get("flagi") or []:
+            if isinstance(f, dict):
+                lin.append(f"[{p.parent.name} · {f.get('poziom')}] {f.get('dlaLekarza') or f.get('tekst') or ''}".strip())
+    return lin
 FRAZY = json.loads((KORZEN / "config" / "frazy-ryzyka.json").read_text(encoding="utf-8"))
 POMOC = json.loads((KORZEN / "config" / "pomoc-pl.json").read_text(encoding="utf-8"))
 ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_systemowy", "terapeuta_act", "terapeuta_humanistyczny",
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
 SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b",
-        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b"]
+        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b",
+        r"\bz (mojego |w[łl]asnego )?do[sś]wiadczenia\b", r"\bw mojej praktyce\b", r"\bmoi (pacjenci|klienci)\b", r"\bmiałe?m (kiedy[sś] )?(pacjent|klient)"]
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -108,7 +133,7 @@ def rozmowy() -> list[str]:
 
 
 def historia_txt(s: dict, ile: int = 30) -> str:
-    w = [("Użytkownik", x) for x in s["ja"]] + [("Terapeuta AI", x) for x in s["zespol"]]
+    w = [("Użytkownik", x) for x in s["ja"]] + [("Psychoterapeuta AI", x) for x in s["zespol"]]
     w.sort(key=lambda p: str(p[1].get("ts", "")))
     lin = []
     for kto, x in w[-ile:]:
@@ -117,7 +142,7 @@ def historia_txt(s: dict, ile: int = 30) -> str:
             lin.append(f"[{g}] — zwołano konsylium, sprawa {x.get('sprawa')}")
             continue
         dop = ""
-        if kto == "Terapeuta AI":
+        if kto == "Psychoterapeuta AI":
             dop = f"  (ryzyko {x.get('ryzyko', '?')}{', KRYZYS' if x.get('kryzys') else ''})"
         lin.append(f"[{g}] {kto} #{x.get('n')}: {x.get('tekst', '')}{dop}")
     return "\n".join(lin)
@@ -129,6 +154,11 @@ def podsumuj(s: dict) -> None:
     print(historia_txt(s) or "(pusta)")
     if s["reakcje"]:
         print("--- reakcje użytkownika na odpowiedzi: " + ", ".join(f"#{k}: {v}" for k, v in s["reakcje"].items()))
+    fl = wywiady_flagi()
+    if fl:
+        print("--- flagi z wywiadów z ostatnich 7 dni (zakładka Wywiad; Rozmowa ich nie pokazuje – strażnik bierze je pod uwagę, w turze 1 zapytaj, czy to ta sama osoba) ---")
+        for x in fl[:8]:
+            print("   " + x)
     print("--- NOWE wiadomości do odpowiedzi ---")
     maks = 0
     for w in s["nowe"]:
@@ -228,7 +258,7 @@ def cmd_odpowiedz(a) -> None:
         numery = [n["numer"] for n in POMOC["numery"]]
         if not any(n.replace(" ", "") in tekst.replace(" ", "") for n in numery):
             sys.exit("Poziom ≥3: odpowiedź musi zawierać numery pomocy z config/pomoc-pl.json (albo ustaw kryzys: true – aplikacja pokaże je sama).")
-    if filtr == 2 and ryz <= 2 and "?" not in tekst:
+    if filtr == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
         sys.exit("Poziom 2 (bierne myśli): odpowiedź musi zawierać pytanie wprost o plan/zamiar i dostęp do środków.")
     flagi = d.get("flagi") or {}
     aktywne = [k for k, v in flagi.items() if v] if isinstance(flagi, dict) else []
@@ -237,8 +267,15 @@ def cmd_odpowiedz(a) -> None:
     if (ryz >= 3 or aktywne) and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, tekst, re.I)]
-    if tekst.count("?") > 1:
+    if bez_cytatow(tekst).count("?") > 1:
         ostrz.append("więcej niż jedno pytanie w turze (docs/ROZMOWA.md §4)")
+    if len(czesci) > 1:
+        if any("?" in bez_cytatow(c) for c in czesci[:-1]):
+            ostrz.append("seria: pytanie do użytkownika tylko w OSTATNIEJ wiadomości – inaczej odpowie, zanim przeczyta resztę (docs/ROZMOWA.md §0)")
+        if any(len(c.split()) < 6 for c in czesci):
+            ostrz.append("seria: wiadomość krótsza niż 6 słów – dołącz ją do sąsiedniej")
+        if d.get("tempo") in ("krotko", "szybko"):
+            ostrz.append("seria przy tempie krótkim/szybkim – zwykle wystarczy jedna wiadomość")
     if ryz >= 4 and re.search(r"\bjutro\b", tekst, re.I):
         ostrz.append("poziom 4: ocena specjalisty DZIŚ, nie „jutro” (docs/ROZMOWA.md §5)")
     if d.get("kryzys") and s["zespol"] and s["zespol"][-1].get("kryzys"):
