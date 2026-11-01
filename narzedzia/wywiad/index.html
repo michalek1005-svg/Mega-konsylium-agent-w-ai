@@ -288,6 +288,8 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   }
   function zapisz() { try { localStorage.setItem(KLUCZ, JSON.stringify(stan)); } catch (e) {} }
   function wczytaj() {
+    // W aplikacji MS Konsylium (iframe) każdy start to czysta sprawa: nic z poprzedniego pacjenta nie wraca (Michał 1.11).
+    if (window.parent !== window) { try { localStorage.removeItem(KLUCZ); } catch (e) {} return null; }
     try { var s = JSON.parse(localStorage.getItem(KLUCZ)); if (s && Array.isArray(s.historia)) return s; } catch (e) {}
     return null;
   }
