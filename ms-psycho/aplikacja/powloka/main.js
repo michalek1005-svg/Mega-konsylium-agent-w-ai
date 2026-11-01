@@ -59,8 +59,21 @@ function utworzOkno() {
 const plikUstawien = () => path.join(app.getPath('userData'), 'ustawienia.json');
 function ustawienia() { try { return JSON.parse(fs.readFileSync(plikUstawien(), 'utf8')); } catch { return {}; } }
 function zapiszUstawienia(u) { fs.mkdirSync(path.dirname(plikUstawien()), { recursive: true }); fs.writeFileSync(plikUstawien(), JSON.stringify(u, null, 2)); }
+// Gdy lekarz wskaże folder nadrzędny (np. rozpakowany „MS-Konsylium-Psychologiczne-folder…” albo kopię repo),
+// a skrypty leżą w podkatalogu ms-psycho/, aplikacja sama schodzi do niego (uwaga z PC 1.11.2026).
+const jestPsycho = (p) => fs.existsSync(path.join(p, 'skrypty', 'rozmowa.py'));
+function dopasujFolder(p) {
+  if (!p || !fs.existsSync(p) || jestPsycho(p)) return p;
+  const kandydaci = [path.join(p, 'ms-psycho')];
+  try {
+    for (const d of fs.readdirSync(p, { withFileTypes: true })) if (d.isDirectory()) kandydaci.push(path.join(p, d.name, 'ms-psycho'), path.join(p, d.name));
+  } catch {}
+  return kandydaci.find(jestPsycho) || p;
+}
 function korzen() {
-  const k = process.env.MS_FOLDER_KONSYLIUM || ustawienia().folderKonsylium;
+  const zapisany = ustawienia().folderKonsylium;
+  const k = process.env.MS_FOLDER_KONSYLIUM || dopasujFolder(zapisany);
+  if (!process.env.MS_FOLDER_KONSYLIUM && k && k !== zapisany) zapiszUstawienia({ ...ustawienia(), folderKonsylium: k });
   return k && fs.existsSync(k) ? k : null;
 }
 function wFolderze(wzgl) {
@@ -197,8 +210,9 @@ function podepnijPliki(okno) {
       defaultPath: korzen() || app.getPath('documents'), properties: ['openDirectory', 'createDirectory']
     });
     if (w.canceled || !w.filePaths[0]) return korzen();
-    zapiszUstawienia({ ...ustawienia(), folderKonsylium: w.filePaths[0] });
-    return w.filePaths[0];
+    const wybrany = dopasujFolder(w.filePaths[0]);
+    zapiszUstawienia({ ...ustawienia(), folderKonsylium: wybrany });
+    return wybrany;
   });
   ipcMain.handle('ms:czytaj', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytaj(wzgl); });
   ipcMain.handle('ms:zapisz', (e, wzgl, tekst) => { tylkoNasze(e); return PLIKI.zapisz(wzgl, tekst); });
