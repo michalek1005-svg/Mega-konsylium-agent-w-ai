@@ -297,8 +297,21 @@ ${podpisy(wpisy)}`;
     const bw = d.offsetWidth, bh = d.offsetHeight, marg = 8;
     let left = ax;
     left = Math.max(bw / 2 + marg, Math.min(Wp - bw / 2 - marg, left));
+    let top = Math.max(bh + marg, ay);
+    // dymek nie może zasłaniać tablicy (318–864 × 28–280 w scenie): wtedy węższy dymek nad głową, ale obok tablicy
+    const tL = 318 / W * Wp, tR = 864 / W * Wp, tB = 280 / H * Hp;
+    d.classList.remove('boczny');
+    if (left + bw / 2 > tL && left - bw / 2 < tR && top - bh < tB) {
+      d.classList.add('boczny');
+      const bw2 = d.offsetWidth, bh2 = d.offsetHeight, prawa = m.x >= 600;
+      left = prawa ? Math.max(tR + marg + bw2 / 2, Math.min(Wp - bw2 / 2 - marg, ax)) : Math.min(tL - marg - bw2 / 2, Math.max(bw2 / 2 + marg, ax));
+      top = Math.max(bh2 + marg, ay);
+      d.style.left = left + 'px'; d.style.top = top + 'px';
+      d.style.setProperty('--ogon', Math.max(14, Math.min(bw2 - 14, ax - (left - bw2 / 2))) + 'px');
+      return;
+    }
     d.style.left = left + 'px';
-    d.style.top = Math.max(bh + marg, ay) + 'px';
+    d.style.top = top + 'px';
     d.style.setProperty('--ogon', Math.max(14, Math.min(bw - 14, ax - (left - bw / 2))) + 'px');
   }
 
@@ -356,7 +369,7 @@ ${podpisy(wpisy)}`;
   function rysujPrzerwe() {
     if (!przerwa) return;
     const t = mmss(Date.now() - przerwaOd);
-    $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><p class="temat">Lekarze wyszli się naradzić: czytają literaturę i piszą opinie. Wrócą z gotową wypowiedzią.</p><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
+    $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><div class="narada"><b>Narada · ${t}</b><span>Lekarze czytają literaturę i piszą opinie. Wrócą z gotową wypowiedzią.</span></div><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
     $('napisy').innerHTML = `<span class="nap-temat"><b>AI pracuje · ${t}</b>Lekarze są poza pokojem; nowa wypowiedź pojawi się sama.</span>`;
     rysujChipAi();
   }
@@ -511,13 +524,16 @@ ${podpisy(wpisy)}`;
   // ---------- tablica ustaleń (Michał 1.11: zamiast paska etapów na dole) ----------
   // Na tablicy: stan prac (etapy: zrobione ✓, bieżący, przed nami), temat, najważniejsze ustalenia zapisane przez
   // lekarzy (zdarzenia „tablica” z _log.jsonl; odrzucone skreślone), ranking po agregacji, na końcu rekomendacja.
+  // Wygląd (wątek Graficzny 1.11, makieta-2): biała tablica pisana markerem w trzech kolumnach –
+  // Stan prac (✓ zrobione, ✱ teraz, ○ dalej) | Ustalenia | Odrzucone (przekreślone na czerwono).
   function rysujEtapy(si) {
-    const k = kroki[i] || { si, wi: 0 };
+    const k = kroki[i] || { si, wi: 0 }, n0 = Math.max(0, Math.min(si - 2, scen.sceny.length - 6));
     return `<div class="etapy" role="toolbar" aria-label="Stan prac">${scen.sceny.map((sc, n) => {
       const ile = Math.max(1, sc.wypowiedzi.length);
       const zrob = n < si ? ile : n === si ? Math.min(ile, k.wi + 1) : 0;
       const kl = n < si ? 'zrobiony' : n === si ? 'biezacy' : 'przyszly';
-      return `<button class="etap ${kl}" type="button" data-si="${n}" title="${esc(sc.tytul)} · ${zrob}/${ile}"><i style="--p:${Math.round(100 * zrob / ile)}%"></i><span>${esc(sc.tytul)}</span></button>`;
+      const daleko = n < n0 || n >= n0 + 6 ? ' daleko' : '';
+      return `<button class="etap ${kl}${daleko}" type="button" data-si="${n}" title="${esc(sc.tytul)} · ${zrob}/${ile}"><i style="--p:${Math.round(100 * zrob / ile)}%"></i><span>${esc(sc.tytul)}</span></button>`;
     }).join('')}</div>`;
   }
   function rysujTablice(si) {
@@ -525,20 +541,27 @@ ${podpisy(wpisy)}`;
     const poAgregacji = scen.sceny.findIndex((s) => s.id === 'agregat');
     const final = ['final', 'followup'].includes(sc.id);
     const ust = (t.ustalenia || []).filter((u) => u.si <= si).map((u) => ({ ...u, skreslone: u.skreslone && (u.siSkreslenia ?? u.si) <= si }));
-    let dol = '';
-    if (ust.length) {
-      const widoczne = ust.slice(-6);
-      dol += `<ul class="ustalenia">${widoczne.map((u) => `<li class="${u.skreslone ? 'skreslone' : ''}" title="${esc(u.tekst)}">${u.skreslone ? `<s>${esc(u.tekst)}</s>` : esc(u.tekst)}</li>`).join('')}</ul>`;
-    }
+    const dobre = ust.filter((u) => !u.skreslone).slice(-4), odrz = ust.filter((u) => u.skreslone).slice(-3);
+    const powod = (u) => u.powod ? `<small>${esc(u.powod)}</small>` : '';
+    let srodek = '';
     if (final && t.werdykt) {
-      dol += `<div class="werdykt"><b>Rekomendacja:</b> ${esc(t.werdykt)}</div>`;
+      srodek = `<div class="werdykt"><b>Rekomendacja</b>${esc(t.werdykt)}</div>`;
+    } else if (dobre.length) {
+      srodek = `<ul class="ustalenia">${dobre.map((u, n) => `<li title="${esc(u.tekst)}">${n + 1}. ${esc(u.tekst)}${powod(u)}</li>`).join('')}</ul>`;
     } else if (t.ranking.length && (poAgregacji === -1 || si >= poAgregacji)) {
-      dol += `<div class="ranking">${t.ranking.slice(0, ust.length ? 2 : 3).map((r) => `<div class="wiersz"><span title="${esc(r.nazwa)}">${esc(r.nazwa)}</span><span class="belka"><i style="width:${Math.round(r.p * 100)}%"></i></span><span class="p">${r.p.toFixed(2).replace('.', ',')}</span></div>`).join('')}</div>`;
-    } else if (!ust.length) {
-      dol += `<div class="ranking"><div class="wiersz"><span>Ustalenia i ranking pojawią się w trakcie konsylium</span><span></span><span></span></div></div>`;
+      srodek = `<div class="ranking">${t.ranking.slice(0, 3).map((r, n) => `<div class="wiersz"><span title="${esc(r.nazwa)}">${n + 1}. ${esc(r.nazwa)}</span><span class="p">${r.p.toFixed(2).replace('.', ',')}</span></div>`).join('')}</div>`;
+    } else {
+      srodek = `<p class="pusto">Pojawią się w trakcie konsylium</p>`;
     }
-    const stan = `${scen.sceny.filter((_, n) => n < si).length}/${scen.sceny.length}`;
-    $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span><span class="stan" title="Etapy zakończone">${stan}</span><span class="czas">${hhmm(sc.czas)}</span></div>${rysujEtapy(si)}<p class="temat">${esc(sc.temat)}</p>${dol}`;
+    const prawa = odrz.length
+      ? `<ul class="ustalenia odrzucone">${odrz.map((u) => `<li class="skreslone" title="${esc(u.tekst)}"><s>${esc(u.tekst)}</s>${powod(u)}</li>`).join('')}</ul>`
+      : `<p class="pusto">Jeszcze nic</p>`;
+    const zrobione = scen.sceny.filter((_, n) => n < si).length;
+    const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc >= 4 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
+    $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span>${pil}<span class="stan" title="Etapy zakończone">${zrobione}/${scen.sceny.length}</span><span class="czas">${hhmm(sc.czas)}</span></div>` +
+      `<p class="temat">${esc(sc.temat)}</p>` +
+      `<div class="kolumny"><div class="kol"><h4>Stan prac</h4>${rysujEtapy(si)}<div class="postep"><i style="width:${Math.round(100 * zrobione / scen.sceny.length)}%"></i></div></div>` +
+      `<div class="kol"><h4>Ustalenia</h4>${srodek}</div><div class="kol"><h4>Odrzucone</h4>${prawa}</div></div>`;
     $('tablica').querySelectorAll('.etap').forEach((b) => b.addEventListener('click', () => { ustawGre(false); pokaz(kroki.findIndex((k) => k.si === +b.dataset.si), false); }));
   }
 
