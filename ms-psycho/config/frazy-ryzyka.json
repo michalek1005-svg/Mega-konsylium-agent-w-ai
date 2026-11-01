@@ -60,7 +60,13 @@
     "otruje sie",
     "zagazowac",
     "zabic (go|ja|ich|kogos)",
-    "zrobic (mu|jej|im) krzywde"
+    "zrobic (mu|jej|im) krzywde",
+    "(po|na)?ci(ac|elam|elem|ela|al|ne|na|ely) sie",
+    "sie (po|na)?ci(ac|elam|elem|ela|al|ne|na|ely)\\b",
+    "okalecz",
+    "zrobil(a|e)?m sobie krzywde",
+    "skrzywdzil(a|e)?m sie",
+    "sznyt"
   ],
   "poziom2": [
     "lepiej by(loby)? (bylo )?beze mnie",
@@ -88,7 +94,13 @@
     "bron w domu",
     "mam bron",
     "na zawsze zasnac",
-    "dostep do (lekow|tabletek)"
+    "dostep do (lekow|tabletek)",
+    "(lepiej|wolal(a)?bym|wolalabym).{0,25}nie (zyc|zyl|zyla|istniec)",
+    "zeby mnie (juz )?nie bylo",
+    "gdyby mnie (juz )?nie bylo",
+    "nie chce (juz )?istniec",
+    "(chce|chcialabym|chcialbym) (po prostu |juz )?zniknac",
+    "szukal(a|e)?m (w internecie )?(sposob|jak )"
   ],
   "poziom1": [
     "nie ma sensu",

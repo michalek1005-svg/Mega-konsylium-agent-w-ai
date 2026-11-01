@@ -36,7 +36,7 @@ ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
 SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b",
-        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw"]
+        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\b\w+(ł|l)(a)?bym\b"]
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -188,15 +188,32 @@ def cmd_odpowiedz(a) -> None:
         sys.exit("Podaj ryzyko 0–4 (ocena strażnika ryzyka dla tej tury).")
     nowe = s["nowe"]
     filtr = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in nowe] or [0])
-    if ryz < filtr and not d.get("obnizam_ryzyko"):
-        sys.exit(f"Filtr słownikowy dał poziom {filtr}, a odpowiedź ma {ryz}. Poziom obniża tylko strażnik z NOWYM faktem: dodaj pole obnizam_ryzyko z tym faktem.")
+    # dolna granica = filtr nowych wiadomości ORAZ poziom z poprzedniej odpowiedzi zespołu i filtr całej historii
+    # (próba 1.11.2026: „nie mam takich myśli” bez nowego faktu nie może zejść z 2 do 0)
+    poprzedni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
+    historia = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["ja"]] or [0])
+    dolna = max(filtr, poprzedni, historia)
+    if ryz < dolna and not d.get("obnizam_ryzyko"):
+        zrodlo = "filtr słownikowy" if dolna == filtr else ("poprzednia ocena strażnika" if dolna == poprzedni else "filtr wcześniejszych wiadomości")
+        sys.exit(f"Dolna granica ryzyka w tej rozmowie to {dolna} ({zrodlo}), a odpowiedź ma {ryz}. Poziom obniża tylko strażnik z NOWYM faktem (nie samym zaprzeczeniem): dodaj pole obnizam_ryzyko z tym faktem.")
     if (ryz >= 3 or filtr >= 3) and not d.get("kryzys"):
         numery = [n["numer"] for n in POMOC["numery"]]
         if not any(n.replace(" ", "") in tekst.replace(" ", "") for n in numery):
             sys.exit("Poziom ≥3: odpowiedź musi zawierać numery pomocy z config/pomoc-pl.json (albo ustaw kryzys: true – aplikacja pokaże je sama).")
     if filtr == 2 and ryz <= 2 and "?" not in tekst:
         sys.exit("Poziom 2 (bierne myśli): odpowiedź musi zawierać pytanie wprost o plan/zamiar i dostęp do środków.")
+    if ryz >= 3 and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
+        sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, tekst, re.I)]
+    if tekst.count("?") > 1:
+        ostrz.append("więcej niż jedno pytanie w turze (docs/ROZMOWA.md §4)")
+    if ryz >= 4 and re.search(r"\bjutro\b", tekst, re.I):
+        ostrz.append("poziom 4: ocena specjalisty DZIŚ, nie „jutro” (docs/ROZMOWA.md §5)")
+    if d.get("kryzys") and s["zespol"] and s["zespol"][-1].get("kryzys"):
+        pop = s["zespol"][-1].get("tekst", "")
+        powt = [n["numer"] for n in POMOC["numery"] if n["numer"].replace(" ", "") in tekst.replace(" ", "") and n["numer"].replace(" ", "") in pop.replace(" ", "")]
+        if len(powt) >= 2:
+            ostrz.append(f"numery {powt} powtórzone z poprzedniej tury – pełna lista jest na czerwonej karcie; w tekście jeden numer z gotowym pierwszym zdaniem")
     slow = len(tekst.split())
     glosy = [g for g in d.get("glosy", []) if isinstance(g, dict)]
     for g in glosy:

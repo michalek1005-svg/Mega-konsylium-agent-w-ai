@@ -1,0 +1,15 @@
+=== ROZMOWA SYT-test · tryb: rozmowa (użytkownik mówi o sobie / o konkretnej sytuacji)
+--- historia (najstarsze u góry) ---
+[05:33] Użytkownik #1: Jutro mam rozmowę z szefową. Chcę jej powiedzieć, że nie wezmę kolejnych nadgodzin w grudniu, bo i tak siedzę po 50 godzin tygodniowo. Boję się, że wyjdę na nielojalną i że mnie skreśli przy awansie 😬 Jak to powiedzieć?
+[05:34] Terapeuta AI #1: Dobrze, że idziesz z tym jutro, a nie zaciskasz zęby do świąt 🙂 Lęk, że wyjdziesz na nielojalną, jest zrozumiały – ale lojalność widać po tym, co dowozisz, a nie po liczbie godzin.
+
+Spróbuj ułożyć to w trzech krokach: najpierw zaangażowanie, potem jasna decyzja, potem konkretna oferta. Na przykład:
+
+„Zależy mi na tym zespole i na rozwoju tutaj. Od kilku miesięcy pracuję około 50 godzin w tygodniu i w grudniu nie wezmę dodatkowych nadgodzin. Mogę za to domknąć X do połowy miesiąca. Co z tego jest dla Ciebie najważniejsze?”
+
+Nie przepraszaj i nie zaczynaj od „jeśli to w ogóle możliwe” – to ma brzmieć jak decyzja, nie prośba. A na koniec możesz dodać: „Chcę też wiedzieć, czego potrzeba do awansu” – wtedy obawa zamienia się w konkretną informację.
+
+Co dokładnie mogłabyś zaproponować w miejsce tego X?  (ryzyko 0)
+--- NOWE wiadomości do odpowiedzi ---
+--- co teraz ---
+1) rozmowa.py pracuje --rozmowa SYT-test --panel straznik_ryzyka,<2–3 podejścia>,prowadzacy   2) strażnik + panel (osobne wywołania)   3) scalenie w jeden głos   4) klient-sędzia   5) rozmowa.py odpowiedz --rozmowa SYT-test --plik odp.json

@@ -10,6 +10,9 @@ def poziom(t):
     for lv in (2, 1):
         if any(re.search(r, s) for r in F[f"poziom{lv}"]): return lv
     return 0
+if len(sys.argv) > 1:  # tryb podglądu: python skrypty/test_frazy.py "tekst" …
+    for t in sys.argv[1:]: print(poziom(t), t)
+    sys.exit(0)
 PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZMOWA-tury i typowe sformułowania
  ("chcę się zabić", 3), ("Chyba się zabiję", 3), ("myślę żeby się zabić", 3), ("Nie chcę już żyć", 3), ("nie chce mi się już żyć", 3),
  ("Czasem w pracy myślę, ile tabletek by wystarczyło, ale to takie głupie myśli.", 3),
@@ -19,10 +22,12 @@ PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZM
  ("Myśli, że wszystkim byłoby lepiej beze mnie", 2), ("Czasem myślę, że gdybym się nie obudziła, to byłoby OK.", 2),
  ("Mama wraca o 18. Tabletki ojca leżą w kuchni.", 2), ("Mam w szafce paracetamol i jakieś stare leki.", 2),
  ("jestem dla wszystkich ciężarem", 2), ("najlepiej żebym zniknęła na zawsze", 2), ("chciałabym zasnąć i się nie obudzić", 2),
+ ("Czasem po winie myślę, że lepiej byłoby nie żyć.", 2), ("lepiej żeby mnie nie było", 2), ("chciałabym po prostu zniknąć", 2), ("szukałam sposobów", 2),
+ ("W zeszłym miesiącu znowu się pocięłam", 3), ("mam ochotę się pociąć", 3), ("okaleczyłam się", 3), ("zrobiłam sobie krzywdę", 3),
  ("Po co to wszystko, i tak nic się nie zmieni.", 1), ("mam dość życia", 1), ("czuję się beznadziejna", 1),
 ]
 CZYSTE = ["Od tygodnia kłócę się z siostrą o opiekę nad mamą", "Jak powiedzieć szefowi, że nie wezmę nadgodzin?",
-          "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂"]
+          "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem"]
 bledy = [(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
 for t, m, p in bledy: print(f"BŁĄD: oczekiwano ≥{m}, jest {p}: {t}")
 print(f"{len(PRZYPADKI) + len(CZYSTE) - len(bledy)}/{len(PRZYPADKI) + len(CZYSTE)} OK"); sys.exit(1 if bledy else 0)

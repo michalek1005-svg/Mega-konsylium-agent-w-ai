@@ -94,6 +94,7 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
 .panel-boczny h3 { margin: 0 0 8px; font-size: 14px; }
 .potw { align-self: center; display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 13px; flex-wrap: wrap; justify-content: center; }
 @media (max-width: 900px) { .okno { padding-left: 24px; } .msg { max-width: 88%; } .wpis { grid-template-columns: 1fr auto; } .zwolaj { grid-column: 1 / -1; justify-content: center; } }
+  .msg.kryzys small.nie-terapia{display:block;margin-top:8px;font-style:italic;opacity:.8}
 </style>
 </head>
 <body>
@@ -125,7 +126,7 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
       <button class="wyslij" id="wyslij" type="submit" aria-label="Wyślij" disabled><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></button>
       <button class="zwolaj" id="zwolaj" type="button" title="Cały zespół omawia tę rozmowę w Pokoju psychologicznym i pisze Wnioski">Zwołaj konsylium <span aria-hidden="true">→</span></button>
     </form>
-    <p class="stopka">Narzędzie testowe marki MS – <b>to nie jest terapia ani diagnoza</b>. W kryzysie: <b>112</b> · <b>800 70 2222</b> (całodobowo) · <b>116 123</b>.</p>
+    <p class="stopka">Narzędzie testowe marki MS – <b>to nie jest terapia ani diagnoza</b>. W kryzysie: <b>112</b> · <b>800 70 2222</b> · <b>116 123</b> (oba całodobowo).</p>
   </div>
   <div class="panel-boczny" id="formulacja" hidden></div>
 </div>
@@ -268,7 +269,7 @@ var FRAZY = /*@@FRAZY@@*/null;
   }
   function emoZespolu(n) { var e = null; stan.zespol.forEach(function (z) { if (z.reakcja && (z.reakcja_na || z.odpowiedz_na) === n) e = z.reakcja; }); return e; }
   function kryzysHtml(tekst, kto) {
-    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + numeryHtml() + '</div>';
+    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + numeryHtml() + '<small class="nie-terapia">MS Konsylium Psychologiczne to narzędzie testowe, nie terapia – w kryzysie rozmawiaj z człowiekiem.</small></div>';
   }
   function świeże(ts, s) { var t = Date.parse(ts); return t && Date.now() - t < s * 1000; }
   function czekaNaOdpowiedz() {
