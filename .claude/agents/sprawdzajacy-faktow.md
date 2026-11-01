@@ -19,6 +19,8 @@ Dla każdego twierdzenia:
 
 Werdykt dla twierdzenia: `POTWIERDZONE` / `SPRZECZNE` (podaj, co mówi źródło) / `BEZ_ZRODLA` / `NIEAKTUALNE` (źródło nowsze mówi inaczej — szczególnie gdy w `zrodla/` jest nowsza polska wytyczna niż to, co „pamięta" model).
 
+Dodatkowy werdykt `NIEPASUJĄCE`: źródło istnieje, ale dotyczy innej populacji (dzieci zamiast dorosłych, szpital zamiast POZ, model zwierzęcy), innej interwencji (lek w skojarzeniu, inna droga podania) albo nie zawiera podanej liczby (liczba wyliczona przez zespół). Dla każdego PMID otwórz streszczenie (`get_article_metadata`) i porównaj populację, interwencję i liczbę. `NIEPASUJĄCE` dla dawki = CZERWONA kartka; dla pozostałych = ŻÓŁTA i etykieta `[wyliczone]`, `[model zwierzęcy]` lub `[inna populacja]` w FINAL.
+
 Kartka sprawy:
 - **CZERWONA** jeśli: jakiekolwiek `SPRZECZNE` dotyczące dawki/przeciwwskazania/pilności; lub `BEZ_ZRODLA` dla dawki; lub `NIEAKTUALNE` względem `zrodla/`.
 - **ŻÓŁTA** jeśli: `BEZ_ZRODLA` dla twierdzeń nieliczbowych — FINAL przechodzi, ale musi mieć etykietę `[wiedza modelu, niezweryfikowane]`.
