@@ -259,7 +259,7 @@ const KATEGORIE = {
   kod:          { nazwa: 'Kody kreskowe i QR',            domyslnie: true },
   lekarz:       { nazwa: 'Lekarz i zleceniodawca',        domyslnie: true },
   personel:     { nazwa: 'Personel laboratorium',         domyslnie: true },
-  placowka:     { nazwa: 'Punkt pobrań i placówka',       domyslnie: false },
+  placowka:     { nazwa: 'Punkt pobrań i placówka',       domyslnie: true },
   daty:         { nazwa: 'Daty pobrania i wydania',       domyslnie: false },
   fraza:        { nazwa: 'Twoje frazy',                   domyslnie: true },
 };
@@ -763,8 +763,48 @@ function wykryjWTekscie(tekst, opcje = {}) {
     while (doZn > od && /[,.;:]/.test(tekst[doZn - 1])) doZn--;
     wyn.push({ od, do: doZn, kategoria: p.kategoria, powod: p.powod, tekst: tekst.slice(od, doZn) });
   }
+  wyn.push(...stopkiITekstPlacowek(String(tekst)));
   wyn.sort((a, b) => a.od - b.od);
   return wyn;
+}
+
+// Stopki wydruków (1.11.2026, wywiad 2HK-Z5J): „Wykonali:” z listą nazwisk po przecinku albo w kolejnych wierszach,
+// „Autoryzował/Zatwierdził/Zweryfikował/Opracował…”, oraz nazwa laboratorium/szpitala/oddziału w osobnym wierszu.
+const DUZA = 'A-ZĄĆĘŁŃÓŚŹŻ', MALA = 'a-ząćęłńóśźż';
+const ETYK_PERSONEL = new RegExp('(?:^|\\n)[ \\t]*(?:(?:badanie|wynik|badania)\\s+)?(?:wykonał[ay]?|wykonali|wykonały|autoryzował[ay]?|autoryzowali|zatwierdził[ay]?|zatwierdzili|zweryfikował[ay]?|zweryfikowali|opracował[ay]?|opracowali|sprawdził[ay]?|sprawdzili|oznaczył[ay]?|oznaczyli|podpisał[ay]?|diagności(?:\\s+laboratoryjni)?|diagnosta(?:\\s+laboratoryjny)?|technik(?:\\s+analityki\\s+medycznej)?|laborant(?:ka)?)\\s*:', 'gi');
+const WIERSZ_NAZWISK = new RegExp('^[ \\t]*(?:(?:mgr|dr|lek|diagn|lab|inż|lic|prof|hab|n|med|farm)\\.?\\s*)*[' + DUZA + '][' + MALA + '-]+(?:\\s+[' + DUZA + '][' + MALA + '-]+){1,2}\\s*[,;]?(?:\\s*(?:(?:mgr|dr|lek|diagn|lab)\\.?\\s*)*[' + DUZA + '][' + MALA + '-]+(?:\\s+[' + DUZA + '][' + MALA + '-]+){1,2}\\s*[,;]?)*[ \\t]*$');
+const PLACOWKA = new RegExp('(?:^|[\\s,;(])((?:Laboratorium|Szpital[' + MALA + ']*|Oddział[' + MALA + ']*|Pracownia|Przychodnia|Klinika|Kliniczny|Centrum Medyczne|Zakład Diagnostyki[' + MALA + ']*|NZOZ|SP ?ZOZ|Samodzielny Publiczny)\\b[^\\n]{0,140})', 'g');
+function stopkiITekstPlacowek(t) {
+  const out = [];
+  let m;
+  ETYK_PERSONEL.lastIndex = 0;
+  while ((m = ETYK_PERSONEL.exec(t))) {
+    let od = m.index + m[0].length;
+    let koniecLinii = t.indexOf('\n', od); if (koniecLinii < 0) koniecLinii = t.length;
+    let doZn = koniecLinii;
+    const reszta = t.slice(od, koniecLinii).trim();
+    if (!reszta) doZn = od;
+    // kolejne wiersze, które wyglądają jak nazwiska (najwyżej 6)
+    let p = koniecLinii;
+    for (let n = 0; n < 6 && p < t.length; n++) {
+      const k = t.indexOf('\n', p + 1); const kk = k < 0 ? t.length : k;
+      const wiersz = t.slice(p + 1, kk);
+      if (!wiersz.trim() || !WIERSZ_NAZWISK.test(wiersz)) break;
+      doZn = kk; p = kk;
+    }
+    while (od < doZn && /\s/.test(t[od])) od++;
+    if (doZn > od) out.push({ od, do: doZn, kategoria: 'personel', powod: 'stopka wydruku: ' + m[0].trim(), tekst: t.slice(od, doZn) });
+  }
+  PLACOWKA.lastIndex = 0;
+  while ((m = PLACOWKA.exec(t))) {
+    const od = m.index + m[0].length - m[1].length;
+    let doZn = od + m[1].length;
+    while (doZn > od && /[\s,.;:)]/.test(t[doZn - 1])) doZn--;
+    // tylko wiersze „nagłówkowe”: bez wyników liczbowych z jednostkami
+    if (/\d+[,.]?\d*\s*(?:mg|g\/|mmol|tys|ul|µl|%|U\/l|IU)/i.test(t.slice(od, doZn))) continue;
+    out.push({ od, do: doZn, kategoria: 'placowka', powod: 'nazwa placówki/oddziału', tekst: t.slice(od, doZn) });
+  }
+  return out;
 }
 
 // Podmienia zakresy na „[USUNIĘTO: kategoria]” (nakładające się zakresy są łączone).

@@ -140,3 +140,12 @@ test('słowa rodzajowe („pacjent”, „pacjenta”) nie są usuwane jako dane
   for (const x of ['(ankieta pacjenta)', '(pacjent, ankieta)', '(z opisu pacjenta)', 'Pacjentka zgłasza kaszel od dwóch dni.', 'ankieta pacjenta.']) assert.ok(wynik.includes(x), x + ' → ' + wynik);
   for (const x of ['Jan', 'Kowalski']) assert.ok(!wynik.includes(x), x + ' → ' + wynik);
 });
+
+test('stopka wydruku: Wykonali/Autoryzował z listą nazwisk i nazwa laboratorium/oddziału (1.11.2026)', () => {
+  const t = 'Morfologia krwi\nWBC 7,2 tys/ul 4,0-10,0\nLaboratorium Analityczne Szpitala Wojewódzkiego, Oddział Wewnętrzny II\n' +
+    'Wykonali: mgr Anna Kowalczyk, Jan Wiśniewski\nWykonali:\nJoanna Zielińska\nPiotr Mazur\nAutoryzował: diagn. lab. Tomasz Lewandowski\n' +
+    'Pacjentka pracuje w szpitalu na oddziale neurologii.';
+  const wynik = zanonimizujTekst(t, wykryjWTekscie(t));
+  for (const x of ['Kowalczyk', 'Wiśniewski', 'Zielińska', 'Mazur', 'Lewandowski', 'Wojewódzkiego', 'Wewnętrzny']) assert.ok(!wynik.includes(x), x + ' → ' + wynik);
+  for (const x of ['WBC 7,2 tys/ul 4,0-10,0', 'Morfologia krwi', 'Pacjentka pracuje w szpitalu na oddziale neurologii.']) assert.ok(wynik.includes(x), x + ' → ' + wynik);
+});
