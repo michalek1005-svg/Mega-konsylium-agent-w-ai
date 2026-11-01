@@ -59,9 +59,22 @@ function utworzOkno() {
 const plikUstawien = () => path.join(app.getPath('userData'), 'ustawienia.json');
 function ustawienia() { try { return JSON.parse(fs.readFileSync(plikUstawien(), 'utf8')); } catch { return {}; } }
 function zapiszUstawienia(u) { fs.mkdirSync(path.dirname(plikUstawien()), { recursive: true }); fs.writeFileSync(plikUstawien(), JSON.stringify(u, null, 2)); }
+// Folder główny Konsylium rozpoznajemy po CLAUDE.md albo skrypty/. Gdy lekarz wskaże podfolder (np. „sprawy”),
+// aplikacja wraca w górę do folderu głównego (1.11.2026: wywiad 2HK-Z5J trafił do sprawy\wywiad-na-zywo).
+function folderGlowny(k) {
+  const jestGlowny = (d) => fs.existsSync(path.join(d, 'CLAUDE.md')) || fs.existsSync(path.join(d, 'skrypty'));
+  let d = path.resolve(k);
+  for (let n = 0; n < 4; n++) {
+    if (jestGlowny(d)) return d;
+    const w = path.dirname(d);
+    if (w === d) break;
+    d = w;
+  }
+  return k;
+}
 function korzen() {
   const k = process.env.MS_FOLDER_KONSYLIUM || ustawienia().folderKonsylium;
-  return k && fs.existsSync(k) ? k : null;
+  return k && fs.existsSync(k) ? folderGlowny(k) : null;
 }
 function wFolderze(wzgl) {
   const k = korzen();
@@ -197,8 +210,9 @@ function podepnijPliki(okno) {
       defaultPath: korzen() || app.getPath('documents'), properties: ['openDirectory', 'createDirectory']
     });
     if (w.canceled || !w.filePaths[0]) return korzen();
-    zapiszUstawienia({ ...ustawienia(), folderKonsylium: w.filePaths[0] });
-    return w.filePaths[0];
+    const g = folderGlowny(w.filePaths[0]);
+    zapiszUstawienia({ ...ustawienia(), folderKonsylium: g });
+    return g;
   });
   ipcMain.handle('ms:czytaj', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytaj(wzgl); });
   ipcMain.handle('ms:zapisz', (e, wzgl, tekst) => { tylkoNasze(e); return PLIKI.zapisz(wzgl, tekst); });
