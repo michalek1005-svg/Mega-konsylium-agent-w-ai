@@ -223,7 +223,9 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
 .stan .dziala::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #c9a227; box-shadow: 0 0 0 3px rgba(201,162,39,.2); flex: none; }
 .stan .dziala.ok { color: #1f7a5a; } .stan .dziala.ok::before { background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.22); }
 .stan .dziala.uwaga { color: #9a5b12; } .stan .dziala.uwaga::before { background: #e8962e; box-shadow: 0 0 0 3px rgba(232,150,46,.22); }
-.stan .dziala.blad { color: var(--alarm); } .stan .dziala.blad::before { background: var(--alarm); box-shadow: 0 0 0 3px color-mix(in srgb, var(--alarm) 25%, transparent); }
+.stan .dziala.blad { color: var(--alarm); } .stan .dziala.blad::before { background: var(--alarm); box-shadow: 0 0 0 3px color-mix(in srgb, var(--alarm) 25%, transparent); animation: puls-blad 1.4s ease-in-out infinite; }
+@keyframes puls-blad { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--alarm) 55%, transparent); } 50% { box-shadow: 0 0 0 7px transparent; } }
+@media (prefers-reduced-motion: reduce) { .stan .dziala.blad::before { animation: none; } }
 .stan .dziala:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
 .dziala-panel { top: auto; bottom: 16px; transform: none; width: 340px; }
 .dziala-panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; }
@@ -254,7 +256,8 @@ html.ai-aktywne .logo-k img { animation: swiec 1.8s ease-in-out infinite; }
 .ipad-panel { width: 360px; transform: translateY(-50%); max-height: calc(100% - 40px); overflow-y: auto; }
 .ipad-panel .qr { width: 168px; height: 168px; align-self: center; border-radius: 14px; background: #fff; padding: 6px; box-shadow: var(--panel-cien); }
 .ipad-panel .qr img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
-.ipad-panel .adres { font: 12px ui-monospace, Consolas, monospace; color: var(--ink); word-break: break-all; user-select: all; }
+.ipad-panel .adres { font: 12px ui-monospace, Consolas, monospace; color: var(--ink); word-break: break-all; user-select: all; display: flex; flex-direction: column; gap: 4px; }
+.ipad-panel .adres .adres-zapas { color: var(--mut); font-size: 11px; }
 .ipad-panel ol { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
 .ipad-panel .wl { color: var(--petrol); font-weight: 750; }
 .stan .lan { color: var(--petrol); font-weight: 750; font-size: 10.5px; line-height: 1.15; }
@@ -313,7 +316,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
     <span class="adres" id="ipad-adres" hidden></span>
     <ol id="ipad-kroki" hidden>
       <li>Na iPadzie otwórz Aparat i zeskanuj kod (iPad w tej samej sieci Wi‑Fi).</li>
-      <li>W Safari stuknij Udostępnij → „Do ekranu początkowego”.</li>
+      <li>W Safari stuknij Udostępnij → „Do ekranu początkowego”. Ikona Konsylium otwiera się potem jak aplikacja, pod stałym adresem (nazwa komputera), także po zmianie adresu IP przez router.</li>
       <li>Przy pierwszym włączeniu Windows zapyta o zaporę: zezwól dla sieci prywatnych.</li>
     </ol>
     <span class="uwaga" id="ipad-info"></span>
@@ -443,7 +446,11 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       var wl = !!(s && s.wlaczony);
       $wl.hidden = wl; $wy.hidden = !wl; $nw.hidden = !wl; $kr.hidden = !wl || !s.url; $on.hidden = !wl || !s.qr; $ad.hidden = !wl || !s.url;
       if (s && s.qr) $qr.src = s.qr;
-      $ad.textContent = s && s.url ? s.url : '';
+      $ad.innerHTML = '';
+      if (s && s.url) {
+        if (s.urlStaly) { var a1 = document.createElement('span'); a1.textContent = s.urlStaly; a1.title = 'Stały adres: nazwa komputera w sieci lokalnej (nie zmienia się, gdy router przydzieli inny numer IP). Ten adres jest w kodzie QR.'; $ad.appendChild(a1); }
+        var a2 = document.createElement('span'); a2.textContent = (s.urlStaly ? 'albo: ' : '') + s.url; a2.className = s.urlStaly ? 'adres-zapas' : ''; a2.title = s.urlStaly ? 'Adres IP – gdyby nazwa komputera nie działała w tej sieci Wi‑Fi' : ''; $ad.appendChild(a2);
+      }
       var info = '';
       var akt = (s && s.aktywne) || [];
       if (s && s.blad) info = s.blad;
@@ -456,7 +463,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       // Tafla mówi prawdę: przy udostępnieniu aplikacja nie jest już „Offline”, tylko w sieci lokalnej
       $off.textContent = wl ? (akt.length ? 'iPad ✓' : 'Sieć lokalna') : 'Offline';
       $off.title = wl ? (akt.length ? 'iPad połączony na stałe (' + akt.length + ')' : 'Udostępniono dla iPada w sieci lokalnej; bez internetu') : 'Bez sieci';
-      window.msStanIpad = { wlaczony: wl, aktywne: akt.length, blad: s && s.blad || null };
+      window.msStanIpad = { wlaczony: wl, aktywne: akt.length, byl: !!(s && s.polaczone && s.polaczone.length), blad: s && s.blad || null };
       if (window.msOdswiezDziala) window.msOdswiezDziala();
     }
     function pokazPanel(t) { $p.hidden = !t; $b.setAttribute('aria-pressed', String(!!t)); if (t) { pokazPanelFolderu(false); I.stan().then(pokazStan); } }
@@ -538,7 +545,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       var m = biezacy && dostepne[biezacy] !== false;
       w.push(m && gotowe[biezacy] ? wiersz('ok', 'Moduł: ' + NAZWY[biezacy]) : wiersz(m ? 'uwaga' : 'blad', m ? 'Moduł jeszcze się ładuje' : 'Ten moduł nie jest dołączony'));
       if (folder) w.push(sprawa ? wiersz(Date.now() - sprawaCzas < 15 * 60000 ? 'ok' : 'info', 'Sprawa: ' + sprawa, Date.now() - sprawaCzas < 15 * 60000 ? 'zmieniana w ciągu ostatnich 15 minut (konsylium na żywo)' : 'ostatnia zmiana ' + new Date(sprawaCzas).toLocaleString('pl-PL')) : wiersz('info', 'Brak spraw w folderze', 'Pojawią się po pierwszym wywiadzie.'));
-      if (!naIpadzie && ip) w.push(ip.blad ? wiersz('blad', 'iPad: ' + ip.blad) : !ip.wlaczony ? wiersz('info', 'iPad: udostępnianie wyłączone') : ip.aktywne ? wiersz('ok', 'iPad połączony na stałe (' + ip.aktywne + ')') : wiersz('uwaga', 'iPad: czekam na połączenie', 'Zeskanuj kod QR albo otwórz ikonę Konsylium na iPadzie.'));
+      if (!naIpadzie && ip) w.push(ip.blad ? wiersz('blad', 'iPad: ' + ip.blad) : !ip.wlaczony ? wiersz('info', 'iPad: udostępnianie wyłączone') : ip.aktywne ? wiersz('ok', 'iPad połączony na stałe (' + ip.aktywne + ')') : ip.byl ? wiersz('uwaga', 'iPad stracił połączenie', 'Połączy się sam, gdy wróci do Wi‑Fi; sprawdź, czy iPad nie jest uśpiony.') : wiersz('info', 'iPad: udostępnione, czekam na pierwsze połączenie', 'Zeskanuj kod QR albo otwórz ikonę Konsylium na iPadzie.'));
       var ai = document.documentElement.classList.contains('ai-aktywne');
       w.push(ai ? wiersz('ok', 'AI pracuje teraz', document.getElementById('ai-pracuje').textContent) : wiersz('info', 'AI czeka', 'Konsylium (Claude) nie pracuje w tej chwili; to normalne między etapami.'));
       $li.innerHTML = ''; w.forEach(function (x) { $li.appendChild(x); });

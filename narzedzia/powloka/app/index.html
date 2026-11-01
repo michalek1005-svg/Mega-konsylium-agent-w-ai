@@ -56,7 +56,9 @@ iframe { border: 0; width: 100%; height: 100%; display: block; background: trans
 .stan .dziala::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #c9a227; box-shadow: 0 0 0 3px rgba(201,162,39,.2); flex: none; }
 .stan .dziala.ok { color: #1f7a5a; } .stan .dziala.ok::before { background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.22); }
 .stan .dziala.uwaga { color: #9a5b12; } .stan .dziala.uwaga::before { background: #e8962e; box-shadow: 0 0 0 3px rgba(232,150,46,.22); }
-.stan .dziala.blad { color: var(--alarm); } .stan .dziala.blad::before { background: var(--alarm); box-shadow: 0 0 0 3px color-mix(in srgb, var(--alarm) 25%, transparent); }
+.stan .dziala.blad { color: var(--alarm); } .stan .dziala.blad::before { background: var(--alarm); box-shadow: 0 0 0 3px color-mix(in srgb, var(--alarm) 25%, transparent); animation: puls-blad 1.4s ease-in-out infinite; }
+@keyframes puls-blad { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--alarm) 55%, transparent); } 50% { box-shadow: 0 0 0 7px transparent; } }
+@media (prefers-reduced-motion: reduce) { .stan .dziala.blad::before { animation: none; } }
 .stan .dziala:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
 .dziala-panel { top: auto; bottom: 16px; transform: none; width: 340px; }
 .dziala-panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; }
