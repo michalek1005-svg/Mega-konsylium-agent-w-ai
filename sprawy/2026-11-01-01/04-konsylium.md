@@ -97,4 +97,7 @@ Wykluczone (zgodnie): krztusiec jako przyczyna nagłego początku (faza nieżyto
 - Etykieta: „podejrzenie natychmiastowej nadwrażliwości (31.10.2026) na cefuroksym — każdą drogą, także dokomorowo — i cefalosporyny o podobnym łańcuchu R1 (ceftriakson, cefotaksym, cefepim) oraz na erdosteinę; do weryfikacji alergologicznej; nie jest to alergia na wszystkie beta-laktamy”.
 - Wpływ części A na B: adenowirusowe zapalenie spojówek drugiego oka (jeśli potwierdzone badaniem) obniża wartość obrzęku powieki jako objawu alergii (cefuroksym ok. −0,1), nie zmienia etykiety ani planu testów; infekcja = kofaktor (PMID 23909934) i tło pokrzywki infekcyjnej.
 
-Dalej: `05-projekt.md` → rezydenci → sprawdzający → `09-FINAL.md`, `RAPORT.md`.
+## Uwaga procesowa (odstępstwa od ordynator.md / CLAUDE.md §1)
+Sprawa prowadzona **dwutorowo (A/B)** na zlecenie lekarza, w jednym katalogu, z dwiema ślepymi turami i dwiema rundami dyskusji. **Pominięto**: `05-projekt.md` (werdykt pisany bezpośrednio jako `09-FINAL.md`), rezydentów (`06-rezydenci/`) i `08-odpowiedz-rezydentom.md`; zamiast tego `08-odpowiedz-sprawdzajacemu.md` (odpowiedź na żółtą kartkę Sprawdzającego faktów, `07-sprawdzenie.json`). Druga runda dyskusji przy NISKA_ZGODA w części A zaniechana (uzasadnienie w A1). **Wyjątek do zatwierdzenia przez Michała** — bez zatwierdzenia sprawa nie zasila `pamiec/`.
+
+Dalej: `07-sprawdzenie.json` (pętla 1: ŻÓŁTA) → `08-odpowiedz-sprawdzajacemu.md` → `09-FINAL.md` v2, `RAPORT.md` v2 → zatwierdzenie wyjątku przez użytkownika.
