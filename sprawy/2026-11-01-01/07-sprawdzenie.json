@@ -1,0 +1,292 @@
+{
+  "petla": 1,
+  "fakty": {
+    "kartka": "ZOLTA",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Wszystkie 43 PMID z 09-FINAL.md i RAPORT.md istnieją w PubMed; 29 DOI podanych w FINAL zgadza się co do znaku z metadanymi PubMed (29911363 Kędziora 2016 nie ma DOI — poprawnie oznaczone 'Klin Oczna'); autorzy i lata w ŹRÓDŁACH zgodne (Hanula: JAMA Intern Med 2024;184; Barbaud: Allergy 2024;79 — online 12.2023).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed get_article_metadata, 5 paczek, 43 PMID",
+        "cytat": "pełna zgodność PMID↔DOI↔pierwszy autor↔rok dla każdego źródła FINAL"
+      },
+      {
+        "twierdzenie": "PMID 23719580 nie jest użyty jako dowód sekwencji oko→drogi oddechowe: w FINAL nie występuje; w RAPORT (A9, 'Kto co powiedział') cytowany wyłącznie jako skorygowany błąd, a sekwencja oznaczona [wiedza modelu, niezweryfikowane].",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 23719580, DOI 10.1097/ICL.0b013e31828ef19b; RAPORT.md A9",
+        "cytat": "Corneal sensitivity may decrease in adenoviral epidemic keratoconjunctivitis — a confocal microscopic study"
+      },
+      {
+        "twierdzenie": "FINAL/RAPORT: sezonowość — COVID-19 szczyt we wrześniu, grypa styczeń–luty, RSV luty–marzec w polskim nadzorze 2024–26 (PMID 42797869).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 42797869, DOI 10.3390/v18091038",
+        "cytat": "COVID-19 activity increased first and peaked in September, followed by influenza in January/February and RSV infections in February/March"
+      },
+      {
+        "twierdzenie": "FINAL DLACZEGO: 'na przełomie października i listopada w Polsce krążą głównie SARS-CoV-2 i inne wirusy oddechowe' z odwołaniem do PMID 42797869.",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "PubMed PMID 42797869 obejmuje tylko grypę, COVID-19 i RSV",
+        "cytat": "Seasonal and Age-Stratified Patterns of Influenza, COVID-19, and RSV in Poland (2024-2026)",
+        "co_mowi_zrodlo": "Źródło nie zawiera danych o rinowirusach, paragrypie, metapneumowirusie ani koronawirusach sezonowych; część zdania o 'innych wirusach' jest wiedzą modelu i wymaga etykiety (RAPORT A1 ją ma, FINAL nie)."
+      },
+      {
+        "twierdzenie": "RAPORT A2: 'u ≥60 l. złe samopoczucie ma LR tylko 2,6' (PMID 15728170).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 15728170, DOI 10.1001/jama.293.8.987",
+        "cytat": "In studies limited to patients aged 60 years or older ... malaise (LR, 2.6; 95% CI, 2.2-3.1)"
+      },
+      {
+        "twierdzenie": "RAPORT A2: 'Katar i kichanie u starszych wręcz obniżają prawdopodobieństwo grypy' (PMID 15728170).",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 15728170, DOI 10.1001/jama.293.8.987",
+        "cytat": "the absence of ... nasal congestion (LR, 0.49) ... The presence of sneezing among older patients made influenza less likely (LR, 0.47)",
+        "co_mowi_zrodlo": "Tylko OBECNOŚĆ kichania u ≥60 l. obniża prawdopodobieństwo grypy; dla kataru źródło mówi odwrotnie — to jego BRAK obniża prawdopodobieństwo (LR 0,49), więc obecność kataru nie przemawia przeciw grypie."
+      },
+      {
+        "twierdzenie": "FINAL/RAPORT A6: antybiotyk w ostrym zapaleniu oskrzeli — RR poprawy 1,07 (95% CI 0,99–1,15), NNTH 24, kaszel krótszy o ok. pół dnia (PMID 28626858).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 28626858, DOI 10.1002/14651858.CD000245.pub4",
+        "cytat": "RR 1.07, 95% CI 0.99 to 1.15 ... MD -0.46 days ... NNT for an additional harmful outcome 24",
+        "co_mowi_zrodlo": "Zgodne. Uwaga redakcyjna: w tym samym przeglądzie ocena globalna lekarza faworyzowała antybiotyk (RR 0,61; NNTB 11) — FINAL cytuje wybiórczo, ale nie fałszywie."
+      },
+      {
+        "twierdzenie": "FINAL PLAN B: oseltamiwir — objawy krótsze o ok. 17–25 h (PMID 24718923, 25640810), bez redukcji hospitalizacji u ambulatoryjnych także ≥65 l. (PMID 37306992), więcej nudności i wymiotów.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 24718923 (16,8 h), 25640810 (17,8–25,2 h), 37306992 (RR hosp. 0,79; ≥65 l. RR 1,01)",
+        "cytat": "oseltamivir reduced the time to first alleviation of symptoms by 16.8 hours ... difference -25.2 h ... not associated with reduced hospitalization in older populations (mean age ≥65 years: RR, 1.01)"
+      },
+      {
+        "twierdzenie": "RAPORT A6: ALICE — ok. 1 dzień w POZ, 2–3 dni u starszych z chorobami (PMID 31839279).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 31839279, DOI 10.1016/S0140-6736(19)32982-4",
+        "cytat": "absolute mean benefit from oseltamivir was 1.02 days ... Older, sicker patients with comorbidities ... recovered 2-3 days sooner"
+      },
+      {
+        "twierdzenie": "FINAL PLAN B: EPIC-SR — nirmatrelwir/rytonawir bez skrócenia objawów u zaszczepionych; leczenie do 5. dnia (PMID 38598573).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 38598573, DOI 10.1056/NEJMoa2309003",
+        "cytat": "median time to sustained alleviation ... 12 days in the nirmatrelvir-ritonavir group and 13 days in the placebo group (P = 0.60); symptom onset within the past 5 days"
+      },
+      {
+        "twierdzenie": "FINAL PLAN B: PRINCIPLE — budezonid wziewny 800 µg 2×/d, zdrowienie krótsze o ok. 2,9 dnia (PMID 34388395).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 34388395, DOI 10.1016/S0140-6736(21)01744-X",
+        "cytat": "inhaled budesonide (800 μg twice daily for 14 days) ... benefit in time to first self-reported recovery of an estimated 2.94 days"
+      },
+      {
+        "twierdzenie": "FINAL: rytonawir + budezonid → zespół Cushinga (PMID 23807527, 22844010).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 23807527 (DOI 10.4158/EP13122.CR), 22844010 (DOI 10.1258/ijsa.2011.011408)",
+        "cytat": "Iatrogenic Cushing syndrome in patients receiving inhaled budesonide and itraconazole or ritonavir"
+      },
+      {
+        "twierdzenie": "FINAL: azytromycyna przy bisoprololu dokłada ryzyko wydłużenia QTc (PMID 33759318).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 33759318, DOI 10.1111/ijcp.14182",
+        "cytat": "risk of critical QT prolongation increased in the presence of ... azithromycin combination therapy, simultaneous furosemide or beta-blocker therapy",
+        "co_mowi_zrodlo": "Zgodne, ale populacja to hospitalizowani z COVID-19 leczeni m.in. hydroksychlorochiną/lopinawirem-rytonawirem — ekstrapolacja na ambulatoryjną pacjentkę na samej azytromycynie; warto dopisać kontekst."
+      },
+      {
+        "twierdzenie": "RAPORT A5: zawał w 7 dni po potwierdzonej grypie ×6 (B ×10, A ×5), RSV ×3,5, inne wirusy ×2,8 (PMID 29365305).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29365305, DOI 10.1056/NEJMoa1702090",
+        "cytat": "incidence ratio ... 6.05 ... influenza B, influenza A, respiratory syncytial virus, and other viruses were 10.11, 5.17, 3.51, and 2.77"
+      },
+      {
+        "twierdzenie": "RAPORT A3: zapalenie nagłośni u dorosłych — śmiertelność do 20% (PMID 34787558).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 34787558, DOI 10.5811/westjem.2021.8.52657",
+        "cytat": "adult epiglottitis remains a cause of acute airway compromise with a mortality rate from 1-20%"
+      },
+      {
+        "twierdzenie": "RAPORT A7: CRP przyłóżkowe zmniejsza liczbę recept na antybiotyk (RR 0,77) bez szkody (PMID 36250577).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 36250577, DOI 10.1002/14651858.CD010130.pub3",
+        "cytat": "RR 0.77, 95% CI 0.69 to 0.86 ... likely does not reduce the number of participants recovered"
+      },
+      {
+        "twierdzenie": "RAPORT A8: '14% personelu z potwierdzoną grypą pracuje chorych' (PMID 31515100).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 31515100, DOI 10.1016/j.ajic.2019.07.024",
+        "cytat": "14.1% of HCWs were working while ill with influenza"
+      },
+      {
+        "twierdzenie": "RAPORT A8: 'dodatni test realnie zmienia decyzję o pozostaniu w domu' (PMID 40339912).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 40339912, DOI 10.1016/j.jhin.2025.04.018",
+        "cytat": "a hypothetical scenario-based study ... More than 80% ... would stay at home if LFD positive ... 39% ... if LFD negative",
+        "co_mowi_zrodlo": "Kierunek zgodny, ale badanie jest deklaratywne (hipotetyczne scenariusze), nie obserwacja realnych decyzji — słowo 'realnie' przecenia źródło."
+      },
+      {
+        "twierdzenie": "RAPORT A4: 'nadwaga dokłada ok. 1 dzień' do czasu zdrowienia (PMID 41211613).",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 41211613, DOI 10.1111/irv.70185",
+        "cytat": "6.6 days for obese patients, 6.2 days for overweight, and 5.7 days for under/normal weight",
+        "co_mowi_zrodlo": "Ok. 1 dzień dotyczy OTYŁOŚCI (BMI ≥30); nadwaga (BMI 25–30) to ok. 0,5 dnia. Pacjentka ma nadwagę."
+      },
+      {
+        "twierdzenie": "FINAL PLAN B (5): 'uczulenie zawodowe przy przygotowywaniu cefalosporyn i.v. — PMID 29114903, 17445015'.",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29114903, DOI 10.1002/ajim.22788",
+        "cytat": "repeated anaphylactic reactions at work without involvement in drug-specific tasks such as crushing of tablets or preparation of injections",
+        "co_mowi_zrodlo": "Merget 2017 opisuje uczulenie wziewne na niskie dawki BEZ przygotowywania iniekcji; teza o 'przygotowywaniu i.v.' nie wynika z tego źródła (17445015 opisuje tylko dodatnie testy skórne u pielęgniarek obsługujących beta-laktamy, bez drogi ekspozycji). Mechanizm jest wiarygodny, ale wymaga przeformułowania."
+      },
+      {
+        "twierdzenie": "RAPORT część B: 'pielęgniarka uczulona wziewnie, bez objawów w pracy, reakcja po doustnym cefuroksymie w infekcji' (PMID 29114903).",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29114903, DOI 10.1002/ajim.22788",
+        "cytat": "nurse who experienced repeated anaphylactic reactions at work ... until a further severe anaphylactic reaction occurred after oral use of cefuroxime during a respiratory infection",
+        "co_mowi_zrodlo": "Pielęgniarka MIAŁA powtarzane anafilaksje w pracy (niewyjaśnione); 'bez objawów w pracy' jest sprzeczne z abstraktem."
+      },
+      {
+        "twierdzenie": "RAPORT część B: 12% pielęgniarek bez wywiadu alergii ma dodatnie testy na determinanty penicylin (PMID 17445015).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 17445015, DOI 10.1111/j.1365-2648.2006.04155.x",
+        "cytat": "Ten nurses (12%) had positive skin reactions to penicillin antigens"
+      },
+      {
+        "twierdzenie": "FINAL/RAPORT: reaktywność krzyżowa cefalosporyn zależy od łańcucha R1, nie pierścienia beta-laktamowego; cefuroksym/ceftriakson/cefotaksym/cefepim dzielą R1; cefazolina i penicyliny mają inne R1 (PMID 16461141, 25930196, 29913447, 42238743, 29408440).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 16461141, 25930196, 29913447, 42238743, 29408440",
+        "cytat": "The R1 side chain rather than the betalactam structure ... seems to play a dominant role; group A: ceftriaxone, cefuroxime, cefotaxime, cefepime, cefodizime, ceftazidime"
+      },
+      {
+        "twierdzenie": "RAPORT część B: cefuroksym dokomorowo 1 mg/0,1 ml, alternatywa moksyfloksacyna 0,5 mg/0,1 ml (PMID 41784986); anafilaksje po cefuroksymie dokomorowym (PMID 29911363, 34489227, 23850230).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 41784986, DOI 10.1001/jamaophthalmol.2026.0040; 29911363; 34489227; 23850230",
+        "cytat": "1.0 mg/0.1 mL of cefuroxime or 0.5 mg/0.1 mL of moxifloxacin"
+      },
+      {
+        "twierdzenie": "RAPORT część B: erdosteina — opis niemal identyczny (obrzęk naczynioruchowy + wysypka dłoni), 'dwa opisy przypadków' (PMID 33546741).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 33546741, DOI 10.1186/s13223-021-00517-6",
+        "cytat": "Only one previous case report has demonstrated hypersensitivity reaction induced by erdosteine ... recurrent angioedema and pruritic rash on the hands"
+      },
+      {
+        "twierdzenie": "FINAL/RAPORT: reakcja natychmiastowa wg EAACI ≤1–6 h po ostatniej dawce (PMID 31749148); ujemne testy skórne → prowokacja (PMID 38155501); adrenalina i.m. pierwsza linia w anafilaksji (PMID 33204386); glukagon przy beta-adrenolityku (PMID 41700292); infekcja jako kofaktor anafilaksji (PMID 23909934); MRSA HR 1,69 przy etykiecie alergii na penicylinę (PMID 29950489).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 31749148, 38155501, 33204386, 41700292, 23909934, 29950489",
+        "cytat": "immediate (ie, occurring within 1-6 hours after the last administered dose) ... adjusted hazard ratio for MRSA was 1.69"
+      },
+      {
+        "twierdzenie": "RAPORT A6/A7: barwna plwocina nie przewiduje korzyści z antybiotyku (PMID 24097128); amoksycylina bez korzyści w podgrupie z przewidywanym zapaleniem płuc (PMID 34356738); prednizolon 40 mg/d nie skraca kaszlu u dorosłych bez astmy (PMID 28829884); molekularny POCT poprawia leczenie przeciwwirusowe (PMID 28392237).",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 24097128, 34356738, 28829884, 28392237",
+        "cytat": "Two 20-mg prednisolone tablets ... should not be used ... Appropriate antiviral treatment of influenza-positive patients was more common in the POCT group (91% vs 65%)",
+        "co_mowi_zrodlo": "28392237 (ResPOC) dotyczy pacjentów szpitalnych, nie POZ — ekstrapolacja."
+      },
+      {
+        "twierdzenie": "FINAL ŹRÓDŁA: PMID 42646670 (Rzymski 2026) — wymieniony w liście źródeł, ale żadne zdanie FINAL ani RAPORT się na niego nie powołuje.",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 42646670, DOI 10.3390/vaccines14080651",
+        "cytat": "Influenza was characterized by more frequent fever, headache, and myalgia",
+        "co_mowi_zrodlo": "Źródło istnieje i jest trafne (polski sezon 2025/26, grypa = gorączka/bóle głowy/mięśni) — albo przypisać do tezy w CZEGO NIE WIEMY (1), albo usunąć z listy."
+      },
+      {
+        "twierdzenie": "FINAL DLACZEGO: 'krztusiec w 2. dobie ~0,5%, Mycoplasma przy nagłym początku ~1%' — liczby bez źródła i bez etykiety.",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "04-konsylium.md (szacunek bayesa)",
+        "co_mowi_zrodlo": "To wewnętrzne szacunki roli bayes, nie dane z literatury — wymagają etykiety '(szacunek konsylium)' lub [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "FINAL PLAN B (1): okno 'od początku objawów minęło ≤48 h' dla empirycznego oseltamiwiru — próg bez źródła i bez etykiety (brak ChPL oseltamiwiru w zrodla/).",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; abstrakty 24718923/25640810/31839279 nie podają progu 48 h",
+        "co_mowi_zrodlo": "Dawka 75 mg 2×/d jest w abstrakcie Dobson 2015 (poziom 2) — etykieta [wiedza modelu] dla dawki może być podniesiona; czas 5 dni i próg 48 h pozostają bez źródła."
+      },
+      {
+        "twierdzenie": "FINAL PLAN B (4) i WRÓĆ/ESKALUJ: 'kaszel napadowy ≥2 tygodnie' jako kryterium PCR krztuśca — próg bez źródła i etykiety.",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak",
+        "co_mowi_zrodlo": "Kryterium kliniczne WHO/ECDC (kaszel ≥14 dni) — wymaga etykiety albo odwołania do definicji przypadku."
+      },
+      {
+        "twierdzenie": "RAPORT A9: 'Adenowirusowe zapalenie spojówek jest bardzo zakaźne (do ~2 tyg.)' — bez źródła i etykiety.",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak"
+      },
+      {
+        "twierdzenie": "RAPORT A1: 'Pretest grypy w POZ jest więc niski (~5–7%)' — etykieta [proporcje: wiedza modelu] stoi dopiero po następnej frazie; liczba 5–7% nie wynika z PMID 42797869 (nadzór podaje zapadalność/100 tys., nie odsetek wśród objawowych w POZ).",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "PubMed PMID 42797869 — brak takiej liczby"
+      },
+      {
+        "twierdzenie": "RAPORT 'Kto co powiedział': 'Sześć osobnych instancji modelu Opus' — _log.jsonl nie zapisuje nazwy modelu; wpisy gospodarza kosztów mają ts 00:00:00Z (nie rzeczywisty czas).",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "sprawy/2026-11-01-01/_log.jsonl, A-infekcja/_log.jsonl",
+        "co_mowi_zrodlo": "Niezależność ról jest udokumentowana osobnymi plikami i rozrzutem wyjściowym; nazwa modelu i liczba instancji nie są weryfikowalne z repo — oznaczyć jako deklarację ordynatora."
+      },
+      {
+        "twierdzenie": "Dawki i progi w FINAL oznaczone [wiedza modelu, niezweryfikowane]: oseltamiwir 75 mg 2×/d 5 dni; doksycyklina 200→100 mg; SpO2 <94%/<92%, oddechy ≥24/≥30, SBP <90, CRP >100; testy skórne po 4–6 tyg.; RAPORT: bisoprolol wstrzymać przy SBP <100/tętno <50; CRP <20/20–100/>100; powrót do pracy ≥24 h bez gorączki/≥5 dni.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "etykieta §5 poziom 4 obecna przy każdej z tych liczb",
+        "cytat": "[dawka: wiedza modelu, niezweryfikowane] / [progi: wiedza modelu, niezweryfikowane]"
+      },
+      {
+        "twierdzenie": "Biblioteka zrodla/ nie zawiera żadnego pliku poza MANIFEST.md — poziom 1 pusty dla zakażeń dróg oddechowych, grypy, COVID-19, nadwrażliwości na leki i ChPL leków (oseltamiwir, doksycyklina, azytromycyna, budezonid, cefuroksym). FINAL deklaruje to poprawnie.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "zrodla/MANIFEST.md (tylko przykłady)",
+        "cytat": "Biblioteka zrodla/ nie zawiera polskich wytycznych dla zakażeń dróg oddechowych ani nadwrażliwości na leki — poziom 1 hierarchii pusty."
+      }
+    ]
+  },
+  "proces": {
+    "kartka": "ZOLTA",
+    "lista": [
+      {"punkt": "§6 REKOMENDACJA: jedno zdanie, bez 'lub/albo/rozważ'", "status": "OK", "plik": "09-FINAL.md", "uwaga": "'albo' występuje 4× tylko w PLAN B i WRÓĆ/ESKALUJ jako warunki (np. 'zapalenie nagłośni albo obrzęk krtani'), nie jako alternatywy decyzji."},
+      {"punkt": "§6 PILNOŚĆ + PEWNOŚĆ", "status": "OK", "plik": "09-FINAL.md", "uwaga": "PILNOŚĆ 2 dziś — PEWNOŚĆ średnia; zgodne z _agregat.json (pilnosc.wynik 2) i wetem najgorszego scenariusza."},
+      {"punkt": "§6 DLACZEGO ≤3 zdania", "status": "OK", "plik": "09-FINAL.md", "uwaga": "3 zdania, ale bardzo długie (ok. 170 słów); czytelność dla lekarza POZ niska."},
+      {"punkt": "§6 PLAN B, CZEGO NIE WIEMY, WRÓĆ/ESKALUJ, ŹRÓDŁA, stopka", "status": "OK", "plik": "09-FINAL.md"},
+      {"punkt": "Stopka 'Narzędzie testowe i edukacyjne marki MS'", "status": "OK", "plik": "09-FINAL.md, RAPORT.md"},
+      {"punkt": "§5: każda liczba kliniczna ma źródło 1–3 albo etykietę", "status": "BRAK", "plik": "09-FINAL.md", "uwaga": "Bez etykiety: ~0,5% krztusiec / ~1% Mycoplasma; okno ≤48 h dla oseltamiwiru; 'kaszel napadowy ≥2 tygodnie'; 'teleporada za 48–72 h'. RAPORT: 'zakaźne do ~2 tyg.', pretest 5–7%."},
+      {"punkt": "Zgodność FINAL↔RAPORT: budezonid", "status": "BRAK", "plik": "09-FINAL.md / RAPORT.md A6", "uwaga": "FINAL REKOMENDACJA odstawia budezonid bezwarunkowo; RAPORT A6 i 04-konsylium: 'odstawić, jeśli brak świstów' (wyjątki: świsty, COVID-19). Warunek świstów nie trafił do FINAL."},
+      {"punkt": "Zgodność FINAL↔RAPORT: pilność po EKG", "status": "BRAK", "plik": "RAPORT.md A5", "uwaga": "RAPORT: EKG 'pozwala zejść z pilności 2 na 3'; FINAL: PILNOŚĆ 2 bez wzmianki o kryterium zejścia. 04-konsylium A3 ma pełne kryterium — FINAL powinien je nieść w jednym zdaniu albo RAPORT nie sugerować obniżenia."},
+      {"punkt": "Zgodność FINAL↔RAPORT: mechanizm uczulenia zawodowego (Merget 2017)", "status": "BRAK", "plik": "09-FINAL.md PLAN B(5) / RAPORT.md część B", "uwaga": "FINAL: 'przy przygotowywaniu cefalosporyn i.v.'; RAPORT: 'bez objawów w pracy' — oba niezgodne z abstraktem (reakcje W PRACY, BEZ przygotowywania iniekcji, wziewnie)."},
+      {"punkt": "Zgodność FINAL↔RAPORT: liczby agregatu (0,42/0,32/0,14; cefuroksym 0,81; pilność 2)", "status": "OK", "plik": "A-infekcja/03-opinie/_agregat.json, B-alergia/03-opinie/_agregat.json"},
+      {"punkt": "PMID 23719580 nieużyty jako dowód sekwencji oko→gardło", "status": "OK", "plik": "09-FINAL.md, RAPORT.md A9"},
+      {"punkt": "Źródło osierocone w ŹRÓDŁACH (42646670)", "status": "BRAK", "plik": "09-FINAL.md ŹRÓDŁA"},
+      {"punkt": "FINAL ŹRÓDŁA deklaruje [wiedza modelu] dla 'dawki paracetamolu' — w FINAL nie ma dawki paracetamolu", "status": "BRAK", "plik": "09-FINAL.md ŹRÓDŁA", "uwaga": "Drobne: usunąć 'paracetamolu' z listy albo dopisać dawkę w RAPORT A6."},
+      {"punkt": "Struktura katalogów §1: brak 02-triage.json, 05-projekt.md, 06-rezydenci/, 08-odpowiedz-rezydentom.md; opinie w podkatalogach A-infekcja/ i B-alergia/ zamiast 03-opinie/", "status": "BRAK", "plik": "sprawy/2026-11-01-01/", "uwaga": "Sprawa podzielona na dwa tory — CLAUDE.md §1 nie przewiduje tej struktury; ordynator powinien dopisać wyjątek albo zunifikować."},
+      {"punkt": "Dostęp do PubMed", "status": "OK", "uwaga": "Narzędzie MCP działało (43/43 PMID pobrane); bezpośrednie E-utilities przez proxy zablokowane (403) — bez wpływu na wynik."}
+    ]
+  },
+  "rubryka": {
+    "za_przeciw_obecne": 12,
+    "komunikat": 10
+  }
+}
