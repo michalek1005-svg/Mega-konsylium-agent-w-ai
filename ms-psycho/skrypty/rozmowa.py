@@ -36,7 +36,7 @@ ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
 SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b",
-        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\b\w+(ł|l)(a)?bym\b"]
+        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b"]
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -222,6 +222,9 @@ def cmd_odpowiedz(a) -> None:
     na = max([w.get("n", 0) for w in s["ja"]] or [0])
     w = {"n": n, "odpowiedz_na": na, "ts": teraz(), "tekst": tekst, "ryzyko": ryz, "kryzys": bool(d.get("kryzys")),
          "glosy": glosy, "zrodla": [str(z) for z in d.get("zrodla", [])][:6]}
+    for pole in ("wyzwalacze", "powod", "eksploracja", "flagi"):  # docs/SIEC-AGENTOW.md §1 – materiał do pomiaru
+        if d.get(pole) is not None:
+            w[pole] = d[pole]
     if d.get("reakcja"):
         w["reakcja"] = str(d["reakcja"])[:8]
         w["reakcja_na"] = na
@@ -235,12 +238,15 @@ def cmd_odpowiedz(a) -> None:
     zapisz(k / "pracuje.json", {"stan": "czeka", "ts": teraz(), "panel": [], "etap": ""})
     with open(k / "_log.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": w["ts"], "zdarzenie": "odpowiedz", "n": n, "na": na, "ryzyko": ryz, "filtr": filtr, "slow": slow,
-                            "panel": [g["rola"] for g in glosy], "szwy": ostrz}, ensure_ascii=False) + "\n")
+                            "panel": [g["rola"] for g in glosy], "szwy": ostrz,
+                            **{k: w[k] for k in ("wyzwalacze", "powod", "eksploracja", "flagi") if k in w}}, ensure_ascii=False) + "\n")
     print(f"OK: odpowiedź #{n} na wiadomość #{na} ({slow} słów, ryzyko {ryz}).")
     if ostrz:
         print(f"UWAGA (detektor szwów / granic): {ostrz} – sprawdź, czy jeden głos nie zdradza machinerii i nie łamie granic.")
-    if not 40 <= slow <= 240 and not d.get("kryzys"):
-        print("UWAGA: długość poza zakresem 40–240 słów (docs/ROZMOWA.md §4).")
+    if slow > 220 and not d.get("kryzys"):
+        print("UWAGA: ponad 220 słów (docs/ROZMOWA.md §4; treść bezpieczeństwa się nie liczy, ale sprawdź, czy da się krócej).")
+    if slow > 120 and ryz >= 4:
+        print("UWAGA: poziom 4 – tekst ≤80–120 słów, tylko tor bezpieczeństwa (docs/ROZMOWA.md §5).")
 
 
 def cmd_formulacja(a) -> None:

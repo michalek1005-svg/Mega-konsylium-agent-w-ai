@@ -14,7 +14,7 @@ Narzędzie testowe i edukacyjne marki MS. Nie prowadzi diagnostyki ani terapii u
 2. **Routing jest dwustopniowy: najpierw twarde wyzwalacze (deterministyczne, bez modelu), potem wybór prowadzącego z ograniczeniami.** Dzięki temu psychiatra nie może „wypaść” z panelu, gdy padło słowo o leku, a wybór reszty panelu pozostaje rozumny, nie słownikowy.
 3. **Panel = 2 podejścia + 0–1 rola kliniczna (diagnosta albo psychiatra) + strażnik.** Maksimum 3 głosy do scalenia; MDAgents i WiseMind pokazują, że zysk z liczby agentów kończy się przy 2–3, a rośnie koszt i czas.
 4. **Stały rdzeń i rotacja.** Jedno podejście jest „wiodące” na całą sesję (wynika z mapy zgody konsylium albo z pierwszej tury), drugie zmienia się według treści tury. Co czwartą turę prowadzący musi wpuścić podejście, które nie mówiło najdłużej (eksploracja), żeby nie zapętlić się w jednym języku.
-5. **Każdy wybór jest zapisany** w `rozmowa.jsonl`: `panel`, `wyzwalacze`, `powod` (jedno zdanie prowadzącego). To daje materiał do pomiaru (§4) i do nauki, które wyzwalacze są za czułe.
+5. **Każdy wybór jest zapisany** w `rozmowy/<ID>/_log.jsonl`: `panel`, `wyzwalacze`, `powod` (jedno zdanie prowadzącego). To daje materiał do pomiaru (§4) i do nauki, które wyzwalacze są za czułe.
 
 ### 1.2 Twarde wyzwalacze (etap 1, deterministyczny)
 
@@ -208,7 +208,7 @@ P1 (panel) zostaje domyślny tylko, gdy jednocześnie: szwy nie gorsze niż P0 (
 ## 5. Co z tego wymaga kodu (dla Kodującego, po decyzjach Michała)
 
 1. Klasyfikator flag (lista wyrażeń + 1 tanie wywołanie) i tabela wymuszeń (§1.2) jako konfiguracja, nie kod sztywny.
-2. Format JSON wyboru panelu (§1.3) i log `rozmowa.jsonl` z polami `panel`, `wyzwalacze`, `powod`, `eksploracja`, `spor_uwzgledniony`.
+2. Format JSON wyboru panelu (§1.3) i log `rozmowy/<ID>/_log.jsonl` z polami `panel`, `wyzwalacze`, `powod`, `eksploracja`, `spor_uwzgledniony`.
 3. Pola `kod`, `kierunek`, `dowod_z_wywiadu` w `03-formulacje/<rola>.json`; słownik kodów (§2.2) jako plik `config/kody-formulacji.yaml`; `agregacja_formulacji.py` liczy po kodzie i kierunku.
 4. Karta dopasowania (§2.3) jako JSON i tabela w protokole; pytanie rozstrzygające z rozwidleniem A/B jako klikalna karta dla Terapeuty prowadzącego.
 5. Agent `rzecznik-normalnosci` w triage i po ślepej turze; sprawdzający etyki sprawdza obecność zdania „To może być również…” przy sile ≥7 i obecność obu zarzutów (patologizacji i normalizacji) w protokole.

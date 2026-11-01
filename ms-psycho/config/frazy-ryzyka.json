@@ -66,7 +66,14 @@
     "okalecz",
     "zrobil(a|e)?m sobie krzywde",
     "skrzywdzil(a|e)?m sie",
-    "sznyt"
+    "sznyt",
+    "rozdal(e|a)?m (swoje |wszystkie )?rzeczy",
+    "pozegnal(e|a)?m sie ze wszystkimi",
+    "\\bsznur(a|em|y)?\\b",
+    "petl(a|e) na szyj",
+    "stane na moscie",
+    "pojde na (most|tory)",
+    "na tory"
   ],
   "poziom2": [
     "lepiej by(loby)? (bylo )?beze mnie",
@@ -100,7 +107,11 @@
     "gdyby mnie (juz )?nie bylo",
     "nie chce (juz )?istniec",
     "(chce|chcialabym|chcialbym) (po prostu |juz )?zniknac",
-    "szukal(a|e)?m (w internecie )?(sposob|jak )"
+    "szukal(a|e)?m (w internecie )?(sposob|jak )",
+    "przepraszam (was |cie )?za wszystko",
+    "juz byc z (nim|nia|nimi)",
+    "(nie biore|odstawil(a|e)?m|przestal(a|e)?m brac) lek.{0,50}(po co|bez sensu|nie ma sensu)",
+    "nie widze sensu (zycia|zyc|dalej|w zyciu|zeby zyc)"
   ],
   "poziom1": [
     "nie ma sensu",
@@ -131,6 +142,7 @@
     "zamknal mnie",
     "nie pozwala mi wyjsc",
     "boje sie wracac (dzis |dzisiaj |teraz )?do domu",
-    "mnie bije"
+    "mnie bije",
+    "mnie (dusil|dusila|bil|bila|uderzyl|uderzyla|pobil|pobila|zgwalcil|kopal|kopala)"
   ]
 }

@@ -60,6 +60,12 @@ Gdy `czekaj` zgłasza **ZWOŁAŁ KONSYLIUM**: aplikacja założyła już `sprawy
 | 2 (czynne myśli bez planu albo **bierne myśli + dostęp do środków**) | pytanie wprost o plan, zamiar i środki; jeden element planu bezpieczeństwa; numer pomocy; zachęta do kontaktu z lekarzem/psychiatrą w tym tygodniu |
 | 3–4 | `"kryzys": true` – aplikacja pokazuje czerwoną kartę z numerami z `config/pomoc-pl.json`; tekst krótki: uznanie, „to wymaga rozmowy z człowiekiem teraz”, 112 przy zagrożeniu życia; w tej rozmowie nie wracasz do zwykłych porad |
 
+**Poziom 4 w Rozmowie** (uzgodnienie z docs/BEZPIECZENSTWO.md §2 „rozmowa kończy się komunikatem kryzysowym”): pole pisania **zostaje aktywne** – osoba w kryzysie musi móc dalej pisać. „Kończy się” znaczy: od tej tury do końca rozmowy **każda** odpowiedź to wyłącznie tor bezpieczeństwa (`kryzys: true`, ≤80–120 słów, kontakt dziś, oddalenie środków, jedno pytanie prowadzące do działania); żadnych zwykłych porad, nawet gdy użytkownik zmienia temat. Strażnik zawsze przed panelem – pseudokod: `czekaj` → `pracuje` → strażnik → (jeśli eskaluj) panel tylko z psychiatrą / prowadzącym → `odpowiedz`; tura nie kończy się przed odpowiedzią.
+
+**Flagi bez wątku samobójczego** (przemoc doświadczana, zagrożenie dla innych, mania/psychoza, intoksykacja, **pilny stan somatyczny lub cudzy lek** – np. tętno 120 w spoczynku, pożyczony propranolol): `kryzys: true` także przy poziomie samobójczym 0, z właściwym kierunkiem (112 / Niebieska Linia / lekarz lub SOR dziś). Filtr aplikacji już traktuje frazy przemocy jak poziom 3.
+
+**Wywiad a Rozmowa:** Rozmowa nie widzi ankiety z zakładki Wywiad; jeśli użytkownik wypełnił wywiad, prowadzący w turze 1 pyta krótko o najważniejsze fakty (bezpieczeństwo, leki, substancje), zamiast zakładać, że ich nie ma.
+
 Przy poziomie ≥3 (próby PSY‑03 i PSY‑10, 1.11.2026):
 - **Każda tura** ma kontakt z człowiekiem lub specjalistą **dziś** (CZP albo izba przyjęć z oddziałem psychiatrycznym dziś, bez skierowania). Przy poziomie 4, alkoholu i dostępie do środków – **dziś, nie „jutro”**; przy impulsie 112.
 - **Numery nie jak formułka:** pełna lista jest na czerwonej karcie, którą aplikacja dokleja do każdej odpowiedzi kryzysowej. W tekście **jeden** numer z gotowym pierwszym zdaniem („wystarczy powiedzieć: jest mi bardzo ciężko”) i nie powtarzaj bloku z poprzedniej tury. Dla osoby, która pisze, że nie ma nikogo: telefon 800 70 2222 albo czat centrumwsparcia.pl zamiast „oddaj komuś”.

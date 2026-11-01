@@ -140,7 +140,7 @@ Po FINAL prowadzący czeka 10 minut na uwagi Terapeuty prowadzącego, jak w medy
 5. **Klient‑sędzia** czyta odpowiedź (≤10 s): czy zrozumiała, czy nie rani, czy nie moralizuje, czy nie obiecuje. Czerwona → prowadzący poprawia raz.
 6. **Sprawdzający etyki** w tle co turę: granice (§6.4). **Sprawdzający źródeł** tylko, gdy w odpowiedzi padła liczba albo „badania”.
 
-**Pamięć rozmowy.** Każda tura dopisuje do `sprawy/<ID>/rozmowa.jsonl` (kto, co, SPÓR, poziom ryzyka). Prowadzący utrzymuje `formulacja-robocza.md`, aktualizowaną co 3–4 tury, widoczną dla Michała na życzenie (ekran „Formulacja robocza” obok czatu).
+**Pamięć rozmowy.** Każda tura dopisuje do `rozmowy/<ID>/zespol.json` + `_log.jsonl` (docs/ROZMOWA.md §1) (kto, co, SPÓR, poziom ryzyka). Prowadzący utrzymuje `formulacja-robocza.md`, aktualizowaną co 3–4 tury, widoczną dla Michała na życzenie (ekran „Formulacja robocza” obok czatu).
 
 **Co widać na ekranie podczas pisania.** Pole odpowiedzi z animacją pisania i pasek „zespół pracuje: 3 osoby” z małymi awatarami osób z panelu; po wysłaniu odpowiedzi awatary gasną. Przycisk „Pokaż, kto co myślał” rozwija pod odpowiedzią trzy krótkie głosy w kolorach ról (tylko na życzenie, domyślnie zwinięte). To zachowuje zasadę Michała „widzę, kiedy AI myśli” bez psucia jednego głosu.
 
@@ -287,7 +287,7 @@ Pokój: ta sama scena co w medycynie (stół, laptopy, ekrany), ale skórka „g
 2. **Wywiad**: nowy zestaw pytań startowych (C‑SSRS, PHQ‑9, GAD‑7, AUDIT‑C, cel, gotowość), flaga `ryzyko` z poziomem.
 3. **Schemat formulacji** (`schemas/formulacja.schema.json`) i skrypt `agregacja_formulacji.py` z tabelą tłumaczeń.
 4. **Protokół ryzyka w aplikacji**: pasek alarmu, ekran z numerami, blokada trybu „do klienta” przy poziomie ≥ 3, komunikat „to nie jest terapia”.
-5. **Tryb Porada**: ekran czatu, `rozmowa.jsonl`, `formulacja-robocza.md`, pasek „zespół pracuje”, przycisk „Zwołaj konsylium”, zwijane „kto co myślał”.
+5. **Tryb Porada**: ekran czatu, `rozmowy/<ID>/_log.jsonl`, `formulacja-robocza.md`, pasek „zespół pracuje”, przycisk „Zwołaj konsylium”, zwijane „kto co myślał”.
 6. **Biblioteka `zrodla-psycho/`** z MANIFESTEM; Michał pobiera PDF‑y z listy §7.2.
 7. **Testy** wg §9 przez wątek Testowy; definicje ról zatwierdza Michał.
 

@@ -24,10 +24,12 @@ PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZM
  ("jestem dla wszystkich ciężarem", 2), ("najlepiej żebym zniknęła na zawsze", 2), ("chciałabym zasnąć i się nie obudzić", 2),
  ("Czasem po winie myślę, że lepiej byłoby nie żyć.", 2), ("lepiej żeby mnie nie było", 2), ("chciałabym po prostu zniknąć", 2), ("szukałam sposobów", 2),
  ("W zeszłym miesiącu znowu się pocięłam", 3), ("mam ochotę się pociąć", 3), ("okaleczyłam się", 3), ("zrobiłam sobie krzywdę", 3),
+ ("rozdałem swoje rzeczy", 3), ("pożegnałem się ze wszystkimi", 3), ("mam sznur w piwnicy", 3), ("stanę na moście", 3), ("mąż mnie dusił", 3),
+ ("przepraszam za wszystko", 2), ("chciałabym już być z nim", 2), ("nie biorę leków na cukrzycę, bo po co", 2), ("nie widzę sensu życia", 2),
  ("Po co to wszystko, i tak nic się nie zmieni.", 1), ("mam dość życia", 1), ("czuję się beznadziejna", 1),
 ]
 CZYSTE = ["Od tygodnia kłócę się z siostrą o opiekę nad mamą", "Jak powiedzieć szefowi, że nie wezmę nadgodzin?",
-          "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem"]
+          "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem", "spotkajmy się przy moście", "jutro idę na sznurowanie butów? nie", "chcę być z nim szczera"]
 bledy = [(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
 for t, m, p in bledy: print(f"BŁĄD: oczekiwano ≥{m}, jest {p}: {t}")
 print(f"{len(PRZYPADKI) + len(CZYSTE) - len(bledy)}/{len(PRZYPADKI) + len(CZYSTE)} OK"); sys.exit(1 if bledy else 0)

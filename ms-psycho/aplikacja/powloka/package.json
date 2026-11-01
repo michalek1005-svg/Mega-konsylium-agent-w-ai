@@ -1,7 +1,7 @@
 {
   "name": "ms-konsylium-psycho",
   "productName": "MS Konsylium Psychologiczne",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Brat psychologiczny MS Konsylium: Rozmowa z terapeutą AI i Pokój psychologiczny (narzędzie testowe)",
   "main": "main.js",
   "private": true,
