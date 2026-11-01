@@ -1,0 +1,74 @@
+{
+  "kod": "PSY-08",
+  "plec": "kobieta",
+  "wiek": 45,
+  "tytul": "Ataki paniki",
+  "opis": "Od miesiąca mam ataki: serce wali, trzęsą mi się ręce, czuję, że umrę. Czasem w nocy też. Schudłam, choć jem więcej. Koleżanka mówi, że to nerwica i żebym poszła na terapię.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy?",
+      "odpowiedz": "Ok. 5 tygodni"
+    },
+    {
+      "pytanie": "Jak często ataki?",
+      "odpowiedz": "Kilka razy w tygodniu, raz obudził mnie w nocy"
+    },
+    {
+      "pytanie": "Ile trwa atak?",
+      "odpowiedz": "10–30 minut, ale między atakami serce też bije szybko"
+    },
+    {
+      "pytanie": "Czy mierzyłaś tętno?",
+      "odpowiedz": "Zegarek pokazuje w spoczynku 105–115"
+    },
+    {
+      "pytanie": "Waga i apetyt?",
+      "odpowiedz": "Schudłam 5 kg w miesiąc, apetyt większy"
+    },
+    {
+      "pytanie": "Inne objawy?",
+      "odpowiedz": "Pocę się, jest mi ciągle gorąco, drżą mi ręce, częstsze wypróżnienia"
+    },
+    {
+      "pytanie": "Miesiączki?",
+      "odpowiedz": "Rzadsze i skąpe"
+    },
+    {
+      "pytanie": "Czy unikasz miejsc ze strachu przed atakiem?",
+      "odpowiedz": "Zaczynam unikać sklepów"
+    },
+    {
+      "pytanie": "Wcześniej problemy z lękiem?",
+      "odpowiedz": "Nie, zawsze byłam spokojna"
+    },
+    {
+      "pytanie": "Myśli o śmierci lub zrobieniu sobie krzywdy?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Kawa, energetyki, suplementy odchudzające?",
+      "odpowiedz": "2 kawy, nic więcej"
+    },
+    {
+      "pytanie": "Choroby, leki?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Badania (EKG, tarczyca)?",
+      "odpowiedz": "Nie robiłam"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Jaką terapię wybrać na nerwicę"
+    }
+  ],
+  "flagi": [
+    "[PILNE] Tętno spoczynkowe 105–115/min między atakami."
+  ],
+  "nieznane": [
+    "TSH, FT4, EKG",
+    "ciśnienie tętnicze"
+  ],
+  "wyniki": "Skale: GAD-7 = 13 pkt, PDSS — nie wypełniono.",
+  "pytanie": "Jaką terapię wybrać na nerwicę lękową?"
+}

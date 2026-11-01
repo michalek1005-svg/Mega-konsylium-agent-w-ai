@@ -1,0 +1,9 @@
+# Dane rozmów, wywiadów i spraw zostają na dysku, nie w repo
+rozmowy/
+wywiad-na-zywo/
+sprawy/*/
+_ai-aktywnosc.json*
+aplikacja/*/node_modules/
+aplikacja/powloka/build/
+aplikacja/powloka/out/
+aplikacja/pokoj-psychologiczny/POKOJ-PSYCHOLOGICZNY-*.html

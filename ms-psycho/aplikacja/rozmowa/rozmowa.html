@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pl" data-motyw="jasny">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:">
+<title>Rozmowa</title>
+<style>
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+/* Rozmowa: okno jak w komunikatorze. Jeden terapeuta AI odpowiada jednym głosem; za nim pracuje zespół
+   agentów różnych podejść (docs/ROZMOWA.md). Makieta: grafika/psycholog/makieta-rozmowa.png (wątek Graficzny). */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body { font: 14.5px/1.5 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif; color: var(--ink); background: transparent; overflow: hidden; }
+.okno { height: 100%; display: grid; grid-template-rows: auto auto 1fr auto; padding: 18px 28px 16px 110px; gap: 10px; }
+.naglowek { display: flex; align-items: center; gap: 14px; min-height: 52px; }
+.awatar-glowny { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 15px; color: #fff;
+  background: linear-gradient(150deg, #8f7fd6, #5B4A8A); box-shadow: 0 0 0 3px rgba(255,255,255,.75), 0 10px 22px -10px rgba(60,40,90,.7); position: relative; flex: none; }
+.awatar-glowny::after { content: ""; position: absolute; right: 1px; bottom: 1px; width: 11px; height: 11px; border-radius: 50%; background: #5fbf8a; border: 2px solid #fff; }
+.awatar-glowny.cisza::after { background: #b9b2c9; }
+.naglowek h1 { margin: 0; font-size: 19px; font-weight: 760; letter-spacing: -.01em; }
+.naglowek .sub { font-size: 12.5px; color: var(--mut); }
+.naglowek .prawy { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.btn { border: 0; border-radius: 999px; padding: 8px 14px; font: 650 12.5px inherit; font-family: inherit; background: var(--btn); color: var(--btn-txt); cursor: pointer; }
+.btn:hover { background: var(--btn-h); }
+.btn.on { background: var(--on); color: var(--on-txt); }
+select.btn { appearance: none; padding-right: 14px; max-width: 220px; }
+.tryb { display: inline-flex; border-radius: 999px; background: var(--btn); padding: 3px; }
+.tryb button { border: 0; background: transparent; border-radius: 999px; padding: 6px 12px; font: 650 12px inherit; font-family: inherit; color: var(--mut); cursor: pointer; }
+.tryb button[aria-pressed="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 4px 12px -8px rgba(60,40,90,.6); }
+.pracuje { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 14px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 12.5px; color: var(--mut); min-height: 42px; transition: opacity .3s; }
+.pracuje b { color: var(--ink); font-weight: 700; }
+.pracuje.spi { opacity: .75; }
+.kropki i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #a894d6; margin-right: 3px; animation: kr 1.3s ease-in-out infinite; }
+.kropki i:nth-child(2) { animation-delay: .2s; } .kropki i:nth-child(3) { animation-delay: .4s; }
+.spi .kropki i { animation: none; opacity: .4; }
+@keyframes kr { 50% { opacity: .25; transform: translateY(-3px); } }
+.awatary { display: flex; margin-left: auto; padding-left: 10px; }
+.aw { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; display: grid; place-items: center; font-size: 9.5px; font-weight: 800; color: #fff; animation: wejdz .35s ease both; }
+.aw.myśli { animation: wejdz .35s ease both, puls 1.6s ease-in-out infinite; }
+@keyframes wejdz { from { transform: scale(.3); opacity: 0; } }
+@keyframes puls { 50% { box-shadow: 0 0 0 4px rgba(168,148,214,.35); } }
+.rozmowa { overflow-y: auto; padding: 8px 6px 18px; display: flex; flex-direction: column; gap: 16px; }
+.dzien { align-self: center; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); padding: 4px 12px; border-radius: 999px; background: var(--btn); }
+.msg { max-width: min(68%, 720px); padding: 12px 16px; border-radius: 20px; position: relative; animation: msg .35s cubic-bezier(.2,.9,.3,1) both; white-space: pre-wrap; overflow-wrap: anywhere; }
+@keyframes msg { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+.msg .kto { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 3px; white-space: normal; }
+.msg.zespol { align-self: flex-start; background: var(--panel); border-bottom-left-radius: 6px; box-shadow: var(--panel-cien); }
+.msg.zespol .kto { color: #6a58a8; }
+html[data-motyw="ciemny"] .msg.zespol .kto { color: #cdb9f0; }
+.msg.ja { align-self: flex-end; background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; border-bottom-right-radius: 6px; box-shadow: 0 14px 28px -18px rgba(60,40,90,.8); }
+.msg.ja .kto { color: #e9defc; }
+.msg .czas { position: absolute; bottom: -17px; font-size: 10.5px; color: var(--mut); white-space: nowrap; }
+.msg.ja .czas { right: 8px; } .msg.zespol .czas { left: 8px; }
+.msg .stan-wys { margin-left: 4px; }
+.msg .emo { position: absolute; bottom: -12px; right: 12px; background: #fff; color: #222; border-radius: 999px; padding: 1px 7px; font-size: 13px; box-shadow: 0 2px 8px rgba(60,40,90,.25); white-space: nowrap; }
+.msg.zespol .emo { right: auto; left: 64px; }
+.msg .reaguj { position: absolute; top: -14px; right: -6px; display: none; gap: 2px; background: var(--panel); border-radius: 999px; padding: 2px 4px; box-shadow: 0 6px 16px -8px rgba(60,40,90,.6); white-space: nowrap; }
+.msg.zespol:hover .reaguj, .msg.zespol:focus-within .reaguj { display: flex; }
+.reaguj button { border: 0; background: transparent; font-size: 15px; cursor: pointer; border-radius: 50%; width: 28px; height: 28px; }
+.reaguj button:hover { background: var(--btn); transform: scale(1.15); }
+.msg .zrodla { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; white-space: normal; }
+.msg .zrodla span { font-size: 10.5px; font-weight: 650; padding: 2px 8px; border-radius: 999px; background: var(--btn); color: var(--btn-txt); }
+.msg .glosy-btn { margin-top: 8px; border: 0; background: none; color: var(--mut); font: 650 11.5px inherit; font-family: inherit; cursor: pointer; padding: 0; text-decoration: underline dotted; }
+.msg .glosy { margin-top: 8px; display: grid; gap: 6px; white-space: normal; }
+.msg .glos { font-size: 12.5px; padding: 7px 10px; border-radius: 12px; background: var(--btn); border-left: 3px solid var(--k, #8f7fd6); }
+.msg .glos b { display: block; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--mut); }
+.msg.pisze { color: var(--mut); font-style: italic; display: flex; gap: 8px; align-items: center; }
+.msg.system { align-self: center; max-width: min(82%, 760px); background: var(--btn); color: var(--ink); font-size: 12.5px; border-radius: 16px; text-align: left; box-shadow: none; }
+.msg.system b { font-weight: 750; }
+.msg.kryzys { align-self: stretch; max-width: none; background: #fff4f4; color: #5a1d1d; border: 2px solid #d9534f; border-radius: 18px; box-shadow: 0 16px 36px -22px rgba(168,58,56,.8); }
+html[data-motyw="ciemny"] .msg.kryzys { background: #3a1c22; color: #ffe1e1; }
+.msg.kryzys .kto { color: #b52b27; }
+.msg.kryzys ul { margin: 8px 0 4px; padding: 0; list-style: none; display: grid; gap: 6px; white-space: normal; }
+.msg.kryzys li { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.msg.kryzys li .nr { font-size: 19px; font-weight: 800; color: #b52b27; min-width: 120px; }
+html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
+.msg.kryzys li small { color: inherit; opacity: .8; }
+.wpis { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: end; padding-top: 10px; border-top: 1px solid var(--pole-obrys); }
+.pole { display: flex; flex-direction: column; gap: 6px; padding: 8px 10px 8px 16px; border-radius: 24px; background: var(--pole); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
+.pole textarea { border: 0; outline: 0; resize: none; background: transparent; font: inherit; color: var(--ink); max-height: 140px; min-height: 24px; padding: 4px 0; }
+.emoji { display: flex; gap: 2px; flex-wrap: wrap; }
+.emoji button { border: 0; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: transparent; font-size: 17px; cursor: pointer; transition: transform .15s; }
+.emoji button:hover { background: var(--btn); transform: scale(1.18); }
+.wyslij { width: 46px; height: 46px; border-radius: 50%; border: 0; background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; display: grid; place-items: center; cursor: pointer; box-shadow: 0 10px 22px -12px rgba(91,74,138,.9); }
+.wyslij:disabled { opacity: .45; cursor: default; }
+.wyslij svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.zwolaj { border: 0; border-radius: 999px; padding: 13px 18px; font: 750 13px inherit; font-family: inherit; background: var(--on); color: var(--on-txt); display: flex; gap: 8px; align-items: center; cursor: pointer; box-shadow: 0 10px 24px -12px rgba(91,74,138,.8); white-space: nowrap; }
+.stopka { font-size: 11px; color: var(--mut); text-align: center; }
+.stopka b { color: var(--ink); }
+.panel-boczny { position: absolute; right: 24px; top: 84px; width: min(420px, 40vw); max-height: calc(100% - 180px); overflow: auto; padding: 16px 18px; border-radius: 22px; background: var(--panel); box-shadow: var(--panel-cien), 0 30px 60px -30px rgba(60,40,90,.6); z-index: 5; white-space: pre-wrap; font-size: 13px; }
+.panel-boczny h3 { margin: 0 0 8px; font-size: 14px; }
+.potw { align-self: center; display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); font-size: 13px; flex-wrap: wrap; justify-content: center; }
+@media (max-width: 900px) { .okno { padding-left: 24px; } .msg { max-width: 88%; } .wpis { grid-template-columns: 1fr auto; } .zwolaj { grid-column: 1 / -1; justify-content: center; } }
+</style>
+</head>
+<body>
+<div class="okno">
+  <header class="naglowek">
+    <div class="awatar-glowny cisza" id="awatar" aria-hidden="true">AI</div>
+    <div>
+      <h1>Terapeuta AI</h1>
+      <div class="sub" id="sub">jeden głos · za nim pracuje zespół siedmiu podejść</div>
+    </div>
+    <div class="prawy">
+      <div class="tryb" role="group" aria-label="Rodzaj rozmowy">
+        <button type="button" data-tryb="rozmowa" aria-pressed="true" title="Mówisz o sobie albo o konkretnej sytuacji – terapeuta odpowiada Tobie">O mojej sytuacji</button>
+        <button type="button" data-tryb="konsultacja" aria-pressed="false" title="Opisujesz przypadek jako terapeuta – zespół odpowiada jak kolega po fachu">Konsultacja przypadku</button>
+      </div>
+      <select class="btn" id="lista" aria-label="Wcześniejsze rozmowy" hidden></select>
+      <button class="btn" type="button" id="formulacja-btn" hidden>Jak to rozumiemy</button>
+      <button class="btn" type="button" id="nowa">Nowa rozmowa</button>
+    </div>
+  </header>
+  <div class="pracuje spi" id="pracuje" aria-live="polite"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span><span id="pracuje-tekst">Zespół czeka na Twoją wiadomość</span><div class="awatary" id="awatary"></div></div>
+  <div class="rozmowa" id="rozmowa" aria-live="polite"></div>
+  <div>
+    <form class="wpis" id="wpis" autocomplete="off">
+      <div class="pole">
+        <textarea id="tekst" rows="1" maxlength="4000" placeholder="Napisz, co się dzieje albo o jaką sytuację chcesz zapytać… (Enter wysyła, Shift+Enter – nowa linia)"></textarea>
+        <div class="emoji" id="emoji" aria-label="Emotikony"></div>
+      </div>
+      <button class="wyslij" id="wyslij" type="submit" aria-label="Wyślij" disabled><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="zwolaj" id="zwolaj" type="button" title="Cały zespół omawia tę rozmowę w Pokoju psychologicznym i pisze Wnioski">Zwołaj konsylium <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="stopka">Narzędzie testowe marki MS – <b>to nie jest terapia ani diagnoza</b>. W kryzysie: <b>112</b> · <b>800 70 2222</b> (całodobowo) · <b>116 123</b>.</p>
+  </div>
+  <div class="panel-boczny" id="formulacja" hidden></div>
+</div>
+<script>
+/*@@MS-MOST@@*/
+</script>
+<script>
+var POMOC = /*@@POMOC@@*/null;
+var FRAZY = /*@@FRAZY@@*/null;
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var ROLE = {
+    prowadzacy: ['Prowadzący · superwizor', 'PS', '#6b5f96'], terapeuta_cbt: ['Terapeutka CBT', 'CBT', '#7b6cc4'],
+    terapeuta_psychodynamiczny: ['Terapeuta psychodynamiczny', 'PD', '#7fa07a'], terapeuta_systemowy: ['Terapeutka systemowa', 'TS', '#c9a65c'],
+    terapeuta_act: ['Terapeuta ACT / trzecia fala', 'ACT', '#6f96a9'], terapeuta_humanistyczny: ['Terapeutka humanistyczna', 'TH', '#b97a6c'],
+    diagnosta: ['Diagnosta kliniczny', 'DK', '#4f7f8a'], psychiatra: ['Psychiatra konsultant', 'PK', '#a0741f'],
+    straznik_ryzyka: ['Strażnik ryzyka', 'SR', '#c0504d'], klient_sedzia: ['Klient jako sędzia', 'KS', '#9780bb'],
+    sprawdzajacy_etyki: ['Sprawdzający etyki', 'SE', '#8a7fb5'], sprawdzajacy_zrodel: ['Sprawdzający źródeł', 'SŹ', '#5b8a6a'],
+    rzecznik_normalnosci: ['Rzecznik normalności', 'RN', '#7a8a9a']
+  };
+  function rola(r) { r = String(r || '').toLowerCase().replace(/[-\s]+/g, '_'); return ROLE[r] || [r || 'Zespół', (r || '?').slice(0, 2).toUpperCase(), '#8f7fd6']; }
+  var EMOJI = ['🙂', '😊', '😔', '😢', '😟', '😤', '🤔', '👍', '❤️', '🙏', '💪', '🌱'];
+  var REAKCJE = ['❤️', '👍', '🙏', '🤔', '😊'];
+
+  var most = typeof MsMost !== 'undefined' ? MsMost : null;
+  var stan = { id: null, tryb: 'rozmowa', ja: [], zespol: [], reakcje: {}, pracuje: null, aiAktywne: false, aiBylo: 0, ostatniaWys: 0, demo: false, sprawa: null };
+  var pliki = false;
+
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function md(t) { return esc(t).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/(^|\s)\*([^*\n]+)\*/g, '$1<i>$2</i>'); }
+  function godz(ts) { var d = new Date(ts || Date.now()); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  function bezOgonkow(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l'); }
+  // Filtr słownikowy w aplikacji – działa zanim cokolwiek trafi do modelu (docs/BEZPIECZENSTWO.md §3)
+  function ryzykoLokalne(t) {
+    var s = bezOgonkow(t), w = { poziom: 0, frazy: [] };
+    ((FRAZY && FRAZY.poziom3) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 3; w.frazy.push(m[0]); } });
+    if (!w.poziom) ((FRAZY && FRAZY.poziom2) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 2; w.frazy.push(m[0]); } });
+    if (!w.poziom) ((FRAZY && FRAZY.poziom1) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = Math.max(w.poziom, 1); w.frazy.push(m[0]); } });
+    return w;
+  }
+  function numeryHtml() {
+    return '<ul>' + ((POMOC && POMOC.numery) || []).map(function (n) {
+      return '<li><span class="nr">' + esc(n.numer) + '</span><span><b>' + esc(n.nazwa) + '</b><br><small>' + esc(n.kiedy) + ' · ' + esc(n.godziny) + '</small></span></li>';
+    }).join('') + '</ul>' + (POMOC && POMOC.bez_skierowania ? '<small>' + esc(POMOC.bez_skierowania) + '</small>' : '');
+  }
+
+  // ---------- pliki rozmowy (docs/ROZMOWA.md) ----------
+  function kat() { return 'rozmowy/' + stan.id; }
+  function nowyId() { var d = new Date(); var p = function (x) { return ('0' + x).slice(-2); }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + '-' + p(d.getHours()) + p(d.getMinutes()) + '-' + Math.random().toString(36).slice(2, 5); }
+  function zapiszJa() {
+    if (!pliki || stan.demo) return Promise.resolve();
+    var dane = { rozmowa: stan.id, tryb: stan.tryb, zmieniono: new Date().toISOString(), wiadomosci: stan.ja, reakcje: stan.reakcje };
+    return most.zapisz(kat() + '/uzytkownik.json', JSON.stringify(dane, null, 2));
+  }
+  function zapiszMeta() {
+    if (!pliki || stan.demo) return Promise.resolve();
+    return most.zapisz(kat() + '/meta.json', JSON.stringify({ rozmowa: stan.id, tryb: stan.tryb, utworzono: stan.utworzono, aplikacja: 'MS Konsylium Psychologiczne' }, null, 2));
+  }
+  function zaladuj(id) {
+    stan.id = id; stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
+    try { localStorage.setItem('ms-rozmowa', id); } catch (e) {}
+    if (!pliki) { rysuj(); return Promise.resolve(); }
+    return Promise.all([most.czytaj(kat() + '/meta.json'), most.czytaj(kat() + '/uzytkownik.json'), most.czytaj(kat() + '/zespol.json')]).then(function (r) {
+      try { var m = r[0] && JSON.parse(r[0].tekst); if (m) { stan.tryb = m.tryb || 'rozmowa'; stan.utworzono = m.utworzono; } } catch (e) {}
+      try { var u = r[1] && JSON.parse(r[1].tekst); if (u) { stan.ja = u.wiadomosci || []; stan.reakcje = u.reakcje || {}; } } catch (e) {}
+      try { var z = r[2] && JSON.parse(r[2].tekst); if (z) stan.zespol = z.wiadomosci || []; } catch (e) {}
+      pokazTryb(); rysuj(true); odswiezListe();
+    });
+  }
+  function nowa() {
+    stan.id = nowyId(); stan.utworzono = new Date().toISOString(); stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
+    try { localStorage.setItem('ms-rozmowa', stan.id); } catch (e) {}
+    rysuj(true);
+    if (pliki) zapiszMeta().then(zapiszJa).then(odswiezListe);
+    $('tekst').focus();
+  }
+  function odswiezListe() {
+    if (!pliki) return;
+    most.lista('rozmowy').then(function (l) {
+      var k = (l || []).filter(function (x) { return x.katalog && !/^[._]/.test(x.nazwa); }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
+      var s = $('lista'); s.innerHTML = '';
+      k.forEach(function (x) { var o = document.createElement('option'); o.value = x.nazwa; o.textContent = 'Rozmowa ' + x.nazwa.slice(0, 16).replace(/-(\d\d)(\d\d)$/, ' $1:$2'); if (x.nazwa === stan.id) o.selected = true; s.appendChild(o); });
+      s.hidden = k.length < 2;
+    }).catch(function () {});
+  }
+
+  // ---------- rysowanie ----------
+  var pokazaneGlosy = {};
+  function wiadomosci() {
+    var w = [];
+    stan.ja.forEach(function (m) { w.push({ typ: 'ja', ts: m.ts, m: m }); });
+    stan.zespol.forEach(function (m) { w.push({ typ: 'zespol', ts: m.ts, m: m }); });
+    w.sort(function (a, b) { return String(a.ts).localeCompare(String(b.ts)) || (a.typ === 'ja' ? -1 : 1); });
+    return w;
+  }
+  function powitanie() {
+    var t = stan.tryb === 'konsultacja'
+      ? 'Dzień dobry 🙂 Opisz przypadek albo konkretną sytuację z pracy z klientem. Odpowiem jednym głosem, ale zanim odpowiem, omówi go zespół siedmiu podejść – od CBT po psychiatrę – a strażnik ryzyka przeczyta każdą wiadomość.'
+      : 'Cześć 🙂 Jestem terapeutą AI. Możesz napisać o czymś, co Cię teraz zajmuje – o konkretnej sytuacji, rozmowie, emocji. Odpowiem jednym głosem, ale za mną pracuje zespół terapeutów różnych podejść, który najpierw się nad tym zastanowi 🌱';
+    return '<div class="msg zespol"><span class="kto">Terapeuta AI</span>' + esc(t) + '<span class="czas">teraz</span></div>';
+  }
+  function rysuj(naDol) {
+    var el = $('rozmowa'), byl = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    var h = '<div class="msg system"><b>To nie jest terapia.</b> MS Konsylium Psychologiczne to narzędzie testowe. Nie zastępuje psychologa, psychoterapeuty ani lekarza i nie stawia diagnoz. Jeśli ktoś jest w kryzysie, zadzwoń: <b>112</b> albo <b>800 70 2222</b> (całodobowo).</div>';
+    h += powitanie();
+    wiadomosci().forEach(function (x) {
+      var m = x.m;
+      if (x.typ === 'ja') {
+        if (m.typ === 'zwolaj') { h += '<div class="dzien">Zwołano konsylium' + (m.sprawa ? ' · sprawa ' + esc(m.sprawa) : '') + '</div>'; return; }
+        var odp = stan.zespol.some(function (z) { return z.odpowiedz_na >= m.n; });
+        h += '<div class="msg ja"><span class="kto">Ty</span>' + md(m.tekst) + '<span class="czas">' + godz(m.ts) + '<span class="stan-wys" title="' + (odp ? 'Zespół odpowiedział' : 'Zapisane w folderze') + '">' + (odp ? ' ✓✓' : ' ✓') + '</span></span>' + (emoZespolu(m.n) ? '<span class="emo" title="Reakcja terapeuty">' + esc(emoZespolu(m.n)) + '</span>' : '') + '</div>';
+        if (m.ryzykoLokalne && m.ryzykoLokalne >= 3) h += kryzysHtml('Widzę w Twojej wiadomości słowa, które mogą znaczyć, że jest Ci teraz bardzo ciężko. Twoje bezpieczeństwo jest najważniejsze. Jeśli myślisz o zrobieniu sobie krzywdy, porozmawiaj teraz z człowiekiem:', 'aplikacja');
+        else if (m.ryzykoLokalne === 2) h += '<div class="msg system">🤍 Dziękuję, że to napisałeś/napisałaś. Takie myśli warto traktować poważnie – zespół zaraz o nie dopyta. Gdyby zrobiły się silniejsze, możesz od razu zadzwonić: <b>800 70 2222</b> (całodobowo), <b>116 123</b>, a przy zagrożeniu życia <b>112</b>.</div>';
+        return;
+      }
+      var reakcja = stan.reakcje[m.n];
+      if (m.kryzys) { h += kryzysHtml(m.tekst, 'Terapeuta AI'); return; }
+      h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(m.tekst);
+      if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
+      if (m.glosy && m.glosy.length) {
+        var otw = pokazaneGlosy[m.n];
+        h += '<div><button class="glosy-btn" type="button" data-glosy="' + m.n + '">' + (otw ? 'Ukryj głosy zespołu' : 'Pokaż, kto co myślał (' + m.glosy.length + ')') + '</button></div>';
+        if (otw) h += '<div class="glosy">' + m.glosy.map(function (g) { var r = rola(g.rola); return '<div class="glos" style="--k:' + r[2] + '"><b>' + esc(r[0]) + '</b>' + esc(g.skrot) + '</div>'; }).join('') + '</div>';
+      }
+      h += '<div class="reaguj" aria-label="Zareaguj">' + REAKCJE.map(function (e) { return '<button type="button" data-reakcja="' + m.n + '" data-e="' + e + '">' + e + '</button>'; }).join('') + '</div>';
+      h += '<span class="czas">' + godz(m.ts) + (m.ryzyko >= 1 ? ' · uważność na bezpieczeństwo' : '') + '</span>' + (reakcja ? '<span class="emo">' + esc(reakcja) + '</span>' : '') + '</div>';
+    });
+    if (czekaNaOdpowiedz()) {
+      var p = stan.pracuje && stan.pracuje.stan === 'pracuje' && świeże(stan.pracuje.ts, 180);
+      h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>' + (p ? 'Terapeuta pisze – zespół ' + esc(stan.pracuje.etap || 'rozważa odpowiedź') : (stan.aiAktywne ? 'Zespół odbiera wiadomość…' : 'Wiadomość czeka na zespół…')) + '</div>';
+      if (!p && !stan.aiAktywne && stan.ostatniaWys && Date.now() - stan.ostatniaWys > 25000) h += '<div class="msg system">Na tym komputerze nie widać teraz pracy Claude. Żeby terapeuta odpowiadał, w folderze Konsylium Psychologicznego musi działać sesja Claude z poleceniem z <b>START-TUTAJ.md</b> (krok „Rozmowa”). Wiadomość czeka zapisana.</div>';
+    }
+    if (stan.potwZwolaj) h += '<div class="potw">Zwołać konsylium nad tą rozmową? Cały zespół omówi ją w Pokoju psychologicznym (ok. 10–15 min) i napisze Wnioski. <button class="btn on" type="button" id="zwolaj-tak">Tak, zwołaj</button><button class="btn" type="button" id="zwolaj-nie">Nie teraz</button></div>';
+    el.innerHTML = h;
+    if (naDol || byl) el.scrollTop = el.scrollHeight;
+    rysujPracuje();
+  }
+  function emoZespolu(n) { var e = null; stan.zespol.forEach(function (z) { if (z.reakcja && (z.reakcja_na || z.odpowiedz_na) === n) e = z.reakcja; }); return e; }
+  function kryzysHtml(tekst, kto) {
+    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + numeryHtml() + '</div>';
+  }
+  function świeże(ts, s) { var t = Date.parse(ts); return t && Date.now() - t < s * 1000; }
+  function czekaNaOdpowiedz() {
+    var ost = stan.ja.filter(function (m) { return m.typ !== 'zwolaj'; }).slice(-1)[0];
+    if (!ost) return false;
+    return !stan.zespol.some(function (z) { return z.odpowiedz_na >= ost.n; });
+  }
+  function rysujPracuje() {
+    var p = stan.pracuje, el = $('pracuje'), t = $('pracuje-tekst'), aw = $('awatary');
+    var aktywne = p && p.stan === 'pracuje' && świeże(p.ts, 180);
+    el.classList.toggle('spi', !aktywne);
+    $('awatar').classList.toggle('cisza', !(aktywne || stan.aiAktywne));
+    if (aktywne) {
+      var panel = p.panel || [];
+      t.innerHTML = '<b>zespół pracuje: ' + panel.length + '</b> · ' + esc(panel.map(function (r) { return rola(r)[0]; }).join(', ')) + (p.etap ? ' – ' + esc(p.etap) : '');
+      aw.innerHTML = panel.slice(0, 6).map(function (r) { var x = rola(r); return '<span class="aw myśli" title="' + esc(x[0]) + '" style="background:' + x[2] + '">' + esc(x[1]) + '</span>'; }).join('');
+    } else {
+      t.textContent = czekaNaOdpowiedz() ? 'Wiadomość zapisana – zespół zaraz ją przeczyta' : (stan.aiAktywne ? 'Zespół jest obecny i czeka na Twoją wiadomość' : 'Zespół czeka na Twoją wiadomość');
+      aw.innerHTML = '';
+    }
+  }
+
+  // ---------- wysyłanie ----------
+  function wyslij() {
+    var pole = $('tekst'), t = pole.value.trim();
+    if (!t) return;
+    var r = ryzykoLokalne(t);
+    var n = stan.ja.reduce(function (a, m) { return Math.max(a, m.n || 0); }, 0) + 1;
+    var m = { n: n, ts: new Date().toISOString(), tekst: t, typ: 'wiadomosc' };
+    if (r.poziom) { m.ryzykoLokalne = r.poziom; m.frazy = r.frazy; }
+    stan.ja.push(m); stan.ostatniaWys = Date.now();
+    pole.value = ''; dopasuj(); $('wyslij').disabled = true;
+    rysuj(true);
+    if (stan.demo) { setTimeout(function () { demoOdpowiedz(m); }, 2600); return; }
+    zapiszJa().catch(function (e) { blad('Nie udało się zapisać wiadomości: ' + e.message); });
+  }
+  function blad(t) { var d = document.createElement('div'); d.className = 'msg system'; d.textContent = t; $('rozmowa').appendChild(d); }
+  function zwolaj() {
+    stan.potwZwolaj = false;
+    if (!stan.ja.length) { blad('Najpierw napisz kilka zdań – konsylium potrzebuje materiału.'); return; }
+    var dzis = new Date(), d = dzis.getFullYear() + '-' + ('0' + (dzis.getMonth() + 1)).slice(-2) + '-' + ('0' + dzis.getDate()).slice(-2);
+    var transkrypt = wiadomosci().map(function (x) { return (x.typ === 'ja' ? '**Użytkownik** (' : '**Terapeuta AI** (') + godz(x.ts) + '): ' + (x.m.tekst || ''); }).join('\n\n');
+    var tekst = '# Rozmowa ' + stan.id + ' → konsylium\n\nTryb: ' + (stan.tryb === 'konsultacja' ? 'konsultacja przypadku (użytkownik = terapeuta)' : 'rozmowa o własnej sytuacji') + '\n\n## Zapis rozmowy\n\n' + transkrypt + '\n\n## Pytanie wiodące\n\nPytanie: ' + (stan.tryb === 'konsultacja' ? 'formulacja i kierunek pracy z tym przypadkiem' : 'co się dzieje w tej sytuacji i co mogę zrobić') + '\n';
+    if (!pliki) { blad('Poza aplikacją nie da się zwołać konsylium.'); return; }
+    most.lista('sprawy').then(function (l) {
+      var n = 0; (l || []).forEach(function (x) { var mm = x.katalog && new RegExp('^' + d + '-(\\d+)$').exec(x.nazwa); if (mm) n = Math.max(n, +mm[1]); });
+      return d + '-' + ('0' + (n + 1)).slice(-2);
+    }).then(function (id) {
+      var nag = '<!-- rozmowa ' + stan.id + ' · sprawa założona przez aplikację MS Konsylium Psychologiczne ' + new Date().toISOString() + ' -->\n';
+      var z = { ts: new Date().toISOString(), zdarzenie: 'wywiad', kod: stan.id, zrodlo: 'rozmowa', skrot: 'Konsylium zwołane z Rozmowy ' + stan.id + '. Czekam na zespół.' };
+      return most.zapisz('sprawy/' + id + '/00-surowe.md', nag + tekst)
+        .then(function () { return most.zapisz('sprawy/' + id + '/01-wywiad.md', nag + tekst); })
+        .then(function () { return most.zapisz('sprawy/' + id + '/_log.jsonl', JSON.stringify(z) + '\n'); })
+        .then(function () { return id; });
+    }).then(function (id) {
+      var n = stan.ja.reduce(function (a, m) { return Math.max(a, m.n || 0); }, 0) + 1;
+      stan.ja.push({ n: n, ts: new Date().toISOString(), typ: 'zwolaj', sprawa: id, tekst: '[zwołano konsylium – sprawa ' + id + ']' });
+      stan.sprawa = id;
+      return zapiszJa().then(function () {
+        rysuj(true);
+        most.wyslij('pokoj', { zywo: true, sprawa: id }).catch(function () {});
+        setTimeout(function () { most.otworzModul('pokoj').catch(function () {}); }, 900);
+      });
+    }).catch(function (e) { blad('Nie udało się zwołać konsylium: ' + e.message); });
+  }
+
+  // ---------- odpytywanie folderu ----------
+  function odpytaj() {
+    if (!pliki || stan.demo || !stan.id) return;
+    Promise.all([most.czytaj(kat() + '/zespol.json'), most.czytaj(kat() + '/pracuje.json')]).then(function (r) {
+      var zm = false;
+      try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { stan.zespol = w; zm = true; dzwiek(); } } catch (e) {}
+      try { var p = r[1] && JSON.parse(r[1].tekst); if (JSON.stringify(p) !== JSON.stringify(stan.pracuje)) { stan.pracuje = p; zm = true; } } catch (e) {}
+      if (zm) rysuj(); else if (czekaNaOdpowiedz()) rysuj();
+    }).catch(function () {});
+  }
+  var ostDzwiek = 0;
+  function dzwiek() {
+    if (Date.now() - ostDzwiek < 1500) return; ostDzwiek = Date.now();
+    try { var a = new (window.AudioContext || window.webkitAudioContext)(), o = a.createOscillator(), g = a.createGain(); o.type = 'sine'; o.frequency.value = 880; g.gain.value = .04; o.connect(g); g.connect(a.destination); o.start(); o.frequency.exponentialRampToValueAtTime(1320, a.currentTime + .12); g.gain.exponentialRampToValueAtTime(.0001, a.currentTime + .3); o.stop(a.currentTime + .32); } catch (e) {}
+  }
+
+  // ---------- tryb demo (podgląd poza aplikacją) ----------
+  function demo() {
+    stan.demo = true; stan.id = 'demo'; var t0 = Date.now() - 600000; var ts = function (s) { return new Date(t0 + s * 1000).toISOString(); };
+    stan.ja = [{ n: 1, ts: ts(0), tekst: 'Wczoraj szefowa przy całym zespole powiedziała, że mój raport jest „na poziomie stażysty”. Od wtedy nie mogę przestać o tym myśleć i boję się jutro iść do pracy 😟', typ: 'wiadomosc' }];
+    stan.zespol = [{ n: 1, odpowiedz_na: 1, ts: ts(48), ryzyko: 0, tekst: 'To brzmi jak coś, co naprawdę zabolało – zwłaszcza że padło przy innych. Nic dziwnego, że ta scena wraca i że jutro wydaje się ciężkie.\n\nSą tu dwie uczciwe drogi. Jedna to zająć się tym, co się powtarza w głowie: zapisać dokładnie, co padło, i obok – co o raporcie wiesz Ty. Druga to zająć się samą relacją: krótka rozmowa ze szefową w cztery oczy, w której pytasz, czego konkretnie brakowało. Przy Twoim celu – żeby jutro w ogóle pójść – zacząłbym od pierwszej, a rozmowę zostawił na moment, gdy emocje opadną.\n\nCo Ci teraz najbardziej chodzi po głowie – sam raport, czy to, że ktoś to słyszał? 🤔', zrodla: [], glosy: [{ rola: 'terapeuta_cbt', skrot: 'Zapisać myśl automatyczną i dowody za/przeciw; nie unikać jutrzejszego wyjścia do pracy, bo unikanie podtrzyma lęk.' }, { rola: 'terapeuta_systemowy', skrot: 'Zobaczyć wzorzec w zespole: czy krytyka publiczna to norma tego miejsca? Rozmowa ze szefową może zmienić sekwencję.' }, { rola: 'terapeuta_humanistyczny', skrot: 'Najpierw uznać upokorzenie; bez tego każda technika zabrzmi jak „weź się w garść”.' }, { rola: 'straznik_ryzyka', skrot: 'Poziom 0: brak sygnałów ryzyka w tej wiadomości.' }] }];
+    stan.reakcje = { 1: '🙏' };
+    stan.pracuje = { stan: 'czeka', ts: ts(48) };
+    rysuj(true);
+  }
+  function demoOdpowiedz(m) {
+    stan.pracuje = { stan: 'pracuje', ts: new Date().toISOString(), panel: ['straznik_ryzyka', 'terapeuta_cbt', 'terapeuta_act', 'prowadzacy'], etap: 'rozważa odpowiedź' }; rysuj();
+    setTimeout(function () {
+      stan.zespol.push({ n: stan.zespol.length + 1, odpowiedz_na: m.n, ts: new Date().toISOString(), ryzyko: m.ryzykoLokalne || 0, tekst: 'To jest podgląd poza aplikacją 🙂 W aplikacji tę odpowiedź napisze zespół: strażnik ryzyka, dwa podejścia dobrane do tematu i prowadzący, który scali je w jeden głos.', glosy: [{ rola: 'prowadzacy', skrot: 'Podgląd: odpowiedź demonstracyjna.' }] });
+      stan.pracuje = { stan: 'czeka', ts: new Date().toISOString() }; dzwiek(); rysuj();
+    }, 3500);
+  }
+
+  // ---------- zdarzenia ----------
+  function dopasuj() { var p = $('tekst'); p.style.height = 'auto'; p.style.height = Math.min(140, p.scrollHeight) + 'px'; $('wyslij').disabled = !p.value.trim(); }
+  $('emoji').innerHTML = EMOJI.map(function (e) { return '<button type="button" data-e="' + e + '" aria-label="Wstaw ' + e + '">' + e + '</button>'; }).join('');
+  $('emoji').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return; var p = $('tekst'), s = p.selectionStart || p.value.length;
+    p.value = p.value.slice(0, s) + b.dataset.e + p.value.slice(p.selectionEnd || s); p.focus(); p.selectionStart = p.selectionEnd = s + b.dataset.e.length; dopasuj();
+  });
+  $('tekst').addEventListener('input', dopasuj);
+  $('tekst').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); wyslij(); } });
+  $('wpis').addEventListener('submit', function (e) { e.preventDefault(); wyslij(); });
+  $('zwolaj').addEventListener('click', function () { stan.potwZwolaj = true; rysuj(true); });
+  $('nowa').addEventListener('click', function () { if (stan.demo) { stan.ja = []; stan.zespol = []; rysuj(true); return; } nowa(); });
+  $('lista').addEventListener('change', function (e) { zaladuj(e.target.value); });
+  $('rozmowa').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.id === 'zwolaj-tak') zwolaj();
+    else if (b.id === 'zwolaj-nie') { stan.potwZwolaj = false; rysuj(); }
+    else if (b.dataset.glosy) { pokazaneGlosy[b.dataset.glosy] = !pokazaneGlosy[b.dataset.glosy]; rysuj(); }
+    else if (b.dataset.reakcja) { var n = b.dataset.reakcja; stan.reakcje[n] = stan.reakcje[n] === b.dataset.e ? undefined : b.dataset.e; if (!stan.reakcje[n]) delete stan.reakcje[n]; zapiszJa(); rysuj(); }
+  });
+  function pokazTryb() { document.querySelectorAll('.tryb button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.tryb === stan.tryb)); }); $('tekst').placeholder = stan.tryb === 'konsultacja' ? 'Opisz przypadek albo sytuację z pracy z klientem… (Enter wysyła)' : 'Napisz, co się dzieje albo o jaką sytuację chcesz zapytać… (Enter wysyła, Shift+Enter – nowa linia)'; }
+  document.querySelectorAll('.tryb button').forEach(function (b) { b.addEventListener('click', function () { stan.tryb = b.dataset.tryb; pokazTryb(); zapiszMeta(); zapiszJa(); rysuj(); }); });
+  $('formulacja-btn').addEventListener('click', function () {
+    var p = $('formulacja'); if (!p.hidden) { p.hidden = true; return; }
+    if (!pliki) return;
+    most.czytaj(kat() + '/formulacja-robocza.md').then(function (r) { p.innerHTML = '<h3>Jak to rozumiemy (robocza formulacja zespołu)</h3>' + md(r ? r.tekst.replace(/^#.*\n/, '') : 'Zespół jeszcze nie zapisał formulacji. Pojawi się po kilku wiadomościach.'); p.hidden = false; });
+  });
+  setInterval(function () { if (!pliki || !stan.id) return; most.czytaj(kat() + '/formulacja-robocza.md').then(function (r) { $('formulacja-btn').hidden = !r; }).catch(function () {}); }, 6000);
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.typ === 'ms-motyw') document.documentElement.dataset.motyw = d.motyw;
+    if (d.typ === 'ms-ai') { stan.aiAktywne = !!d.aktywne; rysujPracuje(); }
+  });
+  if (most) most.naDane(function (od, dane) { if (dane && dane.folder) start(); });
+
+  function start() {
+    most.dostepny().then(function (ok) {
+      if (!ok) { demo(); return; }
+      return most.folder().then(function (f) {
+        if (!f) { pliki = false; demo(); blad('Wybierz folder Konsylium Psychologicznego (ikona folderu po lewej), żeby rozmowa zapisywała się i trafiała do zespołu.'); return; }
+        pliki = true; stan.demo = false;
+        var ost = null; try { ost = localStorage.getItem('ms-rozmowa'); } catch (e) {}
+        return most.lista('rozmowy').then(function (l) {
+          var jest = (l || []).some(function (x) { return x.nazwa === ost; });
+          if (ost && jest) return zaladuj(ost);
+          nowa();
+        });
+      });
+    });
+  }
+  if (most) start(); else demo();
+  setInterval(odpytaj, 1500);
+  setInterval(function () { if (czekaNaOdpowiedz()) rysujPracuje(); }, 5000);
+})();
+</script>
+</body>
+</html>

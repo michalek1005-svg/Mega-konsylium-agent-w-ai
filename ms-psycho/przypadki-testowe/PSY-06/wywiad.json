@@ -1,0 +1,74 @@
+{
+  "kod": "PSY-06",
+  "plec": "mężczyzna",
+  "wiek": 52,
+  "tytul": "Bezsenność",
+  "opis": "Od roku źle śpię, budzę się kilka razy w nocy i rano jestem jak zbity. W dzień przysypiam, nawet za kierownicą. Chcę dostać dobre tabletki na sen, bo zolpidem od znajomego przestał działać.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy?",
+      "odpowiedz": "Ok. roku, coraz gorzej"
+    },
+    {
+      "pytanie": "O której kładziesz się i wstajesz?",
+      "odpowiedz": "23:00–6:00, w weekendy do 9:00"
+    },
+    {
+      "pytanie": "Czy partnerka zauważyła chrapanie lub przerwy w oddychaniu?",
+      "odpowiedz": "Głośno chrapię, żona mówi, że czasem przestaję oddychać i się duszę"
+    },
+    {
+      "pytanie": "Senność w dzień (0–10)?",
+      "odpowiedz": "8/10; przysypiam przy telewizorze i raz na światłach"
+    },
+    {
+      "pytanie": "Budzisz się z bólem głowy lub suchością w ustach?",
+      "odpowiedz": "Tak, często"
+    },
+    {
+      "pytanie": "Masa ciała i wzrost?",
+      "odpowiedz": "118 kg, 178 cm"
+    },
+    {
+      "pytanie": "Wieczorny alkohol?",
+      "odpowiedz": "2–3 piwa wieczorem „na sen”"
+    },
+    {
+      "pytanie": "Zolpidem — jak często?",
+      "odpowiedz": "Prawie co noc od 3 miesięcy, czasem 2 tabletki"
+    },
+    {
+      "pytanie": "Kawa?",
+      "odpowiedz": "3 kawy, ostatnia ok. 16:00"
+    },
+    {
+      "pytanie": "Telefon w łóżku?",
+      "odpowiedz": "Tak, przeglądam do zaśnięcia"
+    },
+    {
+      "pytanie": "Nastrój?",
+      "odpowiedz": "Rozdrażniony, ale nie przygnębiony"
+    },
+    {
+      "pytanie": "Choroby, leki?",
+      "odpowiedz": "Nadciśnienie oporne — 3 leki"
+    },
+    {
+      "pytanie": "Zawód?",
+      "odpowiedz": "Kierowca dostawczaka"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Mocniejszych tabletek na sen"
+    }
+  ],
+  "flagi": [
+    "[PILNE] Przysypianie za kierownicą u zawodowego kierowcy."
+  ],
+  "nieznane": [
+    "ciśnienie tętnicze aktualne",
+    "badanie snu nigdy niewykonane"
+  ],
+  "wyniki": "Skale: ISI (Insomnia Severity Index) = 18 pkt; Epworth = 16 pkt.",
+  "pytanie": "Jakie tabletki na sen będą skuteczniejsze niż zolpidem?"
+}

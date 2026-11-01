@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(./sprawy/**)",
+      "Edit(./sprawy/**)",
+      "Write(./rozmowy/**)",
+      "Edit(./rozmowy/**)",
+      "Write(./wywiad-na-zywo/**)",
+      "Bash(python skrypty/*)",
+      "Bash(python3 skrypty/*)",
+      "Bash(mkdir -p sprawy/*)",
+      "Bash(ls *)",
+      "Bash(date *)",
+      "mcp__PubMed__*",
+      "mcp__plugin_pubmed_PubMed__*",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "deny": [
+      "Write(./sprawy/*/00-surowe.md)",
+      "Edit(./sprawy/*/00-surowe.md)",
+      "Edit(./CLAUDE.md)",
+      "Write(./CLAUDE.md)",
+      "Edit(./config/**)",
+      "Write(./config/**)",
+      "Edit(./.claude/**)",
+      "Write(./.claude/**)",
+      "Write(./przypadki-testowe/**)",
+      "Bash(rm *)",
+      "Bash(git push*)"
+    ]
+  },
+  "_komentarz": [
+    "CLAUDE.md, config/ (numery pomocy, filtr ryzyka) i .claude/ zmienia tylko użytkownik.",
+    "00-surowe.md zakłada aplikacja; potem nietykalny."
+  ]
+}

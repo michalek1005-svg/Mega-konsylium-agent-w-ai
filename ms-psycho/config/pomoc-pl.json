@@ -1,0 +1,11 @@
+{
+  "_opis": "Numery pomocy w Polsce. Jedyne źródło numerów dla agentów i aplikacji (docs/BEZPIECZENSTWO.md §5). Sprawdzić przed każdym wydaniem. Zmienia tylko użytkownik.",
+  "sprawdzono": "2026-11-01 (do potwierdzenia przez Michała)",
+  "numery": [
+    { "numer": "112", "nazwa": "Numer alarmowy", "kiedy": "Zagrożenie życia – teraz", "godziny": "całodobowo" },
+    { "numer": "800 70 2222", "nazwa": "Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym", "kiedy": "Kryzys psychiczny, myśli samobójcze", "godziny": "całodobowo, bezpłatnie" },
+    { "numer": "116 123", "nazwa": "Kryzysowy Telefon Zaufania dla dorosłych", "kiedy": "Potrzeba rozmowy w kryzysie", "godziny": "sprawdź godziny na stronie operatora" },
+    { "numer": "800 120 002", "nazwa": "Niebieska Linia – przemoc domowa", "kiedy": "Przemoc w domu", "godziny": "całodobowo" }
+  ],
+  "bez_skierowania": "Psychiatra w NFZ przyjmuje bez skierowania. Centrum Zdrowia Psychicznego w Twoim rejonie albo izba przyjęć szpitala psychiatrycznego – także bez skierowania."
+}

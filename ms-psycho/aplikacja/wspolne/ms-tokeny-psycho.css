@@ -1,0 +1,23 @@
+/* MS Konsylium Psychologiczne: paleta „Lawenda” nałożona na tokeny MS (ms-tokeny.css). Kolory z pakietu Pokoju (wątek Graficzny 1.11.2026). */
+:root {
+  --petrol: #5B4A8A; --ink: #2D2A3A; --mut: #6B6480;
+  --bg-viewport: #EEEAF3;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(150,130,200,.55) 0%, rgba(150,130,200,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(240,170,180,.42) 0%, rgba(240,170,180,0) 70%),
+           radial-gradient(38vw 34vh at 52% 46%, rgba(170,190,140,.28) 0%, rgba(170,190,140,0) 72%),
+           linear-gradient(160deg, #F1EEF5 0%, #DDD6E6 100%);
+  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(60,40,90,.55);
+  --panel-cien: 0 14px 32px -25px rgba(60,40,90,.55), inset 0 0 0 1px rgba(91,74,138,.13);
+  --btn: rgba(91,74,138,.08); --btn-h: rgba(91,74,138,.15);
+  --pole-obrys: rgba(91,74,138,.22);
+  --wcisk-cien: rgba(170,160,196,.5); --wcisk-tlo: rgba(232,226,240,.7); --wcisk-on-tlo: #ddd5e8; --wcisk-on-cien: inset 5px 5px 10px #b3a8c9e6, inset -5px -5px 10px #ffffff;
+}
+html[data-motyw="ciemny"] {
+  --petrol: #c3b4f0; --ink: #ECE8F4; --mut: #A79FBC; --bg-viewport: #17141F;
+  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(150,130,200,.22) 0%, rgba(150,130,200,0) 70%),
+           radial-gradient(50vw 46vh at -4% 104%, rgba(240,170,180,.12) 0%, rgba(240,170,180,0) 70%),
+           linear-gradient(160deg, #1E1A2E 0%, #14111C 100%);
+  --tafla: rgba(32,28,46,.8);
+  --btn: rgba(195,180,240,.12); --btn-h: rgba(195,180,240,.2); --btn-txt: #d5c9f7;
+  --on: #6b58a8; --wcisk-tlo: rgba(40,34,56,.85); --wcisk-on-tlo: #0d0b12;
+}
