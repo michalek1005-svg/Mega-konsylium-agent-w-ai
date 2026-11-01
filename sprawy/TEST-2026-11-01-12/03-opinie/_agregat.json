@@ -1,0 +1,136 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Chłoniak Hodgkina (klasyczny)",
+      "p": 0.365,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Rak płuca z przerzutami do węzłów nadobojczykowych",
+      "p": 0.161,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Chłoniak nieziarniczy",
+      "p": 0.097,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Chłoniak nieziarniczy (w tym z komórek T, np. angioimmunoblastyczny)",
+      "p": 0.057,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Gruźlica płuc z gruźliczym zapaleniem węzłów chłonnych",
+      "p": 0.054,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    }
+  ],
+  "zgoda": 0.169,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Brak badania fizykalnego i parametrów życiowych (NIEZNANE)",
+      "Kaszel > 3 tygodni z potami nocnymi i chudnięciem – gruźlica i masa śródpiersia niewykluczone do czasu RTG klatki piersiowej",
+      "Kaszel > 3 tygodni z potami nocnymi i chudnięciem — gruźlica/rak płuca niewykluczone (reguła ankiety: PILNE, RTG klatki piersiowej).",
+      "Możliwa masa śródpiersia (kaszel przy podejrzeniu chłoniaka) — objawy zespołu żyły głównej górnej i duszność NIEZNANE bez badania.",
+      "Możliwa masa śródpiersia: nieznane objawy ucisku (duszność, obrzęk twarzy/szyi, poszerzenie żył szyjnych) – badanie fizykalne NIEZNANE; ich obecność podnosi pilność do 1–2",
+      "Utrata 7 kg w 3 miesiące przy niezmienionym apetycie.",
+      "Węzeł nadobojczykowy/szyjny > 2 cm przy objawach B (reguła ankiety: PILNE).",
+      "Węzeł szyjny/nadobojczykowy > 2 cm przy objawach B (reguła ankiety: PILNE)",
+      "badanie fizykalne i parametry życiowe — NIEZNANE",
+      "brak parametrów życiowych (saturacja, częstość oddechów, ciśnienie, tętno) — NIEZNANE",
+      "gruźlica płuc prątkująca — zakaźna dla otoczenia (rodzina, praca) — NIE wykluczona; wykluczy: RTG klatki piersiowej, a przy zmianach — plwocina na prątki (bakterioskopia, posiew, test molekularny); do czasu wyniku maseczka i ograniczenie kontaktów [wiedza modelu, niezweryfikowane]",
+      "kaszel > 3 tygodni z potami i chudnięciem u palacza: gruźlica, rak płuca, masa śródpiersia",
+      "kaszel > 3 tygodni z potami i chudnięciem u palacza: masa śródpiersia, gruźlica, rak płuca nie wykluczone (brak RTG)",
+      "kaszel > 3 tygodni z potami nocnymi i chudnięciem: gruźlica niewykluczona do czasu RTG (reguła ankiety: PILNE)",
+      "masa śródpiersia z zagrożeniem uciśnięcia tchawicy lub zespołem żyły głównej górnej (kaszel > 3 tyg. + węzeł nadobojczykowy) — NIE wykluczone; wykluczy: badanie fizykalne (obrzęk twarzy/szyi, poszerzone żyły szyjne i klatki, stridor, duszność w pozycji leżącej, ortopnoe) i RTG klatki piersiowej PA i boczne dziś; masa śródpiersia może dawać ucisk dróg oddechowych i żyły głównej górnej (PMID 40470453)",
+      "możliwa masa śródpiersia: objawy zespołu żyły głównej górnej, duszność, stridor NIEZNANE (brak badania fizykalnego)",
+      "niedokrwistość i ewentualne zajęcie szpiku/wątroby — NIEZNANE; wymaga rozszerzenia badań (rozmaz, LDH, próby wątrobowe, kreatynina, albumina, HIV, HBV, HCV)",
+      "nieznane parametry życiowe i badanie fizykalne (zespół żyły głównej górnej, duszność, stridor)",
+      "nowotwór złośliwy (chłoniak Hodgkina, chłoniak nieziarniczy, rak płuca z przerzutem do węzła nadobojczykowego) — nieodwracalne pogorszenie stopnia zaawansowania przy opóźnieniu tygodni; wykluczy tylko badanie histopatologiczne węzła (biopsja wycięciowa lub gruboigłowa; sama biopsja cienkoigłowa nie wystarcza do rozpoznania chłoniaka Hodgkina — PMID 39734971: wymagana biopsja węzła z oceną histologiczną i immunofenotypową)",
+      "objawy ucisku śródpiersia (duszność w pozycji leżącej, obrzęk twarzy/szyi, stridor) — NIEZNANE, ankieta nie pytała wprost",
+      "parametry życiowe, wątroba i śledziona, inne grupy węzłów: NIEZNANE",
+      "węzeł nadobojczykowy/szyjny > 2 cm z objawami B (reguła ankiety: PILNE)",
+      "węzeł szyjny lub nadobojczykowy > 2 cm z objawami B (reguła PILNE ankiety)"
+    ],
+    "wykluczone": [
+      "Myśli samobójcze (zaprzecza).",
+      "Myśli samobójcze – zaprzecza",
+      "Ostre objawy alarmowe w ostatnich dniach – pacjent zaprzecza w ankiecie",
+      "Ostre objawy alarmowe z listy ankiety (pacjent: „nic z tych rzeczy”).",
+      "myśli samobójcze (zaprzecza)",
+      "myśli samobójcze — pacjent zaprzecza (ankieta)",
+      "myśli samobójcze: zaprzecza",
+      "objawy polekowe jako wyjaśnienie zespołu (brak leków i suplementów)",
+      "ostre objawy alarmowe z listy ankiety w ostatnich dniach — pacjent zaprzecza ('nic z tych rzeczy'); nie wyklucza to jednak cech zespołu żyły głównej górnej, bo nie były badane fizykalnie",
+      "ostre objawy alarmowe z listy ankiety w ostatnich dniach: zaprzecza"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

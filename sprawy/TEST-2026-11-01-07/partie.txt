@@ -1,0 +1,9 @@
+partia 1: alarm_teraz kolatanie_teraz rytm mysli
+partia 2: tetno_pomiar tetno
+partia 3: ciaza miesiaczki
+partia 4: inne_objawy szyja_oczy
+partia 5: przebieg sen
+partia 6: badania wyniki waga
+partia 7: preparaty leki_inne uzywki
+partia 8: choroby rodzina alergie
+partia 9: obawy

@@ -1,0 +1,59 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Euglikemiczna kwasica ketonowa wywołana inhibitorem kotransportera sodowo-glukozowego typu 2 w przebiegu nieżytu żołądkowo-jelitowego", "p": 0, "za": ["flozyna + wymioty i biegunka od 3 dni + słabe przyjmowanie płynów", "oddech głęboki i szybki (typ Kussmaula), senność", "glikemia 70–250 mg/dl nie wyklucza kwasicy ketonowej u leczonych flozyną (PMID 42882058)"], "przeciw": ["brak pomiaru ketonów i gazometrii"]},
+    {"nazwa": "Kwasica mleczanowa związana z metforminą w przebiegu ostrego uszkodzenia nerek z odwodnienia", "p": 0, "za": ["metformina + odwodnienie + inhibitor konwertazy angiotensyny lub sartan", "hipotensja 98 mmHg, tętno 112/min", "ból brzucha stały — opisywana maska ostrego brzucha (PMID 40144428)"], "przeciw": ["oddawanie moczu w ostatnich 6 h", "kreatynina NIEZNANA"]},
+    {"nazwa": "Wstrząs hipowolemiczny lub septyczny w przebiegu nieżytu żołądkowo-jelitowego", "p": 0, "za": ["ciśnienie skurczowe 98 mmHg, tętno 112/min, senność"], "przeciw": ["brak gorączki w wywiadzie (NIEZNANE)"]},
+    {"nazwa": "Ostre zapalenie trzustki lub inna przyczyna chirurgiczna bólu brzucha", "p": 0, "za": ["ból brzucha stały 5/10, wymioty"], "przeciw": ["kontakt epidemiologiczny z chorym wnukiem przemawia za infekcją"]},
+    {"nazwa": "Ostry zespół wieńcowy o nietypowym przebiegu", "p": 0, "za": ["kobieta 61 lat z wieloletnią cukrzycą, duszność, osłabienie, ból w nadbrzuszu"], "przeciw": ["dominują objawy żołądkowo-jelitowe i kontakt zakaźny"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "oddech głęboki i szybki — podejrzenie kwasicy metabolicznej",
+    "senność, trudność w dobudzeniu — zaburzenia świadomości",
+    "ciśnienie skurczowe 98 mmHg i tętno 112/min — hipoperfuzja",
+    "brak tolerancji płynów doustnych",
+    "flozyna przy wymiotach — euglikemiczna kwasica ketonowa",
+    "metformina + odwodnienie + lek z grupy -pril/-sartan — ostre uszkodzenie nerek, kwasica mleczanowa"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) i przekazać pacjentkę na szpitalny oddział ratunkowy bez wykonywania jakichkolwiek badań w trybie ambulatoryjnym; na SOR jako pierwsza gazometria krwi żylnej z mleczanem, elektrolitami i glukozą oraz β-hydroksymaślan we krwi włośniczkowej.",
+  "co_zmieniloby_zdanie": "Nic dostępnego w domu lub w POZ nie zmieni decyzji o SOR: zmieniłby ją dopiero prawidłowy wynik gazometrii (pH i wodorowęglany w normie, mleczan i β-hydroksymaślan niskie) przy ustąpieniu senności i normalizacji ciśnienia, a tego nie da się uzyskać poza szpitalem w bezpiecznym czasie.",
+  "odpowiedz_na_pytanie": "Nie: nawadnianie w domu jest przeciwwskazane (Kussmaul, senność, hipotensja, nietolerancja płynów) — 112 i SOR teraz. Metforminę, flozynę i lek z grupy -pril/-sartan wstrzymać natychmiast, ale samo odstawienie nie jest leczeniem.",
+  "badania": [
+    {"nazwa": "Gazometria krwi żylnej z mleczanem, sodem, potasem, chlorkami (luka anionowa) i glukozą", "cel": "potwierdzić i zróżnicować kwasicę metaboliczną (ketonowa vs mleczanowa vs mieszana), podać potas przed insuliną", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Na SOR, w ciągu minut. Analizator gazometryczny podaje potas porównywalnie z laboratorium centralnym, w ok. 5 min (PMID 35371883) — nie czekać na biochemię, by zacząć insulinę. Gazometria tętnicza zbędna, o ile nie ma hipoksemii w pulsoksymetrii [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "β-hydroksymaślan we krwi włośniczkowej (przyłóżkowo) lub w surowicy", "cel": "rozstrzygnąć euglikemiczną kwasicę ketonową niezależnie od glikemii", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Przyłóżkowy β-hydroksymaślan > 1,5 mmol/l: czułość 98,1%, swoistość 78,6% vs pasek moczowy 35,1% (PMID 21307381, kohorta z glikemią ≥ 250 mg/dl — przeniesienie na stan euglikemii jest ekstrapolacją); przegląd systematyczny: dokładniejszy niż ketony w moczu (PMID 27563914). Glikemia nie koreluje z β-hydroksymaślanem u leczonych flozyną (PMID 42882058)."},
+    {"nazwa": "Kreatynina, mocznik, elektrolity w surowicy", "cel": "ostre uszkodzenie nerek — warunkuje ryzyko kwasicy mleczanowej po metforminie i ewentualną terapię nerkozastępczą", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Ostatnia kreatynina NIEZNANA; kwasica mleczanowa po metforminie jest zaburzeniem kumulacji wywołanym ostrym spadkiem funkcji nerek (PMID 42178010). Pobrać z tego samego wkłucia co gazometria."},
+    {"nazwa": "Elektrokardiogram 12-odprowadzeniowy", "cel": "zaburzenia potasu (hipo- lub hiperkaliemia), niedokrwienie u kobiety 61 lat z cukrzycą i dusznością", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Tani, natychmiastowy, bez promieniowania; może go wykonać już zespół ratownictwa."},
+    {"nazwa": "Lipaza w surowicy", "cel": "ostre zapalenie trzustki jako przyczyna stałego bólu brzucha i wyzwalacz kwasicy ketonowej", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Dodatni wynik zmienia postępowanie (żywienie, nawadnianie, ocena ciężkości); pobrać z pierwszym zestawem."},
+    {"nazwa": "Morfologia krwi, białko C-reaktywne", "cel": "sepsa jako współprzyczyna wstrząsu", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Z tego samego pobrania; prokalcytonina tylko gdy ma zmienić decyzję o antybiotyku."},
+    {"nazwa": "Troponina sercowa", "cel": "nietypowy ostry zespół wieńcowy (duszność, osłabienie, ból w nadbrzuszu u kobiety z cukrzycą)", "zmienia_decyzje": true, "kolejnosc": 3, "uwagi": "Uzasadniona przy zmianach w EKG lub gdy kwasica nie tłumaczy duszności; interpretować ostrożnie przy wstrząsie i ostrym uszkodzeniu nerek (ryzyko kaskady fałszywie dodatnich)."},
+    {"nazwa": "Tomografia komputerowa jamy brzusznej", "cel": "wykluczenie przyczyny chirurgicznej (niedokrwienie jelit, perforacja)", "zmienia_decyzje": true, "kolejnosc": 4, "uwagi": "Dopiero po gazometrii i wstępnym nawodnieniu, gdy: objawy otrzewnowe, mleczan rośnie mimo resuscytacji lub kwasica niewyjaśniona przez ketony/metforminę. Kontrast jodowy przy możliwym ostrym uszkodzeniu nerek i metforminie — ważyć."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Badania laboratoryjne w POZ (kreatynina, elektrolity, CRP) przed skierowaniem", "powod": "Wynik za kilka godzin nie zmieni decyzji o SOR — objawy (Kussmaul, senność, ciśnienie 98, tętno 112, nietolerancja płynów) już ją przesądzają; czekanie jest niebezpieczne."},
+    {"nazwa": "Domowy pomiar ketonów w moczu paskiem jako warunek decyzji", "powod": "Ujemny wynik nie wyklucza kwasicy ketonowej (pasek wykrywa acetooctan, nie β-hydroksymaślan [wiedza modelu, niezweryfikowane]), dodatni nie zmienia decyzji — X = Y. Swoistość paska 35,1% (PMID 21307381)."},
+    {"nazwa": "Gazometria krwi tętniczej rutynowo", "powod": "Gazometria żylna wystarcza do oceny pH, wodorowęglanów i mleczanu; tętnicza tylko przy hipoksemii lub podejrzeniu niewydolności oddechowej [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Posiew kału i panel patogenów jelitowych w ostrej fazie", "powod": "Nie zmienia leczenia kwasicy i wstrząsu; ewentualnie później przy biegunce krwistej, przedłużającej się lub w ognisku epidemicznym."},
+    {"nazwa": "Stężenie metforminy we krwi", "powod": "Wynik dostępny po dniach; leczenie (odstawienie, nawadnianie, ewentualna dializa) decyduje się na podstawie pH, mleczanu i kreatyniny (PMID 42178010)."},
+    {"nazwa": "D-dimery", "powod": "Wysokie prawdopodobieństwo fałszywie dodatniego wyniku w ostrej chorobie z odwodnieniem i zapaleniem — ryzyko kaskady obrazowania z kontrastem przy zagrożonych nerkach; duszność ma lepsze wyjaśnienie (kwasica)."},
+    {"nazwa": "Radiogram klatki piersiowej rutynowo", "powod": "Duszność typu Kussmaula wynika z kwasicy; zdjęcie tylko przy hipoksemii, zmianach osłuchowych lub gorączce."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików polskich wytycznych (tylko wiersze przykładowe); pamiec/zespol.md — brak wniosków dla tej prezentacji",
+    "Zapytanie PubMed 1: 'euglycemic diabetic ketoacidosis SGLT2 inhibitor gastroenteritis' — 0 wyników (nieskuteczne)",
+    "Zapytanie PubMed 2: 'venous blood gas versus arterial diabetic ketoacidosis agreement pH bicarbonate' — 0 wyników (nieskuteczne)",
+    "Zapytanie PubMed 3: 'metformin-associated lactic acidosis acute kidney injury dehydration' — 18 wyników",
+    "Zapytanie PubMed 4: 'euglycemic ketoacidosis SGLT2' od 2019 — 371 wyników",
+    "Zapytanie PubMed 5: 'venous blood gas arterial agreement diabetic ketoacidosis' — 5 wyników",
+    "Zapytanie PubMed 6: 'point-of-care capillary beta-hydroxybutyrate diabetic ketoacidosis emergency department' — 4 wyniki",
+    "Zapytanie PubMed 7: 'euglycemic diabetic ketoacidosis SGLT2 inhibitors review[Publication Type]' od 2020 — 91 wyników",
+    "PMID 21307381 · DOI 10.2337/dc10-1844 · Arora i wsp. Diabetes Care 2011 — β-hydroksymaślan przyłóżkowo > 1,5 mmol/l: czułość 98,1%, swoistość 78,6%, NPV 99,7%; pasek moczowy swoistość 35,1% (streszczenie sprawdzone)",
+    "PMID 27563914 · DOI 10.3390/ijerph13090837 · Brooke i wsp. 2016, przegląd systematyczny — włośniczkowy β-hydroksymaślan dokładniejszy niż ketony w moczu w rozpoznaniu kwasicy ketonowej (streszczenie sprawdzone)",
+    "PMID 42882058 · DOI 10.3390/jcm15197595 · Itagaki, Endo 2026 — kwasica ketonowa przy glikemii < 100 mg/dl u leczonych flozynami; głodzenie/słabe przyjmowanie doustne najczęstszym wyzwalaczem (11/15); glikemia nie korelowała z β-hydroksymaślanem (streszczenie sprawdzone)",
+    "PMID 42178010 · DOI 10.1016/j.ejphar.2026.179017 · Anwar i wsp. 2026 — kwasica mleczanowa po metforminie jako zaburzenie kumulacji wywołane ostrym uszkodzeniem nerek; czynniki: odwodnienie, sepsa; diagnostyka: gazometria, mleczan, funkcja nerek; postępowanie: natychmiastowe odstawienie, leczenie nerkozastępcze w ciężkich przypadkach (streszczenie sprawdzone)",
+    "PMID 40144428 · DOI 10.7759/cureus.79573 · Pokharel i wsp. 2025, opis przypadku — kwasica mleczanowa po metforminie maskująca ostry brzuch u 72-letniej kobiety z odwodnieniem (streszczenie sprawdzone)",
+    "PMID 35371883 · DOI 10.7759/cureus.23653 · Mahmoud i wsp. 2022 — potas z analizatora gazometrycznego zgodny z laboratorium centralnym (Bland-Altman), wynik w ok. 5 min vs ok. 30 min; pozwala szybciej rozpocząć insulinę w kwasicy ketonowej (streszczenie sprawdzone)"
+  ]
+}

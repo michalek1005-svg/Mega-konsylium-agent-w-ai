@@ -1,0 +1,190 @@
+{
+  "sprawa": "TEST-2026-11-01-13",
+  "sprawdzajacy": "sprawdzajacy-faktow",
+  "data": "2026-11-01",
+  "sprawdzany_plik": "05-projekt.md",
+  "zrodla_poziom1": "zrodla/MANIFEST.md zawiera wyłącznie przykłady — brak polskich wytycznych i ChPL (ibuprofen, kolchicyna, pantoprazol). Poziom 1 pusty dla tej sprawy.",
+  "polskie_wytyczne_pubmed": "Jedno celowe zapytanie: jedyny polski dokument to konsensus Polskiego Klinicznego Forum Obrazowania Sercowo-Naczyniowego 2013 (Kardiol Pol, PMID 23348545) — dotyczy obrazowania osierdzia, nie leczenia. Polskie zalecenia terapeutyczne dla zapalenia osierdzia nie istnieją; obowiązuje ESC 2025 (PMID 40878297, DOI 10.1093/eurheartj/ehaf192), której PTK jest sygnatariuszem.",
+  "fakty": {
+    "kartka": "ZOLTA",
+    "podsumowanie": {
+      "twierdzen_sprawdzonych": 20,
+      "potwierdzone": 16,
+      "bez_zrodla": 4,
+      "sprzeczne": 0,
+      "nieaktualne": 0
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Rozpoznanie ostrego zapalenia osierdzia: ≥2 z 4 kryteriów; ból opłucnowy nasilony na leżąco ≈90%",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39235771, DOI 10.1001/jama.2024.12935 (Cremer, JAMA 2024)",
+        "cytat": "diagnosed with presence of 2 or more of the following: sharp, pleuritic chest pain that worsens when supine (≈90%); ST elevation/PR depression; effusion; friction rub",
+        "co_mowi_zrodlo": "Zgodne z projektem. Pozostałe kryteria: EKG ≈25–50%, wysięk ≈60%, tarcie <30%."
+      },
+      {
+        "twierdzenie": "Brak nasilenia bólu przy ucisku i skręcie tułowia 'wyklucza praktycznie' nerwoból międzyżebrowy",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — w projekcie przypisane do PMID 39235771, które nie zawiera takiej liczby ani stwierdzenia",
+        "cytat": "",
+        "co_mowi_zrodlo": "Rozumowanie kliniczne bez źródła, nieliczbowe. Odtwarzalność bólu uciskiem obniża prawdopodobieństwo przyczyny sercowej, ale jej brak nie 'wyklucza' przyczyny ściennej. W FINAL wymaga osłabienia sformułowania ('przemawia przeciw') albo etykiety [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "Kolchicyna dodana do NLPZ: przetrwanie/nawrót 16,7% vs 37,5%, NNT 4; 3 miesiące; 0,5 mg 2×/d >70 kg, 0,5 mg 1×/d ≤70 kg",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23992557, DOI 10.1056/NEJMoa1208536 (ICAP, NEJM 2013)",
+        "cytat": "0.5 mg twice daily for 3 months for patients weighing >70 kg or 0.5 mg once daily for ≤70 kg … 16.7% vs 37.5% … number needed to treat, 4",
+        "co_mowi_zrodlo": "Populacja: dorośli, pierwszy epizod ostrego zapalenia osierdzia, n=240, na tle aspiryny lub ibuprofenu. Dokładnie to, co twierdzi projekt. Próg masy ≤70 kg (nie <70) — projekt poprawny."
+      },
+      {
+        "twierdzenie": "COPE: nawroty 10,7% vs 32,3%; steroidy OR 4,30 dla nawrotu",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 16186437, DOI 10.1161/CIRCULATIONAHA.105.542738 (Circulation 2005)",
+        "cytat": "recurrence rates at 18 months were 10.7% versus 32.3% … corticosteroid use (OR 4.30, 95% CI 1.21 to 15.25)",
+        "co_mowi_zrodlo": "Zgodne. Uwaga: NNT w COPE = 5 (nie 4); projekt NNT 4 przypisuje poprawnie do ICAP."
+      },
+      {
+        "twierdzenie": "Ibuprofen 1200–1800 mg/d jako podstawa leczenia (600 mg co 8 h = 1800 mg/d)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 19673674, DOI 10.1586/erc.09.82 (Imazio, Expert Rev Cardiovasc Ther 2009)",
+        "cytat": "Aspirin or a NSAID at medium-to-high dosages are the mainstay of treatment (e.g., aspirin 2-4 g/day, ibuprofen 1200-1800 mg/day)",
+        "co_mowi_zrodlo": "Przegląd, nie RCT. Schemat 600 mg co 8 h przez 1–2 tyg. widnieje w tabeli ESC 2015 (PMID 26320112, DOI 10.1093/eurheartj/ehv318) — poziom 3, z pamięci modelu, pełny tekst nie pobrany."
+      },
+      {
+        "twierdzenie": "Cechy złego rokowania: gorączka >38 °C, podostry przebieg, duży wysięk/tamponada, nieskuteczność NLPZ",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 17502574, DOI 10.1161/CIRCULATIONAHA.106.662114 (Circulation 2007, n=453)",
+        "cytat": "fever >38 degrees C (HR 3.56), subacute course (HR 3.97), large effusion or tamponade (HR 2.15), failure of aspirin or NSAIDs (HR 2.50)",
+        "co_mowi_zrodlo": "Zgodne. Źródło dodatkowo wskazuje płeć żeńską jako czynnik ryzyka przyczyny swoistej (HR 1,67) — dotyczy pacjentki, projekt tego nie wymienia."
+      },
+      {
+        "twierdzenie": "Brak poprawy po 7 dniach ibuprofenu = cecha wysokiego ryzyka → diagnostyka szpitalna",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 17502574 oraz PMID 15028364, DOI 10.1016/j.jacc.2003.09.055",
+        "cytat": "Patients with poor prognostic predictors or aspirin failure were hospitalized for etiology search and treatment",
+        "co_mowi_zrodlo": "Oba źródła: niepowodzenie aspiryny/NLPZ = wskazanie do hospitalizacji. Horyzont '7 dni' wynika z protokołu wizyt kontrolnych (7–10 dni) w PMID 15028364, nie jest jawnym progiem."
+      },
+      {
+        "twierdzenie": "Leczenie ambulatoryjne bezpieczne tylko bez cech wysokiego ryzyka (m.in. zajęcie mięśnia sercowego/troponina, gorączka >38 °C, duży wysięk)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 15028364, DOI 10.1016/j.jacc.2003.09.055 (JACC 2004, n=300)",
+        "cytat": "Patients without … fever >38 degrees C, subacute onset, immunodepression, trauma, oral anticoagulant therapy, myopericarditis, severe pericardial effusion, cardiac tamponade … assigned to outpatient treatment",
+        "co_mowi_zrodlo": "Źródło wymienia 'myopericarditis', nie 'troponinę' wprost; projekt słusznie operacjonalizuje to troponiną. 84,7% chorych niskiego ryzyka; brak tamponady w obserwacji."
+      },
+      {
+        "twierdzenie": "ESC 2025 / ACC: NLPZ + kolchicyna pierwsza linia w zapaleniu osierdzia i myopericarditis",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 41534803, DOI 10.1016/j.tcm.2026.01.002; PMID 42376745, DOI 10.20452/pamw.17327; wytyczna źródłowa: PMID 40878297, DOI 10.1093/eurheartj/ehaf192",
+        "cytat": "both endorse non-steroidal anti-inflammatory drugs (NSAIDs) and colchicine for pericarditis and myopericarditis",
+        "co_mowi_zrodlo": "Zgodne. Zalecenie: w ŹRÓDŁA FINAL dodać samą wytyczną ESC 2025 (Eur Heart J 2025;46:3952, PMID 40878297), a nie tylko komentarze do niej."
+      },
+      {
+        "twierdzenie": "Ograniczenie wysiłku, kontrola CRP, unikanie steroidów (pierwsza linia NLPZ + kolchicyna)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42376745, DOI 10.20452/pamw.17327 (Imazio, Pol Arch Intern Med 2026)",
+        "cytat": "aspirin or a NSAID combined with colchicine is the first-line therapy, with exercise restriction recommendations and follow-up guided by symptoms and C-reactive protein",
+        "co_mowi_zrodlo": "Zgodne; dodatkowo: steroidy 'should be avoided when possible'."
+      },
+      {
+        "twierdzenie": "ESC 2025: ograniczenie aktywności fizycznej ≥1 miesiąc",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42026924 (Hayat, Lakartidningen 2026; omówienie ESC 2025)",
+        "cytat": "A minimum of one month of physical activity restriction is recommended during the acute phase, with return to exercise … guided by individual recovery",
+        "co_mowi_zrodlo": "Zgodne. Źródło wtórne (szwedzkie omówienie); FINAL powinien cytować wytyczną PMID 40878297."
+      },
+      {
+        "twierdzenie": "PERC: estrogeny, tętno ≥100/min, SaO2 <95% uniemożliwiają PERC-ujemność; pacjentka na estrogenach nie spełnia PERC",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 18318689, DOI 10.1111/j.1538-7836.2008.02944.x (Kline, JTH 2008, n=8138)",
+        "cytat": "PERC(-): age < 50 years, pulse < 100, SaO2 >= 95%, no hemoptysis, no estrogen use, no surgery/trauma … no prior VTE, no unilateral leg swelling",
+        "co_mowi_zrodlo": "Zgodne. PERC obowiązuje tylko przy niskim gestalt (<15%) — projekt stosuje poprawnie (Wells + PERC)."
+      },
+      {
+        "twierdzenie": "D-dimer podwyższony u 73% chorych z pierwszym epizodem zapalenia osierdzia; 0 zatorowości w angio-TK",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 37357033, DOI 10.1016/j.ejim.2023.06.017 (Lazaros, Eur J Intern Med 2023)",
+        "cytat": "121 patients (73.3%) presented with elevated age-adjusted DD … no case of pulmonary embolism or aortic syndrome was unveiled",
+        "co_mowi_zrodlo": "Populacja: 265 chorych HOSPITALIZOWANYCH, D-dimer oznaczony u 165; angio-TK u 43,8% z podwyższonym DD. Odsetek dotyczy chorych szpitalnych, nie POZ — nadal wspiera wniosek, że dodatni D-dimer nie powinien sam uruchamiać angio-TK."
+      },
+      {
+        "twierdzenie": "Pojedyncza hs-cTnT <5 ng/l ≥3 h od objawów: NPV 100% dla zawału w doraźnej POZ",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33627355, DOI 10.1136/bmjopen-2020-046024 (Johannessen, BMJ Open 2021, n=1711)",
+        "cytat": "AMI was ruled-out by a single hs-cTnT <5 ng/L measured ≥3 hours after symptom onset … NPV and sensitivity were both 100.0%",
+        "co_mowi_zrodlo": "Zgodne. Dotyczy wykluczenia zawału, nie zajęcia mięśnia sercowego w zapaleniu osierdzia — projekt używa tego poprawnie (OZW)."
+      },
+      {
+        "twierdzenie": "Kolchicyna przeciwwskazana z klarytromycyną/silnymi inhibitorami CYP3A4 i glikoproteiny P [oznaczone w projekcie jako wiedza modelu]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 32274687, DOI 10.1007/s40264-020-00930-7 (Villa Zapata, Drug Saf 2020); PMID 16007523, DOI 10.1086/431592 (Hung, Clin Infect Dis 2005)",
+        "cytat": "Clarithromycin … dramatically increases colchicine's half-life, augmenting the risk of a life-threatening adverse reaction; 58 FAERS cases, 30 deaths",
+        "co_mowi_zrodlo": "Etykietę [wiedza modelu] DA SIĘ ZASTĄPIĆ źródłem. Hung 2005: 10,2% zgonów przy równoczesnym podaniu (n=88), ryzyko największe przy niewydolności nerek. Toksyczność w ciągu 5 dni od startu klarytromycyny."
+      },
+      {
+        "twierdzenie": "Kontrola po 48–72 h [oznaczone jako wiedza modelu]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 15028364, DOI 10.1016/j.jacc.2003.09.055",
+        "cytat": "A clinical and echocardiographic follow-up was performed at 48 to 72 h, 7 to 10 days, 1 month, 6 months, and 1 year",
+        "co_mowi_zrodlo": "Etykietę DA SIĘ ZASTĄPIĆ źródłem: protokół ambulatoryjny Imazio 2004 przewiduje kontrolę po 48–72 h i 7–10 dniach. Również ICAP: ocena objawów po 72 h i remisja po 1 tyg."
+      },
+      {
+        "twierdzenie": "Kontrola CRP po 1–2 tygodniach",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 15028364 (wizyta 7–10 dni); PMID 42376745 (follow-up wg CRP); PMID 39235771 (zmniejszanie NLPZ po normalizacji CRP)",
+        "cytat": "doses tapered once chest pain has resolved and C-reactive protein level has normalized, typically over several weeks",
+        "co_mowi_zrodlo": "Zgodne co do zasady; dokładny odstęp '1–2 tygodnie' jest interpolacją z protokołu 7–10 dni."
+      },
+      {
+        "twierdzenie": "Pantoprazol 20 mg/d jako osłona przy ibuprofenie 1800 mg/d [oznaczone jako wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — ChPL pantoprazolu nieobecna w zrodla/; nie szukano w PubMed (dawka preparatu = domena ChPL)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Liczba dawki bez źródła. Występuje wyłącznie w stopce ŹRÓDŁA projektu, nie w zdaniu REKOMENDACJA (tam tylko 'inhibitor pompy protonowej'). Jeśli liczba 20 mg trafi do FINAL bez ChPL — kartka CZERWONA. Zalecenie: nie podawać dawki PPI w FINAL albo dodać ChPL do zrodla/."
+      },
+      {
+        "twierdzenie": "Schemat zmniejszania dawki ibuprofenu [oznaczone jako wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak konkretnego schematu w pobranych streszczeniach; zasada 'taper po ustąpieniu bólu i normalizacji CRP' — PMID 39235771",
+        "cytat": "",
+        "co_mowi_zrodlo": "Projekt nie podaje liczb schematu, więc nie ma sprzeczności; etykieta musi zostać w FINAL, jeśli pojawią się liczby."
+      },
+      {
+        "twierdzenie": "Brak interakcji farmakokinetycznej ibuprofenu/kolchicyny z antykoncepcją doustną (z 03-opinie/farmakolog.json, przeniesione pośrednio do projektu)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak",
+        "cytat": "",
+        "co_mowi_zrodlo": "Nieliczbowe; nie weryfikowano w PubMed. W FINAL nie pojawia się jako twierdzenie — bez konsekwencji dla kartki, o ile tak pozostanie."
+      }
+    ],
+    "poprawki": [
+      "Zastąpić etykietę [wiedza modelu] przy interakcji kolchicyna–klarytromycyna źródłami: PMID 32274687 (DOI 10.1007/s40264-020-00930-7) i PMID 16007523 (DOI 10.1086/431592).",
+      "Zastąpić etykietę [wiedza modelu] przy kontroli po 48–72 h źródłem PMID 15028364 (protokół: 48–72 h, 7–10 dni).",
+      "Usunąć liczbę 'pantoprazol 20 mg/d' z FINAL (zostawić 'inhibitor pompy protonowej') albo dodać ChPL pantoprazolu do zrodla/ — dawka bez źródła w FINAL = CZERWONA.",
+      "Osłabić 'wyklucza praktycznie nerwoból' → 'przemawia przeciw' i nie przypisywać tego do PMID 39235771, które tego nie zawiera.",
+      "Dodać do ŹRÓDEŁ samą wytyczną ESC 2025 (Schulz-Menger i wsp., Eur Heart J 2025;46:3952, PMID 40878297, DOI 10.1093/eurheartj/ehaf192) zamiast opierać ESC 2025 wyłącznie na omówieniach wtórnych (PMID 41534803, 42026924).",
+      "Przy D-dimer 73% zaznaczyć w FINAL, że to kohorta hospitalizowana (PMID 37357033), nie POZ.",
+      "Opcjonalnie: PMID 17502574 wskazuje płeć żeńską jako niezależny czynnik ryzyka przyczyny swoistej i powikłań (HR 1,67 / 1,65) — dotyczy pacjentki; ordynator decyduje, czy wspomnieć.",
+      "Brak polskiej wytycznej terapeutycznej potwierdzony (jedyny polski dokument: konsensus obrazowania Kardiol Pol 2013, PMID 23348545). Można to zapisać w FINAL jako fakt, nie brak wyszukiwania."
+    ]
+  }
+}

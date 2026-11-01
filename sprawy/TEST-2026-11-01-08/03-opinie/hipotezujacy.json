@@ -1,0 +1,100 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawowa hiponatremia polekowa (sertralina dołączona do indapamidu, mechanizm zespołu nieadekwatnego wydzielania wazopresyny i tiazydopodobnego diuretyku)",
+      "p": 0.45,
+      "za": [
+        "Sód 131 mmol/l już przed włączeniem sertraliny, na indapamidzie 1,5 mg — wyjściowo łagodna hiponatremia, mała rezerwa",
+        "Nowy lek w ostatnich 4 tygodniach (sertralina 50 mg) — czasowo zgodne z typowym oknem hiponatremii po inhibitorach wychwytu zwrotnego serotoniny [wiedza modelu, niezweryfikowane co do okna czasowego]; sertralina wiąże się z ryzykiem hiponatremii (metaanaliza sieciowa: OR 4,15; PMID 40261584)",
+        "Obraz kliniczny pasuje: splątanie, chwiejność, upadek, nudności, wymioty, brak apetytu — bez gorączki",
+        "Zwiększone picie (córka: pije więcej niż zwykle) przy upośledzonym wydalaniu wolnej wody nasila hiponatremię"
+      ],
+      "przeciw": [
+        "Brak aktualnego oznaczenia sodu — rozpoznanie wyłącznie poszlakowe",
+        "Córka opisuje też oddawanie dużych ilości moczu; w zespole nieadekwatnego wydzielania wazopresyny diureza raczej nie jest duża (choć wielomocz może wynikać z większego picia i diuretyku)"
+      ]
+    },
+    {
+      "nazwa": "Pourazowy krwiak wewnątrzczaszkowy (krwiak podtwardówkowy) po upadku bez świadków",
+      "p": 0.13,
+      "za": [
+        "Upadek bez świadków u 74-latka z nowym splątaniem — niejasny wywiad urazu głowy; w kohorcie 4303 osób ≥65 lat po upadku z niejasnym wywiadem urazu głowy klinicznie istotne krwawienie śródczaszkowe 4,6%, a autorzy zalecają pilne obrazowanie (PMID 41170758)",
+        "Splątanie i wymioty to predyktory istotnego krwawienia śródczaszkowego po upadku z wysokości własnej (PMID 42574438)",
+        "Chwiejność mogła poprzedzać upadek, ale też narastające objawy mogą wynikać z krwiaka podostrego"
+      ],
+      "przeciw": [
+        "Splątanie i chwiejność zaczęły się 2 dni temu, a upadek był wczoraj — objawy wyprzedzają uraz, więc upadek jest raczej skutkiem niż przyczyną",
+        "Brak leków przeciwzakrzepowych (zmniejsza, nie wyklucza ryzyko)"
+      ]
+    },
+    {
+      "nazwa": "Zakażenie układu moczowego z majaczeniem",
+      "p": 0.10,
+      "za": [
+        "Częstomocz małymi porcjami (córka)",
+        "Majaczenie u starszego mężczyzny bywa nietypową prezentacją zakażenia (PMID 42412955)"
+      ],
+      "przeciw": [
+        "Brak gorączki i dreszczy, brak zgłoszonego bólu przy oddawaniu moczu",
+        "Częstomocz łatwo wyjaśnia wzmożone picie i diuretyk; majaczenie bez objawów zakażenia z dodatnim badaniem moczu to częsta pułapka bezobjawowej bakteriurii — antybiotyk nie poprawił ustępowania majaczenia w 7. dobie (PMID 36447157)"
+      ]
+    },
+    {
+      "nazwa": "Hiperkalcemia (diuretyk tiazydopodobny lub przyczyna nowotworowa, np. szpiczak, rak gruczołu krokowego)",
+      "p": 0.05,
+      "za": [
+        "Triada wielomocz z wzmożonym pragnieniem, nudności z wymiotami i splątanie",
+        "Indapamid zmniejsza wydalanie wapnia [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak oznaczenia wapnia; brak wywiadu utraty masy ciała czy bólów kostnych (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Udar niedokrwienny mózgu (tylny krąg)",
+      "p": 0.05,
+      "za": [
+        "Ostry początek chwiejności i zaburzeń świadomości z nudnościami i wymiotami u 74-latka z nadciśnieniem"
+      ],
+      "przeciw": [
+        "Córka nie zauważyła ogniskowych objawów (pytanie o objawy: nic z tych rzeczy); brak badania neurologicznego (NIEZNANE)"
+      ]
+    }
+  ],
+  "rozwazone_odrzucone": "Hiperglikemia z odwodnieniem (wielomocz, wielopicie; glukoza 98 mg/dl 4 tygodnie temu, bez cukrzycy — mało prawdopodobna, ale glukometr od ręki), hipokaliemia polekowa, zespół serotoninowy (brak gorączki, drżenia, biegunki w opisie), zatrzymanie moczu z przepełnienia przy przeroście gruczołu krokowego, niedoczynność tarczycy/kory nadnerczy jako przyczyna hiponatremii, otępienie z nałożonym majaczeniem (stan wyjściowy NIEZNANE), depresja jako przyczyna złego jedzenia.",
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Leczenie przeciwzakrzepowe (nie bierze)",
+    "Gorączka i dreszcze (zaprzeczone)",
+    "Duszność (oddycha normalnie)"
+  ],
+  "red_flags_otwarte": [
+    "Ostre splątanie z wymiotami u 74-latka — możliwa ciężka objawowa hiponatremia (wymioty i splątanie to objawy umiarkowanie ciężkie/ciężkie wg wytycznej europejskiej, PMID 24569496 — klasyfikacja objawów [wiedza modelu, niezweryfikowane w streszczeniu])",
+    "Upadek bez świadków z nowym splątaniem — nie wykluczono krwawienia śródczaszkowego (wymaga tomografii komputerowej głowy)",
+    "Parametry życiowe, saturacja, glikemia i badanie neurologiczne nieznane",
+    "Stan wyjściowy funkcji poznawczych nieznany"
+  ],
+  "nastepny_krok": "Skierowanie dziś, bez zwłoki, na szpitalny oddział ratunkowy (transport medyczny) w celu oznaczenia sodu, potasu, wapnia, glukozy, kreatyniny i osmolalności oraz tomografii komputerowej głowy — bez włączania antybiotyku w POZ.",
+  "co_zmieniloby_zdanie": "Prawidłowy sód (≥135 mmol/l) przy gorączce, leukocytozie i ropomoczu z objawami z dróg moczowych przesunąłby rozpoznanie w stronę zakażenia układu moczowego, a krwiak w tomografii — w stronę urazu jako przyczyny pierwotnej.",
+  "odpowiedz_na_pytanie_lekarza": "Raczej nie zakażenie układu moczowego; najpierw sód i tomografia głowy, antybiotyk nie teraz.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla hiponatremii, majaczenia i bezobjawowej bakteriurii (tylko pozycje przykładowe)",
+    "pamiec/zespol.md — brak wpisów dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'hyponatremia sertraline OR SSRI elderly thiazide risk' (83 trafienia)",
+    "PubMed zapytanie 2: 'clinical practice guideline diagnosis treatment hyponatraemia[Title]' (13 trafień)",
+    "PubMed zapytanie 3: 'asymptomatic bacteriuria delirium older adults antibiotic' (11 trafień)",
+    "PubMed zapytanie 4: 'intracranial hemorrhage older adults ground level fall head CT emergency department' od 2018 (14 trafień)",
+    "Spasovski G i wsp. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Nephrol Dial Transplant 2014;29 Suppl 2:i1-i39. PMID 24569496, DOI 10.1093/ndt/gfu040 (streszczenie: definicja hiponatremii <135 mmol/l, wytyczna ESICM/ESE/ERBP)",
+    "Norello D i wsp. Treatment with antidepressant drugs and hyponatremia: a network meta-analysis. J Endocrinol Invest 2025;48:1707-1715. PMID 40261584, DOI 10.1007/s40618-025-02587-4 (streszczenie: sertralina OR 4,15 [1,98–8,70])",
+    "Li Y i wsp. The risk of hyponatremia induced by SSRIs and SNRIs: systematic review and meta-analysis. BMC Pharmacol Toxicol 2025;26:144. PMID 40764948, DOI 10.1186/s40360-025-00977-1 (streszczenie: SSRI OR 2,16; sertralina wśród niższego ryzyka w obrębie klasy — rozbieżność z PMID 40261584)",
+    "Xi X i wsp. Drug-induced hyponatremia surveillance: FAERS. Pak J Med Sci 2026;42:848-855. PMID 42257098, DOI 10.12669/pjms.42.4.13918 (streszczenie: najsilniejszy sygnał dla indapamidu ROR 91,46; sertralina wśród leków z największą liczbą zgłoszeń)",
+    "Kerr G i wsp. Applying the Canadian Head CT Criteria to Older Adults Seen in the ED After a Fall. J Am Geriatr Soc 2025;74:509-515. PMID 41170758, DOI 10.1111/jgs.70191 (streszczenie: niejasny wywiad urazu głowy — 4,6% klinicznie istotnego krwawienia, zasadne pilne obrazowanie)",
+    "Dubucs X i wsp. Risk stratification for significant acute traumatic intracranial hemorrhage in older adults after a ground-level fall. PLoS Med 2026;23:e1004935. PMID 42574438, DOI 10.1371/journal.pmed.1004935 (streszczenie: splątanie i wymioty wśród predyktorów)",
+    "Joo P i wsp. Effect of inpatient antibiotic treatment among older adults with delirium found with a positive urinalysis. BMC Geriatr 2022;22:916. PMID 36447157, DOI 10.1186/s12877-022-03549-8 (streszczenie: brak różnicy w majaczeniu w 7. dobie)",
+    "Fralick M i wsp. Antibiotics for Delirium in Older Adults With No Clear UTI — vanguard. J Am Geriatr Soc 2026;74:1964-1970. PMID 42175687, DOI 10.1111/jgs.70480 (streszczenie: badanie w toku, faza pilotażowa — brak wyniku skuteczności)",
+    "Laguë A i wsp. Investigation and treatment of asymptomatic bacteriuria in older patients with delirium. CJEM 2021;24:61-67. PMID 34181215, DOI 10.1007/s43678-021-00148-1 (streszczenie: wytyczne zalecają najpierw szukać przyczyn niezakaźnych)",
+    "Lv J, Waza AA. Recurrent UTIs in older adults: systematic review. Acta Pharm 2026;76:1-25. PMID 42412955, DOI 10.2478/acph-2026-0017 (streszczenie: majaczenie jako nietypowa prezentacja; konieczność odróżnienia od bezobjawowej bakteriurii)"
+  ]
+}

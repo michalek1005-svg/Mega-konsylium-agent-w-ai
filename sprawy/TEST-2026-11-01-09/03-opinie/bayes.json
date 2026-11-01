@@ -1,0 +1,101 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Ból głowy z nadużywania leków przeciwbólowych na podłożu pierwotnego bólu głowy",
+      "p": 0.60,
+      "za": [
+        "pretest: u kobiety 46 lat z przewlekłym codziennym bólem głowy w POZ najczęstsze są migrena, ból typu napięciowego i ból z nadużywania leków; przewlekły codzienny ból głowy ok. 3% populacji (PMID 23074404) -> punkt wyjścia wysoki",
+          "leki przeciwbólowe (ketoprofen, paracetamol) ponad 20 dni w miesiącu przez ok. 6 miesięcy -> podnosi -> silnie (kryterium ICHD-3: ≥15 dni/mies. dla prostych analgetyków, >3 mies. [wiedza modelu, niezweryfikowane])",
+        "dodatkowo preparaty złożone z kofeiną (≥10 dni/mies. wystarcza wg ICHD-3 [wiedza modelu, niezweryfikowane]) -> podnosi -> umiarkowanie",
+        "wcześniej epizodyczne bóle głowy kilka razy w roku (istniejący pierwotny ból głowy) -> podnosi -> umiarkowanie",
+        "ból obecny po przebudzeniu i słabnący w ciągu dnia (odstawienie analgetyku/kofeiny przez noc) -> podnosi -> słabo do umiarkowanie",
+        "leki 'nie pomagają' mimo codziennego stosowania -> podnosi -> umiarkowanie",
+        "ból stały, obustronny, uciskający, 5/10, niezmienny od 6 miesięcy -> zgodny -> słabo"
+      ],
+      "przeciw": [
+        "liczba tabletek na dobę i ilość kofeiny NIEZNANE -> nie da się ocenić ciężkości nadużycia",
+        "rozpoznanie ostateczne ICHD-3 wymaga poprawy po odstawieniu; nie jest to kryterium wejściowe, ale brak poprawy po 2-3 miesiącach obniżyłby p"
+      ]
+    },
+    {
+      "nazwa": "Przewlekła migrena z aurą",
+      "p": 0.15,
+      "za": [
+        "migotanie i zygzaki przed oczami przed bólem (typowa wzrokowa aura) -> podnosi -> umiarkowanie",
+        "wcześniejsze epizodyczne bóle głowy kilka razy w roku -> zgodny przebieg transformacji migreny epizodycznej w przewlekłą -> umiarkowanie"
+      ],
+      "przeciw": [
+        "ból obustronny, uciskający 'jak obręcz', 5/10, bez danych o nudnościach i nasileniu przy wysiłku -> mniej niż 2 z kryteriów POUND (LR 0,41 dla migreny; Detsky 2006, PMID 16968852) -> obniża -> umiarkowanie",
+        "nie wiadomo, czy aura występuje przed każdym bólem, czy tylko przy części napadów, ani od kiedy (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Przewlekły ból głowy typu napięciowego",
+      "p": 0.10,
+      "za": [
+        "ból obustronny, uciskający jak obręcz, umiarkowany 5/10, bez wymiotów, bez nasilenia przy kaszlu i schylaniu -> podnosi -> umiarkowanie",
+        "sen poniżej 6 godzin lub zły sen -> podnosi -> słabo"
+      ],
+      "przeciw": [
+        "aura wzrokowa nie pasuje do bólu typu napięciowego -> obniża -> umiarkowanie",
+        "przy nadużywaniu leków >20 dni/mies. rozpoznanie wiodące to ból z nadużywania leków, a ból napięciowy jest tłem -> obniża jako rozpoznanie samodzielne"
+      ]
+    },
+    {
+      "nazwa": "Ból głowy związany z zaburzeniami snu, w tym obturacyjnym bezdechem sennym",
+      "p": 0.05,
+      "za": [
+        "ból po przebudzeniu, słabnący w ciągu dnia -> podnosi -> słabo",
+        "sen poniżej 6 godzin lub zły sen -> podnosi -> słabo"
+      ],
+      "przeciw": [
+        "brak danych o chrapaniu, bezdechach, masie ciała (NIEZNANE) -> nie można podnieść",
+        "ból poranny w bezdechu zwykle krótki (<4 h) i nie codzienny od pół roku z nadużyciem leków [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Zmiana strukturalna wewnątrzczaszkowa, w tym guz mózgu",
+      "p": 0.02,
+      "za": [
+        "pretest istotnej zmiany wewnątrzczaszkowej przy przewlekłym bólu głowy i prawidłowym badaniu neurologicznym 0,9% (95% CI 0,5-1,4%; Sempere, cyt. w PMID 23074404)",
+        "ból z aurą: LR+ 3,2 (95% CI 1,6-6,6) dla istotnej zmiany w neuroobrazowaniu (Detsky 2006, PMID 16968852) -> podnosi -> umiarkowanie",
+        "ból obecny rano po przebudzeniu -> podnosi -> słabo (cecha niespecyficzna; w metaanalizie nieistotna)",
+        "badanie neurologiczne i dno oka NIEZNANE -> nie wolno przyjąć prawidłowego"
+      ],
+      "przeciw": [
+        "brak wymiotów porannych: LR- 0,47 (PMID 23074404) -> obniża -> umiarkowanie",
+        "brak nasilenia przy kaszlu, parciu, schylaniu: LR- 0,70 (PMID 23074404) -> obniża -> słabo",
+        "ból niezmienny przez 6 miesięcy, bez progresji, bez objawów ogniskowych, bez nowych objawów neurologicznych w ankiecie -> obniża -> umiarkowanie",
+        "wyliczenie: szansa 0,009 x 3,2 x 0,47 x 0,70 ≈ 0,0095 -> p ok. 1%; podniesione do 0,02 z powodu nieznanego badania fizykalnego"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "nagły ból typu piorunującego (ankieta: nie)",
+    "poranne wymioty (nie)",
+    "nasilenie przy kaszlu, kichaniu, parciu, schylaniu (nie)",
+    "progresja bólu w ciągu 6 miesięcy (ból podobny cały czas)",
+    "nadciśnienie tętnicze w ostatnich 3 miesiącach (pomiar prawidłowy <140/90)",
+    "objawy alarmowe z listy ankiety w ostatnich tygodniach i dniach (pacjentka zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "aura wzrokowa u kobiety stosującej złożoną antykoncepcję estrogenowo-progestagenową (etynyloestradiol + drospirenon): migrena z aurą zwiększa ryzyko udaru niedokrwiennego, a złożone środki antykoncepcyjne to ryzyko dodatkowo zwiększają; CDC zaleca ich unikanie (PMID 36126006, PMID 32056462)",
+    "nie wiadomo, czy aura jest nowa (pierwszy raz po 40. roku życia) czy znana od lat, ani jaki ma czas trwania i charakter (aura >60 min, ruchowa, czuciowa jednostronna lub bez następowego bólu wymaga pilniejszej diagnostyki)",
+    "badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) NIEZNANE",
+    "ból obecny po przebudzeniu: do czasu badania nie wykluczono nadciśnienia śródczaszkowego"
+  ],
+  "nastepny_krok": "Wizyta w POZ w tym tygodniu: badanie neurologiczne z oceną dna oka i doprecyzowaniem aury, a przy prawidłowym badaniu bez rezonansu na start — zamiana złożonej antykoncepcji na metodę bez estrogenu oraz zaplanowane odstawienie analgetyków i preparatów z kofeiną z dzienniczkiem bólu i profilaktyką bólu głowy.",
+  "co_zmieniloby_zdanie": "Nieprawidłowe badanie neurologiczne lub obrzęk tarczy nerwu wzrokowego, aura atypowa (dłuższa niż 60 minut, ruchowa, jednostronna czuciowa, nowa po 40. roku życia) albo brak poprawy po 2-3 miesiącach odstawienia leków podniosłyby p zmiany strukturalnej ponad próg i uzasadniłyby rezonans magnetyczny głowy.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskiej wytycznej dla bólu głowy i nadużywania leków w bibliotece (tylko wiersze przykładowe); pamiec/zespol.md: brak wpisów dotyczących bólu głowy",
+    "PubMed zapytanie 1: 'neuroimaging chronic headache normal neurological examination prevalence significant abnormalities' -> PMID 23074404 (Ontario HTA 2010, PMC3377587; streszczenie sprawdzone: pretest 0,9% [95% CI 0,5-1,4], LR- wymiotów 0,47, LR- nasilenia przy Valsalvie 0,70, RCT Howard: MRI nie zmniejszyło lęku po 1 roku); PMID 29987497 (dzieci; nie wykorzystano)",
+    "PubMed zapytanie 2: 'medication overuse headache[Title] AND (withdrawal OR detoxification) AND randomized' (od 2018) -> PMID 40011869, DOI 10.1186/s10194-025-01982-9 (NMA 16 RCT, n=3000; streszczenie sprawdzone: samo nagłe odstawienie bez profilaktyki nieistotne, MD -2,77 dni; skuteczne kombinacje odstawienia z profilaktyką); PMID 37452281, DOI 10.1186/s10194-023-01630-0 (RCT MIND-CM: mindfulness dodany do odstawienia i profilaktyki, 78,4% vs 48,3% odpowiedzi ≥50%)",
+    "PubMed zapytanie 3: 'migraine with aura combined hormonal contraception ischemic stroke risk' -> PMID 36126006 (Am Fam Physician 2022; streszczenie sprawdzone: migrena z aurą zwiększa ryzyko udaru niedokrwiennego, złożone tabletki je zwiększają, CDC zaleca unikanie); PMID 32056462, DOI 10.1080/14737175.2020.1730816 (przegląd systematyczny: związek z udarem napędzany przez migrenę z aurą, także przy niskodawkowych <50 µg etynyloestradiolu); PMID 34414296, DOI 10.1177/23969873211019586 (nie wykorzystano liczbowo)",
+    "PubMed zapytanie 4: 'Detsky[Author] AND headache AND neuroimaging AND JAMA' -> PMID 16968852, DOI 10.1001/jama.296.10.1274 (JAMA 2006 przegląd systematyczny; streszczenie sprawdzone: aura LR 3,2 [1,6-6,6], nieprawidłowe badanie neurologiczne LR 5,3, wymioty LR 1,8, nasilenie przy wysiłku/Valsalvie LR 2,3; POUND ≤2 kryteria LR 0,41 dla migreny; żadna cecha nie wyklucza patologii)",
+    "PubMed zapytanie 5: 'medication overuse headache[Title] AND review[Publication Type] AND (diagnosis OR management)' (od 2022) -> PMID 41975255, DOI 10.1186/s10194-026-02358-3 (2026; streszczenie sprawdzone: odstawienie podstawą, profilaktyka może startować przed lub razem z odstawieniem, interwencje behawioralne istotne); PMID 41313646, DOI 10.1080/14737175.2025.2596783 (przeciwciała anty-CGRP skuteczne także bez wcześniejszego odstawienia; poziom specjalistyczny)",
+    "Kryteria ICHD-3 dla bólu głowy z nadużywania leków (≥15 dni/mies. analgetyki proste, ≥10 dni/mies. preparaty złożone, >3 mies.) [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Septyczne (bakteryjne) zapalenie stawu kolanowego prawego",
+      "p": 0.50,
+      "za": [
+        "ostre zapalenie jednego dużego stawu od 1 doby z gorączką 38,6 °C i dreszczami",
+        "immunosupresja: metotreksat 12,5–15 mg/tydz. + glikokortykosteroid doustny (dawka NIEZNANA)",
+        "rana/otarcie skóry oraz zmiany łuszczycowe na kolanie = potencjalne wrota zakażenia; zakażenie skóry podnosi prawdopodobieństwo septycznego zapalenia stawu (Margaretten 2007, PMID 17405973)",
+        "CRP 186 mg/l, WBC 15,9 G/l, neutrofile 13,2 G/l",
+        "całkowita niemożność ruchu biernego",
+        "kolano jest typową lokalizacją septycznego zapalenia stawu bez dny; dna częściej dotyczy stawu skokowego w tej grupie (Hong 2022, PMID 36351859)"
+      ],
+      "przeciw": [
+        "przebyty epizod w palcu stopy sugerujący dnę (nigdy niepotwierdzony, NIEZNANE)",
+        "kwas moczowy 8,1 mg/dl"
+      ]
+    },
+    {
+      "nazwa": "Napad dny moczanowej stawu kolanowego",
+      "p": 0.30,
+      "za": [
+        "wywiad zapalenia stawu palucha 2 lata temu",
+        "hiperurykemia 8,1 mg/dl, brak leczenia obniżającego kwas moczowy",
+        "dna może dawać gorączkę i wysokie CRP [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "poprzedni epizod niepotwierdzony kryształami (NIEZNANE)",
+        "kwas moczowy w napadzie bywa prawidłowy, a hiperurykemia nie wyklucza zakażenia [wiedza modelu, niezweryfikowane]",
+        "obecność kryształów moczanu w płynie NIE wyklucza współistniejącego zakażenia (Tzanis 2022, PMID 35611099; 21,3% współistnienia dny w serii septycznych zapaleń stawów — Hong 2022, PMID 36351859)"
+      ]
+    },
+    {
+      "nazwa": "Ropne zapalenie kaletki przedrzepkowej",
+      "p": 0.07,
+      "za": ["rana/otarcie skóry kolana", "gorączka"],
+      "przeciw": ["całkowita niemożność ruchu biernego przemawia za procesem wewnątrzstawowym"]
+    },
+    {
+      "nazwa": "Zapalenie tkanki łącznej (cellulitis) okolicy kolana",
+      "p": 0.05,
+      "za": ["uszkodzenie skóry i łuszczyca", "gorączka, leukocytoza"],
+      "przeciw": ["pacjent nie zgłasza szerzącego się zaczerwienienia", "obrzęk stawu i blokada ruchu"]
+    },
+    {
+      "nazwa": "Łuszczycowe zapalenie stawów — zaostrzenie",
+      "p": 0.05,
+      "za": ["łuszczyca leczona metotreksatem"],
+      "przeciw": ["gorączka 38,6 °C z dreszczami i CRP 186 mg/l nietypowe", "brak innych zajętych stawów"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Martwicze zapalenie powięzi — wstępnie mało prawdopodobne: brak szerzącego się zaczerwienienia i objawów z listy alarmowej w ankiecie (badanie fizykalne NIEZNANE, więc wykluczenie tylko wstępne)",
+    "Uszkodzenie nerek ograniczające leczenie — kreatynina 1,1 mg/dl (wczoraj)"
+  ],
+  "red_flags_otwarte": [
+    "Septyczne zapalenie stawu kolanowego u chorego w immunosupresji (metotreksat + glikokortykosteroid) — wykluczy tylko punkcja stawu: leukocytoza w płynie, odsetek neutrofilów, barwienie Grama, posiew (Margaretten 2007: WBC w płynie >50 000/µl LR 7,7; >100 000/µl LR 28; <25 000/µl LR 0,32); kryształy moczanu NIE wykluczają zakażenia",
+    "Sepsa — gorączka 38,6 °C + WBC 15,9 G/l spełniają kryteria SIRS [wiedza modelu, niezweryfikowane]; parametry życiowe (ciśnienie, tętno, oddech, świadomość, saturacja) NIEZNANE; glikokortykosteroid może maskować gorączkę i objawy",
+    "Bakteriemia z wrót skórnych (rana/otarcie na kolanie) — wykluczą posiewy krwi pobrane przed antybiotykiem",
+    "Mielosupresja polekowa metotreksatu — neutrofile 13,2 G/l przemawiają przeciw, ale płytki, hemoglobina i próby wątrobowe NIEZNANE (ostatnie badania kontrolne NIEZNANE)",
+    "Interakcja NLPZ z metotreksatem (ryzyko toksyczności metotreksatu) i maskowanie gorączki przez NLPZ/kolchicynę opóźniające rozpoznanie zakażenia [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na szpitalny oddział ratunkowy (z dostępem do ortopedii) z rozpoznaniem roboczym: podejrzenie septycznego zapalenia stawu kolanowego u chorego w immunosupresji — punkcja stawu (płyn: cytoza, odsetek neutrofilów, Gram, posiew, kryształy) i posiewy krwi przed antybiotykiem; w POZ nie rozpoczynać kolchicyny, NLPZ ani glikokortykosteroidu dostawowego.",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność dopiero, gdy płyn stawowy ma cytozę <25 000/µl, ujemne barwienie Grama i kryształy moczanu przy stabilnych parametrach życiowych — samo stwierdzenie kryształów przy cytozie >50 000/µl lub dodatnim Gramie nie wystarczy.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla septycznego zapalenia stawu / dny (tylko przykładowe wpisy); pamiec/zespol.md — brak wpisów dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'septic arthritis[Title] AND (gout OR crystal) AND coexist' — wyniki: 38765130, 37916975, 36351859, 35611099, 31342808",
+    "PubMed zapytanie 2: '\"Arthritis, Infectious\"[MeSH] AND synovial fluid white cell count AND likelihood ratio' — wyniki: 27286047, 25746606 i in.",
+    "PubMed zapytanie 3: 'septic arthritis mortality native joint immunosuppression risk factors' (od 2010) — wynik: 20206778",
+    "PubMed zapytanie 4: 'Margaretten ME[Author] AND septic arthritis' — wynik: 17405973",
+    "PubMed zapytanie 5: 'septic arthritis[Title] AND (methotrexate OR immunosuppressive OR rheumatoid) AND (risk OR outcome)' (od 2015) — wyników nie analizowano, nie liczę jako skuteczne",
+    "Margaretten ME i wsp. Does this adult patient have septic arthritis? JAMA 2007;297(13):1478-88. PMID 17405973, DOI 10.1001/jama.297.13.1478 — streszczenie sprawdzone: LR cytozy płynu <25 000 = 0,32; ≥25 000 = 2,9; >50 000 = 7,7; >100 000 = 28; czynniki ryzyka m.in. wiek, cukrzyca, RZS, zakażenie skóry; gorączka tylko 57% czułości",
+    "Hong CC i wsp. Does concomitant gout in septic arthritis affect surgical outcomes? Injury 2023;54(2):409-415. PMID 36351859, DOI 10.1016/j.injury.2022.10.028 — streszczenie sprawdzone: 13/61 (21,3%) septycznych zapaleń stawów z potwierdzoną kryształami dną; współistnienie = więcej OIT/HDU (61,5% vs 29,2%), dłuższa hospitalizacja",
+    "Tzanis P i wsp. Septic Arthritis Complicating a Gout Flare. Mediterr J Rheumatol 2022;33(1):75-80. PMID 35611099, DOI 10.31138/mjr.33.1.75 — streszczenie sprawdzone: obecność kryształów moczanu nie wyklucza zakażenia; septyczne zapalenie stawu to stan nagły",
+    "Mathews CJ i wsp. Bacterial septic arthritis in adults. Lancet 2010;375(9717):846-55. PMID 20206778, DOI 10.1016/S0140-6736(09)61595-6 — streszczenie sprawdzone: stan nagły z wysoką chorobowością i śmiertelnością; kluczowa diagnostyczna punkcja stawu; rosnąca immunosupresja komplikuje postępowanie",
+    "Lenski M, Scherer MA. Infect Dis (Lond) 2015;47(6):399-409. PMID 25746606, DOI 10.3109/00365548.2015.1006674 — streszczenie sprawdzone: cytoza płynu >50 000/µl lub mleczan >10 mmol/l istotnie zwiększa prawdopodobieństwo zakażenia",
+    "Borzio R i wsp. Orthopedics 2016;39(4):e657-63. PMID 27286047, DOI 10.3928/01477447-20160606-05 — streszczenie sprawdzone: 77% septycznych zapaleń kolana bez gorączki, 64% z prawidłowym WBC — brak gorączki nie wyklucza zakażenia"
+  ]
+}

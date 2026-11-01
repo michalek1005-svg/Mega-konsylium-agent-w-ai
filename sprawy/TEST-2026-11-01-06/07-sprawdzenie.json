@@ -1,0 +1,105 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "sprawdzajacy-faktow",
+    "data": "2026-11-01",
+    "zakres": "05-projekt.md (każda liczba kliniczna i cytowany PMID); kontekst: 01-wywiad.md, 03-opinie/*.json, 04-konsylium.md. zrodla/: MANIFEST zawiera tylko przykłady — brak plików poziomu 1. PubMed: 6 PMID z projektu pobrane i porównane ze streszczeniami; 1 zapytanie celowe o polskie wytyczne (wynik: brak aktualnej polskiej wytycznej dla pękniętego AAA; jedyny trafiony rekord PMID 20527390 to Kardiol Pol 2005 o stentgraftach — nieadekwatny).",
+    "podsumowanie": {
+      "potwierdzone": 8,
+      "niepotwierdzone": 2,
+      "sprzeczne": 0,
+      "nieaktualne": 0,
+      "razem": 10
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "30% pęknięć AAA początkowo błędnie rozpoznanych; kolka nerkowa najczęstszą pomyłką (PMID 1619721)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Marston WA i wsp. J Vasc Surg 1992;16:17-22, PMID 1619721, DOI 10.1067/mva.1992.34344",
+        "cytat": "Forty-six (30%) were initially misdiagnosed. The most common misdiagnoses were renal colic, diverticulitis, and gastrointestinal hemorrhage.",
+        "co_mowi_zrodlo": "Retrospektywa 152 pękniętych AAA; populacja szpitalna, 1992. Liczba i kolejność pomyłek zgodne z projektem."
+      },
+      {
+        "twierdzenie": "Lekarz rodzinny trafnie rozpoznaje pęknięty AAA w 38%; kolka nerkowa = 24% pomyłek; USG opóźnia skierowanie z 0,75 do 2,5 h (PMID 9654880)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Acheson AG i wsp. J R Coll Surg Edinb 1998;43:182-4, PMID 9654880 (brak DOI w PubMed)",
+        "cytat": "The general practitioner had made the correct diagnosis in only 38% of cases and the most common misdiagnosis was renal colic (24%).",
+        "co_mowi_zrodlo": "Prospektywne, n=30, Belfast 1998. Wartości zgodne; mała próba — projekt słusznie używa jako ilustracji, nie progu."
+      },
+      {
+        "twierdzenie": "Czułość tętniącego guza 47%, hipotensji 31% dla pękniętego AAA; brak objawów nie wyklucza (PMID 35220634)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Fernando SM i wsp. Acad Emerg Med 2022;29:486-96, PMID 35220634, DOI 10.1111/acem.14475",
+        "cytat": "Pooled sensitivity of hypotension and pulsatile abdominal mass were 30.9% and 47.1%, respectively (low certainty).",
+        "co_mowi_zrodlo": "Metaanaliza 20 badań, 2077 pacjentów; pewność dowodów niska dla objawów. Zaokrąglenie 47/31 poprawne. Dodatkowo omdlenie 27,8%, angio-TK czułość 91,4%, POCUS 97,8/97,0 (cytowane w 04-konsylium) — zgodne."
+      },
+      {
+        "twierdzenie": "Nadciśnienie (RR skurczowe ≥140 mmHg) w transporcie: aOR zgonu 4,71 (PMID 38040202)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Li SR i wsp. J Vasc Surg 2024;79:755-62, PMID 38040202, DOI 10.1016/j.jvs.2023.11.044",
+        "cytat": "Episodes of hypertension were associated with significantly increased 30-day mortality (adjusted odds ratio 4.71; 95% CI 1.54-14.39).",
+        "co_mowi_zrodlo": "UWAGA populacja: 125 chorych z rAAA i wstrząsem krwotocznym (RR <90) w transporcie lotniczym międzyszpitalnym, retrospektywa jednoośrodkowa. Pacjent z projektu ma RR 104 — ekstrapolacja. Wniosek projektu „nie podawać dodatkowych leków hipotensyjnych” nie wynika wprost z badania (grupa z nadciśnieniem częściej dostawała leki hipotensyjne przedszpitalnie, 15% vs 2%, ale badanie nie testowało interwencji). Źródło mówi też, że ciężka hipotensja <70 mmHg szkodzi (aOR 2,82) — projekt nie podaje tego progu, choć jest w tym samym źródle."
+      },
+      {
+        "twierdzenie": "W kolce nerkowej NLPZ pozajelitowo jako lek pierwszego wyboru — mniej wymiotów i leczenia ratunkowego niż opioidy; warunek prawidłowej czynności nerek (PMID 29174580)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Pathan SA i wsp. Eur Urol 2018;73:583-95, PMID 29174580, DOI 10.1016/j.eururo.2017.11.001",
+        "cytat": "NSAIDs required fewer rescue treatments (NNT 11) and had lower vomiting rates compared with opioids (NNT 5) ... in patients with adequate renal function.",
+        "co_mowi_zrodlo": "Metaanaliza 36 RCT, n=4887. Zgodne. Zastrzeżenie o czynności nerek pochodzi z samego źródła."
+      },
+      {
+        "twierdzenie": "Zalecany czas drzwi–interwencja <90 min w pękniętym AAA (PMID 31356266)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Wang LJ i wsp. Ann Surg 2019;270:630-8, PMID 31356266, DOI 10.1097/SLA.0000000000003482",
+        "cytat": "A door-to-intervention time of <90 minutes is recommended.",
+        "co_mowi_zrodlo": "Rejestr VQI, 3719 napraw rAAA. Artykuł przytacza próg 90 min jako zalecenie towarzystw (nie wyprowadza go sam); pierwotne źródło progu to wytyczne SVS/ESVS. W projekcie użyte tylko w liście źródeł, nie w treści — bez wpływu na decyzję."
+      },
+      {
+        "twierdzenie": "Próg średnicy aorty 30 mm jako definicja tętniaka (w projekcie: [wiedza modelu, niezweryfikowane])",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Wanhainen A i wsp. ESVS 2024 Clinical Practice Guidelines on the Management of Abdominal Aorto-Iliac Artery Aneurysms. Eur J Vasc Endovasc Surg 2024;67:192-331, PMID 38307694, DOI 10.1016/j.ejvs.2023.11.002",
+        "cytat": "Definicja AAA jako średnica aorty brzusznej ≥30 mm — treść wytycznej (streszczenie w PubMed nie zawiera liczby; z pamięci wytycznej).",
+        "co_mowi_zrodlo": "Etykietę [wiedza modelu] można zastąpić cytowaniem ESVS 2024 (poziom 3 — wytyczna europejska, brak polskiej). Liczba 30 mm w streszczeniu PubMed niewidoczna; weryfikacja pełnego tekstu nie była możliwa w tej sesji — dlatego poziom 3 z pamięci, nie 2."
+      },
+      {
+        "twierdzenie": "Wskaźnik wstrząsowy ≈1,0 (tętno 108 / RR skurczowe 104) jako sygnał wyrównanego wstrząsu krwotocznego (w projekcie: [wiedza modelu, niezweryfikowane])",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "Dirks NPM i wsp. Prehosp Emerg Care 2021;25:496-503, PMID 32674713, DOI 10.1080/10903127.2020.1796184",
+        "cytat": "A SI ≥ 1.0 was estimated as an optimal cutoff point for the presence of a rAAA (AUROC 0.74) with an adjusted OR of 5.3 for the prehospital SI.",
+        "co_mowi_zrodlo": "Retrospektywa jednoośrodkowa, 313 pacjentów z podejrzeniem rAAA, 71 pękniętych. Arytmetyka projektu poprawna (108/104 = 1,04). Etykietę [wiedza modelu] można zastąpić tym PMID. Uzupełniająco: Nasef H i wsp. Am Surg 2024, PMID 38821531, DOI 10.1177/00031348241256069 — SI i wiek×SI jako predyktory śmiertelności u geriatrycznych pacjentów ze wstrząsem krwotocznym (uraz, nie AAA)."
+      },
+      {
+        "twierdzenie": "Kryterium stabilności w PLANIE B: „tętno <100/min” jako warunek prowadzenia jako kolki",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — próg arbitralny; żadne z cytowanych źródeł nie definiuje stabilności hemodynamicznej w rAAA/kolce tym progiem",
+        "cytat": "",
+        "co_mowi_zrodlo": "Nie jest to dawka ani przeciwwskazanie; nie podnosi kartki do CZERWONEJ. Wymaga etykiety [wiedza modelu, niezweryfikowane] w 09-FINAL albo zastąpienia przez wskaźnik wstrząsowy <1,0 (PMID 32674713), który ma źródło."
+      },
+      {
+        "twierdzenie": "Ketoprofen (NLPZ) łącznie z kwasem acetylosalicylowym 75 mg nasila krwawienie i maskuje objawy; nieznana łączna dawka ketoprofenu → ryzyko nerek",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/ (brak ChPL ketoprofenu i ChPL ASA); farmakologia klasy leków — wiedza modelu",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne z ChPL ketoprofenu (interakcja z lekami przeciwpłytkowymi, ryzyko krwawienia z przewodu pokarmowego i ostrego uszkodzenia nerek) — ale ChPL nie ma w zrodla/, więc formalnie poziom 4. Wymaga etykiety [wiedza modelu, niezweryfikowane] albo dodania ChPL Ketonal do zrodla/."
+      }
+    ],
+    "poprawki": [
+      "09-FINAL: usunąć etykietę [wiedza modelu] przy wskaźniku wstrząsowym — zastąpić cytowaniem Dirks NPM i wsp. 2021, PMID 32674713, DOI 10.1080/10903127.2020.1796184 (SI ≥1,0 jako punkt odcięcia dla rAAA, aOR 5,3).",
+      "09-FINAL: próg 30 mm — zastąpić etykietę cytowaniem ESVS 2024 (Wanhainen i wsp., PMID 38307694, DOI 10.1016/j.ejvs.2023.11.002), z dopiskiem, że to wytyczna europejska (poziom 3), bo polskiej brak.",
+      "09-FINAL: przy aOR 4,71 (PMID 38040202) dopisać populację: chorzy z rAAA we wstrząsie krwotocznym w transporcie międzyszpitalnym — u pacjenta z RR 104 to ekstrapolacja; zdanie „nie podawać dodatkowych leków hipotensyjnych” oznaczyć jako wniosek konsylium, nie wynik badania.",
+      "09-FINAL: kryterium „tętno <100/min” w PLANIE B — oznaczyć [wiedza modelu, niezweryfikowane] albo zastąpić wskaźnikiem wstrząsowym <1,0 (źródło j.w.).",
+      "09-FINAL: interakcja ASA + ketoprofen (krwawienie, nerki) — oznaczyć [wiedza modelu, niezweryfikowane] do czasu dodania ChPL ketoprofenu do zrodla/.",
+      "Sugestia dla użytkownika (nie dla FINAL): dodać do zrodla/ ChPL ketoprofenu i ChPL kwasu acetylosalicylowego 75 mg oraz ESVS 2024 (pełny tekst) — trzy z pięciu poprawek znikną."
+    ]
+  }
+}

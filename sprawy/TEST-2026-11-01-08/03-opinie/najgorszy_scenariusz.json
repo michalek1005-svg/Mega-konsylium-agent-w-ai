@@ -1,0 +1,101 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Ciężka objawowa hiponatremia polekowa (sertralina z indapamidem)",
+      "p": 0.5,
+      "za": [
+        "Sód 131 mmol/l już przed włączeniem sertraliny (4 tygodnie temu) — wyjściowa hiponatremia na indapamidzie",
+        "Nowy lek w ostatnich 4 tygodniach (wg wyników: sertralina) — SSRI powoduje SIADH, synergizm z tiazydopodobnym diuretykiem (PMID 14770031; PMID 27168745)",
+        "Hiponatremia przy antydepresantach z diuretykami to najczęstsza zgłaszana interakcja psychiatryczno-somatyczna w EudraVigilance (PMID 41039328)",
+        "Obraz typowy dla objawowej hiponatremii: splątanie, chwianie, upadek, nudności, wymioty, zmniejszony apetyt",
+        "Zwiększone picie dodatkowo obniża sód przy upośledzonym wydalaniu wolnej wody",
+        "Wiek 74 lata, wielolekowość — czynniki ryzyka (PMID 27168745)"
+      ],
+      "przeciw": [
+        "Brak aktualnego oznaczenia sodu — rozpoznanie wyłącznie kliniczne",
+        "Wielomocz z polidypsją nie jest typowy dla SIADH (choć możliwy przy pierwotnym piciu i tiazydzie)"
+      ]
+    },
+    {
+      "nazwa": "Krwawienie śródczaszkowe pourazowe (krwiak podtwardówkowy)",
+      "p": 0.1,
+      "za": [
+        "Upadek bez świadków u 74-latka, uraz głowy nieznany",
+        "Splątanie, zaburzenia równowagi, nudności i wymioty — nudności są czynnikiem ryzyka krwawienia po łagodnym urazie głowy u osób starszych (PMID 37074561)",
+        "Sertralina zwiększa ryzyko krwawień [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Splątanie zaczęło się przed upadkiem (od 2 dni, upadek wczoraj) — upadek raczej skutek niż przyczyna",
+        "Brak leków przeciwkrzepliwych",
+        "Krwiak przewlekły z wcześniejszego, nieznanego urazu nie jest wykluczony"
+      ]
+    },
+    {
+      "nazwa": "Zakażenie układu moczowego z urosepsą lub zatrzymaniem moczu i ostrym uszkodzeniem nerek",
+      "p": 0.1,
+      "za": [
+        "Częstomocz, oddawanie małych porcji — u mężczyzny 74 lat możliwe zatrzymanie moczu z przepełnienia (rozrost gruczołu krokowego) lub zakażenie powikłane",
+        "Majaczenie może być jedynym objawem sepsy u starszych [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak gorączki i dreszczy, oddech prawidłowy",
+        "Wielomocz z polidypsją przemawia przeciw typowemu zapaleniu pęcherza",
+        "Leczenie antybiotykiem majaczenia z dodatnim badaniem moczu bez objawów zakażenia nie przyspiesza ustąpienia majaczenia (PMID 36447157)"
+      ]
+    },
+    {
+      "nazwa": "Hiperkalcemia",
+      "p": 0.05,
+      "za": [
+        "Wielomocz, polidypsja, nudności, wymioty, splątanie — klasyczny zespół",
+        "Diuretyk tiazydopodobny zmniejsza wydalanie wapnia; w wieku 74 lat możliwa nadczynność przytarczyc lub nowotwór [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Wapń nieoznaczany — brak danych za ani przeciw poza objawami"
+      ]
+    },
+    {
+      "nazwa": "Udar mózgu",
+      "p": 0.05,
+      "za": [
+        "Wiek, nadciśnienie, nagłe zaburzenia równowagi i splątanie"
+      ],
+      "przeciw": [
+        "Córka nie zgłasza ogniskowych objawów („nic z tych rzeczy”), dynamika 2-dniowa, objawy uogólnione"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Leczenie przeciwkrzepliwe jako czynnik krwawienia — wykluczone wywiadem (nie bierze)",
+    "Niewydolność oddechowa — oddech prawidłowy wg córki (bez pomiaru saturacji)",
+    "Hipoglikemia lub hiperglikemia w przebiegu znanej cukrzycy — brak cukrzycy (ale nowa hiperglikemia nie jest wykluczona, glukoza 98 mg/dl sprzed 4 tygodni)",
+    "Zespół odstawienny alkoholowy i encefalopatia Wernickego z alkoholu — nie pije"
+  ],
+  "red_flags_otwarte": [
+    "Ciężka objawowa hiponatremia (wymioty + splątanie = objawy ciężkie wg ESE/ESICM/ERBP 2014) — wykluczy tylko aktualny sód w surowicy; [kryterium objawów ciężkich: wiedza modelu, niezweryfikowane w streszczeniu PMID 24569496]",
+    "Krwawienie śródczaszkowe po upadku bez świadków — wykluczy tomografia komputerowa głowy",
+    "Sepsa (w tym urosepsa) u starszego mężczyzny bez pomiaru parametrów życiowych — wykluczą parametry życiowe, CRP/prokalcytonina, badanie moczu z posiewem",
+    "Zatrzymanie moczu z ostrym uszkodzeniem nerek — wykluczy USG pęcherza/objętość zalegająca i kreatynina",
+    "Hipokaliemia i odwodnienie po wymiotach na diuretyku — wykluczy jonogram i kreatynina",
+    "Hiperkalcemia — wykluczy oznaczenie wapnia",
+    "Nowa hiperglikemia z hiperosmolarnością (wielomocz, polidypsja, splątanie) — wykluczy glukoza z palca, dostępna od ręki",
+    "Zespół serotoninowy po nowym SSRI — wykluczy badanie przedmiotowe (drżenie, klonusy, hipertermia, tachykardia)",
+    "Stan funkcji poznawczych przed epizodem NIEZNANY — nie można ocenić skali zmiany",
+    "Parametry życiowe i badanie fizykalne NIEZNANE"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie do szpitalnego oddziału ratunkowego z adnotacją: majaczenie po upadku bez świadków u chorego na sertralinie z indapamidem, wyjściowy sód 131 mmol/l — pilnie jonogram (sód, potas, wapń), glukoza, kreatynina, osmolalność, gazometria, badanie moczu z posiewem i tomografia komputerowa głowy; bez empirycznego antybiotyku przed tymi wynikami.",
+  "co_zmieniloby_zdanie": "Prawidłowy sód (≥135 mmol/l), wapń i glukoza, prawidłowa tomografia głowy i stabilne parametry życiowe obniżyłyby pilność do 2–3 i otworzyły drogę do oceny zakażenia moczowego jako przyczyny.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla hiponatremii, majaczenia, urazu głowy ani zakażeń układu moczowego (tylko wiersze przykładowe)",
+    "pamiec/zespol.md — brak wniosków dla tej prezentacji",
+    "PubMed zapytanie 1: 'sertraline hyponatremia elderly thiazide SIADH' → PMID 14770031 (Rosner 2004, Am J Med Sci, DOI 10.1097/00000441-200402000-00012): ciężka hiponatremia przy łączeniu tiazydów i SSRI, synergizm upośledzenia klirensu wolnej wody — streszczenie sprawdzone",
+    "PubMed zapytanie 2: 'asymptomatic bacteriuria delirium older adults antibiotic' → PMID 36447157 (Joo 2022, BMC Geriatr, DOI 10.1186/s12877-022-03549-8): u starszych z majaczeniem i dodatnim badaniem moczu antybiotyk nie poprawił odsetka majaczenia w 7. dniu (RR 0,94) — streszczenie sprawdzone",
+    "PubMed zapytanie 3: 'Clinical practice guideline on diagnosis and treatment of hyponatraemia[Title]' → PMID 24569496 (Spasovski 2014, ESICM/ESE/ERBP, Nephrol Dial Transplant, DOI 10.1093/ndt/gfu040): definicja hiponatremii <135 mmol/l, wzrost śmiertelności — streszczenie sprawdzone; klasyfikacja objawów ciężkich (wymioty, senność, drgawki) z pełnego tekstu [wiedza modelu, niezweryfikowane]",
+    "PubMed zapytanie 4: 'selective serotonin reuptake inhibitors hyponatremia risk elderly diuretic' → PMID 27168745 (Liamis 2016, J Geriatr Cardiol, DOI 10.11909/j.issn.1671-5411.2016.02.001): tiazydy główną przyczyną hiponatremii u starszych, ryzyko rośnie z SSRI; przy objawach neurologicznych pilnie oznaczyć sód — streszczenie sprawdzone; PMID 41039328 (Dubrall 2025, BMC Psychiatry, DOI 10.1186/s12888-025-07352-8): hiponatremia przy antydepresantach z diuretykami najczęstszą interakcją (32,6% par) — streszczenie sprawdzone",
+    "PubMed zapytanie 5: 'delayed intracranial hemorrhage older adults ground-level fall head CT' → PMID 37074561 (Sakkas 2023, Eur Geriatr Med, DOI 10.1007/s41999-023-00781-2): ostre krwawienie śródczaszkowe 5,5% po łagodnym urazie głowy ≥65 lat; czynniki ryzyka m.in. GCS <15, amnezja, senność, zawroty, nudności — streszczenie sprawdzone; PMID 33485622 (Ethridge 2021, Am J Surg, DOI 10.1016/j.amjsurg.2021.01.011): opóźnione krwawienie rzadkie (5/635) przy ujemnej pierwszej TK — streszczenie sprawdzone",
+    "Hiperkalcemia przy tiazydach, ryzyko krwawień przy SSRI, majaczenie jako objaw sepsy, zespół serotoninowy — [wiedza modelu, niezweryfikowane]"
+  ]
+}

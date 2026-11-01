@@ -1,0 +1,59 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {"nazwa": "skręt jądra prawego", "p": 0.75,
+     "za": ["nagły początek w ciągu minut (obudził go)", "ból 8/10 od 3–6 h", "jądro wyżej niż drugie (uniesienie)", "nudności i wymioty", "brak gorączki, brak objawów dyzurycznych, brak ryzykownych kontaktów", "ból bez zmiany przy uniesieniu jądra (ujemny objaw Prehna)", "podobny epizod wcześniej, który sam minął (możliwy przemijający skręt)", "wiek 19 lat — drugi szczyt zachorowań [wiedza modelu, niezweryfikowane]"],
+     "przeciw": ["brak badania fizykalnego i USG z dopplerem (NIEZNANE)"]},
+    {"nazwa": "skręt przyczepka jądra", "p": 0.08,
+     "za": ["ostry ból moszny u młodego mężczyzny"],
+     "przeciw": ["częstszy przed okresem dojrzewania", "wymioty i uniesienie jądra przemawiają za skrętem jądra"]},
+    {"nazwa": "zapalenie najądrza", "p": 0.07,
+     "za": ["obrzęk moszny"],
+     "przeciw": ["nagły, nie stopniowy początek", "brak gorączki", "brak dyzurii", "brak kontaktów seksualnych bez prezerwatywy", "brak ulgi przy uniesieniu jądra"]},
+    {"nazwa": "uwięźnięta przepuklina pachwinowa", "p": 0.03,
+     "za": ["ból podbrzusza, wymioty"],
+     "przeciw": ["brak uwypuklenia w pachwinie"]},
+    {"nazwa": "zapalenie jądra", "p": 0.02,
+     "za": ["obrzęk moszny"],
+     "przeciw": ["brak zapalenia ślinianek", "brak gorączki"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "gorączka ≥ 38 °C (zaprzecza)",
+    "uwypuklenie w pachwinie (zaprzecza)",
+    "uraz moszny (zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "nagły, silny ból jądra u 19-latka — skręt jądra do wykluczenia operacyjnie lub USG z dopplerem",
+    "jądro uniesione",
+    "utrzymujące się nudności po wymiotach",
+    "czas od początku bólu 3–6 h: okno ratowania jądra (do ok. 6 h) właśnie się zamyka",
+    "badanie fizykalne i parametry życiowe NIEZNANE"
+  ],
+  "nastepny_krok": "Teraz, w tej samej rozmowie w aplikacji/telefonicznie: polecić natychmiastowy przyjazd na Szpitalny Oddział Ratunkowy szpitala z oddziałem urologii (skierowanie niepotrzebne), a gdy pacjent nie ma szybkiego transportu z osobą towarzyszącą albo jest dalej niż kilkadziesiąt minut — wezwać zespół ratownictwa medycznego (112); nie umawiać wizyty w POZ ani nie przepisywać antybiotyku.",
+  "co_zmieniloby_zdanie": "Tylko USG moszny z dopplerem wykonane dziś w szpitalu, pokazujące zachowany przepływ w prawym jądrze przy obrazie zapalenia najądrza, pozwoliłoby obniżyć pilność; w realiach POZ nic, co mogę zrobić w gabinecie, nie wyklucza skrętu, a odległość pacjenta od SOR z urologią jest NIEZNANA i decyduje tylko o wyborze 112 zamiast dojazdu własnego.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Nie wzywać pacjenta do gabinetu POZ — wizyta w POZ kosztuje 30–90 min i nic nie rozstrzyga (USG z dopplerem nie jest dostępne w trybie natychmiastowym w POZ); zadzwonić do pacjenta zamiast pisać, potwierdzić miejsce pobytu i transport. Nie próbować ręcznej detorsji zdalnie ani w POZ.",
+    "co_zlecic": "Nic w POZ. W szpitalu: USG moszny z badaniem dopplerowskim i konsultacja urologa; przy wysokim podejrzeniu klinicznym urolog może operować bez USG.",
+    "do_kogo_i_tryb": "SOR szpitala z urologią (a nie najbliższa izba przyjęć bez urologii — przekazanie międzyszpitalne wydłuża czas do operacji o kilka godzin, PMID 31101044); tryb natychmiastowy; przy braku transportu lub dużej odległości — 112.",
+    "przed_wyjazdem": "Nic nie jeść i nie pić (możliwy zabieg w znieczuleniu ogólnym) [wiedza modelu, niezweryfikowane]; nie prowadzić samemu samochodu; wziąć dowód osobisty; jeśli ból jest silny, a nie ma przeciwwskazań — doraźnie paracetamol nie opóźnia wyjazdu [wiedza modelu, niezweryfikowane].",
+    "kontrola": "Telefon do pacjenta lub szpitala tego samego dnia wieczorem: czy był operowany / jakie rozpoznanie; po wypisie wizyta w POZ w ciągu 7–14 dni (gojenie rany, wynik, ewentualne pytania o płodność).",
+    "co_powiedziec_pacjentowi": "To może być skręt jądra — jądro można uratować tylko w ciągu kilku godzin, więc proszę teraz jechać na SOR z urologią; badanie trwa chwilę, robią je codziennie i nikt nie będzie tego oceniał, a zwlekanie może kosztować jądro.",
+    "wykonalnosc": "Główna bariera to wstyd i odkładanie (wiek > 18 lat wiąże się z dłuższym czasem do zgłoszenia i do sali operacyjnej, PMID 38043906). Rozmowa telefoniczna zamiast wiadomości, jasne nazwanie ryzyka utraty jądra i zaproponowanie, by pojechał z kimś bliskim, to wersja wykonalna. Koszt: SOR bez skierowania, bezpłatnie w ramach NFZ.",
+    "nie_robic": "Nie przepisywać antybiotyku i nie wyznaczać kontroli za tydzień — to odpowiedź na pytanie lekarza: nie. Nie kierować na USG w trybie ambulatoryjnym ani do poradni urologicznej z terminem."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani koszyka POZ dla ostrej moszny (tylko przykłady); pamiec/zespol.md — brak realiów lokalnych (odległość do SOR nieuzupełniona)",
+    "PubMed zapytanie 1: testicular torsion[Title] AND (salvage OR orchiectomy) AND duration (od 2015) — 133 wyniki",
+    "PubMed zapytanie 2: TWIST score testicular torsion validation — 15 wyników",
+    "PubMed zapytanie 3: testicular torsion transfer delay interfacility OR \"time to surgery\" orchiectomy rate — 4 wyniki",
+    "PMID 25671040, DOI 10.5811/westjem.2014.11.22495 — Ramachandra 2015: w analizie wieloczynnikowej tylko czas objawów < 6 h przewidywał uratowanie jądra (OR 22,5); przekazanie międzyszpitalne opóźniało operację (streszczenie sprawdzone)",
+    "PMID 31101044, DOI 10.1186/s12894-019-0473-5 — Overholt 2019: pacjenci przekazywani z innych ośrodków — czas od objawów do operacji 12,9 h vs 6,9 h; orchidektomia 33% vs 22% (nieistotne) (streszczenie sprawdzone)",
+    "PMID 38043906, DOI 10.1016/j.urology.2023.11.007 — Zhao 2023: pacjenci ≥ 18 lat — dłuższy czas do USG i do sali operacyjnej, orchidektomia 48,8% vs 31,5% (p = 0,057) (streszczenie sprawdzone)",
+    "PMID 23433663, DOI 10.1016/j.arcped.2013.01.008 — Even 2013: u wszystkich dzieci z orchidektomią ból trwał > 6 h; apel o współpracę POZ z ośrodkami referencyjnymi (streszczenie sprawdzone)",
+    "PMID 35970737, DOI 10.1016/j.jpurol.2022.07.013 — Hisamatsu 2022: TWIST wysokie ryzyko PPV 61%, niskie NPV 98,5%; skala może zaniżać ryzyko tuż po początku objawów (streszczenie sprawdzone)",
+    "PMID 34521708, DOI 10.46747/cfp.6709669 — Shunmugam 2021 (Can Fam Physician): TWIST ≥ 1 lub obraz sugerujący skręt — pilnie na najbliższy SOR (streszczenie sprawdzone)",
+    "[wiedza modelu, niezweryfikowane]: okno ratowania jądra ok. 6 h; drugi szczyt zachorowań w okresie dojrzewania/młodej dorosłości; pozostawanie na czczo przed możliwym zabiegiem"
+  ]
+}

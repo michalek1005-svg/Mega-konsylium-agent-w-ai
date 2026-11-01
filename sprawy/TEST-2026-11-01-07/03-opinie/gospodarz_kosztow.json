@@ -1,0 +1,61 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {
+      "nazwa": "Nadczynność tarczycy w przebiegu choroby Gravesa i Basedowa",
+      "p": 0,
+      "za": ["Tachykardia spoczynkowa 115/min (pomiar własny), utrata 5 kg mimo zwiększonego apetytu, drżenie rąk, poty, nietolerancja ciepła, częstsze stolce, rzadsze miesiączki", "Objawy oczne: wytrzeszcz, retrakcja powiek, uczucie piasku, światłowstręt — sugerują orbitopatię", "Choroba tarczycy w rodzinie", "Objawy stałe, także w spoczynku — nie napadowe jak w lęku"],
+      "przeciw": ["Brak jakichkolwiek badań — rozpoznanie wyłącznie kliniczne z ankiety", "Brak badania fizykalnego (wole, szmer, tętno zmierzone przez lekarza)"]
+    },
+    {
+      "nazwa": "Zaburzenie lękowe uogólnione",
+      "p": 0,
+      "za": ["Napięcie, bezsenność, stresująca praca, interpretacja pacjentki"],
+      "przeciw": ["Utrata masy ciała przy wzmożonym apetycie, objawy oczne, nietolerancja ciepła i zaburzenia miesiączkowania nie są objawami lęku", "Lęk jest rozpoznaniem z wykluczenia — nie może być postawiony bez TSH"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["Myśli samobójcze (zaprzecza)", "Niemiarowe kołatanie (pacjentka opisuje rytm jako równy — wymaga potwierdzenia w EKG)"],
+  "red_flags_otwarte": [
+    "Tachykardia spoczynkowa 115/min trwająca bez przerwy ponad godzinę — reguła ankiety: EKG i TSH tego samego dnia; czekanie na badanie w kolejce nie jest bezpieczne",
+    "Niewykluczone migotanie przedsionków lub inna tachyarytmia (tylko samoocena 'równo')",
+    "Ciąża niewykluczona przy rzadszych miesiączkach (zmienia wybór leku i zakazuje scyntygrafii/jodu promieniotwórczego)",
+    "Orbitopatia — możliwe zagrożenie wzroku, nieoceniona przez lekarza",
+    "Nasilenie tyreotoksykozy nieznane (ryzyko przełomu niskie przy braku gorączki i zaburzeń świadomości, ale nieocenione fizykalnie)"
+  ],
+  "nastepny_krok": "Dziś: wizyta w gabinecie z EKG 12-odprowadzeniowym i pobraniem jednej próbki krwi na TSH, fT4, fT3, TRAb i beta-hCG (morfologia i ALT z tej samej próbki jako wyjściowe przed lekiem przeciwtarczycowym); SSRI nie włączać.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH wyklucza tyreotoksykozę i wtedy jedyne dalsze badanie z wpływem na decyzję to ocena psychiatryczna/skale lęku, a SSRI staje się rozsądną opcją; EKG z migotaniem przedsionków lub częstością >150/min przesuwa pilność na 1 (SOR).",
+  "badania": [
+    {"nazwa": "EKG 12-odprowadzeniowe", "cel": "Rytm zatokowy vs migotanie przedsionków/inna tachyarytmia przy tętnie 115/min", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Tanie, dostępne w gabinecie, wynik od ręki. Migotanie przedsionków → ocena ryzyka zatorowego i kontrola częstości, ewentualnie SOR; zatokowa → beta-adrenolityk ambulatoryjnie. Weto pilności — uzasadnione zawsze."},
+    {"nazwa": "TSH", "cel": "Rozstrzyga między top-2 hipotezami (tyreotoksykoza vs lęk)", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Badanie przesiewowe pierwszego rzutu w podejrzeniu tyreotoksykozy wg ATA 2016 (PMID 27521067). Obniżone → leczenie tyreostatyczne; prawidłowe → tyreotoksykoza praktycznie wykluczona, ścieżka psychiatryczna. Zlecić cito/na dziś."},
+    {"nazwa": "fT4 i fT3", "cel": "Nasilenie (jawna vs subkliniczna; tyreotoksykoza T3)", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Z tej samej próbki co TSH — nie czekać na wynik TSH, bo przy tak typowym obrazie strategia kaskadowa traci dzień. Określa dawkę startową tiamazolu."},
+    {"nazwa": "Przeciwciała przeciw receptorowi TSH (TRAb)", "cel": "Etiologia: choroba Gravesa i Basedowa vs zapalenie tarczycy/wole guzkowe toksyczne", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Czułość ok. 97–98%, swoistość ok. 99% (metaanaliza, PMID 22776786). Dodatnie → rozpoznanie Gravesa bez scyntygrafii (strategia TRAb-first pozwoliła uniknąć ok. 2/3 scyntygrafii, PMID 41598383). Ujemne → wtedy scyntygrafia/USG. W POZ zwykle nie w koszyku NFZ — badanie komercyjne lub zlecenie przez endokrynologa [wiedza modelu, niezweryfikowane]; przy objawach orbitopatii warto pobrać od razu, bo skraca drogę do endokrynologa."},
+    {"nazwa": "Beta-hCG (test ciążowy)", "cel": "Wykluczenie ciąży przy rzadszych miesiączkach", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Ciąża → propylotiouracyl w I trymestrze zamiast tiamazolu, zakaz scyntygrafii i jodu promieniotwórczego (ETA 2018, PMID 30283735). Koszt znikomy; test z moczu w gabinecie wystarczy."},
+    {"nazwa": "Morfologia z rozmazem i ALT", "cel": "Wartości wyjściowe przed tiamazolem (agranulocytoza, hepatotoksyczność)", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Niska cena, ta sama próbka; potrzebne do bezpiecznego startu leku i interpretacji późniejszych odchyleń [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "USG tarczycy", "cel": "Ocena struktury, guzki", "zmienia_decyzje": false, "kolejnosc": 3, "uwagi": "Nie rozstrzyga etiologii (czułość 67%, swoistość 62,5% dla Gravesa vs TRAb 92%/96%, PMID 41598383). Zlecić planowo dopiero, gdy TRAb ujemne albo wyczuwalne guzki; nie warunkuje włączenia leczenia."},
+    {"nazwa": "Konsultacja okulistyczna", "cel": "Ocena aktywności i ciężkości orbitopatii", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Pilnie tylko przy pogorszeniu ostrości wzroku, podwójnym widzeniu, zaburzeniu widzenia barw; w pozostałych przypadkach w ramach skierowania do endokrynologa. Ma znaczenie przy wyborze leczenia radykalnego (jod przeciwwskazany przy aktywnej ciężkiej orbitopatii, PMID 30283735)."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Scyntygrafia tarczycy na starcie", "powod": "Przy dodatnim TRAb i orbitopatii nie zmienia decyzji; promieniowanie, kolejka; przeciwwskazana do czasu wykluczenia ciąży (PMID 41598383, 30283735)."},
+    {"nazwa": "Holter EKG / echokardiografia na starcie", "powod": "Tachykardia ma wyjaśnienie metaboliczne; jeśli EKG spoczynkowe pokaże rytm zatokowy, wynik Holtera nie zmieni leczenia (beta-adrenolityk + tyreostatyk). Wrócić do tematu, gdy po eutyreozie utrzymuje się kołatanie."},
+    {"nazwa": "Anty-TPO", "powod": "Przy oznaczonym TRAb nie zmienia rozpoznania ani leczenia [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Tyreoglobulina, kalcytonina, jodochłonność", "powod": "Brak wpływu na decyzję w tej prezentacji."},
+    {"nazwa": "Rozbudowany panel 'lękowy' (kortyzol, metanefryny, panel toksykologiczny)", "powod": "Bez wskazań przy obrazie klinicznym typowym dla tyreotoksykozy; metanefryny dopiero, gdy TSH prawidłowe i utrzymują się napadowe objawy adrenergiczne."},
+    {"nazwa": "Próbne leczenie SSRI przed TSH", "powod": "Najdroższa ścieżka: opóźnia rozpoznanie o tygodnie, maskuje objawy, a sertralina nie leczy tyreotoksykozy; koszt fałszywego rozpoznania lęku > koszt jednego TSH."}
+  ],
+  "zrodla": [
+    "PubMed zapytanie 1: '2016 American Thyroid Association guidelines hyperthyroidism thyrotoxicosis diagnosis management' (wyniki nieużyte)",
+    "PubMed zapytanie 2: 'TSH receptor antibodies diagnostic accuracy Graves disease meta-analysis' → PMID 22776786, 40789418",
+    "PubMed zapytanie 3: 'TRAb first diagnostic strategy Graves cost-effectiveness scintigraphy' → PMID 41598383",
+    "PubMed zapytanie 4: 'Ross DS[Author] AND hyperthyroidism[Title] AND guidelines[Title]' → PMID 27521067",
+    "PubMed zapytanie 5: '2018 European Thyroid Association guideline management of Graves hyperthyroidism' → PMID 30283735",
+    "Ross DS i wsp. 2016 American Thyroid Association Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid 2016;26(10):1343-1421. PMID 27521067, DOI 10.1089/thy.2016.0229 (streszczenie sprawdzone: wytyczne wstępnej oceny i ustalania etiologii tyreotoksykozy)",
+    "Kahaly GJ i wsp. 2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism. Eur Thyroid J 2018;7(4):167-186. PMID 30283735, DOI 10.1159/000490384 (streszczenie sprawdzone: TRAb zalecane do rozpoznania; tiamazol preferowany, PTU w planowaniu ciąży i I trymestrze; jod promieniotwórczy przeciwwskazany przy aktywnej ciężkiej orbitopatii)",
+    "Tozzoli R i wsp. TSH receptor autoantibody immunoassay in patients with Graves' disease... Autoimmun Rev 2012;12(2):107-13. PMID 22776786, DOI 10.1016/j.autrev.2012.07.003 (streszczenie sprawdzone: czułość/swoistość TRAb II gen. 97,1%/97,4%, III gen. 98,3%/99,2%)",
+    "Petranović Ovčariček P i wsp. A TRAb-First Diagnostic Strategy for Overt Hyperthyroidism. J Clin Med 2026;15(2):445. PMID 41598383, DOI 10.3390/jcm15020445 (streszczenie sprawdzone: TRAb czułość 92%, swoistość 96%; USG 66,9%/62,5%; strategia TRAb-first unika ok. 2/3 scyntygrafii)",
+    "Jiang Z i wsp. Diagnostic value of serum TSI levels in Graves' disease... Clin Biochem 2025;139:110989. PMID 40789418, DOI 10.1016/j.clinbiochem.2025.110989 (streszczenie sprawdzone: TSI i TRAb porównywalnie trafne; nie zmienia wyboru badania w POZ)",
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla tyreotoksykozy w bibliotece (tylko pozycje przykładowe)",
+    "pamiec/zespol.md — brak wpisów dotyczących tarczycy"
+  ]
+}

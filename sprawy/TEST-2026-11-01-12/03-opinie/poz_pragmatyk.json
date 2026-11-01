@@ -1,0 +1,126 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Chłoniak Hodgkina",
+      "p": 0.55,
+      "za": [
+        "objawy B od 3 miesięcy: utrata 7 kg, zlewne poty nocne, stany podgorączkowe do 37,8 °C",
+        "węzeł szyjny/nadobojczykowy > 2 cm",
+        "ból węzła po alkoholu: rzadki, ale typowy objaw chłoniaka Hodgkina (PMID 39734971, 31780609)",
+        "uogólniony świąd bez wysypki (PMID 39734971)",
+        "eozynofilia 0,9 G/l, limfopenia 0,8 G/l, OB 62 mm/h, trombocytoza 420 G/l, niedokrwistość Hb 12,1 g/dl",
+        "kaszel > 3 tygodni zgodny z możliwym zajęciem śródpiersia (PMID 39734971)"
+      ],
+      "przeciw": [
+        "wiek 55 lat: poza pierwszym, główny szczyt zachorowań młodych dorosłych [wiedza modelu, niezweryfikowane]",
+        "brak badania fizykalnego i obrazowania; brak histopatologii"
+      ]
+    },
+    {
+      "nazwa": "Rak płuca z przerzutami do węzłów nadobojczykowych",
+      "p": 0.13,
+      "za": [
+        "palacz, 55 lat",
+        "kaszel > 3 tygodni",
+        "utrata masy ciała",
+        "węzeł nadobojczykowy: najwyższe ryzyko złośliwości (PMID 12569376, 12484692)"
+      ],
+      "przeciw": [
+        "świąd, ból węzła po alkoholu i eozynofilia lepiej pasują do chłoniaka Hodgkina"
+      ]
+    },
+    {
+      "nazwa": "Chłoniak nieziarniczy",
+      "p": 0.12,
+      "za": [
+        "objawy B, powiększony węzeł, wiek 55 lat, mężczyzna (PMID 12569376)",
+        "świąd i eozynofilia opisywane też w chłoniakach T-komórkowych (PMID 30022944)"
+      ],
+      "przeciw": [
+        "ból węzła po alkoholu jest charakterystyczny dla chłoniaka Hodgkina"
+      ]
+    },
+    {
+      "nazwa": "Gruźlica węzłów chłonnych lub płuc",
+      "p": 0.1,
+      "za": [
+        "kaszel > 3 tygodni, poty nocne, chudnięcie, stany podgorączkowe",
+        "OB 62 mm/h",
+        "regułą ankiety jest RTG klatki piersiowej i wykluczenie gruźlicy"
+      ],
+      "przeciw": [
+        "eozynofilia, świąd i ból węzła po alkoholu nie pasują do gruźlicy"
+      ]
+    },
+    {
+      "nazwa": "Zespół wypalenia zawodowego lub depresja",
+      "p": 0.01,
+      "za": [
+        "dużo pracuje; sugestia żony"
+      ],
+      "przeciw": [
+        "anhedonia/przygnębienie: wcale; apetyt bez zmian",
+        "objawy somatyczne poprzedziły złe samopoczucie",
+        "obiektywne nieprawidłowości: gorączka, węzeł > 2 cm, OB 62, eozynofilia, niedokrwistość",
+        "wypalenie nie tłumaczy chudnięcia przy zachowanym apetycie ani potów nocnych"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "myśli samobójcze: zaprzecza",
+    "ostre objawy alarmowe z listy ankiety w ostatnich dniach: zaprzecza"
+  ],
+  "red_flags_otwarte": [
+    "węzeł nadobojczykowy/szyjny > 2 cm z objawami B (reguła ankiety: PILNE)",
+    "kaszel > 3 tygodni z potami nocnymi i chudnięciem: gruźlica niewykluczona do czasu RTG (reguła ankiety: PILNE)",
+    "możliwa masa śródpiersia: objawy zespołu żyły głównej górnej, duszność, stridor NIEZNANE (brak badania fizykalnego)",
+    "parametry życiowe, wątroba i śledziona, inne grupy węzłów: NIEZNANE"
+  ],
+  "nastepny_krok": "Na pierwszej wizycie (najpóźniej w tym tygodniu) zbadać węzły wszystkich grup, wątrobę i śledzionę, wystawić kartę diagnostyki i leczenia onkologicznego (karta DiLO) ze skierowaniem do poradni hematologicznej (podejrzenie chłoniaka, ICD-10 R59 lub C81 wg uznania) i tego samego dnia zlecić RTG klatki piersiowej PA i boczne.",
+  "co_zmieniloby_zdanie": "Objawy zespołu żyły głównej górnej, duszność spoczynkowa lub stridor w badaniu (wtedy pilność 1, SOR), a jamista zmiana w RTG z dodatnim wywiadem kontaktu z gruźlicą przesunęłaby priorytet na poradnię gruźlicy i plwocinę na prątki; nie wiem też, jak daleko pacjent ma do SOR i ośrodka hematologicznego.",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "ciśnienie, tętno, temperatura, saturacja, masa ciała (udokumentować spadek)",
+      "badanie węzłów: szyjne, nadobojczykowe, pachowe, pachwinowe; wielkość, konsystencja, ruchomość; wątroba, śledziona; skóra (przeczosy); obrzęk twarzy/szyi, poszerzone żyły szyjne",
+      "osłuchiwanie płuc; pytanie o kontakt z gruźlicą"
+    ],
+    "zlecic_z_poz": [
+      "RTG klatki piersiowej PA i boczne (wynik w ciągu kilku dni, przed wizytą w hematologii)",
+      "USG węzłów chłonnych szyi i dołów nadobojczykowych oraz USG jamy brzusznej (wątroba, śledziona, węzły zaotrzewnowe) — jeśli termin > 2 tygodni, nie czekać, hematolog zleci sam",
+      "morfologia z rozmazem ręcznym, CRP, LDH (dehydrogenaza mleczanowa), ALT, AST, fosfataza zasadowa, GGTP, bilirubina, kreatynina z eGFR, sód, potas, wapń, kwas moczowy, białko całkowite, albumina, glukoza, TSH, badanie ogólne moczu [zakres badań POZ — wiedza modelu, niezweryfikowane; w zrodla/ brak wykazu koszyka POZ]",
+      "HIV, HBsAg, anty-HCV (potrzebne hematologowi przed leczeniem; realnie mogą być płatne lub zlecone przez poradnię specjalistyczną) [wiedza modelu, niezweryfikowane]",
+      "przy kaszlu i podejrzanym RTG: plwocina na prątki gruźlicy (bakterioskopia i posiew) ×3"
+    ],
+    "skierowanie": {
+      "dokad": "poradnia hematologiczna (lub oddział hematologii) na karcie DiLO — szybka ścieżka onkologiczna; karta DiLO nie wymaga potwierdzenia histopatologicznego do wystawienia przez POZ [wiedza modelu, niezweryfikowane]",
+      "tryb": "pilny (szybka ścieżka DiLO), nie stabilny",
+      "czego_nie_robic": "Nie kierować do psychologa jako pierwszej ścieżki. Nie podawać glikokortykosteroidów (ani na świąd) przed biopsją — mogą zamaskować obraz histopatologiczny chłoniaka (PMID 42375921). Nie robić biopsji cienkoigłowej jako jedynej diagnostyki: do rozpoznania chłoniaka potrzebna jest biopsja wycięciowa węzła lub gruboigłowa (PMID 12484692, 32461041) — to robi ośrodek hematologiczny lub chirurg na zlecenie hematologa."
+    },
+    "kontrola": "Wizyta kontrolna w POZ po wyniku RTG (do 7 dni) i po wizycie w hematologii; jeśli termin w hematologii > 2 tygodni mimo karty DiLO — telefon do poradni/ośrodka lub skierowanie na oddział hematologii (tryb pilny).",
+    "jedno_zdanie_dla_pacjenta": "To nie wygląda na wypalenie: powiększony węzeł, gorączka, poty i chudnięcie wymagają pilnej diagnostyki u hematologa, którą dziś uruchamiam szybką ścieżką.",
+    "wykonalnosc": "Plan wykonalny w POZ w jednej wizycie (15 minut: badanie + karta DiLO + skierowania). Pacjent 55 lat, pracujący, samodzielny; bariera to czas (praca) — wypisać zwolnienie lekarskie na dni badań, jeśli potrzebne. Odległość do ośrodka hematologicznego i SOR: NIEZNANE."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskich wytycznych dla chłoniaków i brak wykazu badań koszyka POZ (tylko wiersze przykładowe); pamiec/zespol.md: brak wpisów dotyczących tej prezentacji",
+    "Zapytanie PubMed 1: \"alcohol-induced pain Hodgkin lymphoma\" (15 wyników)",
+    "Zapytanie PubMed 2: \"Hodgkin lymphoma[MeSH Terms] AND (diagnosis OR management) AND guideline[Publication Type]\" od 2018 (52 wyniki)",
+    "Zapytanie PubMed 3: \"supraclavicular lymphadenopathy malignancy risk primary care\" (3 wyniki)",
+    "Zapytanie PubMed 4: \"Hodgkin lymphoma pruritus eosinophilia B symptoms presentation\" (4 wyniki)",
+    "Zapytanie PubMed 5: \"excisional biopsy versus core needle biopsy lymphoma diagnosis\" od 2018 (1 wynik)",
+    "Zapytanie PubMed 6: \"Hodgkin lymphoma[Title] ESMO clinical practice guidelines diagnosis treatment follow-up\" (13 wyników)",
+    "PMID 39734971, DOI 10.7759/cureus.74778 — Cardoso T, Gonçalves L. Hodgkin lymphoma as the underlying cause of a chronic cough. Cureus 2024 (streszczenie sprawdzone: objawy B, świąd, ból po alkoholu, kaszel przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła)",
+    "PMID 31780609, DOI 10.1136/bcr-2018-228440 — Ma L i wsp. Hodgkin lymphoma presenting as alcohol-induced back pain. BMJ Case Rep 2019 (streszczenie sprawdzone: ból po alkoholu to rzadki, znany objaw chłoniaka Hodgkina)",
+    "PMID 12569376, DOI 10.1038/sj.bjc.6600738 — Chau I i wsp. Rapid access multidisciplinary lymph node diagnostic clinic: 550 patients. Br J Cancer 2003 (streszczenie sprawdzone: predyktory złośliwości — płeć męska RR 2,72, wiek, okolica nadobojczykowa RR 3,72, ≥2 okolice RR 6,41)",
+    "PMID 12484692 — Bazemore AW, Smucker DR. Lymphadenopathy and malignancy. Am Fam Physician 2002 (streszczenie sprawdzone: czynniki ryzyka — starszy wiek, twardy nieruchomy węzeł, > 2 tygodni, okolica nadobojczykowa; biopsja wycięciowa procedurą z wyboru)",
+    "PMID 32461041, DOI 10.1016/j.clml.2019.11.013 — Assaf N i wsp. Core needle vs surgical excisional biopsy. Clin Lymphoma Myeloma Leuk 2019 (streszczenie sprawdzone: wydajność diagnostyczna 79% biopsja gruboigłowa vs 97% wycięciowa)",
+    "PMID 42375921, DOI 10.7759/cureus.109943 — Patel PD i wsp. cHL with SVC syndrome, paraneoplastic eosinophilia and rash. Cureus 2026 (streszczenie sprawdzone: eozynofilia i świąd w chłoniaku Hodgkina; histopatologia przed glikokortykosteroidami)",
+    "PMID 30022944, DOI 10.1159/000488312 — Kumar K i wsp. PTCL-NOS case. Case Rep Oncol 2018 (streszczenie sprawdzone: eozynofilia i świąd także w chłoniaku T-komórkowym)",
+    "PMID 29796651, DOI 10.1093/annonc/mdy080 — Eichenauer DA i wsp. Hodgkin lymphoma: ESMO Clinical Practice Guidelines 2018 (streszczenie niedostępne w PubMed; treść użyta tylko jako tło [wiedza modelu, niezweryfikowane])",
+    "Karta DiLO, zakres badań koszyka POZ, dostępność HIV/HBV/HCV z POZ: [wiedza modelu, niezweryfikowane]"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: pilność 3 → 2. Badanie fizykalne NIEZNANE, więc masy śródpiersia z uciskiem (kaszel > 3 tygodni + węzeł nadobojczykowy) i prątkującej gruźlicy nie da się wykluczyć bez wizyty; badanie, karta DiLO i RTG klatki piersiowej dziś. Prawidłowe badanie i RTG pozwalają wrócić do pilności 3. Rozpoznanie i p bez zmian (chłoniak Hodgkina 0,55)."
+}

@@ -1,0 +1,69 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa z orbitopatią",
+      "p": 0.8,
+      "za": ["utrata 5 kg mimo zwiększonego apetytu", "tachykardia spoczynkowa 115/min, miarowa, ciągła", "drżenie rąk, nadmierna potliwość, nietolerancja ciepła, częstsze luźne stolce", "wytrzeszcz, poszerzenie szpar powiekowych, piasek pod powiekami, łzawienie, światłowstręt", "rzadsze/skąpsze miesiączki", "choroba tarczycy w rodzinie", "objawy stałe, także w spokoju (nie napadowe jak w lęku)"],
+      "przeciw": ["brak jakichkolwiek badań (TSH, fT4, fT3, TRAb) — rozpoznanie kliniczne, niepotwierdzone"]
+    },
+    {
+      "nazwa": "Przełom tarczycowy w fazie zagrażającej",
+      "p": 0.03,
+      "za": ["tirotoksykoza kliniczna nieleczona od 2 miesięcy", "tachykardia 115/min ciągła od ponad godziny"],
+      "przeciw": ["brak zaburzeń świadomości, gorączki, wymiotów, biegunki masywnej, objawów niewydolności serca w ankiecie (lista 'ostatnie dni': nic z tych rzeczy)", "tętno <130/min"]
+    },
+    {
+      "nazwa": "Tyreotoksyczne zaburzenie rytmu serca lub kardiomiopatia tyreotoksyczna",
+      "p": 0.05,
+      "za": ["ciągła tachykardia >110/min", "brak EKG"],
+      "przeciw": ["bicie odczuwane jako równe (przemawia za tachykardią zatokową, nie migotaniem przedsionków)", "młody wiek, brak chorób serca", "brak duszności/obrzęków w ankiecie — ale bez badania fizykalnego"]
+    },
+    {
+      "nazwa": "Orbitopatia tarczycowa zagrażająca utratą wzroku (neuropatia nerwu wzrokowego)",
+      "p": 0.03,
+      "za": ["objawy oczne aktywne: wytrzeszcz, łzawienie, światłowstręt"],
+      "przeciw": ["brak zgłoszonego pogorszenia ostrości wzroku, zaburzeń widzenia barw, podwójnego widzenia — ale ankieta o to nie pytała wprost"]
+    },
+    {
+      "nazwa": "Zaburzenie lękowe uogólnione",
+      "p": 0.04,
+      "za": ["stresująca praca, napięcie, bezsenność"],
+      "przeciw": ["utrata masy ciała przy wzmożonym łaknieniu, objawy oczne, nietolerancja ciepła i tachykardia spoczynkowa nie są wyjaśnione przez lęk"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "myśli samobójcze — wykluczone w ankiecie (odpowiedź: nie)",
+    "niemiarowe kołatanie (podejrzenie migotania przedsionków) — wg pacjentki bicie równe; ostatecznie rozstrzyga EKG",
+    "używki/leki/suplementy wywołujące tachykardię (stymulanty, lewotyroksyna, amiodaron, jod) — wg ankiety brak (tylko melisa)"
+  ],
+  "red_flags_otwarte": [
+    "tachykardia spoczynkowa 115/min trwająca ciągle >1 h — reguła ankiety: EKG i TSH tego samego dnia",
+    "przełom tarczycowy — do wykluczenia dziś: temperatura, stan świadomości, objawy niewydolności serca, ocena w skali Burcha-Wartofsky'ego",
+    "migotanie przedsionków / kardiomiopatia tyreotoksyczna — niewykluczone bez EKG i badania fizykalnego",
+    "neuropatia nerwu wzrokowego w orbitopatii — nie pytano o ostrość wzroku, widzenie barw, diplopię; wymaga oceny okulistycznej pilnej przy pogorszeniu widzenia",
+    "ciąża — rzadsze miesiączki; test ciążowy przed włączeniem leków przeciwtarczycowych (wybór tiamazol vs propylotiouracyl) i przed jakimkolwiek leczeniem"
+  ],
+  "nastepny_krok": "Dziś: ocena w gabinecie (tętno, ciśnienie, temperatura, stan świadomości, cechy niewydolności serca, ostrość wzroku) z EKG i oznaczeniem TSH, fT4 (oraz fT3, TRAb, beta-hCG) — bez włączania SSRI.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH i fT4 przy prawidłowym EKG (tachykardia zatokowa ustępująca) obniżyłyby pilność do 3–4 i otworzyłyby diagnostykę zaburzenia lękowego; z kolei gorączka, zaburzenia świadomości, migotanie przedsionków, tętno ≥130/min lub objawy niewydolności serca podniosłyby pilność do 1 (SOR, podejrzenie przełomu).",
+  "odpowiedz_na_pytanie": "Nie. Obraz to tyreotoksykoza (najpewniej choroba Gravesa-Basedowa z orbitopatią), nie zaburzenie lękowe; SSRI nie leczy przyczyny i opóźnia rozpoznanie. Najpierw dziś EKG + TSH/fT4.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla nadczynności tarczycy w bibliotece (tylko przykłady); pamiec/zespol.md — brak wpisu dotyczącego tarczycy",
+    "Ankieta 01-wywiad.md — reguły czerwonych flag: 'Tętno spoczynkowe 110–149/min: EKG i TSH tego samego dnia'; 'kołatanie bez przerwy >1 h: EKG tego samego dnia'",
+    "PubMed zapytanie 1 (bez wyników, nie liczone): 'European Thyroid Association guideline hyperthyroidism management[Title]'",
+    "PubMed zapytanie 2: 'thyroid storm diagnosis Burch-Wartofsky score review' (od 2015)",
+    "PubMed zapytanie 3: 'dysthyroid optic neuropathy Graves orbitopathy EUGOGO guidelines' (od 2016)",
+    "PubMed zapytanie 4: '2018 European Thyroid Association guideline Graves hyperthyroidism'",
+    "PubMed zapytanie 5: 'EUGOGO 2021 clinical practice guidelines medical management Graves orbitopathy'",
+    "PubMed zapytanie 6: 'hyperthyroidism atrial fibrillation risk thyrotoxicosis cardiomyopathy[Title/Abstract]' (od 2015)",
+    "Kahaly GJ i wsp. 2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism. Eur Thyroid J 2018;7:167-186. PMID 30283735, DOI 10.1159/000490384 — streszczenie sprawdzone: rozpoznanie = biochemicznie potwierdzona tyreotoksykoza + TRAb + USG + orbitopatia; tiamazol lekiem z wyboru 12–18 mies.; przy planowaniu ciąży i w I trymestrze zmiana na propylotiouracyl; jod radioaktywny przeciwwskazany w aktywnej/ciężkiej orbitopatii",
+    "Taylor P i wsp. Management of thyroid emergencies: joint consensus statement on management of thyroid storm. Eur Thyroid J 2026;15(4). PMID 42554462, DOI 10.1530/ETJ-26-0043 — streszczenie sprawdzone: przełom rozpoznawany klinicznie, wspomagany skalą Burcha-Wartofsky'ego i kryteriami JTA/JES; leczenie na oddziale intensywnego nadzoru",
+    "Zeng J i wsp. Front Surg 2025;12:1633314. PMID 40726736, DOI 10.3389/fsurg.2025.1633314 — streszczenie sprawdzone: śmiertelność przełomu 8–25%; przełom może przebiegać bez hipertermii, czujność na tachykardię i zaburzenia świadomości",
+    "Bartalena L i wsp. The 2021 EUGOGO clinical practice guidelines for the medical management of Graves' orbitopathy. Eur J Endocrinol 2021;185:G43-G67. PMID 34297684, DOI 10.1530/EJE-21-0479 — streszczenie sprawdzone: wczesne skierowanie do ośrodka specjalistycznego; zaburzenia czynności tarczycy i palenie to czynniki ryzyka; orbitopatia zagrażająca wzrokowi wymaga dużych dawek metyloprednizolonu i.v., przy braku odpowiedzi pilnej dekompresji",
+    "Vermot-Desroches V i wsp. Ann Endocrinol 2023;84:430-439. PMID 37086950, DOI 10.1016/j.ando.2023.04.002 — streszczenie sprawdzone: neuropatia nerwu wzrokowego w orbitopatii Gravesa; pełna poprawa po 6 mies. w 70% oczu przy leczeniu wg EUGOGO",
+    "Khalil Y i wsp. Thyrotoxicosis-Induced Cardiomyopathy With Systolic Dysfunction. Cureus 2023;15:e33988. PMID 36694856, DOI 10.7759/cureus.33988 — streszczenie sprawdzone: kardiomiopatia tyreotoksyczna <1%, nieleczona może prowadzić do nieodwracalnych zmian i zwiększa ryzyko migotania przedsionków; szybkie uzyskanie eutyreozy może odwrócić dysfunkcję",
+    "Beta-bloker jako leczenie objawowe tachykardii w tyreotoksykozie oraz to, że SSRI nie wpływa na przyczynę — [wiedza modelu, niezweryfikowane]"
+  ]
+}

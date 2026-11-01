@@ -1,0 +1,108 @@
+{
+  "rola": "bayes",
+  "pretest": "Kobieta 38 lat, ostry ból w klatce piersiowej w POZ/opiece doraźnej: przeważają przyczyny mięśniowo-szkieletowe; ostry zespół wieńcowy u kobiet w holenderskiej doraźnej POZ 5,4% (PMID 40605786, populacja z medianą wieku 54 lat — u 38-latki bez czynników ryzyka istotnie mniej). Ostre zapalenie osierdzia w populacji POZ z bólem w klatce: rzadkie, rząd kilku procent [wiedza modelu, niezweryfikowane]. Aktualizacja wywiadem przesuwa rozkład silnie w stronę zapalenia osierdzia.",
+  "rozpoznania": [
+    {
+      "nazwa": "ostre zapalenie osierdzia (najpewniej wirusowe / idiopatyczne)",
+      "p": 0.58,
+      "za": [
+        "ból nasila się w pozycji leżącej i ulega złagodzeniu w pozycji siedzącej pochylonej do przodu → zapalenie osierdzia ↑ → silnie (najbardziej swoista cecha obrazu) [wiedza modelu, niezweryfikowane]",
+        "ból opłucnowy (nasila się przy głębokim oddechu) → zapalenie osierdzia/opłucnej ↑, niedokrwienie ↓ → umiarkowanie",
+        "promieniowanie do barku / okolicy łopatki (grzbiet mięśnia czworobocznego — nerw przeponowy) → zapalenie osierdzia ↑ → umiarkowanie–silnie [wiedza modelu, niezweryfikowane]",
+        "infekcja dróg oddechowych tydzień wcześniej → etiologia wirusowa/poinfekcyjna ↑ → umiarkowanie",
+        "stan podgorączkowy 37,6 °C i tętno 96/min → proces zapalny ↑ → słabo"
+      ],
+      "przeciw": [
+        "brak badania przedmiotowego (tarcie osierdziowe), EKG i CRP — rozpoznanie wg kryteriów ESC wymaga ≥2 z 4 (ból, tarcie, zmiany EKG, wysięk) [wiedza modelu, niezweryfikowane]; obecnie spełnione tylko kryterium bólu"
+      ]
+    },
+    {
+      "nazwa": "zapalenie mięśniowo-osierdziowe",
+      "p": 0.10,
+      "za": [
+        "każde poinfekcyjne zapalenie osierdzia może zajmować mięsień sercowy (ESC 2025: wspólny zespół zapalny mięśnia sercowego i osierdzia, PMID 42026924, 41534803) → ↑ → umiarkowanie",
+        "tachykardia 96/min przy temperaturze 37,6 °C — nieproporcjonalna do gorączki → ↑ → słabo"
+      ],
+      "przeciw": [
+        "brak duszności, kołatań, omdlenia i nietolerancji wysiłku → ↓ → umiarkowanie",
+        "rozstrzyga troponina — NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "zapalenie opłucnej (wirusowe) lub zapalenie płuc z zajęciem opłucnej",
+      "p": 0.10,
+      "za": [
+        "ból opłucnowy po infekcji z podgorączką → ↑ → umiarkowanie"
+      ],
+      "przeciw": [
+        "ból zamostkowy z ulgą w pochyleniu do przodu i promieniowaniem do mięśnia czworobocznego lepiej pasuje do osierdzia → ↓ → umiarkowanie",
+        "brak duszności i (wg opisu) kaszlu → ↓ → słabo"
+      ]
+    },
+    {
+      "nazwa": "ból mięśniowo-szkieletowy ściany klatki piersiowej (w tym nerwoból międzyżebrowy)",
+      "p": 0.08,
+      "za": [
+        "najczęstsza przyczyna bólu w klatce w POZ u obu płci (PMID 40605786) → pretest wysoki"
+      ],
+      "przeciw": [
+        "ból NIE nasila się przy ucisku ani skręcie tułowia → ↓ → umiarkowanie [wiedza modelu, niezweryfikowane: odtwarzalność ucisku to główna cecha rozpoznawcza]",
+        "zależność od pozycji leżąca/pochylona i stan podgorączkowy niewytłumaczalne przez nerwoból → ↓ → silnie"
+      ]
+    },
+    {
+      "nazwa": "zatorowość płucna",
+      "p": 0.07,
+      "za": [
+        "antykoncepcja hormonalna → ↑ → umiarkowanie (estrogeny = kryterium PERC niespełnione, PERC nie może wykluczyć)",
+        "ból opłucnowy + tętno 96/min + stan podgorączkowy → ↑ → słabo"
+      ],
+      "przeciw": [
+        "brak duszności → ↓ → umiarkowanie",
+        "brak unieruchomienia, zabiegu, urazu w ostatnich 4 tygodniach i brak chorób przewlekłych → ↓ → umiarkowanie",
+        "ulga w pochyleniu do przodu nie jest typowa dla zatorowości → ↓ → słabo",
+        "wynik Wells prawdopodobnie niski (tętno <100/min, brak objawów zakrzepicy wg opisu) — zatorowość jako rozpoznanie alternatywne mniej prawdopodobne [wiedza modelu, niezweryfikowane]"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "ból wysiłkowy (nie nasila się przy schodach / szybkim marszu)",
+    "duszność",
+    "omdlenie i inne objawy alarmowe z listy ankiety (odpowiedź: nic z tych rzeczy)",
+    "unieruchomienie / zabieg / uraz w ostatnich 4 tygodniach",
+    "ciąża (zaprzeczona)"
+  ],
+  "red_flags_otwarte": [
+    "zajęcie mięśnia sercowego (troponina NIEZNANA)",
+    "zatorowość płucna przy antykoncepcji hormonalnej — PERC niespełnione, D-dimer NIEZNANY",
+    "wysiew do osierdzia / tamponada (brak badania fizykalnego, ciśnienia skurczowego i echokardiografii)",
+    "saturacja i ciśnienie tętnicze NIEZNANE",
+    "gorączka >38 °C jako cecha wysokiego ryzyka zapalenia osierdzia — obecnie 37,6 °C, do monitorowania"
+  ],
+  "nastepny_krok": "Wizyta osobista dziś: badanie fizykalne (tarcie osierdziowe, ciśnienie, saturacja), EKG 12-odprowadzeniowe oraz CRP, troponina wysokoczuła i D-dimer; przy prawidłowej troponinie, braku cech wysokiego ryzyka i ujemnym D-dimerze leczenie ambulatoryjne ibuprofenem w dawce przeciwzapalnej z kolchicyną i kontrolą po tygodniu.",
+  "co_zmieniloby_zdanie": "Podwyższona troponina lub zaburzenia czynności lewej komory (→ zapalenie mięśniowo-osierdziowe, pilność 1, szpital), dodatni D-dimer (→ angio-TK płuc), albo ból odtwarzany uciskiem przy prawidłowym EKG i CRP (→ przyczyna mięśniowo-szkieletowa).",
+  "odpowiedz_na_pytanie": "Nie nerwoból — obraz typowy dla ostrego zapalenia osierdzia. Sam ibuprofen nie wystarczy: najpierw dziś EKG, troponina, CRP i D-dimer (antykoncepcja), potem ibuprofen + kolchicyna.",
+  "plan_farmakologiczny": [
+    {"lek": "ibuprofen", "dawka": "600 mg co 8 h z inhibitorem pompy protonowej, 1–2 tygodnie, potem stopniowe zmniejszanie", "zrodlo": "[wiedza modelu, niezweryfikowane]; ibuprofen jako leczenie konwencjonalne w ICAP — PMID 23992557"},
+    {"lek": "kolchicyna", "dawka": "0,5 mg 2×/d przy masie >70 kg lub 0,5 mg 1×/d przy ≤70 kg przez 3 miesiące", "zrodlo": "PMID 23992557 (ICAP: nawroty/przetrwałe 16,7% vs 37,5%, NNT 4)"}
+  ],
+  "nie_podawac": [
+    {"lek": "glikokortykosteroid jako pierwsza linia", "powod": "wiązane z nawrotami/sterydozależnością; zarezerwowane dla wybranych sytuacji (PMID 42454468, 42552090)"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dotyczącej zapalenia osierdzia ani bólu w klatce piersiowej (tylko przykładowe wiersze); pamiec/zespol.md — brak wniosków dla tej prezentacji",
+    "Zapytania PubMed: (1) 'acute pericarditis diagnosis management review' od 2019; (2) 'chest pain primary care causes prevalence[Title/Abstract] AND general practice'; (3) 'pulmonary embolism rule-out criteria PERC validation meta-analysis'; (4) 'chest pain[Title] AND (general practice[Title] OR primary care[Title]) AND (diagnoses OR aetiology OR etiology)'; (5) 'myopericarditis troponin ... high-risk features' — 0 wyników; (6) 'colchicine acute pericarditis randomized trial ICAP'; (7) 'Colchicine for acute pericarditis[Title] AND randomized'; (8) 'acute pericarditis poor prognosis predictors ... Imazio' — 0 wyników; (9) '2025 ESC Guidelines myocarditis pericarditis[Title]' — 0 wyników; (10) 'ESC Guidelines management of myocarditis and pericarditis' od 2025",
+    "PMID 40605786 · DOI 10.1017/S1463423625100182 — Manten 2025, TRACE: w doraźnej POZ przyczyny mięśniowo-szkieletowe najczęstsze; ACS u kobiet 5,4% vs 8,5% u mężczyzn (streszczenie sprawdzone)",
+    "PMID 42541393 · DOI 10.1177/10760296261472610 — Liu 2026, metaanaliza PERC: czułość 95%, swoistość 26%, NPV 98,2% w grupie niskiego ryzyka (streszczenie sprawdzone; PERC zawiera kryterium hormonów — [wiedza modelu, niezweryfikowane])",
+    "PMID 23992557 · DOI 10.1056/NEJMoa1208536 — Imazio 2013, ICAP: kolchicyna 0,5 mg 2×/d (>70 kg) / 1×/d (≤70 kg) 3 mies. do aspiryny lub ibuprofenu; nawrót/przetrwałe 16,7% vs 37,5%, NNT 4; mniej hospitalizacji (streszczenie sprawdzone)",
+    "PMID 39313342 · DOI 10.1370/afm.3141 — van den Bulk 2024, przegląd systematyczny: reguły kliniczne bez troponiny niewystarczające do wykluczenia ACS w POZ; najlepsza troponina wysokoczuła (streszczenie sprawdzone)",
+    "PMID 33627355 · DOI 10.1136/bmjopen-2020-046024 — Johannessen 2021: pojedyncza hs-cTnT <5 ng/l ≥3 h od początku objawów — NPV 100% dla zawału w doraźnej POZ (streszczenie sprawdzone)",
+    "PMID 41534803 · DOI 10.1016/j.tcm.2026.01.002 — Imazio 2026, ESC 2025 vs ACC: NLPZ + kolchicyna w zapaleniu osierdzia i mięśniowo-osierdziowym; zespół IMPS (streszczenie sprawdzone)",
+    "PMID 42026924 — Hayat 2026, omówienie wytycznych ESC 2025 (IMPS, ograniczenie wysiłku ≥1 miesiąc w fazie ostrej) (streszczenie sprawdzone)",
+    "PMID 42454468 · DOI 10.55563/clinexprheumatol/h585lm — Bizzi 2026: wysokie dawki steroidów sprzyjają przewlekłości; steroidy nie jako pierwsza linia (streszczenie sprawdzone)",
+    "PMID 42552090 · DOI 10.1097/FJC.0000000000001867 — Razeghi 2026, przegląd systematyczny prednizonu w zapaleniu osierdzia (streszczenie sprawdzone)",
+    "[wiedza modelu, niezweryfikowane]: kryteria rozpoznania ESC (≥2 z 4), cechy wysokiego ryzyka (gorączka >38 °C, duży wysięk, tamponada, brak odpowiedzi na NLPZ po tygodniu, zajęcie mięśnia sercowego), dawka ibuprofenu 600 mg co 8 h, swoistość ulgi w pochyleniu i bólu w grzbiecie czworobocznego"
+  ]
+}

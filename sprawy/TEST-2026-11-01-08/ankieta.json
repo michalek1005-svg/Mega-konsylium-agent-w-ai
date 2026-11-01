@@ -1,0 +1,722 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T8-III",
+  "tytul": "Nagła zmiana zachowania i upadek u 74-latka",
+  "opis": "Pisze córka: tata od 2 dni jest jakiś dziwny, myli dni, chwieje się, wczoraj przewrócił się w kuchni. Mało je, ma nudności. Myślimy, że to zapalenie pęcherza, bo częściej chodzi siku.",
+  "pytania": [
+    {
+      "id": "kontakt",
+      "typ": "jeden",
+      "tekst": "Jak tata jest teraz w kontakcie z Tobą?",
+      "krotko": "stan świadomości teraz",
+      "opcje": [
+        {
+          "w": "jak_zwykle",
+          "t": "Rozmawia jak zwykle"
+        },
+        {
+          "w": "splatany",
+          "t": "Odpowiada, ale myli się i gubi wątek"
+        },
+        {
+          "w": "senny",
+          "t": "Jest bardzo senny, trudno go dobudzić"
+        },
+        {
+          "w": "brak",
+          "t": "Nie odpowiada albo nie da się go dobudzić"
+        }
+      ],
+      "nieWiem": false,
+      "bo": "Zaburzenia przytomności (GCS) – kryterium natychmiastowej oceny; senność/niedobudzalność = stan nagły."
+    },
+    {
+      "id": "objawy_nagle",
+      "typ": "wiele",
+      "tekst": "Czy od początku tych zmian zauważyłaś/zauważyłeś u taty któreś z tych objawów?",
+      "krotko": "objawy ogniskowe",
+      "opcje": [
+        {
+          "w": "twarz",
+          "t": "Opadnięty kącik ust lub krzywa twarz"
+        },
+        {
+          "w": "reka_noga",
+          "t": "Osłabienie lub drętwienie ręki albo nogi po jednej stronie"
+        },
+        {
+          "w": "mowa",
+          "t": "Niewyraźna mowa albo nie może znaleźć słów"
+        },
+        {
+          "w": "wzrok",
+          "t": "Nagłe zaburzenia widzenia"
+        },
+        {
+          "w": "drgawki",
+          "t": "Drgawki"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Objawy ogniskowe/drgawki: udar, krwiak, napad – wskazanie do pilnej diagnostyki obrazowej (FAST)."
+    },
+    {
+      "id": "glowa",
+      "typ": "jeden",
+      "tekst": "Czy przy upadku w kuchni tata uderzył się w głowę?",
+      "krotko": "uraz głowy przy upadku",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "nie_widzialam",
+          "t": "Nikt nie widział upadku"
+        }
+      ],
+      "bo": "Uraz głowy u 74-latka (zwłaszcza na lekach przeciwkrzepliwych) – wskazanie do TK głowy (NICE CG176)."
+    },
+    {
+      "id": "goraczka",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich 2 dniach tata miał gorączkę albo dreszcze?",
+      "krotko": "gorączka lub dreszcze",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "dreszcze",
+          "t": "Dreszcze, nie mierzyliśmy"
+        },
+        {
+          "w": "zmierzona",
+          "t": "Tak, zmierzyliśmy temperaturę"
+        }
+      ],
+      "bo": "Gorączka/dreszcze u starszego z nagłą zmianą stanu – ocena pod kątem zakażenia ogólnoustrojowego (qSOFA)."
+    },
+    {
+      "id": "temperatura",
+      "typ": "liczba",
+      "tekst": "Jaka była najwyższa zmierzona temperatura?",
+      "krotko": "najwyższa temperatura",
+      "min": 34,
+      "max": 43,
+      "krok": 0.1,
+      "jednostka": "°C",
+      "gdy": {
+        "pytanie": "goraczka",
+        "jest": "zmierzona"
+      },
+      "bo": "Próg ≥ 38 °C; u starszych także hipotermia < 36 °C ma znaczenie."
+    },
+    {
+      "id": "oddech",
+      "typ": "jeden",
+      "tekst": "Jak tata teraz oddycha?",
+      "krotko": "oddech",
+      "opcje": [
+        {
+          "w": "normalnie",
+          "t": "Normalnie"
+        },
+        {
+          "w": "szybko",
+          "t": "Szybko lub z wysiłkiem, łapie powietrze"
+        },
+        {
+          "w": "kaszel",
+          "t": "Normalnie, ale kaszle"
+        }
+      ],
+      "bo": "Przyspieszony oddech (≥ 22/min) – kryterium qSOFA; kaszel – inne ognisko zakażenia."
+    },
+    {
+      "id": "krzepliwosc",
+      "typ": "jeden",
+      "tekst": "Czy tata bierze leki rozrzedzające krew?",
+      "krotko": "leki przeciwkrzepliwe/przeciwpłytkowe",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Antykoagulant + upadek = wysokie ryzyko krwawienia śródczaszkowego, także opóźnionego."
+    },
+    {
+      "id": "cukrzyca",
+      "typ": "jeden",
+      "tekst": "Czy tata ma cukrzycę?",
+      "krotko": "cukrzyca",
+      "opcje": [
+        {
+          "w": "insulina",
+          "t": "Tak, bierze insulinę"
+        },
+        {
+          "w": "tabletki",
+          "t": "Tak, bierze tabletki"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Hipo-/hiperglikemia jako odwracalna przyczyna zmiany stanu psychicznego; ryzyko hipoglikemii przy małym jedzeniu."
+    },
+    {
+      "id": "pomiary",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich 2 dniach mierzyliście tacie w domu któreś z tych rzeczy?",
+      "krotko": "pomiary domowe",
+      "opcje": [
+        {
+          "w": "cukier",
+          "t": "Cukier glukometrem"
+        },
+        {
+          "w": "cisnienie",
+          "t": "Ciśnienie i tętno"
+        },
+        {
+          "w": "saturacja",
+          "t": "Saturację (pulsoksymetrem)"
+        },
+        {
+          "w": "brak",
+          "t": "Nic nie mierzyliśmy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Zbiera dostępne parametry życiowe; dalsze pytania liczbowe tylko dla zmierzonych."
+    },
+    {
+      "id": "cukier",
+      "typ": "liczba",
+      "tekst": "Ile wynosił ostatni pomiar cukru?",
+      "krotko": "glikemia z glukometru",
+      "min": 10,
+      "max": 800,
+      "krok": 1,
+      "jednostka": "mg/dl",
+      "gdy": {
+        "pytanie": "pomiary",
+        "jest": "cukier"
+      },
+      "bo": "< 70 mg/dl hipoglikemia; > 250 mg/dl ryzyko stanu hiperglikemicznego."
+    },
+    {
+      "id": "cisnienie_skurczowe",
+      "typ": "liczba",
+      "tekst": "Ile wynosiło ostatnie ciśnienie – górna (pierwsza) liczba?",
+      "krotko": "ciśnienie skurczowe",
+      "min": 50,
+      "max": 260,
+      "krok": 1,
+      "jednostka": "mmHg",
+      "gdy": {
+        "pytanie": "pomiary",
+        "jest": "cisnienie"
+      },
+      "bo": "SBP ≤ 100 mmHg – kryterium qSOFA; hipotensja ortostatyczna jako przyczyna upadków."
+    },
+    {
+      "id": "tetno",
+      "typ": "liczba",
+      "tekst": "Ile wynosiło tętno przy tym pomiarze?",
+      "krotko": "tętno",
+      "min": 20,
+      "max": 220,
+      "krok": 1,
+      "jednostka": "/min",
+      "gdy": {
+        "pytanie": "pomiary",
+        "jest": "cisnienie"
+      },
+      "bo": "Tachykardia/bradykardia (zaburzenia rytmu, odwodnienie, przedawkowanie leków)."
+    },
+    {
+      "id": "saturacja",
+      "typ": "liczba",
+      "tekst": "Ile wynosiła saturacja?",
+      "krotko": "SpO2",
+      "min": 50,
+      "max": 100,
+      "krok": 1,
+      "jednostka": "%",
+      "gdy": {
+        "pytanie": "pomiary",
+        "jest": "saturacja"
+      },
+      "bo": "SpO2 < 92% – hipoksemia jako przyczyna splątania."
+    },
+    {
+      "id": "mocz",
+      "typ": "wiele",
+      "tekst": "Co zauważyłaś/zauważyłeś przy oddawaniu moczu przez tatę?",
+      "krotko": "objawy z dróg moczowych",
+      "opcje": [
+        {
+          "w": "pieczenie",
+          "t": "Pieczenie lub ból przy oddawaniu"
+        },
+        {
+          "w": "male_ilosci",
+          "t": "Oddaje małe ilości, a często"
+        },
+        {
+          "w": "nie_moze",
+          "t": "Nie może oddać moczu albo brzuch nad spojeniem jest twardy i bolesny"
+        },
+        {
+          "w": "popuszcza",
+          "t": "Popuszcza mocz, czego wcześniej nie było"
+        },
+        {
+          "w": "krew",
+          "t": "Mocz z krwią"
+        },
+        {
+          "w": "duzo",
+          "t": "Oddaje dużo moczu i dużo pije"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Różnicuje objawy dyzuryczne, zatrzymanie moczu, poliurię (hiperglikemia, hiperkalcemia) i nietrzymanie w majaczeniu; częstomocz bez dyzurii nie wystarcza do rozpoznania ZUM u starszych."
+    },
+    {
+      "id": "picie",
+      "typ": "jeden",
+      "tekst": "Ile tata pije w ciągu dnia od początku tych zmian?",
+      "krotko": "przyjmowanie płynów",
+      "opcje": [
+        {
+          "w": "jak_zwykle",
+          "t": "Tyle co zwykle"
+        },
+        {
+          "w": "mniej",
+          "t": "Wyraźnie mniej"
+        },
+        {
+          "w": "prawie_nic",
+          "t": "Prawie nic"
+        },
+        {
+          "w": "wiecej",
+          "t": "Więcej niż zwykle"
+        }
+      ],
+      "bo": "Odwodnienie, ryzyko AKI i zaburzeń elektrolitowych."
+    },
+    {
+      "id": "wymioty",
+      "typ": "jeden",
+      "tekst": "Czy tata wymiotował?",
+      "krotko": "wymioty",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie, tylko nudności"
+        },
+        {
+          "w": "raz",
+          "t": "Raz lub dwa razy"
+        },
+        {
+          "w": "wiele",
+          "t": "Wielokrotnie, nic nie utrzymuje"
+        },
+        {
+          "w": "krew",
+          "t": "Wymioty z krwią albo jak fusy od kawy"
+        }
+      ],
+      "bo": "Odwodnienie; krwawienie z GOPP; nudności także jako objaw toksyczności leków (np. digoksyna) lub hiponatremii."
+    },
+    {
+      "id": "leki",
+      "typ": "tekst",
+      "tekst": "Jakie leki i suplementy tata bierze? Przepisz nazwy z opakowań, jeśli możesz.",
+      "krotko": "leki i suplementy",
+      "podpowiedz": "Na przykład: furosemid 40 mg rano, sertralina 50 mg",
+      "bo": "Polipragmazja – częsta przyczyna majaczenia i upadków (leki moczopędne, SSRI, benzodiazepiny, opioidy, antycholinergiczne)."
+    },
+    {
+      "id": "zmiana_lekow",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich 4 tygodniach tata zaczął brać nowy lek albo zmieniono mu dawkę?",
+      "krotko": "zmiana leków ≤ 4 tyg.",
+      "opcje": [
+        {
+          "w": "nowy",
+          "t": "Tak, nowy lek"
+        },
+        {
+          "w": "dawka",
+          "t": "Tak, zmieniona dawka"
+        },
+        {
+          "w": "odstawiony",
+          "t": "Tak, odstawił jakiś lek"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Związek czasowy z nowym lekiem lub odstawieniem (np. benzodiazepin)."
+    },
+    {
+      "id": "alkohol",
+      "typ": "jeden",
+      "tekst": "Jak często tata zwykle pije alkohol?",
+      "krotko": "alkohol",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie pije"
+        },
+        {
+          "w": "okazjonalnie",
+          "t": "Okazjonalnie"
+        },
+        {
+          "w": "codziennie",
+          "t": "Codziennie"
+        }
+      ],
+      "bo": "Zespół odstawienny i encefalopatia Wernickego jako przyczyny splątania i niestabilności chodu."
+    },
+    {
+      "id": "wczesniej",
+      "typ": "jeden",
+      "tekst": "Jak było z pamięcią i samodzielnością taty przed tymi 2 dniami?",
+      "krotko": "stan wyjściowy funkcji poznawczych",
+      "opcje": [
+        {
+          "w": "sprawny",
+          "t": "Był w pełni samodzielny, dobrze pamiętał"
+        },
+        {
+          "w": "drobne",
+          "t": "Czasem zapominał, ale radził sobie sam"
+        },
+        {
+          "w": "pomoc",
+          "t": "Potrzebował pomocy na co dzień"
+        }
+      ],
+      "bo": "Nagła zmiana względem stanu wyjściowego – kluczowe dla oceny majaczenia (CAM)."
+    },
+    {
+      "id": "choroby",
+      "typ": "wiele",
+      "tekst": "Czy tata leczy się na któreś z tych chorób?",
+      "krotko": "choroby przewlekłe",
+      "opcje": [
+        {
+          "w": "serce",
+          "t": "Serce lub nadciśnienie"
+        },
+        {
+          "w": "nerki",
+          "t": "Nerki"
+        },
+        {
+          "w": "prostata",
+          "t": "Prostata"
+        },
+        {
+          "w": "pluca",
+          "t": "Płuca"
+        },
+        {
+          "w": "nowotwor",
+          "t": "Nowotwór"
+        },
+        {
+          "w": "parkinson",
+          "t": "Parkinson, otępienie lub udar w przeszłości"
+        },
+        {
+          "w": "inne",
+          "t": "Inne"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Choroby zwiększające ryzyko zatrzymania moczu, AKI, hiperkalcemii, przerzutów do OUN."
+    },
+    {
+      "id": "badania",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich 3 miesiącach tata miał robione badania krwi albo moczu?",
+      "krotko": "ostatnie badania",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak, mamy wyniki"
+        },
+        {
+          "w": "tak_brak",
+          "t": "Tak, ale nie mamy wyników pod ręką"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Punkt odniesienia dla kreatyniny, sodu, morfologii."
+    },
+    {
+      "id": "wyniki",
+      "typ": "tekst",
+      "tekst": "Przepisz z wyników datę i wartości, które są zaznaczone jako nieprawidłowe.",
+      "krotko": "nieprawidłowe wyniki badań",
+      "podpowiedz": "Na przykład: 12.09.2026 sód 131, kreatynina 1,4",
+      "gdy": {
+        "pytanie": "badania",
+        "jest": "tak"
+      },
+      "bo": "Wyjściowe Na, kreatynina, glukoza, morfologia, badanie ogólne moczu."
+    },
+    {
+      "id": "obawy",
+      "typ": "jeden",
+      "tekst": "Czego najbardziej oczekujesz od tej konsultacji?",
+      "krotko": "oczekiwania rodziny",
+      "opcje": [
+        {
+          "w": "ocena",
+          "t": "Żeby ktoś ocenił, czy to coś groźnego"
+        },
+        {
+          "w": "leczenie",
+          "t": "Recepty i leczenia w domu"
+        },
+        {
+          "w": "szpital",
+          "t": "Decyzji, czy jechać do szpitala"
+        },
+        {
+          "w": "opieka",
+          "t": "Pomocy w opiece nad tatą"
+        }
+      ],
+      "bezNieznanych": true,
+      "bo": "Oczekiwania rodziny (opiekuna)."
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Zaburzenia przytomności (senność, niedobudzalność) u 74-latka: stan nagły.",
+      "gdy": {
+        "pytanie": "kontakt",
+        "jest": [
+          "senny",
+          "brak"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Objawy ogniskowe lub drgawki: podejrzenie udaru, krwiaka lub napadu.",
+      "gdy": {
+        "pytanie": "objawy_nagle",
+        "jest": [
+          "twarz",
+          "reka_noga",
+          "mowa",
+          "wzrok",
+          "drgawki"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Uraz głowy (lub upadek bez świadków) na lekach przeciwkrzepliwych z nowym splątaniem: wskazanie do pilnego TK głowy.",
+      "gdy": {
+        "wszystkie": [
+          {
+            "pytanie": "glowa",
+            "jest": [
+              "tak",
+              "nie_widzialam"
+            ]
+          },
+          {
+            "pytanie": "krzepliwosc",
+            "jest": "tak"
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Uraz głowy lub upadek bez świadków u 74-latka z nowym splątaniem: rozważyć TK głowy.",
+      "gdy": {
+        "pytanie": "glowa",
+        "jest": [
+          "tak",
+          "nie_widzialam"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Nowe splątanie z gorączką/dreszczami: ocena w kierunku zakażenia ogólnoustrojowego tego samego dnia.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "goraczka",
+            "jest": [
+              "dreszcze",
+              "zmierzona"
+            ]
+          },
+          {
+            "pytanie": "temperatura",
+            "min": 38
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Temperatura < 36 °C u starszego: możliwa sepsa lub hipotermia.",
+      "gdy": {
+        "pytanie": "temperatura",
+        "max": 35.9
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Duszność/przyspieszony oddech przy nowym splątaniu: ≥ 2 kryteria qSOFA.",
+      "gdy": {
+        "pytanie": "oddech",
+        "jest": "szybko"
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Glikemia < 70 mg/dl: hipoglikemia.",
+      "gdy": {
+        "pytanie": "cukier",
+        "max": 69
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Glikemia > 250 mg/dl: ryzyko stanu hiperglikemicznego.",
+      "gdy": {
+        "pytanie": "cukier",
+        "min": 251
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "SBP ≤ 90 mmHg przy splątaniu: hipotensja, wstrząs.",
+      "gdy": {
+        "pytanie": "cisnienie_skurczowe",
+        "max": 90
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "SBP ≤ 100 mmHg: kryterium qSOFA.",
+      "gdy": {
+        "pytanie": "cisnienie_skurczowe",
+        "max": 100
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Tętno < 50 lub > 120/min.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "tetno",
+            "max": 49
+          },
+          {
+            "pytanie": "tetno",
+            "min": 121
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "SpO2 < 92%: hipoksemia.",
+      "gdy": {
+        "pytanie": "saturacja",
+        "max": 91
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Podejrzenie zatrzymania moczu: cewnikowanie/USG pęcherza tego samego dnia.",
+      "gdy": {
+        "pytanie": "mocz",
+        "jest": "nie_moze"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Bardzo małe przyjmowanie płynów lub uporczywe wymioty: odwodnienie, ryzyko AKI i zaburzeń elektrolitowych.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "picie",
+            "jest": "prawie_nic"
+          },
+          {
+            "pytanie": "wymioty",
+            "jest": "wiele"
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Krwiste lub fusowate wymioty: krwawienie z górnego odcinka przewodu pokarmowego.",
+      "gdy": {
+        "pytanie": "wymioty",
+        "jest": "krew"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Codzienne picie alkoholu ze splątaniem i ataksją: wykluczyć zespół odstawienny i encefalopatię Wernickego.",
+      "gdy": {
+        "pytanie": "alkohol",
+        "jest": "codziennie"
+      }
+    }
+  ]
+}

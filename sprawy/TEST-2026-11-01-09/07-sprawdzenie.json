@@ -1,0 +1,225 @@
+{
+  "fakty": {
+    "kartka": "CZERWONA",
+    "sprawdzono": "2026-11-01",
+    "zrodla_poziom1": "zrodla/MANIFEST.md zawiera wyłącznie wiersze przykładowe — brak plików dla bólu głowy, antykoncepcji, ChPL amitryptyliny/topiramatu. Weryfikacja wyłącznie na poziomie 2 (PubMed, streszczenia + pełny tekst PMC9710265).",
+    "podsumowanie": {
+      "potwierdzone": 18,
+      "bez_zrodla": 6,
+      "sprzeczne": 2,
+      "nieaktualne": 0,
+      "razem": 26
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "ICHD-3: ból z nadużywania leków złożonych ≥10 dni/mies. przez >3 mies.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34966007, DOI 10.3344/kjp.2022.35.1.4",
+        "cytat": "ICHD-3 allows a diagnosis of medication overuse headache due to combination analgesics if taken for at least 10 days per month for more than three months."
+      },
+      {
+        "twierdzenie": "ICHD-3: leki proste >15 dni/mies.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38410849, DOI 10.1177/03331024241235139",
+        "cytat": ">15 mean cumulative days/month for simple prescription analgesics (e.g., acetaminophen, aspirin, other non-opioid analgesics)",
+        "co_mowi_zrodlo": "Źródło to analiza kosztów z danych ubezpieczeniowych, nie dokument ICHD-3; definicja operacyjna. Oryginalny zapis ICHD-3 (8.2.3) to ≥15 dni/mies. [wiedza modelu, niezweryfikowane] — różnica bez znaczenia dla pacjentki (>20 dni)."
+      },
+      {
+        "twierdzenie": "Pretest istotnej zmiany wewnątrzczaszkowej 0,9% przy przewlekłym bólu głowy i prawidłowym badaniu neurologicznym",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23074404 (PMC3377587), Ontario HTA 2010",
+        "cytat": "pre-test probability of 0.9% (95% CI 0.5, 1.4) in persons with chronic headache and normal neurological exam"
+      },
+      {
+        "twierdzenie": "Zmiana strukturalna ok. 3% (po uwzględnieniu aury LR+ 12,9 / 3,2, braku wymiotów LR− 0,47, braku Valsalvy LR− 0,70)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23074404; PMID 16968852, DOI 10.1001/jama.296.10.1274",
+        "cytat": "headache with aura (LR+ 12.9, LR- 0.52) ... headache aggravated by exertion or valsalva (LR+ 2.3, LR- 0.70), and headache with vomiting (LR+ 1.8, and LR- 0.47)",
+        "co_mowi_zrodlo": "Liczba 3% to wyliczenie ordynatora z 04-konsylium.md, nie wartość ze źródła; składowe LR potwierdzone (Ontario 12,9; Detsky JAMA 2006 LR 3,2 dla aury). Badanie neurologiczne u pacjentki nadal NIEZNANE, więc 0,9% to założenie."
+      },
+      {
+        "twierdzenie": "AHS: przy bólu o cechach migreny i prawidłowym badaniu neurologicznym obrazowanie nie jest potrzebne (stopień A); nietypowa/przedłużona aura, zmiana cech klinicznych → obrazowanie do rozważenia (stopień C)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31891197, DOI 10.1111/head.13720",
+        "cytat": "There is no necessity to do neuroimaging in patients with headaches consistent with migraine who have a normal neurologic examination ... Grade A"
+      },
+      {
+        "twierdzenie": "Znaleziska przypadkowe w MRI mózgu 1,4% uruchamiają kaskadę",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 30467245, DOI 10.1136/bmj.k4577",
+        "cytat": "Pooled prevalence of potentially serious incidental findings was ... 1.4% (1.0% to 2.1%) on brain MRI",
+        "co_mowi_zrodlo": "1,4% dotyczy osób bezobjawowych. „Kaskada\" to interpretacja: źródło podaje, że tylko 20,5% (48/234) potencjalnie poważnych znalezisk miało poważne rozpoznanie końcowe."
+      },
+      {
+        "twierdzenie": "Samo nagłe odstawienie leków jest nieskuteczne (−2,8 dnia/mies.)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 40011869, DOI 10.1186/s10194-025-01982-9",
+        "cytat": "abrupt withdrawal alone (W) showed no significant efficacy, with a mean difference of -2.77 (95% CI: [-5.74; 0.20])"
+      },
+      {
+        "twierdzenie": "Odstawienie z profilaktyką od pierwszego dnia leczy nadużycie u 97%",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 32453406, DOI 10.1001/jamaneurol.2020.1179",
+        "cytat": "30 of 31 patients (96.8%) in the withdrawal plus preventive group were cured of MOH, compared with 26 of 35 (74.3%) in the preventive group",
+        "co_mowi_zrodlo": "Liczba pochodzi z Carlsen 2020 (n=31, badanie otwarte, ośrodek III stopnia), nie z PMID 40011869 — w FINAL przypisać tylko do 32453406."
+      },
+      {
+        "twierdzenie": "Amitryptylina 10 mg na noc → 25 mg po 2 tyg. (opcjonalnie 50 mg)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34554691 (Kalita 2021, Pain Physician)",
+        "cytat": "Amitriptyline was prescribed in a dose of 10mg, increased to 25mg after 2 weeks; thereafter increase in dose to 50 mg was optional.",
+        "co_mowi_zrodlo": "Schemat potwierdzony, ale populacja: przewlekła migrena bez nadużywania leków, wiek 18–55, Indie; amitryptylina była DODATKIEM do rTMS (rTMS vs rTMS+amitryptylina) — nie jest to dowód skuteczności monoterapii ani dawki w bólu z nadużywania leków / napięciowym."
+      },
+      {
+        "twierdzenie": "PLAN B: brak poprawy po 8–12 tyg. odstawienia + amitryptyliny 25–50 mg = niepowodzenie → zmiana na topiramat",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 36457955, DOI 10.5114/aoms/153955 (PTBG/SBG PTN 2022, pełny tekst PMC9710265, Tabela I)",
+        "cytat": "Amitriptyline 50–150 mg daily, Recommendation B (Drugs used for prophylactic treatment in chronic migraine, doses, and class according to PHS/HSPNS recommendation)",
+        "co_mowi_zrodlo": "Polskie Towarzystwo Bólów Głowy i Sekcja Bólu Głowy PTN podają zakres amitryptyliny w profilaktyce migreny przewlekłej 50–150 mg/d. Projekt uznaje 25–50 mg za próbę wystarczającą do stwierdzenia niepowodzenia — poniżej dolnej granicy polskiego zakresu. Dla przewlekłego bólu napięciowego EFNS (PMID 20482606) nie podaje dawki w streszczeniu. Rozbieżność dotyczy dawki → kartka CZERWONA."
+      },
+      {
+        "twierdzenie": "Amitryptylina działa na przewlekły ból głowy typu napięciowego",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 20482606, DOI 10.1111/j.1468-1331.2010.03070.x (EFNS 2010); PMID 41548075, DOI 10.1080/07853890.2026.2616972",
+        "cytat": "The tricyclic antidepressant amitriptyline is drug of first choice for the prophylactic treatment of chronic TTH."
+      },
+      {
+        "twierdzenie": "Amitryptylina poprawia sen",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "—",
+        "co_mowi_zrodlo": "Żadne cytowane źródło nie ocenia snu; w FINAL etykieta [wiedza modelu, niezweryfikowane] albo usunąć."
+      },
+      {
+        "twierdzenie": "Aura + złożona antykoncepcja estrogenowa = podwyższone ryzyko udaru niedokrwiennego; CDC: unikać; dotyczy także dawek <50 µg etynyloestradiolu",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 36126006 (Am Fam Physician 2022); PMID 32056462, DOI 10.1080/14737175.2020.1730816; PMID 34384631, DOI 10.1016/j.neurol.2021.07.010",
+        "cytat": "Patients who have migraine with aura have a higher risk of ischemic stroke, and combined oral contraceptives appear to increase this risk. Therefore, the CDC recommends avoiding their use"
+      },
+      {
+        "twierdzenie": "Zamiana na desogestrel 75 µg lub wkładkę z lewonorgestrelem (metody bez estrogenu preferowane przy przeciwwskazaniu do estrogenu; desogestrel zmniejsza częstość migreny)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42029625, DOI 10.3390/medsci14020201; PMID 31094588, DOI 10.1080/13625187.2019.1605504",
+        "cytat": "Progestin-only contraceptives and levonorgestrel-releasing intrauterine systems (LNG-IUSs) generally show a more favorable thrombotic profile and are preferred options for women with contraindications for estrogen."
+      },
+      {
+        "twierdzenie": "Leki doraźne najwyżej 2 dni w tygodniu",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 36153693 (Taiwan Guidelines 2022)",
+        "cytat": "To prevent medication overuse headache, the use of acute treatment should be limited to a maximum of 2 days per week.",
+        "co_mowi_zrodlo": "Wytyczna tajwańska leczenia doraźnego migreny — poziom 3 (zagraniczna, nie europejska); brak polskiego odpowiednika w zrodla/."
+      },
+      {
+        "twierdzenie": "Aura przedłużona = >1 h (PMID 30171359)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 30171359, DOI 10.1186/s10194-018-0910-y",
+        "cytat": "prolonged aura (PA - defined as an aura including at least one symptom for > 1 h and < 7d)",
+        "co_mowi_zrodlo": "Uwaga: to samo źródło pokazuje, że aura przedłużona jest częsta (26,4% chorych, 17,6% aur) i nie różni się fenotypowo od pozostałych — źródło nie uzasadnia pilności 2 ani SOR."
+      },
+      {
+        "twierdzenie": "SOR natychmiast przy aurze >60 min",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "najbliższe: PMID 34384631 (Lucas 2021); PMID 31891197 (AHS, stopień C)",
+        "cytat": "Long duration (greater than one hour) of what may or may not be an aura phase, late onset of aura, or a dramatic increase in aura attacks should also be explored.",
+        "co_mowi_zrodlo": "Źródła mówią „wyjaśnić / rozważyć obrazowanie\" (AHS stopień C); tryb nagły (TIA) Lucas rezerwuje dla objawów odpowiadających terytorium naczyniowemu, pierwszej aury bez objawów wzrokowych. Poziom pilności SOR dla samej aury >60 min bez źródła — oznaczyć etykietą lub przeformułować na „pilny neurolog\"."
+      },
+      {
+        "twierdzenie": "Nowa aura po 40. rż. / zmiana wzorca bólu po 40. rż. jako wskazanie do obrazowania",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "najbliższe: PMID 40381181, DOI 10.1007/s13760-025-02799-8; PMID 34461446, DOI 10.1016/j.jstrokecerebrovasdis.2021.106067; PMID 30587518",
+        "cytat": "Age of onset of MwvA 50 years or greater is associated with IS that occurs in late life.",
+        "co_mowi_zrodlo": "Dostępne źródła używają progu 50 lat (aura o późnym początku) lub „older age\" w SNNOOP10; AHS wymienia „late-life migraine accompaniments\" bez wieku. Próg 40 lat jest bardziej konserwatywny, nie sprzeczny, ale bez źródła — etykieta [wiedza modelu]."
+      },
+      {
+        "twierdzenie": "SNNOOP10: zmiana wzorca, nadużywanie leków przeciwbólowych, tarcza zastoinowa, ból nasilany kaszlem/wysiłkiem jako czerwone flagi",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 30587518, DOI 10.1212/WNL.0000000000006697",
+        "cytat": "(6) pattern change or recent onset of new headache; (8) precipitated by sneezing, coughing, or exercise; (9) papilledema; ... (15) painkiller overuse"
+      },
+      {
+        "twierdzenie": "Topiramat 25 mg na noc, stopniowo do 50 mg 2 × dziennie [wiedza modelu]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 36457955, DOI 10.5114/aoms/153955 (PTBG/SBG PTN 2022); PMID 37814223, DOI 10.1186/s10194-023-01671-5 (EHF 2023)",
+        "cytat": "Topiramate 50–200 mg daily, Recommendation A (PHS/HSPNS); Topiramate dose ranged from 50 to 200 mg/day (EHF)",
+        "co_mowi_zrodlo": "Dawka docelowa 100 mg/d mieści się w polskim zakresie 50–200 mg/d — etykietę [wiedza modelu] można zastąpić PMID 36457955. Tempo miareczkowania (25 mg co tydzień) nadal [wiedza modelu]. Topiramat teratogenny — antykoncepcja w projekcie jest załatwiona."
+      },
+      {
+        "twierdzenie": "Pierwsze 1–2 tygodnie po odstawieniu ból może się nasilić",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "najbliższe: PMID 23093541, DOI 10.1177/0333102412462638",
+        "cytat": "Withdrawal symptoms, including headache severity and intake of rescue medication, were documented for 14 days after randomization.",
+        "co_mowi_zrodlo": "Zjawisko bólu z odstawienia potwierdzone, ale czas 1–2 tyg. nie wynika ze streszczenia — etykieta [wiedza modelu]."
+      },
+      {
+        "twierdzenie": "Morfologia, kreatynina/eGFR, potas po 6 mies. ketoprofenu z drospirenonem [wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "najbliższe: PMID 17571911, DOI 10.2165/00002512-200724060-00002",
+        "cytat": "drospirenone up to 3 mg/day has an acceptable safety profile with no clinically significant elevations in plasma potassium in patients with concomitant NSAID use",
+        "co_mowi_zrodlo": "Etykieta pozostaje. Jedyne znalezione źródło osłabia uzasadnienie dla potasu (brak istotnej hiperkaliemii z NLPZ); kreatynina po 6 mies. codziennego NLPZ — uzasadnienie bez cytowanego źródła. Brak ChPL w zrodla/."
+      },
+      {
+        "twierdzenie": "Pytanie o tlenek węgla (piecyk gazowy, bóle u domowników) [wiedza modelu]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 24128732, DOI 10.1136/emermed-2012-201712; PMID 27331183, DOI 10.5505/1304.7361.2014.00868",
+        "cytat": "31 (6.4% of the study population) of which had elevated COHb ... CO poisoning was detected more frequently in patients visiting the ED after midnight and during morning hours.",
+        "co_mowi_zrodlo": "Etykietę można zastąpić źródłem: poranne bóle głowy w sezonie grzewczym — 6,4% chorych z bólem głowy na SOR miało zatrucie CO (Turcja)."
+      },
+      {
+        "twierdzenie": "Przy myślach samobójczych amitryptylina w małych opakowaniach lub topiramat",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "—",
+        "co_mowi_zrodlo": "Toksyczność TLPD w przedawkowaniu — twierdzenie nieliczbowe, bez cytowanego źródła; etykieta [wiedza modelu] lub ChPL amitryptyliny (brak w zrodla/)."
+      },
+      {
+        "twierdzenie": "ŹRÓDŁA: brak polskich wytycznych dla bólu głowy (MANIFEST sprawdzony)",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33507529, DOI 10.5603/PJNNS.a2021.0007 (Stępień i wsp., Neurol Neurochir Pol 2021;55:33-51); PMID 36457955 (2022); PMID 38414481, DOI 10.5114/aoms/175063 (2023)",
+        "cytat": "Migraine treatment recommendations developed by an Expert Group of the Polish Headache Society, the Headache Section of the Polish Neurological Society, and the Polish Pain Society.",
+        "co_mowi_zrodlo": "Prawdą jest, że zrodla/ nie zawiera polskich wytycznych. Nieprawdą jest, że ich nie ma: polskie rekomendacje PTBG/SBG PTN/PTBB 2021 (pełny tekst poza PMC — treść nieweryfikowana) i konsensus 2022 (pełny tekst sprawdzony: dawki profilaktyki w migrenie przewlekłej). Żadna z 6 ról ani ordynator ich nie cytuje. Zalecenie: dodać do zrodla/ i do ŹRÓDŁA w FINAL."
+      },
+      {
+        "twierdzenie": "Wszystkie 6 ról rozpoznanie nr 1 = ból z nadużywania leków, p ok. 0,6; pilność 3 zgodna z wetem najgorszego scenariusza",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "03-opinie/*.json, 04-konsylium.md §1 i §3",
+        "cytat": "0,60 / 0,60 / 0,62 / 0,60 (farmakolog 0,75, waga 0) → ok. 0,6, jednomyślnie nr 1",
+        "co_mowi_zrodlo": "Spójne z plikami sprawy. _agregat.json ma flagę NISKA_ZGODA (zgoda 0,006) z powodu synonimów — scalenie ręczne udokumentowane w 04."
+      }
+    ],
+    "poprawki": [
+      "DAWKA (powód kartki): PLAN B uznaje amitryptylinę 25–50 mg za pełną próbę; polski konsensus PTBG/SBG PTN 2022 (PMID 36457955) podaje 50–150 mg/d dla migreny przewlekłej. Albo podnieść próg niepowodzenia do dawki ≥50 mg (tolerowanej), albo jawnie oznaczyć 25–50 mg jako dawkę dla fenotypu napięciowego/MOH z etykietą [wiedza modelu] i cytować PMID 36457955 jako zakres dla migreny.",
+      "ŹRÓDŁA: zastąpić „brak polskich wytycznych\" zapisem „brak w zrodla/; w PubMed: PTBG/SBG PTN/PTBB 2021 (PMID 33507529) i konsensus 2022 (PMID 36457955)\" i zacytować je przy dawkach profilaktyki.",
+      "PMID 34554691: dopisać, że amitryptylina była dodatkiem do rTMS u chorych z migreną przewlekłą (nie MOH, nie monoterapia); schemat 10→25→50 mg potwierdzony tylko jako schemat.",
+      "97% wyleczeń MOH: przypisać wyłącznie PMID 32453406 (n=31, otwarte), usunąć z tego miejsca PMID 40011869.",
+      "Topiramat: etykietę [wiedza modelu] zastąpić „50–200 mg/d, PMID 36457955 / 37814223\"; tempo miareczkowania zostaje z etykietą.",
+      "Tlenek węgla: etykietę zastąpić PMID 24128732 (6,4% chorych z bólem głowy na SOR zimą).",
+      "Dodać etykietę [wiedza modelu, niezweryfikowane] do: „poprawia sen\", „1–2 tygodnie nasilenia po odstawieniu\", progu „po 40. rż.\" (źródła używają 50 lat), „SOR przy aurze >60 min\" (źródła: wyjaśnić / rozważyć obrazowanie, AHS stopień C) oraz „małe opakowania przy myślach samobójczych\".",
+      "Próg ICHD-3 dla leków prostych: ≥15 dni/mies. (nie >15) — cytowany PMID 38410849 to definicja operacyjna z badania kosztów; bez wpływu na pacjentkę (>20 dni).",
+      "1,4% znalezisk przypadkowych: dopisać, że tylko 20,5% z nich miało poważne rozpoznanie końcowe (PMID 30467245) — „kaskada\" to interpretacja."
+    ]
+  }
+}

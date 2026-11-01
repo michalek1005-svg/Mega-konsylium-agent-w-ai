@@ -1,0 +1,111 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawy polekowe — glikokortykosteroid lub metotreksat jako bezpośrednia przyczyna zapalenia kolana",
+      "p": 0.02,
+      "za": ["Przewlekła immunosupresja polekowa (metotreksat 12,5–15 mg/tydzień + glikokortykosteroid doustny) jest czynnikiem ryzyka zakażenia stawu, a glikokortykosteroid może łagodzić gorączkę i objawy miejscowe"],
+      "przeciw": ["Żaden z leków nie wywołuje typowo ostrego, gorącego zapalenia jednego stawu z gorączką 38,6 °C", "Neutrofile 13,2 G/l — brak cech mielotoksyczności metotreksatu", "Rola leków to modyfikator ryzyka zakażenia, nie przyczyna"]
+    },
+    {
+      "nazwa": "Septyczne zapalenie stawu kolanowego",
+      "p": 0,
+      "za": ["Rola farmakologa ma wagę 0 w torze rozpoznania — nie szacuję. Farmakologicznie istotne: immunosupresja (metotreksat + glikokortykosteroid), rana/otarcie i zmiany łuszczycowe na kolanie, gorączka 38,6 °C, CRP 186 mg/l, WBC 15,9 G/l"],
+      "przeciw": []
+    },
+    {
+      "nazwa": "Napad dny moczanowej",
+      "p": 0,
+      "za": ["Nie szacuję (waga 0). Kwas moczowy 8,1 mg/dl, epizod sprzed 2 lat niepotwierdzony (NIEZNANE)"],
+      "przeciw": ["Dna i zakażenie mogą współistnieć — kryształy w płynie nie wykluczają zakażenia (PMID 41050478, 38901050)"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Mielotoksyczność metotreksatu w chwili badania (neutrofile 13,2 G/l, brak neutropenii) — płytki, hemoglobina, ALT nieznane"
+  ],
+  "red_flags_otwarte": [
+    "Septyczne zapalenie stawu u chorego w immunosupresji polekowej (metotreksat + glikokortykosteroid) — wymaga punkcji przed jakimkolwiek leczeniem empirycznym",
+    "Glikokortykosteroid doustny może maskować gorączkę i nasilenie sepsy; dawka i czas stosowania NIEZNANE",
+    "Ryzyko niewydolności kory nadnerczy w ostrym zakażeniu przy przewlekłym glikokortykosteroidzie (dawka NIEZNANA)",
+    "Brak aktualnej morfologii z płytkami, ALT i albumin — nieznany stan kontroli metotreksatu"
+  ],
+  "nastepny_krok": "Skierować dziś natychmiast na SOR/oddział ortopedii do punkcji kolana (posiew, cytoza, kryształy) i posiewów krwi przed antybiotykiem; w POZ nie podawać kolchicyny ani NLPZ, wstrzymać metotreksat, nie odstawiać glikokortykosteroidu, na ból paracetamol 1 g p.o.",
+  "co_zmieniloby_zdanie": "Płyn stawowy jałowy w posiewie z kryształami moczanu i cytozą wyraźnie poniżej progu zakażenia — wtedy leczenie napadu dny (preferencyjnie glikokortykosteroid, ostrożnie kolchicyna/NLPZ) staje się planem właściwym.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "Metotreksat",
+      "dawka": "wstrzymać najbliższą dawkę tygodniową",
+      "droga": "—",
+      "czas": "do wykluczenia zakażenia lub do ustąpienia zakażenia i decyzji lekarza prowadzącego łuszczycę",
+      "uwagi": "Ciężkie ostre zakażenie jest wskazaniem do przerwania metotreksatu; kwas foliowy można kontynuować",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] — ChPL metotreksatu brak w zrodla/"
+    },
+    {
+      "lek": "Glikokortykosteroid doustny (preparat i dawka NIEZNANE)",
+      "dawka": "kontynuować dotychczasową dawkę, nie odstawiać nagle",
+      "droga": "p.o.",
+      "czas": "bez zmian do oceny w szpitalu",
+      "uwagi": "Zgłosić preparat i dawkę na SOR; przy przewlekłym stosowaniu w ciężkim zakażeniu szpital rozważy dawkę stresową. Maskuje gorączkę.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Paracetamol",
+      "dawka": "1 g jednorazowo (maks. 4 g/dobę, odstęp ≥4 h)",
+      "droga": "p.o.",
+      "czas": "doraźnie do czasu przyjęcia na SOR",
+      "uwagi": "Zanotować temperaturę przed podaniem (lek obniża gorączkę). Krótkotrwale bezpieczny przy metotreksacie; brak sygnału interakcji w danych FAERS (PMID 38303016).",
+      "zrodlo": "dawkowanie: [wiedza modelu, niezweryfikowane]; interakcja: PMID 38303016"
+    },
+    {
+      "lek": "Antybiotyk empiryczny (decyzja szpitala, po pobraniu płynu stawowego i posiewów krwi)",
+      "dawka": "—",
+      "droga": "i.v.",
+      "czas": "wg posiewu",
+      "uwagi": "Najczęstszy patogen Staphylococcus aureus (MSSA) — PMID 41050478. eGFR (CKD-EPI 2021, kreatynina 1,1 mg/dl, 57 lat, mężczyzna) ok. 78 ml/min/1,73 m² — bez redukcji dawek. Przy metotreksacie unikać kotrimoksazolu; ostrożność z piperacyliną/tazobaktamem i cyprofloksacyną (zgłoszone interakcje transportowe zwiększające stężenie metotreksatu — PMID 36946211).",
+      "zrodlo": "PMID 41050478, PMID 36946211, PMID 42950136; eGFR — obliczenie własne CKD-EPI 2021 [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "Kolchicyna",
+      "powod": "Przed punkcją leczy założenie (dna), które nie wyjaśnia gorączki u chorego w immunosupresji; dna i zakażenie współistnieją (ok. 4–7% chorych z artropatią krystaliczną ma równoczesne zakażenie stawu — PMID 41050478, 38901050). Addytywna mielotoksyczność z metotreksatem [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "Niesteroidowe leki przeciwzapalne (np. ibuprofen, diklofenak, naproksen)",
+      "powod": "Maskują gorączkę i opóźniają rozpoznanie zakażenia; w sepsie/odwodnieniu ryzyko ostrego uszkodzenia nerek i spadku klirensu metotreksatu (odwodnienie i niewydolność nerek to czynniki ryzyka interakcji — PMID 40779298); połączenie z glikokortykosteroidem zwiększa ryzyko krwawienia z przewodu pokarmowego [wiedza modelu, niezweryfikowane]. Krótkie NLPZ przy metotreksacie są dopuszczalne dopiero po wykluczeniu zakażenia (PMID 40779298)."
+    },
+    {
+      "lek": "Dostawowy glikokortykosteroid",
+      "powod": "Przeciwwskazany przed wykluczeniem zakażenia stawu [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "Antybiotyk doustny w POZ przed punkcją",
+      "powod": "Zafałszowuje posiew płynu stawowego i krwi; wczesna punkcja z diagnostyką mikrobiologiczną decyduje o wyniku (PMID 42423760, 42950136). Wyjątek: wstrząs lub długi transport — wtedy decyzja ratownicza."
+    },
+    {
+      "lek": "Kotrimoksazol (trimetoprim/sulfametoksazol)",
+      "powod": "Interakcja z metotreksatem (antagonizm folianów, zmniejszona eliminacja) — PMID 36946211."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla septycznego zapalenia stawu, dny ani ChPL metotreksatu/kolchicyny (tylko wiersze przykładowe)",
+    "pamiec/zespol.md — brak wniosków dla tej prezentacji",
+    "PubMed Q1 (skuteczne): septic arthritis AND (gout OR crystal) AND coexist* → PMID 41050478, 38901050",
+    "PubMed Q2 (skuteczne): methotrexate AND (nonsteroidal anti-inflammatory OR NSAID) AND interaction AND toxicity → PMID 40779298, 38303016, 36946211",
+    "PubMed Q3 (skuteczne): septic arthritis[Title] AND (immunosuppress* OR methotrexate OR glucocorticoid) AND risk → PMID 42254237",
+    "PubMed Q4 (nieskuteczne, 1 wynik z 2004 nieużyty): septic arthritis adults empirical antibiotic therapy duration review, od 2018",
+    "PubMed Q5 (nieskuteczne, wyniki nietrafne): colchicine AND methotrexate AND (pancytopenia OR myelosuppression OR toxicity)",
+    "PubMed Q6 (skuteczne): septic arthritis[Title] AND (management OR treatment) AND review[Publication Type], od 2019 → PMID 42950136, 42423760",
+    "Duangkum K i wsp. Rheumatol Immunol Res 2025 — PMID 41050478, DOI 10.1515/rir-2025-0021 (streszczenie sprawdzone: współistnienie 4%, kolano 68,9%, gorączka 95,6%, MSSA najczęściej, śmiertelność 15,6%)",
+    "Mukerji S i wsp. N Z Med J 2024 — PMID 38901050, DOI 10.26635/6965.6510 (streszczenie sprawdzone: 7,2% chorych z artropatią krystaliczną miało zakażenie; czynniki ryzyka: dna w wywiadzie, immunosupresja)",
+    "den Uil MG i wsp. Expert Opin Drug Metab Toxicol 2025 — PMID 40779298, DOI 10.1080/17425255.2025.2546127 (streszczenie sprawdzone: krótkie NLPZ przy metotreksacie ≤30 mg/tydz. mało istotne; indywidualizacja przy niewydolności nerek, MTX >20 mg/tydz., odwodnieniu, cukrzycy)",
+    "Honma T i wsp. BMC Pharmacol Toxicol 2024 — PMID 38303016, DOI 10.1186/s40360-024-00738-6 (streszczenie sprawdzone: brak spójnego sygnału interakcji metotreksat–paracetamol/NLPZ w FAERS)",
+    "Jafari F i wsp. Expert Opin Drug Metab Toxicol 2023 — PMID 36946211, DOI 10.1080/17425255.2023.2193325 (streszczenie sprawdzone: interakcje z kotrimoksazolem, piperacyliną/tazobaktamem, cyprofloksacyną, indometacyną, ketoprofenem; czynniki ryzyka: niewydolność nerek, hipoalbuminemia)",
+    "Khodadadi RB i wsp. Clin Infect Dis 2026 — PMID 42950136, DOI 10.1093/cid/ciag473 (streszczenie sprawdzone: stan nagły; kontrola źródła chirurgicznie + antybiotykoterapia)",
+    "Bönnen L i wsp. Z Rheumatol 2026 — PMID 42423760, DOI 10.1007/s00393-026-01848-8 (streszczenie sprawdzone: u chorych z zapalną chorobą stawów każde zapalenie jednego stawu traktować jako septyczne do wykluczenia; wczesna punkcja)",
+    "Haribat AI i wsp. Ann Med Surg 2026 — PMID 42254237, DOI 10.1097/MS9.0000000000004909 (streszczenie sprawdzone: wczesna punkcja u chorego w immunosupresji)",
+    "Dawkowanie paracetamolu, wstrzymanie metotreksatu, postępowanie z glikokortykosteroidem, mielotoksyczność kolchicyna+metotreksat: [wiedza modelu, niezweryfikowane]"
+  ]
+}

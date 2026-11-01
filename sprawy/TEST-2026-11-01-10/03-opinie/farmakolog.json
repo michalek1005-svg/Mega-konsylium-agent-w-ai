@@ -1,0 +1,85 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe",
+      "p": 0.0,
+      "za": [],
+      "przeciw": [
+        "pacjent nie przyjmuje żadnych leków ani suplementów, także doraźnie na ból (01-wywiad.md)",
+        "brak leku, którego działanie niepożądane tłumaczy nagły jednostronny ból jądra z uniesieniem jądra i wymiotami"
+      ]
+    },
+    {
+      "nazwa": "skręt jądra",
+      "p": 0.0,
+      "za": [
+        "p ustawione na 0 zgodnie z definicją roli (waga farmakologa w torze rozpoznania = 0); obraz kliniczny z wywiadu (nagły początek w kilka minut, 3–6 h, ból 8/10, jądro wyżej, obrzęk, wymioty i utrzymujące się nudności, brak gorączki, brak objawów z dróg moczowych, brak kontaktów bez prezerwatywy, ujemny objaw Prehna, podobny epizod w przeszłości) wskazuje według mnie skręt jako rozpoznanie wiodące — oceniają internista/najgorszy scenariusz"
+      ],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "objawy polekowe i interakcje — brak leków i suplementów",
+    "alergia na leki — pacjent zaprzecza"
+  ],
+  "red_flags_otwarte": [
+    "nagły silny ból jądra 3–6 h z jądrem uniesionym, obrzękiem i wymiotami — podejrzenie skrętu jądra, okno ratowania jądra liczy się w godzinach",
+    "uprzedni samoistnie ustępujący epizod bólu — możliwy skręt przerywany",
+    "badanie fizykalne i parametry życiowe NIEZNANE"
+  ],
+  "nastepny_krok": "Natychmiast skierować pacjenta na SOR z urologią (pilność 1), na czczo, bez antybiotyku i bez doustnych leków przed oceną urologiczną; leczenie przeciwbólowe i przeciwwymiotne dożylnie dopiero na SOR.",
+  "co_zmieniloby_zdanie": "Farmakologicznie zdania nie zmienia nic poza ujawnieniem przyjmowanych leków (np. przeciwkrzepliwych, co zmienia przygotowanie do zabiegu); empiryczny antybiotyk ma sens dopiero po wykluczeniu skrętu w USG dopplerowskim/eksploracji i przy obrazie zapalenia najądrza (gorączka, dyzuria, ryzyko zakażenia przenoszonego drogą płciową), których tu brak.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "nic doustnie (pozostawić na czczo)",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "do decyzji urologa",
+      "uwagi": "możliwa pilna eksploracja moszny w znieczuleniu; doustne leki i płyny opóźniają znieczulenie i nie leczą przyczyny",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "paracetamol",
+      "dawka": "1 g",
+      "droga": "dożylnie we wlewie",
+      "czas": "doraźnie na SOR, maks. 4 g/dobę",
+      "uwagi": "pierwsza linia analgezji u 19-latka bez chorób wątroby; ewentualnie opioid dożylnie według SOR przy bólu 8/10; analgezja nie może opóźnić USG/eksploracji ani ręcznej detorsji",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "ondansetron",
+      "dawka": "4 mg",
+      "droga": "dożylnie",
+      "czas": "doraźnie na SOR",
+      "uwagi": "przy utrzymujących się nudnościach; brak innych leków wydłużających QT w wywiadzie",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "antybiotyk empirycznie (np. fluorochinolon, doksycyklina, ceftriakson) z kontrolą za tydzień",
+      "powod": "leczenie zapalenia najądrza przy obrazie skrętu jądra opóźnia detorsję i grozi utratą jądra; brak gorączki, dyzurii i ryzyka zakażenia przenoszonego drogą płciową; antybiotyk nie ma wskazań przed wykluczeniem skrętu"
+    },
+    {
+      "lek": "silne leki przeciwbólowe doustnie w domu jako zastępstwo oceny",
+      "powod": "maskowanie bólu u pacjenta, który się wstydzi i unika wizyty, zwiększa ryzyko odroczenia zgłoszenia poza okno ratowania jądra"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani ChPL dla ostrej moszny/skrętu jądra (tylko przykłady); pamiec/zespol.md — brak wpisów dotyczących moszny",
+    "PubMed zapytanie 1: 'testicular torsion[Title] AND (time to surgery OR salvage OR orchiectomy) AND review' (od 2018) — 141 wyników",
+    "PubMed zapytanie 2: 'TWIST score testicular torsion validation' — 15 wyników",
+    "PubMed zapytanie 3: 'manual detorsion testicular torsion analgesia OR spermatic cord block' — 164 wyniki",
+    "PubMed zapytanie 4: 'intermittent testicular torsion[Title]' — 17 wyników",
+    "PMID 42740594, DOI 10.1111/acem.70412 — Rivera i wsp. Acad Emerg Med 2026: ręczna detorsja przez lekarzy SOR (8–21 lat, n=256) skuteczna w 65% prób, skraca czas niedokrwienia średnio o 105 min (streszczenie sprawdzone)",
+    "PMID 42449816, DOI 10.3390/diagnostics16132034 — Varlikli i wsp. Diagnostics 2026: orchiektomia 22,4%; czas trwania objawów 48 h vs 6 h (orchiektomia vs zachowanie jądra) — główny predyktor (streszczenie sprawdzone)",
+    "PMID 40307335, DOI 10.1038/s41598-025-97911-6 — Mao i wsp. Sci Rep 2025: czas trwania objawów, skala TWIST i przepływ w USG niezależnymi czynnikami ryzyka orchiektomii (n=468) (streszczenie sprawdzone)",
+    "PMID 41477382, DOI 10.7759/cureus.98125 — Tobu i wsp. Cureus 2025: TWIST czułość 88,2%, swoistość 43,8% (n=50 eksploracji) (streszczenie sprawdzone)",
+    "PMID 39539564, DOI 10.1002/bco2.439 — Hegarty i wsp. BJUI Compass 2024: skręt przerywany, obustronna orchidopeksja zapobiegła utracie jądra w 100% (n=50) (streszczenie sprawdzone)",
+    "PMID 42828360, DOI 10.7759/cureus.115633 — opis przypadku: krwiak śródjądrowy imitujący skręt (TWIST 7) — przykład, że rozstrzyga USG doppler, nie farmakoterapia (streszczenie sprawdzone)",
+    "Dawki paracetamolu i ondansetronu oraz zasada pozostawienia na czczo: [wiedza modelu, niezweryfikowane] — brak ChPL w zrodla/"
+  ]
+}

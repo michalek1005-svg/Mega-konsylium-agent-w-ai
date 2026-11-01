@@ -1,0 +1,119 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — złożona antykoncepcja hormonalna (zatorowość płucna jako powikłanie zakrzepowe)",
+      "p": 0.05,
+      "za": [
+        "przyjmuje tabletki antykoncepcyjne (preparat i rodzaj estrogenu/progestagenu NIEZNANE); złożona antykoncepcja doustna zwiększa ryzyko żylnej choroby zakrzepowo-zatorowej, zależnie od estrogenu, dawki i progestagenu (PMID 41624234)",
+        "ból opłucnowy (nasila się przy głębokim oddechu), tętno 96/min, stan podgorączkowy 37,6 °C — zgodne także z zatorowością"
+      ],
+      "przeciw": [
+        "brak duszności",
+        "ulga w pozycji siedzącej z pochyleniem do przodu i ból nasilający się w pozycji leżącej — typowe dla zapalenia osierdzia, nie dla zatorowości",
+        "przeziębienie tydzień wcześniej, brak unieruchomienia ani innych czynników z ostatnich 4 tygodni"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — inne leki lub suplementy",
+      "p": 0.0,
+      "za": [],
+      "przeciw": [
+        "na stałe tylko antykoncepcja; na ból nic nie przyjęła"
+      ]
+    },
+    {
+      "nazwa": "ostre zapalenie osierdzia (rozpoznanie niepolekowe — p celowo 0, rola farmakologa)",
+      "p": 0.0,
+      "za": [
+        "obraz kliniczny (pozycyjność, ból opłucnowy, promieniowanie do barku/łopatki, infekcja poprzedzająca) — plan farmakologiczny przygotowany pod to rozpoznanie jako najbardziej prawdopodobne z prezentacji"
+      ],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "brak wcześniejszej reakcji nadwrażliwości na leki przeciwbólowe (duszność, wysypka, obrzęk) — niesteroidowy lek przeciwzapalny dopuszczalny",
+    "ciąża i karmienie piersią — zaprzeczone"
+  ],
+  "red_flags_otwarte": [
+    "zapalenie mięśnia sercowego (troponina NIEZNANE) — zmienia dawkowanie niesteroidowych leków przeciwzapalnych i zalecenia wysiłkowe",
+    "zatorowość płucna u kobiety stosującej złożoną antykoncepcję doustną (tętno 96/min) — przed rozpoczęciem samego leczenia przeciwzapalnego potrzebne badanie i ocena kliniczna",
+    "ciśnienie tętnicze NIEZNANE, wysięk/tamponada nieoceniona",
+    "masa ciała NIEZNANE — decyduje o dawce kolchicyny",
+    "czy w przeziębieniu przepisano antybiotyk makrolidowy (klarytromycyna) — NIEZNANE; silny inhibitor CYP3A4/glikoproteiny P przeciwwskazany z kolchicyną"
+  ],
+  "nastepny_krok": "Dziś: badanie lekarskie z EKG, troponiną i białkiem C-reaktywnym (CRP); jeśli potwierdzą zapalenie osierdzia bez zajęcia mięśnia sercowego i bez cech zatorowości — ibuprofen 600 mg co 8 h z inhibitorem pompy protonowej plus kolchicyna przez 3 miesiące (sam ibuprofen nie wystarczy).",
+  "co_zmieniloby_zdanie": "Podwyższona troponina (zapalenie mięśnia sercowego: niższa dawka lub zmiana leku przeciwzapalnego i ograniczenie wysiłku) albo dodatnie D-dimery z cechami zatorowości (leczenie przeciwkrzepliwe i odstawienie złożonej antykoncepcji zamiast schematu przeciwzapalnego).",
+  "plan_farmakologiczny": [
+    {
+      "lek": "ibuprofen",
+      "dawka": "600 mg co 8 h (1800 mg/d)",
+      "droga": "doustnie, z posiłkiem",
+      "czas": "1–2 tygodnie do ustąpienia bólu i normalizacji CRP, potem stopniowe zmniejszanie dawki o 200–400 mg co 1–2 tygodnie",
+      "uwagi": "Dawka przeciwzapalna, nie przeciwbólowa — doraźne 200–400 mg jest zbyt małe. Brak interakcji farmakokinetycznej z antykoncepcją doustną [wiedza modelu, niezweryfikowane]. Przeciwwskazany przy aktywnej chorobie wrzodowej i istotnym upośledzeniu czynności nerek (kreatynina NIEZNANE). Ibuprofen jest tanią opcją u osób bez choroby wieńcowej, niewydolności serca i choroby nerek; wymaga stopniowego zmniejszania dawki i kontroli CRP (PMID 27023565).",
+      "zrodlo": "Dawka i czas: [wiedza modelu, niezweryfikowane — wytyczne ESC 2015/2025 dot. chorób osierdzia, pełny tekst niedostępny w zrodla/]; wybór leku i zmniejszanie dawki: PMID 27023565; ESC 2025 zaleca niesteroidowy lek przeciwzapalny + kolchicynę w zapaleniu osierdzia: PMID 41534803"
+    },
+    {
+      "lek": "kolchicyna",
+      "dawka": "0,5 mg 1×/d przy masie ciała ≤70 kg; 0,5 mg 2×/d przy masie ciała >70 kg",
+      "droga": "doustnie",
+      "czas": "3 miesiące",
+      "uwagi": "Dodana do ibuprofenu zmniejszyła odsetek przetrwałego/nawracającego zapalenia osierdzia z 37,5% do 16,7% (NNT 4) i skróciła utrzymywanie się objawów po 72 h (ICAP, PMID 23992557). Bez dawki nasycającej. Masa ciała NIEZNANE. Nie łączyć z klarytromycyną, erytromycyną, azolami (ketokonazol, itrakonazol), cyklosporyną, werapamilem, diltiazemem [wiedza modelu, niezweryfikowane — ChPL kolchicyny brak w zrodla/]. Działania niepożądane: biegunka, nudności — przy biegunce zmniejszyć/odstawić. Brak istotnej interakcji z antykoncepcją [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 23992557 (DOI 10.1056/NEJMoa1208536) — dawkowanie wg masy ciała i 3 miesiące sprawdzone w streszczeniu"
+    },
+    {
+      "lek": "inhibitor pompy protonowej (np. pantoprazol)",
+      "dawka": "20 mg 1×/d",
+      "droga": "doustnie",
+      "czas": "przez cały okres przyjmowania ibuprofenu",
+      "uwagi": "Ochrona przewodu pokarmowego przy dużej dawce niesteroidowego leku przeciwzapalnego; inhibitor pompy protonowej wskazany przy jednoczesnym niesteroidowym leku przeciwzapalnym (PMID 42454468).",
+      "zrodlo": "wskazanie: PMID 42454468; dawka 20 mg: [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "zalecenie niefarmakologiczne — ograniczenie wysiłku fizycznego",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "co najmniej 1 miesiąc w fazie ostrej; powrót do wysiłku wg ustąpienia objawów i remisji klinicznej",
+      "uwagi": "Dotyczy spektrum zapalnych zespołów mięśnia sercowego i osierdzia wg ESC 2025.",
+      "zrodlo": "PMID 42026924 (streszczenie omówienia wytycznych ESC 2025)"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "ibuprofen w monoterapii lub w dawce doraźnej przeciwbólowej",
+      "powod": "Bez kolchicyny ryzyko przetrwałego/nawracającego zapalenia osierdzia ok. 37,5% vs 16,7% z kolchicyną (PMID 23992557)."
+    },
+    {
+      "lek": "glikokortykosteroidy (prednizon) jako pierwsza linia",
+      "powod": "Zarezerwowane dla przeciwwskazań lub nieskuteczności niesteroidowego leku przeciwzapalnego z kolchicyną; duże dawki sprzyjają przewlekaniu i nawrotom (PMID 42454468, PMID 39197293)."
+    },
+    {
+      "lek": "kolchicyna razem z klarytromycyną lub innym silnym inhibitorem CYP3A4/glikoproteiny P",
+      "powod": "Ryzyko toksyczności kolchicyny (miopatia, pancytopenia) — istotne, bo po przeziębieniu mógł zostać przepisany makrolid [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "rozpoczęcie leczenia przeciwzapalnego bez badania, EKG i troponiny",
+      "powod": "Przy zajęciu mięśnia sercowego zmienia się dawkowanie niesteroidowych leków przeciwzapalnych, a zatorowość płucna u kobiety na złożonej antykoncepcji wymaga innego leczenia [wiedza modelu, niezweryfikowane]."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i ChPL ibuprofenu/kolchicyny w bibliotece (tylko przykłady)",
+    "pamiec/zespol.md — brak wpisów dotyczących zapalenia osierdzia",
+    "PubMed zapytanie 1: \"colchicine acute pericarditis randomized trial[Title/Abstract] AND recurrence\" → PMID 23992557, 37656800",
+    "PubMed zapytanie 2: \"2025 ESC Guidelines myocarditis pericarditis\" → PMID 42026924, 42767766",
+    "PubMed zapytanie 3: \"combined oral contraceptives venous thromboembolism risk[Title] AND (meta-analysis OR cohort)\" → PMID 41624234",
+    "PubMed zapytanie 4: \"2025 ESC Guidelines for the management of myocarditis and pericarditis[Title]\" → PMID 41534803, 41441823 (pełny tekst wytycznych, brak streszczenia), 41308735 (brak streszczenia)",
+    "PubMed zapytanie 5: \"acute pericarditis anti-inflammatory therapy NSAID dose tapering review[Title/Abstract]\" (od 2015) → PMID 27023565, 42454468, 39197293",
+    "Imazio M i wsp. A randomized trial of colchicine for acute pericarditis (ICAP). N Engl J Med 2013;369:1522-8. PMID 23992557, DOI 10.1056/NEJMoa1208536 — streszczenie sprawdzone",
+    "Imazio M i wsp. Myocarditis and pericarditis in focus: 2025 ESC vs ACC. Trends Cardiovasc Med 2026;36:317-326. PMID 41534803, DOI 10.1016/j.tcm.2026.01.002 — streszczenie sprawdzone",
+    "Hayat A, Tuiskunen Bäck A. Nowe wytyczne ESC 2025 (zapalenie mięśnia sercowego i osierdzia). Lakartidningen 2026;123. PMID 42026924 — streszczenie sprawdzone (ograniczenie wysiłku ≥1 miesiąc)",
+    "Schwier N, Tran N. NSAIDs and aspirin for acute and recurrent idiopathic pericarditis. Pharmaceuticals 2016;9:17. PMID 27023565, DOI 10.3390/ph9020017 — streszczenie sprawdzone",
+    "Bizzi E i wsp. Corticosteroid therapy for idiopathic pericarditis. Clin Exp Rheumatol 2026;44:1289-1296. PMID 42454468, DOI 10.55563/clinexprheumatol/h585lm — streszczenie sprawdzone",
+    "Principi N i wsp. Recurrent pericarditis and IL-1 inhibitors. Int Immunopharmacol 2024;141:113017. PMID 39197293, DOI 10.1016/j.intimp.2024.113017 — streszczenie sprawdzone",
+    "Morimont L i wsp. VTE risk of combined oral contraceptives (nAPCsr). Res Pract Thromb Haemost 2025;10:103285. PMID 41624234, DOI 10.1016/j.rpth.2025.103285 — streszczenie sprawdzone",
+    "Schulz-Menger J i wsp. 2025 ESC Guidelines for the management of myocarditis and pericarditis (wersja włoska). G Ital Cardiol 2026;27(1 Suppl 1):e1-e93. PMID 41441823, DOI 10.1714/4620.46292 — brak streszczenia, nie cytowano liczb",
+    "Dawka ibuprofenu 600 mg co 8 h, dawka pantoprazolu, interakcje kolchicyny z inhibitorami CYP3A4/P-gp, brak interakcji z antykoncepcją: [wiedza modelu, niezweryfikowane]"
+  ]
+}

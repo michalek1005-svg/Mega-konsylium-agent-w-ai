@@ -1,0 +1,152 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — hiponatremia po sertralinie dołączonej do indapamidu",
+      "p": 0.6,
+      "za": [
+        "sertralina włączona w ostatnich 4 tygodniach do stałego indapamidu 1,5 mg; hiponatremia po SSRI pojawia się zwykle w pierwszym miesiącu leczenia (PMID 24203508)",
+        "sód wyjściowy już obniżony: 131 mmol/l przed włączeniem sertraliny; sód w dolnej granicy, wiek podeszły i tiazyd to czynniki ryzyka (PMID 24203508, 27168745)",
+        "skojarzenie SSRI + tiazyd u starszych zwiększa ryzyko hiponatremii (OR około 1,24–1,27; częstość ok. 13% vs 9–10% w monoterapii) (PMID 40035448)",
+        "obraz typowy dla objawowej hiponatremii: splątanie, zaburzenia chodu, upadek, nudności, wymioty (PMID 24052056: zaburzenia chodu z upadkami 45%, splątanie 30%, dyspepsja 41% u objawowych)",
+        "zwiększone picie przy działaniu tiazydu i SIADH (zespół nieadekwatnego wydzielania wazopresyny) po SSRI nasila spadek sodu [wiedza modelu, niezweryfikowane]",
+        "brak gorączki i dreszczy"
+      ],
+      "przeciw": [
+        "brak aktualnego oznaczenia sodu (NIEZNANE) — rozpoznanie wymaga Na, osmolalności surowicy, Na i osmolalności moczu",
+        "część danych nie wskazuje związku z SSRI jako klasą (PMID 24052056, populacja psychiatryczna)",
+        "wielomocz z dużym pragnieniem może też wynikać z hiperkalcemii lub hiperglikemii (glukoza 98 mg/dl 4 tyg. temu)"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — inne zaburzenia elektrolitowe po indapamidzie (hipokaliemia, hiperkalcemia)",
+      "p": 0.08,
+      "za": [
+        "potas 3,6 mmol/l przed 4 tygodniami, od tego czasu wymioty i mało jedzenia",
+        "tiazydopodobne diuretyki zmniejszają wydalanie wapnia; wielomocz, pragnienie, nudności i splątanie pasują do hiperkalcemii [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "indapamid przyjmowany dłużej niż sertralina — nowym czynnikiem w czasie jest sertralina",
+        "wapń nigdy nieoznaczony (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — działania niepożądane sertraliny bez zaburzeń elektrolitowych (nudności, zaburzenia równowagi, łagodna toksyczność serotoninowa)",
+      "p": 0.05,
+      "za": [
+        "nudności i zaburzenia równowagi są częstymi działaniami SSRI na początku leczenia; SSRI zwiększają ryzyko upadków u starszych [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "nie wyjaśnia wielomoczu i nasilonego splątania",
+        "brak drugiego leku serotoninergicznego na liście"
+      ]
+    },
+    {
+      "nazwa": "zakażenie układu moczowego",
+      "p": 0.0,
+      "za": [
+        "częstomocz zgłoszony przez córkę"
+      ],
+      "przeciw": [
+        "rozpoznanie niepolekowe — p ustawione na 0 zgodnie z rolą farmakologa; ocenia internista",
+        "brak gorączki, brak dyzurii; częste oddawanie dużych ilości moczu przy zwiększonym piciu przemawia za wielomoczem, nie za zapaleniem pęcherza",
+        "splątanie z dodatnim badaniem moczu bez objawów miejscowych nie uzasadnia antybiotyku; antybiotyk nie przyspieszał ustąpienia majaczenia (PMID 36447157, 28542707)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "leczenie przeciwkrzepliwe — nie przyjmuje (zmniejsza, ale nie wyklucza ryzyka krwiaka śródczaszkowego)",
+    "cukrzyca i leki hipoglikemizujące — brak"
+  ],
+  "red_flags_otwarte": [
+    "objawowa hiponatremia z wymiotami i splątaniem — wymioty to objaw ciężki wg wytycznej europejskiej 2014 (PMID 24569496) [kryterium ciężkości: wiedza modelu, niezweryfikowane — streszczenie go nie podaje]",
+    "upadek bez świadków u 74-latka z nowym splątaniem — krwiak podtwardówkowy niewykluczony (TK głowy)",
+    "hipokaliemia przy wymiotach i tiazydzie — ryzyko zaburzeń rytmu (sertralina dodatkowo wydłuża QT w niewielkim stopniu) [wiedza modelu, niezweryfikowane]",
+    "parametry życiowe, nawodnienie i stan wyjściowy funkcji poznawczych — NIEZNANE"
+  ],
+  "nastepny_krok": "Skierować dziś natychmiast na SOR z adnotacją: podejrzenie objawowej hiponatremii polekowej (sertralina + indapamid) i upadek bez świadków — pilnie Na, K, Ca, glukoza, kreatynina, osmolalność surowicy i moczu, Na w moczu, EKG, TK głowy; do tego czasu wstrzymać sertralinę i indapamid, nie podawać antybiotyku.",
+  "co_zmieniloby_zdanie": "Prawidłowy sód (≥135 mmol/l) i wapń w badaniu z dnia dzisiejszego przy gorączce, dyzurii lub ropomoczu z posiewem dodatnim przesunąłby ciężar z działania niepożądanego leków na zakażenie lub inną przyczynę; lista leków jest kompletna tylko według córki (NIEZNANE: suplementy, leki bez recepty).",
+  "plan_farmakologiczny": [
+    {
+      "lek": "sertralina 50 mg",
+      "dawka": "WSTRZYMAĆ od dziś",
+      "droga": "doustnie",
+      "czas": "do normalizacji sodu i ponownej oceny psychiatrycznej/POZ",
+      "uwagi": "Hiponatremia po SSRI ustępuje po odstawieniu (PMID 24203508). Po 4 tygodniach leczenia nagłe odstawienie 50 mg ma niewielkie ryzyko zespołu odstawiennego — akceptowalne wobec objawowej hiponatremii [wiedza modelu, niezweryfikowane]. Przy ponownym leczeniu depresji wybrać lek o mniejszym ryzyku hiponatremii (np. mirtazapina) i oznaczyć Na po 1–2 tygodniach [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 24203508; PMID 40035448"
+    },
+    {
+      "lek": "indapamid 1,5 mg",
+      "dawka": "WSTRZYMAĆ od dziś i nie wznawiać",
+      "droga": "doustnie",
+      "czas": "na stałe",
+      "uwagi": "Po hiponatremii związanej z diuretykiem tiazydowym nie przepisywać ponownie tiazydów (PMID 27168745). Kontrola ciśnienia: amlodypina kontynuowana; ewentualne dołączenie inhibitora konwertazy lub sartanu po wyrównaniu elektrolitów i z kontrolą K i kreatyniny [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 27168745"
+    },
+    {
+      "lek": "amlodypina 5 mg",
+      "dawka": "bez zmian",
+      "droga": "doustnie",
+      "czas": "kontynuować",
+      "uwagi": "Brak istotnych interakcji z sertraliną i indapamidem; przy odwodnieniu i hipotensji ortostatycznej ocenić ciśnienie na stojąco (upadek) [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "korekta sodu — w szpitalu",
+      "dawka": "wg protokołu szpitalnego; przy ciężkich objawach hipertoniczny NaCl 3% w bolusach; limit wzrostu Na 10 mmol/l w pierwszej dobie, 8 mmol/l w każdej kolejnej",
+      "droga": "dożylnie",
+      "czas": "do ustąpienia objawów",
+      "uwagi": "Ryzyko zespołu osmotycznej demielinizacji przy zbyt szybkiej korekcie, szczególnie po odstawieniu tiazydu (samoistna akwareza) i przy hipokaliemii (PMID 27168745: ostrożne monitorowanie leczenia z powodu przekorygowania). Bolus 3% 100–150 ml stosowany najczęściej w praktyce europejskiej (PMID 40455923). Limity korekty: [wiedza modelu, niezweryfikowane — streszczenie PMID 24569496 ich nie podaje].",
+      "zrodlo": "PMID 24569496; PMID 40455923; PMID 27168745"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "antybiotyk empirycznie (jakikolwiek) na podstawie samego splątania lub dodatniego testu paskowego",
+      "powod": "Brak gorączki i objawów miejscowych; leczenie bakteriomoczu u starszych z majaczeniem nie poprawia przebiegu (PMID 36447157; PMID 28542707). Antybiotyk tylko przy potwierdzonym zakażeniu (gorączka, dyzuria, ból okolicy lędźwiowej, posiew)."
+    },
+    {
+      "lek": "fluorochinolony (cyprofloksacyna, lewofloksacyna)",
+      "powod": "Gdyby zakażenie zostało potwierdzone: u 74-latka ryzyko majaczenia, hipoglikemii/dysglikemii i wydłużenia QT (addytywnie z sertraliną), zapalenia ścięgien; przy splątaniu i hiponatremii lek zły z wyboru [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "trimetoprim-sulfametoksazol",
+      "powod": "Może nasilać hiponatremię i powodować hiperkaliemię u starszych [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "płyny hipotoniczne (5% glukoza, „dużo picia wody”)",
+      "powod": "Pogłębiają hiponatremię w SIADH; córka nie powinna pojić ojca 'na zapalenie pęcherza' do czasu wyniku sodu [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "tramadol, benzodiazepiny, leki przeciwhistaminowe I generacji, leki przeciwwymiotne o działaniu antycholinergicznym",
+      "powod": "Nasilają majaczenie i ryzyko upadków; tramadol dodatkowo serotoninergiczny i powoduje hiponatremię [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "niesteroidowe leki przeciwzapalne",
+      "powod": "Czynnik ryzyka hiponatremii przy tiazydzie (PMID 27168745) i uszkodzenia nerek przy odwodnieniu."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i ChPL dla tej sytuacji (sprawdzone); pamiec/zespol.md — brak wpisów dotyczących",
+    "PubMed zapytanie 1: 'hyponatremia selective serotonin reuptake inhibitors thiazide elderly' (18 wyników)",
+    "PubMed zapytanie 2: 'asymptomatic bacteriuria delirium older adults antibiotics' (11 wyników)",
+    "PubMed zapytanie 3: 'thiazide-associated hyponatremia risk factors onset[Title/Abstract]' (0 wyników — nieskuteczne)",
+    "PubMed zapytanie 4: 'thiazide induced hyponatremia[Title]' (31 wyników)",
+    "PubMed zapytanie 5: 'European clinical practice guideline diagnosis treatment hyponatraemia' (18 wyników)",
+    "PubMed zapytanie 6: 'Spasovski[Author] hyponatraemia clinical practice guideline 2014' (3 wyniki)",
+    "PubMed zapytanie 7: 'SSRI hyponatremia older adults time to onset systematic review' (0 wyników — nieskuteczne)",
+    "PubMed zapytanie 8: 'antidepressants hyponatremia[Title] review' (42 wyniki)",
+    "Matsuura T i wsp. Pharmacotherapy 2025;45(3):169-176. PMID 40035448, DOI 10.1002/phar.70004 — streszczenie sprawdzone (SSRI + tiazyd: OR 1,24 i 1,27; częstość 13%)",
+    "Liamis G i wsp. J Geriatr Cardiol 2016;13(2):175-82. PMID 27168745, DOI 10.11909/j.issn.1671-5411.2016.02.001 — streszczenie sprawdzone (SSRI czynnikiem ryzyka; nie wznawiać tiazydu; ostrożna korekta)",
+    "Martínez-Cortés M i wsp. Actas Esp Psiquiatr 2013;41(6):361-4. PMID 24203508 (brak DOI) — streszczenie sprawdzone (początek w 1. miesiącu, wiek, tiazyd, niski Na wyjściowy, ustępuje po odstawieniu)",
+    "Lange-Asschenfeldt C i wsp. J Clin Psychopharmacol 2013;33(6):799-805. PMID 24052056, DOI 10.1097/JCP.0b013e3182a4736f — streszczenie sprawdzone (objawy: chód/upadki 45%, splątanie 30%, dyspepsja 41%; tiazydy z cięższą hiponatremią)",
+    "Ganguli A i wsp. Clin Nephrol 2015;84(2):75-85. PMID 26042411, DOI 10.5414/CN108453 — streszczenie sprawdzone (tiazydy i SSRI główne polekowe przyczyny hiponatremii u starszych; przetrwała hiponatremia a upadki OR 3,52)",
+    "Spasovski G i wsp. Nephrol Dial Transplant 2014;29 Suppl 2:i1-i39. PMID 24569496, DOI 10.1093/ndt/gfu040 — wytyczna ESICM/ESE/ERBP; streszczenie sprawdzone tylko co do zakresu (definicja Na <135 mmol/l); limity korekty i kryteria ciężkości oznaczone jako wiedza modelu",
+    "Beck J i wsp. Eur J Endocrinol 2025;192(6):754-762. PMID 40455923, DOI 10.1093/ejendo/lvaf115 — streszczenie sprawdzone (bolusy 3% 100–150 ml; ODS a przekorygowanie)",
+    "Joo P i wsp. BMC Geriatr 2022;22:916. PMID 36447157, DOI 10.1186/s12877-022-03549-8 — streszczenie sprawdzone (antybiotyk nie zmniejszał majaczenia w 7. dniu, RR 0,94)",
+    "Finucane TE. J Am Geriatr Soc 2017;65(8):1650-1655. PMID 28542707, DOI 10.1111/jgs.14907 — streszczenie sprawdzone (brak dowodów na leczenie bakteriomoczu u starszych z majaczeniem)",
+    "Laguë A i wsp. CJEM 2021;24(1):61-67. PMID 34181215, DOI 10.1007/s43678-021-00148-1 — streszczenie sprawdzone (wytyczne: najpierw szukać przyczyn nieinfekcyjnych majaczenia)"
+  ]
+}

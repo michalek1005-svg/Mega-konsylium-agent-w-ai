@@ -1,0 +1,47 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Hiponatremia polekowa (sertralina z indapamidem) z encefalopatią", "p": 0, "za": ["Na 131 mmol/l już 4 tygodnie temu, przed włączeniem sertraliny", "nowy lek w ostatnich 4 tygodniach (sertralina) dołożony do indapamidu", "splątanie, chwiejność, upadek, nudności, wymioty, brak łaknienia", "zwiększone picie (polidypsja) pogłębia hiponatremię przy upośledzonym wydalaniu wolnej wody", "PMID 40035448: SSRI + tiazyd u starszych zwiększa ryzyko hiponatremii (OR ok. 1,24–1,27)"], "przeciw": ["brak aktualnego Na — wartość dziś NIEZNANA"]},
+    {"nazwa": "Krwiak podtwardówkowy lub inne krwawienie wewnątrzczaszkowe po upadku", "p": 0, "za": ["upadek bez świadków, uraz głowy nie do wykluczenia", "nowe splątanie i zaburzenia chodu u 74-latka", "SSRI nieznacznie zwiększa ryzyko krwawień [wiedza modelu, niezweryfikowane]"], "przeciw": ["brak leków przeciwkrzepliwych", "objawy (splątanie, chwianie) zaczęły się 2 dni temu, przed upadkiem — upadek może być skutkiem, nie przyczyną"]},
+    {"nazwa": "Zakażenie układu moczowego z majaczeniem", "p": 0, "za": ["częstomocz wg rodziny"], "przeciw": ["brak gorączki i dreszczy", "opisany także wielomocz z dużą ilością wypijanego płynu — bardziej wzorzec poliurii/polidypsji niż zapalenia pęcherza", "u starszych bez gorączki i bez objawów miejscowych dodatni wynik moczu to często bakteriomocz bezobjawowy (PMID 30895288, PMID 34181215)"]},
+    {"nazwa": "Hiperkalcemia lub hiperglikemia jako przyczyna wielomoczu i splątania", "p": 0, "za": ["wielomocz z polidypsją", "tiazydopodobny diuretyk może podnosić wapń [wiedza modelu, niezweryfikowane]"], "przeciw": ["glukoza 98 mg/dl 4 tygodnie temu, brak cukrzycy"]},
+    {"nazwa": "Zespół serotoninowy lub inne działanie niepożądane sertraliny", "p": 0, "za": ["nowo włączona sertralina"], "przeciw": ["rodzina nie zgłasza drżeń, gorączki, pobudzenia"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["leczenie przeciwkrzepliwe (pacjent nie przyjmuje)", "duszność (oddycha normalnie wg rodziny)"],
+  "red_flags_otwarte": ["upadek bez świadków z nowym splątaniem — krwawienie wewnątrzczaszkowe niewykluczone", "objawowa hiponatremia z wymiotami i splątaniem — możliwa ciężka (Na nieznany)", "parametry życiowe i badanie neurologiczne NIEZNANE", "stan poznawczy wyjściowy NIEZNANY"],
+  "nastepny_krok": "Skierowanie pacjenta dziś na Szpitalny Oddział Ratunkowy (SOR), gdzie jedna wizyta daje jednocześnie sód, potas, wapń, glukozę, kreatyninę, osmolalność i sód w moczu, tomografię komputerową głowy bez kontrastu oraz bezpieczną, monitorowaną korektę natremii; do czasu oceny wstrzymać indapamid i sertralinę oraz nie zaczynać antybiotyku.",
+  "co_zmieniloby_zdanie": "Gdyby pacjent w badaniu był w pełni zorientowany, bez wymiotów, z prawidłowym badaniem neurologicznym, a uraz głowy dało się pewnie wykluczyć, wystarczyłby pilny elektrolit w POZ z wynikiem tego samego dnia zamiast SOR.",
+  "badania": [
+    {"nazwa": "Sód, potas, kreatynina, glukoza, wapń w surowicy (cito)", "cel": "potwierdzenie i stopień hiponatremii; wykluczenie hiperkalcemii, hiperglikemii, ostrego uszkodzenia nerek", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Rozstrzyga główną hipotezę. W POZ wynik zwykle następnego dnia — opóźnienie niebezpieczne przy wymiotach i splątaniu, więc na SOR w trybie cito. Na <125 mmol/l z objawami → leczenie szpitalne; Na prawidłowy → szukać innej przyczyny."},
+    {"nazwa": "Tomografia komputerowa głowy bez kontrastu", "cel": "wykluczenie krwiaka podtwardówkowego po upadku bez świadków", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Badanie wykluczające red flag najgorszego scenariusza — zawsze uzasadnione. Reguła Falls Decision Rule (PMID 38049159) pozwala pominąć TK tylko przy braku urazu głowy, braku niepamięci upadku i prawidłowym badaniu neurologicznym; tu upadek bez świadków i nowe splątanie, więc kryteria pominięcia niespełnione. Wynik dodatni → neurochirurgia; ujemny → leczenie przyczyny metabolicznej. Dawka promieniowania akceptowalna."},
+    {"nazwa": "Osmolalność surowicy, osmolalność i sód w moczu", "cel": "rozróżnienie hiponatremii z odwodnienia po diuretyku od zespołu nieadekwatnego wydzielania wazopresyny (SIADH) po SSRI", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Pobrać przed podaniem płynów; decyduje o płynoterapii vs ograniczeniu płynów (PMID 27168745). Tylko jeśli Na obniżony."},
+    {"nazwa": "Badanie ogólne moczu z posiewem", "cel": "weryfikacja hipotezy rodziny o ZUM", "zmienia_decyzje": false, "kolejnosc": 3, "uwagi": "Zmienia decyzję tylko przy objawach miejscowych (dyzuria, ból nadłonowy, gorączka) lub gdy po wyrównaniu natremii i wykluczeniu krwawienia majaczenie trwa. Sam dodatni wynik bez gorączki i bez dyzurii u 74-latka to najpewniej bakteriomocz bezobjawowy — nie leczyć (PMID 30895288)."},
+    {"nazwa": "Glukoza z glukometru (przy pierwszym kontakcie)", "cel": "natychmiastowe wykluczenie hipo- i hiperglikemii jako przyczyny splątania", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Koszt minimalny, wynik w minutę."},
+    {"nazwa": "Elektrokardiogram (EKG)", "cel": "zaburzenia rytmu jako przyczyna upadku; QT przy sertralinie i hipokaliemii", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Tani, dostępny od ręki; omdlenie arytmiczne zmieniłoby postępowanie."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Empiryczny antybiotyk bez weryfikacji (odpowiedź na pytanie lekarza)", "powod": "Brak gorączki, brak dyzurii; wielomocz z polidypsją przemawia przeciw zapaleniu pęcherza. Antybiotyk opóźni rozpoznanie hiponatremii i krwawienia, nie zmieni przebiegu bakteriomoczu bezobjawowego i niesie ryzyko działań niepożądanych (PMID 30895288, 34181215)."},
+    {"nazwa": "Sam test paskowy moczu w POZ jako badanie rozstrzygające", "powod": "Dodatni pasek u starszego mężczyzny bez objawów miejscowych nie odróżnia ZUM od bakteriomoczu bezobjawowego; prowadzi do kaskady antybiotyk → brak poprawy → opóźnione rozpoznanie."},
+    {"nazwa": "Rutynowa CRP/prokalcytonina i morfologia jako warunek decyzji o SOR", "powod": "Wynik nie zmienia decyzji o skierowaniu — o SOR decydują splątanie, upadek i wymioty; zostaną wykonane na miejscu."},
+    {"nazwa": "Rezonans magnetyczny głowy w trybie planowym, ambulatoryjna konsultacja neurologiczna", "powod": "Kolejka tygodni — nie rozstrzyga nic dziś; TK wystarcza do wykluczenia krwawienia."},
+    {"nazwa": "TSH, witamina B12, kwas foliowy, badania przesiewowe w kierunku otępienia teraz", "powod": "Nie wyjaśniają ostrego 2-dniowego pogorszenia; sensowne dopiero po ustąpieniu majaczenia, jeśli deficyt utrzyma się."},
+    {"nazwa": "Powtórna TK głowy rutynowo po ujemnym pierwszym badaniu", "powod": "U osób bez antykoagulacji ryzyko opóźnionego krwawienia niskie; nawet u leczonych przeciwkrzepliwie 5/635 i bez interwencji neurochirurgicznej (PMID 33485622). Powtórzyć tylko przy pogorszeniu neurologicznym."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla hiponatremii, majaczenia i bakteriomoczu (tylko wpisy przykładowe)",
+    "pamiec/zespol.md — brak wpisów dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'hyponatremia selective serotonin reuptake inhibitor thiazide elderly' (18 wyników)",
+    "PubMed zapytanie 2: 'asymptomatic bacteriuria delirium older adults urine culture antibiotic' od 2015 (2 wyniki)",
+    "PubMed zapytanie 3: 'head CT older adults ground level fall without anticoagulation intracranial hemorrhage prevalence' od 2015 (6 wyników)",
+    "PubMed zapytanie 4: tytuł wytycznej IDSA 2019 (bakteriomocz bezobjawowy) [Title] (2 wyniki)",
+    "PMID 40035448 · DOI 10.1002/phar.70004 — Medicare, starsi: hiponatremia 13,0% przy SSRI + tiazyd vs 9–10,4% osobno; OR 1,24 i 1,27 (streszczenie sprawdzone)",
+    "PMID 27168745 · DOI 10.11909/j.issn.1671-5411.2016.02.001 — przegląd: hiponatremia tiazydowa u starszych, czynnik ryzyka SSRI; mierzyć Na niezwłocznie przy objawach neurologicznych; profil odwodnienia lub SIADH (streszczenie sprawdzone)",
+    "PMID 38049159 · DOI 10.1503/cmaj.230634 — Falls Decision Rule: bez TK tylko gdy brak urazu głowy, brak niepamięci upadku, prawidłowe badanie neurologiczne, Clinical Frailty Scale <5; czułość 98,6%; wymaga walidacji (streszczenie sprawdzone)",
+    "PMID 33485622 · DOI 10.1016/j.amjsurg.2021.01.011 — opóźnione krwawienie po ujemnej TK u antykoagulowanych 5/635, bez interwencji neurochirurgicznej (streszczenie sprawdzone)",
+    "PMID 30895288 · DOI 10.1093/cid/ciy1121 — IDSA 2019: nie badać przesiewowo ani nie leczyć bakteriomoczu bezobjawowego u starszych kobiet i mężczyzn; leczenie bakteriomoczu napędza oporność (streszczenie sprawdzone; szczegółowa rekomendacja dla majaczenia bez gorączki — [wiedza modelu, niezweryfikowane] w streszczeniu)",
+    "PMID 34181215 · DOI 10.1007/s43678-021-00148-1 — wytyczne zalecają ocenę przyczyn niezakaźnych i obserwację przed antybiotykiem u majaczących z bakteriomoczem bezobjawowym; w praktyce 38% leczy od razu (streszczenie sprawdzone)",
+    "Próg Na <125 mmol/l jako granica leczenia szpitalnego — [wiedza modelu, niezweryfikowane]"
+  ]
+}

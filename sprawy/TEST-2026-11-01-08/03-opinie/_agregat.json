@@ -1,0 +1,147 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Hiponatremia polekowa (zespół niewłaściwego wydzielania wazopresyny po sertralinie nałożony na indapamid) z majaczeniem",
+      "p": 0.095,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Objawowa hiponatremia polekowa (sertralina dołączona do indapamidu, mechanizm zespołu nieadekwatnego wydzielania wazopresyny i tiazydopodobnego diuretyku)",
+      "p": 0.08,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — hiponatremia po sertralinie dołączonej do indapamidu",
+      "p": 0.069,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Zakażenie układu moczowego z majaczeniem",
+      "p": 0.055,
+      "wymienili": [
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Pourazowy krwiak wewnątrzczaszkowy (krwiak podtwardówkowy) po upadku bez świadków",
+      "p": 0.046,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.02,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Ciężka objawowa hiponatremia (wymioty + splątanie = objawy ciężkie wg ESE/ESICM/ERBP 2014) — wykluczy tylko aktualny sód w surowicy; [kryterium objawów ciężkich: wiedza modelu, niezweryfikowane w streszczeniu PMID 24569496]",
+      "Hiperkalcemia — wykluczy oznaczenie wapnia",
+      "Hipokaliemia i odwodnienie po wymiotach na diuretyku — wykluczy jonogram i kreatynina",
+      "Krwawienie śródczaszkowe po upadku bez świadków — wykluczy tomografia komputerowa głowy",
+      "Nowa hiperglikemia z hiperosmolarnością (wielomocz, polidypsja, splątanie) — wykluczy glukoza z palca, dostępna od ręki",
+      "Nowe majaczenie u 74-latka bez aktualnego sodu – możliwa hiponatremia objawowa o średnim nasileniu (wymioty, splątanie, upadek)",
+      "Ostre splątanie z wymiotami u 74-latka — możliwa ciężka objawowa hiponatremia (wymioty i splątanie to objawy umiarkowanie ciężkie/ciężkie wg wytycznej europejskiej, PMID 24569496 — klasyfikacja objawów [wiedza modelu, niezweryfikowane w streszczeniu])",
+      "Parametry życiowe i badanie fizykalne NIEZNANE",
+      "Parametry życiowe i badanie neurologiczne NIEZNANE",
+      "Parametry życiowe, saturacja, glikemia i badanie neurologiczne nieznane",
+      "Sepsa (w tym urosepsa) u starszego mężczyzny bez pomiaru parametrów życiowych — wykluczą parametry życiowe, CRP/prokalcytonina, badanie moczu z posiewem",
+      "Stan funkcji poznawczych przed epizodem NIEZNANY — nie można ocenić skali zmiany",
+      "Stan poznawczy sprzed epizodu NIEZNANY",
+      "Stan wyjściowy funkcji poznawczych nieznany",
+      "Upadek bez świadków z możliwym urazem głowy – krwiak śródczaszkowy niewykluczony bez tomografii",
+      "Upadek bez świadków z nowym splątaniem — nie wykluczono krwawienia śródczaszkowego (wymaga tomografii komputerowej głowy)",
+      "Wymioty przy splątaniu – ryzyko dalszej progresji (senność, drgawki)",
+      "Zatrzymanie moczu z ostrym uszkodzeniem nerek — wykluczy USG pęcherza/objętość zalegająca i kreatynina",
+      "Zespół serotoninowy po nowym SSRI — wykluczy badanie przedmiotowe (drżenie, klonusy, hipertermia, tachykardia)",
+      "hipokaliemia przy wymiotach i tiazydzie — ryzyko zaburzeń rytmu (sertralina dodatkowo wydłuża QT w niewielkim stopniu) [wiedza modelu, niezweryfikowane]",
+      "objawowa hiponatremia z wymiotami (objaw ciężki wg klasyfikacji europejskiej) — aktualny sód nieznany",
+      "objawowa hiponatremia z wymiotami i splątaniem — możliwa ciężka (Na nieznany)",
+      "objawowa hiponatremia z wymiotami i splątaniem — wymioty to objaw ciężki wg wytycznej europejskiej 2014 (PMID 24569496) [kryterium ciężkości: wiedza modelu, niezweryfikowane — streszczenie go nie podaje]",
+      "parametry życiowe i badanie neurologiczne NIEZNANE",
+      "parametry życiowe, nawodnienie i stan wyjściowy funkcji poznawczych — NIEZNANE",
+      "parametry życiowe, poziom świadomości (skala Glasgow), objawy ogniskowe — nieocenione",
+      "stan poznawczy sprzed 2 dni — NIEZNANE (nie da się ocenić, jak duża jest zmiana)",
+      "stan poznawczy wyjściowy NIEZNANY",
+      "upadek bez świadków + nowe splątanie + wymioty u 74-latka: krwawienie śródczaszkowe niewykluczone bez tomografii komputerowej głowy",
+      "upadek bez świadków u 74-latka z nowym splątaniem — krwiak podtwardówkowy niewykluczony (TK głowy)",
+      "upadek bez świadków z nowym splątaniem — krwawienie wewnątrzczaszkowe niewykluczone",
+      "zaleganie moczu (mężczyzna, częste małe porcje) — niezbadane"
+    ],
+    "wykluczone": [
+      "Duszność (oddech prawidłowy wg córki)",
+      "Duszność (oddycha normalnie)",
+      "Gorączka i dreszcze (córka zaprzecza)",
+      "Gorączka i dreszcze (zaprzeczone)",
+      "Hipoglikemia lub hiperglikemia w przebiegu znanej cukrzycy — brak cukrzycy (ale nowa hiperglikemia nie jest wykluczona, glukoza 98 mg/dl sprzed 4 tygodni)",
+      "Leczenie przeciwkrzepliwe (córka zaprzecza)",
+      "Leczenie przeciwkrzepliwe jako czynnik krwawienia — wykluczone wywiadem (nie bierze)",
+      "Leczenie przeciwzakrzepowe (nie bierze)",
+      "Niewydolność oddechowa — oddech prawidłowy wg córki (bez pomiaru saturacji)",
+      "Zespół odstawienny alkoholowy i encefalopatia Wernickego z alkoholu — nie pije",
+      "cukrzyca (nie choruje; glukoza 98 mg/dl 4 tygodnie temu)",
+      "cukrzyca i leki hipoglikemizujące — brak",
+      "duszność (oddycha normalnie wg rodziny)",
+      "duszność (oddycha normalnie)",
+      "gorączka i dreszcze (zaprzecza)",
+      "leczenie przeciwkrzepliwe (pacjent nie przyjmuje)",
+      "leczenie przeciwkrzepliwe — nie przyjmuje (zmniejsza, ale nie wyklucza ryzyka krwiaka śródczaszkowego)",
+      "leki przeciwkrzepliwe (nie przyjmuje)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

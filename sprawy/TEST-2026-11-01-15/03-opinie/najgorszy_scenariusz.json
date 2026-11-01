@@ -1,0 +1,102 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "stan przedrzucawkowy poporodowy z cechami ciężkimi (zagrażająca rzucawka)",
+      "p": 0.62,
+      "za": [
+        "10. doba połogu: większość postaci późnych poporodowych ujawnia się w 7.–10. dobie, najczęściej bólem głowy (Hauspurg 2021, PMID 35177218)",
+        "ciśnienie 162/106 mmHg w samopomiarze: skurczowe w zakresie ciężkiego nadciśnienia (>=160 mmHg)",
+        "ból głowy nowego charakteru, 7/10, inny niż dawne migreny",
+        "utrzymujące się mroczki i nieostre widzenie (objaw ośrodkowy, ryzyko zespołu odwracalnej tylnej encefalopatii)",
+        "szybko narastające obrzęki obejmujące twarz i dłonie",
+        "ból w nadbrzuszu / pod prawym łukiem żebrowym"
+      ],
+      "przeciw": [
+        "brak nadciśnienia i powikłań w ciąży wg pacjentki (postać de novo poporodowa jest jednak opisana, PMID 35177218)",
+        "pomiar jednorazowy, domowy, bez weryfikacji w gabinecie (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "zespół HELLP (hemoliza, podwyższone enzymy wątrobowe, mała liczba płytek)",
+      "p": 0.18,
+      "za": [
+        "ból w nadbrzuszu / prawym podżebrzu u kobiety z nadciśnieniem w połogu",
+        "towarzyszący ból głowy i zaburzenia widzenia"
+      ],
+      "przeciw": [
+        "brak wyników morfologii, AspAT/AlAT, LDH (NIEZNANE) - nie da się ani potwierdzić, ani wykluczyć bez laboratorium"
+      ]
+    },
+    {
+      "nazwa": "zakrzepica żył i zatok mózgowych",
+      "p": 0.06,
+      "za": [
+        "połóg to okres nadkrzepliwości; zakrzepica zatok jest jedną z wtórnych przyczyn bólu głowy w połogu (Khoromi 2023, PMID 37840942)",
+        "ból głowy narastający przez godziny, zaburzenia widzenia (możliwy obrzęk tarczy nerwu wzrokowego)"
+      ],
+      "przeciw": [
+        "ciężkie nadciśnienie, obrzęki i ból w prawym podżebrzu lepiej tłumaczy stan przedrzucawkowy",
+        "wykluczy dopiero obrazowanie żylne (wenografia rezonansu magnetycznego lub tomografii komputerowej)"
+      ]
+    },
+    {
+      "nazwa": "zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.05,
+      "za": [
+        "typowo połóg; współwystępuje ze stanem przedrzucawkowym i zespołem odwracalnej tylnej encefalopatii (PMID 37840942)"
+      ],
+      "przeciw": [
+        "początek stopniowy przez godziny, nie piorunujący ból głowy; pacjentka zaprzecza nagłym zdarzeniom"
+      ]
+    },
+    {
+      "nazwa": "migrena bez aury lub z aurą",
+      "p": 0.02,
+      "za": [
+        "migreny w wywiadzie"
+      ],
+      "przeciw": [
+        "ból inny niż dawne migreny",
+        "ciśnienie 162/106 mmHg, obrzęki twarzy i dłoni, ból w prawym podżebrzu - migrena tego nie tłumaczy; rozpoznanie dopiero po wykluczeniu przyczyn wtórnych"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "popunkcyjny ból głowy - wykluczony: brak znieczulenia zewnątrzoponowego i podpajęczynówkowego (por. Joudi 2021, PMID 33620887)",
+    "zakażenie połogowe / zapalenie opon jako główna przyczyna - mało prawdopodobne: brak gorączki i dreszczy (nie wyklucza w pełni bez badania)",
+    "krwotok podpajęczynówkowy z pęknięcia tętniaka jako prezentacja piorunująca - mało prawdopodobny: ból narastał stopniowo przez godziny, pacjentka zaprzecza nagłym zdarzeniom (nie wyklucza krwawienia wtórnego w przebiegu zespołu odwracalnej tylnej encefalopatii, PMID 39859059)"
+  ],
+  "red_flags_otwarte": [
+    "ciężkie nadciśnienie 162/106 mmHg z bólem głowy i zaburzeniami widzenia w połogu - reguła ankiety [NATYCHMIAST 112]; ryzyko udaru krwotocznego, leczenie hipotensyjne powinno nastąpić w ciągu 30-60 min od potwierdzenia (ACOG CO 692/767, PMID 28333820, 30681541)",
+    "zagrażająca rzucawka: objawy mózgowe (ból głowy, mroczki) przy ciężkim nadciśnieniu; rzucawka późna poporodowa z zespołem odwracalnej tylnej encefalopatii opisana do kilku tygodni po porodzie (PMID 37960797, 39859059)",
+    "zespół HELLP / zajęcie wątroby (ból w prawym podżebrzu) - wyklucza morfologia z płytkami, AspAT/AlAT, LDH, bilirubina, kreatynina",
+    "obrzęk płuc / kardiomiopatia okołoporodowa przy szybko narastających obrzękach - nie zebrano duszności i ortopnoe (NIEZNANE); wyklucza osłuchiwanie, saturacja, ewentualnie NT-proBNP i echokardiografia",
+    "utrata wzroku w przebiegu zespołu odwracalnej tylnej encefalopatii (PMID 38013383) - wyklucza ustąpienie objawów po kontroli ciśnienia lub rezonans magnetyczny głowy",
+    "zakrzepica żył i zatok mózgowych oraz rozwarstwienie tętnic szyjnych/kręgowych (PMID 41473648) - do rozważenia, jeśli ból głowy utrzymuje się mimo kontroli ciśnienia"
+  ],
+  "nastepny_krok": "Wezwanie zespołu ratownictwa medycznego (112) i transport na izbę przyjęć oddziału położniczego / szpitalny oddział ratunkowy w celu potwierdzenia ciśnienia, leczenia hipotensyjnego w ciągu 30-60 minut i profilaktyki drgawek siarczanem magnezu - nie leczyć bólu głowy w trybie ambulatoryjnym.",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność dopiero przy powtarzalnie prawidłowym ciśnieniu (<140/90 mmHg) w pomiarze personelu, ustąpieniu zaburzeń widzenia i prawidłowych płytkach, enzymach wątrobowych, kreatyninie i bez białkomoczu - samo ustąpienie bólu po leku przeciwbólowym tego nie zmienia.",
+  "odpowiedz_na_pytanie_lekarza": "To nie jest migrena do leczenia w domu, tylko do wykluczenia stan przedrzucawkowy poporodowy z cechami ciężkimi. Paracetamol można kontynuować do czasu transportu; tryptanów i ergotaminy nie podawać do czasu wykluczenia przyczyny naczyniowej i opanowania ciśnienia [wiedza modelu, niezweryfikowane]; niesteroidowe leki przeciwzapalne ostrożnie przy nadciśnieniu poporodowym [wiedza modelu, niezweryfikowane]. Karmienie piersią można kontynuować - leki pierwszego rzutu w szpitalu (labetalol, nifedypina, siarczan magnezu) są zgodne z laktacją [wiedza modelu, niezweryfikowane].",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak polskiej wytycznej (PTGiP) dla nadciśnienia w połogu w bibliotece; poziom 1 milczy",
+    "pamiec/zespol.md - brak wpisu dla tej prezentacji",
+    "PubMed zapytanie 1: 'postpartum preeclampsia[Title] AND (headache OR readmission)' od 2015 - skuteczne (20 trafień)",
+    "PubMed zapytanie 2: 'postpartum headache[Title] secondary causes cerebral venous thrombosis' - 1 trafienie bez pobranego streszczenia, nieskuteczne",
+    "PubMed zapytanie 3: 'late postpartum eclampsia[Title]' - skuteczne (46 trafień)",
+    "PubMed zapytanie 4: 'postpartum headache[Title/Abstract] AND (cerebral venous thrombosis OR reversible cerebral vasoconstriction) AND review[Publication Type]' od 2015 - skuteczne (2 przeglądy)",
+    "PubMed zapytanie 5: 'severe postpartum hypertension treatment within 60 minutes stroke maternal' od 2015 - skuteczne (5 trafień)",
+    "Hauspurg A, Jeyabalan A. Postpartum preeclampsia or eclampsia: defining its place and management. Am J Obstet Gynecol 2022;226(2S):S1211-S1221. PMID 35177218, DOI 10.1016/j.ajog.2020.10.027 - streszczenie sprawdzone: definicja 48 h-6 tyg., większość w 7.-10. dobie, najczęściej ból głowy; leczenie: hipotensyjne, magnez, diureza",
+    "ACOG Committee Opinion 692 (2017) / 767 (2019): Emergent therapy for acute-onset severe hypertension during pregnancy and the postpartum period. PMID 28333820, DOI 10.1097/AOG.0000000000002019; PMID 30681541, DOI 10.1097/AOG.0000000000003082 - streszczenie sprawdzone: leczenie w ciągu 30-60 min od potwierdzenia ciężkiego nadciśnienia dla zmniejszenia ryzyka udaru; labetalol iv, hydralazyna iv, nifedypina doustna o natychmiastowym uwalnianiu",
+    "Deshmukh US i wsp. Am J Obstet Gynecol 2021;225:329.e1. PMID 34023314, DOI 10.1016/j.ajog.2021.05.012 - streszczenie sprawdzone: ciężkie nadciśnienie zdefiniowane jako >=160 skurczowe lub >=110 rozkurczowe; w połogu leczenie rzadziej podejmowane (aOR 0,66)",
+    "Khoromi S. Secondary headaches in pregnancy and the puerperium. Front Neurol 2023;14:1239078. PMID 37840942, DOI 10.3389/fneur.2023.1239078 - streszczenie sprawdzone: przyczyny wtórne - stan przedrzucawkowy, rzucawka, udar krwotoczny, zakrzepica zatok, zespół odwracalnego skurczu naczyń, zespół odwracalnej tylnej encefalopatii",
+    "Rho JD i wsp. Medicine 2023;102:e36023. PMID 38013383, DOI 10.1097/MD.0000000000036023 - streszczenie sprawdzone: 6. doba połogu, ciężka utrata wzroku w zespole odwracalnej tylnej encefalopatii w przebiegu stanu przedrzucawkowego poporodowego",
+    "Elshafei M i wsp. Medicina 2025;61:77. PMID 39859059, DOI 10.3390/medicina61010077 - streszczenie sprawdzone: późna rzucawka poporodowa z zespołem odwracalnej tylnej encefalopatii i krwotokiem podpajęczynówkowym, ból głowy i nieostre widzenie poprzedzały drgawki",
+    "Zhu M, Huang H. Medicine 2023;102:e35867. PMID 37960797, DOI 10.1097/MD.0000000000035867 - streszczenie sprawdzone: późna rzucawka poporodowa z drgawkami i ślepotą korową",
+    "Dadrat AC i wsp. Cureus 2025;17:e98101. PMID 41473648, DOI 10.7759/cureus.98101 - streszczenie sprawdzone: obustronne rozwarstwienie tętnic kręgowych u kobiety ze stanem przedrzucawkowym poporodowym i utrzymującym się bólem głowy mimo leczenia",
+    "Joudi N, Ansari J. Curr Opin Obstet Gynecol 2021;33:94-99. PMID 33620887, DOI 10.1097/GCO.0000000000000685 - streszczenie sprawdzone: popunkcyjny ból głowy po znieczuleniu neuroosiowym (tu nie dotyczy)",
+    "[wiedza modelu, niezweryfikowane]: zgodność z laktacją labetalolu, nifedypiny, siarczanu magnezu; przeciwwskazanie tryptanów/ergotaminy przy podejrzeniu przyczyny naczyniowej"
+  ]
+}

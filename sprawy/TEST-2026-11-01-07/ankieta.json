@@ -1,0 +1,737 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T7-HHH",
+  "tytul": "Kołatanie serca, napięcie, spadek masy ciała",
+  "opis": "Od 2 miesięcy serce mi kołacze, jestem cały czas spięta, źle śpię, schudłam 5 kg choć jem więcej. Myślę, że to nerwy, bo mam stresującą pracę. Koleżanka bierze sertralinę i jej pomogło.",
+  "pytania": [
+    {
+      "id": "alarm_teraz",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich dniach zdarzyło Ci się coś z tej listy?",
+      "krotko": "objawy alarmowe",
+      "opcje": [
+        {
+          "w": "bol_klatki",
+          "t": "Ból, ucisk lub pieczenie w klatce piersiowej"
+        },
+        {
+          "w": "dusznosc",
+          "t": "Duszność w spoczynku albo przy niewielkim wysiłku"
+        },
+        {
+          "w": "omdlenie",
+          "t": "Omdlenie lub uczucie, że zaraz stracisz przytomność"
+        },
+        {
+          "w": "goraczka",
+          "t": "Gorączka powyżej 38 °C"
+        },
+        {
+          "w": "splatanie",
+          "t": "Splątanie, silne pobudzenie, trudność z myśleniem"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Kołatanie z bólem w klatce, dusznością, omdleniem: arytmia/niedokrwienie/niewydolność. Kołatanie + gorączka + splątanie/pobudzenie: przełom (stan zagrożenia życia) przy chorobie endokrynnej."
+    },
+    {
+      "id": "kolatanie_teraz",
+      "typ": "jeden",
+      "tekst": "Czy kołatanie serca trwa w tej chwili bez przerwy?",
+      "krotko": "kołatanie teraz",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie, teraz go nie czuję"
+        },
+        {
+          "w": "krotko",
+          "t": "Tak, od mniej niż godziny"
+        },
+        {
+          "w": "dlugo",
+          "t": "Tak, od ponad godziny bez przerwy"
+        }
+      ],
+      "bo": "Utrwalona tachyarytmia > 1 h (np. migotanie przedsionków, częstoskurcz) wymaga EKG tego samego dnia."
+    },
+    {
+      "id": "rytm",
+      "typ": "jeden",
+      "tekst": "Jak czujesz to bicie serca?",
+      "krotko": "charakter kołatania",
+      "opcje": [
+        {
+          "w": "szybko_rowno",
+          "t": "Szybko, ale równo"
+        },
+        {
+          "w": "nierowno",
+          "t": "Nierówno, chaotycznie, z przerwami"
+        },
+        {
+          "w": "pojedyncze",
+          "t": "Pojedyncze mocniejsze uderzenia lub przeskoki"
+        },
+        {
+          "w": "trudno",
+          "t": "Trudno powiedzieć"
+        }
+      ],
+      "bo": "Niemiarowość sugeruje migotanie przedsionków (ryzyko zatorowe, istotne dla dalszego postępowania); równy szybki rytm: tachykardia zatokowa lub częstoskurcz."
+    },
+    {
+      "id": "mysli",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich tygodniach miałaś/miałeś myśli, że nie warto żyć, albo myśli o zrobieniu sobie krzywdy?",
+      "krotko": "myśli samobójcze",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "czasem",
+          "t": "Tak, czasem przychodzą"
+        },
+        {
+          "w": "plan",
+          "t": "Tak, myślę o tym poważnie albo mam plan"
+        }
+      ],
+      "bo": "Obowiązkowe przed włączeniem SSRI (ostrzeżenie o ryzyku u młodych dorosłych) i przy przewlekłym napięciu i bezsenności."
+    },
+    {
+      "id": "tetno_pomiar",
+      "typ": "jeden",
+      "tekst": "Czy mierzyłaś/mierzyłeś sobie tętno (ciśnieniomierzem, zegarkiem, opaską)?",
+      "krotko": "pomiar tętna",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Obiektywizacja: tętno spoczynkowe > 100/min wskazuje na przyczynę somatyczną lub arytmię, a nie tylko lęk."
+    },
+    {
+      "id": "tetno",
+      "typ": "liczba",
+      "tekst": "Jakie było tętno w spoczynku (siedząc, po kilku minutach odpoczynku)?",
+      "krotko": "tętno spoczynkowe",
+      "min": 30,
+      "max": 250,
+      "krok": 1,
+      "jednostka": "uderzeń/min",
+      "gdy": {
+        "pytanie": "tetno_pomiar",
+        "jest": "tak"
+      },
+      "bo": "Próg 100/min tachykardia; > 150/min wymaga pilnego EKG."
+    },
+    {
+      "id": "ciaza",
+      "typ": "jeden",
+      "tekst": "Czy któraś z tych sytuacji Cię dotyczy?",
+      "krotko": "ciąża/poród",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie dotyczy"
+        },
+        {
+          "w": "mozliwa",
+          "t": "Mogę być w ciąży"
+        },
+        {
+          "w": "ciaza",
+          "t": "Jestem w ciąży"
+        },
+        {
+          "w": "porod",
+          "t": "Urodziłam dziecko w ciągu ostatnich 12 miesięcy"
+        },
+        {
+          "w": "karmie",
+          "t": "Karmię piersią"
+        }
+      ],
+      "bo": "Ciąża/laktacja zmienia wybór leków (SSRI, beta-adrenolityki, tyreostatyki) i interpretację badań; okres poporodowy: typowy czas przemijających zaburzeń hormonalnych."
+    },
+    {
+      "id": "miesiaczki",
+      "typ": "jeden",
+      "tekst": "Czy miesiączki zmieniły się w ostatnich miesiącach?",
+      "krotko": "zmiana miesiączek",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie, są jak zwykle"
+        },
+        {
+          "w": "skape",
+          "t": "Są rzadsze lub skąpsze"
+        },
+        {
+          "w": "obfite",
+          "t": "Są częstsze lub obfitsze"
+        },
+        {
+          "w": "brak",
+          "t": "Ustały"
+        },
+        {
+          "w": "antykoncepcja",
+          "t": "Biorę antykoncepcję hormonalną, trudno ocenić"
+        }
+      ],
+      "bo": "Zaburzenia cyklu towarzyszą chorobom endokrynnym i zmianom masy ciała; brak miesiączki: wykluczyć ciążę."
+    },
+    {
+      "id": "inne_objawy",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich 2 miesiącach zauważyłaś/zauważyłeś coś z tej listy?",
+      "krotko": "objawy towarzyszące",
+      "opcje": [
+        {
+          "w": "drzenie",
+          "t": "Drżenie rąk"
+        },
+        {
+          "w": "pocenie",
+          "t": "Nadmierne pocenie się"
+        },
+        {
+          "w": "cieplo",
+          "t": "Źle znoszę ciepło, innym jest zimno, mnie gorąco"
+        },
+        {
+          "w": "stolce",
+          "t": "Częstsze lub luźniejsze stolce"
+        },
+        {
+          "w": "miesnie",
+          "t": "Słabość mięśni, trudno wejść po schodach"
+        },
+        {
+          "w": "wlosy",
+          "t": "Wypadanie włosów"
+        },
+        {
+          "w": "skora",
+          "t": "Ciepła, wilgotna skóra"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Objawy hipermetabolizmu (nietolerancja ciepła, drżenie, biegunki, miopatia proksymalna) przy spadku masy ciała mimo apetytu wymagają różnicowania przyczyn endokrynnych przed rozpoznaniem zaburzeń lękowych."
+    },
+    {
+      "id": "szyja_oczy",
+      "typ": "wiele",
+      "tekst": "Czy zauważyłaś/zauważyłeś zmiany w okolicy szyi lub oczu?",
+      "krotko": "szyja i oczy",
+      "opcje": [
+        {
+          "w": "powiekszenie",
+          "t": "Pogrubienie lub guzek z przodu szyi"
+        },
+        {
+          "w": "bol_szyi",
+          "t": "Ból z przodu szyi, promieniujący do ucha lub żuchwy"
+        },
+        {
+          "w": "oczy_wylupiaste",
+          "t": "Oczy wydają się bardziej wysunięte, szerzej otwarte"
+        },
+        {
+          "w": "oczy_piasek",
+          "t": "Piasek pod powiekami, łzawienie, światłowstręt"
+        },
+        {
+          "w": "podwojne",
+          "t": "Podwójne widzenie"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Wole/guzek, bolesność tarczycy (podostre zapalenie), orbitopatia (choroba Gravesa-Basedowa); podwójne widzenie: pilna ocena okulistyczna."
+    },
+    {
+      "id": "przebieg",
+      "typ": "jeden",
+      "tekst": "Jak przebiegają objawy w ciągu dnia?",
+      "krotko": "przebieg objawów",
+      "opcje": [
+        {
+          "w": "stale",
+          "t": "Są prawie cały czas, także w spokojnych chwilach"
+        },
+        {
+          "w": "napady",
+          "t": "Przychodzą nagłymi napadami (kilka–kilkanaście minut) i mijają"
+        },
+        {
+          "w": "sytuacje",
+          "t": "Pojawiają się głównie w stresujących sytuacjach, np. w pracy"
+        },
+        {
+          "w": "mieszane",
+          "t": "Mieszanie, trudno określić"
+        }
+      ],
+      "bo": "Objawy stałe niezależne od sytuacji przemawiają za przyczyną somatyczną; napady: lęk napadowy lub arytmia napadowa; związek z sytuacją: zaburzenia lękowe."
+    },
+    {
+      "id": "sen",
+      "typ": "wiele",
+      "tekst": "Na czym polega problem ze snem?",
+      "krotko": "charakter bezsenności",
+      "opcje": [
+        {
+          "w": "zasypianie",
+          "t": "Trudno zasnąć"
+        },
+        {
+          "w": "budzenie",
+          "t": "Budzę się w nocy"
+        },
+        {
+          "w": "wczesne",
+          "t": "Budzę się za wcześnie i nie mogę zasnąć"
+        },
+        {
+          "w": "serce_noc",
+          "t": "Budzi mnie kołatanie serca lub pocenie"
+        },
+        {
+          "w": "malo",
+          "t": "Śpię mało, ale nie czuję zmęczenia"
+        }
+      ],
+      "bo": "Wczesne budzenie: depresja; nocne kołatania/poty: przyczyna somatyczna; mało snu bez zmęczenia: epizod hipomanii (SSRI może wywołać zmianę fazy)."
+    },
+    {
+      "id": "badania",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich 6 miesiącach miałaś/miałeś badania krwi lub EKG?",
+      "krotko": "badania w ostatnich 6 mies.",
+      "opcje": [
+        {
+          "w": "krew_ekg",
+          "t": "Tak, krew i EKG"
+        },
+        {
+          "w": "krew",
+          "t": "Tak, tylko krew"
+        },
+        {
+          "w": "ekg",
+          "t": "Tak, tylko EKG"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Przed rozpoznaniem zaburzeń lękowych potrzebne co najmniej TSH, morfologia, glukoza i EKG; sprawdzamy, co już jest."
+    },
+    {
+      "id": "wyniki",
+      "typ": "tekst",
+      "tekst": "Jeśli masz wyniki pod ręką, przepisz nazwy badań, wartości i datę (albo napisz, co lekarz o nich powiedział).",
+      "krotko": "wyniki badań",
+      "podpowiedz": "Na przykład: TSH 0,02 (norma 0,27–4,2), morfologia w normie, 12.10.2026",
+      "gdy": {
+        "pytanie": "badania",
+        "jest": [
+          "krew_ekg",
+          "krew",
+          "ekg"
+        ]
+      },
+      "bo": "Wartości z normami laboratorium i datą; bez nich traktujemy jako NIEZNANE."
+    },
+    {
+      "id": "waga",
+      "typ": "liczba",
+      "tekst": "Ile ważysz teraz?",
+      "krotko": "masa ciała teraz",
+      "min": 30,
+      "max": 250,
+      "krok": 0.5,
+      "jednostka": "kg",
+      "bo": "Spadek 5 kg względem masy wyjściowej: odsetek utraty masy (> 5% w 6 mies. = istotny spadek wymagający diagnostyki)."
+    },
+    {
+      "id": "preparaty",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich 3 miesiącach brałaś/brałeś coś z tej listy?",
+      "krotko": "leki i suplementy",
+      "opcje": [
+        {
+          "w": "tarczyca",
+          "t": "Tabletki hormonalne na tarczycę"
+        },
+        {
+          "w": "jod",
+          "t": "Suplementy z jodem, kelp, algi"
+        },
+        {
+          "w": "biotyna",
+          "t": "Biotyna (np. na włosy i paznokcie)"
+        },
+        {
+          "w": "odchudzanie",
+          "t": "Środki na odchudzanie lub „spalacze tłuszczu”"
+        },
+        {
+          "w": "przedtreningowe",
+          "t": "Suplementy przedtreningowe"
+        },
+        {
+          "w": "astma",
+          "t": "Leki wziewne na astmę lub alergię"
+        },
+        {
+          "w": "odkrztuszanie",
+          "t": "Leki na przeziębienie z pseudoefedryną"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Egzogenna tyreotoksykoza (lewotyroksyna, preparaty odchudzające), nadmiar jodu, sympatykomimetyki; biotyna fałszuje wyniki immunoanaliz (TSH, FT4)."
+    },
+    {
+      "id": "leki_inne",
+      "typ": "tekst",
+      "tekst": "Jakie inne leki lub suplementy bierzesz? Wpisz nazwy z opakowania.",
+      "krotko": "pozostałe leki i suplementy",
+      "podpowiedz": "Na przykład: tabletki antykoncepcyjne, magnez, ziele dziurawca",
+      "bo": "Interakcje z SSRI (ziele dziurawca, tryptany, tramadol), pełna lista leków wymagana w intake."
+    },
+    {
+      "id": "uzywki",
+      "typ": "wiele",
+      "tekst": "Co z tej listy zdarza Ci się używać?",
+      "krotko": "używki",
+      "opcje": [
+        {
+          "w": "kawa",
+          "t": "Więcej niż 3 kawy dziennie"
+        },
+        {
+          "w": "energetyki",
+          "t": "Napoje energetyczne"
+        },
+        {
+          "w": "alkohol",
+          "t": "Alkohol częściej niż 2 razy w tygodniu"
+        },
+        {
+          "w": "nikotyna",
+          "t": "Papierosy lub e-papierosy"
+        },
+        {
+          "w": "stymulanty",
+          "t": "Amfetamina, kokaina, inne stymulanty"
+        },
+        {
+          "w": "marihuana",
+          "t": "Marihuana"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Kofeina, stymulanty, odstawienie alkoholu: przyczyny kołatania, bezsenności i lęku; stymulanty ze spadkiem masy ciała."
+    },
+    {
+      "id": "choroby",
+      "typ": "wiele",
+      "tekst": "Czy lekarz kiedyś rozpoznał u Ciebie któreś z tych chorób?",
+      "krotko": "choroby przewlekłe",
+      "opcje": [
+        {
+          "w": "tarczyca",
+          "t": "Choroba tarczycy"
+        },
+        {
+          "w": "serce",
+          "t": "Choroba serca lub wada serca"
+        },
+        {
+          "w": "cukrzyca",
+          "t": "Cukrzyca"
+        },
+        {
+          "w": "depresja",
+          "t": "Depresja lub zaburzenia lękowe"
+        },
+        {
+          "w": "dwubiegunowa",
+          "t": "Choroba dwubiegunowa"
+        },
+        {
+          "w": "astma",
+          "t": "Astma"
+        },
+        {
+          "w": "celiakia",
+          "t": "Celiakia lub inna choroba autoimmunologiczna"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Choroby autoimmunologiczne współwystępują; choroba dwubiegunowa: SSRI w monoterapii przeciwwskazane; astma: przeciwwskazanie do nieselektywnych beta-adrenolityków."
+    },
+    {
+      "id": "rodzina",
+      "typ": "wiele",
+      "tekst": "Czy ktoś z bliskiej rodziny (rodzice, rodzeństwo) chorował na coś z tej listy?",
+      "krotko": "wywiad rodzinny",
+      "opcje": [
+        {
+          "w": "tarczyca",
+          "t": "Choroba tarczycy"
+        },
+        {
+          "w": "nagla_smierc",
+          "t": "Nagła śmierć przed 50. rokiem życia"
+        },
+        {
+          "w": "arytmia",
+          "t": "Zaburzenia rytmu serca"
+        },
+        {
+          "w": "psych",
+          "t": "Depresja, choroba dwubiegunowa, zaburzenia lękowe"
+        },
+        {
+          "w": "nic",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Rodzinne choroby autoimmunologiczne tarczycy, kanałopatie (nagłe zgony), obciążenie choroba dwubiegunową."
+    },
+    {
+      "id": "alergie",
+      "typ": "jeden",
+      "tekst": "Czy masz uczulenie na jakieś leki?",
+      "krotko": "alergie na leki",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "tak",
+          "t": "Tak"
+        }
+      ],
+      "bo": "Wymagane w intake przed rekomendacją leczenia."
+    },
+    {
+      "id": "obawy",
+      "typ": "wiele",
+      "tekst": "Czego najbardziej się obawiasz i czego oczekujesz od tej wizyty?",
+      "krotko": "obawy i oczekiwania",
+      "opcje": [
+        {
+          "w": "serce",
+          "t": "Boję się, że to coś z sercem"
+        },
+        {
+          "w": "powazne",
+          "t": "Boję się poważnej choroby"
+        },
+        {
+          "w": "lek",
+          "t": "Chcę dostać lek na uspokojenie lub na nerwy"
+        },
+        {
+          "w": "bez_lekow",
+          "t": "Wolę leczenie bez leków"
+        },
+        {
+          "w": "przyczyna",
+          "t": "Chcę poznać przyczynę objawów"
+        },
+        {
+          "w": "zwolnienie",
+          "t": "Potrzebuję zwolnienia lub odpoczynku od pracy"
+        },
+        {
+          "w": "sen",
+          "t": "Chcę przede wszystkim lepiej spać"
+        }
+      ],
+      "nieWiem": false,
+      "bezNieznanych": true,
+      "bo": "Oczekiwanie konkretnego leku (sertralina u koleżanki) i obawy pacjentki do uwzględnienia w rozmowie."
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Kołatanie z bólem w klatce piersiowej, dusznością lub omdleniem: podejrzenie groźnej arytmii lub niedokrwienia.",
+      "gdy": {
+        "pytanie": "alarm_teraz",
+        "jest": [
+          "bol_klatki",
+          "dusznosc",
+          "omdlenie"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Kołatanie z gorączką i splątaniem/pobudzeniem przy objawach hipermetabolizmu: podejrzenie przełomu tyreotoksycznego.",
+      "gdy": {
+        "wszystkie": [
+          {
+            "pytanie": "alarm_teraz",
+            "jest": "splatanie"
+          },
+          {
+            "ktorekolwiek": [
+              {
+                "pytanie": "alarm_teraz",
+                "jest": "goraczka"
+              },
+              {
+                "pytanie": "tetno",
+                "min": 140
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Gorączka lub splątanie przy kołataniu: pilna ocena (TSH, FT4, EKG, morfologia, CRP).",
+      "gdy": {
+        "pytanie": "alarm_teraz",
+        "jest": [
+          "goraczka",
+          "splatanie"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Kołatanie trwające bez przerwy ponad godzinę lub niemiarowe: EKG tego samego dnia.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "kolatanie_teraz",
+            "jest": "dlugo"
+          },
+          {
+            "wszystkie": [
+              {
+                "pytanie": "rytm",
+                "jest": "nierowno"
+              },
+              {
+                "pytanie": "kolatanie_teraz",
+                "jest": [
+                  "krotko",
+                  "dlugo"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Myśli samobójcze z zamiarem lub planem: ryzyko samobójstwa.",
+      "gdy": {
+        "pytanie": "mysli",
+        "jest": "plan"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Bierne myśli samobójcze: ocena ryzyka samobójczego tego samego dnia, przed decyzją o SSRI.",
+      "gdy": {
+        "pytanie": "mysli",
+        "jest": "czasem"
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Tętno spoczynkowe ≥ 150/min: podejrzenie częstoskurczu.",
+      "gdy": {
+        "pytanie": "tetno",
+        "min": 150
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Tętno spoczynkowe 110–149/min: tachykardia spoczynkowa, EKG i TSH tego samego dnia.",
+      "gdy": {
+        "pytanie": "tetno",
+        "min": 110,
+        "max": 149
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Ciąża lub okres poporodowy z kołataniem i spadkiem masy ciała: pilna diagnostyka (TSH, FT4) i ostrożność z lekami.",
+      "gdy": {
+        "pytanie": "ciaza",
+        "jest": [
+          "ciaza",
+          "mozliwa",
+          "porod"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Podwójne widzenie lub ból przedniej części szyi: pilna ocena (orbitopatia, podostre zapalenie tarczycy).",
+      "gdy": {
+        "pytanie": "szyja_oczy",
+        "jest": [
+          "podwojne",
+          "bol_szyi"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Używanie stymulantów (amfetamina, kokaina) z kołataniem i spadkiem masy ciała.",
+      "gdy": {
+        "pytanie": "uzywki",
+        "jest": "stymulanty"
+      }
+    }
+  ]
+}

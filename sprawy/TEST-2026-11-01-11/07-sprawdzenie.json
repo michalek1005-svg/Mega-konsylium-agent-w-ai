@@ -1,0 +1,180 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "sprawdzajacy-faktow",
+    "data": "2026-11-01",
+    "sprawdzany_plik": "05-projekt.md",
+    "zrodla_poziom_1": "zrodla/MANIFEST.md zawiera tylko wiersze przykładowe — brak PTD 2025/2026, ChPL metforminy/flozyn, PTNT. Poziom 1 milczy w całej sprawie.",
+    "pubmed_status": "Serwer PubMed połączył się po ToolSearch; wszystkie 6 PMID z projektu pobrano (streszczenia). Zapytanie o polskie wytyczne (Diabetes Poland / PTD): brak indeksowanych zaleceń PTD dla dorosłych; jedyny wynik 39451186 to wytyczne pediatryczne HCL — nieistotne.",
+    "podsumowanie": {
+      "potwierdzone": 17,
+      "niepotwierdzone": 2,
+      "sprzeczne": 0,
+      "nieaktualne": 0
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Definicja euglikemicznej kwasicy ketonowej: glukoza <250 mg/dl + kwasica z luką anionową + ketoza (PMID 33626481)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33626481, DOI 10.1016/j.ajem.2021.02.015 (Long B i wsp., Am J Emerg Med 2021)",
+        "cytat": "EDKA is comprised of serum glucose <250 mg/dL with an anion gap metabolic acidosis and ketosis.",
+        "co_mowi_zrodlo": "Zgodne. Przegląd narracyjny dla medycyny ratunkowej."
+      },
+      {
+        "twierdzenie": "Diagnostyka euDKA: gazometria żylna (pH, wodorowęglany) + ketony; leczenie: płyny i.v. + insulina + glukoza (PMID 33626481)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33626481, DOI 10.1016/j.ajem.2021.02.015",
+        "cytat": "Laboratory assessment includes venous blood gas for serum pH, bicarbonate, and ketones. Management includes resuscitation with intravenous fluids, insulin, and glucose.",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Głodzenie / mała podaż doustna to najczęstszy wyzwalacz — 11/15 przypadków (PMID 42882058)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42882058, DOI 10.3390/jcm15197595 (Itagaki, Endo; J Clin Med 2026)",
+        "cytat": "Fasting or poor oral intake was the commonest precipitant (11/15).",
+        "co_mowi_zrodlo": "Liczba zgodna. UWAGA populacja: przegląd opisów przypadków kwasicy przy glukozie <100 mg/dl (mediana 68), 6/15 bez cukrzycy; bardzo niska pewność dowodów. Pacjentka ma glikemię 180 mg/dl — populacja nie jest tożsama; w FINAL dopisać, że to seria przypadków hipoglikemicznej kwasicy, a wniosek o wyzwalaczu przenosi się mechanistycznie."
+      },
+      {
+        "twierdzenie": "Glikemia nie koreluje z β-hydroksymaślanem (PMID 42882058)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42882058, DOI 10.3390/jcm15197595",
+        "cytat": "Blood glucose was not correlated with β-hydroxybutyrate in this small exploratory sample (Spearman ρ = -0.20; n = 11).",
+        "co_mowi_zrodlo": "Zgodne; n = 11, analiza eksploracyjna — w FINAL nie formułować jako reguły ogólnej."
+      },
+      {
+        "twierdzenie": "Mediana pH 7,17 w serii przypadków (PMID 42882058)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42882058, DOI 10.3390/jcm15197595",
+        "cytat": "Metabolic acidosis was frequently marked (median pH 7.17 [n = 14], anion gap 19.9 [n = 13], β-hydroxybutyrate 5.0 mmol/L [n = 11]).",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Kwasica mleczanowa po metforminie (MALA): mleczan >5 mmol/l, pH <7,35, luka anionowa (PMID 42178010)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42178010, DOI 10.1016/j.ejphar.2026.179017 (Anwar KR i wsp., Eur J Pharmacol 2026)",
+        "cytat": "High anion-gap metabolic acidosis, increased concentrations of lactate (>5 mmol/L), and arterial pH of less than 7.35 are the hallmarks of MALA.",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "MALA to zaburzenie kumulacji przy ostrym spadku funkcji nerek; wyzwalacze: AKI, odwodnienie, sepsa; objawy: tachypnoe, hipotensja, zaburzenia świadomości; postępowanie: natychmiastowe odstawienie, w ciężkich przypadkach RRT; 'sick-day rules' (PMID 42178010)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42178010, DOI 10.1016/j.ejphar.2026.179017",
+        "cytat": "MALA is fundamentally an accumulation disorder precipitated by an acute decline in kidney function... stopping metformin immediately... renal replacement therapy (RRT) in severe instances.",
+        "co_mowi_zrodlo": "Zgodne; przegląd narracyjny."
+      },
+      {
+        "twierdzenie": "MALA: zapadalność <10/100 000 pacjento-lat, śmiertelność 30–50% (PMID 42696402)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42696402, DOI 10.34067/KID.0000001379 (Adnani H i wsp., Kidney360 2026)",
+        "cytat": "incidence less than 10 per 100,000 patient-years; with a 30-50% mortality",
+        "co_mowi_zrodlo": "Liczby zgodne. UWAGA: opis przypadku MALA + euDKA przy agoniście GLP-1 (tirzepatyd), nie przy flozynie; wniosek o współistnieniu MALA i euDKA oraz wczesnym oznaczeniu β-hydroksymaślanu pochodzi z tego kontekstu — w FINAL zaznaczyć 'analogia'."
+      },
+      {
+        "twierdzenie": "β-hydroksymaślan >1,5 mmol/l: czułość 98,1%, swoistość 78,6% (PMID 21307381)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 21307381, DOI 10.2337/dc10-1844 (Arora S i wsp., Diabetes Care 2011)",
+        "cytat": "Using the manufacturer-suggested cutoff of >1.5 mmol/L, β-OHB had a sensitivity of 98.1% (90.1-100), a specificity of 78.6% (74.5-82.2)",
+        "co_mowi_zrodlo": "Liczby zgodne. NIEZGODNOŚĆ POPULACJI: badanie obejmowało wyłącznie chorych z glukozą ≥250 mg/dl na triażu SOR (DKA wg kryteriów ADA), nie euglikemicznych. Projekt cytuje je w PLAN B jako wsparcie progu ketonemii u pacjentki z glikemią 180 — czułość/swoistość nie przenoszą się wprost. Wymaga dopisku w FINAL."
+      },
+      {
+        "twierdzenie": "Próg β-hydroksymaślanu <0,6 mmol/l jako wykluczenie ketozy — oznaczone [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42906932, DOI 10.17085/apm.26812 (Park EJ, Hong JM; Anesth Pain Med 2026) + poziom 3: konsensus ADA/EASD/JBDS 2024, PMID 39052901, DOI 10.2337/dci24-0032",
+        "cytat": "one prospective study using a lower threshold (≥ 0.6 mmol/L) reported a far higher figure... ketone thresholds and monitoring intervals lack prospective validation.",
+        "co_mowi_zrodlo": "Etykietę [wiedza modelu] można zastąpić: 0,6 mmol/l to próg przesiewowy używany w literaturze okołooperacyjnej (PMID 42906932), bez walidacji prospektywnej. Kryterium rozpoznania DKA wg konsensusu 2024 to β-hydroksymaślan ≥3,0 mmol/l, pH <7,3 lub HCO3 <18 mmol/l [wartości z pamięci modelu — streszczenie PubMed ich nie podaje; poziom 3]. Zalecenie: w FINAL cytować konsensus 2024 jako źródło kryteriów, a 0,6 opisać jako próg przesiewowy."
+      },
+      {
+        "twierdzenie": "Preferowany β-hydroksymaślan we krwi; ujemny pasek ketonowy w moczu nie wyklucza kwasicy (PMID 42906932)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42906932, DOI 10.17085/apm.26812",
+        "cytat": "Quantitative blood β-hydroxybutyrate is preferred... urine ketone tests may screen when blood testing is unavailable, but a negative result does not exclude it.",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Zalecenia wstrzymania flozyny na 3 dni (PMID 42906932)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42906932, DOI 10.17085/apm.26812",
+        "cytat": "some bodies recommend withholding SGLT2i for 3 days (4 days for ertugliflozin), whereas others support risk-stratified continuation",
+        "co_mowi_zrodlo": "Liczba zgodna, ale kontekst OKOŁOOPERACYJNY (przed zabiegiem), nie po przebytej kwasicy/w ostrej chorobie; źródło podkreśla niespójność zaleceń. W FINAL opisać jako analogię."
+      },
+      {
+        "twierdzenie": "Wstrzymanie flozyny do ≥24–48 h normalnego jedzenia i picia",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — żaden z cytowanych PMID nie podaje 24–48 h; zrodla/ puste; PubMed: brak trafień dla kryterium czasowego wznowienia",
+        "cytat": "",
+        "co_mowi_zrodlo": "Nie jest to dawka, lecz kryterium czasowe — ŻÓŁTA. W FINAL dodać etykietę [wiedza modelu, niezweryfikowane] albo zastąpić formułą jakościową ('po powrocie do normalnej podaży doustnej, decyzja w wypisie'). Wznowienie flozyny po euDKA powinno być decyzją szpitala — projekt już to zaznacza."
+      },
+      {
+        "twierdzenie": "Prawidłowa gazometria = pH ≥7,35 i wodorowęglany w normie (PLAN B)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42178010 (pH <7,35 jako kwasica w MALA); kryterium DKA pH <7,3 — konsensus 2024 PMID 39052901 [poziom 3, z pamięci]",
+        "cytat": "arterial pH of less than 7.35",
+        "co_mowi_zrodlo": "Zgodne jako norma fizjologiczna. Uwaga: pH 7,30–7,35 nie spełnia kryterium DKA (7,3), ale jest już kwasicą — sformułowanie projektu ('prawidłowe pH ≥7,35') jest bezpieczne."
+      },
+      {
+        "twierdzenie": "Wskaźnik wstrząsowy ~1,1 (tętno 112 / ciśnienie skurczowe 98) — oznaczone [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31616192, DOI 10.2147/OAEM.S178358 (Koch E i wsp., Open Access Emerg Med 2019)",
+        "cytat": "Shock index (SI) is defined as the heart rate divided by systolic blood pressure... SI >1.0 has been widely found to predict increased risk of mortality",
+        "co_mowi_zrodlo": "112/98 = 1,14 > 1,0. Etykietę [wiedza modelu] można zastąpić tym przeglądem (populacje: uraz, krwotok, sepsa, OZW — nie swoiście kwasica; próg >1,0 jako marker ryzyka)."
+      },
+      {
+        "twierdzenie": "Przy odwodnieniu wstrzymać metforminę, flozynę i ACEI/sartan (ryzyko AKI, kumulacji metforminy)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 42178010 (sick-day rules dla metforminy); PMID 38792982, DOI 10.3390/medicina60050798 (Truong M i wsp., Medicina 2024 — SADMANS)",
+        "cytat": "Sick day medication guidance recommends withholding SADMANS medications (sulfonylureas, ACE inhibitors, diuretics, metformin, ARBs, NSAIDs, SGLT2 inhibitors) during an intercurrent illness where adequate fluid intake cannot be maintained.",
+        "co_mowi_zrodlo": "Zgodne (zasady australijskie, opisane w badaniu farmaceutycznym — nie wytyczna pierwotna; polskie PTD zawierają analogiczny zapis [wiedza modelu, brak w zrodla/])."
+      },
+      {
+        "twierdzenie": "Pilność 1 — wezwanie ZRM; senność z trudnym dobudzeniem + oddech Kussmaula + nietolerancja płynów = stan nagły wymagający leczenia szpitalnego (płyny i.v., insulina, glukoza)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33626481 ('Diabetic ketoacidosis is an endocrine emergency'); PMID 42178010 (objawy MALA: tachypnoe, hipotensja, zaburzenia świadomości); PMID 42882058 (1 zgon — aspiracja)",
+        "cytat": "Diabetic ketoacidosis is an endocrine emergency. A subset... may present with relative euglycemia with acidosis... often misdiagnosed due to a serum glucose <250 mg/dL.",
+        "co_mowi_zrodlo": "Zgodne. Samo odstawienie metforminy nie jest leczeniem — potwierdza 33626481 (leczenie = płyny i.v. + insulina + glukoza)."
+      },
+      {
+        "twierdzenie": "Oddech Kussmaula, ból brzucha, nudności/wymioty jako objawy kwasicy ketonowej",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33626481; PMID 42178010",
+        "cytat": "Patients typically present with nausea, vomiting, malaise, or fatigue.",
+        "co_mowi_zrodlo": "Nudności/wymioty/osłabienie potwierdzone w streszczeniu; 'oddech Kussmaula' i 'ból brzucha' jako objawy DKA — wiedza podręcznikowa (konsensus 2024, poziom 3); nieliczbowe."
+      },
+      {
+        "twierdzenie": "Polskie wytyczne (PTD) dla tej sytuacji — zasady dnia chorobowego przy flozynie/metforminie, postępowanie w kwasicy ketonowej",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 1,
+        "zrodlo": "zrodla/MANIFEST.md — brak pliku PTD; PubMed: 'Diabetes Poland[Title] guidelines' → tylko 39451186 (pediatria, HCL) — nieistotne",
+        "cytat": "",
+        "co_mowi_zrodlo": "Zalecenia kliniczne PTD (Curr Top Diabetes, co rok) nie są indeksowane w PubMed i nie ma ich w bibliotece. Zawierają rozdział o kwasicy ketonowej i zapis o odstawieniu inhibitora SGLT2 w ostrej chorobie/przy ketozie [wiedza modelu, niezweryfikowane]. Projekt uczciwie deklaruje 'poziom 1 milczy'. Poprawka systemowa: dodać PTD 2026 i ChPL metforminy/empagliflozyny/dapagliflozyny do zrodla/."
+      }
+    ],
+    "poprawki_do_final": [
+      "PMID 21307381 (czułość 98,1% / swoistość 78,6% dla β-OHB >1,5): badanie wyłącznie u chorych z glukozą ≥250 mg/dl — dopisać, że wartości nie przenoszą się wprost na euDKA.",
+      "PMID 42882058 (11/15 głodzenie): seria przypadków kwasicy przy glukozie <100 mg/dl, 6/15 bez cukrzycy, bardzo niska pewność — dopisać charakter źródła.",
+      "PMID 42906932 ('3 dni'): zalecenie okołooperacyjne, zalecenia niespójne — opisać jako analogię, nie regułę.",
+      "PMID 42696402 (MALA <10/100 000, śmiertelność 30–50%): kontekst GLP-1 RA, nie flozyna — zaznaczyć 'analogia'.",
+      "'≥24–48 h normalnego jedzenia' — bez źródła; dodać etykietę [wiedza modelu, niezweryfikowane] lub usunąć liczbę.",
+      "Próg β-OHB 0,6 mmol/l — można zastąpić etykietę cytatem PMID 42906932 (próg przesiewowy, bez walidacji); kryteria rozpoznania DKA cytować z konsensusu ADA/EASD/JBDS 2024 (PMID 39052901, DOI 10.2337/dci24-0032).",
+      "Wskaźnik wstrząsowy ~1,1 — można zastąpić etykietę cytatem PMID 31616192 (SI >1,0 = wyższa śmiertelność).",
+      "Brak poziomu 1: dodać do zrodla/ Zalecenia kliniczne PTD 2026 oraz ChPL metforminy i flozyn (sprawa systemowa, nie blokuje FINAL)."
+    ]
+  }
+}

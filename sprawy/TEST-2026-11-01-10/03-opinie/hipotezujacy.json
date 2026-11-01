@@ -1,0 +1,102 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Skręt jądra prawego (skręt powrózka nasiennego)",
+      "p": 0.80,
+      "za": [
+        "Nagły początek bólu w ciągu kilku minut, natężenie 8/10, u 19-latka (szczyt zachorowań w okresie dojrzewania i u młodych dorosłych)",
+        "Jądro prawe uniesione wyżej niż lewe i obrzęk moszny – objawy z punktacji TWIST (Testicular Workup for Ischemia and Suspected Torsion)",
+        "Wymioty raz i utrzymujące się nudności – typowe dla skrętu, rzadkie w zapaleniu najądrza",
+        "Ból promieniujący do podbrzusza; ból nie zmienia się przy uniesieniu jądra (ujemny objaw Prehna – przemawia przeciw zapaleniu najądrza) [wiedza modelu, niezweryfikowane]",
+        "Wcześniejszy podobny, samoustępujący epizod – sugeruje skręt przerywany z nawrotem (PMID 39539564)",
+        "Brak gorączki, brak objawów dyzurycznych, brak kontaktów seksualnych bez zabezpieczenia, brak świnki – brak tła zapalnego"
+      ],
+      "przeciw": [
+        "Brak badania fizykalnego: nie oceniono odruchu nosidłowego, konsystencji ani ułożenia jądra przez lekarza (NIEZNANE)",
+        "Uniesienie jądra i obrzęk opisuje sam pacjent – samoocena może być nieprecyzyjna"
+      ]
+    },
+    {
+      "nazwa": "Skręt przyczepka jądra",
+      "p": 0.07,
+      "za": [
+        "Częsta przyczyna ostrej moszny u chłopców i młodzieży (najczęstsza w serii 165 dzieci, PMID 31874735)",
+        "Brak gorączki i objawów z dróg moczowych"
+      ],
+      "przeciw": [
+        "Ból 8/10 z wymiotami i uniesieniem całego jądra – nietypowe; skręt przyczepka daje zwykle ból umiarkowany, zlokalizowany w biegunie górnym [wiedza modelu, niezweryfikowane]",
+        "Wiek 19 lat – szczyt skrętu przyczepka przypada na wiek przedpokwitaniowy [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie najądrza i jądra",
+      "p": 0.05,
+      "za": [
+        "Obrzęk moszny i ból jednostronny",
+        "Pacjent sam podejrzewa zapalenie; młody, aktywny seksualnie wiek"
+      ],
+      "przeciw": [
+        "Początek nagły (minuty), nie narastający przez godziny–dni",
+        "Brak gorączki, dyzurii, wydzieliny, kontaktów ryzykownych i świnki; wymioty i uniesione jądro przemawiają za skrętem",
+        "Ból nie zmniejsza się po uniesieniu jądra"
+      ]
+    },
+    {
+      "nazwa": "Uwięźnięta prawostronna przepuklina pachwinowo-mosznowa",
+      "p": 0.03,
+      "za": [
+        "Ból jądra z bólem podbrzusza i nudnościami/wymiotami",
+        "Obrzęk moszny"
+      ],
+      "przeciw": [
+        "Pacjent zaprzecza uwypukleniu w pachwinie nasilającemu się przy kaszlu lub staniu",
+        "Brak danych o zatrzymaniu gazów i stolca"
+      ]
+    },
+    {
+      "nazwa": "Kamica moczowodu prawego z bólem rzutowanym do jądra",
+      "p": 0.02,
+      "za": [
+        "Coś częstego o nietypowym obrazie: kolka moczowodowa daje nagły ból z nudnościami, wymiotami i promieniowaniem do moszny"
+      ],
+      "przeciw": [
+        "Obrzęk moszny i uniesienie jądra nie pasują do bólu rzutowanego",
+        "Brak zmian przy oddawaniu moczu i brak bólu lędźwiowego w opisie"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Uraz moszny lub krocza (zaprzeczony)",
+    "Gorączka ≥ 38 °C (zaprzeczona) – ropień mało prawdopodobny",
+    "Przyczyna polekowa – pacjent nie przyjmuje żadnych leków ani suplementów"
+  ],
+  "red_flags_otwarte": [
+    "Nagły, silny ból jądra 8/10 od 3–6 godzin – skręt jądra do wykluczenia, okno ratowania jądra się zamyka",
+    "Jądro uniesione (wg pacjenta) – objaw skrętu",
+    "Utrzymujące się nudności po wymiotach",
+    "Wstyd i niechęć do badania – ryzyko zwłoki z winy pacjenta",
+    "Brak badania fizykalnego i parametrów życiowych (NIEZNANE)"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie na szpitalny oddział ratunkowy z dostępem do urologa (wezwanie zespołu ratownictwa lub transport bez zwłoki) w celu oceny urologicznej i eksploracji moszny – bez antybiotyku i bez kontroli za tydzień; badanie ultrasonograficzne z kolorowym dopplerem tylko wtedy, gdy nie opóźnia zabiegu.",
+  "co_zmieniloby_zdanie": "Prawidłowy, symetryczny przepływ w kolorowym dopplerze z cechami zapalenia (wzmożone unaczynienie najądrza) lub uwidocznionym niedokrwionym przyczepkiem, przy zachowanym odruchu nosidłowym i braku objawu wiru powrózka, obniżyłby p skrętu poniżej 0,2.",
+  "odpowiedz_na_pytanie": "Nie. Obraz (nagły ból 8/10, uniesione jądro, obrzęk, wymioty, wcześniejszy epizod) to skręt jądra do czasu wykluczenia; antybiotyk i kontrola za tydzień grożą utratą jądra.",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskiej wytycznej dla ostrej moszny w bibliotece (sprawdzono)",
+    "pamiec/zespol.md – brak wpisów dotyczących ostrej moszny",
+    "PubMed zapytanie 1: 'TWIST score testicular torsion validation' (15 wyników)",
+    "PubMed zapytanie 2: 'testicular torsion[Title] testicular salvage time duration orchiectomy' (22 wyniki)",
+    "PubMed zapytanie 3: 'acute scrotum adolescents differential diagnosis epididymitis torsion appendix testis' (20 wyników)",
+    "PubMed zapytanie 4: 'intermittent testicular torsion[Title]' (17 wyników)",
+    "PMID 39129651, DOI 10.1111/1742-6723.14479 – Schultz-Swarthfigure 2024, dorośli na SOR: TWIST AUROC 0,89, wynik 6–7 → PPV 80%; wysoki TWIST może wspierać decyzję o zabiegu bez USG (streszczenie sprawdzone)",
+    "PMID 41477382, DOI 10.7759/cureus.98125 – Tobu 2025: TWIST czułość 88,2%, swoistość 43,8% w 50 eksploracjach (streszczenie sprawdzone)",
+    "PMID 38030428, DOI 10.1016/j.jpurol.2023.10.042 – Heckscher 2023: odsetek uratowanych jąder zależy od czasu, czas od przyjęcia do detorsji niezależnym czynnikiem przeżycia jądra (streszczenie sprawdzone)",
+    "PMID 31874735, DOI 10.1016/j.jpurol.2019.11.007 – Tanaka 2019: ostra moszna u dzieci – 72 skręty przyczepka, 44 zapalenia najądrza, 38 skrętów jądra; ratowalność zależała od czasu trwania objawów (streszczenie sprawdzone)",
+    "PMID 40307335, DOI 10.1038/s41598-025-97911-6 – Mao 2025: czas trwania objawów, stopień TWIST i przepływ w USG niezależnymi czynnikami ryzyka orchidektomii (streszczenie sprawdzone)",
+    "PMID 33530122, DOI 10.1055/a-1325-1834 – Deeg 2021: duplex-doppler w różnicowaniu skrętu jądra, skrętu przyczepka i zapalenia najądrza; objaw wiru, wzmożone unaczynienie w zapaleniu (streszczenie sprawdzone)",
+    "PMID 39539564, DOI 10.1002/bco2.439 – Hegarty 2024: skręt przerywany jako odrębna jednostka, obustronna orchidopeksja zapobiega utracie jądra (streszczenie sprawdzone)",
+    "Składowe punktacji TWIST (obrzęk 2, twarde jądro 2, brak odruchu nosidłowego 1, nudności/wymioty 1, wysokie ułożenie 1) – [wiedza modelu, niezweryfikowane]; u pacjenta z samego wywiadu ≥4 pkt"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "ostre zapalenie osierdzia (najpewniej wirusowe / idiopatyczne)",
+      "p": 0.113,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Ostre zapalenie osierdzia (idiopatyczne / poinfekcyjne wirusowe)",
+      "p": 0.104,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "zatorowość płucna",
+      "p": 0.099,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "ostre zapalenie osierdzia (poinfekcyjne, idiopatyczne)",
+      "p": 0.057,
+      "wymienili": [
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "ostre zapalenie osierdzia (idiopatyczne lub poinfekcyjne, wirusowe)",
+      "p": 0.056,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.026,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "ciśnienie skurczowe NIEZNANE",
+      "ciśnienie tętnicze NIEZNANE, wysięk/tamponada nieoceniona",
+      "czy w przeziębieniu przepisano antybiotyk makrolidowy (klarytromycyna) — NIEZNANE; silny inhibitor CYP3A4/glikoproteiny P przeciwwskazany z kolchicyną",
+      "czynniki złego rokowania zapalenia osierdzia: gorączka >38 °C, podostry przebieg, duży wysięk, brak odpowiedzi na NLPZ (PMID 17502574, 15028364) — dziś nieobecne lub NIEZNANE; brak odpowiedzi na ibuprofen po ok. tygodniu przesuwa chorą do diagnostyki szpitalnej",
+      "gorączka >38 °C jako cecha wysokiego ryzyka zapalenia osierdzia — obecnie 37,6 °C, do monitorowania",
+      "masa ciała NIEZNANE — decyduje o dawce kolchicyny",
+      "ostry zespół wieńcowy (EKG brak) — mało prawdopodobny, ale niewykluczony bez EKG",
+      "płyn w osierdziu / tamponada — brak badania fizykalnego, ciśnienia tętniczego i echokardiografii",
+      "płyn w osierdziu/tamponada (ciśnienie i badanie fizykalne NIEZNANE)",
+      "rodzaj preparatu antykoncepcyjnego (NIEZNANE)",
+      "saturacja i ciśnienie tętnicze NIEZNANE",
+      "tamponada lub duży wysięk osierdziowy — ankieta nie wyklucza (brak ciśnienia, badania fizykalnego); wykluczy prawidłowe ciśnienie bez tętna paradoksalnego, brak poszerzenia żył szyjnych, a przy wątpliwościach echokardiografia",
+      "tamponada lub istotny płyn w osierdziu - brak ciśnienia tętniczego i badania fizykalnego (NIEZNANE)",
+      "temperatura >38 °C jako cecha wysokiego ryzyka — na razie 37,6 °C, trzeba obserwować",
+      "wysiew do osierdzia / tamponada (brak badania fizykalnego, ciśnienia skurczowego i echokardiografii)",
+      "zajęcie mięśnia sercowego (troponina NIEZNANA)",
+      "zajęcie mięśnia sercowego (troponina nieznana)",
+      "zajęcie mięśnia sercowego - brak troponiny i EKG",
+      "zajęcie mięśnia sercowego — troponina nieznana",
+      "zapalenie mięśnia sercowego (myopericarditis) — wywiad go nie wyklucza; wykluczy prawidłowa troponina i EKG bez zaburzeń rytmu/przewodzenia; myopericarditis jest czynnikiem złego rokowania kwalifikującym do hospitalizacji w protokole triage (PMID 15028364)",
+      "zapalenie mięśnia sercowego (troponina NIEZNANE) — zmienia dawkowanie niesteroidowych leków przeciwzapalnych i zalecenia wysiłkowe",
+      "zatorowość płucna przy antykoncepcji hormonalnej — PERC niespełnione, D-dimer NIEZNANY",
+      "zatorowość płucna u kobiety stosującej antykoncepcję estrogenowo-progestagenową z bólem opłucnowym i tętnem 96/min — PERC niespełniony przez hormony",
+      "zatorowość płucna u kobiety stosującej antykoncepcję hormonalną z tętnem 96/min",
+      "zatorowość płucna u kobiety stosującej złożoną antykoncepcję doustną (tętno 96/min) — przed rozpoczęciem samego leczenia przeciwzapalnego potrzebne badanie i ocena kliniczna",
+      "zatorowość płucna — PERC niespełnione z powodu estrogenów (PMID 18318689); wykluczy niska ocena kliniczna (Wells) i prawidłowy D-dimer",
+      "zatorowość płucna — estrogeny, tętno 96/min, ból opłucnowy; brak saturacji i badania kończyn dolnych"
+    ],
+    "wykluczone": [
+      "brak wcześniejszej reakcji nadwrażliwości na leki przeciwbólowe (duszność, wysypka, obrzęk) — niesteroidowy lek przeciwzapalny dopuszczalny",
+      "ból wysiłkowy (nie nasila się przy schodach / szybkim marszu)",
+      "ból wysiłkowy (zaprzeczony)",
+      "ciąża (zaprzeczona)",
+      "ciąża i karmienie piersią — zaprzeczone",
+      "duszność",
+      "duszność (zaprzeczona w ankiecie)",
+      "duszność (zaprzeczona)",
+      "objawy alarmowe z listy ankiety od początku bólu (zaprzeczone)",
+      "objawy z listy alarmowej od początku bólu (zaprzeczone)",
+      "odma prężna — brak duszności przez 2 dni",
+      "omdlenie i inne objawy alarmowe z listy ankiety (odpowiedź: nic z tych rzeczy)",
+      "omdlenie i inne objawy alarmowe z listy ankiety (zaprzeczone)",
+      "ostry zespół wieńcowy — klinicznie bardzo mało prawdopodobny (38 lat, ból niezależny od wysiłku, kłujący, pozycyjny); formalnie rozstrzyga EKG",
+      "rozwarstwienie aorty — mało prawdopodobne: ból od 2 dni o stałym nasileniu, bez nagłego rozdzierającego początku i bez omdlenia (ciśnienie NIEZNANE)",
+      "unieruchomienie / zabieg / uraz w ostatnich 4 tygodniach",
+      "unieruchomienie, operacja, podróż w ostatnich 4 tygodniach (zaprzeczone)",
+      "unieruchomienie, zabieg, uraz w ostatnich 4 tygodniach (zaprzeczone)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

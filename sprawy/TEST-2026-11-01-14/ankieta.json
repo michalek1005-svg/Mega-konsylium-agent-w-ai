@@ -1,0 +1,662 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T14-OOO",
+  "tytul": "Obrzęk i ból prawego kolana",
+  "opis": "Od wczoraj spuchło mi prawe kolano, jest gorące i strasznie boli, nie mogę stanąć. Mam dreszcze. Dwa lata temu miałem dnę w palcu u nogi, więc chyba znowu to. Biorę metotreksat na łuszczycę.",
+  "pytania": [
+    {
+      "id": "stan_ogolny",
+      "typ": "wiele",
+      "tekst": "Czy teraz masz któreś z tych objawów?",
+      "krotko": "objawy ogólne ciężkie",
+      "opcje": [
+        {
+          "w": "splatanie",
+          "t": "Splątanie, trudno mi zebrać myśli, bardzo senny"
+        },
+        {
+          "w": "dusznosc",
+          "t": "Duszność albo bardzo szybki oddech"
+        },
+        {
+          "w": "omdlenie",
+          "t": "Omdlenie albo zawroty głowy przy wstawaniu"
+        },
+        {
+          "w": "plamy",
+          "t": "Sine plamy albo marmurkowa, zimna skóra"
+        },
+        {
+          "w": "mocz",
+          "t": "Prawie nie oddaję moczu od wczoraj"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Kryteria kliniczne sepsy (qSOFA: zaburzenia świadomości, tachypnoë, hipotensja; oliguria, hipoperfuzja) u chorego immunosupresyjnego z gorączką."
+    },
+    {
+      "id": "goraczka",
+      "typ": "jeden",
+      "tekst": "Czy mierzyłeś temperaturę od początku dolegliwości?",
+      "krotko": "pomiar temperatury",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie mierzyłem"
+        },
+        {
+          "w": "ponizej38",
+          "t": "Tak, poniżej 38 °C"
+        },
+        {
+          "w": "38plus",
+          "t": "Tak, 38 °C lub więcej"
+        }
+      ],
+      "bo": "Dreszcze zgłoszone w opisie; gorączka przy ostrym monoartritis wymaga wykluczenia infekcyjnego zapalenia stawu (metotreksat maskuje i zwiększa ryzyko)."
+    },
+    {
+      "id": "temperatura",
+      "typ": "liczba",
+      "tekst": "Jaka była najwyższa zmierzona temperatura?",
+      "krotko": "najwyższa temperatura",
+      "min": 34,
+      "max": 43,
+      "krok": 0.1,
+      "jednostka": "°C",
+      "gdy": {
+        "pytanie": "goraczka",
+        "jest": "38plus"
+      },
+      "bo": "Wysokość gorączki; ≥ 39 °C dodatkowo zwiększa podejrzenie bakteryjnego zapalenia stawu."
+    },
+    {
+      "id": "skora",
+      "typ": "wiele",
+      "tekst": "Co widzisz na skórze wokół kolana lub na nodze?",
+      "krotko": "skóra wokół kolana",
+      "opcje": [
+        {
+          "w": "rozlewa",
+          "t": "Zaczerwienienie, które się powiększa, idzie w górę lub w dół nogi"
+        },
+        {
+          "w": "rana",
+          "t": "Rana, otarcie, ukąszenie lub pęknięcie skóry"
+        },
+        {
+          "w": "luszczyca",
+          "t": "Zmiany łuszczycowe na kolanie"
+        },
+        {
+          "w": "ropa",
+          "t": "Bolesne zgrubienie z ropą"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Wrota zakażenia (rany, łuszczyca), cellulitis/ropień jako alternatywa i powikłanie; szerzące się zaczerwienienie u chorego na MTX."
+    },
+    {
+      "id": "uraz_zabieg",
+      "typ": "wiele",
+      "tekst": "Czy coś z tej listy dotyczy prawego kolana?",
+      "krotko": "uraz, zabiegi, proteza",
+      "opcje": [
+        {
+          "w": "uraz",
+          "t": "Uraz, upadek lub skręcenie w ostatnich dniach"
+        },
+        {
+          "w": "zastrzyk",
+          "t": "Zastrzyk do kolana lub nakłucie w ostatnich 3 miesiącach"
+        },
+        {
+          "w": "operacja",
+          "t": "Operacja lub artroskopia kolana kiedykolwiek"
+        },
+        {
+          "w": "proteza",
+          "t": "Mam sztuczny staw w tym kolanie"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Iniekcja dostawowa, zabieg i endoproteza to główne czynniki ryzyka septycznego zapalenia stawu; uraz → krwiak stawu."
+    },
+    {
+      "id": "zgiecie",
+      "typ": "jeden",
+      "tekst": "Czy możesz choć trochę zgiąć i wyprostować to kolano?",
+      "krotko": "ruchomość kolana",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak, choć boli"
+        },
+        {
+          "w": "troche",
+          "t": "Tylko minimalnie"
+        },
+        {
+          "w": "wcale",
+          "t": "Wcale, każdy ruch jest nie do zniesienia"
+        }
+      ],
+      "bo": "Bolesne ograniczenie biernego ruchu we wszystkich kierunkach przemawia za procesem wewnątrzstawowym, w tym septycznym."
+    },
+    {
+      "id": "inne_stawy",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich dniach boli lub puchnie Cię też coś innego?",
+      "krotko": "inne stawy i objawy",
+      "opcje": [
+        {
+          "w": "inny_staw",
+          "t": "Inny staw"
+        },
+        {
+          "w": "palec_stopy",
+          "t": "Duży palec u stopy"
+        },
+        {
+          "w": "kregoslup",
+          "t": "Kręgosłup lub pośladki"
+        },
+        {
+          "w": "oko",
+          "t": "Zaczerwienione, bolesne oko"
+        },
+        {
+          "w": "cewka",
+          "t": "Pieczenie przy oddawaniu moczu lub wydzielina z cewki"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Mono- vs oligoartritis; zajęcie osiowe i zapalenie błony naczyniowej (łuszczycowe/spondyloartropatia); objawy urologiczne (gonokokowe, reaktywne)."
+    },
+    {
+      "id": "mtx_rytm",
+      "typ": "jeden",
+      "tekst": "Jak często bierzesz metotreksat?",
+      "krotko": "częstość metotreksatu",
+      "opcje": [
+        {
+          "w": "tydzien",
+          "t": "Raz w tygodniu"
+        },
+        {
+          "w": "codziennie",
+          "t": "Codziennie"
+        },
+        {
+          "w": "inaczej",
+          "t": "Inaczej lub nieregularnie"
+        }
+      ],
+      "bo": "Przyjmowanie codzienne to typowy błąd prowadzący do ciężkiej toksyczności (mielosupresja, zapalenie błon śluzowych)."
+    },
+    {
+      "id": "mtx_dawka",
+      "typ": "jeden",
+      "tekst": "Ile miligramów metotreksatu bierzesz na raz?",
+      "krotko": "dawka metotreksatu",
+      "opcje": [
+        {
+          "w": "do10",
+          "t": "10 mg lub mniej"
+        },
+        {
+          "w": "12_15",
+          "t": "12,5–15 mg"
+        },
+        {
+          "w": "17_20",
+          "t": "17,5–20 mg"
+        },
+        {
+          "w": "ponad20",
+          "t": "Więcej niż 20 mg"
+        },
+        {
+          "w": "zastrzyk",
+          "t": "Biorę w zastrzyku, nie pamiętam dawki"
+        }
+      ],
+      "bo": "Stopień immunosupresji i ryzyko interakcji z NLPZ zależne od dawki."
+    },
+    {
+      "id": "objawy_mtx",
+      "typ": "wiele",
+      "tekst": "Czy w ostatnich tygodniach zauważyłeś któreś z tych zmian?",
+      "krotko": "objawy niepożądane",
+      "opcje": [
+        {
+          "w": "jama_ustna",
+          "t": "Ranki lub owrzodzenia w jamie ustnej"
+        },
+        {
+          "w": "siniaki",
+          "t": "Siniaki bez powodu albo krwawienie z dziąseł lub nosa"
+        },
+        {
+          "w": "kaszel",
+          "t": "Nowy suchy kaszel lub duszność przy wysiłku"
+        },
+        {
+          "w": "infekcje",
+          "t": "Częste infekcje"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Objawy toksyczności MTX (mielosupresja, mucositis, pneumonitis) i nasilonej immunosupresji."
+    },
+    {
+      "id": "inne_immuno",
+      "typ": "wiele",
+      "tekst": "Czy oprócz metotreksatu bierzesz któreś z tych leków?",
+      "krotko": "inne leki immunosupresyjne",
+      "opcje": [
+        {
+          "w": "biologiczny",
+          "t": "Lek w zastrzykach na łuszczycę, podawany co kilka tygodni"
+        },
+        {
+          "w": "steryd",
+          "t": "Sterydy w tabletkach (np. prednizon, Encorton, Medrol)"
+        },
+        {
+          "w": "cyklosporyna",
+          "t": "Cyklosporyna"
+        },
+        {
+          "w": "foliowy",
+          "t": "Kwas foliowy"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Leczenie biologiczne i glikokortykosteroidy zwiększają ryzyko zakażeń; cyklosporyna podnosi stężenie kolchicyny i ryzyko nefrotoksyczności NLPZ; kwas foliowy jako osłona MTX."
+    },
+    {
+      "id": "leki_doraznie",
+      "typ": "wiele",
+      "tekst": "Co wziąłeś od wczoraj na ból kolana?",
+      "krotko": "leki od początku dolegliwości",
+      "opcje": [
+        {
+          "w": "nlpz",
+          "t": "Ibuprofen, ketoprofen, naproksen, diklofenak lub podobny"
+        },
+        {
+          "w": "kolchicyna",
+          "t": "Kolchicyna"
+        },
+        {
+          "w": "paracetamol",
+          "t": "Paracetamol"
+        },
+        {
+          "w": "steryd",
+          "t": "Steryd"
+        },
+        {
+          "w": "inne",
+          "t": "Coś innego"
+        },
+        {
+          "w": "brak",
+          "t": "Nic",
+          "wyklucza": true
+        }
+      ],
+      "bo": "NLPZ zmniejszają klirens MTX; leki przeciwzapalne i przeciwgorączkowe mogą maskować gorączkę; odpowiedź na kolchicynę."
+    },
+    {
+      "id": "choroby",
+      "typ": "wiele",
+      "tekst": "Czy masz lub miałeś któreś z tych chorób?",
+      "krotko": "choroby współistniejące",
+      "opcje": [
+        {
+          "w": "nerki",
+          "t": "Choroba nerek albo słabe wyniki nerek"
+        },
+        {
+          "w": "watroba",
+          "t": "Choroba wątroby"
+        },
+        {
+          "w": "wrzod",
+          "t": "Wrzód żołądka lub krwawienie z przewodu pokarmowego"
+        },
+        {
+          "w": "serce",
+          "t": "Niewydolność serca, zawał lub udar"
+        },
+        {
+          "w": "cukrzyca",
+          "t": "Cukrzyca"
+        },
+        {
+          "w": "nadcisnienie",
+          "t": "Nadciśnienie"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Przeciwwskazania i ograniczenia dla NLPZ, kolchicyny i MTX (eGFR, wątroba, przewód pokarmowy, układ sercowo-naczyniowy); cukrzyca jako czynnik ryzyka zakażenia."
+    },
+    {
+      "id": "leki_inne",
+      "typ": "tekst",
+      "tekst": "Jakie inne leki i suplementy bierzesz na stałe? Przepisz nazwy z opakowań.",
+      "krotko": "pozostałe leki stałe",
+      "podpowiedz": "Na przykład: ramipril 5 mg rano",
+      "bo": "Interakcje: diuretyki, IPP, inhibitory ACE/sartany, makrolidy, statyny, antykoagulanty (krwiak, NLPZ), allopurinol."
+    },
+    {
+      "id": "badania_krwi",
+      "typ": "jeden",
+      "tekst": "Kiedy ostatnio miałeś badania krwi kontrolowane przy metotreksacie?",
+      "krotko": "ostatnie badania krwi",
+      "opcje": [
+        {
+          "w": "3mies",
+          "t": "W ostatnich 3 miesiącach, wszystko było dobrze"
+        },
+        {
+          "w": "3mies_zle",
+          "t": "W ostatnich 3 miesiącach, coś było nie tak"
+        },
+        {
+          "w": "dawno",
+          "t": "Ponad 3 miesiące temu"
+        },
+        {
+          "w": "nigdy",
+          "t": "Nie robię takich badań"
+        }
+      ],
+      "bo": "Wyjściowa morfologia, kreatynina/eGFR, ALT do oceny bezpieczeństwa NLPZ i kolchicyny oraz toksyczności MTX."
+    },
+    {
+      "id": "badania_wyniki",
+      "typ": "tekst",
+      "tekst": "Co było nie tak w wynikach? Przepisz nazwy badań i liczby, jeśli masz je przy sobie.",
+      "krotko": "nieprawidłowe wyniki",
+      "podpowiedz": "Na przykład: kreatynina 1,4 mg/dl, ALT 80, leukocyty 3,1",
+      "gdy": {
+        "pytanie": "badania_krwi",
+        "jest": "3mies_zle"
+      },
+      "bo": "Konkretne wartości (kreatynina, eGFR, ALT, leukocyty, płytki, kwas moczowy) zmieniają wybór leczenia."
+    },
+    {
+      "id": "epizod_wtedy",
+      "typ": "jeden",
+      "tekst": "Jak dwa lata temu ustalono przyczynę bólu palca?",
+      "krotko": "potwierdzenie wcześniejszego epizodu",
+      "opcje": [
+        {
+          "w": "punkcja",
+          "t": "Pobrano płyn ze stawu do badania"
+        },
+        {
+          "w": "krew",
+          "t": "Na podstawie badania krwi"
+        },
+        {
+          "w": "ogladanie",
+          "t": "Lekarz ocenił po obejrzeniu"
+        },
+        {
+          "w": "sam",
+          "t": "Sam tak uznałem, nie byłem u lekarza"
+        }
+      ],
+      "bo": "Rozpoznanie wcześniejszego epizodu bez badania płynu stawowego jest niepewne; nie przesądza o przyczynie obecnego."
+    },
+    {
+      "id": "allopurynol",
+      "typ": "jeden",
+      "tekst": "Czy bierzesz lek obniżający kwas moczowy (np. allopurynol, Milurit, febuksostat)?",
+      "krotko": "leczenie obniżające kwas moczowy",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak, regularnie"
+        },
+        {
+          "w": "niedawno",
+          "t": "Zacząłem lub zmieniłem dawkę w ostatnich 3 miesiącach"
+        },
+        {
+          "w": "przerwalem",
+          "t": "Brałem, ale przerwałem"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Rozpoczęcie lub zmiana leczenia hipourykemizującego może wyzwalać zaostrzenie; istotne dla planu."
+    },
+    {
+      "id": "alergie",
+      "typ": "wiele",
+      "tekst": "Czy masz uczulenie na któreś z tych leków?",
+      "krotko": "alergie na leki",
+      "opcje": [
+        {
+          "w": "nlpz",
+          "t": "Leki przeciwbólowe (np. ibuprofen, aspiryna)"
+        },
+        {
+          "w": "antybiotyk",
+          "t": "Antybiotyki (np. penicylina)"
+        },
+        {
+          "w": "inne",
+          "t": "Inny lek"
+        },
+        {
+          "w": "brak",
+          "t": "Nie mam uczuleń na leki",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Bezpieczeństwo NLPZ i ewentualnej antybiotykoterapii empirycznej."
+    },
+    {
+      "id": "obawy",
+      "typ": "wiele",
+      "tekst": "Czego najbardziej się obawiasz albo oczekujesz od tej konsultacji?",
+      "krotko": "obawy i oczekiwania",
+      "opcje": [
+        {
+          "w": "bol",
+          "t": "Chcę szybkiej ulgi w bólu"
+        },
+        {
+          "w": "przyczyna",
+          "t": "Chcę wiedzieć, co to jest"
+        },
+        {
+          "w": "leki",
+          "t": "Martwię się, czy moje leki są bezpieczne"
+        },
+        {
+          "w": "powazne",
+          "t": "Boję się, że to coś poważnego"
+        },
+        {
+          "w": "chodzenie",
+          "t": "Chcę szybko wrócić do chodzenia i pracy"
+        },
+        {
+          "w": "inne",
+          "t": "Coś innego"
+        }
+      ],
+      "bezNieznanych": true
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Objawy ciężkiego stanu ogólnego (zaburzenia świadomości, duszność, hipotensja, hipoperfuzja, oliguria) przy gorącym stawie i immunosupresji: podejrzenie sepsy.",
+      "gdy": {
+        "pytanie": "stan_ogolny",
+        "jest": [
+          "splatanie",
+          "dusznosc",
+          "omdlenie",
+          "plamy",
+          "mocz"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Ostre monoartritis z dreszczami (w opisie) u chorego na metotreksacie: wykluczyć septyczne zapalenie stawu — punkcja stawu z badaniem płynu (posiew, leukocyty, kryształy) przed leczeniem empirycznym.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "goraczka",
+            "odpowiedziano": true
+          },
+          {
+            "nie": {
+              "pytanie": "goraczka",
+              "odpowiedziano": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Gorączka ≥ 38 °C przy gorącym kolanie i immunosupresji: wysokie podejrzenie septycznego zapalenia stawu.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "goraczka",
+            "jest": "38plus"
+          },
+          {
+            "pytanie": "temperatura",
+            "min": 38
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Szerzące się zaczerwienienie, rana lub ropień okolicy kolana: cellulitis/ropień, wrota zakażenia stawu.",
+      "gdy": {
+        "pytanie": "skora",
+        "jest": [
+          "rozlewa",
+          "rana",
+          "ropa"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Endoproteza, iniekcja lub zabieg kolana: wysokie ryzyko infekcyjnego zapalenia stawu / zakażenia protezy — pilna ortopedia.",
+      "gdy": {
+        "pytanie": "uraz_zabieg",
+        "jest": [
+          "zastrzyk",
+          "proteza",
+          "operacja"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Całkowita niemożność ruchu biernego w kolanie: proces wewnątrzstawowy o dużym nasileniu.",
+      "gdy": {
+        "pytanie": "zgiecie",
+        "jest": "wcale"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Metotreksat przyjmowany codziennie lub nieregularnie: ryzyko ciężkiej toksyczności — pilna morfologia, kreatynina, ALT.",
+      "gdy": {
+        "pytanie": "mtx_rytm",
+        "jest": [
+          "codziennie",
+          "inaczej"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Objawy możliwej toksyczności MTX (owrzodzenia jamy ustnej, skaza krwotoczna, kaszel/duszność): pilna morfologia, wykluczyć mielosupresję i pneumonitis.",
+      "gdy": {
+        "pytanie": "objawy_mtx",
+        "jest": [
+          "jama_ustna",
+          "siniaki",
+          "kaszel"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "NLPZ przyjęte razem z metotreksatem: ryzyko kumulacji MTX, zwłaszcza przy upośledzonej funkcji nerek.",
+      "gdy": {
+        "pytanie": "leki_doraznie",
+        "jest": "nlpz"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Choroba nerek, wątroby lub krwawienie z przewodu pokarmowego w wywiadzie: ograniczenia dla NLPZ, kolchicyny i MTX — przed leczeniem kreatynina/eGFR, ALT.",
+      "gdy": {
+        "pytanie": "choroby",
+        "jest": [
+          "nerki",
+          "watroba",
+          "wrzod"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Objawy z cewki moczowej przy ostrym zapaleniu stawu: wykluczyć gonokokowe lub reaktywne zapalenie stawów.",
+      "gdy": {
+        "pytanie": "inne_stawy",
+        "jest": "cewka"
+      }
+    }
+  ]
+}

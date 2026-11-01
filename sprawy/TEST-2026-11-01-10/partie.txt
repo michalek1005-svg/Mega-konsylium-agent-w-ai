@@ -1,0 +1,7 @@
+1: poczatek godziny bol_teraz wyglad
+2: wymioty goraczka temperatura
+3: pachwina uraz pozycja
+4: mocz kontakty wczesniej
+5: swinka badania badania_wynik
+6: leki leki_nazwy alergie
+7: obawy

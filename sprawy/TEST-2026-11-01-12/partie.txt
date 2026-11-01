@@ -1,0 +1,7 @@
+1: alarm goraczka temperatura mysli
+2: guzki guzki_cechy swiad_cechy
+3: skora_oczy kaszel inne_objawy
+4: apetyt nastroj kolejnosc
+5: wyniki_sa wyniki_jakie wyniki_odchylenia
+6: choroby leki
+7: ryzyko obawy

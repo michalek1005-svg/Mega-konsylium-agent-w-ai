@@ -1,0 +1,106 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Stan przedrzucawkowy poporodowy z cechami ciężkimi (podejrzenie zespołu HELLP, zagrożenie rzucawką)",
+      "p": 0.72,
+      "za": [
+        "Ciśnienie 162/106 mmHg w 10. dobie połogu u kobiety bez nadciśnienia przed ciążą i bez rozpoznań w ciąży (świeże nadciśnienie poporodowe w zakresie ciężkim).",
+        "Ból głowy narastający od wczoraj, 7/10, inny niż dawne migreny, z utrzymującymi się mroczkami i nieostrym widzeniem (objawy neurologiczne).",
+        "Ból w nadbrzuszu lub pod prawym łukiem żebrowym (zajęcie wątroby, zespół HELLP do wykluczenia).",
+        "Szybko narastające obrzęki obu nóg, twarzy i dłoni.",
+        "Czas wystąpienia typowy: większość późnego stanu przedrzucawkowego poporodowego ujawnia się w 7.–10. dobie, najczęściej bólem głowy (PMID 35177218)."
+      ],
+      "przeciw": [
+        "Brak badania fizykalnego, białkomoczu i wyników laboratoryjnych (NIEZNANE) – rozpoznanie kliniczne, niepotwierdzone laboratoryjnie.",
+        "Pomiar ciśnienia jednorazowy, wykonany przez pacjentkę samodzielnie, aparat i technika nieznane."
+      ]
+    },
+    {
+      "nazwa": "Zespół tylnej odwracalnej encefalopatii",
+      "p": 0.1,
+      "za": [
+        "Ból głowy z utrzymującymi się zaburzeniami widzenia przy ciśnieniu 162/106 mmHg w połogu – obraz opisywany w zespole tylnej odwracalnej encefalopatii w stanie przedrzucawkowym poporodowym (PMID 38013383, 35046075).",
+        "Zaburzenia widzenia utrzymują się, a nie mijają jak aura migrenowa."
+      ],
+      "przeciw": [
+        "Brak drgawek i zaburzeń świadomości w ankiecie (pacjentka zaprzeczyła zdarzeniom ostrym).",
+        "Nie wyklucza pozycji 1, raczej jest jej powikłaniem; rozpoznanie wymaga rezonansu magnetycznego."
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica zatok żylnych mózgu",
+      "p": 0.07,
+      "za": [
+        "Połóg (10. doba) jest stanem nadkrzepliwości; ból głowy narastający stopniowo przez godziny z zaburzeniami widzenia pasuje do nadciśnienia wewnątrzczaszkowego.",
+        "Ból głowy nowego typu u kobiety z migreną w wywiadzie – w serii szpitalnej połogowych bólów głowy wśród ciężkich przyczyn znaleziono zakrzepicę (PMID 17403403)."
+      ],
+      "przeciw": [
+        "Nie tłumaczy bólu w prawym podżebrzu ani obrzęków twarzy i dłoni.",
+        "Ciężkie nadciśnienie i objawy wielonarządowe lepiej wyjaśnia pozycja 1."
+      ]
+    },
+    {
+      "nazwa": "Migrena z aurą nawracająca w połogu",
+      "p": 0.04,
+      "za": [
+        "Migreny w wywiadzie; połóg ze spadkiem estrogenów sprzyja nawrotowi; migrena/napięciowy ból głowy to najczęstsza przyczyna bólu głowy po porodzie w serii szpitalnej (47%, PMID 17403403)."
+      ],
+      "przeciw": [
+        "Pacjentka sama określa ból jako inny niż dawniej.",
+        "Mroczki utrzymują się (aura trwa typowo do 60 minut) [wiedza modelu, niezweryfikowane].",
+        "Migrena nie tłumaczy ciśnienia 162/106 mmHg, bólu w nadbrzuszu ani narastających obrzęków; to jest częsta choroba, którą tu łatwo przyjąć za oczywistość (pułapka zakotwiczenia w pytaniu lekarza)."
+      ]
+    },
+    {
+      "nazwa": "Zespół odwracalnego skurczu naczyń mózgowych",
+      "p": 0.03,
+      "za": [
+        "Połóg jest typowym okresem; współwystępuje z nadciśnieniem i stanem przedrzucawkowym [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Ból narastał stopniowo przez godziny, a nie piorunująco."
+      ]
+    }
+  ],
+  "rozpoznania_odrzucone_w_rozumowaniu": [
+    "Popunkcyjny ból głowy – wykluczony wywiadem: brak znieczulenia zewnątrzoponowego i podpajęczynówkowego.",
+    "Przyczyna polekowa – brak leków o działaniu presyjnym w wywiadzie (paracetamol, żelazo, witaminy); polekowy ból głowy z nadużywania nie pasuje do czasu trwania 1 doby. Do zweryfikowania: czy nie podano metyloergometryny lub bromokryptyny/kabergoliny (NIEZNANE).",
+    "Krwotok śródczaszkowy, rozwarstwienie tętnicy kręgowej lub szyjnej – rzadsze; tło stanu przedrzucawkowego zwiększa ryzyko (PMID 41473648); do rozważenia przy objawach ogniskowych lub bólu szyi.",
+    "Zakażenie (zapalenie opon, zapalenie sutka, zakażenie połogowe) – brak gorączki i dreszczy."
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Popunkcyjny ból głowy (brak znieczulenia neuraksjalnego).",
+    "Gorączka i dreszcze (brak).",
+    "Ostre zdarzenia neurologiczne od wczoraj (pacjentka zaprzecza)."
+  ],
+  "red_flags_otwarte": [
+    "Ciężkie nadciśnienie w połogu ≥160/110 mmHg według reguły ankiety: 162/106 mmHg z bólem głowy i zaburzeniami widzenia (reguła ankiety 01-wywiad: NATYCHMIAST 112).",
+    "Ból w nadbrzuszu/prawym podżebrzu – zespół HELLP do wykluczenia (morfologia z płytkami, AST, ALT, LDH, kreatynina, białko w moczu).",
+    "Utrzymujące się zaburzenia widzenia – zagrożenie rzucawką, zespół tylnej odwracalnej encefalopatii.",
+    "Ból głowy nowego charakteru, silniejszy niż dawne migreny.",
+    "Szybko narastające obrzęki twarzy i dłoni.",
+    "Brak parametrów życiowych i badania fizykalnego (NIEZNANE)."
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie przez 112 (zespół ratownictwa medycznego) na izbę przyjęć oddziału położniczego lub szpitalny oddział ratunkowy z rozpoznaniem roboczym stanu przedrzucawkowego poporodowego z cechami ciężkimi – nie leczyć tego jako migreny w domu.",
+  "co_zmieniloby_zdanie": "Prawidłowe powtórne pomiary ciśnienia (poniżej 140/90 mmHg) w gabinecie wraz z prawidłowymi płytkami, AST/ALT i brakiem białkomoczu przesunęłyby różnicowanie w stronę zakrzepicy zatok żylnych lub migreny – ale nie obniżyłyby pilności poniżej 2 przy utrzymujących się zaburzeniach widzenia.",
+  "odpowiedz_na_pytanie_lekarza": "Pytanie o lek przeciwmigrenowy przy karmieniu jest tu źle postawione: to najpewniej stan przedrzucawkowy poporodowy, a nie migrena. Paracetamol, który pacjentka już bierze, jest zgodny z karmieniem [wiedza modelu, niezweryfikowane]; tryptany i dalsze leczenie decyduje szpital po wykluczeniu stanu przedrzucawkowego. Karmienie nie jest przeciwwskazaniem do pilnej diagnostyki ani leczenia (siarczan magnezu i większość leków hipotensyjnych stosowanych w połogu są zgodne z karmieniem) [wiedza modelu, niezweryfikowane].",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskiej wytycznej dla nadciśnienia w połogu/stanu przedrzucawkowego (tylko pozycje przykładowe); pamiec/zespol.md – brak wpisów dotyczących tej prezentacji.",
+    "PubMed zapytanie 1: postpartum preeclampsia[Title] AND headache (11 wyników).",
+    "PubMed zapytanie 2: postpartum headache[Title] AND (differential diagnosis OR etiology) (52 wyniki).",
+    "PubMed zapytanie 3: \"Eclampsia\"[MeSH Terms] AND postpartum[Title] AND late (66 wyników; nie wykorzystano bezpośrednio).",
+    "PubMed zapytanie 4: postpartum headache secondary causes cohort preeclampsia cerebral venous thrombosis (1 wynik).",
+    "PubMed zapytanie 5: postpartum headache[Title] AND (prospective OR retrospective OR cohort) (6 wyników).",
+    "Hauspurg A, Jeyabalan A. Postpartum preeclampsia or eclampsia: defining its place and management. Am J Obstet Gynecol 2022;226(2S):S1211-S1221. PMID 35177218, DOI 10.1016/j.ajog.2020.10.027 – streszczenie sprawdzone: nowe nadciśnienie 48 h–6 tyg. po porodzie; większość prezentuje się w 7.–10. dobie, najczęściej bólem głowy; leczenie: hipotensyjne, magnez, diureza.",
+    "Stella CL i wsp. Postpartum headache: is your work-up complete? Am J Obstet Gynecol 2007;196(4):318.e1-7. PMID 17403403, DOI 10.1016/j.ajog.2007.01.034 – streszczenie sprawdzone: 95 kobiet; migrena/napięciowy 47%, stan przedrzucawkowy/rzucawka 24%, popunkcyjny 16%; ciężkie zmiany mózgowe (krwotok, zakrzepica, waskulopatia) u 10 osób.",
+    "Vgontzas A, Robbins MS. A hospital based retrospective study of acute postpartum headache. Headache 2018;58(6):845-851. PMID 29446070, DOI 10.1111/head.13279 – streszczenie sprawdzone: 73% wtórnych; wśród wtórnych stan przedrzucawkowy 26,1%, naczyniowo-mózgowe 21,7%.",
+    "Rho JD i wsp. Posterior reversible encephalopathy in postpartum preeclampsia. Medicine 2023;102(47):e36023. PMID 38013383, DOI 10.1097/MD.0000000000036023 – streszczenie sprawdzone: ból głowy i nagłe zaburzenia widzenia w 6. dobie połogu.",
+    "Dunphy L i wsp. PRES in the puerperium. BMJ Case Rep 2022;15(1):e246570. PMID 35046075, DOI 10.1136/bcr-2021-246570 – streszczenie sprawdzone: wtórne groźne bóle głowy w połogu: rzucawka, zakrzepica zatok żylnych, zespół tylnej odwracalnej encefalopatii.",
+    "Murata T i wsp. Gallbladder wall thickening in postpartum preeclampsia. Case Rep Womens Health 2021;33:e00370. PMID 34900611, DOI 10.1016/j.crwh.2021.e00370 – streszczenie sprawdzone: ból w prawym podżebrzu, nadciśnienie i ból głowy w połogu; różnicowanie zespołu HELLP.",
+    "Dadrat AC i wsp. Bilateral vertebral artery dissections associated with postpartum preeclampsia. Cureus 2025;17(11):e98101. PMID 41473648, DOI 10.7759/cureus.98101 – streszczenie sprawdzone: przetrwały ból głowy mimo leczenia wymaga ponownej oceny.",
+    "Dellapiana G i wsp. Repeat magnesium for exacerbation of postpartum preeclampsia: national survey. J Matern Fetal Neonatal Med 2026;39(1):2738315. PMID 42805980, DOI 10.1080/14767058.2026.2738315 – streszczenie sprawdzone: magnez lekiem pierwszego wyboru w profilaktyce drgawek w stanie przedrzucawkowym z cechami ciężkimi."
+  ]
+}

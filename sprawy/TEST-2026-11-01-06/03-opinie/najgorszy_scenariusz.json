@@ -1,0 +1,105 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Pęknięty lub objawowy tętniak aorty brzusznej",
+      "p": 0.45,
+      "za": [
+        "mężczyzna 68 lat, palacz, nadciśnienie — profil ryzyka tętniaka",
+        "nigdy nie miał USG brzucha (tętniak niewykluczony przesiewowo)",
+        "ból stały, rozrywający, lewostronny lędźwiowo-pachwinowy — klasyczne maskowanie jako kolka nerkowa",
+        "presynkopa w łazience, ciśnienie skurczowe 104 mmHg u chorego z nadciśnieniem leczonym amlodypiną 10 mg, tętno 108/min — względna hipotensja i tachykardia",
+        "kwas acetylosalicylowy i nieznana dawka ketoprofenu nasilają krwawienie"
+      ],
+      "przeciw": [
+        "nie stracił przytomności",
+        "ból nieco zelżał po lekach",
+        "brak badania fizykalnego (tętniący guz brzucha nieoceniony — NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Kolka nerkowa w przebiegu kamicy moczowodu lewego",
+      "p": 0.3,
+      "za": [
+        "ból lędźwiowy lewostronny z promieniowaniem do pachwiny",
+        "przebyta kamica 5 lat temu i pacjent rozpoznaje ból jako podobny",
+        "częściowa odpowiedź na drotawerynę i ketoprofen"
+      ],
+      "przeciw": [
+        "ból stały, rozrywający, niezmienny (kolka zwykle falująca, pacjent niespokojny)",
+        "brak wymiotów i brak zmian w oddawaniu moczu",
+        "presynkopa z ciśnieniem skurczowym 104 mmHg i tętnem 108/min (wskaźnik wstrząsowy około 1,04) nie pasuje do niepowikłanej kolki",
+        "pierwszy epizod kolki po 60. roku życia — rozpoznanie z wykluczenia"
+      ]
+    },
+    {
+      "nazwa": "Ostre rozwarstwienie aorty",
+      "p": 0.07,
+      "za": [
+        "ból rozrywający o charakterze stałym",
+        "nadciśnienie, palenie, wiek"
+      ],
+      "przeciw": [
+        "brak bólu w klatce piersiowej i międzyłopatkowego (pacjent zaprzecza objawom alarmowym)",
+        "brak danych o deficycie tętna lub neurologicznym — NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Zawał nerki lewej",
+      "p": 0.03,
+      "za": [
+        "stały ból lędźwiowy u chorego z miażdżycowymi czynnikami ryzyka"
+      ],
+      "przeciw": [
+        "brak znanego migotania przedsionków",
+        "hipotensja i tachykardia słabiej wyjaśnione"
+      ]
+    },
+    {
+      "nazwa": "Odmiedniczkowe zapalenie nerek z wodonerczem i początkiem sepsy",
+      "p": 0.03,
+      "za": [
+        "tachykardia i niższe ciśnienie",
+        "przebyta kamica"
+      ],
+      "przeciw": [
+        "brak gorączki i dreszczy",
+        "brak objawów ze strony dróg moczowych",
+        "objawy od kilku godzin"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Zakażenie groźne dla otoczenia — brak przesłanek (stan niezakaźny)",
+    "Gorączka i dreszcze (pacjent zaprzecza) — urosepsa mniej prawdopodobna, choć nie wykluczona przy tachykardii"
+  ],
+  "red_flags_otwarte": [
+    "Pęknięty lub objawowy tętniak aorty brzusznej: NIE wykluczony. Wykluczyłoby: badanie USG lub angio-TK aorty w szpitalu pokazujące aortę o średnicy prawidłowej (<30 mm) bez krwiaka zaotrzewnowego. Fizykalne badanie brzucha nie wystarcza (tętniący guz wyczuwalny tylko u 26% błędnie rozpoznanych pęknięć, PMID 1619721).",
+    "Ból stały, rozrywający — reguła ankiety [NATYCHMIAST 112] spełniona.",
+    "Presynkopa + ciśnienie skurczowe 104 mmHg + tętno 108/min u leczonego nadciśnieniowca (wskaźnik wstrząsowy >1) — możliwy wstrząs krwotoczny wyrównany.",
+    "Ostre rozwarstwienie aorty: nie wykluczone; wykluczyłoby angio-TK aorty.",
+    "Leki przeciwpłytkowe (kwas acetylosalicylowy 75 mg) + ketoprofen w nieznanej dawce — ryzyko nasilenia krwawienia i uszkodzenia nerek; dawka NIEZNANA."
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) z transportem do szpitala z chirurgią naczyniową i angio-TK z rozpoznaniem roboczym 'podejrzenie pękniętego tętniaka aorty brzusznej'; do przyjazdu pacjent leżący, na czczo, bez kolejnych niesteroidowych leków przeciwzapalnych i bez 'czegoś mocniejszego' doustnie; bez USG w gabinecie (opóźnia skierowanie, PMID 9654880).",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność dopiero przy obrazowym potwierdzeniu prawidłowej średnicy aorty bez krwiaka zaotrzewnowego oraz stabilnych parametrach (ciśnienie skurczowe w zakresie typowym dla pacjenta, tętno <100/min) przy jednoczesnym potwierdzeniu złogu w moczowodzie.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla tętniaka aorty brzusznej ani kolki nerkowej (tylko przykładowe wpisy); pamiec/zespol.md — brak wpisu dotyczącego tej prezentacji.",
+    "Zapytanie PubMed 1: 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' (3 wyniki).",
+    "Zapytanie PubMed 2: 'Aortic Aneurysm, Abdominal[MeSH] AND Point-of-Care Systems[MeSH] AND ultrasonography AND emergency department' (36 wyników).",
+    "Zapytanie PubMed 3: 'renal colic older patients alternative diagnosis aortic aneurysm[Title/Abstract]' (0 wyników — nieskuteczne).",
+    "Zapytanie PubMed 4: 'abdominal aortic aneurysm rupture diagnostic delay misdiagnosis' od 2010 (29 wyników).",
+    "Zapytanie PubMed 5: 'European Society for Vascular Surgery 2024 clinical practice guidelines abdominal aorto-iliac artery aneurysms' (5 wyników).",
+    "Marston WA i wsp. Misdiagnosis of ruptured abdominal aortic aneurysms. J Vasc Surg 1992;16:17-22. PMID 1619721, DOI 10.1067/mva.1992.34344 — streszczenie sprawdzone: 30% pęknięć początkowo błędnie rozpoznanych, najczęściej jako kolka nerkowa; tętniący guz u 26% błędnie vs 72% prawidłowo rozpoznanych.",
+    "Acheson AG i wsp. Prospective study on factors delaying surgery in ruptured abdominal aortic aneurysms. J R Coll Surg Edinb 1998;43:182-4. PMID 9654880 (brak DOI) — streszczenie sprawdzone: lekarz rodzinny trafnie rozpoznał 38%, najczęstsze błędne rozpoznanie kolka nerkowa (24%); USG opóźniało skierowanie do chirurgii naczyniowej (mediana 0,75 vs 2,5 h).",
+    "Zelikovski A i wsp. Unusual presentations of aortoiliac aneurysms. Isr J Med Sci 1990;26:270-4. PMID 2199405 (brak DOI) — streszczenie sprawdzone: tętniaki błędnie rozpoznawane m.in. jako kolka nerkowa.",
+    "Jeffers K i wsp. What is the Utility of Point-of-Care Ultrasound for Diagnosing Abdominal Aortic Aneurysm? J Emerg Med 2025;82:82-87. PMID 41633258, DOI 10.1016/j.jemermed.2025.12.006 — streszczenie sprawdzone: czułość POCUS 97,5–100%, swoistość 94,1–100% dla obecności tętniaka (nie dla pęknięcia).",
+    "Wanhainen A i wsp. ESVS 2024 Clinical Practice Guidelines on the Management of Abdominal Aorto-Iliac Artery Aneurysms. Eur J Vasc Endovasc Surg 2024;67:192-331. PMID 38307694, DOI 10.1016/j.ejvs.2023.11.002 — streszczenie sprawdzone: wytyczne obejmują postępowanie w pękniętym i objawowym tętniaku, w tym hipotensję permisywną.",
+    "Wskaźnik wstrząsowy (tętno/ciśnienie skurczowe) >1 jako wskaźnik wstrząsu [wiedza modelu, niezweryfikowane].",
+    "Acheson AG i wsp. J R Coll Surg Edinb 1998;43:182-4, PMID 9654880",
+    "Marston WA i wsp. J Vasc Surg 1992;16:17-22, PMID 1619721, doi:10.1067/mva.1992.34344"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: ból stały, rozrywający (bez falowania kolki) i wskaźnik wstrząsowy ok. 1,0; kolka nerkowa to najczęstsze błędne rozpoznanie pękniętego tętniaka (PMID 1619721, 9654880). Tętniak 0,35→0,45, kolka 0,40→0,30; pilność 1 bez zmian; wycofane USG w gabinecie."
+}

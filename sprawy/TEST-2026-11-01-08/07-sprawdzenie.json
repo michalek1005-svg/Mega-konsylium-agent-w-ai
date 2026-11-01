@@ -1,0 +1,152 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "twierdzenia": [
+      {
+        "twierdzenie": "SSRI + tiazyd u starszych: hiponatremia ok. 13% vs 9–10% w monoterapii; OR 1,24–1,27 (PMID 40035448)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 40035448, DOI 10.1002/phar.70004 (Matsuura 2025, Pharmacotherapy)",
+        "cytat": "prevalence 10.4% thiazides alone, 9.0% SSRIs alone, both ~13.0%; adjusted OR 1.24 (1.22–1.26) and 1.27 (1.24–1.29)",
+        "co_mowi_zrodlo": "Zgodne. Populacja Medicare ≥65 l. (śr. 77 l.), tiazydy jako klasa; indapamid = tiazydopodobny — ekstrapolacja klasy, nie badano indapamidu osobno."
+      },
+      {
+        "twierdzenie": "Splątanie/majaczenie i ataksja = objawy ciężkie hiponatremii; nudności/wymioty = łagodne (PMID 37983699)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 37983699 (Miller 2023, Am Fam Physician 108:476)",
+        "cytat": "Mild symptoms include nausea, vomiting...; severe symptoms include delirium, confusion, impaired consciousness, ataxia, seizures",
+        "co_mowi_zrodlo": "Zgodne. Streszczenie dodaje: Na <125 + objawy ciężkie = pilny wlew 3% NaCl (leczenie szpitalne wynika z tego pośrednio)."
+      },
+      {
+        "twierdzenie": "Hiponatremia łagodna 130–134, umiarkowana 125–129, ciężka <125 mmol/l; próg 'Na cito ≥130' w CZEGO NIE WIEMY mieści się w zakresie łagodnej",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 37983699",
+        "cytat": "mild when 130 to 134 mEq per L, moderate 125 to 129, severe less than 125",
+        "co_mowi_zrodlo": "Próg 130 w projekcie = dolna granica hiponatremii łagodnej wg źródła; obniżenie pilności do 2 to osąd kliniczny ordynatora, nie zapis źródła."
+      },
+      {
+        "twierdzenie": "Upadek ≥65 l. z niejasnym wywiadem urazu głowy: 4,6% istotnego krwawienia śródczaszkowego; pilne obrazowanie (PMID 41170758)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 41170758, DOI 10.1111/jgs.70191 (Kerr 2025, J Am Geriatr Soc)",
+        "cytat": "patients with an unclear history of head injury, 4.6% (23/502, 95% CI 3.2–6.8%) ... merits emergency brain imaging",
+        "co_mowi_zrodlo": "Zgodne; populacja = pacjenci SOR po upadku z poziomu podłoża, 42 dni obserwacji. Odpowiada sytuacji 'nikt nie widział upadku'."
+      },
+      {
+        "twierdzenie": "U starszych z majaczeniem i dodatnim badaniem moczu antybiotyk nie przyspiesza ustępowania majaczenia: RR 0,94 (PMID 36447157)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 36447157, DOI 10.1186/s12877-022-03549-8 (Joo 2022, BMC Geriatr)",
+        "cytat": "no significant difference in delirium rate on day 7 ... entire cohort RR 0.94 [0.41–2.16]",
+        "co_mowi_zrodlo": "Liczba zgodna. Uwaga: retrospektywny przegląd 150 hospitalizowanych, szerokie CI — źródło mówi 'brak dowodu korzyści', nie 'dowód braku efektu'. Sformułowanie 'nie przyspiesza' lekko za mocne."
+      },
+      {
+        "twierdzenie": "Objawowa hiponatremia: bolus 3% NaCl 100–150 ml z częstą kontrolą Na (PMID 39009016)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 39009016, DOI 10.1093/ndt/gfae162 (Spasovski 2024, NDT)",
+        "cytat": "3% sodium chloride as a 100- to 150-ml intravenous bolus ... needs frequent biochemical monitoring",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Po hiponatremii polekowej nie wznawiać tiazydu/indapamidu; SSRI i NLPZ = czynniki ryzyka hiponatremii tiazydowej; pilny Na przy objawach neurologicznych (PMID 27168745)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 27168745, DOI 10.11909/j.issn.1671-5411.2016.02.001 (Liamis 2016)",
+        "cytat": "discourage prescribing thiazides in patients with a history of diuretic-associated hyponatremia ... NSAIDs, SSRIs ... measure promptly serum sodium",
+        "co_mowi_zrodlo": "Zgodne (przegląd narracyjny)."
+      },
+      {
+        "twierdzenie": "IDSA 2019: nie leczyć bakteriomoczu bezobjawowego u starszych kobiet i mężczyzn (PMID 30895288)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30895288, DOI 10.1093/cid/ciy1121 (Nicolle 2019, Clin Infect Dis)",
+        "cytat": "Treatment was not recommended for healthy women; older women or men; or persons with diabetes",
+        "co_mowi_zrodlo": "Zgodne; wytyczna adresuje też interpretację objawów nielokalizujących w populacjach z częstym ASB."
+      },
+      {
+        "twierdzenie": "Definicja hiponatremii: Na <135 mmol/l (ESE/ESICM/ERBP 2014, PMID 24569496)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 24569496, DOI 10.1093/ndt/gfu040",
+        "cytat": "Hyponatraemia, defined as a serum sodium concentration <135 mmol/l",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Dane sprawy: Na 131 mmol/l, K 3,6, kreatynina 1,0 mg/dl sprzed 4 tyg., przed włączeniem sertraliny; sertralina nowa <4 tyg.; dawki indapamid 1,5 mg, sertralina 50 mg, amlodypina 5 mg",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/TEST-2026-11-01-08/01-wywiad.md",
+        "cytat": "Sprzed 4 tygodni: sód 131, potas 3,6, kreatynina 1,0 ... Tak, nowy lek ... indapamid 1,5 mg, sertralina 50 mg, amlodypina 5 mg",
+        "co_mowi_zrodlo": "Zgodne z wywiadem. Ankieta mówi 'nowy lek w ostatnich 4 tyg.' — przypisanie, że tym lekiem jest sertralina, pochodzi z adnotacji lekarza ('przed włączeniem sertraliny')."
+      },
+      {
+        "twierdzenie": "Wszystkie 6 ról konsylium postawiło hiponatremię polekową na 1. miejscu; pilność 1 u 6/6 po rundzie 1",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/TEST-2026-11-01-08/04-konsylium.md; 03-opinie/*.json",
+        "cytat": "6/6 ról na miejscu 1 ... pilność 1 — 6/6 po rundzie",
+        "co_mowi_zrodlo": "Zgodne z protokołem."
+      },
+      {
+        "twierdzenie": "Depresję leczyć lekiem o mniejszym ryzyku hiponatremii [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 38403888, DOI 10.1192/j.eurpsy.2024.11 (Gheysens 2024, metaanaliza); PMID 40261584, DOI 10.1007/s40618-025-02587-4 (Norello 2025, sieciowa MA)",
+        "cytat": "event rates SSRIs 5.59%, mirtazapine 1.02%; mirtazapine significantly less likely (OR 0.607) ... treatment of choice for hypoNa-prone patients",
+        "co_mowi_zrodlo": "Etykietę [wiedza modelu] da się zastąpić źródłem. Nuans: Norello 2025 — mirtazapina też zwiększa ryzyko (OR 2,83), ale najniżej spośród istotnych; sertralina OR 4,15."
+      },
+      {
+        "twierdzenie": "Kontrola Na po 1–2 tyg. od włączenia nowego antydepresantu [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 12243606, DOI 10.1345/aph.1C071 (Barclay 2002, przegląd przypadków); PMID 17189754, DOI 10.1016/j.genhosppsych.2006.11.001",
+        "cytat": "onset of citalopram-induced hyponatremia or SIADH ranged from 6 to 20 days ... monitored ... especially in the first few weeks",
+        "co_mowi_zrodlo": "Źródła niskiej jakości (opisy przypadków), ale wspierają okno 1–3 tyg. Etykietę można zmienić na '[PMID 12243606: początek 6–20 dni; dowód niskiej jakości]'."
+      },
+      {
+        "twierdzenie": "Zakażenie układu moczowego u mężczyzny = zakażenie powikłane [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "EAU Guidelines on Urological Infections (klasyfikacja ZUM u mężczyzn jako powikłane) — z pamięci modelu, nie zweryfikowano w PubMed w tym sprawdzeniu",
+        "cytat": "—",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne z klasyfikacją EAU, jaką pamięta model; brak pliku w zrodla/. Etykieta w FINAL do zachowania lub podmiany na 'EAU, z pamięci'."
+      },
+      {
+        "twierdzenie": "Przy potwierdzonym ZUM pominąć fluorochinolony i kotrimoksazol u tego chorego [wiedza modelu, niezweryfikowane]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "Częściowo: kotrimoksazol — PubMed PMID 21733815 (DOI 10.4140/TCP.n.2011.342) i PMID 36313270 (DOI 10.1177/2050313X221132654): opisy przypadków hiponatremii/SIADH po TMP-SMX u starszych. Fluorochinolony: brak źródła znalezionego",
+        "cytat": "TMP-SMX can result in the development of hyponatremia ... elderly female with severe hyponatremia caused by trimethoprim-sulfamethoxazole",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe. Dla kotrimoksazolu istnieje uzasadnienie (opisy przypadków hiponatremii). Dla fluorochinolonów uzasadnienia (majaczenie u starszych, interakcja z SSRI/QT) nie potwierdzono w tym sprawdzeniu. Etykieta [wiedza modelu] musi pozostać w FINAL."
+      },
+      {
+        "twierdzenie": "Polskie wytyczne dla tej prezentacji (hiponatremia polekowa / majaczenie u starszych / ZUM u starszych): brak w zrodla/",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "zrodla/MANIFEST.md (katalog pusty poza manifestem); PubMed: 1 zapytanie celowane — tylko przegląd po polsku PMID 30371653 (Pol Merkur Lekarski 2018, omówienie wytycznych amerykańskich i europejskich)",
+        "cytat": "This paper is a review ... based on the prevailing guidelines elaborated by American and European experts",
+        "co_mowi_zrodlo": "Brak polskiej wytycznej towarzystwa w zrodla/ i w PubMed; użycie poziomu 2–3 jest zasadne. Projekt poprawnie to deklaruje."
+      }
+    ],
+    "podsumowanie": {
+      "potwierdzone": 15,
+      "bez_zrodla": 1,
+      "sprzeczne": 0,
+      "nieaktualne": 0,
+      "razem": 16,
+      "uzasadnienie_kartki": "Brak SPRZECZNE i NIEAKTUALNE; wszystkie liczby (dawka 3% NaCl, odsetki, OR, RR, progi Na) potwierdzone w streszczeniach PubMed. Jedno twierdzenie nieliczbowe BEZ_ZRODLA (fluorochinolony/kotrimoksazol) — już oznaczone etykietą [wiedza modelu]; etykieta musi zostać w FINAL. zrodla/ puste — brak polskiej wytyczny poziomu 1.",
+      "poprawki": [
+        "PLAN B: etykietę [wiedza modelu] przy 'lek o mniejszym ryzyku hiponatremii' zastąpić źródłem: PMID 38403888 (mirtazapina 1,02% vs SSRI 5,59%, OR 0,61) i PMID 40261584 (sertralina OR 4,15; mirtazapina OR 2,83 — najniżej).",
+        "PLAN B: 'kontrola Na po 1–2 tyg.' — można podeprzeć PMID 12243606 (początek SIADH po SSRI 6–20 dni; opisy przypadków) z zaznaczeniem niskiej jakości dowodu; alternatywnie zostawić etykietę.",
+        "PLAN B: 'z pominięciem fluorochinolonów i kotrimoksazolu' — etykieta [wiedza modelu] pozostaje; dla kotrimoksazolu można dopisać PMID 21733815 / 36313270 (hiponatremia po TMP-SMX u starszych); dla fluorochinolonów brak źródła.",
+        "DLACZEGO: 'antybiotyk nie przyspiesza ustępowania majaczenia' — złagodzić do 'nie wykazano, by przyspieszał' (RR 0,94, 95% CI 0,41–2,16; retrospektywne, n=150; PMID 36447157).",
+        "DLACZEGO: PMID 40035448 bada tiazydy jako klasę; indapamid jest tiazydopodobny — dopisać 'tiazydy/tiazydopodobne (ekstrapolacja klasy)'.",
+        "DLACZEGO: 'wymagające leczenia szpitalnego' — streszczenie PMID 37983699 mówi o pilnym wlewie 3% NaCl przy Na <125 + objawy ciężkie; hospitalizacja wynika pośrednio — dopuszczalne, bez zmiany.",
+        "ŹRÓDŁA: zapis 'Spasovski 2014 ESE/ESICM/ERBP' stosować wyłącznie do definicji Na <135 (klasyfikacja ciężkości w FINAL ma iść z PMID 37983699) — projekt już tak robi, utrzymać."
+      ]
+    }
+  }
+}

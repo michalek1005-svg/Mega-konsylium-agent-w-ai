@@ -1,0 +1,108 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Chłoniak Hodgkina (klasyczny)",
+      "p": 0.5,
+      "za": [
+        "Pretest: mężczyzna 55 lat z węzłem szyjnym/nadobojczykowym > 2 cm i objawami B (gorączka 37,8 °C, poty nocne z przebieraniem, utrata 7 kg w 3 miesiące) → chłoniak jako klasa wysoko już przed szczegółami; drugi szczyt zachorowań na chłoniaka Hodgkina po 50. roku życia [wiedza modelu, niezweryfikowane]",
+        "Lokalizacja nadobojczykowa → podnosi nowotwór złośliwy → umiarkowanie-silnie (RR 3,72 w klinice węzłowej z dostępem z POZ; płeć męska RR 2,72, wiek RR 1,05/rok; Chau 2003, PMID 12569376)",
+        "Ból węzłów po alkoholu → podnosi chłoniaka Hodgkina względem wszystkich innych przyczyn → silnie (objaw rzadki, ale prawie swoisty; opisy przypadków PMID 31780609, 39734971; wielkość LR [wiedza modelu, niezweryfikowane])",
+        "Uogólniony świąd bez wysypki → podnosi chłoniaka Hodgkina (i chłoniaka angioimmunoblastycznego T) → umiarkowanie (świąd chłoniaczy typowy dla HL i AITL, PMID 38489975)",
+        "Eozynofilia 0,9 G/l → podnosi chłoniaka Hodgkina względem chłoniaków nieziarniczych B i raka płuca → umiarkowanie (eozynofilia reaktywna w HL, PMID 34460126 – tylko opis przypadku, brak streszczenia; częstość [wiedza modelu, niezweryfikowane])",
+        "Limfopenia 0,8 G/l, leukocytoza 11,8 G/l, trombocytoza 420 G/l, Hb 12,1 g/dl, OB 62 mm/h → obraz zapalny/paranowotworowy zgodny z HL → słabo-umiarkowanie (limfopenia i Hb są czynnikami IPS w HL, Hasenclever 1998, PMID 9819449; tu limfocyty 0,8 G/l > progu 0,6 G/l, Hb > 10,5 g/dl)",
+        "Kaszel > 3 tygodni → zgodny z masą śródpiersia w HL → słabo (PMID 39734971)"
+      ],
+      "przeciw": [
+        "Wiek 55 lat: w tej grupie chłoniaki nieziarnicze są kilkakrotnie częstsze niż chłoniak Hodgkina → obniża względem chłoniaka nieziarniczego → umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Palenie + kaszel > 3 tygodni + węzeł nadobojczykowy → konkurencyjna hipoteza raka płuca z przerzutami → umiarkowanie",
+        "Brak badania fizykalnego (NIEZNANE): nie wiemy, czy węzeł jest twardy/przesuwalny, czy są inne grupy węzłów, śledziona"
+      ]
+    },
+    {
+      "nazwa": "Chłoniak nieziarniczy (w tym z komórek T, np. angioimmunoblastyczny)",
+      "p": 0.18,
+      "za": [
+        "Pretest: w wieku 55 lat chłoniaki nieziarnicze częstsze niż chłoniak Hodgkina → podnosi → umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Objawy B, węzeł > 2 cm, OB 62 mm/h → wspólne dla chłoniaków → neutralne między HL a NHL",
+        "Świąd + eozynofilia → zgodne także z chłoniakiem angioimmunoblastycznym T (PMID 38489975)"
+      ],
+      "przeciw": [
+        "Ból węzłów po alkoholu → obniża NHL względem HL → silnie [wiedza modelu, niezweryfikowane]",
+        "Eozynofilia rzadsza w chłoniakach nieziarniczych B → obniża → umiarkowanie [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Rak płuca z przerzutami do węzłów nadobojczykowych",
+      "p": 0.12,
+      "za": [
+        "Mężczyzna 55 lat, palacz, kaszel > 3 tygodni, utrata masy ciała → podnosi → umiarkowanie-silnie",
+        "Węzeł nadobojczykowy → typowa droga przerzutów z klatki piersiowej → umiarkowanie (Bazemore 2002, PMID 12484692: lokalizacja nadobojczykowa i wiek jako kluczowe czynniki ryzyka nowotworu)",
+        "Trombocytoza, niedokrwistość, OB 62 mm/h → zgodne → słabo"
+      ],
+      "przeciw": [
+        "Ból węzłów po alkoholu i uogólniony świąd → nietypowe dla raka płuca → umiarkowanie",
+        "Eozynofilia rzadko w raku płuca → słabo-umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Nieznana liczba paczkolat i daty palenia (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Gruźlica (płucna z zajęciem węzłów chłonnych)",
+      "p": 0.1,
+      "za": [
+        "Kaszel > 3 tygodni + poty nocne + utrata masy ciała + stany podgorączkowe → klasyczna triada → umiarkowanie; reguła ankiety: RTG klatki piersiowej obowiązkowe",
+        "Limfopenia, OB 62 mm/h → zgodne → słabo"
+      ],
+      "przeciw": [
+        "Eozynofilia i świąd → nietypowe dla gruźlicy → umiarkowanie",
+        "Ból węzłów po alkoholu → nietypowy → silnie",
+        "Polska: zapadalność niska (pretest w POZ niski) [wiedza modelu, niezweryfikowane]; brak danych o kontakcie z chorym (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zespół wypalenia zawodowego lub depresja",
+      "p": 0.01,
+      "za": [
+        "Pretest: zmęczenie w POZ najczęściej o podłożu psychospołecznym → wysoki pretest dla samego zmęczenia [wiedza modelu, niezweryfikowane]",
+        "Duże obciążenie pracą, opinia żony"
+      ],
+      "przeciw": [
+        "Anhedonia/przygnębienie: wcale w ostatnich 2 tygodniach → silnie obniża depresję",
+        "Apetyt bez zmian przy utracie 7 kg → obniża przyczynę psychogenną utraty masy → silnie",
+        "Kolejność: najpierw objawy somatyczne, potem gorsze samopoczucie → obniża",
+        "Gorączka 37,8 °C, OB 62 mm/h, eozynofilia, limfopenia, węzeł > 2 cm → nie tłumaczy ich żadna przyczyna psychiczna → bardzo silnie",
+        "Nawet jeśli współistnieje wypalenie, nie wyjaśnia obrazu – rozpoznanie z wykluczenia, niedopuszczalne przed diagnostyką"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Myśli samobójcze – zaprzecza",
+    "Ostre objawy alarmowe w ostatnich dniach – pacjent zaprzecza w ankiecie"
+  ],
+  "red_flags_otwarte": [
+    "Węzeł szyjny/nadobojczykowy > 2 cm przy objawach B (reguła ankiety: PILNE)",
+    "Kaszel > 3 tygodni z potami nocnymi i chudnięciem – gruźlica i masa śródpiersia niewykluczone do czasu RTG klatki piersiowej",
+    "Możliwa masa śródpiersia: nieznane objawy ucisku (duszność, obrzęk twarzy/szyi, poszerzenie żył szyjnych) – badanie fizykalne NIEZNANE; ich obecność podnosi pilność do 1–2",
+    "Brak badania fizykalnego i parametrów życiowych (NIEZNANE)"
+  ],
+  "nastepny_krok": "Dziś: badanie fizykalne z saturacją i oceną cech ucisku śródpiersia, RTG klatki piersiowej w dwóch projekcjach oraz karta diagnostyki i leczenia onkologicznego (DiLO) z podejrzeniem chłoniaka i skierowaniem na biopsję wycięciową (nie cienkoigłową) węzła nadobojczykowego.",
+  "co_zmieniloby_zdanie": "RTG z naciekiem jamistym w szczycie lub kontakt z gruźlicą przesunąłby ciężar ku gruźlicy (wtedy plwocina na prątki i ostrożność epidemiologiczna), a guz obwodowy płuca z powiększeniem węzłów wnęki – ku rakowi płuca; ostateczne rozstrzygnięcie daje histopatologia węzła.",
+  "odpowiedz_na_pytanie": "Somatyczne – najpewniej chłoniak Hodgkina; wypalenie/depresja p ≈ 0,01. Badania: RTG klatki piersiowej, karta DiLO, biopsja wycięciowa węzła; uzupełniająco LDH, albumina, ALT/AST, bilirubina, kreatynina, HIV, HBV, HCV [wiedza modelu, niezweryfikowane].",
+  "uwagi_bayesowskie": "Kontrola błędu reprezentatywności: sam obraz 'podręcznikowego Hodgkina' nie wystarcza, bo w wieku 55 lat NHL ma wyższy pretest i palacz z kaszlem ma realny pretest raka płuca; jednak ból po alkoholu, świąd i eozynofilia (trzy niezależne cechy względnie swoiste dla HL) przeważają iloraz szans HL:NHL mimo pretestu ok. 1:5. Ślepa tura: wyniki laboratoryjne z jednego pomiaru, OB ma niską swoistość. Przyczyna psychogenna: nie ma dobrego testu, ale brak anhedonii i obiektywne odchylenia praktycznie ją wykluczają jako wyjaśnienie całości.",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskiej wytycznej dla limfadenopatii/chłoniaka w bibliotece; pamiec/zespol.md – brak reguł dla tej prezentacji",
+    "Zapytania PubMed: (1) 'alcohol-induced pain Hodgkin lymphoma' – 15 trafień, skuteczne; (2) 'lymphadenopathy primary care risk of malignancy supraclavicular' – 3, skuteczne; (3) 'eosinophilia lymphopenia prognostic Hodgkin lymphoma pruritus' – 0, nieskuteczne; (4) 'Hasenclever international prognostic score advanced Hodgkin lymphoma lymphocytopenia' – 1, skuteczne; (5) 'unexplained weight loss primary care cancer risk cohort' – 3 nietrafne, nieskuteczne; (6) '\"Hodgkin disease\"[MeSH Terms] AND eosinophilia[Title]' – 44, skuteczne; (7) 'pruritus[Title] AND (Hodgkin[Title] OR lymphoma[Title])' – 72, skuteczne",
+    "Chau I i wsp. Rapid access multidisciplinary lymph node diagnostic clinic: analysis of 550 patients. Br J Cancer 2003;88:354-61. PMID 12569376, DOI 10.1038/sj.bjc.6600738 (streszczenie sprawdzone: supraclavicular RR 3,72; płeć męska RR 2,72; wiek RR 1,05)",
+    "Bazemore AW, Smucker DR. Lymphadenopathy and malignancy. Am Fam Physician 2002;66:2103-10. PMID 12484692 (bez DOI; streszczenie sprawdzone: częstość nowotworu w limfadenopatii w POZ ok. 1,1%; czynniki ryzyka: wiek, twardy węzeł, > 2 tygodni, lokalizacja nadobojczykowa; biopsja wycięciowa jako badanie z wyboru)",
+    "Hasenclever D, Diehl V. A prognostic score for advanced Hodgkin's disease. N Engl J Med 1998;339:1506-14. PMID 9819449, DOI 10.1056/NEJM199811193392104 (streszczenie sprawdzone: czynniki IPS m.in. limfocyty < 600/mm3, Hb < 10,5 g/dl, płeć męska, wiek ≥ 45 lat)",
+    "Ma L i wsp. Hodgkin lymphoma presenting as alcohol-induced back pain. BMJ Case Rep 2019;12. PMID 31780609, DOI 10.1136/bcr-2018-228440 (streszczenie sprawdzone: ból po alkoholu – rzadki, ale znany objaw HL)",
+    "Cardoso T, Gonçalves L. Hodgkin Lymphoma As the Underlying Cause of a Chronic Cough. Cureus 2024;16:e74778. PMID 39734971, DOI 10.7759/cureus.74778 (streszczenie sprawdzone: objawy B, świąd, ból po alkoholu, kaszel przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła)",
+    "Wen X i wsp. Serum cytokine expression and skin pruritus in Hodgkin lymphoma and angioimmunoblastic T-cell lymphoma. Int Immunopharmacol 2024;131:111777. PMID 38489975, DOI 10.1016/j.intimp.2024.111777 (streszczenie sprawdzone: świąd częsty w HL i AITL)",
+    "Siow W i wsp. Eosinophil morphology in the reactive eosinophilia of Hodgkin lymphoma. Am J Hematol 2021. PMID 34460126, DOI 10.1002/ajh.26337 (brak streszczenia – teza o eozynofilii reaktywnej w HL oznaczona jako częściowo [wiedza modelu, niezweryfikowane])",
+    "Wielkości LR dla bólu po alkoholu i eozynofilii, proporcja NHL:HL w wieku 55 lat, zakres badań wstępnych – [wiedza modelu, niezweryfikowane]"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: pilność 3 → 2. Pacjent niebadany, kaszel > 3 tygodni z węzłem nadobojczykowym > 2 cm = nieodrzucona masa śródpiersia i możliwa prątkująca gruźlica; pilność 3 była niespójna z własnym następnym krokiem (DiLO dziś). p rozpoznań bez zmian."
+}

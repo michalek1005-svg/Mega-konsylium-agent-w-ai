@@ -1,0 +1,108 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Euglikemiczna kwasica ketonowa związana z inhibitorem SGLT2 (flozyną), wywołana nieżytem żołądkowo-jelitowym i głodzeniem",
+      "p": 0.45,
+      "za": [
+        "Pretest: u chorej na cukrzycę typu 2 przyjmującej flozynę roczne ryzyko hospitalizacji z kwasicą ketonową jest niskie (ok. 4,4/1000 osobolat w kohorcie z przewlekłą chorobą nerek, PMID 41627917), ale ryzyko skupia się właśnie w epizodach ostrej choroby z małą podażą → punkt wyjścia ok. 2–5% w tej sytuacji klinicznej, nie 0,4%",
+        "Głęboki, szybki oddech, którego nie da się uspokoić (oddech Kussmaula) → silnie podnosi kwasicę metaboliczną [wiedza modelu, niezweryfikowane: LR+ nieznane z literatury, kierunek silny]",
+        "Senność, trudność w dobudzeniu → silnie podnosi ciężką kwasicę lub wstrząs; przy samym nieżycie wirusowym rzadkie",
+        "3 dni wymiotów, tylko małe łyki płynów → umiarkowanie podnosi: głodzenie i zmniejszona podaż węglowodanów są najczęstszym czynnikiem wyzwalającym (11/15 opisanych przypadków przy niskiej glikemii, PMID 42882058)",
+        "Glikemia 70–250 mg/dl (3,9–13,9 mmol/l), ostatnio 180 mg/dl → nie obniża, bo w kwasicy przy flozynie glikemia bywa prawidłowa; glukoza nie korelowała z beta-hydroksymaślanem (PMID 42882058)",
+        "Stały ból brzucha 5/10 → słabo podnosi (ból brzucha jest częsty w kwasicy ketonowej) [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Ketony nie były mierzone → brak danych, nie obniża",
+        "Zachorowanie wnuczka i biegunka dają spójne, częste wyjaśnienie dolegliwości jelitowych → przyczyna wyzwalająca, nie konkurencyjne rozpoznanie dla oddechu i senności",
+        "Oddech szybki może wynikać z lęku lub gorączki → słabo obniża, bo towarzyszy mu senność, a nie pobudzenie"
+      ]
+    },
+    {
+      "nazwa": "Kwasica mleczanowa związana z metforminą przy ostrym uszkodzeniu nerek z odwodnienia",
+      "p": 0.2,
+      "za": [
+        "Pretest bardzo niski (poniżej 10/100 000 osobolat, PMID 42696402), ale zależy od ostrego spadku funkcji nerek; odwodnienie i ostre uszkodzenie nerek są głównymi czynnikami wyzwalającymi (PMID 42178010)",
+        "Wymioty i wodnista biegunka przez 2–3 dni opisane jako bezpośredni wyzwalacz ciężkiej kwasicy mleczanowej z ostrym uszkodzeniem nerek u chorego na metforminie (PMID 33031284)",
+        "Inhibitor konwertazy angiotensyny lub sartan + flozyna + hipowolemia → umiarkowanie podnosi ryzyko przednerkowego uszkodzenia nerek [wiedza modelu, niezweryfikowane]",
+        "Tachypnoe, hipotensja i zaburzenia świadomości wymienione jako typowe objawy (PMID 42178010)",
+        "Ciśnienie skurczowe 98 mmHg, tętno 112/min → umiarkowanie podnosi hipoperfuzję"
+      ],
+      "przeciw": [
+        "Mocz oddany w ciągu ostatnich 6 godzin → słabo obniża ciężkie oligoanuryczne uszkodzenie nerek",
+        "Kreatynina nieznana (NIEZNANE) → nie da się ocenić wyjściowej funkcji nerek",
+        "Często współistnieje z kwasicą ketonową (opisy przypadków mieszanych, PMID 42789768, 42696402) — rozdzielenie wymaga mleczanu i beta-hydroksymaślanu"
+      ]
+    },
+    {
+      "nazwa": "Wirusowy nieżyt żołądkowo-jelitowy z odwodnieniem bez istotnej kwasicy",
+      "p": 0.17,
+      "za": [
+        "Pretest w POZ: najczęstsza przyczyna ostrych wymiotów i biegunki u dorosłego, zwłaszcza z kontaktem rodzinnym (wnuczek) → silny punkt wyjścia [wiedza modelu, niezweryfikowane]",
+        "Brak krwi w stolcu i fusowatych wymiotów → słabo podnosi łagodny przebieg"
+      ],
+      "przeciw": [
+        "Oddech Kussmaula → silnie obniża (nie pasuje do niepowikłanego nieżytu)",
+        "Senność z trudnością dobudzenia → silnie obniża",
+        "Ciśnienie skurczowe 98 mmHg i tętno 112/min → umiarkowanie obniża (co najmniej odwodnienie istotne)"
+      ]
+    },
+    {
+      "nazwa": "Sepsa z ogniskiem w jamie brzusznej lub inna ostra choroba brzucha (w tym niedokrwienie jelit)",
+      "p": 0.1,
+      "za": [
+        "Stały, niemijający ból brzucha → umiarkowanie podnosi",
+        "Tachykardia, hipotensja, zaburzenia świadomości, tachypnoe → spełnia elementy obrazu sepsy [wiedza modelu, niezweryfikowane]",
+        "Kobieta 61 lat z długoletnią cukrzycą i statyną (choroba miażdżycowa prawdopodobna) → słabo podnosi niedokrwienie krezki"
+      ],
+      "przeciw": [
+        "Kontakt rodzinny z nieżytem → obniża (wspólna przyczyna zakaźna jelitowa)",
+        "Ból 5/10, nie opisany jako nieproporcjonalny do badania → słabo obniża (badanie fizykalne NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy lub niewydolność serca z dusznością",
+      "p": 0.05,
+      "za": [
+        "Kobieta 61 lat z wieloletnią cukrzycą (objawy nietypowe, ból brzucha, słabość, duszność) → słabo podnosi [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Spójna przyczyna jelitowa z kontaktem rodzinnym → umiarkowanie obniża",
+        "Oddech głęboki (a nie płytki) bardziej pasuje do kwasicy niż do zastoju w płucach"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Krwawienie z przewodu pokarmowego: brak krwi w stolcu i fusowatych wymiotów (wg ankiety)"
+  ],
+  "red_flags_otwarte": [
+    "Oddech Kussmaula przy flozynie i metforminie: kwasica metaboliczna (ketonowa euglikemiczna lub mleczanowa) do wykluczenia gazometrią, beta-hydroksymaślanem i mleczanem",
+    "Senność z trudnością dobudzenia: zaburzenia świadomości",
+    "Ciśnienie skurczowe 98 mmHg i tętno 112/min: hipowolemia lub wstrząs septyczny",
+    "Nietolerancja płynów doustnych: nawadnianie w domu niewykonalne",
+    "Kreatynina i eGFR nieznane: ostre uszkodzenie nerek niewykluczone",
+    "Stały ból brzucha: ostra choroba brzucha niewykluczona bez badania fizykalnego",
+    "Ból w klatce piersiowej i EKG nieocenione"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) do natychmiastowego transportu na szpitalny oddział ratunkowy z informacją 'podejrzenie euglikemicznej kwasicy ketonowej przy flozynie i kwasicy mleczanowej przy metforminie' — nie nawadniać w domu; do czasu przyjazdu nie przyjmować kolejnych dawek metforminy, flozyny ani inhibitora konwertazy/sartanu.",
+  "co_zmieniloby_zdanie": "Prawidłowa gazometria (pH ≥7,35, wodorowęglany prawidłowe), beta-hydroksymaślan <0,6 mmol/l i mleczan prawidłowy przy prawidłowej świadomości po nawodnieniu sprowadziłyby rozpoznanie do odwodnienia w przebiegu nieżytu, a dominujący mleczan przy niskich ketonach przesunąłby pierwsze miejsce na kwasicę mleczanową związaną z metforminą.",
+  "odpowiedz_na_pytanie": "Nie nawadniać w domu: 112 i szpitalny oddział ratunkowy; odstawić metforminę, flozynę i inhibitor konwertazy/sartan.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak wytycznej PTD/innej polskiej w bibliotece (tylko przykładowe wiersze) — poziom 1 milczy",
+    "PubMed zapytanie 1 (0 wyników, nieskuteczne): euglycemic diabetic ketoacidosis SGLT2 inhibitor gastroenteritis",
+    "PubMed zapytanie 2 (skuteczne): metformin-associated lactic acidosis[Title] acute kidney injury dehydration",
+    "PubMed zapytanie 3 (0 wyników, nieskuteczne): Kussmaul respiration metabolic acidosis diagnostic accuracy respiratory rate",
+    "PubMed zapytanie 4 (skuteczne, od 2018): euglycemic ketoacidosis SGLT2 inhibitors incidence",
+    "PubMed zapytanie 5 (skuteczne, od 2018): SGLT2 inhibitor diabetic ketoacidosis risk population-based cohort",
+    "PMID 41627917 · DOI 10.34067/KID.0000001144 · Hansrivijit i wsp., Kidney360 2026 — kwasica ketonowa 4,37 vs 3,13/1000 osobolat (flozyna vs agonista GLP-1), HR 1,40; streszczenie sprawdzone",
+    "PMID 42882058 · DOI 10.3390/jcm15197595 · Itagaki, Endo, J Clin Med 2026 — przegląd 15 przypadków kwasicy ketonowej przy glikemii <100 mg/dl na flozynie; głodzenie/mała podaż w 11/15; glukoza nie korelowała z beta-hydroksymaślanem; streszczenie sprawdzone",
+    "PMID 42906932 · DOI 10.17085/apm.26812 · Park, Hong 2026 — preferowany ilościowy beta-hydroksymaślan we krwi; ujemny test moczu nie wyklucza; streszczenie sprawdzone",
+    "PMID 42178010 · DOI 10.1016/j.ejphar.2026.179017 · Anwar i wsp., Eur J Pharmacol 2026 — kwasica mleczanowa przy metforminie jako zaburzenie kumulacji przy ostrym uszkodzeniu nerek, odwodnieniu; objawy: tachypnoe, hipotensja, zaburzenia świadomości; zasady dni choroby; streszczenie sprawdzone",
+    "PMID 42696402 · DOI 10.34067/KID.0000001379 · Adnani i wsp., Kidney360 2026 — częstość kwasicy mleczanowej przy metforminie <10/100 000 osobolat, śmiertelność 30–50%; współistnienie z kwasicą ketonową przy względnej euglikemii; streszczenie sprawdzone",
+    "PMID 33031284 · DOI 10.1097/MD.0000000000022492 · Elshafei i wsp., Medicine 2020 — 2 dni wymiotów i biegunki → ostre uszkodzenie nerek i kwasica mleczanowa przy metforminie (pH 6,8, mleczan 24 mmol/l); streszczenie sprawdzone",
+    "PMID 42789768 · DOI 10.1530/EDM-26-0025 · Epitropoulos i wsp. 2026 — współistnienie kwasicy mleczanowej i euglikemicznej kwasicy ketonowej przy małej podaży doustnej; streszczenie sprawdzone",
+    "[wiedza modelu, niezweryfikowane] częstość wirusowego nieżytu jako przyczyny ostrych wymiotów i biegunki w POZ; brak liczbowego LR dla oddechu Kussmaula"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Euglikemiczna kwasica ketonowa wywołana inhibitorem kotransportera sodowo-glukozowego typu 2 (flozyną) w przebiegu nieżytu żołądkowo-jelitowego",
+      "p": 0.45,
+      "za": [
+        "Przyjmuje flozynę; 3 dni wymiotów i biegunki z minimalną podażą doustną to klasyczny czynnik wyzwalający (głodzenie, odwodnienie) - Long 2021, PMID 33626481",
+        "Głęboki, szybki oddech, którego nie może uspokoić = oddech Kussmaula, czyli kompensacja oddechowa kwasicy metabolicznej",
+        "Senność, trudność w dobudzeniu",
+        "Glikemia 180 mg/dl (zakres 70-250) nie wyklucza kwasicy ketonowej: definicja euglikemicznej kwasicy to glukoza < 250 mg/dl z kwasicą z luką anionową i ketozą (PMID 33626481)",
+        "Typowe objawy euglikemicznej kwasicy: nudności, wymioty, złe samopoczucie, zmęczenie - niespecyficzne, łatwo uznać za nieżyt (PMID 33626481, 38786741)",
+        "Ketonów nie mierzono"
+      ],
+      "przeciw": [
+        "Brak gazometrii, ketonów i luki anionowej - rozpoznanie niepotwierdzone",
+        "Duszność może wynikać z innej przyczyny (sercowo-płucnej, wstrząsu)"
+      ]
+    },
+    {
+      "nazwa": "Wstrząs hipowolemiczny z ostrym uszkodzeniem nerek w przebiegu zakaźnego nieżytu żołądkowo-jelitowego",
+      "p": 0.2,
+      "za": [
+        "Ciśnienie skurczowe 98 mmHg, tętno 112/min (wskaźnik wstrząsowy ok. 1,1) [wiedza modelu, niezweryfikowane - próg wskaźnika wstrząsowego]",
+        "Wymioty uniemożliwiają nawodnienie doustne: tylko małe łyki, często wracają",
+        "Kontakt rodzinny (wnuczek chorował) - wirusowy nieżyt jako choroba podstawowa",
+        "Inhibitor konwertazy angiotensyny lub sartan + flozyna + odwodnienie = wysokie ryzyko przednerkowego ostrego uszkodzenia nerek [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Sama hipowolemia gorzej tłumaczy oddech Kussmaula i senność; to raczej tło dla kwasicy niż alternatywa",
+        "Mocz oddany w ciągu ostatnich 6 godzin - brak jawnego bezmoczu"
+      ]
+    },
+    {
+      "nazwa": "Kwasica mleczanowa związana z metforminą",
+      "p": 0.15,
+      "za": [
+        "Przyjmuje metforminę; odwodnienie i prawdopodobne ostre uszkodzenie nerek prowadzą do kumulacji leku",
+        "Prezentacja kwasicy mleczanowej związanej z metforminą obejmuje duszność, wymioty, letarg, tachypnoe, oddech Kussmaula (opis przypadku PMID 42834623)",
+        "Ciężka kwasica mleczanowa może występować przy względnie zachowanej kreatyninie (PMID 42903999)",
+        "Kreatynina/eGFR NIEZNANE"
+      ],
+      "przeciw": [
+        "Stan rzadki; częściej mleczan wtórny do hipoperfuzji niż do samego leku",
+        "Może współistnieć z kwasicą ketonową - oba mechanizmy rozróżnia dopiero mleczan i ketony we krwi"
+      ]
+    },
+    {
+      "nazwa": "Sepsa lub ostry stan brzuszny (niedokrwienie jelit, ostre zapalenie trzustki)",
+      "p": 0.1,
+      "za": [
+        "Ból brzucha stały, 5/10, nie mija",
+        "Tachykardia, hipotensja względna, senność",
+        "Wiek 61 lat, cukrzyca, miażdżyca prawdopodobna (statyna)"
+      ],
+      "przeciw": [
+        "Kontekst rodzinnego nieżytu i biegunka bez krwi (pacjentka nie zaznaczyła krwi ani fusowatych wymiotów)",
+        "Ból brzucha jest częstym objawem samej kwasicy ketonowej [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy o nietypowym przebiegu",
+      "p": 0.05,
+      "za": [
+        "Kobieta z długoletnią cukrzycą: nietypowe objawy (duszność, osłabienie, ból w nadbrzuszu, nudności)",
+        "Hipotensja i tachykardia"
+      ],
+      "przeciw": [
+        "Wyraźny czynnik infekcyjny z kontaktem rodzinnym i biegunką",
+        "Brak bólu w klatce piersiowej w ankiecie"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Krwawienie z przewodu pokarmowego - pacjentka nie zaznaczyła krwi w stolcu ani fusowatych wymiotów (z ankiety, bez badania)",
+    "Bezmocz - mocz oddany w ciągu ostatnich 6 godzin (nie wyklucza skąpomoczu ani ostrego uszkodzenia nerek)"
+  ],
+  "red_flags_otwarte": [
+    "Kwasica metaboliczna: oddech Kussmaula przy flozynie i metforminie - wyklucza tylko gazometria z luką anionową, ketony we krwi (beta-hydroksymaślan) i mleczan",
+    "Zaburzenia świadomości: senność, trudność w dobudzeniu - reguła ankiety NATYCHMIAST 112",
+    "Niestabilność hemodynamiczna: ciśnienie skurczowe 98 mmHg, tętno 112/min - reguła ankiety PILNE (skurczowe 90-100, tętno >110)",
+    "Brak tolerancji płynów doustnych - nawadnianie w domu niewykonalne",
+    "Ostre uszkodzenie nerek i hiperkaliemia (inhibitor konwertazy/sartan + odwodnienie) - kreatynina NIEZNANA; wyklucza kreatynina, potas, gazometria",
+    "Sepsa / ostry brzuch - stały ból brzucha; wyklucza badanie fizykalne, mleczan, lipaza, morfologia, CRP",
+    "Ostry zespół wieńcowy - wyklucza EKG i troponina"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) teraz - transport do szpitalnego oddziału ratunkowego z informacją 'podejrzenie euglikemicznej kwasicy ketonowej przy flozynie i kwasicy mleczanowej przy metforminie'; do czasu przyjazdu nie przyjmować flozyny, metforminy ani leku z grupy inhibitorów konwertazy/sartanów, nie próbować nawadniania doustnego jako leczenia.",
+  "co_zmieniloby_zdanie": "Pilność obniżyłbym dopiero po prawidłowej gazometrii (pH i wodorowęglany w normie, prawidłowa luka anionowa), ketonach we krwi < 0,6 mmol/l, prawidłowym mleczanie i kreatyninie oraz ustąpieniu senności i normalizacji ciśnienia i tętna po nawodnieniu - czego w warunkach domowych nie da się uzyskać.",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak plików polskich wytycznych (tylko przykładowe wiersze); pamiec/zespol.md - brak wpisów o flozynach/metforminie/kwasicy",
+    "PubMed zapytanie 1 (0 wyników, nieskuteczne): 'euglycemic diabetic ketoacidosis SGLT2 inhibitor gastroenteritis vomiting'",
+    "PubMed zapytanie 2 (0 wyników, nieskuteczne): 'metformin-associated lactic acidosis acute kidney injury dehydration[Title/Abstract]'",
+    "PubMed zapytanie 3 (0 wyników, nieskuteczne): 'sick day rules SGLT2 inhibitors metformin acute illness'",
+    "PubMed zapytanie 4 (415 wyników): 'euglycemic ketoacidosis SGLT2 inhibitors'",
+    "PubMed zapytanie 5 (414 wyników, od 2015): 'metformin-associated lactic acidosis'",
+    "PubMed zapytanie 6 (1 wynik): 'sick day guidance SGLT2 inhibitors'",
+    "Long B, et al. Euglycemic diabetic ketoacidosis: Etiologies, evaluation, and management. Am J Emerg Med 2021;44:157-160. PMID 33626481, DOI 10.1016/j.ajem.2021.02.015 - streszczenie sprawdzone: definicja glukoza <250 mg/dl + kwasica z luką anionową + ketoza; czynniki: głodzenie, infekcja, SGLT2i; objawy nudności, wymioty, osłabienie; diagnostyka gazometria żylna, ketony; leczenie płyny i.v., insulina, glukoza",
+    "Chow E, Clement S, Garg R. Euglycemic diabetic ketoacidosis in the era of SGLT-2 inhibitors. BMJ Open Diabetes Res Care 2023;11(5):e003666. PMID 37797963, DOI 10.1136/bmjdrc-2023-003666 - streszczenie sprawdzone: trudność diagnostyczna z powodu braku hiperglikemii; wczesne rozpoznanie poprawia wyniki",
+    "Morace C, et al. Ketoacidosis and SGLT2 Inhibitors: A Narrative Review. Metabolites 2024;14(5):264. PMID 38786741, DOI 10.3390/metabo14050264 - streszczenie sprawdzone: przebieg podstępny, objawy niespecyficzne, progresja do ciężkich postaci układowych",
+    "Khunti K, et al. Re-examining the widespread policy of stopping SGLT2 inhibitors during acute illness. Diabetes Obes Metab 2022;24(11):2071-2080. PMID 35801339, DOI 10.1111/dom.14805 - streszczenie sprawdzone: konsensusy zalecają unikanie SGLT2i w ciężkiej chorobie; kwasica ketonowa rzadka, ale z wysoką śmiertelnością",
+    "Hassanein M, et al. Severe suspected MALA with relatively preserved serum creatinine. Cureus 2026;18(9):e116607. PMID 42903999, DOI 10.7759/cureus.116607 - streszczenie sprawdzone: ciężka kwasica mleczanowa przy kreatyninie 1,18 mg/dl po niedawnym ostrym uszkodzeniu nerek",
+    "Sophark P, et al. Successful treatment of MALA without hemodialysis. J Pediatr Endocrinol Metab 2026. PMID 42834623, DOI 10.1515/jpem-2026-0161 - streszczenie sprawdzone: prezentacja duszność, wymioty, letarg, tachypnoe, oddech Kussmaula (przypadek pediatryczny - tylko ilustracja obrazu klinicznego)",
+    "Próg ketonów 0,6 mmol/l, wskaźnik wstrząsowy, ryzyko ostrego uszkodzenia nerek przy inhibitorach konwertazy/sartanach i odwodnieniu, ból brzucha jako objaw kwasicy ketonowej: [wiedza modelu, niezweryfikowane]"
+  ]
+}

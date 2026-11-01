@@ -1,0 +1,156 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Przewlekły ból głowy typu napięciowego",
+      "p": 0.096,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Ból głowy z nadużywania leków przeciwbólowych na podłożu pierwotnego bólu głowy",
+      "p": 0.094,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Ból głowy z nadużywania leków na podłożu migreny z aurą",
+      "p": 0.09,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — ból głowy z nadużywania leków przeciwbólowych (ketoprofen, paracetamol, złożone preparaty z kofeiną)",
+      "p": 0.076,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Przewlekła migrena z aurą",
+      "p": 0.065,
+      "wymienili": [
+        "bayes",
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.006,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 3,
+    "mediana_wazona": 3.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Aura wzrokowa u kobiety przyjmującej złożoną antykoncepcję estrogenową: przy migrenie z aurą antykoncepcja złożona jest przeciwwskazana z powodu ryzyka udaru niedokrwiennego (PMID 41630559, 36126006; CDC zaleca unikać); dane obserwacyjne z 2025 r. tego nie potwierdziły dla nowoczesnych dawek (PMID 41406065), ale nie zmieniają przeciwwskazania. Wykluczy: potwierdzenie, że to nie aura migrenowa, albo zmiana na antykoncepcję bez estrogenu",
+      "Badanie neurologiczne i ocena dna oka nie wykonane (NIEZNANE): obrzęk tarczy nerwu wzrokowego lub objaw ogniskowy zmieniają decyzję o MRI na pilną.",
+      "Bezdech senny niewykluczony (zły sen, ból po przebudzeniu). Wykluczy: wywiad chrapania i bezdechów, skala senności, masa ciała",
+      "Cechy aury NIEZNANE (czas trwania, czy zawsze ta sama, czy bywa bez bólu, czy jednostronne objawy czuciowe lub ruchowe): aura nietypowa lub przedłużona jest wskazaniem do neuroobrazowania (PMID 31891197).",
+      "Charakter aury nieustalony: aura nietypowa (trwająca ponad 60 minut, zawsze w tym samym polu widzenia, z niedowładem, zaburzeniami mowy, nowa po 40. roku życia) wymaga różnicowania z przemijającym niedokrwieniem i zmianą w płacie potylicznym. Wykluczy: szczegółowy wywiad aury i prawidłowe badanie neurologiczne",
+      "Codzienny ketoprofen od 6 miesięcy łącznie z drospirenonem: ryzyko krwawienia z przewodu pokarmowego, uszkodzenia nerek i hiperkaliemii [wiedza modelu, niezweryfikowane]. Wykluczy: brak objawów krwawienia, prawidłowa morfologia, kreatynina z eGFR, potas",
+      "Migrena z aurą u kobiety 46 lat stosującej złożoną antykoncepcję z etynyloestradiolem: przeciwwskazanie z powodu ryzyka udaru niedokrwiennego (PMID 41630559, 39979846); niejasne, czy aura jest nowa i jak długo trwa.",
+      "Zatrucie tlenkiem węgla jako przyczyna porannych bólów głowy niewykluczone — nie pytano o piecyk lub junkers ani o bóle u domowników [wiedza modelu, niezweryfikowane]",
+      "Zmiana wzorca bólu głowy po 40. roku życia z maksimum porannym (SNNOOP10) przy nieznanym badaniu neurologicznym i dnie oka — guz, idiopatyczne nadciśnienie wewnątrzczaszkowe, zakrzepica zatok żylnych niewykluczone. Wykluczy: prawidłowe badanie neurologiczne z oceną dna oka (brak tarczy zastoinowej)",
+      "Zmiana wzorca bólu po 40. roku życia (z epizodycznego w codzienny): wskazanie względne do neuroobrazowania, jeśli nie ustąpi po odstawieniu leków (PMID 31891197).",
+      "aura u kobiety przyjmującej złożoną antykoncepcję estrogenowo-progestagenną - ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa i ile trwa (aura nowa, przedłużona >60 min lub z objawami ruchowymi wymaga pilnej diagnostyki)",
+      "aura wzrokowa u kobiety przyjmującej złożoną antykoncepcję estrogenowo-progestagenową - zwiększone ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa (NIEZNANE)",
+      "aura wzrokowa u kobiety stosującej złożoną antykoncepcję estrogenowo-progestagenową (etynyloestradiol + drospirenon): migrena z aurą zwiększa ryzyko udaru niedokrwiennego, a złożone środki antykoncepcyjne to ryzyko dodatkowo zwiększają; CDC zaleca ich unikanie (PMID 36126006, PMID 32056462)",
+      "badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) - NIEZNANE, ankieta ich nie obejmuje",
+      "badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) NIEZNANE",
+      "badanie neurologiczne i dno oka NIEZNANE — farmakologicznie nie rozstrzygam wskazań do rezonansu magnetycznego",
+      "brak badania przedmiotowego: badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) NIEZNANE",
+      "ból obecny po przebudzeniu: do czasu badania nie wykluczono nadciśnienia śródczaszkowego",
+      "charakter aury nieopisany (czas trwania, czy zawsze przed bólem, czy jednostronne objawy czuciowe/ruchowe) - różnicowanie z przemijającym niedokrwieniem",
+      "codzienne przyjmowanie ketoprofenu — ryzyko krwawienia z przewodu pokarmowego i uszkodzenia nerek; morfologia i kreatynina NIEZNANE",
+      "nastrój NIEZNANE — istotne przed włączeniem amitryptyliny (toksyczność w przedawkowaniu)",
+      "nie wiadomo, czy aura jest nowa (pierwszy raz po 40. roku życia) czy znana od lat, ani jaki ma czas trwania i charakter (aura >60 min, ruchowa, czuciowa jednostronna lub bez następowego bólu wymaga pilniejszej diagnostyki)",
+      "objawy wzrokowe przed bólem (migotanie, zygzaki) u 46-latki przyjmującej złożoną antykoncepcję z etynyloestradiolem — ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa (nowa aura po 40. roku życia wymaga oceny neurologicznej), ile trwa i czy jest w pełni odwracalna",
+      "zmiana wzorca bólu głowy 6 miesięcy temu u kobiety 46-letniej (SNNOOP10: pattern change) - do weryfikacji badaniem neurologicznym",
+      "zmiana wzorca bólu w wieku 46 lat - flaga względna, rozstrzyga badanie przedmiotowe, nie obrazowe"
+    ],
+    "wykluczone": [
+      "Ból nasilany kaszlem, kichaniem, parciem, schylaniem — zaprzeczony",
+      "Ból piorunujący (szczyt w ciągu minuty) — wykluczony odpowiedzią pacjentki; krwotok podpajęczynówkowy i rozwarstwienie tętnicy w ostrej fazie mało prawdopodobne",
+      "Choroba nowotworowa, immunosupresja, gorączka i objawy ogólne — zaprzeczone w ankiecie (lista objawów: nic z tych rzeczy)",
+      "Nadciśnienie tętnicze jako przyczyna — pomiar w ostatnich 3 miesiącach poniżej 140/90 mmHg",
+      "Nadciśnienie tętnicze w ostatnich 3 miesiącach (pomiar prawidłowy, poniżej 140/90 mm Hg).",
+      "Nagły, piorunujący ból głowy (zaprzecza).",
+      "Nasilenie bólu przy kaszlu, kichaniu, parciu lub schylaniu (zaprzecza).",
+      "Progresja bólu w ciągu 6 miesięcy — zaprzeczona (ból podobny cały czas)",
+      "Progresja nasilenia w ciągu 6 miesięcy (ból podobny cały czas).",
+      "Wymioty poranne przy bólu (zaprzecza).",
+      "Wymioty poranne — zaprzeczone",
+      "Zakaźne dla otoczenia — brak gorączki i objawów zapalenia opon; brak wskazań do izolacji",
+      "ból piorunujący (nagły, szczyt w ciągu minuty) - nie",
+      "ból piorunujący (nagły, szczyt w ciągu minuty) - zaprzeczony",
+      "nadciśnienie tętnicze (pomiar prawidłowy w ostatnich 3 miesiącach)",
+      "nadciśnienie tętnicze - pomiar w ostatnich 3 miesiącach poniżej 140/90 mm Hg",
+      "nadciśnienie tętnicze - pomiar w ostatnich 3 miesiącach poniżej 140/90 mm Hg (z wywiadu, nie z badania)",
+      "nadciśnienie tętnicze w ostatnich 3 miesiącach (pomiar prawidłowy <140/90)",
+      "nagły ból typu piorunującego (ankieta: nie)",
+      "nagły piorunujący ból głowy (zaprzeczyła)",
+      "nasilenie przy kaszlu, kichaniu, parciu, schylaniu (nie)",
+      "nasilenie przy kaszlu, kichaniu, parciu, schylaniu - nie",
+      "nasilenie przy kaszlu, kichaniu, parciu, schylaniu - zaprzeczone",
+      "nasilenie przy kaszlu, parciu, schylaniu (zaprzeczyła)",
+      "objawy alarmowe z listy ankiety w ostatnich tygodniach i dniach (pacjentka zaprzecza)",
+      "poranne wymioty (nie)",
+      "poranne wymioty (zaprzeczyła)",
+      "poranne wymioty - nie",
+      "progresja bólu - zaprzeczona (ból podobny przez 6 miesięcy)",
+      "progresja bólu w ciągu 6 miesięcy (ból podobny cały czas)",
+      "progresja natężenia przez 6 miesięcy - nie (obraz stały)",
+      "wymioty poranne - zaprzeczone"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

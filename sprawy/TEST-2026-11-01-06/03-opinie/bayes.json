@@ -1,0 +1,108 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawowy (pękający, zaotrzewnowo ograniczony) tętniak aorty brzusznej",
+      "p": 0.35,
+      "za": [
+        "Pretest: mężczyzna 68 lat, palacz, nadciśnienie → częstość tętniaka aorty brzusznej w badaniach przesiewowych mężczyzn palących 65+ ok. 2,7–3,7% (PMID 36675413, 35010845); nigdy nie miał USG jamy brzusznej → tętniak niewykluczony → podnosi umiarkowanie",
+        "Presynkopa w łazience (pociemnienie przed oczami, musiał usiąść) przy bólu lędźwiowym → podnosi umiarkowanie; omdlenie występuje w ok. 28–37% pęknięć (PMID 35220634, 25969344)",
+        "RR skurczowe 104 mmHg u chorego z nadciśnieniem leczonym amlodypiną (względna hipotensja) + tętno 108/min → wskaźnik wstrząsowy ok. 1,04 → podnosi silnie (ból kolkowy zwykle podnosi ciśnienie, nie obniża) [wskaźnik wstrząsowy: wiedza modelu, niezweryfikowane]",
+        "Ból stały, rozrywający, bez zmienności → podnosi umiarkowanie (kolka nerkowa częściej falująca) [wiedza modelu, niezweryfikowane]",
+        "Kolka nerkowa jest najczęstszym błędnym rozpoznaniem pękniętego tętniaka (24% błędów lekarzy rodzinnych, PMID 9654880; 30% pęknięć początkowo źle rozpoznanych, PMID 1619721) → chroni przed błędem zakotwiczenia na deklaracji pacjenta",
+        "Kwas acetylosalicylowy + ketoprofen → nasilają krwawienie, gdyby doszło do przecieku → podnosi wagę konsekwencji, nie p"
+      ],
+      "przeciw": [
+        "Pacjent sam rozpoznaje „jak kamica 5 lat temu” → przebyta kamica podnosi pretest kolki → obniża umiarkowanie",
+        "Częściowa ulga po ketoprofenie i drotawerynie → obniża słabo (niespecyficzne)",
+        "Brak utraty przytomności, brak innych objawów alarmowych w ankiecie → obniża słabo; czułość klasycznych objawów jest niska, ich brak nie wyklucza (PMID 35220634)",
+        "Ciśnienie i tętno zmierzone jednorazowo, przez osobę niemedyczną, możliwy wpływ bólu, odwodnienia i amlodypiny → obniża słabo pewność pomiaru"
+      ]
+    },
+    {
+      "nazwa": "Kolka nerkowa w przebiegu kamicy moczowodowej",
+      "p": 0.35,
+      "za": [
+        "Pretest: w POZ ból lędźwiowy z promieniowaniem do pachwiny to najczęściej kamica → wysoki pretest",
+        "Przebyta kamica 5 lat temu, podobny charakter bólu wg pacjenta → podnosi umiarkowanie",
+        "Częściowa odpowiedź na niesteroidowy lek przeciwzapalny → podnosi słabo"
+      ],
+      "przeciw": [
+        "Względna hipotensja i tachykardia z presynkopą → obniża silnie (niewyjaśnione kolką bez zakażenia)",
+        "Ból stały, rozrywający → obniża umiarkowanie",
+        "Brak wymiotów, brak zauważonych zmian w moczu → obniża słabo (krwiomocz mikroskopowy NIEZNANY)",
+        "Pierwszy epizod kolki w 68. roku życia po 5 latach przerwy u palacza z nadciśnieniem → wymaga wykluczenia przyczyny naczyniowej przed rozpoznaniem kolki"
+      ]
+    },
+    {
+      "nazwa": "Ostre rozwarstwienie aorty",
+      "p": 0.08,
+      "za": [
+        "Ból rozrywający, stały, od rana → podnosi umiarkowanie",
+        "Nadciśnienie, palenie, wiek → podnosi słabo",
+        "Presynkopa, tachykardia, względna hipotensja → podnosi słabo"
+      ],
+      "przeciw": [
+        "Pretest rozwarstwienia w POZ bardzo niski (rzędu kilku na 100 000 rocznie) → obniża silnie [wiedza modelu, niezweryfikowane]",
+        "Brak bólu w klatce piersiowej i międzyłopatkowego w ankiecie (nie pytano wprost) → obniża słabo"
+      ]
+    },
+    {
+      "nazwa": "Krwawienie z górnego odcinka przewodu pokarmowego",
+      "p": 0.05,
+      "za": [
+        "Kwas acetylosalicylowy 75 mg + ketoprofen w nieznanej dawce → podnosi słabo",
+        "Presynkopa i tachykardia w łazience → podnosi słabo"
+      ],
+      "przeciw": [
+        "Ból lędźwiowy promieniujący do pachwiny nie pasuje → obniża silnie",
+        "Krwawienie poprzedzało przyjęcie ketoprofenu (ból od rana był pierwszy) → obniża umiarkowanie; smoliste stolce NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Odmiedniczkowe zapalenie nerek lub zakażone wodonercze z początkową sepsą",
+      "p": 0.04,
+      "za": [
+        "Tachykardia i względna hipotensja → podnosi słabo",
+        "Przebyta kamica → podnosi słabo"
+      ],
+      "przeciw": [
+        "Brak gorączki i dreszczy → obniża umiarkowanie (ketoprofen może maskować gorączkę)",
+        "Brak dyzurii i zmian w moczu → obniża słabo"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Gorączka i dreszcze (pacjent zaprzecza; możliwe maskowanie przez ketoprofen)",
+    "Wymioty (pacjent zaprzecza)"
+  ],
+  "red_flags_otwarte": [
+    "Ból stały, rozrywający u mężczyzny 68 lat palącego z nadciśnieniem: tętniak aorty brzusznej / rozwarstwienie niewykluczone (nigdy USG aorty)",
+    "Presynkopa przy bólu lędźwiowym",
+    "Względna hipotensja (RR skurczowe 104 mmHg przy leczonym nadciśnieniu) i tachykardia 108/min, wskaźnik wstrząsowy ok. 1,0",
+    "Leczenie przeciwpłytkowe (kwas acetylosalicylowy) + niesteroidowy lek przeciwzapalny w nieznanej dawce",
+    "Badanie fizykalne (tętniący guz, tętno na kończynach dolnych, asymetria ciśnień) NIEZNANE"
+  ],
+  "nastepny_krok": "Wezwanie Zespołu Ratownictwa Medycznego (112) teraz, z przekazaniem podejrzenia objawowego tętniaka aorty brzusznej, do szpitala z ośrodkiem chirurgii naczyniowej i tomografią komputerową z angiografią; bez dalszych niesteroidowych leków przeciwzapalnych i bez samodzielnego dojazdu pacjenta.",
+  "co_zmieniloby_zdanie": "Zmierzone przez personel prawidłowe i stabilne parametry (RR skurczowe > 130 mmHg, tętno < 90/min, bez spadku ortostatycznego) z ultrasonografią przyłóżkową wykluczającą tętniak aorty (czułość ok. 98%, PMID 35220634) i krwinkami czerwonymi w moczu obniżyłyby tętniaka poniżej 5% i pozwoliły leczyć kolkę.",
+  "odpowiedz_na_pytanie": "Nie traktować jako nawrót kolki; najpierw 112 i wykluczenie pękającego tętniaka aorty.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak plików merytorycznych (tylko przykłady) — brak polskiej wytycznej dla tej sytuacji w bibliotece",
+    "pamiec/zespol.md: brak wpisu dla bólu lędźwiowego / tętniaka aorty",
+    "PubMed zapytanie 1: 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' → PMID 9654880, 1619721, 2199405 (trafne)",
+    "PubMed zapytanie 2: 'abdominal aortic aneurysm prevalence screening men 65 smokers ultrasound' od 2015 → PMID 36675413, 35010845, 39701337 (trafne)",
+    "PubMed zapytanie 3: 'shock index elderly trauma OR hemorrhage mortality predictive' od 2010 → wyniki nietrafne, nie liczone jako skuteczne",
+    "PubMed zapytanie 4: 'suspected renal colic computed tomography alternative diagnoses older patients' → PMID 24440589, 25557571, 28046001 (trafne)",
+    "PubMed zapytanie 5: 'ruptured abdominal aortic aneurysm[Title] presentation emergency department hypotension back pain' od 2005 → PMID 35220634, 25969344 (trafne)",
+    "Acheson AG i wsp. J R Coll Surg Edinb 1998;43:182-4, PMID 9654880 (bez DOI): lekarz rodzinny trafnie rozpoznał pęknięty tętniak w 38%, najczęstsze błędne rozpoznanie kolka nerkowa (24%) — streszczenie sprawdzone",
+    "Marston WA i wsp. J Vasc Surg 1992;16:17-22, PMID 1619721, DOI 10.1067/mva.1992.34344: 30% pęknięć początkowo błędnie rozpoznanych, najczęściej jako kolka nerkowa; tętniący guz tylko u 26% źle rozpoznanych — streszczenie sprawdzone",
+    "Fernando SM i wsp. Acad Emerg Med 2022;29:486-96, PMID 35220634, DOI 10.1111/acem.14475: czułość bólu pleców 53,6%, omdlenia 27,8%, hipotensji 30,9%; brak klasycznych objawów nie wyklucza; ultrasonografia przyłóżkowa czułość 97,8%, swoistość 97,0% dla tętniaka — streszczenie sprawdzone",
+    "Metcalfe D i wsp. Eur J Emerg Med 2016;23:386-90, PMID 25969344, DOI 10.1097/MEJ.0000000000000281: hipotensja 36,5%, tachykardia 18,8%, omdlenie 36,5%; 25,6% błędnych rozpoznań — streszczenie sprawdzone",
+    "Altobelli E i wsp. Int J Environ Res Public Health 2022;19:591, PMID 35010845, DOI 10.3390/ijerph19010591: tętniak u 3,7% mężczyzn 65–79 lat; palenie OR 5,21 — streszczenie sprawdzone",
+    "Kim H i wsp. J Clin Med 2023;12:484, PMID 36675413, DOI 10.3390/jcm12020484: częstość tętniaka u palących mężczyzn > 65 lat 2,7% (kohorta koreańska) — streszczenie sprawdzone",
+    "Zwank MD i wsp. Am J Emerg Med 2014;32:367-70, PMID 24440589, DOI 10.1016/j.ajem.2013.12.031: tomografia komputerowa przy podejrzeniu kolki czasem ujawnia istotne rozpoznania alternatywne, należy ją stosować, gdy rozważa się inną groźną patologię — streszczenie sprawdzone",
+    "Wskaźnik wstrząsowy (tętno/RR skurczowe) > 1 jako marker hipowolemii; pretest rozwarstwienia aorty — [wiedza modelu, niezweryfikowane]"
+  ]
+}

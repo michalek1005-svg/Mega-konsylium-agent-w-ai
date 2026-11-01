@@ -1,0 +1,110 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Hiponatremia polekowa (zespół niewłaściwego wydzielania wazopresyny po sertralinie nałożony na indapamid) z majaczeniem",
+      "p": 0.55,
+      "za": [
+        "Pretest: majaczenie u 74-latka w POZ – zaburzenia metaboliczne i leki należą do najczęstszych przyczyn → punkt wyjścia wysoki [wiedza modelu, niezweryfikowane]",
+        "Sód 131 mmol/l już 4 tygodnie temu, na indapamidzie, przed sertraliną → wyjściowa hiponatremia → silnie podnosi",
+        "Nowa sertralina w ostatnich 4 tygodniach; hiponatremia po inhibitorach wychwytu zwrotnego serotoniny pojawia się zwykle w ciągu ok. 30 dni, czynniki ryzyka: wiek, tiazydy, wcześniejsza hiponatremia (PMID 24926764) → silnie podnosi",
+        "Jednoczesne inhibitor wychwytu zwrotnego serotoniny + tiazyd u osób starszych: częstość hiponatremii ok. 13%, skorygowany OR 1,24–1,27 vs monoterapia (PMID 40035448) → umiarkowanie podnosi",
+        "Chwianie się, upadek, zaburzenia uwagi: nawet łagodna przewlekła hiponatremia zwiększa częstość upadków (21,3% vs 5,3%) oraz zaburza chód i uwagę (PMID 16431193) → umiarkowanie podnosi",
+        "Nudności, wymioty 1–2 razy, mało je → typowe objawy hiponatremii o średnim nasileniu → umiarkowanie podnosi",
+        "Pije więcej niż zwykle przy upośledzonym wydalaniu wolnej wody (tiazyd + sertralina) → mechanizm pogłębiania hiponatremii → umiarkowanie podnosi",
+        "Brak gorączki, normalny oddech → obniża konkurencyjne przyczyny infekcyjne, pośrednio podnosi metaboliczną"
+      ],
+      "przeciw": [
+        "Brak aktualnego oznaczenia sodu – rozpoznanie wyłącznie z prawdopodobieństwa, wynik sprzed 4 tygodni nie jest wynikiem dzisiejszym",
+        "Opis 'oddaje dużo moczu' w SIADH byłby nietypowy (raczej skąpomocz) → słabo obniża; zgodne z polidypsją lub innym zaburzeniem z wielomoczem",
+        "Stan poznawczy sprzed epizodu NIEZNANY → możliwe nakładanie się na otępienie"
+      ]
+    },
+    {
+      "nazwa": "Krwiak podtwardówkowy",
+      "p": 0.1,
+      "za": [
+        "Upadek bez świadków u 74-latka z nowym splątaniem → czerwona flaga ankiety → umiarkowanie podnosi",
+        "Przewlekły krwiak podtwardówkowy u starszych daje niespecyficznie splątanie, zaburzenia chodu, senność, naśladuje inne zespoły geriatryczne; diagnostyka pierwszego wyboru: tomografia komputerowa bez kontrastu (PMID 42112639, PMID 10448652) → umiarkowanie podnosi",
+        "Wymioty → słabo podnosi (wzrost ciśnienia śródczaszkowego)"
+      ],
+      "przeciw": [
+        "Splątanie i chwianie zaczęły się 2 dni temu, upadek był wczoraj → upadek raczej skutkiem niż przyczyną ostrego krwiaka (chyba że wcześniejszy, niezauważony uraz) → umiarkowanie obniża",
+        "Brak leków przeciwkrzepliwych → umiarkowanie obniża",
+        "Pretest w POZ niski w porównaniu z przyczynami metabolicznymi i polekowymi"
+      ]
+    },
+    {
+      "nazwa": "Objawowe zakażenie układu moczowego z majaczeniem",
+      "p": 0.08,
+      "za": [
+        "Częstomocz małymi porcjami (opis córki) → słabo podnosi",
+        "Zakażenia układu moczowego są częste u osób starszych i mogą dawać nietypowy obraz z majaczeniem (PMID 42412955) → słabo podnosi pretest"
+      ],
+      "przeciw": [
+        "Brak gorączki i dreszczy → umiarkowanie obniża",
+        "Jednocześnie 'oddaje dużo moczu i dużo pije' → częstomocz lepiej tłumaczy polidypsja/wielomocz niż zapalenie pęcherza → umiarkowanie obniża",
+        "Istnieje silniejsze, wyjaśniające wszystko rozpoznanie (hiponatremia polekowa) → przesunięcie masy prawdopodobieństwa",
+        "Majaczenie samo w sobie nie jest objawem zakażenia układu moczowego; leczenie 'bezobjawowego zakażenia' u starszych z majaczeniem wiązało się z gorszym powrotem funkcji (RR 1,30) i częstszym zakażeniem Clostridioides difficile (PMID 28624753) → obniża zasadność badania ogólnego moczu jako rozstrzygnięcia"
+      ]
+    },
+    {
+      "nazwa": "Hiperkalcemia lub hiperglikemia (zaburzenie metaboliczne z wielomoczem)",
+      "p": 0.07,
+      "za": [
+        "Wielomocz + wzmożone pragnienie + nudności + splątanie → klasyczna triada metaboliczna → umiarkowanie podnosi",
+        "Indapamid zmniejsza wydalanie wapnia z moczem [wiedza modelu, niezweryfikowane] → słabo podnosi hiperkalcemię"
+      ],
+      "przeciw": [
+        "Glukoza 98 mg/dl (5,4 mmol/l) 4 tygodnie temu, bez cukrzycy → umiarkowanie obniża hiperglikemię",
+        "Wapń nigdy nieoznaczony → NIEZNANE, nie 'w normie'"
+      ]
+    },
+    {
+      "nazwa": "Udar mózgu",
+      "p": 0.05,
+      "za": [
+        "Wiek 74 lata, nadciśnienie, nagłe chwianie i splątanie → słabo podnosi"
+      ],
+      "przeciw": [
+        "Córka zaprzecza objawom ogniskowym z listy ankiety ('nic z tych rzeczy') → umiarkowanie obniża",
+        "Przebieg narastający przez 2 dni z nudnościami i wielomoczem bardziej metaboliczny"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Leczenie przeciwkrzepliwe (córka zaprzecza)",
+    "Gorączka i dreszcze (córka zaprzecza)",
+    "Duszność (oddech prawidłowy wg córki)"
+  ],
+  "red_flags_otwarte": [
+    "Nowe majaczenie u 74-latka bez aktualnego sodu – możliwa hiponatremia objawowa o średnim nasileniu (wymioty, splątanie, upadek)",
+    "Upadek bez świadków z możliwym urazem głowy – krwiak śródczaszkowy niewykluczony bez tomografii",
+    "Wymioty przy splątaniu – ryzyko dalszej progresji (senność, drgawki)",
+    "Parametry życiowe i badanie neurologiczne NIEZNANE",
+    "Stan poznawczy sprzed epizodu NIEZNANY"
+  ],
+  "nastepny_krok": "Skierować pacjenta dziś na Szpitalny Oddział Ratunkowy z pytaniem o sód, potas, wapń, glukozę i kreatyninę w surowicy oraz tomografię komputerową głowy bez kontrastu, z informacją o indapamidzie, nowej sertralinie i sodzie 131 mmol/l sprzed 4 tygodni; nie włączać empirycznie antybiotyku przed tymi wynikami.",
+  "co_zmieniloby_zdanie": "Prawidłowy aktualny sód (≥135 mmol/l) przy gorączce, bólu nadłonowym lub dodatnim posiewie moczu przesunąłby masę prawdopodobieństwa na zakażenie układu moczowego, a krwiak w tomografii – na pilność 1 i neurochirurgię.",
+  "zrodla": [
+    "zrodla/MANIFEST.md – brak polskiej wytycznej dla hiponatremii, majaczenia ani zakażenia układu moczowego u osób starszych (tylko przykładowe wiersze)",
+    "pamiec/zespol.md – brak wpisu dotyczącego tej prezentacji",
+    "PubMed zapytanie 1: 'hyponatremia selective serotonin reuptake inhibitors thiazide elderly risk' (12 trafień)",
+    "PubMed zapytanie 2: 'delirium urinary tract infection older adults asymptomatic bacteriuria antibiotic overtreatment' (3 trafienia)",
+    "PubMed zapytanie 3: 'mild hyponatremia falls gait attention deficits' (8 trafień)",
+    "PubMed zapytanie 4: 'chronic subdural hematoma[Title] elderly presentation confusion falls' (2 trafienia)",
+    "PMID 40035448 · Matsuura T i wsp. Pharmacotherapy 2025;45(3):169-176 · DOI 10.1002/phar.70004 – SSRI + tiazyd u osób starszych: hiponatremia ok. 13%, aOR 1,24–1,27 (streszczenie sprawdzone)",
+    "PMID 24926764 · Egger C i wsp. Int J Psychiatry Clin Pract 2006;10(1):17-26 · DOI 10.1080/13651500500410216 – hiponatremia po SSRI zwykle w ciągu ~30 dni; czynniki ryzyka wiek, tiazydy, wcześniejsza hiponatremia; objawy neuropsychiatryczne (streszczenie sprawdzone)",
+    "PMID 16431193 · Renneboog B i wsp. Am J Med 2006;119(1):71.e1-8 · DOI 10.1016/j.amjmed.2005.09.026 – łagodna przewlekła hiponatremia: upadki 21,3% vs 5,3%, zaburzenia chodu i uwagi (streszczenie sprawdzone)",
+    "PMID 26042411 · Ganguli A i wsp. Clin Nephrol 2015;84(2):75-85 · DOI 10.5414/CN108453 – hiponatremia u starszych w opiece domowej; przyczyny: SIADH, tiazydy, SSRI; utrwalona hiponatremia a upadki, OR 3,52 (streszczenie sprawdzone)",
+    "PMID 28624753 · Dasgupta M i wsp. Arch Gerontol Geriatr 2017;72:127-134 · DOI 10.1016/j.archger.2017.05.010 – leczenie bezobjawowego 'ZUM' u starszych z majaczeniem: gorszy powrót funkcji RR 1,30 (streszczenie sprawdzone)",
+    "PMID 42412955 · Lv J, Waza AA. Acta Pharm 2026;76(2):1-25 · DOI 10.2478/acph-2026-0017 – nietypowa prezentacja ZUM u starszych, konieczność odróżnienia od bezobjawowej bakteriurii (streszczenie sprawdzone)",
+    "PMID 42112639 · Mathon B, Shotar E. Geriatr Psychol Neuropsychiatr Vieil 2026;24(1):30-41 · DOI 10.1684/pnv.2026.1274 – przewlekły krwiak podtwardówkowy: splątanie, zaburzenia chodu, senność; TK bez kontrastu pierwszego wyboru (streszczenie sprawdzone)",
+    "PMID 10448652 · Bourgeois P i wsp. Neurochirurgie 1999;45(2):124-8 – krwiak podtwardówkowy >80 r.ż.: główne objawy splątanie i zaburzenia myślenia (streszczenie sprawdzone; brak DOI)",
+    "[wiedza modelu, niezweryfikowane] – pretest przyczyn majaczenia w POZ; wpływ indapamidu na wydalanie wapnia"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 1: pilność 2 → 1. Splątanie, ataksja i upadek to objawy ciężkie hiponatremii (PMID 37983699), wymioty to wczesny objaw obrzęku mózgu wymagający szybkiej interwencji (PMID 28704229); sód z POZ byłby dopiero jutro. p rozpoznania nr 1 bez zmiany (0,55)."
+}

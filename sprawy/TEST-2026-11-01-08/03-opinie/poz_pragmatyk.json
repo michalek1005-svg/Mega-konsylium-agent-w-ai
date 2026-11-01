@@ -1,0 +1,125 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Hiponatremia polekowa (sertralina dołączona do indapamidu) z majaczeniem",
+      "p": 0.5,
+      "za": [
+        "sód 131 mmol/l już 4 tygodnie temu, przed włączeniem sertraliny (wyjściowa hiponatremia na indapamidzie)",
+        "nowy lek w ostatnich 4 tygodniach = sertralina; hiponatremia po inhibitorach wychwytu zwrotnego serotoniny pojawia się zwykle w pierwszym miesiącu, ryzyko zwiększają wiek, tiazydy i sód w dolnej granicy (PMID 24203508, opis przypadku z przeglądem)",
+        "tiazydy/tiazydopodobne + SSRI to klasyczne połączenie ryzyka hiponatremii u starszych (PMID 27168745)",
+        "splątanie, chwiejność, upadek, nudności, wymioty = objawy neurologiczne hiponatremii; nawet łagodna hiponatremia wiąże się z zaburzeniami chodu i upadkami (PMID 18477645)",
+        "zwiększone picie może dodatkowo obniżać sód przy upośledzonym wydalaniu wolnej wody"
+      ],
+      "przeciw": [
+        "brak aktualnego oznaczenia sodu — cała hipoteza stoi na wyniku sprzed 4 tygodni",
+        "wielomocz z pragnieniem nie pasuje typowo do zespołu nieadekwatnego wydzielania wazopresyny"
+      ]
+    },
+    {
+      "nazwa": "Pourazowe krwawienie śródczaszkowe (krwiak podtwardówkowy) po upadku bez świadków",
+      "p": 0.1,
+      "za": [
+        "upadek bez świadków u 74-latka z nowym splątaniem i wymiotami",
+        "niejasny wywiad urazu głowy u starszych po upadku: istotne klinicznie krwawienie 4,6% i wskazanie do pilnego obrazowania (PMID 41170758)",
+        "ostre splątanie i wymioty to predyktory istotnego krwawienia po upadku z wysokości własnej (PMID 42574438)",
+        "sertralina nieznacznie zwiększa skłonność do krwawień [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "splątanie i chwiejność zaczęły się 2 dni temu, a upadek był wczoraj — upadek raczej skutek niż przyczyna",
+        "brak leków przeciwkrzepliwych"
+      ]
+    },
+    {
+      "nazwa": "Zakażenie układu moczowego z majaczeniem",
+      "p": 0.1,
+      "za": [
+        "częstsze oddawanie małych ilości moczu",
+        "u mężczyzny 74 lata możliwe zapalenie gruczołu krokowego lub zaleganie moczu"
+      ],
+      "przeciw": [
+        "brak gorączki i dreszczy",
+        "jednocześnie wielomocz i wzmożone pragnienie — to raczej problem metaboliczny niż pęcherzowy",
+        "majaczenie bywa pochopnie przypisywane zakażeniu dróg moczowych i prowadzi do leczenia bezobjawowej bakteriurii (PMID 30904184, PMID 34181215)"
+      ]
+    },
+    {
+      "nazwa": "Hiperkalcemia",
+      "p": 0.07,
+      "za": [
+        "triada: wielomocz z pragnieniem, nudności z wymiotami, splątanie",
+        "indapamid zmniejsza wydalanie wapnia; u 74-latka trzeba pamiętać o nowotworze i nadczynności przytarczyc [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "brak oznaczenia wapnia w ogóle — hipoteza niesprawdzona, ale tanio do wykluczenia jednym badaniem"
+      ]
+    },
+    {
+      "nazwa": "Majaczenie z innej przyczyny (udar mózgu, odwodnienie z ostrym uszkodzeniem nerek, zaleganie moczu)",
+      "p": 0.1,
+      "za": [
+        "wiek, wymioty, diuretyk",
+        "brak oceny neurologicznej i parametrów życiowych"
+      ],
+      "przeciw": [
+        "córka nie zgłasza objawów ogniskowych (ankieta: nic z wymienionych objawów)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "leki przeciwkrzepliwe (nie przyjmuje)",
+    "gorączka i dreszcze (zaprzecza)",
+    "duszność (oddycha normalnie)",
+    "cukrzyca (nie choruje; glukoza 98 mg/dl 4 tygodnie temu)"
+  ],
+  "red_flags_otwarte": [
+    "upadek bez świadków + nowe splątanie + wymioty u 74-latka: krwawienie śródczaszkowe niewykluczone bez tomografii komputerowej głowy",
+    "objawowa hiponatremia z wymiotami (objaw ciężki wg klasyfikacji europejskiej) — aktualny sód nieznany",
+    "parametry życiowe, poziom świadomości (skala Glasgow), objawy ogniskowe — nieocenione",
+    "stan poznawczy sprzed 2 dni — NIEZNANE (nie da się ocenić, jak duża jest zmiana)",
+    "zaleganie moczu (mężczyzna, częste małe porcje) — niezbadane"
+  ],
+  "nastepny_krok": "Dziś wystawić skierowanie do Szpitalnego Oddziału Ratunkowego (rozpoznanie robocze: majaczenie, podejrzenie hiponatremii polekowej, upadek bez świadków) z prośbą o pilne oznaczenie sodu, potasu, wapnia, kreatyniny, glukozy, badanie ogólne moczu i tomografię komputerową głowy; antybiotyku nie przepisywać.",
+  "co_zmieniloby_zdanie": "Gdyby lekarz POZ mógł dziś w gabinecie w ciągu 1–2 godzin uzyskać wynik sodu (cito) i zbadać pacjenta (prawidłowe parametry, brak śladów urazu głowy, sód ≥130 mmol/l), plan ambulatoryjny byłby możliwy — ale niewidziany upadek z wymiotami i splątaniem i tak przemawia za tomografią, której POZ nie zleci w trybie pilnym; brak też danych o odległości do SOR.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Jeśli pacjent jest na miejscu lub da się go przywieźć bez zwłoki: ciśnienie tętnicze, tętno, saturacja, temperatura, glukoza z glukometru, skala Glasgow, ocena objawów ogniskowych i śladów urazu głowy, palpacja nadłonowa (pęcherz). Nie opóźniać wyjazdu do SOR dla tych pomiarów. Jeśli kontakt tylko telefoniczny/aplikacja — od razu SOR.",
+    "co_zlecic": "Nie zlecać badań z koszyka POZ z wynikiem na jutro — to wydłuża diagnostykę o dobę u pacjenta z wymiotami i splątaniem. Na skierowaniu wpisać: sód, potas, wapń, kreatynina, glukoza, morfologia, białko C-reaktywne, badanie ogólne moczu, osmolalność i sód w moczu; tomografia komputerowa głowy bez kontrastu.",
+    "skierowanie_tryb": "SOR — pilnie, dziś. Transport: rodzina samochodem, jeśli pacjent chodzi z pomocą i jest w kontakcie; Zespół Ratownictwa Medycznego (112), jeśli senny, nie wstaje, wymiotuje dalej, ma drgawki lub objawy ogniskowe.",
+    "leki_do_czasu_SOR": "Nie podawać dziś kolejnej dawki indapamidu ani sertraliny do czasu wyniku sodu; nie wymuszać picia dużych ilości wody [wiedza modelu, niezweryfikowane]. Na skierowaniu wpisać datę włączenia sertraliny i wynik sodu 131 mmol/l sprzed 4 tygodni.",
+    "antybiotyk": "Nie przepisywać empirycznie. Brak gorączki, a obraz lepiej tłumaczy przyczyna metaboliczna lub urazowa; ewentualna antybiotykoterapia tylko po badaniu moczu z posiewem i badaniu przedmiotowym (u mężczyzny zakażenie traktuje się jako powikłane) [wiedza modelu, niezweryfikowane].",
+    "kontrola": "Wizyta (lub teleporada z córką) w POZ w ciągu 2–3 dni po wypisie z SOR/szpitala: przegląd leków — odstawienie lub zamiana indapamidu na lek hipotensyjny niewpływający na sód, decyzja o sertralinie (wskazanie nieznane), kontrolny sód po 1 tygodniu.",
+    "co_powiedziec_rodzinie": "To nie wygląda na zwykłe zapalenie pęcherza — najbardziej prawdopodobne jest za niskie stężenie sodu we krwi po nowym leku albo skutek upadku, więc tata musi dziś pojechać na SOR na badanie krwi i tomografię głowy.",
+    "wykonalnosc": "Pacjent 74 lata, splątany, chwiejny — sam nie dojedzie i nie zrozumie zaleceń; wykonawcą planu jest córka. Plan jest wykonalny jednym ruchem (SOR), bez wieloetapowego zlecania w POZ. Odległość do SOR nieznana (pamiec/zespol.md nieuzupełnione) — jeśli daleko i brak transportu, wezwać 112."
+  },
+  "nie_zlecac": [
+    {
+      "co": "empiryczny antybiotyk na zakażenie dróg moczowych bez badania",
+      "dlaczego": "zamyka diagnostykę na błędnym tropie i opóźnia oznaczenie sodu oraz tomografię głowy; majaczenie bez gorączki jest często błędnie przypisywane zakażeniu (PMID 30904184)"
+    },
+    {
+      "co": "fluorochinolon",
+      "dlaczego": "u 74-latka z majaczeniem może nasilać zaburzenia świadomości [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików merytorycznych (tylko przykłady); brak polskiej wytycznej ani wykazu badań POZ w bibliotece",
+    "pamiec/zespol.md — realia lokalne nieuzupełnione (odległość do SOR, dostępność EKG/CRP)",
+    "PubMed zapytanie 1: 'SSRI hyponatremia elderly thiazide risk' — odrzucone (limit częstości), nie liczę",
+    "PubMed zapytanie 2: 'hyponatremia diagnosis treatment clinical practice guideline[Title]' — 4 trafienia",
+    "PubMed zapytanie 3: 'asymptomatic bacteriuria older adults delirium antibiotics' — 11 trafień",
+    "PubMed zapytanie 4: 'selective serotonin reuptake inhibitors hyponatremia elderly risk factors diuretics' — 17 trafień",
+    "PubMed zapytanie 5: 'intracranial hemorrhage older adults ground-level fall head CT emergency department' (od 2018) — 14 trafień",
+    "Spasovski G i wsp. Clinical practice guideline on diagnosis and treatment of hyponatraemia (ESICM/ESE/ERBP). Eur J Endocrinol 2014. PMID 24569125, DOI 10.1530/EJE-13-1020 (oraz NDT PMID 24569496, DOI 10.1093/ndt/gfu040) — streszczenie sprawdzone: definicja hiponatremii <135 mmol/l; klasyfikacja objawów (wymioty = objaw ciężki) z pełnego tekstu [wiedza modelu, niezweryfikowane]",
+    "Liamis G i wsp. Thiazide-associated hyponatremia in the elderly. J Geriatr Cardiol 2016. PMID 27168745, DOI 10.11909/j.issn.1671-5411.2016.02.001 — streszczenie sprawdzone: SSRI czynnikiem ryzyka hiponatremii po tiazydach; pilne oznaczenie sodu przy objawach neurologicznych",
+    "Martínez-Cortés M i wsp. Antidepressant induced recurrent hyponatremia. Actas Esp Psiquiatr 2013. PMID 24203508 (brak DOI w PubMed) — streszczenie sprawdzone: wiek, tiazydy, sód w dolnej granicy zwiększają ryzyko; zwykle w pierwszym miesiącu",
+    "Gankam Kengne F i wsp. Mild hyponatremia and risk of fracture in the ambulatory elderly. QJM 2008. PMID 18477645, DOI 10.1093/qjmed/hcn061 — streszczenie sprawdzone: łagodna hiponatremia (średnio 131) związana z zaburzeniami chodu, upadkami i złamaniami (OR skorygowany 4,16)",
+    "Kerr G i wsp. Applying the Canadian Head CT Criteria to Older Adults Seen in the ED After a Fall. J Am Geriatr Soc 2025. PMID 41170758, DOI 10.1111/jgs.70191 — streszczenie sprawdzone: niejasny wywiad urazu głowy → 4,6% istotnego krwawienia, uzasadnia pilne obrazowanie",
+    "Dubucs X i wsp. Risk stratification for significant acute traumatic intracranial hemorrhage in older adults after a ground-level fall. PLoS Med 2026. PMID 42574438, DOI 10.1371/journal.pmed.1004935 — streszczenie sprawdzone: ostre splątanie i wymioty wśród 8 predyktorów istotnego krwawienia",
+    "O'Donnell AJ i wsp. HELP and treatment of asymptomatic bacteriuria. Geriatr Nurs 2019. PMID 30904184, DOI 10.1016/j.gerinurse.2019.03.011 — streszczenie sprawdzone: majaczenie często niewłaściwie przypisywane zakażeniu dróg moczowych",
+    "Laguë A i wsp. Asymptomatic bacteriuria in older patients with delirium: survey. CJEM 2021. PMID 34181215, DOI 10.1007/s43678-021-00148-1 — streszczenie sprawdzone: wytyczne zalecają najpierw szukać przyczyn niezakaźnych majaczenia"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Pilność 2 -> 1: splątanie z wymiotami spełnia kryteria możliwej ciężkiej objawowej hiponatremii (ESE/ESICM/ERBP 2014, PMID 24569496; klasyfikacja objawów [wiedza modelu, niezweryfikowane]) plus upadek bez świadków; diagnostyka POZ z wynikiem na jutro jest niewykonalna w bezpiecznym czasie. Rozpoznanie i p bez zmian."
+}

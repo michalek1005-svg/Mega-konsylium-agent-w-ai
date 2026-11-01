@@ -1,0 +1,168 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "sprawdzajacy-faktow",
+    "data": "2026-11-01",
+    "sprawdzany_plik": "05-projekt.md",
+    "metoda": "zrodla/MANIFEST.md (brak plikow tarczycowych, tylko wiersze przykladowe) -> PubMed (get_article_metadata dla 9 cytowanych PMID + 6 zapytan, w tym 1 celowo po polskie wytyczne) -> wytyczne z pamieci (poziom 3, oznaczone)",
+    "podsumowanie": {
+      "potwierdzone": 13,
+      "niepotwierdzone_bez_zrodla": 4,
+      "sprzeczne": 0,
+      "nieaktualne": 0,
+      "cytowane_pmid_zgodne_z_trescia": "9/9 (30283735, 38278171, 27521067, 37750133, 39032509, 40943247, 39533554, 42554462, 34297684)"
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Rozpoznanie nadczynnosci tarczycy opiera sie na obnizonym TSH z podwyzszonym FT4/FT3; przyczyne ustala TRAb (PMID 38278171)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 38278171, DOI 10.1016/S0140-6736(23)02016-0 (Chaker, Lancet 2024)",
+        "cytat": "The diagnosis is based on suppressed serum concentrations of TSH, accompanied by free thyroxine and total or free tri-iodothyronine concentrations, which are raised",
+        "co_mowi_zrodlo": "Zgodne; przyczyna: ocena kliniczna, TRAb, w razie potrzeby scyntygrafia."
+      },
+      {
+        "twierdzenie": "Choroba Gravesa: rozpoznanie = tyreotoksykoza biochemiczna + TRAb + orbitopatia; TRAb zalecane do rozpoznania (PMID 30283735)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30283735, DOI 10.1159/000490384 (Kahaly, ETA 2018)",
+        "cytat": "Diagnosis of GD is straightforward in a patient with biochemically confirmed thyrotoxicosis, positive TSH-R-Ab, a hypervascular and hypoechoic thyroid gland (ultrasound), and associated orbitopathy",
+        "co_mowi_zrodlo": "Zgodne. Uwaga: streszczenie wymienia tez USG jako element rozpoznania; projekt slusznie nie warunkuje leczenia USG."
+      },
+      {
+        "twierdzenie": "Tiamazol lekiem z wyboru, kuracja 12-18 miesiecy (PMID 30283735, 38278171)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30283735, DOI 10.1159/000490384; PMID 38278171, DOI 10.1016/S0140-6736(23)02016-0",
+        "cytat": "usually medically treated for 12-18 months with methimazole (MMI) as the preferred drug",
+        "co_mowi_zrodlo": "Zgodne w obu zrodlach (Lancet: first-line treatment is a 12-18-month course of antithyroid drugs)."
+      },
+      {
+        "twierdzenie": "Ciaza -> propylotiouracyl w I trymestrze zamiast tiamazolu (PMID 30283735)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 30283735, DOI 10.1159/000490384",
+        "cytat": "Women treated with MMI should be switched to propylthiouracil when planning pregnancy and during the first trimester of pregnancy",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Ciaza -> scyntygrafia i jod promieniotworczy zakazane (projekt cytuje PMID 30283735)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ATA 2016 (Ross, Thyroid 2016, PMID 27521067) - z pamieci modelu, nie ze streszczenia; streszczenie PMID 30283735 mowi tylko o RAI przeciwwskazanym przy aktywnej/ciezkiej orbitopatii",
+        "cytat": "RAI is contraindicated in Graves' patients with active/severe orbitopathy (PMID 30283735) - o ciazy streszczenie nie mowi",
+        "co_mowi_zrodlo": "Tresc prawdziwa (przeciwwskazanie RAI/scyntygrafii w ciazy to standard ATA 2016/ETA), ale przypisany PMID 30283735 tego w streszczeniu nie zawiera. POPRAWKA: zmienic cytowanie na ATA 2016 (poziom 3, z pamieci) albo dodac etykiete."
+      },
+      {
+        "twierdzenie": "Nadczynnosc tarczycy bywa mylnie leczona jako zaburzenie lekowe (PMID 37750133)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 37750133, DOI 10.7759/cureus.44071 (Moideen Sheriff, Cureus 2023)",
+        "cytat": "a 33-year-old female who initially presented with anxiety-like symptoms, leading to a misdiagnosis of generalized anxiety disorder",
+        "co_mowi_zrodlo": "Zgodne; opis przypadku (niski poziom dowodu, ale uzyty tylko ilustracyjnie)."
+      },
+      {
+        "twierdzenie": "Objawy psychiczne/lekowe ustepuja po leczeniu tyreotoksykozy (PMID 39032509)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 39032509, DOI 10.1530/EC-24-0259 (Al-Badri, Endocr Connect 2024)",
+        "cytat": "An improvement of psychiatric symptoms is observed in hyperthyroid patients after treatment of thyrotoxicosis",
+        "co_mowi_zrodlo": "Zgodne. Uwaga co do populacji: przeglad dotyczy orbitopatii Gravesa (czestosc lekow 26-41% w GO, 18-88% w GD), co akurat pasuje do tej pacjentki."
+      },
+      {
+        "twierdzenie": "Propranolol lagodzi objawy neuropsychiczne i sercowe nadczynnosci - wskazanie do leczenia objawowego (PMID 40943247)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 40943247, DOI 10.3390/ijms26178322 (Szybiak-Skora, Poznan, Int J Mol Sci 2025)",
+        "cytat": "Significant efficacy in alleviating neuro-psychiatric symptoms associated with hyperthyroidism is attributed to propranolol, while cardiac symptoms are alleviated by both non-selective and cardioselective beta-blockers",
+        "co_mowi_zrodlo": "Zgodne; przeglad narracyjny, autorzy polscy."
+      },
+      {
+        "twierdzenie": "Tiamazol + propranolol poprawia kontrole tetna bez wzrostu dzialan niepozadanych (PMID 39533554)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 39533554, DOI 10.1097/MD.0000000000040495 (Xie, Medicine 2024)",
+        "cytat": "methimazole combined with propranolol improved the cure rate, the total effective rate, and heart rate ... without significantly increasing the risk of adverse reactions",
+        "co_mowi_zrodlo": "Zgodne. Zastrzezenie: metaanaliza 16 badan kliniczno-kontrolnych, tylko 12,5% wysokiej jakosci (NOS 7) - dowod slaby, ale projekt uzywa go jedynie pomocniczo."
+      },
+      {
+        "twierdzenie": "Propranolol dawkowanie 10-40 mg 3-4 razy na dobe [etykieta: wiedza modelu, niezweryfikowane; dawkowanie wg ChPL]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "Brak ChPL propranololu w zrodla/; PubMed: zapytania 'propranolol[Title] AND hyperthyroidism... dose' oraz 'beta-blocker thyrotoxicosis 10/20/40 mg review' nie daly streszczenia z zakresem dawek; PMID 29471876 (DOI 10.1186/s13104-018-3224-x) uzyl 40 mg 2x/d u 10 chorych",
+        "cytat": "40 mg of propanolol was given twice a day for 3 days (PMID 29471876) - tylko posrednie wsparcie",
+        "co_mowi_zrodlo": "Dawka numeryczna bez zrodla poziomu 1-3. Etykieta w projekcie jest poprawna i projekt odsyla do ChPL. POPRAWKA: w 09-FINAL albo usunac zakres liczbowy i zostawic 'dawkowanie wg ChPL propranololu', albo zachowac pelna etykiete [wiedza modelu, niezweryfikowane]. Zalecane: dodac ChPL Propranolol WZF do zrodla/."
+      },
+      {
+        "twierdzenie": "Beta-adrenolityk przeciwwskazany przy astmie; propranolol tylko przy tachykardii zatokowej, bez bradykardii/hipotensji",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "ATA 2016 (PMID 27521067, DOI 10.1089/thy.2016.0229) rekomendacja o beta-adrenolitykach u objawowej tyreotoksykozy; przeciwwskazanie astmy - ChPL propranololu, z pamieci modelu",
+        "cytat": "streszczenie ATA 2016 opisuje tylko zakres wytycznej; tresc rekomendacji z pamieci",
+        "co_mowi_zrodlo": "Tresc zgodna z wiedza standardowa (nieselektywny beta-bloker przeciwwskazany w astmie). Poziom 3 - oznaczyc 'z pamieci'."
+      },
+      {
+        "twierdzenie": "Przed tiamazolem: morfologia z rozmazem, ALT; pouczenie: goraczka, bol gardla, owrzodzenia jamy ustnej -> odstawic i morfologia natychmiast (agranulocytoza); zoltaczka, ciemny mocz -> odstawic, ALT",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 3,
+        "zrodlo": "ATA 2016 (PMID 27521067) rekomendacje dot. monitorowania ATD - z pamieci modelu; streszczenie nie zawiera; brak ChPL tiamazolu w zrodla/",
+        "cytat": "brak cytatu w dostepnych streszczeniach",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne ze standardem ATA 2016 i ChPL tiamazolu, ale bez zrodla w tej sprawie. POPRAWKA: oznaczyc [wytyczna ATA 2016 / ChPL - z pamieci modelu] lub dodac ChPL Metizol/Thyrozol do zrodla/."
+      },
+      {
+        "twierdzenie": "Przelom tarczycowy: rozpoznanie kliniczne, skala Burcha-Wartofsky'ego (PMID 42554462)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 42554462, DOI 10.1530/ETJ-26-0043 (Taylor, Eur Thyroid J 2026)",
+        "cytat": "Diagnosis remains clinical, aided by validated scoring systems such as the Burch-Wartofsky and Japanese Thyroid Association/Japan Endocrine Society criteria",
+        "co_mowi_zrodlo": "Zgodne; leczenie na OIT/oddziale wzmozonego nadzoru - zgodne z 'SOR tego samego dnia'."
+      },
+      {
+        "twierdzenie": "Prog eskalacji do SOR: tetno >=130-150/min, migotanie przedsionkow, goraczka, splatanie, niewydolnosc serca [etykieta: wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "Czesciowe wsparcie: PMID 25370315, DOI 10.4158/EP14023.OR (Swee, Endocr Pract 2015) - w przelomie >60% chorych mialo HR >140/min i/lub AF; PMID 37104908, DOI 10.1016/j.ajem.2023.03.035 - cechy przelomu: goraczka, tachykardia, niewydolnosc serca, zaburzenia OUN; punktacja HR w skali Burcha-Wartofsky'ego (>=130 punktowane) - z pamieci",
+        "cytat": ">60% of patients having severe tachycardia (heart rate >140 beats per minute) and/or atrial fibrillation (PMID 25370315)",
+        "co_mowi_zrodlo": "Objawy jakosciowe (goraczka, splatanie, AF, HF) potwierdzone (PMID 37104908). Prog liczbowy 130-150/min nie ma zrodla poziomu 1-3; etykieta w projekcie prawidlowa. POPRAWKA: zachowac etykiete w FINAL lub ujednolicic prog do jednej liczby i oznaczyc jako punkt skali Burcha-Wartofsky'ego [z pamieci]."
+      },
+      {
+        "twierdzenie": "Pogorszenie ostrosci wzroku, widzenia barw, podwojne widzenie -> pilny okulista (neuropatia n. wzrokowego); orbitopatia - wczesne skierowanie (PMID 34297684)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 34297684, DOI 10.1530/EJE-21-0479 (Bartalena, EUGOGO 2021)",
+        "cytat": "Early referral to specialized centers is fundamental for most patients with GO ... Sight-threatening GO is treated with several high single doses of i.v. methylprednisolone per week and, if unresponsive, with urgent orbital decompression",
+        "co_mowi_zrodlo": "Zgodne; dodatkowo polskie omowienie EUGOGO: Nowak i wsp., Endokrynol Pol 2022, PMID 36059167, DOI 10.5603/EP.a2022.0040 (poziom 1-3, polskie, ale nie w zrodla/)."
+      },
+      {
+        "twierdzenie": "Tachykardia spoczynkowa 110-149/min i kolatanie ciagle >1 h -> EKG i TSH tego samego dnia (regula ankiety)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/TEST-2026-11-01-07/01-wywiad.md, sekcja 'Czerwone flagi (reguly ankiety)'",
+        "cytat": "[PILNE] Tetno spoczynkowe 110-149/min: tachykardia spoczynkowa, EKG i TSH tego samego dnia",
+        "co_mowi_zrodlo": "Regula wewnetrzna narzedzia, poprawnie zacytowana; pacjentka podala 115/min i kolatanie >1 h."
+      },
+      {
+        "twierdzenie": "GAD-7 / ocena psychiatryczna jako tor po wykluczeniu tyreotoksykozy [etykieta: wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; nie szukano w PubMed (twierdzenie nieliczbowe, niewplywajace na decyzje dzis)",
+        "cytat": "-",
+        "co_mowi_zrodlo": "Etykieta w projekcie prawidlowa. Dopuszczalne w FINAL z etykieta."
+      }
+    ],
+    "polskie_wytyczne_wyszukiwanie": {
+      "zapytanie": "(Polish Society of Endocrinology OR Polskie Towarzystwo Endokrynologiczne OR Endokrynologia Polska[Journal]) AND (hyperthyroidism OR Graves OR thyrotoxicosis) AND (guideline OR recommendations OR consensus), od 2015",
+      "wynik": "13 trafien; brak polskiej wytycznej PTE dla nadczynnosci tarczycy/choroby Gravesa jako takiej. Trafienia pomocnicze: PMID 36059162 (DOI 10.5603/EP.a2022.0069) - rekomendacje PTE 2022 'Choroby tarczycy a zaburzenia plodnosci' (nadczynnosc u 1-2% kobiet w wieku rozrodczym; istotne przy niewykluczonej ciazy); PMID 36059167 (DOI 10.5603/EP.a2022.0040) - polskie omowienie EUGOGO dla orbitopatii; PMID 36847719 - stanowisko PTE o dysfunkcji tarczycy po kontrascie jodowym (nie dotyczy). Zalecenie: ordynator moze dopisac PMID 36059162 jako polskie zrodlo dla toru 'ciaza niewykluczona'.",
+      "wniosek": "Projekt slusznie stwierdza brak polskich wytycznych w zrodla/; w PubMed tez nie ma polskiej wytycznej dla choroby Gravesa - cytowanie ETA 2018 / Lancet 2024 / ATA 2016 jako poziomu 3 jest zgodne z hierarchia §5."
+    },
+    "lista_poprawek": [
+      "1. Dawka propranololu 10-40 mg 3-4x/d: w 09-FINAL zachowac pelna etykiete [wiedza modelu, niezweryfikowane] i odeslanie do ChPL, albo usunac zakres liczbowy; docelowo dodac ChPL propranololu do zrodla/.",
+      "2. 'Scyntygrafia i jod promieniotworczy zakazane w ciazy' - nie przypisywac do PMID 30283735 (streszczenie tego nie zawiera); cytowac ATA 2016 (PMID 27521067) z oznaczeniem 'z pamieci' lub etykieta.",
+      "3. Pouczenie o agranulocytozie/hepatotoksycznosci tiamazolu i badania wyjsciowe (morfologia, ALT): oznaczyc [ATA 2016 / ChPL tiamazolu - z pamieci modelu]; docelowo ChPL Metizol/Thyrozol do zrodla/.",
+      "4. Prog SOR '>=130-150/min': zachowac etykiete [wiedza modelu]; opcjonalnie wesprzec PMID 25370315 (HR >140 u >60% chorych z przelomem) i PMID 37104908 (objawy przelomu).",
+      "5. Metaanaliza PMID 39533554 - w FINAL mozna zostawic, ale swiadomie: badania kliniczno-kontrolne, 12,5% wysokiej jakosci; nie opierac na niej samej decyzji o propranololu (wystarcza wskazanie z ATA 2016/ETA).",
+      "6. Opcjonalnie dopisac polskie zrodlo PMID 36059162 (PTE 2022, tarczyca a plodnosc) do toru 'ciaza niewykluczona'."
+    ],
+    "uzasadnienie_kartki": "Brak twierdzen SPRZECZNYCH ani NIEAKTUALNYCH; wszystkie 9 cytowanych PMID mowia to, co twierdzi projekt (jedna nieprecyzja przypisania: RAI/scyntygrafia w ciazy -> PMID 30283735). Jedyne liczby bez zrodla (dawka propranololu, prog tetna) sa w projekcie prawidlowo oznaczone etykieta poziomu 4 i odeslane do ChPL, zgodnie z CLAUDE.md §5 - dlatego ZOLTA, nie CZERWONA. Warunek przejscia FINAL: etykiety zachowane, poprawki 1-3 wprowadzone."
+  }
+}

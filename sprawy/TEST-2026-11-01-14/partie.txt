@@ -1,0 +1,7 @@
+1: stan_ogolny goraczka temperatura skora
+2: uraz_zabieg zgiecie inne_stawy
+3: mtx_rytm mtx_dawka objawy_mtx
+4: inne_immuno leki_doraznie choroby
+5: leki_inne badania_krwi badania_wyniki
+6: epizod_wtedy allopurynol alergie
+7: obawy

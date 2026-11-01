@@ -1,0 +1,107 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — egzogenne hormony tarczycy lub suplementy odchudzające z hormonami tarczycy (tyreotoksykoza rzekoma)",
+      "p": 0.03,
+      "za": ["obraz tyreotoksykozy (tachykardia 115/min, utrata 5 kg mimo większego apetytu, drżenie, nietolerancja ciepła, luźne stolce)", "młoda kobieta — grupa, w której ukryte stosowanie preparatów odchudzających się zdarza [wiedza modelu, niezweryfikowane]"],
+      "przeciw": ["pacjentka zaprzecza przyjmowaniu leków z listy w ostatnich 3 miesiącach", "objawy oczne (wytrzeszcz, piasek pod powiekami) — orbitopatia nie występuje w tyreotoksykozie z hormonów egzogennych [wiedza modelu, niezweryfikowane]", "wywiad rodzinny choroby tarczycy"]
+    },
+    {
+      "nazwa": "objawy polekowe — stymulanty, kofeina, środki sympatykomimetyczne",
+      "p": 0.01,
+      "za": ["kołatanie, niepokój, bezsenność"],
+      "przeciw": ["pacjentka zaprzecza używkom i lekom z listy", "stymulanty nie tłumaczą wytrzeszczu, rzadszych miesiączek ani utraty masy ciała przy zwiększonym apetycie"]
+    },
+    {
+      "nazwa": "objawy polekowe — melisa lekarska",
+      "p": 0.0,
+      "za": [],
+      "przeciw": ["melisa działa raczej uspokajająco, nie wywołuje tyreotoksykozy [wiedza modelu, niezweryfikowane]"]
+    },
+    {
+      "nazwa": "nadczynność tarczycy w przebiegu choroby Gravesa i Basedowa (kontekst dla planu; rozpoznanie niepolekowe — p roli farmakologa = 0 zgodnie z definicją roli)",
+      "p": 0.0,
+      "za": ["tachykardia spoczynkowa 115/min miarowa", "utrata 5 kg przy zwiększonym apetycie", "drżenie rąk, poty, nietolerancja ciepła, luźne stolce", "wytrzeszcz i objawy podrażnienia spojówek (orbitopatia)", "rzadsze, skąpsze miesiączki", "choroba tarczycy w rodzinie", "objawy stałe, także w spoczynku — nie napadowe jak w lęku"],
+      "przeciw": ["brak TSH, fT4, fT3, TRAb — NIEZNANE"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "myśli samobójcze — zaprzecza",
+    "kołatanie niemiarowe — pacjentka opisuje rytm jako szybki i równy (bez EKG nie jest to wykluczenie migotania przedsionków)"
+  ],
+  "red_flags_otwarte": [
+    "tachykardia spoczynkowa 115/min, kołatanie ciągłe ponad 1 godzinę — reguła ankiety: EKG i TSH tego samego dnia",
+    "nasilenie tyreotoksykozy nieznane (brak fT4, fT3) — przełom tarczycowy nie jest wykluczony bez badania fizykalnego (gorączka, splątanie, niewydolność serca)",
+    "orbitopatia — aktywność i ciężkość nieoceniona (ostrość wzroku, widzenie podwójne, widzenie barwne)",
+    "ciąża niewykluczona (zmiana miesiączek) — istotne przed tiamazolem",
+    "astma oskrzelowa i inne przeciwwskazania do beta-blokera — NIEZNANE"
+  ],
+  "nastepny_krok": "Dziś: EKG, TSH z fT4 i fT3 (oraz TRAb, morfologia z rozmazem, ALT, bilirubina, test ciążowy beta-hCG), a po wykluczeniu w EKG zaburzeń innych niż tachykardia zatokowa i przeciwwskazań — propranolol objawowo; SSRI nie włączać.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH z prawidłowym fT4 i fT3 przy prawidłowym EKG — wtedy tyreotoksykoza odpada, a SSRI (sertralina) w zaburzeniu lękowym uogólnionym staje się rozsądną opcją po pełnej ocenie psychiatrycznej.",
+  "odpowiedz_na_pytanie": "Nie. Najpierw wykluczyć tyreotoksykozę; SSRI leczyłby objaw, nie przyczynę.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "propranolol (np. Propranolol WZF)",
+      "dawka": "10–40 mg doustnie 3–4 razy na dobę, start od 10–20 mg 3 razy na dobę, cel: tętno spoczynkowe < 90/min",
+      "droga": "doustnie",
+      "czas": "od dnia rozpoznania do uzyskania eutyreozy pod tiamazolem (zwykle kilka tygodni), potem stopniowo odstawić",
+      "uwagi": "Beta-bloker zalecany u objawowej tyreotoksykozy, zwłaszcza przy tętnie spoczynkowym > 90/min (ATA 2016). Włączyć po EKG (wykluczyć blok przedsionkowo-komorowy, preekscytację; przy migotaniu przedsionków — inny tor postępowania). Przeciwwskazania do sprawdzenia: astma oskrzelowa (NIEZNANE), bradykardia, niedociśnienie, objawy niewydolności serca. Przy astmie: selektywny beta-1 (bisoprolol, atenolol) z ostrożnością albo werapamil/diltiazem. Propranolol w dużych dawkach hamuje obwodową konwersję T4 do T3 [wiedza modelu, niezweryfikowane]. Leczy objawy, nie przyczynę.",
+      "zrodlo": "Wskazanie: ATA 2016 (PMID 27521067, DOI 10.1089/thy.2016.0229) — w streszczeniu tylko zakres; dawki i próg tętna [wiedza modelu, niezweryfikowane]; brak ChPL w zrodla/"
+    },
+    {
+      "lek": "tiamazol (Metizol, Thyrozol)",
+      "dawka": "zależnie od fT4: łagodna nadczynność 10–15 mg/dobę, umiarkowana 20–30 mg/dobę, ciężka 30–40 mg/dobę w 1–2 dawkach; po eutyreozie redukcja do 5–10 mg/dobę",
+      "droga": "doustnie",
+      "czas": "12–18 miesięcy w chorobie Gravesa i Basedowa, kontrola fT4/fT3 co 4–6 tygodni na początku",
+      "uwagi": "Włączyć dopiero po potwierdzeniu biochemicznym (TSH obniżone, fT4 lub fT3 podwyższone) i najlepiej TRAb; decyzja w porozumieniu z endokrynologiem. Przed startem: morfologia z rozmazem, ALT, bilirubina, test ciążowy. Pouczyć pisemnie: gorączka, ból gardła, owrzodzenia jamy ustnej → odstawić i pilnie morfologia (agranulocytoza); żółtaczka, ciemny mocz → odstawić i ALT/bilirubina (opisano piorunujące uszkodzenie wątroby i aplazję szpiku po tiamazolu, PMID 42471277). Ciąża: tiamazol w I trymestrze wiąże się z wzorcem wad wrodzonych (atrezja nozdrzy tylnych, aplasia cutis i inne — PMID 32738035); konieczna skuteczna antykoncepcja; przy planowaniu ciąży i w I trymestrze zmiana na propylotiouracyl (ETA 2018). Jod radioaktywny przeciwwskazany przy aktywnej ciężkiej orbitopatii (ETA 2018).",
+      "zrodlo": "ETA 2018 (PMID 30283735, DOI 10.1159/000490384): tiamazol lekiem z wyboru przez 12–18 mies., zmiana na PTU przy planowaniu ciąży i w I trymestrze, RAI przeciwwskazany przy aktywnej/ciężkiej orbitopatii — sprawdzone w streszczeniu; teratogenność: PMID 32738035, DOI 10.1002/bdr2.1771 — sprawdzone; hepatotoksyczność/aplazja: PMID 42471277, DOI 10.1016/j.transproceed.2026.06.021 — sprawdzone; dawki początkowe i częstość kontroli [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "sztuczne łzy bez konserwantów",
+      "dawka": "1–2 krople do każdego oka kilka razy na dobę wg potrzeby",
+      "droga": "do worka spojówkowego",
+      "czas": "doraźnie, do oceny okulistycznej",
+      "uwagi": "Objawowo na piasek pod powiekami i łzawienie; pilna ocena okulistyczna przy spadku ostrości wzroku, widzeniu podwójnym lub zaburzeniu widzenia barw. Selen 100 µg 2 razy na dobę przez 6 miesięcy w łagodnej aktywnej orbitopatii — decyzja specjalisty [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "SSRI, w tym sertralina — teraz",
+      "powod": "Objawy (tachykardia spoczynkowa 115/min, utrata masy przy większym apetycie, drżenie, nietolerancja ciepła, wytrzeszcz, rzadsze miesiączki) wskazują na tyreotoksykozę, nie na pierwotne zaburzenie lękowe. Objawy lęku w nadczynności tarczycy ustępują po leczeniu tyreotoksykozy (przegląd, PMID 39032509, DOI 10.1530/EC-24-0259); objawy psychiatryczne w nadczynności mogą naśladować pierwotne zaburzenia psychiczne i opóźnić rozpoznanie (PMID 42077581, DOI 10.1055/s-0045-1813678). SSRI w pierwszych tygodniach może nasilać niepokój, drżenie, poty i bezsenność [wiedza modelu, niezweryfikowane]. Do ponownej oceny po 2–3 miesiącach eutyreozy, jeśli lęk się utrzyma."
+    },
+    {
+      "lek": "benzodiazepiny rutynowo",
+      "powod": "Nie leczą przyczyny, ryzyko uzależnienia; beta-bloker lepiej kontroluje objawy adrenergiczne tyreotoksykozy [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "preparaty jodu, kelp/algi, suplementy z jodem, amiodaron, jodowe środki kontrastowe bez potrzeby",
+      "powod": "Nadmiar jodu może nasilić nadczynność i utrudnić ewentualne leczenie jodem radioaktywnym [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "biotyna (suplementy na włosy/paznokcie) przed badaniami",
+      "powod": "Zafałszowuje oznaczenia immunochemiczne TSH, fT4 i TRAb (fałszywy obraz nadczynności); odstawić co najmniej 2–3 dni przed pobraniem [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "lek": "sympatykomimetyki (pseudoefedryna w lekach na przeziębienie), duże dawki kofeiny, napoje energetyczne",
+      "powod": "Nasilają tachykardię i ryzyko arytmii w tyreotoksykozie [wiedza modelu, niezweryfikowane]."
+    }
+  ],
+  "interakcje": "Aktualna lista: melisa doraźnie — brak istotnych interakcji z propranololem ani tiamazolem [wiedza modelu, niezweryfikowane]. Na przyszłość: sertralina słabo hamuje CYP2D6, propranolol jest częściowo metabolizowany przez CYP2D6 — interakcja mało istotna klinicznie, monitorować tętno, gdyby po eutyreozie włączono SSRI [wiedza modelu, niezweryfikowane]. Antykoncepcja hormonalna nie jest przeciwwskazana przy tiamazolu.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i ChPL dla nadczynności tarczycy, beta-blokerów i SSRI (tylko przykładowe wpisy)",
+    "pamiec/zespol.md — brak wniosków dotyczących tarczycy",
+    "PubMed zapytanie 1: 'Graves disease hyperthyroidism treatment guideline beta-blocker methimazole' (od 2016) — 2 wyniki, nietrafne (PMID 35963982, 33840069) — nieskuteczne",
+    "PubMed zapytanie 2: 'European Thyroid Association guideline management of Graves hyperthyroidism' (od 2018) → PMID 30283735, DOI 10.1159/000490384 (Kahaly i wsp., ETA 2018) — streszczenie sprawdzone",
+    "PubMed zapytanie 3: 'antithyroid drugs pregnancy birth defects methimazole propylthiouracil' (od 2015) → PMID 32738035, DOI 10.1002/bdr2.1771 (Teratogen update, 2020) i PMID 34442037, DOI 10.3390/jcm10163742 — streszczenia sprawdzone",
+    "PubMed zapytanie 4: '2016 American Thyroid Association guidelines ... thyrotoxicosis[Title]' → PMID 27521067, DOI 10.1089/thy.2016.0229 (Ross i wsp., ATA 2016) — streszczenie sprawdzone (opisuje tylko zakres; szczegółowe dawki nie są w streszczeniu)",
+    "PubMed zapytanie 5: 'methimazole agranulocytosis hepatotoxicity dose-dependent Graves' (od 2010) → PMID 42471277, DOI 10.1016/j.transproceed.2026.06.021 (opis przypadku, 2026) — streszczenie sprawdzone",
+    "PubMed zapytanie 6: 'hyperthyroidism misdiagnosed anxiety disorder psychiatric symptoms thyrotoxicosis' — 0 wyników — nieskuteczne",
+    "PubMed zapytanie 7: 'hyperthyroidism anxiety symptoms antithyroid treatment improvement' (od 2005) → PMID 39032509, DOI 10.1530/EC-24-0259 (przegląd, poprawa objawów psychiatrycznych po leczeniu tyreotoksykozy) i PMID 42077581, DOI 10.1055/s-0045-1813678 (psychoza w chorobie Gravesa naśladuje pierwotne zaburzenie psychiczne) — streszczenia sprawdzone",
+    "PMID 33840069, DOI 10.1007/s13304-021-00979-8 — konsensus Delphi: tiamazol ± beta-bloker w chorobie Gravesa — streszczenie sprawdzone (pomocniczo)",
+    "Dawki propranololu i tiamazolu, próg tętna, biotyna, selen, jod — [wiedza modelu, niezweryfikowane]"
+  ]
+}

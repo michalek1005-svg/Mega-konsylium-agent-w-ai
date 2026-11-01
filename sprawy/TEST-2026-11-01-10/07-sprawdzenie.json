@@ -1,0 +1,135 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "podsumowanie": {
+      "potwierdzone": 11,
+      "bez_zrodla": 2,
+      "sprzeczne": 0,
+      "nieaktualne": 0,
+      "zrodla_poziom_1": "zrodla/ zawiera tylko MANIFEST.md z przykładami — brak polskiej wytyczne/ChPL dla ostrej moszny. Celowe zapytanie PubMed o polskie wytyczne (torsion/acute scrotum AND Poland/Polish AND guideline) — 3 wyniki, żaden nie jest wytyczną; jedyna polska praca: Materny 2015 (PMID 27141600, Szczecin, dzieci): swoistość USG doppler dla skrętu 46%, zalecana eksploracja nawet przy prawidłowym dopplerze — spójne z projektem (skręt wyklucza urolog, nie sam doppler)."
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Jądro zachowane u 100% przy interwencji <6 h, 64,7% przy 6–12 h, 20,8% przy >12 h (PMID 39814209)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39814209, DOI 10.1016/j.urology.2025.01.017 (Milivojevic, Urology 2025)",
+        "cytat": "presence of a detorsed testis was significantly higher in the Group 1 where all cases had existing testis, compared to 64.7% in the Group 2 and only 20.8% in the Group 3",
+        "co_mowi_zrodlo": "Liczby zgodne. UWAGA populacja/wynik: 103 dzieci (śr. wiek 12,9 ± 3,0), wszyscy po operacyjnym odkręceniu z zachowaniem jądra; odsetki dotyczą obecności jądra (brak zaniku) po medianie 65 mies. obserwacji, nie śródoperacyjnego uratowania. Pacjent ma 19 lat — ekstrapolacja z populacji pediatrycznej; kierunek wniosku (czas <6 h decyduje) bez zmian."
+      },
+      {
+        "twierdzenie": "Czas trwania objawów głównym czynnikiem nieuratowania jądra; próg 8,5 h, czułość 73% (PMID 29354505)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 29354505, DOI 10.21037/tau.2017.09.10 (Howe, Transl Androl Urol 2017)",
+        "cytat": "Cut-off values of 8.5 h ... sensitivities of 73% ... specificity of 80%. Only duration and age were correlated with the risk of non-salvage",
+        "co_mowi_zrodlo": "Zgodne (n=81, młodzież; swoistość 80%)."
+      },
+      {
+        "twierdzenie": "USG doppler dla skrętu: czułość 94%, swoistość 96%, NPV 98% (PMID 20040771)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 20040771, DOI 10.7863/jum.2010.29.1.11 (Yagil, J Ultrasound Med 2010)",
+        "cytat": "Doppler ultrasonography for the diagnosis of testicular torsion had 94% sensitivity, 96% specificity ... a 98% negative predictive value",
+        "co_mowi_zrodlo": "Zgodne; 620 pacjentów SOR wszystkich grup wiekowych, tylko 18 potwierdzonych skrętów — szerokie przedziały ufności. Polska seria pediatryczna (PMID 27141600) podaje znacznie niższą swoistość dopplera (46%) — wzmacnia tezę projektu, że doppler nie zastępuje urologa/eksploracji."
+      },
+      {
+        "twierdzenie": "TWIST: grupa pośrednia 3–4 pkt skręt 13%, wysoka 5–7 pkt 61%; skala zaniżona przy zgłoszeniu <6 h od początku (PMID 35970737)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 35970737, DOI 10.1016/j.jpurol.2022.07.013 (Hisamatsu, J Pediatr Urol 2022)",
+        "cytat": "TT was found in 1(1.3%), 3(13%), and 11 (61%) patients of low, intermediate, and high risk groups ... underestimated when patients present ... immediately after onset",
+        "co_mowi_zrodlo": "Zgodne; populacja pediatryczna (0,25–18,9 lat), n=106, tylko 15 skrętów."
+      },
+      {
+        "twierdzenie": "W gabinecie lekarza rodzinnego TWIST ≥1 lub obraz sugerujący skręt → pilnie na SOR (PMID 34521708)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 34521708, DOI 10.46747/cfp.6709669 (Shunmugam, Goldman, Can Fam Physician 2021)",
+        "cytat": "If the TWIST score is 1 or higher or if the clinical presentation suggests torsion, manual detorsion should be attempted and the patient should be urgently sent to the nearest emergency department",
+        "co_mowi_zrodlo": "Zgodne. Źródło dodaje próbę ręcznego odkręcenia w gabinecie — projekt tego nie zaleca (pacjent kontaktuje się zdalnie, więc nie ma to zastosowania); artykuł dotyczy dzieci/młodzieży."
+      },
+      {
+        "twierdzenie": "Opóźnienie zgłoszenia 17,9 vs 7,5 h → orchidektomia 42% vs 29% (PMID 33832873)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 33832873, DOI 10.1016/j.jpurol.2021.03.013 (Holzman, J Pediatr Urol 2021)",
+        "cytat": "Median times from symptom onset to ... presentation ... were 17.9 h ... and 7.5 h ... (p = 0.04). ... 42% of patients underwent orchiectomy compared to 29% ... (p = 0.06)",
+        "co_mowi_zrodlo": "Liczby zgodne; różnica odsetka orchidektomii nie osiągnęła istotności (p=0,06); populacja 2 mies.–18 lat, kontekst COVID-19."
+      },
+      {
+        "twierdzenie": "Skręt przerywany: obustronna orchidopeksja zapobiega utracie jądra; ból, który ustąpił, nadal wymaga oceny (PMID 39539564)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39539564, DOI 10.1002/bco2.439 (Hegarty, BJUI Compass 2024)",
+        "cytat": "The success rate of bilateral orchidopexy in preventing testicular loss due to torsion was 100%, at a follow-up of mean 33.5 months",
+        "co_mowi_zrodlo": "Zgodne; n=50 dorosłych mężczyzn, jeden chirurg, seria prospektywna."
+      },
+      {
+        "twierdzenie": "Składowe skali TWIST: obrzęk 2, twarde jądro 2, brak odruchu nosidłowego 1, nudności/wymioty 1, wysokie ułożenie 1 (w projekcie oznaczone [wiedza modelu])",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23103800, DOI 10.1016/j.juro.2012.10.056 (Barbosa, J Urol 2013)",
+        "cytat": "testicular swelling (2 points), hard testicle (2), absent cremasteric reflex (1), nausea/vomiting (1) and high riding testis (1). Cutoffs for low and high risk were 2 and 5 points",
+        "co_mowi_zrodlo": "POPRAWKA: etykietę [wiedza modelu, niezweryfikowane] zastąpić cytowaniem PMID 23103800. Zastrzeżenie: skala walidowana w badaniu przez urologa u dzieci; w projekcie liczona z samoopisu pacjenta 19-letniego — to ekstrapolacja, warto to zaznaczyć w FINAL."
+      },
+      {
+        "twierdzenie": "TWIST z samej ankiety = 4 pkt (obrzęk 2 + wymioty 1 + jądro wysoko 1)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23103800 (punktacja) + 01-wywiad.md (dane: obrzęk, jądro wyżej, wymioty)",
+        "cytat": "testicular swelling (2 points) ... nausea/vomiting (1) and high riding testis (1)",
+        "co_mowi_zrodlo": "Arytmetyka poprawna wobec punktacji źródłowej; składowe oparte na samoocenie pacjenta, nie na badaniu."
+      },
+      {
+        "twierdzenie": "Pacjent jest w 3.–6. godzinie bólu; brak gorączki, brak dyzurii; wymioty; jądro uniesione; wcześniejszy samoustępujący epizod",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "sprawy/TEST-2026-11-01-10/01-wywiad.md",
+        "cytat": "Ile godzin temu zaczął się ból? O: 3–6 godzin ... Jądro jest wyżej niż drugie; Obrzęk ... Zwymiotowałem raz ... gorączka: Nie",
+        "co_mowi_zrodlo": "Dane projektu zgodne z wywiadem."
+      },
+      {
+        "twierdzenie": "Konsylium: p skrętu ≈ 0,75; pilność 1 u 6/6 ról",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "03-opinie/*.json, 03-opinie/_agregat.json, 04-konsylium.md",
+        "cytat": "p u ról 0,72–0,80; pilność wynik 1, mediana ważona 1,0",
+        "co_mowi_zrodlo": "Zgodne. Uwaga redakcyjna: ≈0,75 to zakres opinii ról; agregat skryptu po połączeniu synonimów ≈0,54 (04-konsylium §1). Nie sprzeczność, ale FINAL powinien podać, którą liczbę cytuje."
+      },
+      {
+        "twierdzenie": "Zasada „nic doustnie przed możliwym zabiegiem” (brak analgezji doustnej przed wyjazdem)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "—",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, w projekcie prawidłowo oznaczone [wiedza modelu, niezweryfikowane]. Brak w zrodla/; nie sprawdzano osobnym zapytaniem PubMed (zasada anestezjologiczna, nie przedmiot badań o skręcie). Etykieta musi pozostać w FINAL."
+      },
+      {
+        "twierdzenie": "Po leczeniu zapalenia najądrza (plan B) kontrola w POZ po 7–14 dniach",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "—",
+        "cytat": "",
+        "co_mowi_zrodlo": "Termin kontroli bez cytowanego źródła i bez etykiety. Nie jest dawką ani progiem decyzyjnym; w FINAL dodać etykietę [wiedza modelu, niezweryfikowane] albo oprzeć na zaleceniu urologa wypisującego."
+      },
+      {
+        "twierdzenie": "Antybiotyk i tydzień zwłoki przy skręcie oznaczają utratę jądra (wniosek z progów czasowych)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39814209; PMID 29354505",
+        "cytat": "Testicular salvage is not possible if more than 6 hours have passed since the onset of symptoms ... Fifteen h of symptoms ... gives testes a 50% salvage rate",
+        "co_mowi_zrodlo": "Wniosek spójny ze źródłami (tydzień = >>15 h)."
+      }
+    ],
+    "poprawki": [
+      "Zastąpić etykietę [wiedza modelu] przy składowych TWIST cytowaniem: Barbosa JA i wsp. J Urol 2013;189:1859-64, PMID 23103800, DOI 10.1016/j.juro.2012.10.056.",
+      "Przy PMID 39814209 dopisać, że to populacja pediatryczna (śr. 12,9 lat) i odsetki dotyczą obecności jądra w obserwacji odległej (bez zaniku), nie śródoperacyjnego uratowania; wniosek czasowy pozostaje.",
+      "Przy PMID 33832873 zaznaczyć, że różnica orchidektomii 42% vs 29% nie była istotna (p=0,06).",
+      "Kontrola POZ po 7–14 dniach (plan B): dodać etykietę [wiedza modelu, niezweryfikowane] lub uzależnić od zalecenia urologa.",
+      "Zachować etykietę [wiedza modelu] przy zasadzie „nic doustnie”.",
+      "Opcjonalnie: w ŹRÓDŁACH dodać jedyną polską pracę z PubMed — Materny J i wsp. Pomeranian J Life Sci 2015;61:163-6, PMID 27141600 (swoistość dopplera 46% u chłopców; eksploracja mimo prawidłowego dopplera).",
+      "Ujednolicić liczbę p dla skrętu w FINAL (0,75 = opinie ról; 0,54 = agregat skryptu po połączeniu synonimów)."
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "Septyczne zapalenie stawu kolanowego prawego (samodzielne lub współistniejące z napadem dny)",
+      "p": 0.45,
+      "za": [
+        "Pretest: ostre monoartritis dużego stawu z gorączką u dorosłego — zakażenie stawu jest najgroźniejszą i nierzadką przyczyną; odsetek dokładny dla POZ w Polsce nieznany [wiedza modelu, niezweryfikowane: ok. 8–27% w seriach szpitalnych ostrych monoartritis] → punkt wyjścia ok. 0,10–0,15",
+        "Gorączka 38,6 °C → podnosi → umiarkowanie (gorączka występuje u 57% chorych z septycznym zapaleniem stawu; PMID 17405973) — w napadzie dny gorączka ≥ 38,5 °C jest mniej typowa [wiedza modelu, niezweryfikowane]",
+        "Dreszcze → podnosi → umiarkowanie (dreszcze tylko u 19% chorych z septycznym zapaleniem stawu, więc niska czułość, ale objaw względnie swoisty dla bakteriemii; PMID 17405973)",
+        "Rana/otarcie skóry oraz zmiany łuszczycowe na tym kolanie → podnosi → umiarkowanie–silnie (zakażenie skóry to udokumentowany czynnik ryzyka; PMID 17405973) — wrota zakażenia gronkowcowego",
+        "Metotreksat 12,5–15 mg/tydz. + doustny glikokortykosteroid → podnosi → umiarkowanie (immunosupresja jako czynnik predysponujący, także do współistnienia zakażenia i dny; PMID 38901050; u chorych z zapaleniem stawów zapalnym każde izolowane zapalenie stawu traktować jako septyczne do czasu wykluczenia; PMID 42423760); steroid dodatkowo może maskować gorączkę i obraz",
+        "Przebyta dna w wywiadzie → paradoksalnie podnosi ryzyko współistnienia zakażenia z kryształami (predysponujący czynnik zespołu septyczno-krystalicznego; PMID 38901050) — 7,2% chorych z artropatią krystaliczną miało równocześnie zakażenie, 23,6% zakażeń stawu miało kryształy (PMID 38901050)",
+        "CRP 186 mg/l → podnosi → umiarkowanie (wśród stawów z kryształami CRP > 100 mg/l wiązało się z dodatnim posiewem, OR 3,2; PMID 38919362); leukocytoza 15,9 G/l z neutrofilią 13,2 G/l → podnosi → słabo–umiarkowanie (dna też daje leukocytozę)",
+        "Całkowita niemożność ruchu biernego → podnosi → słabo (proces wewnątrzstawowy o dużym nasileniu; niespecyficzne między zakażeniem a dną)"
+      ],
+      "przeciw": [
+        "Początek nagły od wczoraj z bardzo silnym bólem → typowe także dla dny → nie różnicuje",
+        "Brak protezy stawu, cukrzycy, reumatoidalnego zapalenia stawów → nieco obniża → słabo",
+        "Brak badania płynu stawowego (leukocyty, odsetek neutrofili, Gram, posiew) — jedynego badania, które realnie przesuwa prawdopodobieństwo (leukocyty płynu > 50 000/µl LR 7,7; > 100 000/µl LR 28; < 25 000/µl LR 0,32; PMID 17405973)"
+      ]
+    },
+    {
+      "nazwa": "Napad dny moczanowej w stawie kolanowym (bez zakażenia)",
+      "p": 0.35,
+      "za": [
+        "Mężczyzna 57 lat, wcześniejszy epizod w palcu stopy (prawdopodobnie podagra) → podnosi → umiarkowanie; ale rozpoznanie sprzed 2 lat NIEZNANE (nie wiadomo, czy potwierdzone kryształami)",
+        "Kwas moczowy 8,1 mg/dl (ok. 482 µmol/l) → podnosi → słabo (hiperurykemia częsta w populacji, a w napadzie stężenie bywa prawidłowe, więc wynik mało różnicujący) [wiedza modelu, niezweryfikowane]",
+        "Brak leczenia obniżającego kwas moczowy → podnosi nawrót → słabo",
+        "Łuszczyca → wiąże się z hiperurykemią → słabo [wiedza modelu, niezweryfikowane]",
+        "Nagły początek, maksymalny ból w < 24 h, zaczerwienienie, ocieplenie → zgodne z dną → słabo (zgodne też z zakażeniem)"
+      ],
+      "przeciw": [
+        "Gorączka 38,6 °C z dreszczami → obniża → umiarkowanie",
+        "CRP 186 mg/l → obniża → słabo (dna potrafi dać wysokie CRP, ale > 100 mg/l przesuwa w stronę zakażenia wśród stawów z kryształami; PMID 38919362)",
+        "Doustny glikokortykosteroid przyjmowany na stałe → zwykle tłumi napady krystaliczne → obniża → słabo [wiedza modelu, niezweryfikowane]",
+        "Rozpoznanie dny NIE wyklucza zakażenia — kryształy w płynie nie zwalniają z posiewu (PMID 38919362, 32566449)"
+      ]
+    },
+    {
+      "nazwa": "Ostre zapalenie stawu wywołane kryształami pirofosforanu wapnia",
+      "p": 0.07,
+      "za": [
+        "Kolano to najczęstsza lokalizacja; wiek > 55 lat → podnosi → słabo [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Wcześniejszy epizod w palcu stopy pasuje bardziej do dny → obniża → słabo",
+        "Gorączka z dreszczami → obniża → słabo"
+      ]
+    },
+    {
+      "nazwa": "Zaostrzenie łuszczycowego zapalenia stawów pod postacią monoartritis",
+      "p": 0.05,
+      "za": [
+        "Łuszczyca z zajęciem skóry kolana → podnosi → słabo"
+      ],
+      "przeciw": [
+        "Brak wcześniejszych dolegliwości stawowych poza epizodem w palcu, leczenie metotreksatem → obniża → umiarkowanie",
+        "Gorączka 38,6 °C, dreszcze, CRP 186 mg/l → nietypowe → obniża → umiarkowanie"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie tkanki podskórnej lub septyczne zapalenie kaletki przedrzepkowej imitujące zapalenie stawu",
+      "p": 0.05,
+      "za": [
+        "Rana/otarcie skóry kolana, gorączka, dreszcze → podnosi → umiarkowanie"
+      ],
+      "przeciw": [
+        "Całkowita niemożność ruchu biernego wskazuje na proces wewnątrzstawowy (w kaletce ruch bierny zwykle częściowo zachowany) → obniża → umiarkowanie [wiedza modelu, niezweryfikowane]",
+        "Pacjent zaprzecza szerzącemu się zaczerwienieniu (odpowiedź „nic z tych rzeczy” na liście objawów kolana)"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Septyczne zapalenie stawu u chorego immunosupresyjnego (metotreksat + glikokortykosteroid) z gorączką 38,6 °C, dreszczami i CRP 186 mg/l — niewykluczone; wymaga punkcji stawu przed antybiotykiem",
+    "Możliwa bakteriemia/sepsa: dreszcze, leukocytoza 15,9 G/l z neutrofilią; parametry życiowe NIEZNANE",
+    "Wrota zakażenia: rana/otarcie skóry kolana na tle zmian łuszczycowych",
+    "Całkowita niemożność ruchu biernego stawu",
+    "Mielosupresja/toksyczność metotreksatu — ostatnie badania kontrolne NIEZNANE (aktualna leukocytoza czyni ciężką mielosupresję mało prawdopodobną, ale funkcja wątroby i nerek w dynamice nieznana)"
+  ],
+  "nastepny_krok": "Skierować dziś natychmiast do szpitala (SOR lub izba przyjęć ortopedii) z rozpoznaniem roboczym „podejrzenie septycznego zapalenia stawu kolanowego u chorego immunosupresyjnego” w celu punkcji stawu z badaniem płynu (leukocyty z odsetkiem neutrofili, Gram, posiew, kryształy w świetle spolaryzowanym) i posiewów krwi przed pierwszą dawką antybiotyku — nie rozpoczynać w POZ empirycznie kolchicyny z NLPZ jako leczenia napadu dny.",
+  "co_zmieniloby_zdanie": "Płyn stawowy z kryształami moczanu, leukocytami < 25 000/µl (LR 0,32), ujemnym barwieniem Grama i jałowym posiewem obniżyłby prawdopodobieństwo zakażenia poniżej 0,10 i uzasadnił leczenie napadu dny; leukocyty > 50 000/µl lub dodatni Gram — niezależnie od obecności kryształów — przesunęłyby p zakażenia powyżej 0,80.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrego monoartritis / septycznego zapalenia stawu / dny (same wiersze przykładowe); pamiec/zespol.md — brak wpisów dotyczących stawów",
+    "Zapytanie PubMed 1 (bez trafień): \"septic arthritis adult likelihood ratio rational clinical examination\"",
+    "Zapytanie PubMed 2 (skuteczne): \"concomitant gout and septic arthritis crystals synovial fluid\" → PMID 38919362, 38901050, 32566449",
+    "Zapytanie PubMed 3 (trafienia nietrafne tematycznie): \"Does this adult patient have septic arthritis[Title]\"",
+    "Zapytanie PubMed 4 (nietrafne — wytyczna łuszczycowego zapalenia stawów, nie użyta): \"septic arthritis risk factors immunosuppression methotrexate psoriasis skin infection\" → PMID 38499325",
+    "Zapytanie PubMed 5 (skuteczne): \"Margaretten ME septic arthritis JAMA 2007\" → PMID 17405973",
+    "Zapytanie PubMed 6 (bez trafień): \"septic arthritis[Title] prevalence acute monoarthritis emergency department fever serum C-reactive protein diagnostic accuracy\"",
+    "Zapytanie PubMed 7 (bez trafień): \"serum uric acid during acute gout flare normal levels diagnostic value\"",
+    "Zapytania PubMed 8–9 (wyniki niesprawdzone, nie użyte): \"serum urate gout flare[Title]\"; \"Schlesinger serum urate during acute gout\"",
+    "Zapytanie PubMed 10 (skuteczne): \"septic arthritis[Title] AND (immunosuppressive OR biologic OR methotrexate) AND risk\" → PMID 42423760",
+    "Margaretten ME i wsp. Does this adult patient have septic arthritis? JAMA 2007;297(13):1478-88. PMID 17405973, DOI 10.1001/jama.297.13.1478 — streszczenie sprawdzone: czynniki ryzyka (wiek, cukrzyca, RZS, operacja/proteza, zakażenie skóry, HIV); gorączka czułość 57%, dreszcze 19%; leukocyty płynu <25 000 LR 0,32, ≥25 000 LR 2,9, >50 000 LR 7,7, >100 000 LR 28; neutrofile ≥90% LR 3,4",
+    "Mukerji S i wsp. Concomitant septic and crystal arthropathy. N Z Med J 2024;137(1597):67-78. PMID 38901050, DOI 10.26635/6965.6510 — streszczenie sprawdzone: 23,6% zakażeń stawu z kryształami, 7,2% artropatii krystalicznych z zakażeniem; predyspozycje: dna w wywiadzie, RZS, immunosupresja, metal w stawie",
+    "Skalitzky MK i wsp. Predicting septic arthritis in the setting of crystalline arthropathy. Iowa Orthop J 2024;44(1):69-72. PMID 38919362 (brak DOI w PubMed; PMC11195883) — streszczenie sprawdzone: wśród 442 stawów z kryształami 58 z dodatnim posiewem; TNC >50 000 OR 7,7, CRP >10 mg/dl OR 3,2, PMN >90% OR 2,17; kryształy nie wykluczają zakażenia",
+    "Luo TD i wsp. Synovial cell count poorly predicts septic arthritis in the presence of crystalline arthropathy. J Bone Jt Infect 2020;5(3):118-124. PMID 32566449, DOI 10.7150/jbji.44815 — streszczenie sprawdzone: współistnienie rzadkie (0,8%), wszystkie przypadki z leukocytami płynu ≥85 000/mm³",
+    "Bönnen L i wsp. Acute diagnostics — focus on septic arthritis. Z Rheumatol 2026;85(6):458-468. PMID 42423760, DOI 10.1007/s00393-026-01848-8 — streszczenie sprawdzone: u chorych z zapalną chorobą stawów każde izolowane zapalenie stawu traktować jako septyczne do czasu wykluczenia; proste progi laboratoryjne niewystarczające; wczesna punkcja z mikrobiologią",
+    "Odsetek septycznego zapalenia stawu wśród ostrych monoartritis, wpływ glikokortykosteroidu na obraz, znaczenie kwasu moczowego w napadzie — [wiedza modelu, niezweryfikowane]"
+  ]
+}

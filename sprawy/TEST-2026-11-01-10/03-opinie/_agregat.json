@@ -1,0 +1,138 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Skręt jądra prawego (skręt powrózka nasiennego)",
+      "p": 0.342,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "skręt powrózka nasiennego (skręt jądra prawego)",
+      "p": 0.136,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "skręt przyczepka jądra",
+      "p": 0.094,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "zapalenie najądrza",
+      "p": 0.07,
+      "wymienili": [
+        "bayes",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "skręt jądra prawego",
+      "p": 0.061,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.143,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Bariera wstydu i kontakt przez aplikację — realne ryzyko opóźnienia zgłoszenia (PMID 33832873: opóźnienie zgłoszenia zwiększa odsetek orchidektomii)",
+      "Brak badania fizykalnego i parametrów życiowych (NIEZNANE)",
+      "Brak parametrów życiowych i badania fizykalnego (NIEZNANE)",
+      "Jądro uniesione (wg pacjenta) – objaw skrętu",
+      "Nagły, silny ból jądra 8/10 od 3–6 godzin – skręt jądra do wykluczenia, okno ratowania jądra się zamyka",
+      "Okno czasowe: ból od 3–6 h — zbliżamy się do progu 6 h, po którym szanse uratowania jądra istotnie spadają (PMID 39814209, 41549042)",
+      "Skręt jądra: nagły ból 8/10 od 3–6 h + uniesione jądro + obrzęk + wymioty + ujemny objaw Prehna; NIC w wywiadzie go nie wyklucza. Wykluczy go wyłącznie badanie urologiczne z USG dopplerowskim pokazującym prawidłowy przepływ (a przy wysokim podejrzeniu klinicznym — eksploracja moszny bez zwłoki na obrazowanie)",
+      "Utrzymujące się nudności po wymiotach",
+      "Uwięźnięta przepuklina pachwinowa — wymaga badania fizykalnego (NIEZNANE)",
+      "Wstyd i niechęć do badania – ryzyko zwłoki z winy pacjenta",
+      "badanie fizykalne i parametry życiowe NIEZNANE",
+      "brak badania fizykalnego i parametrów życiowych (NIEZNANE)",
+      "czas od początku bólu 3–6 h: okno ratowania jądra (do ok. 6 h) właśnie się zamyka",
+      "jądro uniesione",
+      "jądro uniesione wyżej niż drugie (objaw skrętu)",
+      "nagły silny ból jądra 3–6 h z jądrem uniesionym, obrzękiem i wymiotami — podejrzenie skrętu jądra, okno ratowania jądra liczy się w godzinach",
+      "nagły silny ból jądra u 19-latka trwający 3–6 h — okno ratowania jądra się zamyka; ryzyko orchidektomii rośnie po ok. 6 h 30 min od początku bólu (PMID 37897515), czas 8,5 h ma czułość 73% dla jądra nieuratowanego (PMID 29354505)",
+      "nagły, silny ból jądra u 19-latka — skręt jądra do wykluczenia operacyjnie lub USG z dopplerem",
+      "skręt jądra: nagły ból 8/10 od 3–6 h, jądro uniesione, obrzęk, nudności — okno ratowania jądra mija w ciągu godzin",
+      "uprzedni samoistnie ustępujący epizod bólu — możliwy skręt przerywany",
+      "utrzymujące się nudności po wymiotach",
+      "wstyd i niechęć do badania — ryzyko zwłoki z winy pacjenta"
+    ],
+    "wykluczone": [
+      "Gorączka ≥ 38 °C (zaprzeczona) – ropień mało prawdopodobny",
+      "Przyczyna polekowa – pacjent nie przyjmuje żadnych leków ani suplementów",
+      "Uraz moszny lub krocza (zaprzeczony)",
+      "Uraz moszny — zaprzeczony",
+      "Zapalenie najądrza jako wyjaśnienie — przemawiają przeciw: brak gorączki, dyzurii, ryzyka STI, nagły początek (nie wyklucza współistnienia, ale nie tłumaczy obrazu)",
+      "alergia na leki — pacjent zaprzecza",
+      "gorączka ≥ 38 °C (zaprzecza)",
+      "gorączka ≥38 °C i dreszcze (zaprzeczył) — mniej przemawia za ropniem/zapaleniem jądra",
+      "objawy polekowe i interakcje — brak leków i suplementów",
+      "przepuklina pachwinowa uwięźnięta — brak uwypuklenia w pachwinie (wg pacjenta, bez badania)",
+      "uraz krocza lub moszny (zaprzeczył)",
+      "uraz moszny (zaprzecza)",
+      "uwypuklenie w pachwinie (zaprzecza)",
+      "Świnkowe zapalenie jądra — brak obrzęku ślinianek"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "wysoka",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "wysoka",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "wysoka"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

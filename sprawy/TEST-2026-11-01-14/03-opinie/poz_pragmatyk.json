@@ -1,0 +1,59 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {"nazwa": "septyczne zapalenie stawu kolanowego prawego", "p": 0.55,
+     "za": ["ostre zapalenie jednego dużego stawu od <48 h", "gorączka 38,6 °C i dreszcze", "immunosupresja: metotreksat 12,5–15 mg/tydzień + glikokortykosteroid doustny", "rana/otarcie skóry i ogniska łuszczycowe w okolicy kolana (wrota zakażenia)", "całkowity brak ruchu biernego", "CRP 186 mg/l, WBC 15,9 G/l, neutrofile 13,2 G/l", "zakażenie skóry jest czynnikiem ryzyka septycznego zapalenia stawu (Margaretten 2007, PMID 17405973)"],
+     "przeciw": ["wcześniejszy epizod dny (niepotwierdzony)", "kwas moczowy 8,1 mg/dl", "brak badania płynu stawowego"]},
+    {"nazwa": "napad dny moczanowej stawu kolanowego bez zakażenia", "p": 0.25,
+     "za": ["wywiad dny palucha 2 lata temu", "hiperurykemia 8,1 mg/dl", "dna też daje gorączkę, CRP i leukocytozę"],
+     "przeciw": ["rozpoznanie dny nigdy niepotwierdzone (NIEZNANE)", "kolano zamiast stawu stopy przy drugim napadzie", "immunosupresja i wrota zakażenia", "hiperurykemia nie rozstrzyga o przyczynie zapalenia"]},
+    {"nazwa": "septyczne zapalenie stawu współistniejące z dną moczanową", "p": 0.10,
+     "za": ["w serii 567 punkcji na oddziale ratunkowym 23,6% septycznych zapaleń miało też kryształy; czynnikami były dna w wywiadzie i immunosupresja (Mukerji 2024, PMID 38901050)", "obecność kryształów moczanu nie wyklucza zakażenia (Tzanis 2022, PMID 35611099)"],
+     "przeciw": ["częstość bezwzględna niska: 7,2% chorych z artropatią krystaliczną miało zakażenie (PMID 38901050)"]},
+    {"nazwa": "dna rzekoma (choroba depozytowa pirofosforanu wapnia)", "p": 0.05,
+     "za": ["kolano to typowa lokalizacja", "wiek 57 lat"],
+     "przeciw": ["brak wywiadu", "obraz bardziej zapalno-septyczny"]},
+    {"nazwa": "łuszczycowe zapalenie stawów z zajęciem jednego stawu", "p": 0.03,
+     "za": ["łuszczyca"],
+     "przeciw": ["gorączka 38,6 °C z dreszczami i nagły początek", "leczenie metotreksatem"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "septyczne zapalenie stawu u chorego immunosupresyjnego — niewykluczone bez punkcji",
+    "gorączka 38,6 °C z dreszczami — możliwa bakteriemia / sepsa (parametry życiowe NIEZNANE)",
+    "rana/otarcie skóry w okolicy kolana — wrota zakażenia, możliwe zapalenie tkanki podskórnej",
+    "glikokortykosteroid doustny (dawka NIEZNANA) może maskować gorączkę i ciężkość stanu; ryzyko niewydolności kory nadnerczy przy nagłym odstawieniu",
+    "stan szpiku i wątroby przy metotreksacie NIEZNANY (brak morfologii z rozmazem, ALT)"
+  ],
+  "nastepny_krok": "Dziś, natychmiast: skierowanie do szpitala w trybie pilnym (SOR lub izba przyjęć oddziału ortopedii) z rozpoznaniem robocze M00.9 „septyczne zapalenie stawu kolanowego prawego do wykluczenia — wskazana pilna punkcja stawu z badaniem płynu (cytoza, posiew, kryształy) i posiewy krwi przed antybiotykiem”; transport karetką, jeśli chory nie stanie na nogę lub ma objawy sepsy.",
+  "co_zmieniloby_zdanie": "Płyn stawowy z kryształami moczanu, cytozą <25 000/µl (iloraz wiarygodności 0,32, PMID 17405973) i ujemnym posiewem przesunąłby leczenie na przeciwzapalne leczenie dny; w POZ bez punkcji nic tego nie zmienia, a odległość do SOR (NIEZNANA) wpływa tylko na sposób transportu, nie na pilność.",
+  "odpowiedz_na_pytanie_lekarza": "Nie. Nie leczyć teraz jak napadu dny: kolchicyna i niesteroidowy lek przeciwzapalny przed punkcją mogą zamaskować septyczne zapalenie stawu, a niesteroidowy lek przeciwzapalny z metotreksatem zwiększa toksyczność metotreksatu [wiedza modelu, niezweryfikowane]. Najpierw punkcja w szpitalu dziś.",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "parametry życiowe: temperatura, tętno, ciśnienie, częstość oddechów, saturacja, stan świadomości (qSOFA) [wiedza modelu, niezweryfikowane]",
+      "obejrzeć kolano i ranę: rumień szerzący się, ropień, wysięk; zaznaczyć granice rumienia flamastrem",
+      "ustalić dawkę i czas przyjmowania glikokortykosteroidu oraz datę ostatniej dawki metotreksatu — wpisać do skierowania",
+      "przeciwbólowo paracetamol 1 g doustnie [wiedza modelu, niezweryfikowane]; NIE niesteroidowy lek przeciwzapalny, NIE kolchicyna, NIE dostawowy steryd",
+      "NIE podawać antybiotyku w gabinecie, jeśli szpital w zasięgu kilku godzin — utrudni posiewy; wyjątek: objawy wstrząsu septycznego lub transport opóźniony [wiedza modelu, niezweryfikowane]",
+      "nie odstawiać nagle glikokortykosteroidu; metotreksat wstrzymać do decyzji szpitala [wiedza modelu, niezweryfikowane]"
+    ],
+    "zlecic": "Nic w trybie POZ — badania (morfologia z rozmazem, CRP, prokalcytonina, posiewy krwi, płyn stawowy, RTG kolana) zrobi szpital tego samego dnia; prywatne wyniki z wczoraj dołączyć do skierowania.",
+    "skierowanie": "SOR / izba przyjęć oddziału ortopedii lub reumatologii, tryb pilny (dziś). Nie poradnia specjalistyczna i nie „termin na USG” — tu decyduje punkcja w ciągu godzin.",
+    "transport": "Chory nie stanie na nogę: zespół ratownictwa medycznego przy objawach sepsy lub braku opiekuna z autem; w pozostałych przypadkach transport rodziny bezpośrednio na SOR. Odległość do SOR NIEZNANA.",
+    "kontrola": "Telefon / wizyta po wypisie, ok. 7 dni; wtedy też uporządkować rozpoznanie dny (płyn stawowy z kryształami) i decyzję o leczeniu obniżającym kwas moczowy oraz kontrolę badań przy metotreksacie (morfologia, ALT, kreatynina).",
+    "co_powiedziec_pacjentowi": "To może być zakażenie stawu, a nie dna — trzeba dziś w szpitalu nakłuć kolano, bo zakażenie niszczy staw w ciągu dni, a leki na dnę mogłyby je ukryć.",
+    "wykonalnosc": "Plan wykonalny pod warunkiem transportu; chory boi się czegoś poważnego, więc jasny komunikat ułatwi zgodę. Ryzyko: odesłanie z SOR z kolchicyną bez punkcji — w skierowaniu napisać wprost o immunosupresji, gorączce i ranie."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dotyczącej dny lub septycznego zapalenia stawu ani wykazu badań POZ (tylko przykłady); pamiec/zespol.md — realia lokalne nieuzupełnione (odległość do SOR NIEZNANA)",
+    "PubMed zapytanie 1: septic arthritis[Title] AND (diagnosis OR management) AND review[Publication Type], od 2015 — Khodadadi RB i wsp. State-of-the-Art Review: Native Joint Septic Arthritis. Clin Infect Dis 2026;83(4):499-513. PMID 42950136, DOI 10.1093/cid/ciag473 (streszczenie sprawdzone: stan nagły zależny od czasu, kluczowa analiza płynu stawowego, pilna kontrola ogniska chirurgicznie + antybiotyk)",
+    "PubMed zapytanie 2: concomitant septic arthritis crystal gout coexistence — Mukerji S i wsp. N Z Med J 2024;137(1597):67-78. PMID 38901050, DOI 10.26635/6965.6510 (streszczenie sprawdzone: 23,6% septycznych z kryształami, 7,2% krystalicznych z zakażeniem; czynniki: dna w wywiadzie, immunosupresja)",
+    "PubMed zapytanie 2: Tzanis P i wsp. Mediterr J Rheumatol 2022;33(1):75-80. PMID 35611099, DOI 10.31138/mjr.33.1.75 (streszczenie sprawdzone: kryształy moczanu nie wykluczają zakażenia)",
+    "PubMed zapytanie 2: Hong CC i wsp. Injury 2023;54(2):409-415. PMID 36351859, DOI 10.1016/j.injury.2022.10.028 (streszczenie sprawdzone: współistnienie dny i zakażenia — dłuższa hospitalizacja, więcej intensywnej opieki)",
+    "PubMed zapytanie 4: Margaretten ME[Author] AND septic arthritis — Margaretten ME i wsp. Does this adult patient have septic arthritis? JAMA 2007;297(13):1478-88. PMID 17405973, DOI 10.1001/jama.297.13.1478 (streszczenie sprawdzone: zakażenie skóry czynnikiem ryzyka; cytoza płynu <25 000/µl LR 0,32, >50 000/µl LR 7,7, >100 000/µl LR 28; gorączka czułość 57%, dreszcze 19%)",
+    "PubMed zapytania nieskuteczne lub niewykorzystane: (3) septic arthritis methotrexate OR immunosuppression risk factor native joint — wyniki nietrafne; (5) methotrexate[Title] AND septic arthritis[Title] — tylko opisy przypadków, niecytowane; (6) psoriasis AND septic arthritis risk — niesprawdzone, niecytowane",
+    "[wiedza modelu, niezweryfikowane]: interakcja NLPZ–metotreksat, paracetamol 1 g, qSOFA, wstrzymanie metotreksatu, unikanie antybiotyku przed posiewami"
+  ]
+}

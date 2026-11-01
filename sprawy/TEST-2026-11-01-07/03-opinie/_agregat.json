@@ -1,0 +1,142 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa z orbitopatią",
+      "p": 0.556,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa",
+      "p": 0.102,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "zaburzenie lękowe uogólnione",
+      "p": 0.038,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "tyreotoksykoza o innej przyczynie (bezbolesne lub podostre zapalenie tarczycy, wole guzkowe toksyczne)",
+      "p": 0.027,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Bezbolesne (ciche) zapalenie tarczycy w fazie tyreotoksycznej",
+      "p": 0.023,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.46,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Ciąża niewykluczona przy rzadszych miesiączkach (zmienia wybór leku i zakazuje scyntygrafii/jodu promieniotwórczego)",
+      "Ciąża niewykluczona testem przy rzadszych miesiączkach — ważne dla różnicowania (tyreotoksykoza zależna od gonadotropiny kosmówkowej) i dla dalszego leczenia.",
+      "Nasilenie tyreotoksykozy nieznane (ryzyko przełomu niskie przy braku gorączki i zaburzeń świadomości, ale nieocenione fizykalnie)",
+      "Niewykluczone migotanie przedsionków lub inna tachyarytmia (tylko samoocena 'równo')",
+      "Orbitopatia z podrażnieniem rogówki (piasek, łzawienie, światłowstręt) — ostrość wzroku, widzenie barw i podwójne widzenie NIEZNANE; neuropatia nerwu wzrokowego niewykluczona.",
+      "Orbitopatia — możliwe zagrożenie wzroku, nieoceniona przez lekarza",
+      "Ryzyko przełomu tarczycowego przy niezdiagnozowanej, nieleczonej nadczynności — parametry życiowe i temperatura NIEZNANE.",
+      "Spoczynkowa tachykardia 115/min i kołatanie trwające bez przerwy ponad godzinę — reguła ankiety: EKG i TSH tego samego dnia; migotanie przedsionków i częstoskurcz nadkomorowy niewykluczone bez EKG (miarowość tylko w odczuciu pacjentki).",
+      "Tachykardia spoczynkowa 115/min trwająca bez przerwy ponad godzinę — reguła ankiety: EKG i TSH tego samego dnia; czekanie na badanie w kolejce nie jest bezpieczne",
+      "astma oskrzelowa i inne przeciwwskazania do beta-blokera — NIEZNANE",
+      "ciąża niewykluczona (zmiana miesiączek) — istotne przed tiamazolem",
+      "ciąża nieznana przy zaburzeniach miesiączkowania — zmienia wybór leku przeciwtarczycowego (Kahaly 2018, PMID 30283735)",
+      "ciąża — rzadsze miesiączki; test ciążowy przed włączeniem leków przeciwtarczycowych (wybór tiamazol vs propylotiouracyl) i przed jakimkolwiek leczeniem",
+      "ciąża — „nie dotyczy” w ankiecie niejednoznaczne przy skąpszych miesiączkach; test ciążowy NIEZNANE (wpływa na wybór tyreostatyku)",
+      "ciężkość orbitopatii: światłowstręt i łzawienie zgłoszone; spadek ostrości wzroku, zaburzenia widzenia barw i podwójne widzenie nieocenione (ryzyko neuropatii nerwu wzrokowego)",
+      "migotanie przedsionków / kardiomiopatia tyreotoksyczna — niewykluczone bez EKG i badania fizykalnego",
+      "nasilenie tyreotoksykozy nieznane (brak fT4, fT3) — przełom tarczycowy nie jest wykluczony bez badania fizykalnego (gorączka, splątanie, niewydolność serca)",
+      "nasilona tyreotoksykoza / ryzyko przełomu tarczycowego — gorączka, splątanie, wymioty, biegunka, niewydolność serca: nieocenione badaniem",
+      "neuropatia nerwu wzrokowego w orbitopatii — nie pytano o ostrość wzroku, widzenie barw, diplopię; wymaga oceny okulistycznej pilnej przy pogorszeniu widzenia",
+      "objawy przełomu tarczycowego (gorączka, splątanie, wymioty, niewydolność serca) — nieocenione, brak parametrów życiowych",
+      "orbitopatia tarczycowa — ostrość wzroku, widzenie barw, podwójne widzenie nieocenione (ryzyko neuropatii nerwu wzrokowego)",
+      "orbitopatia — aktywność i ciężkość nieoceniona (ostrość wzroku, widzenie podwójne, widzenie barwne)",
+      "przeciwwskazania do beta-adrenolityku (astma) — NIEZNANE",
+      "przełom tarczycowy — do wykluczenia dziś: temperatura, stan świadomości, objawy niewydolności serca, ocena w skali Burcha-Wartofsky'ego",
+      "tachykardia spoczynkowa 115/min i kołatanie >1 h bez przerwy — reguła ankiety: EKG i TSH tego samego dnia; nieznany rytm (migotanie przedsionków do wykluczenia w EKG)",
+      "tachykardia spoczynkowa 115/min trwająca ciągle >1 h — reguła ankiety: EKG i TSH tego samego dnia",
+      "tachykardia spoczynkowa 115/min, kołatanie ciągłe >1 h (reguła ankiety: EKG i TSH tego samego dnia) — rytm nieudokumentowany, migotanie przedsionków niewykluczone mimo „równo”",
+      "tachykardia spoczynkowa 115/min, kołatanie ciągłe ponad 1 godzinę — reguła ankiety: EKG i TSH tego samego dnia"
+    ],
+    "wykluczone": [
+      "Myśli rezygnacyjne i samobójcze — pacjentka zaprzecza.",
+      "Myśli samobójcze (zaprzecza)",
+      "Niemiarowe kołatanie (pacjentka opisuje rytm jako równy — wymaga potwierdzenia w EKG)",
+      "Ostre objawy z listy alarmowej w ostatnich dniach (pacjentka: 'nic z tych rzeczy') — zgodnie z odpowiedzią ankietową, bez badania przedmiotowego.",
+      "kołatanie niemiarowe — pacjentka opisuje rytm jako szybki i równy (bez EKG nie jest to wykluczenie migotania przedsionków)",
+      "leki i używki mogące dawać tachykardię lub tyreotoksykozę (lista z ankiety) — zaprzecza; jedynie melisa okazjonalnie",
+      "myśli samobójcze lub o samookaleczeniu w ostatnich tygodniach — pacjentka zaprzecza",
+      "myśli samobójcze — pacjentka zaprzecza",
+      "myśli samobójcze — wykluczone w ankiecie (odpowiedź: nie)",
+      "myśli samobójcze — zaprzecza",
+      "niemiarowe kołatanie (podejrzenie migotania przedsionków) — wg pacjentki bicie równe; ostatecznie rozstrzyga EKG",
+      "objawy z listy alarmowej z ostatnich dni — pacjentka zaprzecza (zakres listy nieznany pragmatykowi)",
+      "używki/leki/suplementy wywołujące tachykardię (stymulanty, lewotyroksyna, amiodaron, jod) — wg ankiety brak (tylko melisa)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "wysoka",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "wysoka"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

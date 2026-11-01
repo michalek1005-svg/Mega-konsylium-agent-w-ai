@@ -1,0 +1,94 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Euglikemiczna kwasica ketonowa wywołana inhibitorem kotransportera sodowo-glukozowego typu 2 w przebiegu nieżytu żołądkowo-jelitowego",
+      "p": 0.55,
+      "za": [
+        "Przyjmuje flozynę i od 3 dni wymiotuje z minimalną podażą doustną (głodzenie i odwodnienie to najczęstszy czynnik wyzwalający; PMID 42882058, 42483676)",
+        "Głęboki, szybki oddech, którego nie może uspokoić (oddech Kussmaula) i senność",
+        "Glikemia 70–250 mg/dl, obecnie 180 mg/dl — mieści się w definicji euglikemicznej kwasicy (glukoza < 250 mg/dl; PMID 36320965); prawidłowa glikemia nie wyklucza kwasicy (PMID 42749635)",
+        "Stały ból brzucha 5/10 — częsty objaw kwasicy ketonowej [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak pomiaru ketonów i gazometrii",
+        "Wymioty i biegunka same w sobie mogą tłumaczyć osłabienie i tachykardię"
+      ]
+    },
+    {
+      "nazwa": "Kwasica mleczanowa związana z metforminą w przebiegu ostrego uszkodzenia nerek z odwodnienia",
+      "p": 0.15,
+      "za": [
+        "Metformina + inhibitor konwertazy angiotensyny lub sartan + flozyna + odwodnienie = ryzyko ostrego uszkodzenia nerek",
+        "Opisany przypadek kwasicy mleczanowej po metforminie z ostrym uszkodzeniem nerek w przebiegu nieżytu żołądkowo-jelitowego (PMID 39474830)",
+        "Kreatynina/eGFR NIEZNANE"
+      ],
+      "przeciw": [
+        "Diureza zachowana w ostatnich 6 godzinach",
+        "Obraz z flozyną bardziej typowy dla kwasicy ketonowej; obie mogą współistnieć"
+      ]
+    },
+    {
+      "nazwa": "Ciężkie odwodnienie hipowolemiczne z ostrym uszkodzeniem nerek bez istotnej kwasicy",
+      "p": 0.12,
+      "za": ["Ciśnienie skurczowe 98 mmHg, tętno 112/min, wymioty i biegunka od 3 dni, nie zatrzymuje płynów"],
+      "przeciw": ["Oddech Kussmaula i senność wskazują na kwasicę, nie samo odwodnienie"]
+    },
+    {
+      "nazwa": "Sepsa o punkcie wyjścia z przewodu pokarmowego lub ostra choroba jamy brzusznej",
+      "p": 0.1,
+      "za": ["Tachykardia > 110/min, hipotensja względna, stały ból brzucha, senność"],
+      "przeciw": ["Kontakt z chorym wnukiem przemawia za wirusowym nieżytem; brak krwi w stolcu i wymiotach"]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy z nietypowym obrazem",
+      "p": 0.03,
+      "za": ["Kobieta 61 lat z wieloletnią cukrzycą, duszność, osłabienie, nudności"],
+      "przeciw": ["Spójne wyjaśnienie żołądkowo-jelitowe i metaboliczne; brak bólu w klatce piersiowej w ankiecie"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Krew w stolcu lub fusowate wymioty (pacjentka zaznaczyła: nic z tych rzeczy)",
+    "Bezmocz (mocz oddany w ciągu ostatnich 6 godzin)"
+  ],
+  "red_flags_otwarte": [
+    "Głęboki szybki oddech (oddech Kussmaula) przy cukrzycy i flozynie — podejrzenie kwasicy metabolicznej",
+    "Senność, trudność w dobudzeniu — zaburzenia świadomości",
+    "Ciśnienie skurczowe 98 mmHg i tętno 112/min — hipowolemia lub wstrząs",
+    "Brak tolerancji płynów doustnych",
+    "Kreatynina/eGFR i gazometria NIEZNANE"
+  ],
+  "nastepny_krok": "Teraz, telefonicznie: wezwać do pacjentki zespół ratownictwa medycznego (112/999) z informacją „podejrzenie kwasicy ketonowej przy flozynie, chora senna, ciśnienie skurczowe 98, tętno 112” — nie wzywać do gabinetu i nie leczyć w domu.",
+  "co_zmieniloby_zdanie": "Gdyby w badaniu bezpośrednim (np. przez zespół ratownictwa) oddech był spokojny, świadomość pełna, a ketony we krwi < 0,6 mmol/l i pH prawidłowe, możliwe byłoby leczenie w trybie pilnym ambulatoryjnym z nawadnianiem — ale przy obecnych objawach ta ścieżka nie istnieje.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Nie ściągać pacjentki do przychodni (senna, duszna, hipotensja — transport własny niebezpieczny). Lekarz lub rejestracja dzwoni na 112/999 albo instruuje opiekuna, by zadzwonił natychmiast. Jeśli pacjentka jest już w gabinecie: wezwać zespół ratownictwa, pozycja bezpieczna przy senności, glukometr (wykluczyć hipoglikemię), pulsoksymetr, pomiar ciśnienia i tętna co 5–10 min do przyjazdu; dostęp dożylny i 0,9% NaCl tylko jeśli personel i sprzęt są na miejscu, nie opóźniając transportu [wiedza modelu, niezweryfikowane].",
+    "co_zlecic": "Nic w trybie POZ — gazometria, ketony we krwi (beta-hydroksymaślan), mleczany, elektrolity, kreatynina, morfologia, CRP, EKG wykonuje Szpitalny Oddział Ratunkowy. Skierowanie na badania z koszyka POZ z wynikiem jutro to w tej sytuacji błąd.",
+    "do_kogo_i_tryb": "Szpitalny Oddział Ratunkowy przez zespół ratownictwa medycznego, tryb natychmiastowy (pilność 1).",
+    "leki": "Wstrzymać od teraz: flozynę (empagliflozyna/dapagliflozyna), metforminę oraz inhibitor konwertazy angiotensyny lub sartan; atorwastatynę można pominąć do czasu ustąpienia wymiotów. Odpowiedź na pytanie lekarza: tak, odstawić metforminę — ale przede wszystkim flozynę, a nawadnianie w domu jest przeciwwskazane. Zasady dnia chorobowego dla flozyn i metforminy [wiedza modelu, niezweryfikowane; zgodne z PMID 41757229, 39474830].",
+    "kontrola": "Po wypisie ze szpitala wizyta w POZ w ciągu 7 dni: kreatynina/eGFR, elektrolity, decyzja o ponownym włączeniu leków (flozyny nie wznawiać bez wyraźnego zalecenia z wypisu), pisemne zasady dnia chorobowego i paski do oznaczania ketonów.",
+    "jedno_zdanie_dla_pacjentki": "Pani objawy — szybki głęboki oddech i senność przy leku z końcówką -flozyna — mogą oznaczać groźne zakwaszenie organizmu mimo dobrego cukru, dlatego wzywamy teraz karetkę i nie bierze Pani już żadnych leków na cukrzycę ani na ciśnienie.",
+    "wykonalnosc": "Pacjentka sama nie wykona planu (senna, trudno ją dobudzić) — wymagany opiekun obok lub zespół ratownictwa; transport własny lub taksówką odrzucony. Odległość do SOR NIEZNANA (pamiec/zespol.md niewypełniona) — nie zmienia decyzji, przy dużej odległości tym bardziej 112."
+  },
+  "nie_zlecac": [
+    {"co": "Nawadnianie doustne w domu z kontrolą jutro", "dlaczego": "Nie zatrzymuje płynów, objawy kwasicy i zaburzenia świadomości; euglikemiczna kwasica ketonowa postępuje mimo prawidłowej glikemii (PMID 42749635, 42483676)."},
+    {"co": "Zalecenie samodzielnego dojazdu do przychodni lub SOR", "dlaczego": "Senność i hipotensja — ryzyko pogorszenia w drodze."},
+    {"co": "Rutynowe badania z koszyka POZ z wynikiem w kolejnych dniach", "dlaczego": "Opóźnia rozpoznanie stanu zagrożenia życia."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików źródłowych (tylko przykłady); brak polskiej wytycznej PTD w bibliotece; pamiec/zespol.md — brak danych o odległości do SOR",
+    "PubMed zapytanie 1: \"euglycemic diabetic ketoacidosis SGLT2 inhibitor[Title] review\" (od 2019) — 8 wyników, skuteczne",
+    "PubMed zapytanie 2: \"sick day rules SGLT2 inhibitor metformin dehydration acute kidney injury\" — 0 wyników, nieskuteczne",
+    "PubMed zapytanie 3: \"metformin-associated lactic acidosis[Title] acute kidney injury gastroenteritis\" (od 2015) — 2 wyniki, skuteczne",
+    "PubMed zapytanie 4: \"\\\"sick day\\\" medications diabetes SGLT2 metformin\" (od 2018) — 1 wynik, skuteczne",
+    "PMID 42882058, DOI 10.3390/jcm15197595 — Itagaki, Endo 2026, przegląd systematyczny przypadków: kwasica ketonowa przy glukozie < 100 mg/dl na flozynach; głodzenie/słaba podaż doustna najczęstszym czynnikiem (11/15), mediana pH 7,17 (streszczenie sprawdzone)",
+    "PMID 42749635, DOI 10.1507/endocrj.EJ26-0282 — Iwamoto i wsp. 2026: dobre wskaźniki glikemii nie wykluczają euglikemicznej kwasicy ketonowej; zasady dnia chorobowego oparte na objawach, nie na glikemii (streszczenie sprawdzone)",
+    "PMID 36320965, DOI 10.7759/cureus.29652 — Patel, Nair 2022: definicja euglikemicznej kwasicy ketonowej (glukoza < 250 mg/dl, kwasica z luką anionową, ketony); choroba jako czynnik wyzwalający (streszczenie sprawdzone)",
+    "PMID 42483676, DOI 10.3389/fendo.2026.1882272 — Cai i wsp. 2026: wymioty i minimalna podaż doustna przez 72 h przy kontynuacji metforminy i flozyny → ciężka euglikemiczna kwasica ketonowa (pH 7,043, glukoza 8,5 mmol/l) (streszczenie sprawdzone)",
+    "PMID 41584389, DOI 10.1002/ccr3.71929 — Malik i wsp. 2026: ciężkie wymioty i pH 6,96 przy glukozie 190–200 mg/dl na empagliflozynie (streszczenie sprawdzone; cukrzyca typu 1 — ograniczona przenoszalność)",
+    "PMID 39474830 — Iqbal i wsp. 2024 (Ned Tijdschr Geneeskd): kwasica mleczanowa po metforminie z ostrym uszkodzeniem nerek w przebiegu nieżytu żołądkowo-jelitowego; zalecenie odstawienia metforminy w chorobach współistniejących (streszczenie sprawdzone; DOI brak w PubMed)",
+    "PMID 41757229, DOI 10.3389/fendo.2026.1777334 — Deng i wsp. 2026: przegląd postępowania z flozynami w ostrej fazie; odwodnienie mechanistycznie nasila ketogenezę (streszczenie sprawdzone)",
+    "Wstrzymanie inhibitora konwertazy angiotensyny/sartanu przy odwodnieniu, postępowanie przedszpitalne — [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Stan przedrzucawkowy poporodowy o późnym początku z cechami ciężkimi", "p": 0, "za": ["10. doba połogu (mediana prezentacji późnego stanu przedrzucawkowego poporodowego: 7. doba, IQR 5–9; najczęstszy objaw: ból głowy; PMID 31599846)", "ciśnienie 162/106 mmHg (próg ciężkiego nadciśnienia ≥160/110 mmHg; PMID 41077107, 33632659)", "ból głowy inny niż dawne migreny, utrzymujące się mroczki, ból w nadbrzuszu/prawym podżebrzu, szybko narastające obrzęki twarzy i dłoni"], "przeciw": ["brak rozpoznania nadciśnienia w ciąży (nie wyklucza: późny początek dotyczy często kobiet bez nadciśnienia w ciąży; PMID 31599846)"]},
+    {"nazwa": "Zespół HELLP", "p": 0, "za": ["ból w nadbrzuszu/prawym podżebrzu w połogu z ciężkim nadciśnieniem"], "przeciw": ["brak wyników morfologii, AST/ALT, LDH — NIEZNANE"]},
+    {"nazwa": "Zespół tylnej odwracalnej encefalopatii", "p": 0, "za": ["ból głowy + zaburzenia widzenia + ciężkie nadciśnienie w połogu (opis przypadku PMID 39859059)"], "przeciw": ["brak drgawek i zaburzeń świadomości w ankiecie"]},
+    {"nazwa": "Zakrzepica zatok żylnych mózgu", "p": 0, "za": ["połóg, ból głowy narastający przez godziny, zaburzenia widzenia (PMID 20833030)"], "przeciw": ["obraz lepiej tłumaczy stan przedrzucawkowy; wymaga obrazowania tylko przy objawach ogniskowych lub braku poprawy po kontroli ciśnienia"]},
+    {"nazwa": "Migrena", "p": 0, "za": ["migreny w wywiadzie"], "przeciw": ["ból „inny niż dawniej\", ciśnienie 162/106 mmHg, objawy wątrobowe i obrzęki — rozpoznanie z wykluczenia, nie wolno go przyjąć w POZ"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "ból głowy po znieczuleniu przewodowym (popunkcyjny) — nie było znieczulenia zewnątrzoponowego ani podpajęczynówkowego",
+    "gorączka/dreszcze (infekcja połogowa jako tło) — zaprzecza"
+  ],
+  "red_flags_otwarte": [
+    "ciężkie nadciśnienie 162/106 mmHg z bólem głowy i mroczkami w 10. dobie połogu — ryzyko rzucawki i udaru",
+    "ból w nadbrzuszu/prawym podżebrzu — zespół HELLP, krwiak podtorebkowy wątroby do wykluczenia",
+    "szybko narastające obrzęki twarzy i dłoni — ryzyko obrzęku płuc NIEZNANE (brak badania fizykalnego, saturacji)",
+    "zaburzenia neurologiczne inne niż widzenie — NIEZNANE (brak badania fizykalnego)"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) i skierować pacjentkę na izbę przyjęć/SOR oddziału położniczego z rozpoznaniem roboczym ciężkiego stanu przedrzucawkowego poporodowego; nie zlecać żadnych badań ambulatoryjnych, bo każde z nich i tak kończy się hospitalizacją, a czekanie na wynik jest niebezpieczne.",
+  "co_zmieniloby_zdanie": "Nic dostępnego w POZ nie obniży pilności: nawet prawidłowy pomiar ciśnienia w gabinecie nie znosi wskazania do oceny szpitalnej przy utrzymujących się mroczkach, bólu w prawym podżebrzu i pomiarze domowym 162/106 mmHg.",
+  "badania": [
+    {"nazwa": "Powtórny pomiar ciśnienia tętniczego w gabinecie/przez zespół ratownictwa (oba ramiona, mankiet dopasowany)", "cel": "potwierdzenie ciężkiego nadciśnienia i dokumentacja dla szpitala", "zmienia_decyzje": false, "kolejnosc": 1, "uwagi": "Wynik ≥160/110 → 112 i leczenie hipotensyjne doraźne; wynik niższy → nadal pilna ocena szpitalna z powodu objawów. Robić tylko dlatego, że jest darmowy i trwa 5 minut; nie opóźniać transportu."},
+    {"nazwa": "Morfologia z płytkami, AST, ALT, LDH, kreatynina, kwas moczowy, białko/kreatynina w moczu, koagulogram", "cel": "rozpoznanie zespołu HELLP i zajęcia narządowego", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Zmienia leczenie szpitalne (siarczan magnezu, intensywność nadzoru), ale NIE decyzję POZ — wykonać w szpitalu w trybie cito, nie w laboratorium POZ z wynikiem jutro."},
+    {"nazwa": "Rezonans magnetyczny głowy z wenografią (lub tomografia komputerowa z angiografią żylną)", "cel": "zespół tylnej odwracalnej encefalopatii, zakrzepica zatok, krwotok", "zmienia_decyzje": true, "kolejnosc": 3, "uwagi": "Decyzja szpitala: wskazany przy objawach ogniskowych, drgawkach, braku ustąpienia bólu po kontroli ciśnienia; w przeglądzie 73,6% chorych z późnym stanem przedrzucawkowym miało obrazowanie (PMID 31599846). Nie kierować w trybie ambulatoryjnym."},
+    {"nazwa": "USG jamy brzusznej (wątroba)", "cel": "krwiak podtorebkowy wątroby przy bólu w prawym podżebrzu", "zmienia_decyzje": true, "kolejnosc": 4, "uwagi": "Tylko w szpitalu, przy utrzymującym się bólu lub trombocytopenii/wzroście aminotransferaz."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Badania laboratoryjne w POZ „przed decyzją\"", "powod": "Wynik prawidłowy nie zwalnia z pilnej oceny szpitalnej (objawy i ciśnienie już spełniają kryteria ciężkości), a oczekiwanie na wynik opóźnia leczenie ciężkiego nadciśnienia; X = Y."},
+    {"nazwa": "Leczenie objawowe migreny (tryptany, ergotamina) i odroczona kontrola", "powod": "Leki naczynioskurczowe przeciwwskazane przy ciężkim nadciśnieniu/podejrzeniu stanu przedrzucawkowego [wiedza modelu, niezweryfikowane]; odpowiedź na pytanie lekarza o „lek na migrenę przy karmieniu\" nie rozwiązuje problemu."},
+    {"nazwa": "Ambulatoryjne skierowanie do neurologa lub na rezonans w kolejce", "powod": "Termin za tygodnie nie rozstrzyga niczego dziś; obrazowanie, jeśli potrzebne, wykona szpital w trybie pilnym."},
+    {"nazwa": "Monitorowanie ciśnienia metodą Holtera", "powod": "Ciężkie nadciśnienie objawowe już stwierdzone — badanie bez wpływu na decyzję."}
+  ],
+  "uwagi_karmienie": "Karmienie piersią można kontynuować; leki hipotensyjne pierwszego wyboru w połogu (nifedypina, amlodypina, enalapryl, labetalol) są zgodne z laktacją (PMID 41077107, 33632659). Paracetamol nie jest przeciwwskazany [wiedza modelu, niezweryfikowane], ale nie jest odpowiedzią na ten obraz.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych położniczych w bibliotece (tylko wiersze przykładowe)",
+    "Zapytanie PubMed 1: 'postpartum preeclampsia readmission headache hypertension' (od 2015) — 4 wyniki",
+    "Zapytanie PubMed 2: 'late postpartum eclampsia[Title] OR delayed postpartum preeclampsia[Title]' — 49 wyników",
+    "Zapytanie PubMed 3: 'postpartum headache[Title] differential diagnosis secondary causes' — 3 wyniki",
+    "Zapytanie PubMed 4: 'postpartum hypertension breastfeeding nifedipine labetalol enalapril' (od 2015) — 2 wyniki",
+    "Zapytanie PubMed 5: 'HELLP syndrome postpartum diagnosis platelets liver enzymes LDH[Title/Abstract]' — 0 wyników (nieskuteczne)",
+    "PMID 31599846 · Redman EK i wsp. Obstet Gynecol 2019;134(5):995-1001 · doi:10.1097/AOG.0000000000003508 — późny stan przedrzucawkowy poporodowy: mediana 7. doba, 93,4% z objawami, najczęściej ból głowy, 73,6% obrazowanie (streszczenie sprawdzone)",
+    "PMID 37467840 · Cagino K, Prabhu M, Sibai B. Am J Obstet Gynecol 2023;229(6):641-646 · doi:10.1016/j.ajog.2023.07.021 — rzucawka >48 h po porodzie to 16% przypadków, zwykle poprzedzona bólem głowy/objawami mózgowymi; siarczan magnezu zarezerwować dla chorych z objawami neurologicznymi (streszczenie sprawdzone)",
+    "PMID 41077107 · Alhazmi AM, Albulushi A. Curr Probl Cardiol 2025;50(12):103191 · doi:10.1016/j.cpcardiol.2025.103191 — ≥160/110 mmHg wymaga pilnego leczenia; nifedypina, amlodypina, enalapryl, labetalol zgodne z laktacją (streszczenie sprawdzone)",
+    "PMID 33632659 · Ghelfi AM i wsp. Hipertens Riesgo Vasc 2021;38(3):133-147 · doi:10.1016/j.hipert.2021.01.002 — ciężkie nadciśnienie ≥160/110 mmHg; amlodypina i enalapryl bezpieczne w połogu przy karmieniu (streszczenie sprawdzone)",
+    "PMID 20833030 · Klein AM, Loder E. Int J Obstet Anesth 2010;19(4):422-30 · doi:10.1016/j.ijoa.2010.07.009 — diagnostyka różnicowa bólu głowy w połogu: stan przedrzucawkowy, udar, zakrzepica zatok, często wymaga obrazowania (streszczenie sprawdzone)",
+    "PMID 39859059 · Elshafei M i wsp. Medicina (Kaunas) 2025;61(1):77 · doi:10.3390/medicina61010077 — opis przypadku: późna rzucawka poporodowa z zespołem tylnej odwracalnej encefalopatii po bólu głowy i nieostrym widzeniu (streszczenie sprawdzone)"
+  ]
+}

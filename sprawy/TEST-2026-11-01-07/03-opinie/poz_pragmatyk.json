@@ -1,0 +1,70 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa z orbitopatią",
+      "p": 0.75,
+      "za": ["kołatanie serca, tachykardia spoczynkowa 115/min, rytm równy, objawy stałe także w spoczynku", "utrata 5 kg masy ciała mimo zwiększonego apetytu", "drżenie rąk, nadmierna potliwość, nietolerancja ciepła, częstsze luźne stolce", "rzadsze/skąpsze miesiączki", "objawy oczne: wytrzeszcz/poszerzenie szpar powiekowych, uczucie piasku, łzawienie, światłowstręt — orbitopatia jest praktycznie swoista dla choroby Gravesa (Kahaly 2018, PMID 30283735)", "choroba tarczycy w rodzinie, kobieta 29 lat"],
+      "przeciw": ["brak jakichkolwiek wyników (TSH, fT4, fT3, przeciwciała przeciw receptorowi TSH) — rozpoznanie wyłącznie kliniczne z ankiety", "brak badania fizykalnego (wole, szmer naczyniowy nad tarczycą, ocena oczu)"]
+    },
+    {
+      "nazwa": "tyreotoksykoza w przebiegu zapalenia tarczycy (bezbolesnego lub podostrego)",
+      "p": 0.08,
+      "za": ["zespół tyreotoksykozy trwający 2 miesiące"],
+      "przeciw": ["objawy oczne przemawiają za chorobą Gravesa", "brak bólu szyi w ankiecie (nie pytano wprost — NIEZNANE)"]
+    },
+    {
+      "nazwa": "wole guzkowe toksyczne lub gruczolak toksyczny",
+      "p": 0.03,
+      "za": ["tyreotoksykoza kliniczna"],
+      "przeciw": ["wiek 29 lat", "orbitopatia nie występuje w tej postaci"]
+    },
+    {
+      "nazwa": "zaburzenie lękowe uogólnione",
+      "p": 0.07,
+      "za": ["stresująca praca, napięcie, bezsenność, interpretacja pacjentki"],
+      "przeciw": ["utrata masy ciała przy wzmożonym apetycie, nietolerancja ciepła, objawy oczne i tachykardia 115/min w spoczynku nie są wyjaśnione lękiem", "zaburzenie lękowe może współistnieć, ale rozpoznanie wymaga najpierw wykluczenia przyczyny somatycznej (Moideen Sheriff 2023, PMID 37750133)"]
+    },
+    {
+      "nazwa": "tachykardia nadkomorowa napadowa",
+      "p": 0.02,
+      "za": ["kołatanie trwające ponad godzinę bez przerwy"],
+      "przeciw": ["częstość 115/min jest typowa dla tachykardii zatokowej, nie dla częstoskurczu z nawrotem (zwykle >150/min) [wiedza modelu, niezweryfikowane]", "przewlekły, 2-miesięczny przebieg z objawami ogólnymi"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["myśli samobójcze — pacjentka zaprzecza", "objawy z listy alarmowej z ostatnich dni — pacjentka zaprzecza (zakres listy nieznany pragmatykowi)"],
+  "red_flags_otwarte": [
+    "tachykardia spoczynkowa 115/min i kołatanie >1 h bez przerwy — reguła ankiety: EKG i TSH tego samego dnia; nieznany rytm (migotanie przedsionków do wykluczenia w EKG)",
+    "nasilona tyreotoksykoza / ryzyko przełomu tarczycowego — gorączka, splątanie, wymioty, biegunka, niewydolność serca: nieocenione badaniem",
+    "orbitopatia tarczycowa — ostrość wzroku, widzenie barw, podwójne widzenie nieocenione (ryzyko neuropatii nerwu wzrokowego)",
+    "ciąża nieznana przy zaburzeniach miesiączkowania — zmienia wybór leku przeciwtarczycowego (Kahaly 2018, PMID 30283735)",
+    "przeciwwskazania do beta-adrenolityku (astma) — NIEZNANE"
+  ],
+  "nastepny_krok": "Dziś w gabinecie: EKG spoczynkowe 12-odprowadzeniowe, pomiar ciśnienia i tętna, oraz pobranie krwi cito na TSH, FT4 i FT3 (z morfologią krwi z rozmazem i ALT jako wyjściowymi przed lekiem przeciwtarczycowym) — SSRI nie włączać.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH w dzisiejszym oznaczeniu praktycznie wyklucza tyreotoksykozę i przesuwa tor na zaburzenie lękowe (wtedy SSRI staje się zasadne po ocenie psychiatrycznej/ GAD-7) — pozostaje pytanie o odległość do SOR i dostępność EKG w gabinecie, których nie znam.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Tętno, ciśnienie, temperatura, masa ciała (punkt wyjścia, NIEZNANE), osłuchanie serca, badanie szyi (wole, szmer) i oczu (wytrzeszcz, zamknięcie powiek, ostrość wzroku, podwójne widzenie). EKG 12-odprowadzeniowe. Jeśli EKG: migotanie przedsionków, częstość >150/min, objawy niewydolności serca, gorączka lub splątanie → SOR tego samego dnia.",
+    "zlecic": "Skierowanie na badania laboratoryjne cito (wynik dziś lub jutro): TSH, FT4, FT3, morfologia krwi z rozmazem, ALT (aminotransferaza alaninowa), test ciążowy z moczu lub beta-hCG z surowicy. Przeciwciała przeciw receptorowi TSH (TRAb) — zalecane do rozpoznania przyczyny (Kahaly 2018, PMID 30283735; Chaker 2024, PMID 38278171); w POZ zwykle poza koszykiem [wiedza modelu, niezweryfikowane] — odpłatnie albo zleci endokrynolog. USG tarczycy — skierowanie, ale nie czekać z leczeniem na termin.",
+    "leczenie_objawowe_dzis": "Przy braku astmy/przeciwwskazań i bradykardii: propranolol 10–40 mg 3–4 razy na dobę doustnie dla kontroli tętna i drżenia, do czasu wyników [wiedza modelu, niezweryfikowane — dawkowanie sprawdzić w ChPL]. Nie SSRI, nie benzodiazepiny jako pierwszy ruch.",
+    "po_wynikach": "TSH obniżone + FT4/FT3 podwyższone + orbitopatia → rozpoznanie robocze choroby Gravesa; tiamazol jako lek z wyboru na 12–18 miesięcy (Kahaly 2018, PMID 30283735; Chaker 2024, PMID 38278171) — lekarz POZ może włączyć po wykluczeniu ciąży i z wyjściową morfologią/ALT, dawka wg FT4 [dawka: wiedza modelu, niezweryfikowane]. Pacjentkę poinformować pisemnie o agranulocytozie: gorączka, ból gardła, owrzodzenia jamy ustnej → natychmiast morfologia.",
+    "skierowanie": "Poradnia endokrynologiczna w trybie PILNYM (wpis na skierowaniu 'pilne', bo nie jest to DiLO) po potwierdzeniu tyreotoksykozy; okulista w trybie pilnym przy pogorszeniu ostrości wzroku, widzenia barw lub podwójnym widzeniu — wtedy w ciągu dni, nie tygodni (orbitopatia przy wyborze leczenia radykalnego zmienia postępowanie, PMID 30283735). Doradzić, by nie palić.",
+    "kontrola": "Wizyta (może być teleporada) z wynikami za 1–2 dni; kontrola tętna i FT4 po 4–6 tygodniach od włączenia tiamazolu [wiedza modelu, niezweryfikowane].",
+    "co_powiedziec_pacjentce": "Objawy wyglądają na nadczynność tarczycy, a nie na nerwy — to dobrze leczalne, ale najpierw dziś EKG i badania krwi, a leki na lęk teraz nic by nie dały.",
+    "wykonalnosc": "Plan wykonalny w każdym POZ: EKG i TSH/FT4/FT3 są w koszyku POZ [wiedza modelu, niezweryfikowane — sprawdzić w zrodla/, brak wykazu]. Pacjentka młoda, samodzielna, zmotywowana ('chcę poznać przyczynę'). Ryzyko: długi termin do endokrynologa — dlatego POZ powinien sam zacząć leczenie (beta-adrenolityk od razu, tiamazol po wynikach), a nie czekać na AOS."
+  },
+  "odpowiedz_na_pytanie": "Nie — SSRI nie włączać; najpierw dziś EKG i TSH/FT4/FT3, obraz wskazuje na nadczynność tarczycy (najpewniej choroba Gravesa).",
+  "zrodla": [
+    "PubMed zapytanie 1: \"European Thyroid Association guideline management of Graves' hyperthyroidism[Title]\" → PMID 30283735",
+    "PubMed zapytanie 2: \"hyperthyroidism[Title] AND (anxiety[Title] OR psychiatric[Title]) AND misdiagnos*\" → PMID 37750133, 12505101",
+    "PubMed zapytanie 3: \"hyperthyroidism[Title] AND review[Publication Type] AND Lancet[Journal]\" → PMID 38278171",
+    "PubMed zapytanie 4: \"2016 American Thyroid Association guidelines diagnosis management hyperthyroidism other causes thyrotoxicosis[Title]\" → PMID 27521067",
+    "Kahaly GJ i wsp. 2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism. Eur Thyroid J 2018;7(4):167-186. PMID 30283735, DOI 10.1159/000490384 — streszczenie sprawdzone: TRAb zalecane do rozpoznania, tiamazol z wyboru 12–18 mies., zmiana na propylotiouracyl w planowaniu ciąży/I trymestrze, rozpoznanie: tyreotoksykoza + TRAb + USG + orbitopatia",
+    "Chaker L, Cooper DS, Walsh JP, Peeters RP. Hyperthyroidism. Lancet 2024;403:768-780. PMID 38278171, DOI 10.1016/S0140-6736(23)02016-0 — streszczenie sprawdzone: rozpoznanie na podstawie obniżonego TSH z FT4/FT3, przyczyna przez TRAb, w chorobie Gravesa pierwsza linia 12–18 mies. leków przeciwtarczycowych",
+    "Ross DS i wsp. 2016 ATA Guidelines for Diagnosis and Management of Hyperthyroidism and Other Causes of Thyrotoxicosis. Thyroid 2016;26(10):1343-1421. PMID 27521067, DOI 10.1089/thy.2016.0229 — streszczenie sprawdzone (ogólne, bez konkretnych dawek; dawki beta-adrenolityku z tej pracy NIE są zweryfikowane)",
+    "Moideen Sheriff S i wsp. Hyperthyroidism Masquerading as an Anxiety Disorder. Cureus 2023;15(8):e44071. PMID 37750133, DOI 10.7759/cureus.44071 — streszczenie sprawdzone: opis przypadku 33-letniej kobiety z błędnym rozpoznaniem zaburzenia lękowego uogólnionego",
+    "zrodla/MANIFEST.md — brak polskich wytycznych tarczycowych i wykazu badań POZ w bibliotece",
+    "Dawkowanie propranololu i tiamazolu, koszyk POZ, progi częstości dla tachykardii nadkomorowej: [wiedza modelu, niezweryfikowane]"
+  ]
+}

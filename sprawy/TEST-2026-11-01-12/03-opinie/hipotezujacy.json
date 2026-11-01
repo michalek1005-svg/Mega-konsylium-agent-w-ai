@@ -1,0 +1,100 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Chłoniak Hodgkina klasyczny",
+      "p": 0.55,
+      "za": [
+        "Pełna triada objawów B od 3 miesięcy: utrata 7 kg przy niezmienionym apetycie, poty nocne wymagające zmiany koszulki, stany podgorączkowe do 37,8 °C.",
+        "Węzeł szyjny/nadobojczykowy > 2 cm, bolesny po alkoholu: ból węzłów po alkoholu to rzadki, ale znany objaw chłoniaka Hodgkina (PMID 31780609, 39734971).",
+        "Uogólniony świąd bez wysypki (objaw opisywany w chłoniaku Hodgkina, PMID 39734971) oraz eozynofilia 0,9 G/l (eozynofilia w ok. 15% chłoniaków Hodgkina, PMID 23100947; chłoniak Hodgkina jako główna limfoidalna przyczyna eozynofilii reaktywnej, PMID 38254826).",
+        "Limfopenia 0,8 G/l, leukocytoza 11,8 G/l, nadpłytkowość 420 G/l, niedokrwistość Hb 12,1 g/dl i OB 62 mm/h: obraz zapalno-nowotworowy typowy dla chłoniaka Hodgkina [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Wiek 55 lat: poza głównym szczytem zachorowań młodych dorosłych (drugi szczyt po 55. r.ż. istnieje) [wiedza modelu, niezweryfikowane].",
+        "Brak badania fizykalnego i histopatologii; opis węzła pochodzi z ankiety pacjenta (NIEZNANE: rzeczywisty wymiar, konsystencja, ruchomość, inne grupy węzłów, śledziona)."
+      ]
+    },
+    {
+      "nazwa": "Chłoniak nieziarniczy",
+      "p": 0.15,
+      "za": [
+        "Mężczyzna 55 lat z powiększonym węzłem nadobojczykowym i objawami B; płeć męska, wiek i lokalizacja nadobojczykowa są niezależnymi czynnikami ryzyka złośliwości węzła (PMID 12569376).",
+        "Eozynofilia i świąd występują też w chłoniakach T-komórkowych (PMID 38254826)."
+      ],
+      "przeciw": [
+        "Ból węzła po alkoholu jest znacznie bardziej swoisty dla chłoniaka Hodgkina niż dla chłoniaka nieziarniczego [wiedza modelu, niezweryfikowane].",
+        "Brak wysypki/zmian skórnych przemawia przeciw chłoniakowi skóry z eozynofilią."
+      ]
+    },
+    {
+      "nazwa": "Rak płuca z przerzutami do węzłów nadobojczykowych",
+      "p": 0.10,
+      "za": [
+        "Palacz (obecny lub były, paczkolata NIEZNANE), 55 lat, kaszel > 3 tygodni.",
+        "Węzeł nadobojczykowy, chudnięcie 7 kg, niedokrwistość i nadpłytkowość jako obraz choroby nowotworowej; lokalizacja nadobojczykowa zwiększa ryzyko złośliwości (PMID 12569376)."
+      ],
+      "przeciw": [
+        "Ból węzła po alkoholu i uogólniony świąd nie pasują do raka płuca.",
+        "Eozynofilia jest w raku płuca rzadka [wiedza modelu, niezweryfikowane]."
+      ]
+    },
+    {
+      "nazwa": "Gruźlica płuc z gruźliczym zapaleniem węzłów chłonnych",
+      "p": 0.08,
+      "za": [
+        "Kaszel > 3 tygodni, poty nocne, utrata masy ciała, stany podgorączkowe, OB 62 mm/h — reguła ankiety każe wykluczyć gruźlicę.",
+        "Węzły szyjne są najczęstszą lokalizacją gruźlicy pozapłucnej [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Gruźlica daje zwykle limfocytozę/monocytozę, nie eozynofilię; świąd i ból po alkoholu nie są dla niej typowe [wiedza modelu, niezweryfikowane]."
+      ]
+    },
+    {
+      "nazwa": "Zespół wypalenia zawodowego lub depresja",
+      "p": 0.02,
+      "za": [
+        "Duże obciążenie pracą; zmęczenie jako objaw wiodący w opinii żony."
+      ],
+      "przeciw": [
+        "Anhedonia i przygnębienie „wcale” w ostatnich 2 tygodniach, brak myśli samobójczych, apetyt bez zmian; objawy somatyczne poprzedziły pogorszenie samopoczucia.",
+        "Depresja nie tłumaczy gorączki, potów nocnych, węzła > 2 cm, eozynofilii, limfopenii ani OB 62 mm/h; to rozpoznanie z wykluczenia, niedopuszczalne przed diagnostyką somatyczną."
+      ]
+    }
+  ],
+  "rozwazone_i_odrzucone": [
+    "Przyczyna polekowa (eozynofilia polekowa, DRESS): pacjent nie przyjmuje żadnych leków ani suplementów — praktycznie wykluczona, o ile wywiad lekowy jest pełny.",
+    "Sarkoidoza: kaszel, węzły, OB, ale eozynofilia, świąd i ból po alkoholu nie pasują.",
+    "Zakażenie pasożytnicze/ziarniniakowatość eozynofilowa z zapaleniem naczyń: tłumaczyłyby eozynofilię, nie węzeł > 2 cm z objawami B (brak astmy w wywiadzie — NIEZNANE).",
+    "Cholestaza (pierwotne stwardniające zapalenie dróg żółciowych, rak trzustki) jako przyczyna świądu: brak żółtaczki w ankiecie, próby wątrobowe NIEZNANE; świąd cholestatyczny może też być paraneoplastyczny w chłoniaku Hodgkina (PMID 39317481).",
+    "Zakażenie HIV / mononukleoza / toksoplazmoza: limfadenopatia i objawy ogólne; czas 3 miesięcy i eozynofilia mniej typowe, HIV do wykluczenia w diagnostyce.",
+    "Nadczynność tarczycy: chudnięcie, poty, zmęczenie, ale nie tłumaczy węzła, OB ani eozynofilii.",
+    "Coś częstego o nietypowym obrazie: rak płuca/gruźlica; coś rzadkiego o typowym obrazie: chłoniak Hodgkina z bólem węzła po alkoholu."
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Myśli samobójcze (zaprzecza).",
+    "Ostre objawy alarmowe z listy ankiety (pacjent: „nic z tych rzeczy”)."
+  ],
+  "red_flags_otwarte": [
+    "Węzeł nadobojczykowy/szyjny > 2 cm przy objawach B (reguła ankiety: PILNE).",
+    "Kaszel > 3 tygodni z potami nocnymi i chudnięciem — gruźlica/rak płuca niewykluczone (reguła ankiety: PILNE, RTG klatki piersiowej).",
+    "Możliwa masa śródpiersia (kaszel przy podejrzeniu chłoniaka) — objawy zespołu żyły głównej górnej i duszność NIEZNANE bez badania.",
+    "Utrata 7 kg w 3 miesiące przy niezmienionym apetycie."
+  ],
+  "nastepny_krok": "Dziś badanie fizykalne z oceną wszystkich grup węzłów i śledziony oraz RTG klatki piersiowej w dwóch projekcjach, z wystawieniem karty diagnostyki i leczenia onkologicznego i pilnym skierowaniem do hematologa w celu biopsji wycinającej węzła (nie biopsji cienkoigłowej).",
+  "co_zmieniloby_zdanie": "Masa w płucu z prawidłowym śródpiersiem lub prątki w plwocinie przesunęłyby rozpoznanie odpowiednio na raka płuca lub gruźlicę, a brak potwierdzenia węzła w badaniu fizykalnym i USG obniżyłby p chłoniaka na rzecz przyczyn ogólnoustrojowych.",
+  "odpowiedz_na_pytanie": "Somatyczne: obraz sugeruje chłoniaka Hodgkina; wypalenie/depresja praktycznie wykluczone na tym etapie. Badania: RTG klatki, USG węzłów, biopsja wycinająca; dodatkowo rozmaz, LDH, próby wątrobowe, albumina, HIV/HBV/HCV [wiedza modelu, niezweryfikowane].",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskich wytycznych dla limfadenopatii/chłoniaka w bibliotece (tylko przykłady).",
+    "pamiec/zespol.md: brak wniosków dotyczących tej prezentacji.",
+    "PubMed zapytanie 1 (skuteczne): \"alcohol-induced pain Hodgkin lymphoma\" -> PMID 31780609 (Ma L i wsp., BMJ Case Rep 2019, doi:10.1136/bcr-2018-228440; streszczenie sprawdzone: ból wywołany alkoholem to rzadki, ale znany objaw chłoniaka Hodgkina); PMID 39734971 (Cardoso T, Gonçalves L, Cureus 2024, doi:10.7759/cureus.74778; streszczenie sprawdzone: objawy B, świąd, ból po alkoholu, objawy oddechowe przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła).",
+    "PubMed zapytanie 2 (skuteczne): \"supraclavicular lymphadenopathy malignancy risk primary care\" -> PMID 12569376 (Chau I i wsp., Br J Cancer 2003, doi:10.1038/sj.bjc.6600738; streszczenie sprawdzone: predyktory złośliwości węzła — płeć męska RR 2,72, wiek RR 1,05/rok, okolica nadobojczykowa RR 3,72, ≥2 okolice RR 6,41); PMID 14722499 (Leung AK, Robson WL, J Pediatr Health Care 2004, doi:10.1016/j.pedhc.2003.08.008; populacja dziecięca: węzły nadobojczykowe obciążone wyższym ryzykiem nowotworu — tylko teza pomocnicza).",
+    "PubMed zapytanie 3 (skuteczne): \"eosinophilia Hodgkin lymphoma\" -> PMID 38254826 (Morales-Camacho RM i wsp., Cancers 2024, doi:10.3390/cancers16020337; streszczenie sprawdzone: eozynofilia > 0,5 G/l, hipereozynofilia ≥ 1,5 G/l; reaktywna eozynofilia w chłoniaku Hodgkina i chłoniakach T); PMID 23100947 (Cyriac S i wsp., Indian J Hematol Blood Transfus 2008, doi:10.1007/s12288-008-0031-x; streszczenie sprawdzone: eozynofilia w ok. 15% chłoniaków Hodgkina).",
+    "PubMed zapytanie 4 (skuteczne): \"Hodgkin lymphoma[Title] AND update[Title] AND diagnosis\" od 2020 -> PMID 39239794 (Ansell SM, Am J Hematol 2024, doi:10.1002/ajh.27470; streszczenie sprawdzone: podtypy klasycznego chłoniaka Hodgkina, znaczenie stopnia zaawansowania i PET).",
+    "PubMed zapytanie 5 (pomocnicze): \"pruritus Hodgkin lymphoma prognosis\" -> PMID 39317481 (Knesl A i wsp., BMJ Case Rep 2024, doi:10.1136/bcr-2024-261879; streszczenie sprawdzone: świąd i cholestaza paraneoplastyczna w chłoniaku Hodgkina) — wyniki w większości nietrafne.",
+    "PubMed zapytania nieskuteczne: \"Hodgkin lymphoma diagnosis and treatment review[Title] AND (2020:2026[dp])\" (0 wyników); \"unexplained weight loss primary care cancer risk inflammatory markers\" (0 wyników); \"unexplained weight loss[Title] AND cancer AND primary care\" (1 wynik, metadane niedostępne).",
+    "Próg limfopenii w Międzynarodowym Wskaźniku Prognostycznym, epidemiologia drugiego szczytu, lista badań wyjściowych: [wiedza modelu, niezweryfikowane]."
+  ]
+}

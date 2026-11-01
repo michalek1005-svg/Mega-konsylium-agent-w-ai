@@ -1,0 +1,102 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "Stan przedrzucawkowy poporodowy z cechami ciężkości (ocena internisty/położnika; farmakolog nie ocenia)",
+      "p": 0.0,
+      "za": ["RR 162/106 mmHg w 10. dobie połogu", "nowy ból głowy 7/10 inny niż dawne migreny", "utrzymujące się mroczki", "ból w nadbrzuszu/prawym podżebrzu", "szybko narastające obrzęki z obrzękiem twarzy i dłoni"],
+      "przeciw": []
+    },
+    {
+      "nazwa": "Objawy polekowe — paracetamol lub preparat żelaza z witaminami",
+      "p": 0.01,
+      "za": ["jedyne leki przyjmowane po porodzie"],
+      "przeciw": ["żaden z tych leków nie podnosi ciśnienia tętniczego ani nie wywołuje mroczków i obrzęków", "paracetamol od 1 doby: polekowy ból głowy z nadużywania wymaga stosowania >= 15 dni w miesiącu [wiedza modelu, niezweryfikowane]", "brak leków wazokonstrykcyjnych (tryptany, ergotamina, metyloergometryna, pseudoefedryna) w wywiadzie"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Przyczyna polekowa nadciśnienia i bólu głowy (na podstawie zgłoszonej listy leków: paracetamol, żelazo/witaminy; brak tryptanów, ergotaminy, metyloergometryny, dekongestantów)"
+  ],
+  "red_flags_otwarte": [
+    "Ciężkie nadciśnienie >= 160/110 mmHg z bólem głowy i zaburzeniami widzenia w połogu — ryzyko rzucawki, udaru, zespołu tylnej odwracalnej encefalopatii",
+    "Ból w prawym podżebrzu — zespół HELLP do wykluczenia; płytki krwi, AlAT/AspAT, kreatynina NIEZNANE (warunkują wybór leków przeciwbólowych)",
+    "Lista leków niepełna: nie wiadomo, czy przy porodzie podano metyloergometrynę ani czy pacjentka przyjmuje dekongestanty lub kofeinę w dużych dawkach (NIEZNANE)"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) do natychmiastowego transportu na izbę przyjęć oddziału położniczego; to nie jest napad migreny i pytanie o lek przeciwmigrenowy jest drugorzędne — leczeniem są leki hipotensyjne i siarczan magnezu w szpitalu, karmienie piersią można kontynuować.",
+  "co_zmieniloby_zdanie": "Prawidłowe ciśnienie w powtórnym, poprawnym pomiarze (< 140/90 mmHg) przy prawidłowych płytkach, enzymach wątrobowych i kreatyninie przesunęłoby postępowanie na leczenie napadu bólu głowy, ale nadal z wykluczeniem tryptanów do czasu wykluczenia zespołu odwracalnego skurczu naczyń mózgowych.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "Siarczan magnezu",
+      "dawka": "4 g dożylnie w 15–20 min (dawka nasycająca), następnie 1 g/h we wlewie (schemat Zuspana); przy otyłości (BMI >= 35) rozważyć 6 g + 2 g/h, bo schemat 4 g + 1 g/h dawał stężenia podterapeutyczne",
+      "droga": "dożylnie",
+      "czas": "zwykle 24 h; dane z jednego badania z randomizacją wskazują, że 6 h po porodzie może wystarczać",
+      "uwagi": "WYŁĄCZNIE w szpitalu. Wskazanie: objawy neurologiczne (ból głowy, mroczki) przy ciężkim nadciśnieniu w późnym połogu (Cagino 2023). Monitorować odruchy kolanowe, częstość oddechów, diurezę, stężenie Mg; odtrutka: glukonian wapnia [wiedza modelu, niezweryfikowane]. Ostrożność, gdy kreatynina podwyższona (wydalanie nerkowe). Zgodny z karmieniem piersią [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 37467840 (DOI 10.1016/j.ajog.2023.07.021); PMID 33156201 (DOI 10.1097/AOG.0000000000004137); PMID 26498603 (DOI 10.1007/s00404-015-3903-y)"
+    },
+    {
+      "lek": "Leczenie ostre ciężkiego nadciśnienia: labetalol dożylnie albo hydralazyna dożylnie; nifedypina doustna o natychmiastowym uwalnianiu, gdy brak dostępu dożylnego",
+      "dawka": "labetalol 20 mg i.v., potem 40–80 mg co 10 min (maks. 300 mg); nifedypina 10 mg p.o., powtórzyć po 20–30 min [dawki: wiedza modelu, niezweryfikowane]",
+      "droga": "dożylnie / doustnie",
+      "czas": "do uzyskania RR < 160/110 mmHg w ciągu 30–60 min",
+      "uwagi": "Próg pilnego leczenia >= 160/110 mmHg potwierdzony w przeglądzie 2025. W POZ/zespole ratownictwa nie podawać nifedypiny podjęzykowo; nie obniżać gwałtownie poniżej ok. 140/90. Labetalol przeciwwskazany w astmie i bradykardii.",
+      "zrodlo": "PMID 41077107 (DOI 10.1016/j.cpcardiol.2025.103191) — próg i wybór leków; dawki [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Leczenie podtrzymujące po ustabilizowaniu: nifedypina o przedłużonym uwalnianiu albo amlodypina; alternatywnie enalapril lub labetalol",
+      "dawka": "nifedypina o przedłużonym uwalnianiu 30 mg 1 x dz.; amlodypina 5 mg 1 x dz.; enalapril 5–10 mg 1–2 x dz. [dawki: wiedza modelu, niezweryfikowane]",
+      "droga": "doustnie",
+      "czas": "do normalizacji ciśnienia, zwykle tygodnie; kontrola w ciągu 72 h po ciężkiej postaci",
+      "uwagi": "Wszystkie zgodne z karmieniem piersią u donoszonego zdrowego noworodka; nifedypina wiązała się z mniejszą liczbą ponownych hospitalizacji niż labetalol. Cel ok. <= 140/90 w gabinecie, <= 135/85 w domu. Enalapril: sprawdzić kreatyninę i potas przed i po włączeniu. Metyldopę odstawić wcześnie w połogu (depresja).",
+      "zrodlo": "PMID 41077107 (DOI 10.1016/j.cpcardiol.2025.103191); PMID 33632659 (DOI 10.1016/j.hipert.2021.01.002)"
+    },
+    {
+      "lek": "Paracetamol (lek przeciwbólowy pierwszego wyboru na ból głowy, także przy karmieniu piersią)",
+      "dawka": "1 g co 6–8 h, maks. 4 g/dobę; maks. 2–3 g/dobę, gdy aminotransferazy podwyższone [wiedza modelu, niezweryfikowane]",
+      "droga": "doustnie lub dożylnie",
+      "czas": "doraźnie",
+      "uwagi": "Leczy objaw, nie przyczynę; nie może opóźnić transportu. Przy podejrzeniu zespołu HELLP z istotnym uszkodzeniem wątroby ograniczyć dawkę do czasu wyników.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]; brak ChPL w zrodla/"
+    },
+    {
+      "lek": "Ibuprofen (dopiero po wykluczeniu małopłytkowości i uszkodzenia nerek)",
+      "dawka": "600 mg co 6 h",
+      "droga": "doustnie",
+      "czas": "doraźnie",
+      "uwagi": "W badaniu z randomizacją u kobiet z ciężkim nadciśnieniem ciążowym ibuprofen 600 mg co 6 h nie zwiększał częstości ciężkiego nadciśnienia w porównaniu z paracetamolem; metaanalizy bez wzrostu ciśnienia (jakość dowodów bardzo niska). Zgodny z karmieniem piersią [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 39938855 (DOI 10.1016/j.ajog.2025.02.012); PMID 32682329 (DOI 10.1055/s-0040-1713180); PMID 32068930 (DOI 10.1002/uog.21997)"
+    }
+  ],
+  "nie_podawac": [
+    {"lek": "Tryptany (sumatryptan i inne)", "powod": "Działanie naczynioskurczowe przy niekontrolowanym ciężkim nadciśnieniu; połóg to najczęstszy wyzwalacz zespołu odwracalnego skurczu naczyń mózgowych, a tryptany są opisanym czynnikiem wywołującym (PMID 40755978, DOI 10.55729/2000-9666.1482; PMID 41541048, DOI 10.1002/ccr3.71821). Same w sobie są zgodne z karmieniem (PMID 38563407, DOI 10.1089/bfm.2024.0022) — przeciwwskazaniem jest stan krążenia, nie laktacja."},
+    {"lek": "Ergotamina, dihydroergotamina, metyloergometryna", "powod": "Silny skurcz naczyń (opisy skurczu tętnic wieńcowych po metyloergometrynie w połogu: PMID 37069508, DOI 10.1186/s12872-023-03216-9; PMID 41734958, DOI 10.1136/bcr-2025-269247); ponadto hamują laktację [wiedza modelu, niezweryfikowane]."},
+    {"lek": "Niesteroidowe leki przeciwzapalne przed wynikami morfologii i kreatyniny", "powod": "Ból w prawym podżebrzu: możliwa małopłytkowość (HELLP) i ostre uszkodzenie nerek; same w sobie nie podnoszą ciśnienia w połogu (PMID 39938855)."},
+    {"lek": "Kodeina i tramadol", "powod": "Ryzyko depresji oddechowej u karmionego noworodka (polimorfizm CYP2D6, ultraszybcy metabolizerzy) [wiedza modelu, niezweryfikowane]."},
+    {"lek": "Bromokryptyna, kabergolina", "powod": "Opisy powikłań naczyniowych w połogu i zahamowanie laktacji wbrew woli pacjentki [wiedza modelu, niezweryfikowane]."},
+    {"lek": "Dekongestanty sympatykomimetyczne (pseudoefedryna, fenylefryna), duże dawki kofeiny w preparatach złożonych przeciwbólowych", "powod": "Podnoszą ciśnienie tętnicze; pseudoefedryna zmniejsza laktację [wiedza modelu, niezweryfikowane]."},
+    {"lek": "Antykoncepcja estrogenowo-progestagenowa", "powod": "Nadciśnienie ciężkie i okres < 21 dni po porodzie (ryzyko zakrzepowe) — kategoria przeciwwskazań [wiedza modelu, niezweryfikowane]."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych i ChPL dla tej sytuacji (tylko wiersze przykładowe); pamiec/zespol.md — brak wpisów dotyczących połogu",
+    "PubMed zapytanie 1: 'postpartum preeclampsia headache magnesium sulfate antihypertensive management' (od 2015) — 13 wyników",
+    "PubMed zapytanie 2: 'antihypertensive breastfeeding nifedipine labetalol enalapril lactation safety' (od 2015) — 2 wyniki",
+    "PubMed zapytanie 3: 'NSAIDs postpartum hypertension preeclampsia blood pressure randomized' (od 2015) — 9 wyników",
+    "PubMed zapytanie 4: '(triptan OR sumatriptan OR ergot OR methylergonovine) AND postpartum AND (preeclampsia OR hypertension OR stroke OR vasoconstriction)' — 65 wyników",
+    "PubMed zapytanie 5: 'magnesium sulfate regimen Zuspan loading dose eclampsia prevention randomized' (od 2010) — 3 wyniki",
+    "Cagino K, Prabhu M, Sibai B. Am J Obstet Gynecol 2023;229:641-646. PMID 37467840, DOI 10.1016/j.ajog.2023.07.021 — streszczenie sprawdzone: magnez zarezerwować dla późnego ciężkiego nadciśnienia poporodowego z objawami neurologicznymi; rzucawka > 48 h po porodzie zwykle poprzedzona bólem głowy",
+    "Alhazmi AM, Albulushi A. Curr Probl Cardiol 2025;50:103191. PMID 41077107, DOI 10.1016/j.cpcardiol.2025.103191 — streszczenie sprawdzone: nifedypina/amlodypina, enalapril, labetalol zgodne z karmieniem; >= 160/110 pilne leczenie (labetalol/hydralazyna i.v., nifedypina IR p.o.)",
+    "Ghelfi AM i wsp. Hipertens Riesgo Vasc 2021;38:133-147. PMID 33632659, DOI 10.1016/j.hipert.2021.01.002 — streszczenie sprawdzone: amlodypina i enalapril bezpieczne w połogu, minimalne przenikanie do mleka; wczesne odstawienie metyldopy",
+    "Penfield CA i wsp. Am J Obstet Gynecol 2025;233:199.e1. PMID 39938855, DOI 10.1016/j.ajog.2025.02.012 — streszczenie sprawdzone: RCT n=140, ibuprofen 600 mg co 6 h vs paracetamol, ciężkie nadciśnienie 38,6% vs 41,4%, bez różnicy",
+    "Premkumar A i wsp. Am J Perinatol 2021;38:1-9. PMID 32682329, DOI 10.1055/s-0040-1713180 — streszczenie sprawdzone: NLPZ nie zaostrzają nadciśnienia (RR 1,21; 0,89–1,64)",
+    "Bellos I i wsp. Ultrasound Obstet Gynecol 2020;56:329-339. PMID 32068930, DOI 10.1002/uog.21997 — streszczenie sprawdzone: brak wzrostu ryzyka ciężkiego nadciśnienia, jakość dowodów bardzo niska",
+    "Brookfield KF i wsp. Obstet Gynecol 2020;136:1190-1194. PMID 33156201, DOI 10.1097/AOG.0000000000004137 — streszczenie sprawdzone: schemat Zuspana 4 g + 1 g/h; przy BMI >= 35 6 g + 2 g/h skuteczniej osiąga stężenia terapeutyczne",
+    "Anjum S i wsp. Arch Gynecol Obstet 2016;293:983-6. PMID 26498603, DOI 10.1007/s00404-015-3903-y — streszczenie sprawdzone: 6 h magnezu po porodzie tak skuteczne jak 24 h (4 g + 1 g/h)",
+    "Aibani R i wsp. J Community Hosp Intern Med Perspect 2025;15:68-72. PMID 40755978, DOI 10.55729/2000-9666.1482 — streszczenie sprawdzone: zespół odwracalnego skurczu naczyń mózgowych po sumatryptanie; połóg odpowiada za 50–60% przypadków z wyzwalaczem",
+    "Jin R i wsp. Clin Case Rep 2026;14:e71821. PMID 41541048, DOI 10.1002/ccr3.71821 — streszczenie sprawdzone: poporodowy zespół odwracalnego skurczu naczyń leczony tryptanami jako migrena; zawały mózgu",
+    "Conijn M i wsp. Breastfeed Med 2024;19:645-651. PMID 38563407, DOI 10.1089/bfm.2024.0022 — streszczenie sprawdzone: tryptany zgodne z karmieniem, niskie stężenia w mleku",
+    "Jang SK i wsp. BMC Cardiovasc Disord 2023;23:199. PMID 37069508, DOI 10.1186/s12872-023-03216-9 — streszczenie sprawdzone: skurcz wieńcowy po metyloergometrynie w połogu",
+    "Nair S i wsp. BMJ Case Rep 2026;19:e269247. PMID 41734958, DOI 10.1136/bcr-2025-269247 — streszczenie sprawdzone: skurcz wieńcowy po metyloergometrynie 0,2 mg i.m.",
+    "Dawki labetalolu, nifedypiny, amlodypiny, enalaprilu, paracetamolu; kodeina/tramadol; antykoncepcja estrogenowa — [wiedza modelu, niezweryfikowane]"
+  ]
+}

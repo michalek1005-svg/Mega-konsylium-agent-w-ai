@@ -1,0 +1,48 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {"nazwa": "Stan przedrzucawkowy poporodowy o późnym początku z cechami ciężkimi", "p": 0.72,
+     "za": ["10. doba połogu (mediana prezentacji późnego stanu przedrzucawkowego poporodowego: 7. doba, IQR 5–9; 93% zgłasza się z objawami, najczęściej bólem głowy; PMID 31599846)", "ciśnienie tętnicze (RR) 162/106 mmHg w samopomiarze", "ból głowy 7/10, inny niż dawne migreny", "utrzymujące się mroczki/nieostre widzenie", "ból w nadbrzuszu/prawym podżebrzu", "szybko narastające obrzęki, także twarzy i dłoni"],
+     "przeciw": ["brak rozpoznania nadciśnienia ani stanu przedrzucawkowego w ciąży (nie wyklucza: postać de novo po porodzie)", "pojedynczy samopomiar, aparat i technika NIEZNANE"]},
+    {"nazwa": "Zespół HELLP", "p": 0.10,
+     "za": ["ból w nadbrzuszu/prawym podżebrzu przy nadciśnieniu w połogu"],
+     "przeciw": ["brak wyników morfologii, AspAT/AlAT, LDH (NIEZNANE)"]},
+    {"nazwa": "Zespół tylnej odwracalnej encefalopatii", "p": 0.05,
+     "za": ["ból głowy z zaburzeniami widzenia przy wysokim RR w połogu (PMID 37378723)"],
+     "przeciw": ["brak drgawek i zaburzeń świadomości"]},
+    {"nazwa": "Zakrzepica żył i zatok mózgowych", "p": 0.04,
+     "za": ["połóg jako stan prozakrzepowy, nowy ból głowy [wiedza modelu, niezweryfikowane]"],
+     "przeciw": ["ból narastający stopniowo, objawy dobrze tłumaczy nadciśnienie"]},
+    {"nazwa": "Napad migreny z aurą", "p": 0.03,
+     "za": ["migreny w wywiadzie"],
+     "przeciw": ["ból inny niż dawniej", "mroczki utrzymujące się, nie przemijające jak aura", "RR ≥160/110 mmHg, ból w podżebrzu i obrzęki — migrena nie tłumaczy całości"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["gorączka i dreszcze (zaprzecza)", "znieczulenie przewodowe przy porodzie (nie było — popunkcyjny ból głowy praktycznie wykluczony)", "nagły piorunujący początek bólu (narastał przez godziny)"],
+  "red_flags_otwarte": ["ciężkie nadciśnienie ≥160/110 mmHg z bólem głowy i zaburzeniami widzenia w połogu", "ból w nadbrzuszu/prawym podżebrzu — możliwy zespół HELLP", "ryzyko rzucawki poporodowej (rzucawka >48 h po porodzie to ok. 16% przypadków, zwykle poprzedzona bólem głowy lub objawami mózgowymi; PMID 37467840)", "szybko narastające obrzęki twarzy i dłoni", "brak badania fizykalnego, powtórzonego pomiaru RR, białkomoczu, morfologii, prób wątrobowych i kreatyniny (NIEZNANE)"],
+  "nastepny_krok": "Wezwać teraz Zespół Ratownictwa Medycznego (112/999) z opisem: 10. doba połogu, RR 162/106 mmHg, ból głowy, mroczki, ból w prawym podżebrzu — transport do szpitala z oddziałem położniczo-ginekologicznym; nie odsyłać pacjentki do domu ani do POZ na wizytę, nie kazać jechać samej.",
+  "co_zmieniloby_zdanie": "Obniżenie pilności uzasadniłyby dopiero powtórzone poprawne pomiary RR <140/90 mmHg z ustąpieniem mroczków i bólu w podżebrzu — a i tak ból głowy w połogu wymaga oceny szpitalnej tego samego dnia; nie znamy też odległości/czasu dojazdu do najbliższego oddziału położniczego.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Kontakt przez aplikację/telefon: polecić pozostanie w pozycji leżącej/półsiedzącej, nie prowadzić samochodu, wezwać 112 lub zrobić to za nią; jeśli pacjentka jest w gabinecie — powtórzyć pomiar RR na obu ramionach mankietem o właściwym rozmiarze, ocenić świadomość, odruchy, obrzęki, osłuchać, zbadać prawe podżebrze, zrobić test paskowy moczu na białko jeśli dostępny od ręki — ale nie opóźniać tym wezwania ZRM.",
+    "co_zlecic": "Nic w trybie POZ — morfologia z płytkami, AspAT/AlAT, LDH, kreatynina, kwas moczowy, białko w moczu (wskaźnik białko/kreatynina), koagulogram wykona szpital; zlecanie ich przez POZ i czekanie na wynik to opóźnienie.",
+    "do_kogo_i_tryb": "Oddział położniczo-ginekologiczny przez ZRM, tryb natychmiastowy (Izba Przyjęć położnicza, nie ogólny SOR, jeśli dyspozytor/ZRM może skierować bezpośrednio). Leczenie ciężkiego nadciśnienia (labetalol dożylnie, hydralazyna, nifedypina doustnie o natychmiastowym uwalnianiu przy braku dostępu dożylnego) i decyzja o siarczanie magnezu — w szpitalu (PMID 41077107; PMID 37467840).",
+    "kontrola": "Po wypisie: wizyta w POZ w ciągu 72 h po ciężkim nadciśnieniu, domowe pomiary RR 2×/dobę z cel ≤135/85 mmHg w domu (PMID 41077107); długoterminowo — corocznie RR, lipidy, glikemia (wyższe RR po 3 miesiącach po późnym stanie przedrzucawkowym poporodowym; PMID 31599846).",
+    "co_powiedziec_pacjentce": "To nie wygląda na migrenę, tylko na powikłanie ciśnieniowe po porodzie, które leczy się w szpitalu dziś — jedzie Pani karetką z dzieckiem lub z kimś bliskim, a karmienie piersią można kontynuować, bo leki stosowane w tej sytuacji są z nim zgodne.",
+    "odpowiedz_na_pytanie_lekarza": "Pytanie o lek na migrenę jest drugorzędne: to nie migrena do leczenia w domu. Paracetamol można kontynuować do czasu przyjazdu ZRM (zgodny z karmieniem) [wiedza modelu, niezweryfikowane]; nie podawać tryptanów (wazokonstrykcja przy ciężkim nadciśnieniu) ani ergotaminy [wiedza modelu, niezweryfikowane]; niesteroidowych leków przeciwzapalnych (ibuprofen) nie dokładać do czasu wykluczenia uszkodzenia nerek i wyrównania RR [wiedza modelu, niezweryfikowane]. Karmienie piersią kontynuować — nifedypina, amlodypina, enalapryl i labetalol są zgodne z karmieniem u zdrowego donoszonego noworodka (PMID 41077107; PMID 33632659).",
+    "wykonalnosc": "Pacjentka 10 dni po porodzie, z noworodkiem, z mroczkami — nie powinna jechać sama ani prowadzić; ZRM rozwiązuje problem dojazdu i kosztu. Ustalić, kto zajmie się noworodkiem lub czy szpital przyjmie matkę z dzieckiem (podtrzymanie laktacji, laktator). Odległość do oddziału położniczego: NIEZNANE (pamiec/zespol.md niewypełnione)."
+  },
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej PTGiP dotyczącej nadciśnienia w ciąży/połogu w bibliotece (sprawdzono 2026-11-01); pamiec/zespol.md — odległość do SOR niewypełniona",
+    "PubMed zapytanie 1: 'postpartum preeclampsia headache presentation readmission' → PMID 37467840, 31599846",
+    "PubMed zapytanie 2: 'severe hypertension postpartum treatment nifedipine labetalol breastfeeding' → PMID 41077107, 33632659, 23633317",
+    "PubMed zapytanie 3: 'postpartum headache differential diagnosis secondary causes' (od 2015) → PMID 39078913, 37378723",
+    "Redman EK i wsp. Delayed-Onset Postpartum Preeclampsia. Obstet Gynecol 2019;134(5):995-1001. PMID 31599846, DOI 10.1097/AOG.0000000000003508 — streszczenie sprawdzone (mediana 7. doba, 93,4% z objawami, najczęściej ból głowy, 49,6% dożylne leki hipotensyjne)",
+    "Cagino K, Prabhu M, Sibai B. Magnesium sulfate in late postpartum severe hypertension. Am J Obstet Gynecol 2023;229(6):641-646. PMID 37467840, DOI 10.1016/j.ajog.2023.07.021 — streszczenie sprawdzone (rzucawka >48 h = 16% przypadków, zwykle poprzedzona bólem głowy; siarczan magnezu dla pacjentek z objawami neurologicznymi)",
+    "Alhazmi AM, Albulushi A. Targeted antihypertensive therapy after hypertensive pregnancy. Curr Probl Cardiol 2025;50(12):103191. PMID 41077107, DOI 10.1016/j.cpcardiol.2025.103191 — streszczenie sprawdzone (≥160/110 pilne leczenie: labetalol/hydralazyna iv, nifedypina IR doustnie; leki zgodne z karmieniem; kontrola ≤72 h po ciężkiej postaci; cel domowy ≈≤135/85)",
+    "Ghelfi AM i wsp. Hipertens Riesgo Vasc 2021;38(3):133-147. PMID 33632659, DOI 10.1016/j.hipert.2021.01.002 — streszczenie sprawdzone (amlodypina i enalapryl bezpieczne w połogu, minimalne przenikanie do mleka; ciężkie ≥160/110)",
+    "Chaudhuri J i wsp. PRES. Curr Neurol Neurosci Rep 2023;23(8):433-449. PMID 37378723, DOI 10.1007/s11910-023-01281-3 — streszczenie sprawdzone (PRES: ból głowy, zaburzenia widzenia, drgawki; m.in. stan przedrzucawkowy/rzucawka)",
+    "Magee L, von Dadelszen P. Cochrane 2013, CD004351. PMID 23633317, DOI 10.1002/14651858.CD004351.pub3 — streszczenie sprawdzone (RR najwyższe w 3.–6. dobie po porodzie, gdy większość kobiet jest już w domu) — tło",
+    "Paracetamol w laktacji, unikanie tryptanów/ergotaminy i NLPZ przy ciężkim nadciśnieniu — [wiedza modelu, niezweryfikowane]"
+  ]
+}

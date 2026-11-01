@@ -1,0 +1,96 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Pęknięty lub objawowy (przeciekający do przestrzeni zaotrzewnowej) tętniak aorty brzusznej",
+      "p": 0.50,
+      "za": [
+        "Mężczyzna 68 lat, palacz, z nadciśnieniem tętniczym, nigdy nie miał USG jamy brzusznej (brak badania przesiewowego).",
+        "Ból lewej okolicy lędźwiowej z promieniowaniem do pachwiny, opisany jako stały, rozrywający i niezmienny — nie falujący jak kolka.",
+        "Epizod presynkopy w łazience oraz ciśnienie skurczowe 104 mmHg przy tętnie 108/min u chorego leczonego amlodypiną 10 mg (wskaźnik wstrząsowy ok. 1,0; względna hipotensja u nadciśnieniowca).",
+        "Najczęstszym błędnym rozpoznaniem pękniętego tętniaka jest właśnie kolka nerkowa (24% błędnych rozpoznań w POZ w PMID 9654880; jedno z najczęstszych w PMID 1619721)."
+      ],
+      "przeciw": [
+        "Częściowa poprawa po drotawerynie i ketoprofenie.",
+        "Przebyta kamica 5 lat temu i podobna lokalizacja bólu, według pacjenta 'jak wtedy'.",
+        "Brak badania fizykalnego — nie wiadomo, czy jest tętniący guz w jamie brzusznej (jego brak i tak nie wyklucza: czułość 47%, PMID 35220634)."
+      ]
+    },
+    {
+      "nazwa": "Kolka nerkowa w przebiegu lewostronnej kamicy moczowodowej (nawrót)",
+      "p": 0.22,
+      "za": [
+        "Wywiad kamicy 5 lat temu, pacjent rozpoznaje ból jako podobny.",
+        "Typowa lokalizacja: lewa okolica lędźwiowa z promieniowaniem do pachwiny; częściowa odpowiedź na niesteroidowy lek przeciwzapalny."
+      ],
+      "przeciw": [
+        "Ból stały, rozrywający, bez falowania; brak wymiotów i brak zmian w moczu (bez krwiomoczu makroskopowego, bez parcia).",
+        "Kolka nerkowa nie tłumaczy presynkopy z tachykardią 108/min i ciśnieniem 104 mmHg u chorego z nadciśnieniem; pierwszy epizod kolki w wieku 68 lat wymaga wykluczenia przyczyny naczyniowej."
+      ]
+    },
+    {
+      "nazwa": "Ostre rozwarstwienie aorty (typ B, z zajęciem aorty brzusznej lub tętnicy nerkowej)",
+      "p": 0.08,
+      "za": [
+        "Ból o charakterze rozrywającym, stały, u palacza z nadciśnieniem tętniczym.",
+        "Możliwe niedokrwienie nerki lewej przez zajęcie tętnicy nerkowej daje ból lędźwiowy imitujący kolkę."
+      ],
+      "przeciw": [
+        "Brak bólu w klatce piersiowej i międzyłopatkowego w wywiadzie (nie pytano wprost — częściowo NIEZNANE).",
+        "Względna hipotensja, a nie nadciśnienie, typowe dla ostrej fazy rozwarstwienia typu B."
+      ]
+    },
+    {
+      "nazwa": "Krwawienie polekowe (z górnego odcinka przewodu pokarmowego lub krwiak zaotrzewnowy) przy jednoczesnym przyjmowaniu kwasu acetylosalicylowego i ketoprofenu",
+      "p": 0.05,
+      "za": [
+        "Polocard 75 mg na stałe plus nieznana liczba tabletek Ketonalu od rana — dwa leki uszkadzające błonę śluzową i hemostazę płytkową.",
+        "Presynkopa i tachykardia mogą odpowiadać utracie krwi."
+      ],
+      "przeciw": [
+        "Ból od rana poprzedzał przyjęcie ketoprofenu; lokalizacja lędźwiowo-pachwinowa nietypowa dla krwawienia z wrzodu.",
+        "Brak zgłoszonych smolistych stolców i wymiotów (smoliste stolce — nie pytano, NIEZNANE)."
+      ]
+    },
+    {
+      "nazwa": "Zawał nerki lewej (zatorowy lub zakrzepowy)",
+      "p": 0.04,
+      "za": [
+        "Stały ból lędźwiowy u palacza z miażdżycowymi czynnikami ryzyka, bez krwiomoczu makroskopowego — klasyczny 'rzadki o typowym obrazie' imitator kolki."
+      ],
+      "przeciw": [
+        "Brak znanego migotania przedsionków; zawał nerki nie tłumaczy dobrze względnej hipotensji z tachykardią."
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Gorączka i dreszcze (zakażona kamica z zatkaniem dróg moczowych mniej prawdopodobna) — pacjent zaprzecza.",
+    "Utrata przytomności — pacjent zaprzecza (presynkopa, nie omdlenie)."
+  ],
+  "red_flags_otwarte": [
+    "Ból stały, rozrywający u mężczyzny 68 lat palącego z nadciśnieniem — pęknięcie tętniaka aorty brzusznej lub rozwarstwienie aorty niewykluczone.",
+    "Presynkopa + ciśnienie skurczowe 104 mmHg + tętno 108/min u chorego leczonego amlodypiną 10 mg — możliwy wstrząs krwotoczny wczesny.",
+    "Brak jakiegokolwiek obrazowania aorty w wywiadzie.",
+    "Kwas acetylosalicylowy + ketoprofen w nieznanej dawce — ryzyko krwawienia i maskowania bólu.",
+    "Brak badania fizykalnego (tętniący guz, tętno na kończynach dolnych, objawy otrzewnowe) — NIEZNANE."
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) z transportem do szpitala z chirurgią naczyniową w celu pilnej angiografii tomografii komputerowej aorty; nie podawać silniejszych leków przeciwbólowych ani nie odsyłać do domu jako kolki.",
+  "co_zmieniloby_zdanie": "Prawidłowa średnica aorty brzusznej w USG przyłóżkowym lub angiografii tomografii komputerowej (aorta bez tętniaka i bez krwiaka zaotrzewnowego) z widocznym złogiem i poszerzeniem układu kielichowo-miedniczkowego lewej nerki przesunęłaby rozpoznanie na kolkę nerkową.",
+  "odpowiedz_na_pytanie_lekarza": "Nie zakładać nawrotu kolki: obraz (ból rozrywający, presynkopa, SBP 104, HR 108) wymaga wykluczenia pękniętego tętniaka aorty w trybie natychmiastowym; leczenie przeciwbólowe to zadanie zespołu ratownictwa/SOR, nie POZ.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla tętniaka aorty brzusznej ani kolki nerkowej w bibliotece (sprawdzone).",
+    "pamiec/zespol.md — brak wpisu dotyczącego tej prezentacji.",
+    "PubMed zapytanie 1 (skuteczne): 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' → 3 wyniki.",
+    "PubMed zapytanie 2 (bez wyników, nie liczy się): 'abdominal aortic aneurysm rupture triad hypotension flank pain emergency department diagnosis'.",
+    "PubMed zapytanie 3 (odrzucone limitem, nie liczy się): 'point-of-care ultrasound abdominal aortic aneurysm emergency physician accuracy'.",
+    "PubMed zapytanie 4 (skuteczne): 'emergency department ultrasound abdominal aortic aneurysm diagnostic accuracy meta-analysis' → 2 wyniki.",
+    "PubMed zapytanie 5 (skuteczne): 'renal colic[Title] AND (aortic aneurysm OR mimics) AND elderly' → 16 wyników (przejrzane tytuły, bez cytowania).",
+    "Acheson AG i wsp. Prospective study on factors delaying surgery in ruptured abdominal aortic aneurysms. J R Coll Surg Edinb 1998;43(3):182-4. PMID 9654880 (brak DOI) — streszczenie sprawdzone: lekarz POZ trafnie rozpoznał 38%, najczęstsze błędne rozpoznanie kolka nerkowa 24%; ból pleców najczęściej mylony.",
+    "Marston WA i wsp. Misdiagnosis of ruptured abdominal aortic aneurysms. J Vasc Surg 1992;16(1):17-22. PMID 1619721, DOI 10.1067/mva.1992.34344 — streszczenie sprawdzone: 30% błędnie rozpoznanych, najczęściej jako kolka nerkowa; tętniący guz tylko u 26% błędnie rozpoznanych.",
+    "Fernando SM i wsp. Accuracy of presenting symptoms, physical examination, and imaging for diagnosis of ruptured abdominal aortic aneurysm. Acad Emerg Med 2022;29(4):486-496. PMID 35220634, DOI 10.1111/acem.14475 — streszczenie sprawdzone: czułość bólu pleców 53,6%, omdlenia 27,8%, hipotensji 30,9%, tętniącego guza 47,1%; angio-TK czułość 91,4%; USG przyłóżkowe czułość 97,8% dla tętniaka.",
+    "Shaban EE i wsp. Point of care ultrasound in AAA in emergency medicine: systematic review and meta-analysis. J Clin Ultrasound 2025;53(2):325-335. PMID 39344280, DOI 10.1002/jcu.23850 — streszczenie sprawdzone: USG przyłóżkowe czułość 98,33%, swoistość 99,84%.",
+    "Wskaźnik wstrząsowy (tętno/ciśnienie skurczowe) ok. 1,0 jako sygnał hipowolemii [wiedza modelu, niezweryfikowane]."
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa z orbitopatią",
+      "p": 0.82,
+      "za": [
+        "Zespół hipermetaboliczny od 2 miesięcy: utrata 5 kg mimo zwiększonego apetytu, nietolerancja ciepła, nadmierne pocenie, drżenie rąk, częstsze luźne stolce, rzadsze/skąpsze miesiączki.",
+        "Objawy oczne wskazujące na orbitopatię: oczy bardziej wysunięte i szerzej otwarte, piasek pod powiekami, łzawienie, światłowstręt — w tyreotoksykozie z orbitopatią rozpoznanie choroby Gravesa jest według ETA 2018 'proste' (PMID 30283735).",
+        "Spoczynkowa tachykardia 115/min, miarowa wg odczucia pacjentki, objawy stałe także w spokoju; kobieta 29 lat z rodzinnym wywiadem choroby tarczycy."
+      ],
+      "przeciw": [
+        "Brak jakiegokolwiek potwierdzenia biochemicznego (TSH, fT4, fT3, TRAb — NIEZNANE) i brak badania fizykalnego (wole, szmer naczyniowy, ocena oczu — NIEZNANE).",
+        "Objawy oczne są subiektywne, zgłoszone w ankiecie; mogą odpowiadać retrakcji powieki w każdej tyreotoksykozie, nie tylko w chorobie Gravesa."
+      ]
+    },
+    {
+      "nazwa": "Bezbolesne (ciche) zapalenie tarczycy w fazie tyreotoksycznej",
+      "p": 0.05,
+      "za": [
+        "Młoda kobieta z objawami tyreotoksykozy trwającymi kilka tygodni i rodzinnym obciążeniem autoimmunologiczną chorobą tarczycy.",
+        "Brak bólu szyi w wywiadzie nie wyklucza postaci bezbolesnej; poporodowe zapalenie tarczycy — status położniczy w ostatnim roku niepotwierdzony wprost."
+      ],
+      "przeciw": [
+        "Objawy oczne (wytrzeszcz, podrażnienie spojówek) przemawiają za chorobą Gravesa, nie za zapaleniem tarczycy.",
+        "Czas trwania 2 miesiące z narastaniem i utrata 5 kg typowo bardziej pasuje do nadczynności z nadprodukcją hormonów."
+      ]
+    },
+    {
+      "nazwa": "Tyreotoksykoza egzogenna (ukryte przyjmowanie hormonów tarczycy lub suplementów odchudzających zawierających hormony albo jod)",
+      "p": 0.03,
+      "za": [
+        "Przyczyna polekowa obowiązkowo w różnicowaniu: utrata masy ciała u młodej kobiety; suplementy poza 'czasem melisa' nie zostały zweryfikowane z opakowań.",
+        "Daje identyczny obraz tachykardii, drżenia, nietolerancji ciepła i biegunki."
+      ],
+      "przeciw": [
+        "Pacjentka zaprzecza przyjmowaniu leków i substancji z listy w ostatnich 3 miesiącach.",
+        "Tyreotoksykoza egzogenna nie powoduje orbitopatii."
+      ]
+    },
+    {
+      "nazwa": "Zaburzenie lękowe uogólnione",
+      "p": 0.03,
+      "za": [
+        "Stresująca praca, stałe napięcie, trudności z zasypianiem, kołatanie serca; sama pacjentka interpretuje objawy jako nerwy."
+      ],
+      "przeciw": [
+        "Utrata 5 kg przy zwiększonym apetycie, nietolerancja ciepła, luźne stolce, zmiany miesiączkowania i objawy oczne nie należą do obrazu zaburzenia lękowego.",
+        "Tachykardia 115/min stała także w spokojnych chwilach — objawy nie mają charakteru napadów wyzwalanych sytuacyjnie; zaburzenie lękowe można rozpoznać dopiero po wykluczeniu przyczyny somatycznej (opis przypadku błędnego rozpoznania lęku zamiast nadczynności: PMID 37750133)."
+      ]
+    },
+    {
+      "nazwa": "Wole guzkowe toksyczne lub gruczolak autonomiczny tarczycy",
+      "p": 0.02,
+      "za": [
+        "Daje tyreotoksykozę z tymi samymi objawami ogólnymi; wywiad rodzinny choroby tarczycy."
+      ],
+      "przeciw": [
+        "Wiek 29 lat — autonomia guzkowa występuje zwykle u starszych osób [wiedza modelu, niezweryfikowane].",
+        "Nie tłumaczy objawów ocznych."
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Myśli rezygnacyjne i samobójcze — pacjentka zaprzecza.",
+    "Ostre objawy z listy alarmowej w ostatnich dniach (pacjentka: 'nic z tych rzeczy') — zgodnie z odpowiedzią ankietową, bez badania przedmiotowego."
+  ],
+  "red_flags_otwarte": [
+    "Spoczynkowa tachykardia 115/min i kołatanie trwające bez przerwy ponad godzinę — reguła ankiety: EKG i TSH tego samego dnia; migotanie przedsionków i częstoskurcz nadkomorowy niewykluczone bez EKG (miarowość tylko w odczuciu pacjentki).",
+    "Orbitopatia z podrażnieniem rogówki (piasek, łzawienie, światłowstręt) — ostrość wzroku, widzenie barw i podwójne widzenie NIEZNANE; neuropatia nerwu wzrokowego niewykluczona.",
+    "Ciąża niewykluczona testem przy rzadszych miesiączkach — ważne dla różnicowania (tyreotoksykoza zależna od gonadotropiny kosmówkowej) i dla dalszego leczenia.",
+    "Ryzyko przełomu tarczycowego przy niezdiagnozowanej, nieleczonej nadczynności — parametry życiowe i temperatura NIEZNANE."
+  ],
+  "nastepny_krok": "Dziś: EKG spoczynkowe oraz TSH z fT4 i fT3 (z TRAb w tym samym pobraniu); SSRI nie włączać przed wynikiem — objawy są niemal na pewno tarczycowe, nie lękowe.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH i fT4 obaliłyby tyreotoksykozę i przesunęły różnicowanie ku zaburzeniu lękowemu, zaburzeniu rytmu serca lub rzadszym przyczynom (guz chromochłonny); niskie TSH z ujemnymi TRAb i bez orbitopatii w badaniu przesunęłoby ku zapaleniu tarczycy lub przyczynie egzogennej.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików polskich wytycznych tarczycowych/psychiatrycznych w bibliotece (tylko przykłady); pamiec/zespol.md — brak wpisów dla tarczycy/SSRI.",
+    "PubMed zapytanie 1 (skuteczne): 'Graves disease diagnosis management guideline' od 2016 — trafienia m.in. PMID 42281219.",
+    "PubMed zapytanie 2 (nieskuteczne, wyniki nietrafne): 'hyperthyroidism[Title] AND anxiety[Title] misdiagnosis OR psychiatric symptoms'.",
+    "PubMed zapytanie 3 (nieskuteczne, 0 wyników): 'American Thyroid Association guidelines hyperthyroidism thyrotoxicosis[Title]'.",
+    "PubMed zapytanie 4 (skuteczne): '(hyperthyroidism[Title] OR thyrotoxicosis[Title]) AND (anxiety[Title] OR psychiatric[Title])' — PMID 40308388, 37750133.",
+    "PubMed zapytanie 5 (skuteczne): 'European Thyroid Association guideline Graves orbitopathy management' od 2020 — PMID 42281219, 34981748.",
+    "PubMed zapytanie 6 (skuteczne): '2018 European Thyroid Association Guideline management of Graves' hyperthyroidism[Title]' — PMID 30283735.",
+    "PubMed zapytanie 7 (skuteczne): 'TSH receptor antibodies diagnostic accuracy Graves disease meta-analysis' — PMID 22776786, 40789418.",
+    "Kahaly GJ i wsp. 2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism. Eur Thyroid J 2018;7(4):167-186. PMID 30283735, DOI 10.1159/000490384 — streszczenie sprawdzone: rozpoznanie proste przy tyreotoksykozie + TRAb + orbitopatii; TRAb zalecane do rozpoznania różnicowego.",
+    "Tozzoli R i wsp. Autoimmun Rev 2012;12(2):107-13. PMID 22776786, DOI 10.1016/j.autrev.2012.07.003 — streszczenie sprawdzone: metaanaliza, TRAb 2./3. generacji czułość 97,1%/98,3%, swoistość 97,4%/99,2%.",
+    "Jiang Z i wsp. Clin Biochem 2025;139:110989. PMID 40789418, DOI 10.1016/j.clinbiochem.2025.110989 — streszczenie sprawdzone: TSI i TRAb wysoka czułość i swoistość w rozpoznaniu choroby Gravesa.",
+    "Moideen Sheriff S i wsp. Cureus 2023;15(8):e44071. PMID 37750133, DOI 10.7759/cureus.44071 — streszczenie sprawdzone: opis przypadku 33-letniej kobiety z nadczynnością tarczycy błędnie rozpoznaną jako zaburzenie lękowe uogólnione.",
+    "Alci D i wsp. Cureus 2025;17(3):e81503. PMID 40308388, DOI 10.7759/cureus.81503 — streszczenie sprawdzone: u 59 chorych z nadczynnością tarczycy istotnie wyższe wyniki lęku w HADS niż w grupie kontrolnej (p<0,001).",
+    "Ko J i wsp. Endocrinol Metab (Seoul) 2026;41(3):367-382. PMID 42281219, DOI 10.3803/EnM.2026.2920 — streszczenie sprawdzone: orbitopatia tarczycowa to najczęstszy objaw pozatarczycowy choroby Gravesa.",
+    "Wiek typowy dla autonomii guzkowej, przełom tarczycowy jako ryzyko — [wiedza modelu, niezweryfikowane]."
+  ]
+}

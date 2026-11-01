@@ -1,0 +1,80 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawy polekowe — hipotensja i presynkopa po amlodypinie z drotaweryną (składowa, nie przyczyna bólu)",
+      "p": 0.05,
+      "za": ["amlodypina 10 mg (maksymalna dawka) daje rozszerzenie naczyń i odruchową tachykardię [wiedza modelu, niezweryfikowane]", "drotaweryna (No-Spa) może obniżać ciśnienie tętnicze [wiedza modelu, niezweryfikowane]", "presynkopa w łazience (pozycja pionowa, parcie)"],
+      "przeciw": ["leki nie tłumaczą stałego, rozrywającego bólu lędźwiowego od rana", "tętno 108/min przy RR skurczowym 104 mmHg u chorego z nadciśnieniem na amlodypinie bardziej pasuje do utraty objętości krwi niż do samego działania leków", "amlodypina brana przewlekle, objawy nowe"]
+    },
+    {
+      "nazwa": "Krwawienie zaotrzewnowe nasilone przez kwas acetylosalicylowy z ketoprofenem (czynnik nasilający, nie przyczyna pierwotna)",
+      "p": 0.03,
+      "za": ["podwójne hamowanie płytek: kwas acetylosalicylowy 75 mg na stałe plus ketoprofen w nieznanej dawce dziś [wiedza modelu, niezweryfikowane]", "cechy hipowolemii: RR skurczowe 104 mmHg, tętno 108/min, presynkopa"],
+      "przeciw": ["leki przeciwpłytkowe nie powodują samoistnego krwawienia zaotrzewnowego bez źródła (tętniak, guz, uraz)"]
+    },
+    {
+      "nazwa": "Pęknięcie tętniaka aorty brzusznej (poza moim torem; p celowo 0 — sygnalizuję do internisty i najgorszego scenariusza)",
+      "p": 0.0,
+      "za": ["mężczyzna 68 lat, palacz, nadciśnienie, nigdy nie miał USG brzucha", "ból stały, rozrywający, niezmienny — nie falujący jak w kolce", "presynkopa, RR skurczowe 104 mmHg, tętno 108/min (indeks wstrząsowy ok. 1,04)", "kolka nerkowa jest najczęstszym błędnym rozpoznaniem pękniętego tętniaka aorty brzusznej (Marston 1992: 30% pękniętych tętniaków błędnie rozpoznanych; Acheson 1998: w POZ 24% rozpoznano jako kolkę nerkową)"],
+      "przeciw": ["podobny epizod kamicy 5 lat temu", "częściowa ulga po ketoprofenie"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["gorączka i dreszcze (zgłasza brak) — mniej prawdopodobna zakażona, zablokowana nerka", "uczulenia na leki (brak)"],
+  "red_flags_otwarte": [
+    "ból stały, rozrywający u palacza 68 lat z nadciśnieniem — tętniak aorty brzusznej lub rozwarstwienie aorty niewykluczone",
+    "presynkopa z RR skurczowym 104 mmHg i tętnem 108/min u chorego na amlodypinie 10 mg (wartość wyjściowa prawdopodobnie wyższa) — względna hipotensja i tachykardia",
+    "kwas acetylosalicylowy plus ketoprofen w nieznanej dawce — zwiększone ryzyko krwawienia i ostrego uszkodzenia nerek przy hipoperfuzji",
+    "dawka ketoprofenu dziś NIEZNANE"
+  ],
+  "nastepny_krok": "Nie wystawiać żadnego „mocniejszego” leku przeciwbólowego doustnie do domu — wezwać zespół ratownictwa medycznego (112) do transportu do szpitalnego oddziału ratunkowego z ośrodkiem chirurgii naczyniowej; leczenie bólu dopiero dożylnie, w miareczkowanych dawkach, w zespole ratownictwa lub w szpitalu.",
+  "co_zmieniloby_zdanie": "Prawidłowa średnica aorty w badaniu obrazowym (USG przy łóżku lub angio-TK) z uwidocznionym złogiem moczowodowym i wodonerczem po lewej, przy stabilnym ciśnieniu tętniczym, przeniosłoby mnie na plan leczenia kolki nerkowej niesteroidowym lekiem przeciwzapalnym pozajelitowym.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "Zespół ratownictwa medycznego / szpitalny oddział ratunkowy: opioid dożylny w miareczkowaniu (np. fentanyl lub morfina) w małych dawkach frakcjonowanych",
+      "dawka": "dawkowanie wg protokołu zespołu ratownictwa; miareczkować do ulgi, bez przekraczania tolerancji hemodynamicznej [wiedza modelu, niezweryfikowane]",
+      "droga": "dożylnie",
+      "czas": "doraźnie, do czasu diagnostyki obrazowej i decyzji chirurga naczyniowego",
+      "uwagi": "Przy podejrzeniu pękniętego tętniaka unikać zarówno wzrostu ciśnienia (ból niekontrolowany), jak i ciężkiej hipotensji: w pracy Li 2023 epizody RR skurczowego ≥140 mmHg oraz <70 mmHg w transporcie wiązały się z wyższą śmiertelnością 30-dniową; utrzymywać RR skurczowe >70 mmHg. Monitorować ciśnienie, saturację, sedację. Opioid nie maskuje rozpoznania w stopniu uzasadniającym odmowę analgezji [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 38040202, DOI 10.1016/j.jvs.2023.11.044; reszta [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Paracetamol",
+      "dawka": "1 g [wiedza modelu, niezweryfikowane]",
+      "droga": "dożylnie",
+      "czas": "jednorazowo jako uzupełnienie opioidu, potem co 6 h, maksymalnie 4 g na dobę [wiedza modelu, niezweryfikowane]",
+      "uwagi": "Bez wpływu na płytki i nerki; w metaanalizie Pathan 2018 paracetamol nie różnił się od niesteroidowych leków przeciwzapalnych w bólu po 30 min, ale wymagał częściej leczenia ratunkowego.",
+      "zrodlo": "PMID 29174580, DOI 10.1016/j.eururo.2017.11.001"
+    },
+    {
+      "lek": "Tylko jeśli obrazowanie wykluczy tętniak i potwierdzi kolkę nerkową: niesteroidowy lek przeciwzapalny pozajelitowo (np. diklofenak domięśniowo lub ketoprofen dożylnie) — pod warunkiem prawidłowej kreatyniny/eGFR i stabilnego ciśnienia",
+      "dawka": "diklofenak 75 mg domięśniowo jednorazowo [wiedza modelu, niezweryfikowane]; łączna dawka ketoprofenu z dzisiejszymi tabletkami nie może przekroczyć 200 mg na dobę [wiedza modelu, niezweryfikowane — brak ChPL w zrodla/]",
+      "droga": "domięśniowo lub dożylnie",
+      "czas": "najkrócej, 1–3 dni, z inhibitorem pompy protonowej (wiek 68 lat + kwas acetylosalicylowy) [wiedza modelu, niezweryfikowane]",
+      "uwagi": "Niesteroidowe leki przeciwzapalne są lekiem pierwszego wyboru w kolce nerkowej przy wydolnych nerkach (mniej wymiotów i leczenia ratunkowego niż opioidy; Pathan 2018); w metaanalizie sieciowej Gu 2019 najlepiej wypadł diklofenak domięśniowo, zalecany u chorych bez ryzyka sercowo-naczyniowego — ten pacjent je ma (palacz, nadciśnienie, 68 lat), więc tylko krótko. Najpierw ustalić, ile ketoprofenu wziął.",
+      "zrodlo": "PMID 29174580, DOI 10.1016/j.eururo.2017.11.001; PMID 30853910, DOI 10.3389/fphar.2019.00096"
+    }
+  ],
+  "nie_podawac": [
+    {"lek": "kolejna dawka ketoprofenu lub innego niesteroidowego leku przeciwzapalnego teraz (w domu, przed obrazowaniem)", "powod": "dawka dzisiejsza NIEZNANE; łączny efekt przeciwpłytkowy z kwasem acetylosalicylowym przy możliwym krwawieniu; ryzyko ostrego uszkodzenia nerek przy hipoperfuzji (RR 104/tętno 108) [wiedza modelu, niezweryfikowane]"},
+    {"lek": "drotaweryna (No-Spa) kolejne dawki", "powod": "brak dowodów przewagi spazmolityków w kolce nerkowej [wiedza modelu, niezweryfikowane]; może nasilać hipotensję"},
+    {"lek": "„mocniejszy” lek doustny do domu (tramadol, opioid doustny, połączenia z tramadolem)", "powod": "maskuje objawy i opóźnia rozpoznanie stanu zagrożenia życia; tramadol dodatkowo nudności, zawroty, ryzyko upadku u 68-latka po presynkopie [wiedza modelu, niezweryfikowane]"},
+    {"lek": "amlodypina — dzisiejsza/kolejna dawka wstrzymać do oceny hemodynamicznej", "powod": "RR skurczowe 104 mmHg z tachykardią i presynkopą u chorego z nadciśnieniem [wiedza modelu, niezweryfikowane]"},
+    {"lek": "kwas acetylosalicylowy (Polocard) — nie przyjmować kolejnej dawki do wykluczenia krwawienia", "powod": "prewencja pierwotna lub nieokreślone wskazanie, możliwe krwawienie; decyzję o wznowieniu podejmuje szpital [wiedza modelu, niezweryfikowane]"},
+    {"lek": "metamizol dożylny w bolusie", "powod": "ryzyko spadku ciśnienia przy szybkim podaniu u chorego z względną hipotensją [wiedza modelu, niezweryfikowane]"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików polskich wytycznych ani ChPL dla kolki nerkowej, tętniaka aorty, ketoprofenu (tylko przykłady); dawki bez źródła oznaczone [wiedza modelu, niezweryfikowane]",
+    "PubMed zapytanie 1: 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' → PMID 9654880, 1619721",
+    "PubMed zapytanie 2: 'renal colic analgesia NSAIDs opioids paracetamol meta-analysis' (od 2015) → PMID 30853910, 29174580",
+    "PubMed zapytanie 3: 'ibuprofen aspirin interaction antiplatelet effect cyclooxygenase' → 20 wyników, nie cytowane liczbowo",
+    "PubMed zapytanie 4: 'permissive hypotension ruptured abdominal aortic aneurysm[Title/Abstract]' → PMID 38040202",
+    "Marston WA i wsp. Misdiagnosis of ruptured abdominal aortic aneurysms. J Vasc Surg 1992;16:17-22. PMID 1619721, DOI 10.1067/mva.1992.34344 (streszczenie sprawdzone: 30% błędnych rozpoznań, najczęściej kolka nerkowa)",
+    "Acheson AG i wsp. Prospective study on factors delaying surgery in ruptured AAA. J R Coll Surg Edinb 1998;43:182-4. PMID 9654880, brak DOI (streszczenie sprawdzone: lekarz rodzinny trafnie w 38%, kolka nerkowa 24% błędnych rozpoznań)",
+    "Pathan SA i wsp. NSAIDs vs opioids vs paracetamol in acute renal colic, metaanaliza. Eur Urol 2018;73:583-595. PMID 29174580, DOI 10.1016/j.eururo.2017.11.001 (streszczenie sprawdzone)",
+    "Gu HY i wsp. Network meta-analysis, acute renal colic. Front Pharmacol 2019;10:96. PMID 30853910, DOI 10.3389/fphar.2019.00096 (streszczenie sprawdzone: diklofenak domięśniowo u chorych bez ryzyka sercowo-naczyniowego)",
+    "Li SR i wsp. Hypertension during transfer and outcomes in unstable rAAA. J Vasc Surg 2024;79:755-762. PMID 38040202, DOI 10.1016/j.jvs.2023.11.044 (streszczenie sprawdzone: RR ≥140 aOR 4,71; RR <70 aOR 2,82 dla zgonu 30-dniowego)"
+  ]
+}

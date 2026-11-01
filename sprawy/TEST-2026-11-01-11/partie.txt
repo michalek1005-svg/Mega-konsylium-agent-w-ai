@@ -1,0 +1,8 @@
+1: oddech swiadomosc picie mocz
+2: leki_cukrzyca insulina_dawki ketony
+3: cukier_zakres pomiary_dom
+4: cisnienie_skurczowe tetno
+5: temp_wartosc saturacja_wartosc
+6: stolec brzuch_bol brzuch_jaki
+7: przewlekle wyniki_nerki leki_inne
+8: obawy

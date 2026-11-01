@@ -1,0 +1,46 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Pęknięty tętniak aorty brzusznej", "p": 0, "za": ["mężczyzna 68 lat, palacz, nadciśnienie, nigdy nie miał USG brzucha", "ból stały, rozrywający, niezmienny (nie kolkowy)", "presynkopa w łazience", "RR skurczowe 104 mmHg przy przewlekłym nadciśnieniu leczonym amlodypiną 10 mg i tętno 108/min = względna hipotensja i tachykardia", "kolka nerkowa to najczęstsze błędne rozpoznanie pękniętego tętniaka (PMID 1619721, 9654880)"], "przeciw": ["przebyta kamica 5 lat temu (kotwica poznawcza, nie argument)", "częściowa ulga po ketoprofenie i drotawerynie"]},
+    {"nazwa": "Kolka nerkowa w przebiegu kamicy moczowej", "p": 0, "za": ["ból lędźwiowy lewostronny z promieniowaniem do pachwiny", "kamica w wywiadzie"], "przeciw": ["ból stały, nie falujący", "brak zmian w moczu, brak wymiotów", "presynkopa i tachykardia nie pasują do niepowikłanej kolki"]},
+    {"nazwa": "Rozwarstwienie aorty", "p": 0, "za": ["ból rozrywający, nadciśnienie"], "przeciw": ["lokalizacja lędźwiowo-pachwinowa bardziej typowa dla tętniaka brzusznego"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "ból stały, rozrywający u mężczyzny 68 lat z czynnikami ryzyka tętniaka",
+    "presynkopa przy bólu lędźwiowym",
+    "względna hipotensja (104 mmHg u chorego z nadciśnieniem) i tachykardia 108/min",
+    "nieznana dawka ketoprofenu przy aspirynie (krwawienie, nerki)"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) z adnotacją o podejrzeniu pękniętego tętniaka aorty brzusznej i transport do szpitala z chirurgią naczyniową; żadnych badań w POZ, które opóźniają transport.",
+  "co_zmieniloby_zdanie": "Tylko szybkie przyłóżkowe USG wykonane przez kompetentną osobę bez opóźnienia transportu, pokazujące aortę o prawidłowej średnicy na całej długości, przy prawidłowych parametrach w ponownym pomiarze, zdjęłoby priorytet tętniaka i przesunęło diagnostykę w stronę tomografii kamicy na SOR.",
+  "badania": [
+    {"nazwa": "Ponowny pomiar ciśnienia, tętna, saturacji, ocena przytomności (w gabinecie, w trakcie oczekiwania na zespół ratownictwa)", "cel": "ocena hemodynamiczna i przekazanie dyspozytorowi", "zmienia_decyzje": false, "kolejnosc": 1, "uwagi": "Nie zmienia decyzji o 112 (prawidłowy wynik nie wyklucza pęknięcia; hipotensja ma czułość ok. 31%, PMID 35220634), ale kosztuje 1 minutę i poprawia priorytet wezwania. Wykonywać równolegle, nie zamiast."},
+    {"nazwa": "Przyłóżkowe USG aorty brzusznej (POCUS)", "cel": "potwierdzenie/wykluczenie tętniaka", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Czułość ok. 98%, swoistość 97-99% dla tętniaka (PMID 35220634, 39344280). Uzasadnione tylko jeśli dostępne natychmiast przez wykonującego z doświadczeniem; nie wykrywa samego pęknięcia. Formalne USG opóźniło skierowanie do chirurgii naczyniowej z mediany 0,75 do 2,5 h (PMID 9654880) - w POZ nie czekać na termin USG."},
+    {"nazwa": "Angiografia tomografii komputerowej aorty", "cel": "rozpoznanie pęknięcia i kwalifikacja do zabiegu", "zmienia_decyzje": true, "kolejnosc": 3, "uwagi": "Na SOR/w ośrodku naczyniowym, nie w POZ. Czułość 91%, swoistość 94% dla pęknięcia (PMID 35220634). U niestabilnego chorego decyzja chirurga naczyniowego może pominąć tomografię."},
+    {"nazwa": "Morfologia, grupa krwi i próba krzyżowa, kreatynina, koagulogram", "cel": "przygotowanie do zabiegu", "zmienia_decyzje": false, "kolejnosc": 4, "uwagi": "Wyłącznie w szpitalu; pobieranie w POZ opóźnia transport i nic nie rozstrzyga."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Badanie ogólne moczu w POZ", "powod": "Krwinkomocz nie odróżnia kolki od tętniaka (może wystąpić w obu), brak krwinkomoczu nie wyklucza kamicy; wynik nie zmienia decyzji o pilnym transporcie [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Planowe USG jamy brzusznej z kolejką/skierowaniem", "powod": "Termin odroczony nie rozstrzyga niczego dziś; nawet szybkie formalne USG opóźniało skierowanie naczyniowe (PMID 9654880)."},
+    {"nazwa": "RTG przeglądowe jamy brzusznej", "powod": "Nie zmienia decyzji, promieniowanie i strata czasu."},
+    {"nazwa": "Tomografia bez kontrastu w kierunku kamicy jako pierwsze badanie", "powod": "U tego chorego pierwszym pytaniem jest aorta; ewentualna tomografia na SOR ma być angiografią aorty, a decyzja należy do szpitala."},
+    {"nazwa": "Silniejszy lek przeciwbólowy w domu i obserwacja (próba leczenia kolki)", "powod": "Analgezja może zamaskować objawy i opóźnić rozpoznanie; ponowny niesteroidowy lek przeciwzapalny przy aspirynie i nieznanej dawce ketoprofenu zwiększa ryzyko krwawienia i uszkodzenia nerek [wiedza modelu, niezweryfikowane]."}
+  ],
+  "uwagi_gospodarza": "Czerwone flagi najgorszego scenariusza są otwarte, więc wykluczenie pękniętego tętniaka jest bezwzględnie uzasadnione kosztowo. Najtańsza ścieżka do tej samej pewności: 112 teraz, angiografia tomografii komputerowej w szpitalu. Każde badanie w POZ, które wydłuża czas do sali operacyjnej, jest kosztem, nie oszczędnością; zalecany czas od przyjęcia do interwencji < 90 min (PMID 31356266). Odpowiedź na pytanie lekarza: nie zakładać nawrotu kolki; leczenie przeciwbólowe prowadzi zespół ratownictwa/SOR, nie silniejszy lek do domu.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskiej wytycznej dla tej prezentacji (same wiersze przykładowe)",
+    "PubMed zapytanie: 'point-of-care ultrasound abdominal aortic aneurysm emergency department accuracy' -> PMID 35220634, 39344280, 31401838",
+    "PubMed zapytanie: 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' -> PMID 1619721, 9654880",
+    "PubMed zapytanie: 'ruptured abdominal aortic aneurysm time to surgery mortality delay transfer' (od 2010) -> PMID 31356266, 32006451",
+    "PubMed zapytanie bez wyników: 'renal colic computed tomography older patients alternative diagnosis aortic'; jedno zapytanie odrzucone limitem częstości (ponowione w zmienionej formie)",
+    "Fernando SM i wsp. Acad Emerg Med 2022;29(4):486-496. PMID 35220634. DOI 10.1111/acem.14475 - czułość bólu pleców 53,6%, omdlenia 27,8%, hipotensji 30,9%; angiografia TK czułość 91,4%, swoistość 93,6%; POCUS czułość 97,8%, swoistość 97,0% dla tętniaka (streszczenie sprawdzone)",
+    "Shaban EE i wsp. J Clin Ultrasound 2025;53(2):325-335. PMID 39344280. DOI 10.1002/jcu.23850 - POCUS czułość 98,33%, swoistość 99,84% (streszczenie sprawdzone)",
+    "Marston WA i wsp. J Vasc Surg 1992;16(1):17-22. PMID 1619721. DOI 10.1067/mva.1992.34344 - 30% pękniętych tętniaków błędnie rozpoznanych, najczęściej jako kolka nerkowa; tętniący guz tylko u 26% błędnie rozpoznanych (streszczenie sprawdzone)",
+    "Acheson AG i wsp. J R Coll Surg Edinb 1998;43(3):182-4. PMID 9654880 (brak DOI) - lekarz rodzinny trafnie rozpoznał 38%, kolka nerkowa najczęstszą pomyłką (24%); USG wydłużało czas do oddziału naczyniowego z 0,75 do 2,5 h (streszczenie sprawdzone)",
+    "Wang LJ i wsp. Ann Surg 2019;270(4):630-638. PMID 31356266. DOI 10.1097/SLA.0000000000003482 - zalecany czas od przyjęcia do interwencji < 90 min (streszczenie sprawdzone)",
+    "Nixon G i wsp. Rural Remote Health 2019;19(3):5027. PMID 31401838. DOI 10.22605/RRH5027 - POCUS tętniaka w warunkach wiejskich czułość 100%, swoistość 93% (streszczenie sprawdzone)"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "ostre zapalenie osierdzia (idiopatyczne lub poinfekcyjne, wirusowe)",
+      "p": 0.62,
+      "za": ["ból zamostkowy kłujący, nasilany w pozycji leżącej i przy głębokim wdechu, łagodzony siedzeniem w pochyleniu do przodu", "infekcja górnych dróg oddechowych tydzień wcześniej", "promieniowanie do barku/łopatki (okolica mięśnia czworobocznego)", "stan podgorączkowy 37,6 °C, tętno 96/min", "ból nie zależy od wysiłku ani od ucisku klatki piersiowej"],
+      "przeciw": ["brak EKG, osłuchiwania (tarcie osierdziowe) i CRP — rozpoznanie wymaga ≥2 z 4 kryteriów, ankieta daje tylko typowy ból [wiedza modelu, niezweryfikowane]"]
+    },
+    {
+      "nazwa": "zapalenie mięśnia sercowego z zapaleniem osierdzia",
+      "p": 0.12,
+      "za": ["niedawna infekcja wirusowa", "tachykardia 96/min przy stanie podgorączkowym", "obraz kliniczny zapalenia osierdzia u młodej osoby"],
+      "przeciw": ["brak duszności, kołatań, omdleń, nietolerancji wysiłku"]
+    },
+    {
+      "nazwa": "zatorowość płucna",
+      "p": 0.06,
+      "za": ["ból opłucnowy", "antykoncepcja hormonalna (estrogen)", "tętno 96/min", "kryteria PERC niespełnione z powodu stosowania estrogenów — nie można jej wykluczyć klinicznie samą listą (PMID 18318689)"],
+      "przeciw": ["brak duszności", "ulga w pozycji pochylonej typowa dla osierdzia, nie dla zatorowości", "brak unieruchomienia, zabiegów, wcześniejszej żylnej choroby zakrzepowo-zatorowej w ostatnich 4 tygodniach"]
+    },
+    {
+      "nazwa": "zapalenie opłucnej poinfekcyjne lub zapalenie płuc",
+      "p": 0.08,
+      "za": ["ból przy głębokim oddechu", "stan podgorączkowy po przeziębieniu"],
+      "przeciw": ["ból zamostkowy, a nie boczny", "wyraźna zależność od pozycji ciała typowa dla osierdzia"]
+    },
+    {
+      "nazwa": "ból mięśniowo-szkieletowy lub nerwoból międzyżebrowy",
+      "p": 0.05,
+      "za": ["hipoteza pacjentki i lekarza", "młody wiek"],
+      "przeciw": ["ból nie nasila się przy ucisku ani skręcie tułowia", "stan podgorączkowy i tachykardia", "zależność od pozycji leżącej/pochylonej"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": ["ból wysiłkowy (zaprzeczony)", "duszność (zaprzeczona)", "omdlenie i inne objawy alarmowe z listy ankiety (zaprzeczone)", "ciąża (zaprzeczona)", "unieruchomienie, zabieg, uraz w ostatnich 4 tygodniach (zaprzeczone)"],
+  "red_flags_otwarte": ["zajęcie mięśnia sercowego — troponina nieznana", "płyn w osierdziu / tamponada — brak badania fizykalnego, ciśnienia tętniczego i echokardiografii", "zatorowość płucna — estrogeny, tętno 96/min, ból opłucnowy; brak saturacji i badania kończyn dolnych", "ciśnienie skurczowe NIEZNANE", "temperatura >38 °C jako cecha wysokiego ryzyka — na razie 37,6 °C, trzeba obserwować"],
+  "nastepny_krok": "Dziś wizyta w gabinecie: EKG 12-odprowadzeniowe, osłuchiwanie (tarcie osierdziowe), ciśnienie tętnicze, saturacja, temperatura, oraz pobranie krwi na CRP, morfologię z rozmazem i troponinę (cito, jeśli laboratorium współpracujące wykonuje w ciągu kilku godzin); przy braku troponiny dziś albo przy uniesieniu troponiny, obniżonej saturacji, ciśnieniu skurczowym <90 mm Hg lub cechach tamponady — skierowanie na SOR tego samego dnia.",
+  "co_zmieniloby_zdanie": "Uniesiona troponina, zmiany ST-T niezgodne z zapaleniem osierdzia, saturacja <95%, objawy zakrzepicy żył głębokich lub temperatura >38 °C przeniosłyby postępowanie z POZ do szpitala (pilność 1); prawidłowe EKG, CRP i troponina przy bólu zmieniającym się przy ucisku przywróciłyby rozpoznanie bólu mięśniowo-szkieletowego.",
+  "plan_poz": {
+    "teraz_w_gabinecie": "EKG 12-odprowadzeniowe (szukać rozlanego uniesienia ST z obniżeniem PR), osłuchiwanie serca w pozycji pochylonej (tarcie), ciśnienie tętnicze na obu ramionach, pulsoksymetria, temperatura, ocena kończyn dolnych (obrzęk jednostronny) i żył szyjnych; obliczenie skali Wellsa dla zatorowości płucnej.",
+    "zlecic": "Badania laboratoryjne: CRP, morfologia krwi z rozmazem, troponina (hs-cTn) — jeśli laboratorium POZ/współpracujące oferuje wynik tego samego dnia [dostępność troponiny i D-dimerów w koszyku POZ: wiedza modelu, niezweryfikowane; brak wykazu w zrodla/]; D-dimery tylko gdy Wells wskazuje niskie/umiarkowane prawdopodobieństwo zatorowości i obraz nie jest typowy dla osierdzia.",
+    "leczenie_gdy_niskie_ryzyko": "Ibuprofen 600 mg co 8 h przez 1–2 tygodnie, potem stopniowe zmniejszanie dawki, z inhibitorem pompy protonowej, PLUS kolchicyna 0,5 mg 2×/dobę (0,5 mg 1×/dobę przy masie ciała <70 kg) przez 3 miesiące; ograniczenie wysiłku fizycznego do ustąpienia objawów i normalizacji CRP. [dawki i czas: wiedza modelu, niezweryfikowane — schemat wytycznych ESC; zasada NLPZ + kolchicyna jako pierwsza linia potwierdzona w PMID 42376745 i 41534803; skuteczność kolchicyny w pierwszym epizodzie: COPE, nawroty 10,7% vs 32,3% po 18 mies., PMID 16186437]. Unikać glikokortykosteroidów (czynnik ryzyka nawrotów, PMID 16186437).",
+    "skierowanie": "SOR tego samego dnia przy cechach wysokiego ryzyka: temperatura >38 °C, podejrzenie zajęcia mięśnia sercowego (troponina), duży płyn/tamponada, brak odpowiedzi na NLPZ, leczenie przeciwkrzepliwe, immunosupresja (PMID 17049636). Przy niskim ryzyku: echokardiografia przezklatkowa w trybie pilnym przez poradnię kardiologiczną (skierowanie 'pilne') — w praktyce termin może być długi, więc decyzja o leczeniu nie może na nią czekać.",
+    "kontrola": "Telefon lub wizyta po 48–72 h (ocena bólu i reakcji na NLPZ — brak poprawy to cecha wysokiego ryzyka), kontrola CRP po 1–2 tygodniach; ryzyko nawrotu wyższe u młodych (PMID 38925882), więc pacjentka musi wiedzieć, że kolchicyna jest na 3 miesiące, nie 'do ustąpienia bólu'.",
+    "zdanie_dla_pacjentki": "To najpewniej zapalenie osierdzia po przeziębieniu, nie nerwoból — dziś zrobimy EKG i krew, a leczenie to ibuprofen razem z kolchicyną i oszczędzanie się, a nie sam ibuprofen.",
+    "wykonalnosc": "Pacjentka 38 lat, samodzielna, mobilna — plan realny. Ryzyko: odstawienie kolchicyny po ustąpieniu bólu i powrót do sportu; omówić wprost. Jeśli troponina dziś niedostępna w POZ, jedyną wykonalną drogą oceny mięśnia sercowego jest SOR — nie odkładać na wizytę u kardiologa za kilka tygodni. Odległość do SOR: NIEZNANE (pamiec/zespol.md nieuzupełniona)."
+  },
+  "nie_zlecac": [
+    {"co": "RTG kręgosłupa piersiowego / skierowanie do neurologa", "dlaczego": "obraz nie przemawia za nerwobólem; opóźnia rozpoznanie"},
+    {"co": "sam ibuprofen 'doraźnie' bez kolchicyny i bez EKG", "dlaczego": "maskuje objawy, zwiększa ryzyko nawrotu i przeoczenia zapalenia mięśnia sercowego"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani wykazu badań POZ dla tej sytuacji (tylko wiersze przykładowe)",
+    "PubMed zapytanie 1: 'acute pericarditis diagnosis management review' (od 2019) — skuteczne",
+    "PubMed zapytanie 2: 'colchicine acute pericarditis randomized[Title/Abstract] recurrence' — skuteczne",
+    "PubMed zapytanie 3: 'outpatient management acute pericarditis high-risk features prognosis' — skuteczne (2 trafne)",
+    "PubMed zapytanie 4: '2025 ESC Guidelines myocarditis pericarditis[Title]' — 0 wyników",
+    "PubMed zapytanie 5: 'Imazio colchicine first episode acute pericarditis[Title]' — skuteczne",
+    "PubMed zapytanie 6: 'pulmonary embolism pleuritic chest pain young women oral contraceptives PERC' — 0 wyników",
+    "PubMed zapytanie 7: 'pulmonary embolism rule-out criteria[Title] estrogen' — skuteczne",
+    "Imazio M i wsp. Myocarditis and pericarditis in focus: 2025 ESC vs ACC. Trends Cardiovasc Med 2026;36:317-326. PMID 41534803, DOI 10.1016/j.tcm.2026.01.002 — streszczenie sprawdzone (NLPZ + kolchicyna w zapaleniu osierdzia i mięśnia sercowego z osierdziem; ramy IMPS)",
+    "Imazio M. Management of pericarditis: recent advances. Pol Arch Intern Med 2026;136(7-8). PMID 42376745, DOI 10.20452/pamw.17327 — streszczenie sprawdzone (ASA/NLPZ + kolchicyna pierwsza linia, ograniczenie wysiłku, kontrola CRP, unikanie steroidów)",
+    "Imazio M i wsp. COPE. Circulation 2005;112:2012-6. PMID 16186437, DOI 10.1161/CIRCULATIONAHA.105.542738 — streszczenie sprawdzone (nawroty 10,7% vs 32,3%, NNT 5; steroidy OR 4,30 dla nawrotu)",
+    "Imazio M, Trinchero R. Triage and management of acute pericarditis. Int J Cardiol 2006;118:286-94. PMID 17049636, DOI 10.1016/j.ijcard.2006.07.100 — streszczenie sprawdzone (leczenie ambulatoryjne bez cech wysokiego ryzyka: >38 °C, podostry początek, immunosupresja, uraz, antykoagulacja, zapalenie mięśnia sercowego, duży płyn, tamponada)",
+    "Collini V i wsp. Heart 2024;110:1139-44. PMID 38925882, DOI 10.1136/heartjnl-2024-324214 — streszczenie sprawdzone (młodszy wiek najsilniejszym predyktorem nawrotów, HR 3,23)",
+    "Kline JA i wsp. PERC. J Thromb Haemost 2008;6:772-80. PMID 18318689, DOI 10.1111/j.1538-7836.2008.02944.x — streszczenie sprawdzone (stosowanie estrogenów wyklucza PERC-ujemność)",
+    "Dawkowanie ibuprofenu i kolchicyny oraz kryteria rozpoznania (2 z 4) — [wiedza modelu, niezweryfikowane]"
+  ]
+}

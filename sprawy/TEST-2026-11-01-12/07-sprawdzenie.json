@@ -1,0 +1,229 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "sprawdzajacy": "sprawdzajacy-faktow",
+    "data": "2026-11-01",
+    "zrodla_uzyte": "zrodla/MANIFEST.md (brak plików merytorycznych, tylko pozycje przykładowe); PubMed (get_article_metadata dla wszystkich 12 PMID z 05-projekt.md + 3 zapytania search_articles: cetyryzyna, polskie wytyczne HL/limfadenopatia, bleomycyna a palenie)",
+    "podsumowanie": {
+      "potwierdzone": 18,
+      "bez_zrodla": 6,
+      "sprzeczne": 1,
+      "nieaktualne": 0,
+      "razem": 25
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Węzeł nadobojczykowy – niezależny predyktor złośliwości, RR 3,72 (Chau 2003, PMID 12569376)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 12569376, DOI 10.1038/sj.bjc.6600738",
+        "cytat": "supraclavicular region (RR=3.72; 95% CI: 1.52-9.12)",
+        "co_mowi_zrodlo": "Analiza 550 pacjentów poradni limfadenopatii (UK, mediana wieku 40 lat, 14–90). Populacja i wartość zgodne z projektem."
+      },
+      {
+        "twierdzenie": "Płeć męska – niezależny predyktor złośliwości węzła, RR 2,72 (PMID 12569376)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 12569376, DOI 10.1038/sj.bjc.6600738",
+        "cytat": "male gender (risk ratio (RR)=2.72; 95% confidence interval (CI): 1.63-4.56)",
+        "co_mowi_zrodlo": "Zgodne. Źródło podaje też wiek (RR 1,05/rok) – pacjent 55 lat dodatkowo podnosi ryzyko; projekt tego nie wykorzystuje, ale nie zaprzecza."
+      },
+      {
+        "twierdzenie": "≥ 2 regiony węzłowe – RR 6,41 złośliwości (PMID 12569376)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 12569376, DOI 10.1038/sj.bjc.6600738",
+        "cytat": "> or = 2 regions of lymph nodes (RR=6.41; 95% CI: 2.82-14.58)",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Wydajność diagnostyczna biopsji wycięciowej 97 % vs gruboigłowej 79 % (Assaf 2020, PMID 32461041)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 32461041, DOI 10.1016/j.clml.2019.11.013",
+        "cytat": "The diagnostic yield was 79% for CNB compared to 97% for SEB.",
+        "co_mowi_zrodlo": "Liczby zgodne. Zastrzeżenie: populacja to wszystkie choroby limfoproliferacyjne (373 biopsje, Liban), nie HL; autorzy wnioskują, że prawidłowo wykonana biopsja gruboigłowa jest dobrym substytutem wycięciowej. Projekt używa liczb poprawnie, ale wniosek autorów jest łagodniejszy niż ton projektu."
+      },
+      {
+        "twierdzenie": "Dokładność biopsji aspiracyjnej cienkoigłowej (BAC) w HL 82 % (Handa 2024, PMID 39113669)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39113669, DOI 10.1002/dc.25389",
+        "cytat": "The overall diagnostic accuracy of FNAC in the diagnosis of HL was 82.2%.",
+        "co_mowi_zrodlo": "Retrospektywne, 47 przypadków HL potwierdzonych histopatologicznie (Indie). Zgodne."
+      },
+      {
+        "twierdzenie": "Objawy B, świąd, ból po alkoholu, kaszel przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła (Cardoso 2024, PMID 39734971)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 39734971, DOI 10.7759/cureus.74778",
+        "cytat": "B symptoms..., fatigue, pruritus, or alcohol-induced pain may be present along with respiratory symptoms in cases of mediastinal involvement. A definitive diagnosis requires lymph node biopsy",
+        "co_mowi_zrodlo": "Opis przypadku (24-letnia kobieta) z przeglądem; twierdzenia ogólne zgodne, siła dowodu niska (case report)."
+      },
+      {
+        "twierdzenie": "Ból węzła po alkoholu – rzadki, ale znany objaw HL; schemat ABVD zawiera bleomycynę (Ma 2019, PMID 31780609)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 31780609, DOI 10.1136/bcr-2018-228440",
+        "cytat": "exacerbated by alcohol consumption, a rare but known symptom of Hodgkin lymphoma (HL)... ABVD (adriamycin, bleomycin, vinblastine, dacarbazine)",
+        "co_mowi_zrodlo": "Opis przypadku (32-letni mężczyzna). Zgodne co do objawu i składu ABVD."
+      },
+      {
+        "twierdzenie": "Zaprzestanie palenia przed ewentualną bleomycyną w ABVD (projekt cytuje PMID 31780609)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 35419251, DOI 10.7759/cureus.23993 (Jennane 2022) – źródło właściwe; PMID 31780609 potwierdza tylko skład ABVD",
+        "cytat": "On multivariate analysis, smoking (p = 0.038) and the use of the ABVD regimen... were statistically significant risk factors",
+        "co_mowi_zrodlo": "Palenie jest niezależnym czynnikiem ryzyka toksyczności płucnej bleomycyny u chorych na HL (124 pacjentów, 14,5 % toksyczność). POPRAWKA: w 09-FINAL dopisać PMID 35419251 przy tym zaleceniu; PMID 31780609 nie mówi nic o paleniu."
+      },
+      {
+        "twierdzenie": "Zapaść dróg oddechowych przy masie przedniego śródpiersia bywa nagła nawet u bezobjawowego dorosłego (Gardner 2011, PMID 21596865)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 21596865, DOI 10.1213/ANE.0b013e31821f9c95",
+        "cytat": "airway collapse and inability to ventilate may occur in the asymptomatic adult despite spontaneous ventilation with inhaled anesthesia",
+        "co_mowi_zrodlo": "Zgodne, ale kontekst to znieczulenie ogólne (okołooperacyjnie), nie spontaniczna zapaść u chodzącego pacjenta. W FINAL warto doprecyzować: 'zwłaszcza w znieczuleniu/sedacji – informacja istotna dla chirurga wykonującego biopsję'."
+      },
+      {
+        "twierdzenie": "Zespół żyły głównej górnej i zwężenie tchawicy przy masie śródpiersia w chłoniaku (Anai 2025, PMID 40470453)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 40470453, DOI 10.7759/cureus.83537",
+        "cytat": "rapidly progressing SVC syndrome and airway stenosis due to a large mediastinal mass, later identified as malignant lymphoma",
+        "co_mowi_zrodlo": "Opis przypadku (85-letni mężczyzna, ATLL – chłoniak T-komórkowy, nie HL). Objawy SVC (obrzęk twarzy, kończyn górnych, duszność) zgodne z listą alarmową projektu."
+      },
+      {
+        "twierdzenie": "Lugano 2014: PET-CT w stagingu; biopsja szpiku nierutynowa w HL (Cheson 2014, PMID 25113753)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 3,
+        "zrodlo": "PMID 25113753, DOI 10.1200/JCO.2013.54.8800 (konsensus/wytyczna międzynarodowa)",
+        "cytat": "PET-CT was formally incorporated into standard staging... A bone marrow biopsy is no longer indicated for the routine staging of HL",
+        "co_mowi_zrodlo": "Zgodne."
+      },
+      {
+        "twierdzenie": "Świąd w HL/AITL ma podłoże cytokinowe (PMID 38489975)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38489975, DOI 10.1016/j.intimp.2024.111777",
+        "cytat": "Elevated serum levels of IL-31, IL-1β, and IL-1α are linked to lymphoma-associated pruritus",
+        "co_mowi_zrodlo": "60 chorych (47 HL, 13 AITL). Zgodne."
+      },
+      {
+        "twierdzenie": "Eozynofilia 0,9 G/l przemawia za HL; eozynofilia definiowana > 0,5 G/l (PMID 38254826)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38254826, DOI 10.3390/cancers16020337",
+        "cytat": "A count above 0.5 × 10/L is considered to indicate eosinophilia... mainly seen in lymphoid neoplasms (Hodgkin lymphoma, mature T-cell neoplasms...)",
+        "co_mowi_zrodlo": "Przegląd. 0,9 G/l spełnia definicję eozynofilii (< 1,5 G/l, więc nie hipereozynofilia). Źródło podkreśla, że najczęstsze przyczyny eozynofilii są niehematologiczne (alergia, leki, infekcje) – spójne z punktem (5) CZEGO NIE WIEMY."
+      },
+      {
+        "twierdzenie": "Eozynofilia występuje w HL (PMID 23100947)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23100947, DOI 10.1007/s12288-008-0031-x",
+        "cytat": "The incidence of eosinophilia in Hodgkin lymphoma is approximately 15%.",
+        "co_mowi_zrodlo": "Opis przypadku z przeglądem; ~15 % chorych na HL. Zgodne."
+      },
+      {
+        "twierdzenie": "IPS Hasenclever jako skala rokownicza w zaawansowanym HL (PMID 9819449)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 9819449, DOI 10.1056/NEJM199811193392104",
+        "cytat": "Seven factors... albumin < 4 g/dl, hemoglobin < 10.5 g/dl, male sex, age ≥ 45, stage IV, WBC ≥ 15,000, lymphocytopenia < 600/mm3",
+        "co_mowi_zrodlo": "Zgodne. Uwaga dla ordynatora: limfopenia pacjenta 0,8 G/l NIE spełnia kryterium IPS (< 0,6 G/l); Hb 12,1 też nie. Projekt nie twierdzi inaczej, ale FINAL nie powinien sugerować, że te wyniki 'punktują' w IPS."
+      },
+      {
+        "twierdzenie": "Cetyryzyna 10 mg raz dziennie na świąd (oznaczone [wiedza modelu])",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 21568746, DOI 10.1089/acm.2009.0648 (dawka); brak ChPL w zrodla/",
+        "cytat": "all patients jointly received cetirizine hydrochloride (HCl) 10 mg once daily",
+        "co_mowi_zrodlo": "Dawka 10 mg 1×dz potwierdzona jako standardowa dawka dla dorosłych (RCT w pokrzywce przewlekłej). Skuteczność w świądzie chłoniakowym NIE jest udokumentowana – świąd HL jest cytokinowy (IL-31), nie histaminowy (PMID 38489975). POPRAWKA: etykietę zmienić na 'dawka wg standardu dla dorosłych (PMID 21568746); skuteczność w świądzie HL niepewna'."
+      },
+      {
+        "twierdzenie": "W zrodla/ brak polskich wytycznych dla limfadenopatii/chłoniaka (tylko pozycje przykładowe)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "zrodla/MANIFEST.md; katalog zrodla/ zawiera wyłącznie MANIFEST.md",
+        "cytat": "wiersze tabeli oznaczone _(przykład)_; brak jakiegokolwiek pliku merytorycznego",
+        "co_mowi_zrodlo": "PubMed (1 zapytanie celowe) nie indeksuje wytycznych PTHiT/PALG dla HL. Dostępne wytyczne poziomu 3 ze współautorstwem polskim: EHA 2026 (PMID 42345030, Zaucha) i ESMO 2025 (PMID 40774601, Walewski) – oba potwierdzają biopsję (wycięciową) węzła i PET-CT jako standard; mogą zastąpić część etykiet [wiedza modelu] w FINAL."
+      },
+      {
+        "twierdzenie": "Objawy B obecne: gorączka 37,8 °C, poty nocne, −7 kg w 3 miesiące",
+        "werdykt": "SPRZECZNE",
+        "poziom_zrodla": 3,
+        "zrodlo": "Klasyfikacja Ann Arbor/Cotswolds, Lugano 2014 (PMID 25113753) – definicja z pamięci, abstrakt progu nie podaje",
+        "cytat": "[z pamięci] objawy B: niewyjaśniona gorączka > 38 °C, zlewne poty nocne, utrata > 10 % masy ciała w 6 miesięcy",
+        "co_mowi_zrodlo": "Temperatura 37,8 °C to stan podgorączkowy i NIE spełnia kryterium gorączki B (> 38 °C). Utrata 7 kg: odsetek NIEZNANY (brak masy wyjściowej; przy 70 kg = 10 %, przy 90 kg = 7,8 %). Poty nocne spełnione. Nie zmienia to decyzji (biopsja i tak wskazana), ale FINAL nie powinien pisać 'objawy B (37,8 °C...)'. POPRAWKA: 'poty nocne i utrata masy (objawy B; stan podgorączkowy 37,8 °C formalnie poniżej progu 38 °C)'."
+      },
+      {
+        "twierdzenie": "Na gorączkę paracetamol, nie NLPZ",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak; w 05-projekt bez źródła i bez etykiety",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe. Uzasadnienie (PLT 420, planowana biopsja, ryzyko krwawienia / maskowania) nie jest podane. W FINAL wymaga etykiety [wiedza modelu, niezweryfikowane] albo krótkiego uzasadnienia."
+      },
+      {
+        "twierdzenie": "Przy zmianach w RTG: plwocina na prątki ×3 (bakterioskopia, posiew, test molekularny)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; PubMed (1 zapytanie) nie dał wytycznej z liczbą próbek; z pamięci: PTChP 2013 'Zalecenia rozpoznawania gruźlicy' – 3 próbki plwociny",
+        "cytat": "",
+        "co_mowi_zrodlo": "Liczba ×3 bez źródła poziomu 1–3 w tej sprawie. W FINAL oznaczyć [wiedza modelu, niezweryfikowane] lub powołać się na PTChP 2013 jako poziom 3 z pamięci."
+      },
+      {
+        "twierdzenie": "Eskalacja do SOR przy gorączce > 38,5 °C z dreszczami",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak",
+        "cytat": "",
+        "co_mowi_zrodlo": "Próg 38,5 °C jest arbitralny (nie dawka, nie przeciwwskazanie). Dopuszczalny jako reguła bezpieczeństwa, ale w FINAL wymaga etykiety [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "Karta DiLO, zakres badań zlecanych z POZ; telefon/skierowanie na oddział gdy hematolog > 2 tygodnie (oznaczone [wiedza modelu])",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak wykazu koszyka POZ i aktów NFZ w zrodla/",
+        "cytat": "",
+        "co_mowi_zrodlo": "Etykieta w projekcie prawidłowa. Próg '2 tygodnie' bez źródła – w FINAL też pod etykietą. Zalecenie dla użytkownika: dodać do zrodla/ aktualne rozporządzenie o pakiecie onkologicznym i koszyk POZ (MANIFEST sugeruje 'koszyk-poz-badania.md')."
+      },
+      {
+        "twierdzenie": "Allopurinol / karbamazepina / fenytoina z ostatnich 3 miesięcy → reakcja polekowa z eozynofilią (DRESS / pseudochłoniak)",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w 05-projekt; nie szukano celowo w PubMed (twierdzenie warunkowe, nie wpływa na decyzję)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Treść zgodna z wiedzą ogólną (PMID 38254826 wymienia leki wśród przyczyn eozynofilii reaktywnej, bez nazw). W FINAL oznaczyć [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "twierdzenie": "Nie podawać glikokortykosteroidów (także na świąd) ani antybiotyku empirycznego (zwłaszcza fluorochinolonu) przed biopsją",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak źródła w 05-projekt; zasada znana z praktyki hematologicznej (GKS zacierają obraz histologiczny HL/NHL; fluorochinolon maskuje gruźlicę)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe, zgodne z konsensusem. W FINAL etykieta [wiedza modelu, niezweryfikowane] lub odwołanie do EHA 2026 / ESMO 2025 (poziom 3) jeśli ordynator zweryfikuje pełny tekst."
+      },
+      {
+        "twierdzenie": "Pilność 2 (dziś) – skala z CLAUDE.md §6; weto najgorszego scenariusza",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "CLAUDE.md §4 i §6; 04-konsylium.md §3 (red flagi nie wykluczone)",
+        "cytat": "Najgorszy scenariusz ma weto pilności: jego ocena pilności jest dolnym ograniczeniem wyniku",
+        "co_mowi_zrodlo": "Zgodność procesowa: 6/6 ról pilność 2, weto utrzymane. Brak sprzeczności z żadnym źródłem."
+      }
+    ],
+    "lista_poprawek_do_FINAL": [
+      "1. 'Objawy B (37,8 °C...)' → 37,8 °C nie spełnia kryterium gorączki B (> 38 °C); pisać 'poty nocne i utrata masy; stan podgorączkowy'. Odsetek utraty masy NIEZNANY (brak masy wyjściowej) – dopisać do CZEGO NIE WIEMY.",
+      "2. Zaprzestanie palenia przed bleomycyną: dopisać źródło PMID 35419251 (DOI 10.7759/cureus.23993); PMID 31780609 potwierdza tylko skład ABVD.",
+      "3. Cetyryzyna 10 mg 1×dz: etykietę zastąpić 'dawka standardowa dla dorosłych, PMID 21568746; skuteczność w świądzie HL niepewna (świąd cytokinowy, PMID 38489975)'.",
+      "4. PMID 21596865: doprecyzować, że zapaść opisano w znieczuleniu ogólnym – istotne dla planowania biopsji, nie jako argument o spontanicznym ryzyku.",
+      "5. PMID 32461041: liczby poprawne, ale autorzy uznają prawidłowo wykonaną biopsję gruboigłową za dobry substytut – FINAL może mówić 'preferowana wycięciowa', nie 'gruboigłowa niedopuszczalna'.",
+      "6. Etykieta [wiedza modelu, niezweryfikowane] wymagana przy: paracetamol-nie-NLPZ, plwocina ×3, próg 38,5 °C, próg 2 tygodni do hematologa, lista leków DRESS, zakaz GKS/antybiotyku przed biopsją.",
+      "7. Można dodać do ŹRÓDŁA wytyczne poziomu 3 ze współautorstwem polskim: EHA 2026 HL (PMID 42345030, DOI 10.1002/hem3.70422) i ESMO 2025 Lymphomas (PMID 40774601, DOI 10.1016/j.annonc.2025.07.014) – biopsja węzła i PET-CT jako standard.",
+      "8. Uwaga: limfopenia 0,8 G/l i Hb 12,1 g/dl nie spełniają kryteriów IPS (PMID 9819449: < 0,6 G/l, < 10,5 g/dl) – FINAL nie powinien ich przedstawiać jako czynników IPS."
+    ],
+    "uzasadnienie_kartki": "ZOLTA: 18/25 twierdzeń potwierdzonych źródłem poziomu 1–3 (wszystkie 12 cytowanych PMID istnieją i mówią to, co projekt twierdzi; populacje i wartości zgodne). Jedyne SPRZECZNE dotyczy kryterium (objaw B – próg gorączki 38 °C), nie dawki, przeciwwskazania ani pilności → nie uruchamia CZERWONEJ. Jedyna dawka (cetyryzyna 10 mg) ma źródło poziomu 2. 6 twierdzeń nieliczbowych lub progowych BEZ_ZRODLA → FINAL przechodzi pod warunkiem etykiet [wiedza modelu, niezweryfikowane]. Brak NIEAKTUALNE (zrodla/ pusta)."
+  },
+  "petla": 1
+}

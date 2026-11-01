@@ -1,0 +1,104 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "nadczynność tarczycy w przebiegu choroby Gravesa-Basedowa",
+      "p": 0.80,
+      "za": [
+        "pretest: kobieta 29 lat — choroba Gravesa jest najczęstszą przyczyną nadczynności tarczycy i dotyczy głównie kobiet w wieku produkcyjnym (PMID 42741481, 42838579) → podnosi → umiarkowanie",
+        "chudnięcie 5 kg przy zwiększonym apetycie → podnosi tyreotoksykozę, obniża zaburzenie lękowe (w lęku apetyt zwykle spada) → silnie [wiedza modelu, niezweryfikowane co do LR]",
+        "nietolerancja ciepła + nadmierne pocenie + drżenie rąk + częstsze luźne stolce → podnosi → silnie (zespół objawów, nie pojedynczy objaw)",
+        "objawy stałe, także w spoczynku, tętno spoczynkowe 115/min, kołatanie miarowe ciągłe >1 h → podnosi przyczynę somatyczną (tachykardia zatokowa w tyreotoksykozie), obniża napady paniki → umiarkowanie",
+        "oczy bardziej wysunięte/szerzej otwarte + piasek pod powiekami, łzawienie, światłowstręt → podnosi chorobę Gravesa wobec innych przyczyn tyreotoksykozy (orbitopatia jest swoista dla Gravesa; ETA 2018: orbitopatia jest elementem rozpoznania, PMID 30283735) → silnie",
+        "rzadsze/skąpsze miesiączki → podnosi → słabo",
+        "choroba tarczycy w bliskiej rodzinie → podnosi tło autoimmunologiczne → słabo"
+      ],
+      "przeciw": [
+        "brak jakiegokolwiek badania laboratoryjnego (TSH, FT4, FT3, przeciwciała przeciw receptorowi TSH — TRAb) → rozpoznanie wyłącznie kliniczne; objawy oczne zgłoszone przez pacjentkę, niezbadane",
+        "stresująca praca i własna atrybucja „to nerwy” → słabo obniża (współistnieje z każdą diagnozą, nie różnicuje)"
+      ]
+    },
+    {
+      "nazwa": "tyreotoksykoza o innej przyczynie (bezbolesne lub podostre zapalenie tarczycy, wole guzkowe toksyczne)",
+      "p": 0.07,
+      "za": [
+        "cały zespół tyreotoksykozy jak wyżej → podnosi tyreotoksykozę jako grupę",
+        "czas trwania 2 miesiące mieści się w fazie tyreotoksycznej zapalenia tarczycy → słabo"
+      ],
+      "przeciw": [
+        "objawy oczne → silnie obniża (orbitopatia nie występuje w zapaleniu tarczycy ani w wolu guzkowym)",
+        "wiek 29 lat → obniża wole guzkowe toksyczne → umiarkowanie",
+        "brak leków z listy (amiodaron, jod, lit, hormony tarczycy) → obniża tyreotoksykozę polekową/rzekomą → umiarkowanie"
+      ]
+    },
+    {
+      "nazwa": "zaburzenie lękowe uogólnione",
+      "p": 0.05,
+      "za": [
+        "pretest: w POZ u młodej kobiety z kołataniem i napięciem zaburzenie lękowe jest częstsze niż nadczynność tarczycy → podnosi wyjściowo → umiarkowanie",
+        "stresująca praca, napięcie, trudność z zasypianiem → słabo"
+      ],
+      "przeciw": [
+        "chudnięcie przy zwiększonym apetycie, nietolerancja ciepła, biegunki, oligomenorrhoea, objawy oczne → silnie obniża",
+        "tętno spoczynkowe 115/min stale, również w spokojnych chwilach → obniża → umiarkowanie",
+        "opisy przypadków: nadczynność tarczycy mylnie rozpoznana jako zaburzenie lękowe uogólnione i jako napady paniki (w tym burza tarczycowa) — pułapka zakotwiczenia na atrybucji pacjentki (PMID 37750133, 34044861)"
+      ]
+    },
+    {
+      "nazwa": "pierwotna tachyarytmia nadkomorowa (częstoskurcz nadkomorowy, niewłaściwa tachykardia zatokowa)",
+      "p": 0.03,
+      "za": [
+        "kołatanie ciągłe >1 h, szybkie i miarowe, tętno 115/min → podnosi → słabo"
+      ],
+      "przeciw": [
+        "objawy ogólnoustrojowe (chudnięcie, nietolerancja ciepła, oczy) nie są wyjaśniane przez arytmię → silnie obniża jako przyczynę główną",
+        "częstoskurcz nawrotny zwykle ma częstość >150/min i nagły początek/koniec [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "guz chromochłonny",
+      "p": 0.01,
+      "za": [
+        "tachykardia, potliwość, drżenie, chudnięcie → słabo"
+      ],
+      "przeciw": [
+        "pretest rzędu pojedynczych przypadków na 100 000 w POZ → silnie obniża (ochrona przed błędem reprezentatywności)",
+        "objawy stałe, nie napadowe; objawy oczne i nietolerancja ciepła lepiej tłumaczy tarczyca → umiarkowanie"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "myśli samobójcze lub o samookaleczeniu w ostatnich tygodniach — pacjentka zaprzecza",
+    "leki i używki mogące dawać tachykardię lub tyreotoksykozę (lista z ankiety) — zaprzecza; jedynie melisa okazjonalnie"
+  ],
+  "red_flags_otwarte": [
+    "tachykardia spoczynkowa 115/min, kołatanie ciągłe >1 h (reguła ankiety: EKG i TSH tego samego dnia) — rytm nieudokumentowany, migotanie przedsionków niewykluczone mimo „równo”",
+    "ciężkość orbitopatii: światłowstręt i łzawienie zgłoszone; spadek ostrości wzroku, zaburzenia widzenia barw i podwójne widzenie nieocenione (ryzyko neuropatii nerwu wzrokowego)",
+    "objawy przełomu tarczycowego (gorączka, splątanie, wymioty, niewydolność serca) — nieocenione, brak parametrów życiowych",
+    "ciąża — „nie dotyczy” w ankiecie niejednoznaczne przy skąpszych miesiączkach; test ciążowy NIEZNANE (wpływa na wybór tyreostatyku)"
+  ],
+  "nastepny_krok": "Dziś wizyta w POZ: EKG 12-odprowadzeniowe, parametry życiowe i oznaczenie TSH z FT4 (najlepiej także FT3 i TRAb) — bez włączania SSRI; leczenie zależy od wyniku TSH, nie od rozpoznania zaburzenia lękowego.",
+  "co_zmieniloby_zdanie": "Prawidłowe TSH i FT4 obniżyłyby tyreotoksykozę poniżej 0,02 i przesunęły ciężar na zaburzenie lękowe lub pierwotną arytmię, a dopiero wtedy SSRI stałoby się zasadne.",
+  "badania": [
+    {"nazwa": "EKG 12-odprowadzeniowe", "kiedy": "dziś", "po_co": "rytm zatokowy vs migotanie przedsionków/częstoskurcz nadkomorowy przy HR 115/min"},
+    {"nazwa": "TSH + FT4 (+ FT3)", "kiedy": "dziś", "po_co": "potwierdzenie tyreotoksykozy; prawidłowe TSH praktycznie ją wyklucza [wiedza modelu, niezweryfikowane]"},
+    {"nazwa": "TRAb", "kiedy": "po potwierdzeniu tyreotoksykozy lub równolegle", "po_co": "ETA 2018 zaleca TRAb do rozpoznania różnicowego choroby Gravesa (PMID 30283735)"},
+    {"nazwa": "test ciążowy z moczu", "kiedy": "dziś", "po_co": "NIEZNANE, wpływa na wybór leczenia"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dotyczącej nadczynności tarczycy (tylko wiersze przykładowe); pamiec/zespol.md — brak wpisów dotyczących tarczycy",
+    "Zapytanie PubMed 1: 'Graves disease epidemiology incidence women[Title/Abstract] AND hyperthyroidism' (od 2015) — 233 trafień, nie użyto",
+    "Zapytanie PubMed 2: 'European Thyroid Association guideline Graves hyperthyroidism management' (od 2018) — użyto PMID 42838579",
+    "Zapytanie PubMed 3: 'hyperthyroidism misdiagnosed as anxiety disorder' — użyto PMID 37750133, 34044861",
+    "Zapytanie PubMed 4: 'hyperthyroidism[Title] AND review[Publication Type] AND Graves most common cause' (od 2016) — użyto PMID 42741481",
+    "Zapytanie PubMed 5: '2018 European Thyroid Association guideline management of Graves hyperthyroidism' — użyto PMID 30283735",
+    "Kahaly GJ i wsp. 2018 European Thyroid Association Guideline for the Management of Graves' Hyperthyroidism. Eur Thyroid J 2018;7(4):167-186. PMID 30283735, DOI 10.1159/000490384 — streszczenie sprawdzone: rozpoznanie = tyreotoksykoza biochemicznie + TRAb + USG + orbitopatia; TRAb zalecane do rozpoznania; MMI lek z wyboru 12–18 mies.",
+    "Karapanou O i wsp. How to manage autoimmune hyperthyroidism (Graves' disease). Drugs Context 2026;15. PMID 42741481, DOI 10.7573/dic.2026-4-10 — streszczenie sprawdzone: Graves najczęstszą przyczyną nadczynności; różnicowanie z gruczolakiem autonomicznym, wolem guzkowym, zapaleniem tarczycy, tyreotoksykozą rzekomą",
+    "Lindo A i wsp. BMJ Open 2026;16(10):e119495. PMID 42838579, DOI 10.1136/bmjopen-2026-119495 — streszczenie sprawdzone: Graves dotyczy głównie kobiet w wieku produkcyjnym; tachykardia, chudnięcie, poty, drżenie oraz objawy psychiczne",
+    "Moideen Sheriff S i wsp. Hyperthyroidism Masquerading as an Anxiety Disorder. Cureus 2023;15(8):e44071. PMID 37750133, DOI 10.7759/cureus.44071 — streszczenie sprawdzone: 33-letnia kobieta mylnie rozpoznana jako zaburzenie lękowe uogólnione",
+    "Yasuda M i wsp. Thyroid storm caused by Graves' disease misdiagnosed as panic attack. Biopsychosoc Med 2021;15:11. PMID 34044861, DOI 10.1186/s13030-021-00211-4 — streszczenie sprawdzone: 34-letnia kobieta, burza tarczycowa leczona jako napad paniki; wytrzeszcz był wskazówką",
+    "Ilościowe ilorazy wiarygodności poszczególnych objawów oraz prewalencje w POZ: [wiedza modelu, niezweryfikowane]"
+  ]
+}

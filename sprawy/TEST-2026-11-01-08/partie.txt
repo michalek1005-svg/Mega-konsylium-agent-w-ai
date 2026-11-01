@@ -1,0 +1,9 @@
+1: kontakt objawy_nagle glowa goraczka
+2: temperatura oddech krzepliwosc
+3: cukrzyca pomiary cukier
+4: cisnienie_skurczowe tetno saturacja
+5: mocz picie wymioty
+6: leki zmiana_lekow alkohol
+7: wczesniej choroby
+8: badania wyniki
+9: obawy

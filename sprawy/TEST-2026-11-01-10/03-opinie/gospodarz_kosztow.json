@@ -1,0 +1,40 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "skręt jądra prawego", "p": 0, "za": ["nagły początek bólu w ciągu minut, 3–6 h temu, 8/10", "jądro uniesione wyżej niż drugie, obrzęk moszny", "nudności utrzymujące się, wymioty raz", "uniesienie jądra nie zmniejsza bólu (ujemny objaw Prehna wg pacjenta)", "podobny epizod w przeszłości, który ustąpił samoistnie (możliwy przemijający skręt)", "brak gorączki, objawów dyzurycznych i ryzyka seksualnego"], "przeciw": ["brak badania fizykalnego (NIEZNANE)"]},
+    {"nazwa": "zapalenie najądrza", "p": 0, "za": ["obrzęk moszny"], "przeciw": ["nagły początek, brak gorączki, brak dyzurii, brak kontaktów bez zabezpieczenia, jądro uniesione"]},
+    {"nazwa": "skręt przyczepka jądra", "p": 0, "za": ["ostry ból jednostronny"], "przeciw": ["wiek 19 lat, wymioty, uniesienie jądra"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": ["gorączka ≥ 38 °C (zaprzecza)", "uraz moszny (zaprzecza)", "przepuklina pachwinowa uwięźnięta — brak uwypuklenia w pachwinie (wg pacjenta, bez badania)"],
+  "red_flags_otwarte": ["skręt jądra: nagły ból 8/10 od 3–6 h, jądro uniesione, obrzęk, nudności — okno ratowania jądra mija w ciągu godzin"],
+  "nastepny_krok": "Natychmiastowe skierowanie na SOR z dyżurem urologicznym (transport bez zwłoki, 112 jeśli brak szybkiego dojazdu), z adnotacją ‘podejrzenie skrętu jądra, początek 3–6 h temu’ — bez badań w POZ, bez antybiotyku, bez kontroli za tydzień.",
+  "co_zmieniloby_zdanie": "Nic dostępnego w POZ nie usprawiedliwia czekania; dopiero w szpitalu zachowany przepływ w USG doppler przy niskiej skali TWIST mógłby obniżyć pilność z eksploracji do obserwacji.",
+  "badania": [
+    {"nazwa": "skierowanie na SOR / konsultacja urologiczna z eksploracją moszny", "cel": "detorsja i orchidopeksja w oknie czasowym", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Jedyny element, który zmienia rokowanie. Czas od początku bólu jest głównym czynnikiem utraty jądra (Howe 2017: próg 8,5 h; Madsen 2023: opóźnienie przedszpitalne najsilniejszym predyktorem orchidektomii)."},
+    {"nazwa": "skala TWIST (obrzęk jądra, twarde jądro, brak odruchu nosidłowego, nudności/wymioty, wysokie ustawienie jądra)", "cel": "stratyfikacja w szpitalu", "zmienia_decyzje": false, "kolejnosc": 2, "uwagi": "Z samej ankiety pacjent ma już co najmniej nudności/wymioty + wysokie ustawienie + obrzęk; w POZ wynik nie zmienia skierowania (Shunmugam 2021: TWIST ≥1 lub obraz sugerujący skręt → pilnie SOR). Liczba punktów TWIST [wiedza modelu, niezweryfikowane]. Koszt zerowy, ale nie może opóźnić wyjazdu."},
+    {"nazwa": "USG moszny z dopplerem", "cel": "ocena przepływu", "zmienia_decyzje": false, "kolejnosc": 3, "uwagi": "Tylko w szpitalu, przyłóżkowo, i tylko jeśli nie opóźnia sali operacyjnej. Przy wysokim prawdopodobieństwie klinicznym rutynowe USG nie jest konieczne i może opóźnić leczenie (Mao 2023). W trybie ambulatoryjnym (termin w dniach) — bezwartościowe."},
+    {"nazwa": "badanie fizykalne w POZ (odruch nosidłowy, ułożenie jądra)", "cel": "uzupełnienie NIEZNANE", "zmienia_decyzje": false, "kolejnosc": 0, "uwagi": "Tylko jeśli pacjent jest już w gabinecie; nie wzywać do POZ ‘na obejrzenie’, gdy dojazd do SOR jest szybszy. Prawidłowy odruch nie wyklucza skrętu [wiedza modelu, niezweryfikowane]."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "antybiotyk empiryczny i kontrola za tydzień", "powod": "Leczy rozpoznanie mało prawdopodobne, a przy skręcie gwarantuje utratę jądra; najdroższa opcja w całej sprawie (orchidektomia, płodność, roszczenie)."},
+    {"nazwa": "badanie ogólne moczu, CRP, morfologia w POZ przed skierowaniem", "powod": "Wynik prawidłowy lub nieprawidłowy nie zmienia skierowania na SOR; wykonanie w POZ dokłada godziny niedokrwienia. Jeśli potrzebne, robi je szpital."},
+    {"nazwa": "posiew moczu, testy w kierunku Chlamydia trachomatis / Neisseria gonorrhoeae", "powod": "Brak ryzyka seksualnego i dyzurii; nie zmienia decyzji dziś, ewentualnie po wykluczeniu skrętu."},
+    {"nazwa": "planowe USG moszny w trybie ambulatoryjnym / skierowanie do poradni urologicznej", "powod": "Termin w dniach–tygodniach nie rozstrzyga niczego w oknie kilku godzin."},
+    {"nazwa": "markery nowotworowe (AFP, beta-hCG, LDH)", "powod": "Ostry ból z wymiotami nie jest prezentacją guza; nie zmienia decyzji dziś."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrej moszny w bibliotece (tylko przykłady); pamiec/zespol.md — brak wpisu dot. moszny",
+    "PubMed zapytanie 1: 'TWIST score testicular torsion validation' (15 wyników)",
+    "PubMed zapytanie 2: 'testicular torsion ultrasound delay surgical exploration orchiectomy time' (17 wyników)",
+    "PubMed zapytanie 3: 'testicular torsion duration of symptoms salvage rate[Title/Abstract] hours' (4 wyniki)",
+    "Howe AS i wsp. Transl Androl Urol 2017 — PMID 29354505, DOI 10.21037/tau.2017.09.10: czas objawów i wiek jedynymi niezależnymi czynnikami nieuratowania jądra; próg 8,5 h (czułość 73%, swoistość 80%); 15 h ≈ 50% ratowania (streszczenie sprawdzone)",
+    "Madsen SMD, Rawashdeh YF. J Pediatr Urol 2023 — PMID 37544787, DOI 10.1016/j.jpurol.2023.07.003: opóźnienie przedszpitalne najsilniejszym predyktorem orchidektomii; opóźnienie wewnątrzszpitalne i USG stosowane selektywnie nie pogarszały wyniku (streszczenie sprawdzone)",
+    "Mao CK i wsp. Front Pediatr 2023 — PMID 37397154, DOI 10.3389/fped.2023.1176345: przy wysokim podejrzeniu skrętu rutynowe USG nie jest konieczne, może opóźnić leczenie; błędna diagnoza na pierwszej wizycie wiązała się z wyższym odsetkiem orchidektomii (streszczenie sprawdzone)",
+    "Shunmugam M, Goldman RD. Can Fam Physician 2021 — PMID 34521708, DOI 10.46747/cfp.6709669: w gabinecie lekarza rodzinnego TWIST ≥1 lub obraz sugerujący skręt → pilnie na najbliższy SOR (streszczenie sprawdzone)",
+    "Heckscher D i wsp. J Pediatr Urol 2023 — PMID 38030428, DOI 10.1016/j.jpurol.2023.10.042: ratowanie jądra zależne od czasu; protokół TWIST + USG przyłóżkowe skrócił czas do nacięcia (streszczenie sprawdzone)",
+    "Tobu S i wsp. Cureus 2025 — PMID 41477382, DOI 10.7759/cureus.98125: TWIST czułość 88,2%, swoistość 43,8% w 50 eksploracjach (streszczenie sprawdzone)",
+    "Uwaga: cytowane prace dotyczą głównie dzieci i młodzieży; ekstrapolacja na 19-latka [wiedza modelu, niezweryfikowane]"
+  ]
+}

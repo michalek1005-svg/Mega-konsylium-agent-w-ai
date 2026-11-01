@@ -1,0 +1,86 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "pęknięty lub objawowy tętniak aorty brzusznej",
+      "p": 0.5,
+      "za": [
+        "mężczyzna 68 lat, palacz, nadciśnienie, nigdy nie miał USG brzucha (brak badania przesiewowego)",
+        "ból lewej okolicy lędźwiowej z promieniowaniem do pachwiny — typowa maska pękniętego tętniaka; kolka nerkowa to najczęstsza błędna diagnoza (Marston 1992: 30% błędnych rozpoznań, najczęściej kolka nerkowa; Acheson 1998: lekarz rodzinny trafnie rozpoznał 38%, kolka nerkowa 24%)",
+        "ból stały, rozrywający, niezmienny — nie falujący jak kolka",
+        "presynkopa w łazience + ciśnienie skurczowe 104 mmHg u chorego z nadciśnieniem na amlodypinie 10 mg i tętno 108/min (wskaźnik wstrząsowy ok. 1,04)",
+        "brak objawów z dróg moczowych, brak wymiotów"
+      ],
+      "przeciw": [
+        "podobny epizod kamicy 5 lat temu (pacjent sam utożsamia)",
+        "częściowa poprawa po drotawerynie i ketoprofenie",
+        "brak badania przedmiotowego (guz tętniący, objaw Goldflama, krwiomocz) — NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "kolka nerkowa w przebiegu kamicy moczowodowej",
+      "p": 0.25,
+      "za": ["kamica w wywiadzie, promieniowanie do pachwiny, częściowa odpowiedź na niesteroidowy lek przeciwzapalny"],
+      "przeciw": ["ból stały, rozrywający; brak niepokoju ruchowego i wymiotów; presynkopa z tachykardią i względną hipotensją nie pasuje do niepowikłanej kolki"]
+    },
+    {
+      "nazwa": "rozwarstwienie aorty",
+      "p": 0.08,
+      "za": ["ból rozrywający, nadciśnienie, palenie"],
+      "przeciw": ["brak bólu w klatce piersiowej i międzyłopatkowego (dane niepełne)"]
+    },
+    {
+      "nazwa": "krwawienie z przewodu pokarmowego lub krwiak zaotrzewnowy związany z kwasem acetylosalicylowym i ketoprofenem",
+      "p": 0.07,
+      "za": ["kwas acetylosalicylowy 75 mg + ketoprofen w nieznanej dawce, presynkopa, tachykardia"],
+      "przeciw": ["brak smolistego stolca/fusowatych wymiotów w ankiecie (nie zapytano wprost)"]
+    },
+    {
+      "nazwa": "zawał nerki lub inna ostra przyczyna naczyniowa",
+      "p": 0.03,
+      "za": ["ból lędźwiowy stały u chorego z miażdżycą"],
+      "przeciw": ["brak migotania przedsionków w wywiadzie (EKG nieznane)"]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "gorączka i dreszcze (zakażona, zatkana nerka mniej prawdopodobna)"
+  ],
+  "red_flags_otwarte": [
+    "pęknięty tętniak aorty brzusznej — nie wykluczony; nigdy nie miał USG",
+    "presynkopa z tętnem 108/min i ciśnieniem skurczowym 104 mmHg u chorego z leczonym nadciśnieniem (wskaźnik wstrząsowy ok. 1,0)",
+    "ból stały, rozrywający od rana",
+    "przeciwpłytkowy kwas acetylosalicylowy + ketoprofen w nieznanej dawce (krwawienie, maskowanie bólu)",
+    "brak badania przedmiotowego i aktualnych parametrów życiowych"
+  ],
+  "nastepny_krok": "Teraz wezwać Zespół Ratownictwa Medycznego numerem 112 z podaniem „podejrzenie pękniętego tętniaka aorty brzusznej: 68 lat, ból lędźwiowy rozrywający, zasłabnięcie, RR 104, tętno 108”; pacjent leży, nie jedzie sam, nie przyjeżdża do przychodni — bez dodatkowych leków przeciwbólowych z POZ i bez zlecania USG w trybie przychodni.",
+  "co_zmieniloby_zdanie": "Tylko badanie obrazowe aorty w szpitalu (USG przyłóżkowe lub angio-TK) bez tętniaka i bez krwiaka zaotrzewnowego przeniosłoby prowadzenie na kolkę nerkową; żadne dane możliwe do zebrania w POZ czy teleporadzie nie obniżą pilności poniżej 1.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Jeśli to teleporada/aplikacja: polecić pacjentowi (lub osobie obok) natychmiast zadzwonić 112 albo zadzwonić samemu w jego imieniu; położyć się, nie wstawać, nie jeść i nie pić (możliwy zabieg), nie brać kolejnych tabletek, przygotować listę leków. Jeśli pacjent jest w gabinecie: pozycja leżąca, pomiar RR na obu ramionach i tętna, wkłucie dożylne jeśli możliwe, wezwanie ZRM; nie odsyłać do domu i nie kierować własnym transportem na SOR. Nie wykonywać USG/EKG kosztem opóźnienia transportu (Acheson 1998: wykonanie USG opóźniało skierowanie do chirurgii naczyniowej z mediany 0,75 do 2,5 h).",
+    "co_zlecic": "Nic w trybie POZ. Diagnostyka (USG przyłóżkowe aorty, angio-TK, morfologia, grupa krwi i próba krzyżowa, kreatynina, badanie ogólne moczu) w szpitalu.",
+    "przeciwbolowo": "Nie przepisywać „czegoś mocniejszego na kolkę” ani kolejnego niesteroidowego leku przeciwzapalnego (ketoprofen + kwas acetylosalicylowy zwiększają ryzyko krwawienia; dawka dzisiejsza NIEZNANA). Analgezję dożylną (opioid w dawkach miareczkowanych) prowadzi ZRM/SOR [wiedza modelu, niezweryfikowane].",
+    "skierowanie": "ZRM 112, tryb natychmiastowy, z sugestią transportu do szpitala z oddziałem chirurgii naczyniowej (decyzja dyspozytora/kierownika zespołu). Przekazać: wiek, czynniki ryzyka, leki (amlodypina 10 mg, atorwastatyna 40 mg, kwas acetylosalicylowy 75 mg, ketoprofen — dawka nieznana, drotaweryna), parametry po zasłabnięciu.",
+    "kontrola": "Telefon do pacjenta/rodziny tego samego dnia po wypisie lub po informacji ze szpitala; jeśli wykluczony tętniak — i tak zlecić planowe USG aorty jako badanie przesiewowe (palacz, 68 lat) [wiedza modelu, niezweryfikowane].",
+    "co_powiedziec_pacjentowi": "„To może nie być kamica, tylko pęknięcie dużej tętnicy w brzuchu, które zagraża życiu — proszę się położyć, dzwonimy teraz po karetkę, a lek przeciwbólowy poda ratownik w żyłę.”",
+    "wykonalnosc": "Plan wykonalny w każdym POZ: jedno działanie (112). Ryzyko niewykonania: pacjent oczekuje recepty i może odmówić karetki lub pojechać sam autem — wtedy odmowę dokumentować, poinformować o ryzyku zgonu, zaangażować rodzinę; samodzielny dojazd za kierownicą bezwzględnie odradzić. Odległość do SOR i czas dojazdu ZRM — NIEZNANE (pamiec/zespol.md niewypełnione)."
+  },
+  "nie_zlecac": [
+    {"co": "USG jamy brzusznej z terminem w trybie przychodni", "dlaczego": "opóźnia leczenie; przy niestabilności diagnostyka obrazowa należy do szpitala"},
+    {"co": "kolejny niesteroidowy lek przeciwzapalny lub opioid doustny na receptę do domu", "dlaczego": "maskuje objawy, zwiększa ryzyko krwawienia, utwierdza w błędnym rozpoznaniu kolki"},
+    {"co": "skierowanie do urologa", "dlaczego": "przesunięcie decyzji przy otwartej czerwonej fladze naczyniowej"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dotyczących tętniaka aorty, kolki nerkowej ani wykazu badań POZ (tylko przykłady); pamiec/zespol.md — realia lokalne niewypełnione",
+    "PubMed zapytanie 1: 'ruptured abdominal aortic aneurysm misdiagnosis renal colic' → PMID 9654880, 1619721, 2199405",
+    "PubMed zapytanie 2: 'point-of-care ultrasound abdominal aortic aneurysm emergency department accuracy' (od 2013) → PMID 27529029, 31401838",
+    "PubMed zapytanie 3: 'ruptured abdominal aortic aneurysm prehospital delay mortality time to surgery' → PMID 28526396, 27797986",
+    "Marston WA i wsp. Misdiagnosis of ruptured abdominal aortic aneurysms. J Vasc Surg 1992;16:17-22. PMID 1619721, DOI 10.1067/mva.1992.34344 — streszczenie sprawdzone: 30% (46/152) błędnie rozpoznanych, najczęściej jako kolka nerkowa; guz tętniący tylko u 26% błędnie rozpoznanych",
+    "Acheson AG i wsp. Prospective study on factors delaying surgery in ruptured AAA. J R Coll Surg Edinb 1998;43:182-4. PMID 9654880 (brak DOI) — streszczenie sprawdzone: lekarz rodzinny trafnie 38%, najczęstsza błędna diagnoza kolka nerkowa 24%; USG opóźniało skierowanie z 0,75 do 2,5 h",
+    "Smidfelt K i wsp. Impact of initial misdiagnosis of rAAA. Eur J Vasc Endovasc Surg 2017;54:21-27. PMID 28526396, DOI 10.1016/j.ejvs.2017.03.022 — streszczenie sprawdzone: 33% błędnych rozpoznań wstępnych, mediana dodatkowego opóźnienia 4,8 h",
+    "Lewis TL i wsp. FILTR protocol. BMJ Open 2016;6:e011308. PMID 27797986, DOI 10.1136/bmjopen-2016-011308 — streszczenie sprawdzone: do 42% rAAA początkowo błędnie rozpoznanych",
+    "Nixon G i wsp. POCUS for FAST and AAA in rural New Zealand. Rural Remote Health 2019;19:5027. PMID 31401838, DOI 10.22605/RRH5027 — streszczenie sprawdzone: POCUS AAA czułość 100%, swoistość 93%, wiarygodne wykluczenie (w szpitalu, nie zamiast transportu)",
+    "Kameda T, Taniguchi N. Point-of-care abdominal ultrasound. J Intensive Care 2016;4:53. PMID 27529029, DOI 10.1186/s40560-016-0175-y — streszczenie sprawdzone: POCUS dokładny w wykrywaniu tętniaka u objawowych",
+    "Analgezja opioidowa przez ZRM, planowe USG przesiewowe aorty po epizodzie — [wiedza modelu, niezweryfikowane]"
+  ]
+}

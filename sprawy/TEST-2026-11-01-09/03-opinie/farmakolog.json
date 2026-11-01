@@ -1,0 +1,142 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — ból głowy z nadużywania leków przeciwbólowych (ketoprofen, paracetamol, złożone preparaty z kofeiną)",
+      "p": 0.75,
+      "za": [
+        "ból głowy prawie codziennie od 6 miesięcy, wcześniej kilka epizodów w roku (pierwotny ból głowy w tle)",
+        "leki przeciwbólowe ponad 20 dni w miesiącu, w tym złożone preparaty z kofeiną",
+        "brak efektu mimo codziennego przyjmowania — typowy obraz nadużycia",
+        "ból obecny po przebudzeniu i słabnący w ciągu dnia (zjawisko z odstawienia między dawkami)",
+        "progi ICHD-3: leki proste ≥15 dni/miesiąc, preparaty złożone ≥10 dni/miesiąc przez >3 miesiące [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "liczba tabletek na dobę NIEZNANE",
+        "rozpoznanie wymaga ustąpienia lub poprawy po odstawieniu — jeszcze niesprawdzone"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — poranny ból głowy z odstawienia kofeiny",
+      "p": 0.1,
+      "za": [
+        "kofeina w złożonych tabletkach przeciwbólowych, spożycie kawy NIEZNANE",
+        "ból najsilniejszy rano po nocnej przerwie w podaży kofeiny"
+      ],
+      "przeciw": [
+        "ilość kofeiny dziennie NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — nasilenie migreny przez złożoną antykoncepcję z etynyloestradiolem",
+      "p": 0.05,
+      "za": [
+        "przyjmuje etynyloestradiol z drospirenonem",
+        "zgłasza migotanie i zygzaki przed bólem — możliwa aura migrenowa"
+      ],
+      "przeciw": [
+        "ból uciskający obustronny, 5/10 — bardziej napięciowy niż migrenowy",
+        "nie wiadomo, czy ból wiąże się z przerwą w przyjmowaniu tabletek; miesiączkowanie NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "przewlekła migrena lub przewlekły ból głowy typu napięciowego (rozpoznanie niepolekowe — poza moim torem)",
+      "p": 0.0,
+      "za": [],
+      "przeciw": []
+    },
+    {
+      "nazwa": "wtórny ból głowy o przyczynie strukturalnej (poza moim torem)",
+      "p": 0.0,
+      "za": [],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "nagły piorunujący ból głowy (zaprzeczyła)",
+    "poranne wymioty (zaprzeczyła)",
+    "nasilenie przy kaszlu, parciu, schylaniu (zaprzeczyła)",
+    "progresja bólu w ciągu 6 miesięcy (ból podobny cały czas)",
+    "nadciśnienie tętnicze (pomiar prawidłowy w ostatnich 3 miesiącach)"
+  ],
+  "red_flags_otwarte": [
+    "objawy wzrokowe przed bólem (migotanie, zygzaki) u 46-latki przyjmującej złożoną antykoncepcję z etynyloestradiolem — ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa (nowa aura po 40. roku życia wymaga oceny neurologicznej), ile trwa i czy jest w pełni odwracalna",
+    "badanie neurologiczne i dno oka NIEZNANE — farmakologicznie nie rozstrzygam wskazań do rezonansu magnetycznego",
+    "codzienne przyjmowanie ketoprofenu — ryzyko krwawienia z przewodu pokarmowego i uszkodzenia nerek; morfologia i kreatynina NIEZNANE",
+    "nastrój NIEZNANE — istotne przed włączeniem amitryptyliny (toksyczność w przedawkowaniu)"
+  ],
+  "nastepny_krok": "Na tej samej wizycie: odstawić leki przeciwbólowe stosowane codziennie i złożone preparaty z kofeiną (doraźnie najwyżej 2 dni w tygodniu), włączyć amitryptylinę 10 mg na noc oraz zatrzymać złożoną antykoncepcję z etynyloestradiolem z powodu objawów aury, z przejściem na antykoncepcję wyłącznie progestagenową (desogestrel 75 µg) po potwierdzeniu u ginekologa i z antykoncepcją barierową w okresie przejściowym.",
+  "co_zmieniloby_zdanie": "Gdyby przy niskim zużyciu leków (poniżej 10 dni w miesiącu) ból trwał, albo badanie neurologiczne wykazało odchylenia lub objawy wzrokowe okazały się nową, przedłużoną (>60 minut) lub nieodwracalną aurą — przestałbym traktować obraz jako polekowy i poparłbym pilną diagnostykę obrazową.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "odstawienie ketoprofenu, paracetamolu i złożonych preparatów z kofeiną",
+      "dawka": "odstawienie nagłe (leki nieopioidowe); doraźnie lek przeciwbólowy najwyżej 2 dni w tygodniu",
+      "droga": "—",
+      "czas": "od teraz; ocena po 8–12 tygodniach z dzienniczkiem bólu i leków",
+      "uwagi": "Edukacja: przez 1–2 tygodnie ból może się nasilić. Samo odstawienie bez profilaktyki jest mało skuteczne; najlepsze wyniki daje odstawienie połączone z profilaktyką doustną. Kofeinę z kawy redukować stopniowo, nie nagle.",
+      "zrodlo": "PMID 40011869 (DOI 10.1186/s10194-025-01982-9): sieciowa metaanaliza 16 RCT — samo nagłe odstawienie nieistotne (-2,77 dnia/miesiąc), odstawienie + profilaktyka doustna i blokada nerwu potylicznego -10,6 dnia/miesiąc; PMID 40531323 (DOI 10.1007/s00482-025-00891-9): edukacja skuteczna; limit 2 dni/tydzień [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "amitryptylina",
+      "dawka": "10 mg na noc, po 2 tygodniach 25 mg; ewentualnie do 50 mg",
+      "droga": "doustnie",
+      "czas": "co najmniej 3 miesiące, ocena skuteczności po 8–12 tygodniach",
+      "uwagi": "Wybór pierwszej linii: dotyczy zarówno migreny, jak i bólu typu napięciowego, poprawia sen (pacjentka śpi <6 h). Brak istotnych interakcji z antykoncepcją. Działania niepożądane: senność, suchość w ustach, zaparcia, przyrost masy ciała. Przed włączeniem: PHQ-2 (NIEZNANE) — przy myślach samobójczych nie przepisywać dużych opakowań; EKG przy chorobie serca lub lekach wydłużających QT [wiedza modelu, niezweryfikowane]. Nie łączyć z tramadolem ani innymi lekami serotoninergicznymi bez oceny.",
+      "zrodlo": "PMID 37038134 (DOI 10.1186/s10194-023-01573-6): metaanaliza EHF, amitryptylina zwiększa odsetek ≥50% redukcji dni z migreną (RR 1,60), więcej przerwań z powodu działań niepożądanych (+5%); PMID 34554691: schemat 10 mg → 25 mg po 2 tygodniach, opcjonalnie 50 mg, w przewlekłej migrenie"
+    },
+    {
+      "lek": "zmiana antykoncepcji: odstawić etynyloestradiol z drospirenonem, zastąpić desogestrelem 75 µg (lub wkładką z lewonorgestrelem)",
+      "dawka": "desogestrel 75 µg 1 raz na dobę bez przerw",
+      "droga": "doustnie",
+      "czas": "od zakończenia bieżącego opakowania lub wcześniej; prezerwatywa przez pierwsze 7 dni [wiedza modelu, niezweryfikowane]",
+      "uwagi": "Migrena z aurą + estrogen = zwiększone ryzyko udaru niedokrwiennego; CDC zaleca unikać złożonej antykoncepcji u kobiet z aurą. Dodatkowo wiek 46 lat. Niepewność: jedno badanie kliniczno-kontrolne nie wykazało istotnego wzrostu ryzyka przy aurze, ale wykazało przy migrenie ogółem (OR 2,0). Desogestrel nie zwiększa ryzyka udaru i zmniejszał częstość migreny. Decyzję potwierdzić z ginekologiem.",
+      "zrodlo": "PMID 36126006 (Am Fam Physician 2022): migrena z aurą zwiększa ryzyko udaru, złożona antykoncepcja je zwiększa, CDC zaleca unikanie; PMID 36752588 (DOI 10.1111/head.14473): migrena ogółem OR 2,00 udaru u użytkowniczek antykoncepcji złożonej, aura bez istotności; PMID 42029625 (DOI 10.3390/medsci14020201): aura modyfikuje ryzyko, preferowane metody progestagenowe; PMID 31094588 (DOI 10.1080/13625187.2019.1605504): desogestrel 75 µg zmniejszał częstość i nasilenie migreny"
+    },
+    {
+      "lek": "topiramat (plan B przy nieskuteczności lub nietolerancji amitryptyliny)",
+      "dawka": "25 mg na noc, zwiększać o 25 mg co tydzień do 50 mg 2 razy na dobę [wiedza modelu, niezweryfikowane]",
+      "droga": "doustnie",
+      "czas": "co najmniej 3 miesiące",
+      "uwagi": "Teratogenny — wymaga skutecznej antykoncepcji (program zapobiegania ciąży EMA 2023) [wiedza modelu, niezweryfikowane]. W dawce ≤200 mg/dobę nie wykazano zwiększenia niepowodzeń antykoncepcji doustnej. Działania niepożądane: parestezje, spadek masy ciała, zaburzenia poznawcze, kamica nerkowa. Topiramat był też porównywany z blokadą nerwu potylicznego w bólu z nadużywania leków.",
+      "zrodlo": "PMID 36641095 (DOI 10.1016/j.contraception.2023.109953): topiramat + antykoncepcja doustna — brak wzrostu niezamierzonych ciąż (RR 1,00), dawka ≤200 mg; PMID 41654852 (DOI 10.1186/s12883-026-04682-2)"
+    },
+    {
+      "lek": "przeciwciała monoklonalne anty-CGRP (np. erenumab) — tylko przez neurologa po niepowodzeniu profilaktyki doustnej",
+      "dawka": "erenumab 140 mg podskórnie co 4 tygodnie",
+      "droga": "podskórnie",
+      "czas": "6–12 miesięcy",
+      "uwagi": "Dotyczy rozpoznanej przewlekłej migreny z nadużywaniem leków; kryteria refundacji w programie lekowym NFZ do sprawdzenia [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 39283627 (DOI 10.1001/jamaneurol.2024.3043): remisja bólu z nadużywania leków po 6 miesiącach 69,1% vs 52,6% placebo; PMID 40838472 (DOI 10.1111/ene.70328): utrzymanie remisji przez rok"
+    }
+  ],
+  "nie_podawac": [
+    {"lek": "kontynuacja etynyloestradiolu z drospirenonem", "powod": "objawy wzrokowe sugerujące aurę + wiek 46 lat — zwiększone ryzyko udaru niedokrwiennego i żylnej choroby zakrzepowo-zatorowej (PMID 36126006, 42029625)"},
+    {"lek": "opioidy, tramadol, preparaty z kodeiną", "powod": "najsilniej utrwalają ból z nadużywania leków; tramadol z amitryptyliną — ryzyko zespołu serotoninowego i drgawek [wiedza modelu, niezweryfikowane]"},
+    {"lek": "glikokortykosteroidy jako terapia pomostowa przy odstawieniu", "powod": "metaanaliza 4 RCT bez korzyści wobec placebo (PMID 42332418, DOI 10.1080/14737175.2026.2692440)"},
+    {"lek": "kolejne złożone preparaty przeciwbólowe z kofeiną lub zamiana jednego leku przeciwbólowego na inny przy codziennym stosowaniu", "powod": "podtrzymuje mechanizm nadużycia; próg dla preparatów złożonych niższy (≥10 dni/miesiąc) [wiedza modelu, niezweryfikowane]"},
+    {"lek": "walproinian", "powod": "teratogenny i niekorzystny profil u kobiety w wieku rozrodczym; dostępne bezpieczniejsze opcje [wiedza modelu, niezweryfikowane]"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych ani ChPL dla bólu głowy (tylko przykłady); pamiec/zespol.md — brak wniosków dla bólu głowy",
+    "PubMed zapytanie 1: 'medication overuse headache[Title] AND (withdrawal OR prophylaxis) AND (randomized OR guideline)' od 2019 — 72 trafienia",
+    "PubMed zapytanie 2: 'migraine with aura AND combined hormonal contraception AND ischemic stroke' od 2016 — 19 trafień",
+    "PubMed zapytanie 3: 'amitriptyline[Title] AND (chronic tension-type headache OR chronic migraine OR medication overuse) AND (randomized OR meta-analysis)' — 32 trafienia",
+    "PubMed zapytanie 4: 'topiramate AND (oral contraceptive OR ethinyl estradiol) AND interaction' — 54 trafienia",
+    "PMID 40011869 · DOI 10.1186/s10194-025-01982-9 · Koonalintip 2025, sieciowa metaanaliza strategii w bólu z nadużywania leków (streszczenie sprawdzone)",
+    "PMID 42332418 · DOI 10.1080/14737175.2026.2692440 · da Silva 2026, kortykosteroidy przy odstawieniu — brak korzyści (streszczenie sprawdzone)",
+    "PMID 40531323 · DOI 10.1007/s00482-025-00891-9 · Diener 2025, edukacja w nadużywaniu leków (streszczenie sprawdzone)",
+    "PMID 37038134 · DOI 10.1186/s10194-023-01573-6 · Lampl 2023 (EHF), amitryptylina w profilaktyce migreny (streszczenie sprawdzone)",
+    "PMID 34554691 · Kalita 2021, amitryptylina 10→25(→50) mg w przewlekłej migrenie (streszczenie sprawdzone)",
+    "PMID 36126006 · Paradise 2022 Am Fam Physician, CDC: unikać złożonej antykoncepcji przy migrenie z aurą (streszczenie sprawdzone)",
+    "PMID 36752588 · DOI 10.1111/head.14473 · Batur 2023, migrena i udar u stosujących antykoncepcję złożoną (streszczenie sprawdzone)",
+    "PMID 42029625 · DOI 10.3390/medsci14020201 · Waluszewska 2026, bezpieczeństwo sercowo-naczyniowe antykoncepcji hormonalnej (streszczenie sprawdzone)",
+    "PMID 31094588 · DOI 10.1080/13625187.2019.1605504 · Merki-Feld 2019, desogestrel 75 µg w migrenie (streszczenie sprawdzone)",
+    "PMID 36641095 · DOI 10.1016/j.contraception.2023.109953 · Sarayani 2023, topiramat a antykoncepcja doustna (streszczenie sprawdzone)",
+    "PMID 41654852 · DOI 10.1186/s12883-026-04682-2 · Arias-Tello 2026, blokady nerwów obwodowych (streszczenie sprawdzone)",
+    "PMID 39283627 · DOI 10.1001/jamaneurol.2024.3043 · Tepper 2024, erenumab w bólu z nadużywania leków (streszczenie sprawdzone)",
+    "PMID 40838472 · DOI 10.1111/ene.70328 · Tepper 2025, erenumab — wyniki roczne (streszczenie sprawdzone)",
+    "Kryteria ICHD-3, dawki topiramatu, limit 2 dni/tydzień, program zapobiegania ciąży dla topiramatu, refundacja anty-CGRP — [wiedza modelu, niezweryfikowane]"
+  ]
+}

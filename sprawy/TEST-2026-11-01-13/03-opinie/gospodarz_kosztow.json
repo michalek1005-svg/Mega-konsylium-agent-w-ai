@@ -1,0 +1,59 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "ostre zapalenie osierdzia (poinfekcyjne, prawdopodobnie wirusowe)", "p": 0, "za": ["ból zamostkowy kłujący, nasilany w pozycji leżącej i przy głębokim wdechu, ulga w pozycji siedzącej z pochyleniem", "infekcja górnych dróg oddechowych tydzień wcześniej", "stan podgorączkowy 37,6 °C", "promieniowanie do okolicy łopatki/barku (typowe dla podrażnienia mięśnia czworobocznego przez osierdzie) [wiedza modelu, niezweryfikowane]", "ból niezależny od wysiłku i nienasilany uciskiem/skrętem tułowia"], "przeciw": ["brak EKG, osłuchiwania (tarcie osierdziowe) i CRP — rozpoznanie wyłącznie z wywiadu"]},
+    {"nazwa": "zapalenie mięśnia sercowego z zajęciem osierdzia", "p": 0, "za": ["tło poinfekcyjne", "tętno 96/min"], "przeciw": ["brak duszności, kołatań, omdleń"]},
+    {"nazwa": "zatorowość płucna", "p": 0, "za": ["ból opłucnowy", "antykoncepcja hormonalna", "tętno 96/min"], "przeciw": ["brak duszności", "brak unieruchomienia, zabiegu, podróży w ostatnich 4 tygodniach", "ulga w pozycji pochylonej przemawia za osierdziem"]},
+    {"nazwa": "nerwoból międzyżebrowy", "p": 0, "za": ["hipoteza pacjentki i lekarza"], "przeciw": ["ból nie nasila się przy ucisku ani skręcie tułowia", "zależność od pozycji ciała i gorączka nie pasują"]}
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "duszność (zaprzeczona w ankiecie)",
+    "ból wysiłkowy (zaprzeczony)",
+    "objawy z listy alarmowej od początku bólu (zaprzeczone)"
+  ],
+  "red_flags_otwarte": [
+    "zajęcie mięśnia sercowego (troponina nieznana)",
+    "zatorowość płucna u kobiety stosującej antykoncepcję estrogenowo-progestagenową z bólem opłucnowym i tętnem 96/min — PERC niespełniony przez hormony",
+    "płyn w osierdziu/tamponada (ciśnienie i badanie fizykalne NIEZNANE)",
+    "ostry zespół wieńcowy (EKG brak) — mało prawdopodobny, ale niewykluczony bez EKG"
+  ],
+  "nastepny_krok": "Dziś w gabinecie POZ: badanie fizykalne z osłuchiwaniem (tarcie osierdziowe), ciśnienie, saturacja i 12-odprowadzeniowe EKG, z jednoczesnym pobraniem troponiny wysokoczułej, CRP i morfologii (cito); dalsza ścieżka zależna od EKG i troponiny, nie od D-dimerów.",
+  "co_zmieniloby_zdanie": "Podwyższona troponina, niestabilność hemodynamiczna, saturacja <95%, duszność lub EKG niepasujące do zapalenia osierdzia przy klinice bez alternatywy — wtedy SOR (echo, ewentualnie angio-TK), a D-dimery tracą sens jako filtr.",
+  "badania": [
+    {"nazwa": "EKG 12-odprowadzeniowe", "cel": "zapalenie osierdzia (rozlane uniesienia ST, obniżenie PR) vs ostry zespół wieńcowy vs cechy obciążenia prawej komory", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Tanie, natychmiast w gabinecie, bez promieniowania. Dodatnie (typowe dla zapalenia osierdzia) → leczenie ambulatoryjne przy braku cech wysokiego ryzyka; cechy niedokrwienia lub przeciążenia prawej komory → SOR. Uzasadnione bezwzględnie (weto najgorszego scenariusza)."},
+    {"nazwa": "badanie fizykalne + ciśnienie + saturacja (pulsoksymetr)", "cel": "tarcie osierdziowe, cechy tamponady, hipoksemia jako sygnał zatorowości", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Koszt zerowy; NIEZNANE z ankiety; hipotensja/SpO2 <95% → SOR."},
+    {"nazwa": "troponina wysokoczuła", "cel": "zajęcie mięśnia sercowego (zapalenie mięśnia sercowego z zajęciem osierdzia) lub zawał", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Dodatnia → hospitalizacja i echo; ujemna → leczenie ambulatoryjne. Jeśli POZ nie ma wyniku tego samego dnia, czekanie do jutra nie jest bezpieczne — wtedy pacjentka na SOR/izbę przyjęć zamiast kolejki."},
+    {"nazwa": "CRP + morfologia", "cel": "potwierdzenie stanu zapalnego (kryterium wspierające), punkt wyjścia do monitorowania leczenia i czasu jego trwania", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Tanie, w koszyku POZ; CRP służy też do decyzji o zakończeniu leczenia przeciwzapalnego [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "echokardiografia", "cel": "płyn w osierdziu, czynność lewej komory", "zmienia_decyzje": true, "kolejnosc": 3, "uwagi": "Termin AOS kardiologii w tygodniach nie rozstrzyga nic dziś. Pilnie (SOR) tylko przy troponinie dodatniej, hipotensji, gorączce >38 °C, objawach tamponady lub braku poprawy po 7 dniach NLPZ; w niepowikłanym przypadku planowo."},
+    {"nazwa": "D-dimery", "cel": "wykluczenie zatorowości płucnej", "zmienia_decyzje": false, "kolejnosc": 4, "uwagi": "Warunkowo: tylko gdy po EKG i badaniu obraz NIE pasuje do zapalenia osierdzia, a zatorowość pozostaje realna. W ostrym zapaleniu osierdzia D-dimery są podwyższone u 73% chorych (PMID 37357033), więc wynik dodatni jest oczekiwany i prowadzi do kaskady angio-TK (w tej kohorcie 0 zatorowości w wykonanych angio-TK)."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "D-dimery rutynowo, przed EKG", "powod": "U kobiety z typowym obrazem zapalenia osierdzia wynik prawie na pewno dodatni (73% w kohorcie Lazaros 2023, PMID 37357033) — nie odróżnia, a uruchamia angio-TK z promieniowaniem i kontrastem."},
+    {"nazwa": "angio-TK tętnic płucnych", "powod": "Tylko przy rzeczywistym klinicznym podejrzeniu zatorowości (duszność, hipoksemia, tachykardia >100/min, objawy zakrzepicy żył głębokich, EKG z cechami przeciążenia prawej komory); w przeciwnym razie promieniowanie i przypadkowe znaleziska."},
+    {"nazwa": "RTG kręgosłupa piersiowego / RTG żeber", "powod": "Hipoteza „kręgosłup/nerwoból” nie tłumaczy zależności od pozycji i gorączki; wynik (zmiany zwyrodnieniowe) nic nie zmieni i fałszywie uspokoi."},
+    {"nazwa": "panel wirusologiczny, ANA, TSH, kwantyferon rutynowo", "powod": "Etiologia wirusowa/idiopatyczna dominuje w krajach rozwiniętych (PMID 31941732), a wynik nie zmienia leczenia (PMID 33412346); badania etiologiczne tylko przy cechach wysokiego ryzyka lub nawrocie."},
+    {"nazwa": "rezonans magnetyczny serca", "powod": "Bez wskazań w niepowikłanym pierwszym epizodzie; rozważać dopiero przy troponinie dodatniej lub nawrotach."},
+    {"nazwa": "próba wysiłkowa", "powod": "Ból niezwiązany z wysiłkiem; przy zapaleniu osierdzia wysiłek jest przeciwwskazany do czasu remisji [wiedza modelu, niezweryfikowane]."}
+  ],
+  "odpowiedz_na_pytanie": "Nie nerwoból — obraz typowy dla ostrego zapalenia osierdzia. Ibuprofen sam nie wystarczy: najpierw dziś EKG + troponina + CRP; jeśli potwierdzone i niepowikłane, ibuprofen razem z kolchicyną (kolchicyna do NLPZ zmniejszyła nawroty/przetrwanie objawów z 37,5% do 16,7%, NNT 4, PMID 23992557). Leki i dawki rozstrzyga farmakolog.",
+  "najkrotsza_sciezka": "1) Dziś: badanie + ciśnienie + SpO2 + EKG w gabinecie. 2) Równolegle troponina hs + CRP + morfologia cito. 3a) EKG zgodne/niespecyficzne, troponina ujemna, stabilna, bez gorączki >38 °C → leczenie ambulatoryjne, kontrola po 7 dniach z CRP; echo planowo. 3b) Troponina dodatnia, niestabilność, SpO2 <95%, duszność lub EKG z niedokrwieniem/przeciążeniem prawej komory → SOR (tam echo, ewentualnie D-dimery/angio-TK). D-dimery nie w POZ i nie jako pierwsze.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla zapalenia osierdzia ani zatorowości płucnej (tylko pliki przykładowe); pamiec/zespol.md — brak wpisu dotyczącego tej prezentacji",
+    "PubMed zapytanie 1 (nietrafne — tylko opisy przypadków): acute pericarditis diagnosis ECG troponin echocardiography emergency department (od 2015)",
+    "PubMed zapytanie 2 (skuteczne): colchicine[Title] AND acute pericarditis[Title] AND randomized",
+    "PubMed zapytanie 3 (skuteczne): pulmonary embolism rule-out criteria PERC D-dimer low risk emergency department (od 2015)",
+    "PubMed zapytanie 4 (nieocenione, nie liczone): Imazio[Author] AND pericarditis AND (outpatient OR prognostic OR triage)",
+    "PubMed zapytanie 5 (skuteczne): acute pericarditis[Title] AND (outpatient[Title] OR prognostic[Title] OR \"poor prognosis\"[Title] OR management[Title])",
+    "Imazio M i wsp. A randomized trial of colchicine for acute pericarditis (ICAP). N Engl J Med 2013;369:1522-8. PMID 23992557, DOI 10.1056/NEJMoa1208536 — streszczenie sprawdzone: przetrwanie/nawrót 16,7% vs 37,5%, NNT 4; mniej hospitalizacji 5,0% vs 14,2%",
+    "Imazio M i wsp. COPE trial. Circulation 2005;112:2012-6. PMID 16186437, DOI 10.1161/CIRCULATIONAHA.105.542738 — streszczenie sprawdzone: nawroty 10,7% vs 32,3%, NNT 5; kortykosteroidy w pierwszym epizodzie niezależnym czynnikiem nawrotu",
+    "Lazaros G i wsp. D-dimer as a diagnostic and prognostic plasma biomarker in patients with a first episode of acute pericarditis. Eur J Intern Med 2023;116:58-64. PMID 37357033, DOI 10.1016/j.ejim.2023.06.017 — streszczenie sprawdzone: podwyższone D-dimery u 73,3%; w wykonanych angio-TK brak zatorowości; autorzy: podwyższone D-dimery nie powinny skłaniać do zbędnych angio-TK",
+    "Prepoudis A i wsp. Incidence, clinical presentation, management, and outcome of acute pericarditis and myopericarditis. Eur Heart J Acute Cardiovasc Care 2022;11:137-147. PMID 34849666, DOI 10.1093/ehjacc/zuab108 — streszczenie sprawdzone: zapalenie osierdzia 1,9% bólów w klatce na SOR; 0 zgonów/groźnych arytmii w 30 dni; 50% hospitalizowano",
+    "Bouriche F i wsp. Acute Pericarditis: Aetiologic Diagnosis and Practical Aspect of the Management. Curr Probl Cardiol 2021;46:100769. PMID 33412346, DOI 10.1016/j.cpcardiol.2020.100769 — streszczenie sprawdzone: badania etiologiczne nie zmieniały strategii leczenia; połowa hospitalizacji po ESC 2015 zbędna",
+    "Ismail TF. Acute pericarditis: Update on diagnosis and management. Clin Med 2020;20:48-51. PMID 31941732, DOI 10.7861/clinmed.cme.20.1.4 — streszczenie sprawdzone: większość przypadków idiopatyczna/wirusowa; NLPZ podstawą; kolchicyna 3 mies. ponad połowę zmniejsza nawroty",
+    "Freund Y i wsp. YEARS + PERC + D-dimer dostosowany do wieku. JAMA 2021;326:2141-2149. PMID 34874418, DOI 10.1001/jama.2021.20750 — streszczenie sprawdzone: strategia bezpieczna; dotyczy chorych z podejrzeniem zatorowości, w których PERC nie wyklucza",
+    "Saini SK i wsp. CTPA ordering, adherence to decision rules and yield in the ED. Emerg Med Australas 2024;36:726-731. PMID 38698536, DOI 10.1111/1742-6723.14428 — streszczenie sprawdzone: wydajność angio-TK 12,4%, w niskim ryzyku Wells 4,0%; przestrzeganie reguł ogranicza zbędne angio-TK",
+    "Kryteria PERC (hormonoterapia jako kryterium) i kryteria wysokiego ryzyka zapalenia osierdzia ESC 2015 (gorączka >38 °C, duży płyn, tamponada, brak odpowiedzi na NLPZ po 7 dniach, zajęcie mięśnia sercowego) [wiedza modelu, niezweryfikowane]"
+  ]
+}

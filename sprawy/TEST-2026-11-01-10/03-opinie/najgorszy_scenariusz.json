@@ -1,0 +1,52 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {"nazwa": "Skręt jądra prawego (skręt powrózka nasiennego)", "p": 0.75,
+     "za": ["nagły początek w ciągu minut, budzący ze snu", "ból 8/10 od 3–6 godzin", "jądro uniesione wyżej niż drugie", "obrzęk moszny", "wymioty i utrzymujące się nudności", "ból nie zmienia się po uniesieniu jądra (ujemny objaw Prehna)", "wiek 19 lat (drugi szczyt zachorowań — wiedza modelu, niezweryfikowane)", "podobny epizod w przeszłości, który ustąpił — możliwy skręt przemijający (PMID 39539564, 29692698)"],
+     "przeciw": ["brak badania fizykalnego i USG dopplerowskiego (NIEZNANE)"]},
+    {"nazwa": "Zapalenie najądrza", "p": 0.07,
+     "za": ["ból jądra z obrzękiem moszny"],
+     "przeciw": ["nagły, nie stopniowy początek", "brak gorączki i dreszczy", "brak objawów dyzurycznych", "brak kontaktów seksualnych bez prezerwatywy w 3 miesiącach", "brak ulgi po uniesieniu jądra", "wymioty i uniesienie jądra typowe dla skrętu"]},
+    {"nazwa": "Skręt przyczepka jądra", "p": 0.05,
+     "za": ["nagły ból jednostronny"],
+     "przeciw": ["typowo wiek 7–12 lat [wiedza modelu, niezweryfikowane]", "uniesienie jądra i wymioty nietypowe"]},
+    {"nazwa": "Kolka nerkowa prawostronna z bólem promieniującym do jądra", "p": 0.04,
+     "za": ["ból podbrzusza", "wymioty"],
+     "przeciw": ["obrzęk moszny i uniesienie jądra przemawiają za przyczyną miejscową", "brak objawów ze strony dróg moczowych"]},
+    {"nazwa": "Uwięźnięta przepuklina pachwinowa prawostronna", "p": 0.02,
+     "za": ["ból podbrzusza, wymioty, powiększenie moszny"],
+     "przeciw": ["pacjent zaprzecza uwypukleniu w pachwinie (wymaga potwierdzenia badaniem)"]}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "Zapalenie najądrza jako wyjaśnienie — przemawiają przeciw: brak gorączki, dyzurii, ryzyka STI, nagły początek (nie wyklucza współistnienia, ale nie tłumaczy obrazu)",
+    "Świnkowe zapalenie jądra — brak obrzęku ślinianek",
+    "Uraz moszny — zaprzeczony"
+  ],
+  "red_flags_otwarte": [
+    "Skręt jądra: nagły ból 8/10 od 3–6 h + uniesione jądro + obrzęk + wymioty + ujemny objaw Prehna; NIC w wywiadzie go nie wyklucza. Wykluczy go wyłącznie badanie urologiczne z USG dopplerowskim pokazującym prawidłowy przepływ (a przy wysokim podejrzeniu klinicznym — eksploracja moszny bez zwłoki na obrazowanie)",
+    "Okno czasowe: ból od 3–6 h — zbliżamy się do progu 6 h, po którym szanse uratowania jądra istotnie spadają (PMID 39814209, 41549042)",
+    "Uwięźnięta przepuklina pachwinowa — wymaga badania fizykalnego (NIEZNANE)",
+    "Bariera wstydu i kontakt przez aplikację — realne ryzyko opóźnienia zgłoszenia (PMID 33832873: opóźnienie zgłoszenia zwiększa odsetek orchidektomii)",
+    "Brak parametrów życiowych i badania fizykalnego (NIEZNANE)"
+  ],
+  "nastepny_krok": "Natychmiast skierować pacjenta na SOR z dyżurem urologicznym (transport bez zwłoki, przy braku możliwości dojazdu — 112), z adnotacją 'podejrzenie skrętu jądra, ból od ok. 3–6 h'; nie podawać antybiotyku, nie umawiać kontroli, nie czekać na USG w trybie ambulatoryjnym.",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność dopiero po badaniu urologicznym z USG dopplerowskim wykazującym zachowany, symetryczny przepływ w prawym jądrze i obraz zapalenia najądrza lub innej przyczyny.",
+  "odpowiedz_na_pytanie": "Nie. Antybiotyk i kontrola za tydzień grożą utratą jądra; to obraz skrętu — SOR/urologia natychmiast.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrej moszny (tylko przykłady); pamiec/zespol.md — brak wpisów dla tej prezentacji",
+    "PubMed zapytanie 1: 'testicular torsion salvage rate time to detorsion' (od 2010) — skuteczne",
+    "PubMed zapytanie 2: 'TWIST score testicular torsion validation' — skuteczne",
+    "PubMed zapytanie 3: 'intermittent testicular torsion[Title]' — skuteczne",
+    "Shields LBE i wsp. J Pediatr Urol 2026;22(2):105719. PMID 41549042, DOI 10.1016/j.jpurol.2025.105719 — streszczenie sprawdzone: każde 10 min opóźnienia od przyjęcia do detorsji zwiększa szanse orchidektomii o 6%; punkty krytyczne >6, >12, >18 h",
+    "Milivojevic S i wsp. Urology 2025;198:118-124. PMID 39814209, DOI 10.1016/j.urology.2025.01.017 — streszczenie sprawdzone: jądro zachowane u 100% przy interwencji <6 h, 64,7% przy 6–12 h, 20,8% przy >12 h",
+    "Holzman SA i wsp. J Pediatr Urol 2021;17(4):478.e1-6. PMID 33832873, DOI 10.1016/j.jpurol.2021.03.013 — streszczenie sprawdzone: opóźnienie zgłoszenia (17,9 vs 7,5 h) wiązało się z odsetkiem orchidektomii 42% vs 29%",
+    "Chan EP i wsp. J Pediatr Urol 2019;15(3):251.e1-7. PMID 31005635, DOI 10.1016/j.jpurol.2019.03.017 — streszczenie sprawdzone: USG doppler dodaje ok. 48 min opóźnienia; brak przepływu ma PPV 97,4% dla skrętu",
+    "Valdivieso-Castro MP i wsp. Pediatr Emerg Care 2025;41(8):620-627. PMID 40231580, DOI 10.1097/PEC.0000000000003394 — streszczenie sprawdzone: predyktory skrętu w skali TEST: nudności/wymioty, powiększenie jądra, uniesienie jądra, czas bólu, brak odruchu nosidłowego",
+    "Hisamatsu E i wsp. J Pediatr Urol 2022;18(5):684-690. PMID 35970737, DOI 10.1016/j.jpurol.2022.07.013 — streszczenie sprawdzone: TWIST wysokie ryzyko (5–7) PPV 61%; skala może zaniżać ryzyko tuż po początku objawów",
+    "Hegarty PK i wsp. BJUI Compass 2024;5(11):1017-1022. PMID 39539564, DOI 10.1002/bco2.439 — streszczenie sprawdzone: skręt przemijający = nawracające epizody silnego bólu jądra z ustępowaniem; obustronna orchidopeksja zapobiega utracie jądra",
+    "West JM i wsp. Curr Urol 2018;11(3):166-168. PMID 29692698, DOI 10.1159/000447213 — streszczenie sprawdzone: opis przypadku skrętu przemijającego",
+    "Przy wysokim podejrzeniu klinicznym eksploracja bez opóźniania na obrazowanie (wytyczne EAU) [wiedza modelu, niezweryfikowane]"
+  ]
+}

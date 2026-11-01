@@ -1,0 +1,133 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — euglikemiczna kwasica ketonowa wywołana inhibitorem SGLT2 (flozyna)",
+      "p": 0.40,
+      "za": [
+        "flozyna przyjmowana w trakcie 3-dniowych wymiotów, biegunki i ograniczonej podaży węglowodanów — klasyczny wyzwalacz (PMID 42352947, 42906932)",
+        "głęboki szybki oddech, którego nie da się uspokoić (oddech Kussmaula = kompensacja kwasicy metabolicznej)",
+        "senność, trudność w dobudzeniu, stały ból brzucha 5/10",
+        "glikemia 70–250 mg/dl (3,9–13,9 mmol/l), dziś 180 mg/dl — prawidłowa lub umiarkowana glikemia NIE wyklucza kwasicy ketonowej przy flozynie (PMID 42906932, 42729904)",
+        "ketonów nie mierzono"
+      ],
+      "przeciw": [
+        "brak pomiaru ketonów i gazometrii — rozpoznanie niepotwierdzone",
+        "podobny obraz da kwasica mleczanowa związana z metforminą lub sepsa/wstrząs hipowolemiczny"
+      ]
+    },
+    {
+      "nazwa": "przednerkowe ostre uszkodzenie nerek nasilone przez inhibitor konwertazy angiotensyny lub sartan i flozynę",
+      "p": 0.20,
+      "za": [
+        "hipowolemia: wymioty i biegunka 3 dni, nie zatrzymuje płynów, ciśnienie skurczowe 98 mmHg, tętno 112/min",
+        "inhibitor konwertazy/sartan znosi autoregulację filtracji kłębuszkowej, flozyna dodaje diurezę osmotyczną i natriurezę [wiedza modelu, niezweryfikowane]",
+        "wytyczne 'dni choroby' zalecają wstrzymanie tych grup przy odwadniającej chorobie ostrej (PMID 42742305, 40599590)"
+      ],
+      "przeciw": [
+        "mocz oddany w ciągu ostatnich 6 h",
+        "kreatynina wyjściowa i aktualna NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — kwasica mleczanowa związana z metforminą",
+      "p": 0.15,
+      "za": [
+        "metformina kontynuowana przy odwodnieniu — kumulacja leku przy spadku filtracji kłębuszkowej (PMID 42178010)",
+        "rejestr francuski: 43,9% przypadków poprzedzone odwodnieniem, 86,7% bez dostosowania leczenia do choroby współistniejącej, 80,8% możliwych do uniknięcia (PMID 39799043)",
+        "nudności, wymioty, biegunka, ból brzucha, zaburzenia świadomości, tachypnoe, hipotensja to typowe objawy (PMID 35431313, 42178010)",
+        "opisano współistnienie kwasicy mleczanowej po metforminie i euglikemicznej kwasicy ketonowej (PMID 42696402, 42789768)"
+      ],
+      "przeciw": [
+        "częstość mała [PMID 42696402: <10/100 000 pacjento-lat]",
+        "brak danych o przewlekłej chorobie nerek; eGFR NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "nieżyt żołądkowo-jelitowy (rozpoznanie niepolekowe — poza kompetencją farmakologa)",
+      "p": 0.0,
+      "za": ["kontakt z chorym wnukiem — prawdopodobny wyzwalacz, ale nie wyjaśnia sam w sobie oddechu Kussmaula i senności"],
+      "przeciw": []
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "głęboki szybki oddech (podejrzenie kwasicy metabolicznej) — reguła ankiety: NATYCHMIAST 112",
+    "senność, trudność w dobudzeniu — zaburzenia świadomości",
+    "inhibitor SGLT2 przy wymiotach i biegunce bez pomiaru ketonów",
+    "ciśnienie skurczowe 98 mmHg i tętno 112/min — hipowolemia lub sepsa",
+    "nietolerancja płynów doustnych — nawadnianie w domu niewykonalne",
+    "kreatynina/eGFR NIEZNANE przy metforminie, flozynie i inhibitorze konwertazy/sartanie"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) do transportu na szpitalny oddział ratunkowy z poleceniem natychmiastowego wstrzymania flozyny, metforminy i inhibitora konwertazy/sartanu — nie nawadniać w domu.",
+  "co_zmieniloby_zdanie": "Prawidłowa gazometria (pH i wodorowęglany w normie), β-hydroksymaślan we krwi poniżej 0,6 mmol/l, prawidłowy mleczan i kreatynina w izbie przyjęć sprowadziłyby sprawę do odwodnienia w przebiegu nieżytu jelit z samym wstrzymaniem leków; w domu, bez tych badań, nic nie obniża pilności.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "flozyna (empagliflozyna/dapagliflozyna, także w preparatach złożonych z metforminą: Xigduo, Synjardy)",
+      "dawka": "WSTRZYMAĆ natychmiast",
+      "droga": "—",
+      "czas": "do ustąpienia kwasicy, powrotu do normalnego jedzenia i picia (zwykle ≥24–48 h jedzenia) i stabilnej kreatyniny; decyzję o wznowieniu podejmuje szpital/lekarz po wypisie; po potwierdzonej euglikemicznej kwasicy ketonowej rozważyć trwałe odstawienie",
+      "uwagi": "Zaznaczyć pacjentce, że preparat złożony (Xigduo/Synjardy) zawiera jednocześnie flozynę i metforminę — wstrzymać całość. W okresie okołooperacyjnym wybrane gremia zalecają wstrzymanie na 3 dni (4 dni ertugliflozyna) — analogicznie ketogenny efekt utrzymuje się kilka dni po odstawieniu.",
+      "zrodlo": "PMID 42906932 (DOI 10.17085/apm.26812); PMID 42352947 (DOI 10.3390/ijms27125224); kryteria wznowienia [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "metformina",
+      "dawka": "WSTRZYMAĆ natychmiast",
+      "droga": "—",
+      "czas": "do wyrównania nawodnienia, normalnej podaży doustnej i kontroli kreatyniny/eGFR (wznowienie przy eGFR ≥30 ml/min/1,73 m², z redukcją dawki przy eGFR 30–44 [wiedza modelu, niezweryfikowane — sprawdzić ChPL])",
+      "uwagi": "Odpowiedź na pytanie lekarza: tak, wstrzymać — ale to nie wystarcza; samo wstrzymanie metforminy i nawadnianie w domu jest u tej pacjentki niebezpieczne.",
+      "zrodlo": "PMID 42178010 (DOI 10.1016/j.ejphar.2026.179017); PMID 39799043 (DOI 10.1016/j.therap.2024.12.009)"
+    },
+    {
+      "lek": "inhibitor konwertazy angiotensyny lub sartan",
+      "dawka": "WSTRZYMAĆ",
+      "droga": "—",
+      "czas": "do ustąpienia hipowolemii (ciśnienie skurczowe wróci do wartości wyjściowych) i potwierdzenia stabilnej kreatyniny i potasu, zwykle 24–48 h po powrocie do normalnego picia i jedzenia [wiedza modelu, niezweryfikowane]",
+      "uwagi": "Ciśnienie skurczowe 98 mmHg — dalsze podawanie pogłębi hipotensję i ryzyko ostrego uszkodzenia nerek; ryzyko hiperkaliemii przy uszkodzeniu nerek.",
+      "zrodlo": "PMID 42742305; PMID 40599590 (DOI 10.1016/j.rcsop.2025.100623)"
+    },
+    {
+      "lek": "atorwastatyna",
+      "dawka": "można wstrzymać na czas ostrej choroby",
+      "droga": "—",
+      "czas": "kilka dni, wznowić po wyrównaniu",
+      "uwagi": "Bez znaczenia dla obecnego stanu; przy ostrym uszkodzeniu nerek i wstrząsie szpital oceni kinazę kreatynową. Brak istotnej interakcji z pozostałymi lekami.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "leczenie szpitalne przy potwierdzonej euglikemicznej kwasicy ketonowej (dla informacji lekarza POZ)",
+      "dawka": "krystaloidy dożylnie + insulina dożylna we wlewie z równoczesnym wlewem glukozy (glikemia nie jest wysoka, więc glukoza od początku), uzupełnianie potasu",
+      "droga": "dożylnie",
+      "czas": "do ustąpienia ketonemii i wyrównania pH",
+      "uwagi": "Bez insuliny ketoza się nie cofnie mimo 'dobrego cukru' — dlatego leczenie domowe niemożliwe.",
+      "zrodlo": "PMID 42729904 (DOI 10.1210/jcemcr/luag275) — opis wyrównania płynami i węglowodanami; schemat insulina+glukoza [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {"lek": "nawadnianie doustne w domu jako jedyne postępowanie", "powod": "pacjentka nie zatrzymuje płynów, ma objawy kwasicy i zaburzenia świadomości (ryzyko aspiracji przy senności)"},
+    {"lek": "loperamid", "powod": "nie leczy przyczyny, może maskować przebieg i opóźniać zgłoszenie; w apteka­ch wydawany najczęściej zamiast porady 'dni choroby' (PMID 40599590)"},
+    {"lek": "niesteroidowe leki przeciwzapalne na ból brzucha", "powod": "dodatkowe uszkodzenie nerek przy hipowolemii i inhibitorze konwertazy/sartanie [wiedza modelu, niezweryfikowane]"},
+    {"lek": "diuretyki (jeśli w składzie leku na ciśnienie, np. preparat złożony z hydrochlorotiazydem/indapamidem)", "powod": "pogłębią hipowolemię; nazwa preparatu NIEZNANA — sprawdzić opakowanie"},
+    {"lek": "dodatkowe leki przeciwcukrzycowe/zwiększanie dawek przy glikemii 180 mg/dl", "powod": "glikemia nie odzwierciedla ciężkości stanu; ryzyko hipoglikemii przy braku jedzenia"}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak plików z polskimi wytycznymi (PTD 2026, ChPL) w bibliotece; poziom 1 milczy",
+    "Zapytanie PubMed 1 (0 wyników, nieskuteczne): euglycemic diabetic ketoacidosis SGLT2 inhibitor gastroenteritis",
+    "Zapytanie PubMed 2 (skuteczne): metformin-associated lactic acidosis acute kidney injury dehydration",
+    "Zapytanie PubMed 3 (0 wyników, nieskuteczne): sick day rules medication SGLT2 metformin ACE inhibitor acute kidney injury",
+    "Zapytanie PubMed 4 (skuteczne): euglycemic ketoacidosis[Title] SGLT2, od 2019",
+    "Zapytanie PubMed 5 (skuteczne): \"sick day\" guidance diabetes medications",
+    "PMID 42906932 — Park, Hong. Anesth Pain Med 2026; DOI 10.17085/apm.26812 — euglikemiczna kwasica ketonowa przy SGLT2i; glukoza może być prawidłowa; preferowany β-hydroksymaślan we krwi; ujemny wynik ketonów w moczu nie wyklucza; wstrzymanie 3 dni (4 dni ertugliflozyna) [streszczenie sprawdzone]",
+    "PMID 42352947 — Confederat i wsp. Int J Mol Sci 2026; DOI 10.3390/ijms27125224 — wyzwalacze euglikemicznej kwasicy ketonowej: mała podaż węglowodanów, choroba współistniejąca [streszczenie sprawdzone]",
+    "PMID 42729904 — Silveira i wsp. JCEM Case Rep 2026; DOI 10.1210/jcemcr/luag275 — euglikemiczna kwasica ketonowa przy glukozie 140 mg/dl, wyrównanie po odstawieniu, płynach i węglowodanach [streszczenie sprawdzone]",
+    "PMID 42178010 — Anwar i wsp. Eur J Pharmacol 2026; DOI 10.1016/j.ejphar.2026.179017 — kwasica mleczanowa po metforminie jako zaburzenie kumulacji przy ostrym spadku funkcji nerek; odwodnienie, sepsa jako wyzwalacze; objawy: tachypnoe, hipotensja, zaburzenia świadomości; 'sick-day rules' [streszczenie sprawdzone]",
+    "PMID 39799043 — Gautier i wsp. Therapie 2025; DOI 10.1016/j.therap.2024.12.009 — 198 przypadków na OIT, śmiertelność 19,2%, odwodnienie 43,9%, 86,7% bez dostosowania leczenia, 80,8% możliwych do uniknięcia [streszczenie sprawdzone]",
+    "PMID 42696402 — Adnani i wsp. Kidney360 2026; DOI 10.34067/KID.0000001379 — współistnienie kwasicy mleczanowej po metforminie i kwasicy ketonowej przy względnej euglikemii; częstość <10/100 000 pacjento-lat [streszczenie sprawdzone]",
+    "PMID 35431313 — Rueda Prada i wsp. Am J Case Rep 2022; DOI 10.12659/AJCR.935730 — objawy kwasicy mleczanowej po metforminie: nudności, wymioty, biegunka, encefalopatia, hipotensja [streszczenie sprawdzone]",
+    "PMID 42742305 — Montoya. Nephrol Nurs J 2026 (brak DOI) — zalecenia wstrzymania/zmiany dawek leków w odwadniającej chorobie ostrej u chorych z chorobą nerek, cukrzycą, chorobami sercowo-naczyniowymi [streszczenie sprawdzone]",
+    "PMID 40599590 — Coppes i wsp. Explor Res Clin Soc Pharm 2025; DOI 10.1016/j.rcsop.2025.100623 — porada 'dni choroby' udzielona w 25% aptek, najczęściej wydawano loperamid [streszczenie sprawdzone]",
+    "Progi β-hydroksymaślanu, eGFR dla metforminy, schemat insulina+glukoza, kryteria wznowienia inhibitora konwertazy/sartanu — [wiedza modelu, niezweryfikowane]"
+  ]
+}

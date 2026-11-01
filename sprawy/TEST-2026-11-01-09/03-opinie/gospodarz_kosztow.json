@@ -1,0 +1,67 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Ból głowy z nadużywania leków przeciwbólowych na podłożu migreny z aurą", "p": 0,
+     "za": ["ból prawie codziennie od 6 miesięcy", "leki przeciwbólowe ponad 20 dni w miesiącu, także preparaty złożone z kofeiną", "wcześniej epizodyczne bóle kilka razy w roku", "zygzaki przed oczami przed bólem (aura wzrokowa)", "ból najsilniejszy rano po przebudzeniu, potem słabnie (typowe dla odstawiennego bólu porannego)"],
+     "przeciw": ["liczba tabletek na dobę NIEZNANA", "nie wiadomo, czy aura jest nowa, czy była także przed 6 miesiącami"]},
+    {"nazwa": "Przewlekły ból głowy typu napięciowego z nadużywaniem leków", "p": 0,
+     "za": ["ból uciskający, obustronny, jak obręcz", "natężenie umiarkowane 5/10", "niedobór snu"],
+     "przeciw": ["aura wzrokowa przed bólem przemawia za migreną"]},
+    {"nazwa": "Ból głowy związany z zaburzeniami snu lub obturacyjnym bezdechem sennym", "p": 0,
+     "za": ["ból poranny po przebudzeniu", "sen krótszy niż 6 godzin lub zły"],
+     "przeciw": ["brak danych o chrapaniu, bezdechach, senności dziennej"]},
+    {"nazwa": "Wtórny ból głowy w przebiegu procesu wewnątrzczaszkowego", "p": 0,
+     "za": ["zmiana charakteru bólu w ciągu ostatnich 6 miesięcy (flaga SNOOP: zmiana wzorca)", "ból poranny"],
+     "przeciw": ["brak wymiotów porannych", "brak nasilenia przy kaszlu, parciu, schylaniu", "brak objawów ogniskowych w ankiecie", "dynamika stabilna przez 6 miesięcy", "ciśnienie prawidłowe"]}
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "ból piorunujący (nagły, szczyt w ciągu minuty) - zaprzeczony",
+    "nasilenie przy kaszlu, kichaniu, parciu, schylaniu - zaprzeczone",
+    "wymioty poranne - zaprzeczone",
+    "progresja bólu - zaprzeczona (ból podobny przez 6 miesięcy)",
+    "nadciśnienie tętnicze - pomiar w ostatnich 3 miesiącach poniżej 140/90 mm Hg"
+  ],
+  "red_flags_otwarte": [
+    "badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) - NIEZNANE, ankieta ich nie obejmuje",
+    "zmiana wzorca bólu w wieku 46 lat - flaga względna, rozstrzyga badanie przedmiotowe, nie obrazowe",
+    "aura u kobiety przyjmującej złożoną antykoncepcję estrogenowo-progestagenną - ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa i ile trwa (aura nowa, przedłużona >60 min lub z objawami ruchowymi wymaga pilnej diagnostyki)"
+  ],
+  "nastepny_krok": "Wizyta w gabinecie w tym tygodniu: badanie neurologiczne z oceną dna oka i pomiarem ciśnienia; przy prawidłowym badaniu nie kierować na rezonans magnetyczny, tylko rozpocząć odstawienie leków przeciwbólowych z edukacją i dzienniczkiem bólu oraz odstawić złożoną antykoncepcję estrogenową z zamianą na metodę bez estrogenu.",
+  "co_zmieniloby_zdanie": "Nieprawidłowe badanie neurologiczne, obrzęk tarczy nerwu wzrokowego, aura nowa lub trwająca ponad 60 minut albo z niedowładem czy zaburzeniami mowy, albo brak poprawy po 2-3 miesiącach skutecznego odstawienia leków - wtedy rezonans magnetyczny zmienia postępowanie i jest uzasadniony.",
+  "badania": [
+    {"nazwa": "Badanie neurologiczne z oceną dna oka (oftalmoskopia w gabinecie lub pilna konsultacja okulistyczna)", "cel": "wykluczenie objawów ogniskowych i obrzęku tarczy - jedyne realne red flagi, które pozostają otwarte", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Dodatnie -> pilny rezonans lub tomografia, skierowanie do neurologa w trybie pilnym. Ujemne -> leczenie bólu z nadużywania leków bez obrazowania. Koszt minimalny, dostępne od ręki. To badanie, a nie rezonans, odpowiada na pytanie lekarza."},
+    {"nazwa": "Pomiar ciśnienia tętniczego w gabinecie", "cel": "potwierdzenie prawidłowego ciśnienia przed dalszym stosowaniem lub zmianą antykoncepcji i przed profilaktyką", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Ciśnienie podwyższone -> dodatkowy argument przeciw estrogenom i za wyborem profilaktyki (np. beta-bloker)."},
+    {"nazwa": "Szczegółowy wywiad o aurze (początek, czas trwania, objawy dodatkowe, czy była przed 6 miesiącami)", "cel": "rozróżnienie typowej aury migrenowej od przemijającego niedokrwienia i ocena wskazań do obrazowania", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "Bezkosztowe. Aura typowa (stopniowa, <60 min, w pełni odwracalna) -> obrazowanie niepotrzebne; nietypowa -> obrazowanie uzasadnione (AHS 2019, PMID 31891197)."},
+    {"nazwa": "Dzienniczek bólu i leków przez 4 tygodnie", "cel": "ustalenie liczby dni z lekiem i tabletek na dobę (NIEZNANE), potwierdzenie kryteriów bólu z nadużywania leków, punkt odniesienia do oceny leczenia", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Bezkosztowy; nie wstrzymuje rozpoczęcia odstawiania."},
+    {"nazwa": "Krótki kwestionariusz depresji (PHQ-2/PHQ-9) i pytania o chrapanie, bezdechy, senność dzienną", "cel": "nastrój NIEZNANY wpływa na wybór profilaktyki (amitryptylina) i rokowanie; podejrzenie bezdechu sennego jako przyczyny bólu porannego", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "Polisomnografia lub poligrafia tylko przy dodatnich objawach bezdechu, nie rutynowo."},
+    {"nazwa": "Rezonans magnetyczny głowy", "cel": "wykluczenie zmiany strukturalnej", "zmienia_decyzje": false, "kolejnosc": 3, "uwagi": "Przy prawidłowym badaniu neurologicznym i typowej aurze wynik nie zmienia leczenia: i tak odstawiamy leki przeciwbólowe i estrogeny. W ramach NFZ termin zwykle wielomiesięczny [wiedza modelu, niezweryfikowane], więc i tak nie rozstrzyga niczego dziś. Wskazany dopiero po spełnieniu warunków z pola co_zmieniloby_zdanie."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Rezonans magnetyczny głowy na życzenie pacjentki przy prawidłowym badaniu", "powod": "Wytyczna AHS 2019 (PMID 31891197, poziom A): brak konieczności obrazowania w bólach o cechach migreny przy prawidłowym badaniu neurologicznym i bez cech nietypowych; istotne klinicznie zmiany nie częstsze niż w populacji ogólnej. Ryzyko kaskady: potencjalnie poważne znaleziska przypadkowe w rezonansie mózgu u bezobjawowych 1,4% (do 1,7% z niepewnymi), z czego tylko ok. 20% okazuje się poważnymi rozpoznaniami (PMID 30467245). Lęk pacjentki należy adresować rozmową i planem kontroli, nie badaniem bez wpływu na decyzję."},
+    {"nazwa": "Tomografia komputerowa głowy", "powod": "Promieniowanie jonizujące i mniejsza czułość niż rezonans; brak wskazań nagłych."},
+    {"nazwa": "Rutynowe EEG, RTG czaszki lub zatok, USG doppler tętnic szyjnych", "powod": "Nie rozróżniają między hipotezami i nie zmieniają leczenia bólu z nadużywania leków [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Panel badań laboratoryjnych w kierunku bólu głowy (morfologia, OB, TSH, elektrolity) bez wskazań", "powod": "U 46-latki bez objawów ogólnych nie zmienia postępowania; OB/CRP ma sens dopiero po 50. roku życia (olbrzymiokomórkowe zapalenie tętnic) [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "Kortykosteroidy jako terapia pomostowa przy odstawianiu leków", "powod": "Przegląd systematyczny 4 badań z randomizacją (250 osób): brak przewagi nad placebo w bólu odstawiennym, objawach odstawienia i ustąpieniu nadużywania (PMID 42332418)."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak polskiej wytycznej dotyczącej bólów głowy w bibliotece (tylko przykłady); pamiec/zespol.md - brak wpisów o bólach głowy",
+    "PubMed zapytanie 1: 'neuroimaging headache normal neurological examination yield systematic review' (od 2010) - 1 trafienie, trafne",
+    "PubMed zapytanie 2: 'medication overuse headache[Title] withdrawal treatment' (od 2019) - 190 trafień",
+    "PubMed zapytanie 3: 'migraine with aura combined hormonal contraception ischemic stroke risk' (od 2016) - 19 trafień",
+    "PubMed zapytanie 4: 'medication overuse headache withdrawal advice randomized Carlsen' - 0 trafień (nieskuteczne)",
+    "PubMed zapytanie 5: 'incidental findings brain MRI general population meta-analysis' - 1 trafienie, trafne",
+    "PubMed zapytanie 6: 'medication-overuse headache[Title] (detoxification OR brief intervention OR withdrawal) randomized controlled trial' (od 2017) - 46 trafień",
+    "Evans RW i wsp. Neuroimaging for Migraine: AHS Systematic Review and Evidence-Based Guideline. Headache 2020;60:318-336. PMID 31891197, DOI 10.1111/head.13720 - streszczenie sprawdzone: brak konieczności obrazowania przy prawidłowym badaniu neurologicznym bez cech nietypowych (stopień A); obrazowanie do rozważenia przy nietypowej/przedłużonej aurze, zmianie cech klinicznych (stopień C)",
+    "Gibson LM i wsp. Potentially serious incidental findings on brain and body MRI of apparently asymptomatic adults. BMJ 2018;363:k4577. PMID 30467245, DOI 10.1136/bmj.k4577 - streszczenie sprawdzone: 1,4% (1,0-2,1%) w rezonansie mózgu; 20,5% znalezisk ostatecznie poważnych",
+    "da Silva EG i wsp. Corticosteroids in withdrawal therapy following MOH: systematic review. Expert Rev Neurother 2026;26:795-804. PMID 42332418, DOI 10.1080/14737175.2026.2692440 - streszczenie sprawdzone: brak korzyści steroidów",
+    "Grazzi L i wsp. MIND-CM, RCT fazy III. J Headache Pain 2023;24:86. PMID 37452281, DOI 10.1186/s10194-023-01630-0 - streszczenie sprawdzone: standard (odstawienie + edukacja + profilaktyka) daje 48,3% odpowiedzi >=50% po 12 mies.; z dodatkiem uważności 78,4%",
+    "Hong Y i wsp. Two-Year Outcomes after Treatment for MOH. J Clin Med 2026;15:4785. PMID 42355953, DOI 10.3390/jcm15124785 - streszczenie sprawdzone: nadużywanie leków spadło ze 100% do 24,2% po roku i 17,1% po 2 latach",
+    "Lucas C. Migraine with aura. Rev Neurol 2021;177:779-784. PMID 34384631, DOI 10.1016/j.neurol.2021.07.010 - streszczenie sprawdzone: antykoncepcja złożona z estrogenami istotnie zwiększa ryzyko udaru w migrenie z aurą; aura >1 h, późny początek aury lub gwałtowny wzrost liczby napadów wymagają diagnostyki",
+    "Paradise SL i wsp. Evidence-Based Contraception. Am Fam Physician 2022;106:251-259. PMID 36126006 (brak DOI w rekordzie) - streszczenie sprawdzone: CDC zaleca unikanie złożonych tabletek antykoncepcyjnych w migrenie z aurą",
+    "Batur P i wsp. Headache 2023;63:813-821. PMID 36752588, DOI 10.1111/head.14473 - streszczenie sprawdzone: dane sprzeczne (w tej kohorcie migrena z aurą bez istotnego wzrostu ryzyka, migrena ogółem OR 2,00); nie zmienia zalecenia CDC, ale osłabia pewność wielkości efektu",
+    "Waluszewska I i wsp. Med Sci (Basel) 2026;14:201. PMID 42029625, DOI 10.3390/medsci14020201 - streszczenie sprawdzone: wiek i migrena z aurą modyfikują ryzyko; metody progestagenne i wkładka z lewonorgestrelem preferowane przy przeciwwskazaniach do estrogenów",
+    "Kryterium bólu z nadużywania leków ICHD-3 (>=15 dni bólu/mies., analgetyki proste >=15 dni/mies. lub złożone >=10 dni/mies. przez >3 mies.) - [wiedza modelu, niezweryfikowane]"
+  ]
+}

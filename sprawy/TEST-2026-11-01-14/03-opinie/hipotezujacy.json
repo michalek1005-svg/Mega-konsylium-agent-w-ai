@@ -1,0 +1,94 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Septyczne (bakteryjne) zapalenie stawu kolanowego prawego",
+      "p": 0.55,
+      "za": [
+        "Ostre zapalenie jednego dużego stawu od doby z dreszczami i gorączką 38,6 °C oraz całkowitą niemożnością ruchu biernego",
+        "Immunosupresja: metotreksat 12,5–15 mg raz w tygodniu plus glikokortykosteroid doustny (dawka NIEZNANA) — steroid może dodatkowo maskować objawy",
+        "Wrota zakażenia: rana/otarcie skóry i zmiany łuszczycowe na kolanie",
+        "Ogólnoustrojowa odpowiedź zapalna: CRP 186 mg/l, leukocytoza 15,9 G/l z neutrofilią 13,2 G/l"
+      ],
+      "przeciw": [
+        "Wywiad dny moczanowej (napad w palcu stopy 2 lata temu) i kwas moczowy 8,1 mg/dl — napad dny też daje gorączkę, leukocytozę i wysokie CRP",
+        "Brak płynu stawowego: ani posiewu, ani liczby leukocytów, ani kryształów; brak badania fizykalnego i parametrów życiowych (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Napad dny moczanowej w stawie kolanowym",
+      "p": 0.2,
+      "za": [
+        "Wcześniejszy epizod zapalenia palca stopy opisany jako dna (rozpoznanie niepotwierdzone, metoda ustalenia NIEZNANA)",
+        "Hiperurykemia 8,1 mg/dl bez leczenia obniżającego kwas moczowy; mężczyzna 57 lat; łuszczyca sprzyja hiperurykemii [wiedza modelu, niezweryfikowane]",
+        "Gwałtowny początek z maksimum bólu w ciągu doby"
+      ],
+      "przeciw": [
+        "Gorączka z dreszczami, rana skóry nad stawem i immunosupresja — konstelacja, której nie wolno tłumaczyć dną bez punkcji",
+        "Nawet obecność kryształów moczanu w płynie nie wyklucza współistniejącego zakażenia (PMID 35611099)",
+        "Pierwszy epizod w kolanie po 2 latach przerwy, przy niepewnym pierwszym rozpoznaniu"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie stawu wywołane kryształami pirofosforanu wapnia (dna rzekoma)",
+      "p": 0.07,
+      "za": [
+        "Kolano to typowa lokalizacja ostrej dny rzekomej; wiek 57 lat",
+        "Może przebiegać z gorączką i wysokim CRP, imitując zakażenie [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Brak innych czynników ryzyka w wywiadzie; rzadsza poniżej 60. roku życia [wiedza modelu, niezweryfikowane]",
+        "Rana skóry i immunosupresja lepiej tłumaczą obraz zakażeniem"
+      ]
+    },
+    {
+      "nazwa": "Ropne zapalenie kaletki przedrzepkowej lub zapalenie tkanki podskórnej okolicy kolana",
+      "p": 0.06,
+      "za": [
+        "Rana/otarcie skóry na kolanie jako wrota zakażenia",
+        "Gorączka, obrzęk i ocieplenie"
+      ],
+      "przeciw": [
+        "Całkowita niemożność ruchu biernego wskazuje na proces wewnątrzstawowy, a nie okołostawowy"
+      ]
+    },
+    {
+      "nazwa": "Łuszczycowe zapalenie stawów w postaci ostrego zapalenia jednego stawu",
+      "p": 0.05,
+      "za": [
+        "Łuszczyca leczona metotreksatem",
+        "Zapalenie jednego dużego stawu kończyny dolnej jest możliwą prezentacją [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Metotreksat leczy także zapalenie stawów; gorączka 38,6 °C z dreszczami i CRP 186 mg/l są nietypowe dla zaostrzenia łuszczycowego zapalenia stawów"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Zajęcie wielu stawów — pacjent zaprzecza bólom i obrzękom innych stawów"
+  ],
+  "red_flags_otwarte": [
+    "Septyczne zapalenie stawu u chorego immunosupresyjnego (metotreksat + glikokortykosteroid) z gorączką 38,6 °C i raną skóry nad stawem",
+    "Możliwa posocznica: brak parametrów życiowych (ciśnienie, tętno, oddechy, saturacja, stan świadomości) — NIEZNANE",
+    "Bezpieczeństwo metotreksatu: brak aktualnej morfologii z płytkami i prób wątrobowych; NLPZ zwiększają toksyczność metotreksatu [wiedza modelu, niezweryfikowane]",
+    "Dawka i czas przyjmowania glikokortykosteroidu NIEZNANE (ryzyko niewydolności nadnerczy w ciężkim zakażeniu)"
+  ],
+  "nastepny_krok": "Natychmiastowe skierowanie do szpitalnego oddziału ratunkowego/ortopedii na punkcję stawu kolanowego z badaniem płynu (liczba i odsetek leukocytów, kryształy w mikroskopie polaryzacyjnym, barwienie Grama, posiew) oraz posiewy krwi przed pierwszą dawką antybiotyku — bez rozpoczynania w POZ kolchicyny ani NLPZ jako leczenia 'napadu dny'.",
+  "co_zmieniloby_zdanie": "Płyn stawowy z kryształami moczanu, ujemnym barwieniem Grama i ujemnym posiewem (przy niskim prawdopodobieństwie zakażenia w ocenie szpitalnej) przesunąłby rozpoznanie na napad dny; same kryształy bez ujemnego posiewu tego nie zrobią.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla septycznego zapalenia stawu i napadu dny (tylko wiersze przykładowe); pamiec/zespol.md — brak wpisów dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'septic arthritis AND gout coexistence[Title/Abstract]' (9 wyników)",
+    "PubMed zapytanie 2: 'septic arthritis diagnosis synovial fluid white blood cell count accuracy systematic review' (4 wyniki)",
+    "PubMed zapytanie 3: 'methotrexate septic arthritis risk immunosuppression' (118 wyników, streszczeń nie wykorzystano)",
+    "PubMed zapytanie 4: '(septic arthritis[Title]) AND (risk factors OR incidence) AND (psoriasis OR immunosuppressive OR glucocorticoid)' (82 wyniki)",
+    "PubMed zapytanie 5: 'acute monoarthritis adult differential diagnosis septic gout calcium pyrophosphate review' od 2015 (0 wyników)",
+    "PubMed zapytanie 6: 'septic arthritis[Title] AND native joint AND adults AND (review[Publication Type])' od 2018 (17 wyników)",
+    "Tzanis P i wsp. Septic Arthritis Complicating a Gout Flare: Report of Two Cases and Review of the Literature. Mediterr J Rheumatol 2022;33(1):75-80. PMID 35611099, DOI 10.31138/mjr.33.1.75 — streszczenie sprawdzone: obraz kliniczny obu chorób może być bardzo podobny, obecność kryształów moczanu nie wyklucza zakażenia",
+    "Dey M i wsp. Assessment and diagnosis of the acute hot joint: a systematic review and meta-analysis. Rheumatology (Oxford) 2023;62(5):1740-1756. PMID 36264140, DOI 10.1093/rheumatology/keac606 — streszczenie sprawdzone: pojedyncze testy płynu stawowego i surowicy mają suboptymalną dokładność w wykluczaniu zakażenia stawu natywnego; potrzebna kombinacja testów",
+    "Bhattacharjee S i wsp. Toward Identifying a Multivariate Correlation of Septic Arthritis With a Machine Learning Approach. Int J Rheum Dis 2025;28(8):e70386. PMID 40817605, DOI 10.1111/1756-185x.70386 — streszczenie sprawdzone: próg leukocytów w płynie ≥100 000/μl czułość 48%, swoistość 88%; ≥50 000/μl czułość 64%, swoistość 70%; dna jako choroba współistniejąca i obecność kryształów korelowały z septycznym zapaleniem stawu",
+    "Khudair A i wsp. The prognostic implications of comorbidities in septic arthritis. Front Med 2025;12:1566384. PMID 40800124, DOI 10.3389/fmed.2025.1566384 — streszczenie sprawdzone: zaburzenia immunologiczne i leczenie immunosupresyjne zwiększają ryzyko septycznego zapalenia stawu i utrudniają rozpoznanie",
+    "Benito N i wsp. Guidelines for the diagnosis and treatment of septic arthritis in adults and children (GEIO-SEIMC, SEIP, SECOT), executive summary. Enferm Infecc Microbiol Clin (Engl Ed) 2023;42(4):208-214. PMID 37919201, DOI 10.1016/j.eimce.2023.07.007 — streszczenie sprawdzone: septyczne zapalenie stawu natywnego jest stanem nagłym z ryzykiem zniszczenia stawu; rozpoznanie wymaga wysokiego indeksu podejrzenia"
+  ]
+}

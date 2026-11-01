@@ -1,0 +1,138 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Euglikemiczna kwasica ketonowa związana z inhibitorem SGLT2 (flozyną), wywołana nieżytem żołądkowo-jelitowym i głodzeniem",
+      "p": 0.079,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Euglikemiczna cukrzycowa kwasica ketonowa związana z inhibitorem SGLT2 (flozyną)",
+      "p": 0.071,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — euglikemiczna kwasica ketonowa wywołana inhibitorem SGLT2 (flozyna)",
+      "p": 0.054,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Kwasica mleczanowa związana z metforminą przy ostrym uszkodzeniu nerek z odwodnienia",
+      "p": 0.053,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Kwasica mleczanowa związana z metforminą przy ostrym przednerkowym uszkodzeniu nerek",
+      "p": 0.051,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.01,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Brak tolerancji płynów doustnych",
+      "Brak tolerancji płynów doustnych - nawadnianie w domu niewykonalne",
+      "Ból w klatce piersiowej i EKG nieocenione",
+      "Ciśnienie skurczowe 98 mmHg i tętno 112/min — hipowolemia lub wstrząs",
+      "Ciśnienie skurczowe 98 mmHg i tętno 112/min: hipoperfuzja, możliwy wstrząs",
+      "Ciśnienie skurczowe 98 mmHg i tętno 112/min: hipowolemia lub wstrząs septyczny",
+      "Głęboki szybki oddech (oddech Kussmaula) przy cukrzycy i flozynie — podejrzenie kwasicy metabolicznej",
+      "Inhibitor SGLT2 przy wymiotach i biegunce bez pomiaru ketonów",
+      "Kreatynina i eGFR nieznane: ostre uszkodzenie nerek niewykluczone",
+      "Kreatynina/eGFR i gazometria NIEZNANE",
+      "Kreatynina/eGFR nieznane przy metforminie, flozynie i inhibitorze konwertazy/sartanie",
+      "Kwasica metaboliczna: oddech Kussmaula przy flozynie i metforminie - wyklucza tylko gazometria z luką anionową, ketony we krwi (beta-hydroksymaślan) i mleczan",
+      "Niestabilność hemodynamiczna: ciśnienie skurczowe 98 mmHg, tętno 112/min - reguła ankiety PILNE (skurczowe 90-100, tętno >110)",
+      "Nietolerancja płynów doustnych: nawadnianie w domu niewykonalne",
+      "Oddech Kussmaula przy flozynie i metforminie: kwasica metaboliczna (ketonowa euglikemiczna lub mleczanowa) do wykluczenia gazometrią, beta-hydroksymaślanem i mleczanem",
+      "Oddech głęboki i szybki (Kussmaul) przy cukrzycy i flozynie: podejrzenie kwasicy metabolicznej",
+      "Ostre uszkodzenie nerek i hiperkaliemia (inhibitor konwertazy/sartan + odwodnienie) - kreatynina NIEZNANA; wyklucza kreatynina, potas, gazometria",
+      "Ostry zespół wieńcowy - wyklucza EKG i troponina",
+      "Senność z trudnością dobudzenia: zaburzenia świadomości",
+      "Senność, trudności z dobudzeniem: zaburzenia świadomości",
+      "Senność, trudność w dobudzeniu — zaburzenia świadomości",
+      "Sepsa / ostry brzuch - stały ból brzucha; wyklucza badanie fizykalne, mleczan, lipaza, morfologia, CRP",
+      "Stały ból brzucha bez badania fizykalnego (ostra choroba jamy brzusznej niewykluczona)",
+      "Stały ból brzucha: ostra choroba brzucha niewykluczona bez badania fizykalnego",
+      "Zaburzenia świadomości: senność, trudność w dobudzeniu - reguła ankiety NATYCHMIAST 112",
+      "brak tolerancji płynów doustnych",
+      "ciśnienie skurczowe 98 mmHg i tętno 112/min — hipoperfuzja",
+      "ciśnienie skurczowe 98 mmHg i tętno 112/min — hipowolemia lub sepsa",
+      "flozyna przy wymiotach — euglikemiczna kwasica ketonowa",
+      "głęboki szybki oddech (podejrzenie kwasicy metabolicznej) — reguła ankiety: NATYCHMIAST 112",
+      "inhibitor SGLT2 przy wymiotach i biegunce bez pomiaru ketonów",
+      "kreatynina/eGFR NIEZNANE przy metforminie, flozynie i inhibitorze konwertazy/sartanie",
+      "metformina + odwodnienie + lek z grupy -pril/-sartan — ostre uszkodzenie nerek, kwasica mleczanowa",
+      "nietolerancja płynów doustnych — nawadnianie w domu niewykonalne",
+      "oddech głęboki i szybki — podejrzenie kwasicy metabolicznej",
+      "senność, trudność w dobudzeniu — zaburzenia świadomości"
+    ],
+    "wykluczone": [
+      "Bezmocz (mocz oddany w ciągu ostatnich 6 godzin)",
+      "Bezmocz - mocz oddany w ciągu ostatnich 6 godzin (nie wyklucza skąpomoczu ani ostrego uszkodzenia nerek)",
+      "Krew w stolcu i wymiotach (pacjentka zaznaczyła: nic z tych rzeczy)",
+      "Krew w stolcu lub fusowate wymioty (pacjentka zaznaczyła: nic z tych rzeczy)",
+      "Krwawienie z przewodu pokarmowego - pacjentka nie zaznaczyła krwi w stolcu ani fusowatych wymiotów (z ankiety, bez badania)",
+      "Krwawienie z przewodu pokarmowego: brak krwi w stolcu i fusowatych wymiotów (wg ankiety)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "wysoka"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

@@ -1,0 +1,96 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Ostre zapalenie osierdzia (idiopatyczne / poinfekcyjne wirusowe)",
+      "p": 0.55,
+      "za": [
+        "Ból zamostkowy kłujący, nasilony w pozycji leżącej i przy głębokim wdechu, ulga w pozycji siedzącej z pochyleniem do przodu - typowy ból osierdziowy; ból opłucnowy nasilony na leżąco występuje w około 90% ostrych zapaleń osierdzia (Cremer 2024, PMID 39235771)",
+        "Infekcja górnych dróg oddechowych tydzień wcześniej i stan podgorączkowy 37,6 °C - zgodne z etiologią wirusową/idiopatyczną, najczęstszą w Europie Zachodniej (PMID 39235771)",
+        "Promieniowanie do barku/okolicy łopatki (grzbiet mięśnia czworobocznego) - typowe dla podrażnienia osierdzia przez nerw przeponowy [wiedza modelu, niezweryfikowane]",
+        "Ból nie zależy od ucisku ani skrętu tułowia i nie nasila się przy wysiłku"
+      ],
+      "przeciw": [
+        "Brak EKG, osłuchiwania (tarcie osierdziowe) i echokardiografii - kryterium bólowe to tylko 1 z wymaganych 2 kryteriów rozpoznania (PMID 39235771)",
+        "Tętno 96/min i stany podgorączkowe pasują także do zatorowości płucnej"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie mięśnia sercowego i osierdzia",
+      "p": 0.12,
+      "za": [
+        "Ten sam obraz poinfekcyjny; uniesienie troponiny w ostrym zapaleniu osierdzia stwierdzono u 60,9% chorych, częściej u młodszych (Gamaza-Chulián 2014, PMID 23846679)",
+        "Tachykardia 96/min przy stanie podgorączkowym może odzwierciedlać zajęcie mięśnia sercowego",
+        "Lęk pacjentki 'coś z sercem' - nie dowód, ale brak danych, żeby to wykluczyć bez troponiny"
+      ],
+      "przeciw": [
+        "Brak duszności, kołatań, omdleń i nietolerancji wysiłku",
+        "Ból wybitnie pozycyjny przemawia za dominującym komponentem osierdziowym"
+      ]
+    },
+    {
+      "nazwa": "Zatorowość płucna",
+      "p": 0.08,
+      "za": [
+        "Przyczyna polekowa: przyjmuje antykoncepcję hormonalną (preparat nieznany) - złożone doustne środki antykoncepcyjne zwiększają ryzyko żylnej choroby zakrzepowo-zatorowej, 1,3-2,2 razy bardziej przy progestagenach innych niż lewonorgestrel (PMID 29573722, PMID 35876787)",
+        "Ból opłucnowy nasilony przy głębokim wdechu, tętno 96/min, stan podgorączkowy - częsta choroba o nietypowym obrazie"
+      ],
+      "przeciw": [
+        "Brak duszności, krwioplucia, omdlenia; brak unieruchomienia, operacji ani podróży w ostatnich 4 tygodniach",
+        "Ulga w pozycji pochylonej do przodu nie jest typowa dla zatorowości płucnej"
+      ]
+    },
+    {
+      "nazwa": "Zapalenie opłucnej lub zapalenie płuc z zajęciem opłucnej",
+      "p": 0.07,
+      "za": [
+        "Niedawna infekcja dróg oddechowych, gorączka, ból przy głębokim oddechu"
+      ],
+      "przeciw": [
+        "Ból zamostkowy, a nie boczny; ulga przy pochyleniu do przodu; brak informacji o kaszlu i duszności"
+      ]
+    },
+    {
+      "nazwa": "Ból mięśniowo-szkieletowy lub nerwoból międzyżebrowy",
+      "p": 0.05,
+      "za": [
+        "Hipoteza pacjentki i lekarza; wiek 38 lat, brak chorób przewlekłych"
+      ],
+      "przeciw": [
+        "Ból NIE nasila się przy ucisku ani skręcie tułowia - główny argument przeciw przyczynie ściennej",
+        "Wybitna zależność od pozycji (leżenie/pochylenie) i towarzyszący stan podgorączkowy nie pasują do nerwobólu"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "duszność (zaprzeczona)",
+    "ból wysiłkowy (zaprzeczony)",
+    "unieruchomienie, operacja, podróż w ostatnich 4 tygodniach (zaprzeczone)",
+    "ciąża (zaprzeczona)",
+    "objawy alarmowe z listy ankiety od początku bólu (zaprzeczone)"
+  ],
+  "red_flags_otwarte": [
+    "tamponada lub istotny płyn w osierdziu - brak ciśnienia tętniczego i badania fizykalnego (NIEZNANE)",
+    "zajęcie mięśnia sercowego - brak troponiny i EKG",
+    "zatorowość płucna u kobiety stosującej antykoncepcję hormonalną z tętnem 96/min",
+    "rodzaj preparatu antykoncepcyjnego (NIEZNANE)"
+  ],
+  "nastepny_krok": "Dziś badanie lekarskie z EKG 12-odprowadzeniowym, troponiną, CRP i morfologią (z oceną ciśnienia, osłuchiwaniem w kierunku tarcia osierdziowego i saturacją), a przy niejasnym obrazie lub uniesionej troponinie - echokardiografia i skierowanie do SOR/kardiologii.",
+  "co_zmieniloby_zdanie": "Uniesiona troponina przesunęłaby rozpoznanie na zapalenie mięśnia sercowego i osierdzia, a saturacja <95%, tachykardia narastająca lub objawy zakrzepicy żył głębokich bez zmian w EKG - na zatorowość płucną; ból wyraźnie odtwarzalny uciskiem - na przyczynę ścienną.",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak polskiej wytycznej dla chorób osierdzia ani bólu w klatce piersiowej (tylko przykłady); pamiec/zespol.md - brak reguł dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'acute pericarditis diagnosis management review' (od 2018) - skuteczne, 184 wyniki",
+    "PubMed zapytanie 2: 'myopericarditis troponin acute pericarditis prognosis' - skuteczne, 17 wyników",
+    "PubMed zapytanie 3: 'colchicine acute pericarditis randomized[Title/Abstract] ICAP' - skuteczne, 2 wyniki",
+    "PubMed zapytanie 4: 'pericarditis[Title] JAMA review diagnosis treatment' - skuteczne, 4 wyniki",
+    "PubMed zapytanie 5: 'combined oral contraceptives venous thromboembolism pulmonary embolism risk[Title/Abstract] young women' - 0 wyników (nieskuteczne)",
+    "PubMed zapytanie 6: 'combined oral contraceptives venous thromboembolism risk cohort' (od 2015) - skuteczne, 93 wyniki",
+    "Cremer PC, Klein AL, Imazio M. Diagnosis, Risk Stratification, and Treatment of Pericarditis: A Review. JAMA 2024;332(13):1090-1100. PMID 39235771, DOI 10.1001/jama.2024.12935 (streszczenie sprawdzone: ≥2 z 4 kryteriów; ból opłucnowy nasilony na leżąco ≈90%; przyczyna idiopatyczna/wirusowa najczęstsza; tamponada <3%)",
+    "Imazio M i wsp. A randomized trial of colchicine for acute pericarditis (ICAP). N Engl J Med 2013;369(16):1522-8. PMID 23992557, DOI 10.1056/NEJMoa1208536 (streszczenie sprawdzone: kolchicyna dodana do aspiryny/ibuprofenu zmniejsza nawroty 37,5% -> 16,7%, NNT 4 - argument, że sam ibuprofen nie jest standardem; dotyczy leczenia, poza moją rolą)",
+    "Gamaza-Chulián S i wsp. Cardiac troponin-T in acute pericarditis. J Cardiovasc Med 2014;15(1):68-72. PMID 23846679, DOI 10.2459/JCM.0b013e3283641161 (streszczenie sprawdzone: wzrost cTnT u 60,9%, częściej u młodszych, bez złego rokowania)",
+    "Oedingen C i wsp. Meta-analiza COC a VTE. Thromb Res 2018;165:68-78. PMID 29573722, DOI 10.1016/j.thromres.2018.03.005 (streszczenie sprawdzone: wszystkie COC wyższe ryzyko niż lewonorgestrel 30-40 µg EE)",
+    "Schink T i wsp. COC a VTE u młodych kobiet. BJOG 2022;129(13):2107-2116. PMID 35876787, DOI 10.1111/1471-0528.17268 (streszczenie sprawdzone: aOR 1,9-2,2 dla dienogestu, drospirenonu, dezogestrelu vs lewonorgestrel)"
+  ]
+}

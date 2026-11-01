@@ -1,0 +1,8 @@
+1: slabo_jak objawy_teraz bol_teraz goraczka
+2: pomiar skurczowe tetno
+3: mocz wymioty
+4: przebieg aorta
+5: choroby rozrzedzajace leki
+6: ketonal_ile alergie
+7: wyniki egfr
+8: obawy

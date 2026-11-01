@@ -1,0 +1,97 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {
+      "nazwa": "Polekowy ból głowy (z nadużywania leków przeciwbólowych, w tym złożonych z kofeiną) na tle pierwotnego bólu głowy",
+      "p": 0.6,
+      "za": ["ból ≥15 dni w miesiącu (prawie codziennie) od 6 miesięcy", "leki przeciwbólowe >20 dni w miesiącu, w tym ketoprofen, paracetamol i preparaty złożone z kofeiną", "wcześniej epizodyczne bóle głowy kilka razy w roku", "ból poranny po przebudzeniu, słabnący w ciągu dnia - typowy dla odstawienia leku/kofeiny w nocy", "obraz stały, nieprogresywny, natężenie 5/10"],
+      "przeciw": ["nie znamy liczby tabletek na dobę ani daty początku nadużywania względem początku codziennego bólu (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Przewlekła migrena z aurą",
+      "p": 0.15,
+      "za": ["migotanie, zygzaki przed oczami przed bólem (aura wzrokowa)", "wywiad epizodycznych bólów głowy wcześniej"],
+      "przeciw": ["ból uciskający, obustronny, jak obręcz, 5/10 - bardziej fenotyp napięciowy", "nie wiemy, od kiedy jest aura i ile trwa (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Przewlekły ból głowy typu napięciowego",
+      "p": 0.1,
+      "za": ["ból uciskający, obustronny, umiarkowany", "krótki sen poniżej 6 godzin"],
+      "przeciw": ["aura wzrokowa nie pasuje do napięciowego bólu głowy"]
+    },
+    {
+      "nazwa": "Ból głowy związany z zaburzeniami oddychania w czasie snu",
+      "p": 0.05,
+      "za": ["ból po przebudzeniu, ustępujący w ciągu dnia", "zły sen"],
+      "przeciw": ["brak danych o chrapaniu, bezdechach, masie ciała (NIEZNANE)"]
+    },
+    {
+      "nazwa": "Wtórny ból głowy z przyczyny wewnątrzczaszkowej (guz, nadciśnienie śródczaszkowe, zakrzepica zatok żylnych)",
+      "p": 0.03,
+      "za": ["zmiana wzorca bólu 6 miesięcy temu", "ból poranny", "doustna antykoncepcja złożona (ryzyko zakrzepicy zatok żylnych)"],
+      "przeciw": ["brak wymiotów porannych, brak nasilania przy kaszlu i parciu, brak nowych objawów, ból stały nieprogresywny przez 6 miesięcy", "ciśnienie tętnicze prawidłowe"]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "ból piorunujący (nagły, szczyt w ciągu minuty) - nie",
+    "poranne wymioty - nie",
+    "nasilenie przy kaszlu, kichaniu, parciu, schylaniu - nie",
+    "progresja natężenia przez 6 miesięcy - nie (obraz stały)",
+    "nadciśnienie tętnicze - pomiar w ostatnich 3 miesiącach poniżej 140/90 mm Hg (z wywiadu, nie z badania)"
+  ],
+  "red_flags_otwarte": [
+    "zmiana wzorca bólu głowy 6 miesięcy temu u kobiety 46-letniej (SNNOOP10: pattern change) - do weryfikacji badaniem neurologicznym",
+    "brak badania przedmiotowego: badanie neurologiczne i dno oka (obrzęk tarczy nerwu wzrokowego) NIEZNANE",
+    "aura wzrokowa u kobiety przyjmującej złożoną antykoncepcję estrogenowo-progestagenową - zwiększone ryzyko udaru niedokrwiennego; nie wiadomo, czy aura jest nowa (NIEZNANE)",
+    "charakter aury nieopisany (czas trwania, czy zawsze przed bólem, czy jednostronne objawy czuciowe/ruchowe) - różnicowanie z przemijającym niedokrwieniem"
+  ],
+  "nastepny_krok": "Na tej wizycie: pełne badanie neurologiczne z oceną dna oka (lub skierowanie do okulisty na badanie dna oka w trybie pilnym, jeśli oftalmoskop niedostępny), pomiar ciśnienia, a przy prawidłowym badaniu - odstawienie złożonej antykoncepcji z powodu aury, plan odstawienia leków przeciwbólowych z kofeiną i dzienniczek bólu głowy; bez skierowania na rezonans magnetyczny na tym etapie.",
+  "plan_poz": {
+    "w_gabinecie_teraz": [
+      "Badanie neurologiczne (nerwy czaszkowe, objawy ogniskowe, objawy oponowe, chód, próba Romberga) i oftalmoskopia - prawidłowy wynik jest warunkiem trybu planowego",
+      "Pomiar ciśnienia tętniczego (oba ramiona), masa ciała i wskaźnik masy ciała",
+      "Doprecyzowanie aury: od kiedy, czas trwania (typowo 5-60 minut [wiedza modelu, niezweryfikowane]), czy objawy dodatnie (zygzaki) i czy zawsze ustępują całkowicie; czy aura wystąpiła po rozpoczęciu antykoncepcji",
+      "Policzenie dni i tabletek: ketoprofen, paracetamol, preparaty z kofeiną; ilość kawy",
+      "PHQ-2 (dwa pytania o nastrój) - zostało NIEZNANE w ankiecie"
+    ],
+    "zlecic": [
+      "Dzienniczek bólu głowy i leków na 4-8 tygodni (dni z bólem, leki, dawki, aura, miesiączki)",
+      "Morfologia krwi, OB lub CRP, TSH - badania z koszyka POZ, tanie, przy przewlekłym bólu głowy u kobiety 46 lat [wiedza modelu, niezweryfikowane]",
+      "Nie zlecać rezonansu magnetycznego przy prawidłowym badaniu neurologicznym i dnie oka; w POZ i tak wymaga ścieżki przez poradnię neurologiczną [wiedza modelu, niezweryfikowane: zasady zlecania MR w POZ]"
+    ],
+    "leczenie": [
+      "Antykoncepcja: odstawić preparat etynyloestradiol + drospirenon, bo migrena z aurą + złożona antykoncepcja estrogenowa zwiększa ryzyko udaru niedokrwiennego (PMID 36126006, 32056462); zamiennie metoda bez estrogenu - progestagen w monoterapii, wkładka wewnątrzmaciczna z lewonorgestrelem lub miedziana, implant - w porozumieniu z ginekologiem (skierowanie stabilne, ale decyzja o odstawieniu dziś; do czasu wizyty prezerwatywa)",
+      "Polekowy ból głowy: edukacja (krótka interwencja jak w badaniu BIMOH, PMID 30724760) + ograniczenie/odstawienie leków doraźnych; preparaty z kofeiną i ketoprofen odstawić całkowicie, doraźnie dopuścić najwyżej 2 dni w tygodniu [wiedza modelu, niezweryfikowane: limit dni]; uprzedzić o przejściowym nasileniu bólu przez 1-2 tygodnie",
+      "Jednocześnie leczenie zapobiegawcze doustne, bo samo odstawienie bez profilaktyki jest mało skuteczne (metaanaliza sieciowa, PMID 40011869): amitryptylina 10 mg na noc, zwiększać co 1-2 tygodnie do 25-50 mg [wiedza modelu, niezweryfikowane: dawkowanie] - tania, dostępna, pomaga też przy złym śnie i fenotypie napięciowym; topiramat nie jako pierwszy wybór w okresie zmiany antykoncepcji (teratogenność, interakcja z antykoncepcją) [wiedza modelu, niezweryfikowane]",
+      "Higiena snu (cel ≥7 godzin), stopniowe zmniejszenie kofeiny"
+    ],
+    "skierowania": [
+      "Ginekolog - zmiana antykoncepcji, tryb stabilny (do 4 tygodni), z adnotacją: migrena z aurą, przeciwwskazanie do estrogenów",
+      "Neurolog - tryb stabilny, jeśli po 8-12 tygodniach odstawienia i profilaktyki brak poprawy o ≥50% dni z bólem albo jeśli aura nietypowa; tryb pilny przy nieprawidłowym badaniu neurologicznym lub obrzęku tarczy nerwu wzrokowego (wtedy także diagnostyka obrazowa)",
+      "SOR natychmiast przy aurze trwającej >60 minut, objawach jednostronnych ruchowych lub mowy, nagłym najsilniejszym bólu w życiu"
+    ],
+    "kontrola": "Wizyta kontrolna za 4 tygodnie z dzienniczkiem (tolerancja amitryptyliny, liczba dni z lekami, potwierdzenie zmiany antykoncepcji); druga ocena po 8-12 tygodniach.",
+    "co_powiedziec_pacjentce": "Objawy i brak niepokojących sygnałów wskazują, że codzienny ból najprawdopodobniej podtrzymują same leki przeciwbólowe, a nie guz; rezonans teraz nic by nie zmienił w leczeniu, natomiast musimy zmienić tabletki antykoncepcyjne, bo przy migrenie z aurą zwiększają ryzyko udaru.",
+    "wykonalnosc": "Plan w całości w zasięgu POZ, tani (amitryptylina refundowana, badania z koszyka). Główne ryzyko: pacjentka oczekuje rezonansu i może go wykonać prywatnie; wtedy uprzedzić o możliwych przypadkowych zmianach bez znaczenia. Ryzyko przerwy w antykoncepcji - jasno omówić metodę przejściową."
+  },
+  "co_zmieniloby_zdanie": "Nieprawidłowe badanie neurologiczne, obrzęk tarczy nerwu wzrokowego, aura z objawami jednostronnymi lub trwająca ponad godzinę albo progresja bólu mimo odstawienia leków zmieniłyby plan na pilną diagnostykę obrazową przez neurologa lub SOR.",
+  "zrodla": [
+    "zrodla/MANIFEST.md - brak polskich wytycznych dotyczących bólu głowy, antykoncepcji ani wykazu badań POZ (same przykłady); pamiec/zespol.md - brak realiów lokalnych (odległość do SOR, dostępność oftalmoskopu NIEZNANE)",
+    "PubMed zapytanie 1: 'medication overuse headache withdrawal preventive treatment randomized' (od 2019) - skuteczne",
+    "PubMed zapytanie 2: 'combined hormonal contraception migraine with aura ischemic stroke risk' (od 2017) - skuteczne",
+    "PubMed zapytanie 3: 'neuroimaging yield headache normal neurological examination significant intracranial abnormalities' - limit częstości, ponowione: 1 wynik, populacja pediatryczna, nieprzydatne",
+    "PubMed zapytanie 4: '(red flags[Title] OR SNNOOP10[Title]) AND headache[Title]' (od 2018) - wyniki głównie pediatryczne, nieprzydatne",
+    "PubMed zapytanie 5: 'medication overuse headache brief intervention general practice' - skuteczne",
+    "PubMed zapytanie 6: '\"SNNOOP10\" headache' - skuteczne",
+    "Koonalintip P i wsp. Network meta-analysis comparing efficacy of different strategies on medication-overuse headache. J Headache Pain 2025;26:43. PMID 40011869, DOI 10.1186/s10194-025-01982-9 - streszczenie sprawdzone: 16 RCT, 3000 chorych; samo nagłe odstawienie nieistotne (MD -2,77 dni/mies.), odstawienie + profilaktyka doustna najskuteczniejsze",
+    "Paradise SL i wsp. Evidence-Based Contraception: Common Questions and Answers. Am Fam Physician 2022;106:251-259. PMID 36126006 - streszczenie sprawdzone: migrena z aurą zwiększa ryzyko udaru niedokrwiennego, złożone doustne środki antykoncepcyjne je podnoszą; CDC zaleca ich unikanie",
+    "Ornello R i wsp. Migraine, low-dose combined hormonal contraceptives, and ischemic stroke in young women: a systematic review. Expert Rev Neurother 2020;20:313-317. PMID 32056462, DOI 10.1080/14737175.2020.1730816 - streszczenie sprawdzone: wszystkie 4 badania kliniczno-kontrolne - zwiększone ryzyko udaru przy migrenie i niskodawkowej antykoncepcji złożonej; związek napędzany migreną z aurą",
+    "Bernstein C, O'Neal MA. Migraine and menopause - a narrative review. Menopause 2020;28:96-101. PMID 32796291, DOI 10.1097/GME.0000000000001635 - streszczenie sprawdzone: estrogen w antykoncepcji złożonej zwiększa ryzyko udaru; ryzyko rośnie z wiekiem i czynnikami ryzyka",
+    "Lundqvist C i wsp. Severity of Analgesic Dependence and Medication-overuse Headache. J Addict Med 2019;13:346-353. PMID 30724760, DOI 10.1097/ADM.0000000000000504 - streszczenie sprawdzone: leczeniem z wyboru jest odstawienie leków; krótka interwencja behawioralna skuteczna (badanie BIMOH, populacja ogólna/POZ)",
+    "Chu K i wsp. Predictive performance of the common red flags in ED headache patients (HEAD). Emerg Med J 2024;41:368-375. PMID 38658053, DOI 10.1136/emermed-2023-213461 - streszczenie sprawdzone: niezależne predyktory poważnej przyczyny - nowy deficyt neurologiczny, nowotwór w wywiadzie, wiek >50, uraz głowy; czułość czerwonych flag łącznie 96,5%, swoistość 5,1%",
+    "Kryteria polekowego bólu głowy (ICHD-3: ≥15 dni bólu/mies., leki proste ≥15 dni lub złożone ≥10 dni/mies. przez >3 mies.) [wiedza modelu, niezweryfikowane]",
+    "Klasyfikacja WHO MEC/UK MEC: migrena z aurą = kategoria 4 dla antykoncepcji złożonej [wiedza modelu, niezweryfikowane]"
+  ]
+}

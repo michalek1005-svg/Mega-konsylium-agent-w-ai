@@ -1,0 +1,128 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Septyczne (bakteryjne) zapalenie stawu kolanowego prawego",
+      "p": 0.182,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "Septyczne zapalenie stawu kolanowego prawego (samodzielne lub współistniejące z napadem dny)",
+      "p": 0.087,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Napad dny moczanowej w stawie kolanowym (bez zakażenia)",
+      "p": 0.075,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "napad dny moczanowej w stawie kolanowym",
+      "p": 0.057,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "septyczne zapalenie stawu kolanowego prawego",
+      "p": 0.049,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.076,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Bakteriemia z wrót skórnych (rana/otarcie na kolanie) — wykluczą posiewy krwi pobrane przed antybiotykiem",
+      "Bezpieczeństwo metotreksatu: brak aktualnej morfologii z płytkami i prób wątrobowych; NLPZ zwiększają toksyczność metotreksatu [wiedza modelu, niezweryfikowane]",
+      "Brak aktualnej morfologii z płytkami, ALT i albumin — nieznany stan kontroli metotreksatu",
+      "Całkowita niemożność ruchu biernego stawu",
+      "Dawka i czas przyjmowania glikokortykosteroidu NIEZNANE (ryzyko niewydolności nadnerczy w ciężkim zakażeniu)",
+      "Glikokortykosteroid doustny może maskować gorączkę i nasilenie sepsy; dawka i czas stosowania NIEZNANE",
+      "Interakcja NLPZ z metotreksatem (ryzyko toksyczności metotreksatu) i maskowanie gorączki przez NLPZ/kolchicynę opóźniające rozpoznanie zakażenia [wiedza modelu, niezweryfikowane]",
+      "Mielosupresja polekowa metotreksatu — neutrofile 13,2 G/l przemawiają przeciw, ale płytki, hemoglobina i próby wątrobowe NIEZNANE (ostatnie badania kontrolne NIEZNANE)",
+      "Mielosupresja/toksyczność metotreksatu — ostatnie badania kontrolne NIEZNANE (aktualna leukocytoza czyni ciężką mielosupresję mało prawdopodobną, ale funkcja wątroby i nerek w dynamice nieznana)",
+      "Możliwa bakteriemia/sepsa: dreszcze, leukocytoza 15,9 G/l z neutrofilią; parametry życiowe NIEZNANE",
+      "Możliwa posocznica: brak parametrów życiowych (ciśnienie, tętno, oddechy, saturacja, stan świadomości) — NIEZNANE",
+      "Ryzyko niewydolności kory nadnerczy w ostrym zakażeniu przy przewlekłym glikokortykosteroidzie (dawka NIEZNANA)",
+      "Sepsa — gorączka 38,6 °C + WBC 15,9 G/l spełniają kryteria SIRS [wiedza modelu, niezweryfikowane]; parametry życiowe (ciśnienie, tętno, oddech, świadomość, saturacja) NIEZNANE; glikokortykosteroid może maskować gorączkę i objawy",
+      "Septyczne zapalenie stawu kolanowego u chorego w immunosupresji (metotreksat + glikokortykosteroid) — wykluczy tylko punkcja stawu: leukocytoza w płynie, odsetek neutrofilów, barwienie Grama, posiew (Margaretten 2007: WBC w płynie >50 000/µl LR 7,7; >100 000/µl LR 28; <25 000/µl LR 0,32); kryształy moczanu NIE wykluczają zakażenia",
+      "Septyczne zapalenie stawu u chorego immunosupresyjnego (metotreksat + glikokortykosteroid) z gorączką 38,6 °C i raną skóry nad stawem",
+      "Septyczne zapalenie stawu u chorego immunosupresyjnego (metotreksat + glikokortykosteroid) z gorączką 38,6 °C, dreszczami i CRP 186 mg/l — niewykluczone; wymaga punkcji stawu przed antybiotykiem",
+      "Septyczne zapalenie stawu u chorego w immunosupresji polekowej (metotreksat + glikokortykosteroid) — wymaga punkcji przed jakimkolwiek leczeniem empirycznym",
+      "Wrota zakażenia: rana/otarcie skóry kolana na tle zmian łuszczycowych",
+      "całkowita niemożność ruchu biernego",
+      "glikokortykosteroid doustny (dawka NIEZNANA) może maskować gorączkę i ciężkość stanu; ryzyko niewydolności kory nadnerczy przy nagłym odstawieniu",
+      "gorączka 38,6 °C z dreszczami — możliwa bakteriemia / sepsa (parametry życiowe NIEZNANE)",
+      "ostre zapalenie jednego stawu z gorączką 38,6 °C i dreszczami u chorego na metotreksacie i glikokortykosteroidzie — septyczne zapalenie stawu niewykluczone",
+      "parametry życiowe NIEZNANE — możliwa posocznica",
+      "rana/otarcie skóry w okolicy kolana — wrota zakażenia",
+      "rana/otarcie skóry w okolicy kolana — wrota zakażenia, możliwe zapalenie tkanki podskórnej",
+      "septyczne zapalenie stawu u chorego immunosupresyjnego — niewykluczone bez punkcji",
+      "stan szpiku i wątroby przy metotreksacie NIEZNANY (brak morfologii z rozmazem, ALT)"
+    ],
+    "wykluczone": [
+      "Martwicze zapalenie powięzi — wstępnie mało prawdopodobne: brak szerzącego się zaczerwienienia i objawów z listy alarmowej w ankiecie (badanie fizykalne NIEZNANE, więc wykluczenie tylko wstępne)",
+      "Mielotoksyczność metotreksatu w chwili badania (neutrofile 13,2 G/l, brak neutropenii) — płytki, hemoglobina, ALT nieznane",
+      "Uszkodzenie nerek ograniczające leczenie — kreatynina 1,1 mg/dl (wczoraj)",
+      "Zajęcie wielu stawów — pacjent zaprzecza bólom i obrzękom innych stawów"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

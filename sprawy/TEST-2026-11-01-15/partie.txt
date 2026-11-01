@@ -1,0 +1,7 @@
+1: objawy_alarm poczatek klatka_oddech cisnienie_pomiar
+2: cisnienie_skurczowe cisnienie_rozkurczowe bol_skala
+3: jak_dawne plamki obrzeki
+4: ciaza_przebieg znieczulenie pozycja
+5: goraczka leki_wziete leki_inne
+6: choroby alergie
+7: obawy

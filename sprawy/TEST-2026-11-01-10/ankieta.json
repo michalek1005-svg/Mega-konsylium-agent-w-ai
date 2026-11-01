@@ -1,0 +1,550 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T10-KKK",
+  "tytul": "Ból prawego jądra i podbrzusza",
+  "opis": "Od rana boli mnie prawe jądro, mocno, i trochę brzuch na dole. Zwymiotowałem raz. Wstydzę się iść do lekarza, piszę przez aplikację. Może to zapalenie od zimna?",
+  "pytania": [
+    {
+      "id": "poczatek",
+      "typ": "jeden",
+      "tekst": "Jak zaczął się ból?",
+      "krotko": "sposób początku bólu",
+      "opcje": [
+        {
+          "w": "nagle",
+          "t": "Nagle, w ciągu kilku minut (np. obudził mnie)"
+        },
+        {
+          "w": "stopniowo",
+          "t": "Stopniowo, narastał przez wiele godzin lub dni"
+        }
+      ],
+      "bo": "Nagły początek silnego bólu jądra (zwłaszcza z wymiotami, wiek 19 lat) przemawia za skrętem jądra; okno ratowania jądra ok. 6 h. Narastanie stopniowe bardziej za zapaleniem najądrza."
+    },
+    {
+      "id": "godziny",
+      "typ": "jeden",
+      "tekst": "Ile godzin temu zaczął się ból?",
+      "krotko": "czas od początku bólu",
+      "opcje": [
+        {
+          "w": "do3",
+          "t": "Mniej niż 3 godziny"
+        },
+        {
+          "w": "3_6",
+          "t": "3–6 godzin"
+        },
+        {
+          "w": "6_12",
+          "t": "6–12 godzin"
+        },
+        {
+          "w": "ponad12",
+          "t": "Ponad 12 godzin"
+        }
+      ],
+      "bo": "Czas niedokrwienia decyduje o szansie zachowania jądra (ratowalność > 90% do 6 h, spada wyraźnie po 12 h)."
+    },
+    {
+      "id": "bol_teraz",
+      "typ": "skala",
+      "tekst": "Jak silny jest ból w tej chwili?",
+      "krotko": "nasilenie bólu teraz",
+      "skala": [
+        "brak bólu",
+        "najgorszy, jaki można sobie wyobrazić"
+      ],
+      "bo": "Ból bardzo silny (≥ 7) z wymiotami wymaga pilnej oceny urologicznej i USG z dopplerem."
+    },
+    {
+      "id": "wyglad",
+      "typ": "wiele",
+      "tekst": "Czy zauważyłeś któreś z tych zmian po prawej stronie moszny?",
+      "krotko": "wygląd moszny",
+      "opcje": [
+        {
+          "w": "wyzej",
+          "t": "Jądro jest wyżej niż drugie"
+        },
+        {
+          "w": "poprzecznie",
+          "t": "Jądro ułożone inaczej niż zwykle (bokiem)"
+        },
+        {
+          "w": "obrzek",
+          "t": "Obrzęk, moszna większa"
+        },
+        {
+          "w": "zaczerwienienie",
+          "t": "Zaczerwienienie lub ocieplenie skóry"
+        },
+        {
+          "w": "twarde",
+          "t": "Wyczuwalny twardy guzek"
+        },
+        {
+          "w": "nie_ogladalem",
+          "t": "Nie oglądałem"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Wysokie, poprzeczne ułożenie jądra: skręt. Obrzęk i zaczerwienienie: zapalenie najądrza lub późny skręt. Twardy guzek: guz jądra (szczyt zachorowań 15–35 lat)."
+    },
+    {
+      "id": "wymioty",
+      "typ": "jeden",
+      "tekst": "Jak jest z nudnościami i wymiotami teraz?",
+      "krotko": "nudności i wymioty",
+      "opcje": [
+        {
+          "w": "brak",
+          "t": "Był jeden raz, teraz nic"
+        },
+        {
+          "w": "nudnosci",
+          "t": "Nadal mam nudności"
+        },
+        {
+          "w": "wiele",
+          "t": "Wymiotuję wielokrotnie"
+        }
+      ],
+      "bo": "Nudności i wymioty towarzyszą skrętowi jądra znacznie częściej niż zapaleniu najądrza."
+    },
+    {
+      "id": "goraczka",
+      "typ": "jeden",
+      "tekst": "Czy masz gorączkę albo dreszcze?",
+      "krotko": "gorączka lub dreszcze",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "dreszcze",
+          "t": "Dreszcze, nie mierzyłem"
+        },
+        {
+          "w": "mierzona",
+          "t": "Tak, mierzyłem temperaturę"
+        }
+      ],
+      "bo": "Gorączka częstsza w zapaleniu najądrza/jądra; nie wyklucza skrętu."
+    },
+    {
+      "id": "temperatura",
+      "typ": "liczba",
+      "tekst": "Jaka była najwyższa zmierzona temperatura?",
+      "krotko": "najwyższa temperatura",
+      "min": 34,
+      "max": 43,
+      "krok": 0.1,
+      "jednostka": "°C",
+      "gdy": {
+        "pytanie": "goraczka",
+        "jest": "mierzona"
+      },
+      "bo": "Gorączka ≥ 38 °C z bólem jądra: proces zapalny, możliwy ropień."
+    },
+    {
+      "id": "pachwina",
+      "typ": "jeden",
+      "tekst": "Czy w pachwinie po prawej stronie jest uwypuklenie, które się powiększa przy kaszlu lub staniu?",
+      "krotko": "uwypuklenie w pachwinie",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Uwięźnięta przepuklina pachwinowa z bólem podbrzusza i wymiotami: stan nagły chirurgiczny."
+    },
+    {
+      "id": "uraz",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich dniach był uraz krocza lub moszny albo duży wysiłek?",
+      "krotko": "uraz lub wysiłek",
+      "opcje": [
+        {
+          "w": "uraz",
+          "t": "Tak, uderzenie lub uraz"
+        },
+        {
+          "w": "wysilek",
+          "t": "Tak, duży wysiłek (sport, dźwiganie)"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Uraz: krwiak, pęknięcie jądra; wysiłek może poprzedzać skręt. Uraz nie wyklucza skrętu."
+    },
+    {
+      "id": "pozycja",
+      "typ": "jeden",
+      "tekst": "Czy ból zmienia się, gdy unosisz jądro (np. leżąc z podparciem moszny)?",
+      "krotko": "zmiana bólu przy uniesieniu",
+      "opcje": [
+        {
+          "w": "mniej",
+          "t": "Boli mniej"
+        },
+        {
+          "w": "bez_zmian",
+          "t": "Bez zmian"
+        },
+        {
+          "w": "bardziej",
+          "t": "Boli bardziej"
+        },
+        {
+          "w": "nie_probowalem",
+          "t": "Nie próbowałem"
+        }
+      ],
+      "bo": "Objaw Prehna ma niską wartość różnicującą; nie wolno na nim opierać wykluczenia skrętu. Pomocniczo."
+    },
+    {
+      "id": "mocz",
+      "typ": "wiele",
+      "tekst": "Czy przy oddawaniu moczu zauważyłeś coś z tej listy?",
+      "krotko": "objawy z dróg moczowych",
+      "opcje": [
+        {
+          "w": "pieczenie",
+          "t": "Pieczenie lub ból"
+        },
+        {
+          "w": "czesto",
+          "t": "Częste oddawanie moczu"
+        },
+        {
+          "w": "krew",
+          "t": "Krew w moczu"
+        },
+        {
+          "w": "wydzielina",
+          "t": "Wydzielina z cewki moczowej"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Dyzuria i wydzielina wspierają zapalenie najądrza (STI lub uropatogeny); krwiomocz z bólem podbrzusza: kamica moczowodowa."
+    },
+    {
+      "id": "kontakty",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich 3 miesiącach miałeś kontakty seksualne bez prezerwatywy?",
+      "krotko": "ryzyko STI",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "bez_odp",
+          "t": "Wolę nie odpowiadać"
+        }
+      ],
+      "bo": "U mężczyzn < 35 lat zapalenie najądrza najczęściej wywołują Chlamydia trachomatis i Neisseria gonorrhoeae; wpływa na dobór antybiotyku i leczenie partnerki/partnera."
+    },
+    {
+      "id": "wczesniej",
+      "typ": "jeden",
+      "tekst": "Czy podobny ból jądra zdarzał się już wcześniej i sam mijał?",
+      "krotko": "wcześniejsze epizody",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie, pierwszy raz"
+        },
+        {
+          "w": "raz",
+          "t": "Tak, raz"
+        },
+        {
+          "w": "kilka",
+          "t": "Tak, kilka razy"
+        }
+      ],
+      "bo": "Przemijające epizody bólu jądra mogą odpowiadać skrętom z samoistnym odkręceniem."
+    },
+    {
+      "id": "swinka",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnich tygodniach miałeś obrzęk policzków lub ślinianek przy uszach?",
+      "krotko": "obrzęk ślinianek",
+      "opcje": [
+        {
+          "w": "tak",
+          "t": "Tak"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "gdy": {
+        "pytanie": "wyglad",
+        "jest": [
+          "obrzek",
+          "zaczerwienienie"
+        ]
+      },
+      "bo": "Zapalenie jądra w przebiegu świnki (obrzęk ślinianek 4–8 dni wcześniej)."
+    },
+    {
+      "id": "badania",
+      "typ": "wiele",
+      "tekst": "Czy w związku z tym bólem miałeś już jakieś badanie?",
+      "krotko": "wykonane badania",
+      "opcje": [
+        {
+          "w": "usg",
+          "t": "USG moszny"
+        },
+        {
+          "w": "mocz",
+          "t": "Badanie moczu"
+        },
+        {
+          "w": "krew",
+          "t": "Badanie krwi"
+        },
+        {
+          "w": "brak",
+          "t": "Nie, żadnych",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Brak USG z dopplerem = skręt niewykluczony obrazowo."
+    },
+    {
+      "id": "badania_wynik",
+      "typ": "tekst",
+      "tekst": "Jeśli masz wynik, przepisz najważniejsze zdanie lub wartości z opisu badania.",
+      "krotko": "wyniki badań",
+      "podpowiedz": "Na przykład: USG – przepływ w prawym jądrze ...; mocz – leukocyty ...",
+      "gdy": {
+        "pytanie": "badania",
+        "jest": [
+          "usg",
+          "mocz",
+          "krew"
+        ]
+      },
+      "bo": "Wynik USG doppler i badania moczu zmienia rozpoznanie."
+    },
+    {
+      "id": "leki",
+      "typ": "jeden",
+      "tekst": "Czy bierzesz jakieś leki lub suplementy (także dziś na ból)?",
+      "krotko": "leki i suplementy",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "przeciwbolowe",
+          "t": "Tylko dziś lek przeciwbólowy"
+        },
+        {
+          "w": "stale",
+          "t": "Tak, biorę leki na stałe"
+        }
+      ],
+      "bo": "Leki przeciwbólowe mogą maskować nasilenie bólu; leki stałe ważne przed zabiegiem."
+    },
+    {
+      "id": "leki_nazwy",
+      "typ": "tekst",
+      "tekst": "Wpisz nazwy leków, jeśli pamiętasz.",
+      "krotko": "nazwy leków",
+      "podpowiedz": "Na przykład: ibuprofen 400 mg o 8:00",
+      "gdy": {
+        "pytanie": "leki",
+        "jest": [
+          "przeciwbolowe",
+          "stale"
+        ]
+      }
+    },
+    {
+      "id": "alergie",
+      "typ": "jeden",
+      "tekst": "Czy masz uczulenie na jakieś leki, np. antybiotyki?",
+      "krotko": "alergie na leki",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie"
+        },
+        {
+          "w": "antybiotyk",
+          "t": "Tak, na antybiotyk"
+        },
+        {
+          "w": "inne",
+          "t": "Tak, na inny lek"
+        }
+      ],
+      "bo": "Dobór antybiotyku (ceftriakson, doksycyklina, fluorochinolon) i znieczulenia."
+    },
+    {
+      "id": "obawy",
+      "typ": "wiele",
+      "tekst": "Czego najbardziej się obawiasz i czego oczekujesz?",
+      "krotko": "obawy i oczekiwania",
+      "opcje": [
+        {
+          "w": "wstyd",
+          "t": "Krępuje mnie badanie"
+        },
+        {
+          "w": "plodnosc",
+          "t": "Martwię się o płodność"
+        },
+        {
+          "w": "rodzice",
+          "t": "Nie chcę, by ktoś się dowiedział"
+        },
+        {
+          "w": "zabieg",
+          "t": "Boję się zabiegu lub szpitala"
+        },
+        {
+          "w": "porada",
+          "t": "Chcę tylko wiedzieć, co robić"
+        }
+      ],
+      "bezNieznanych": true,
+      "bo": "Wstyd jest barierą opóźniającą zgłoszenie; komunikat musi ją zaadresować."
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Nagły, silny ból jądra u 19-latka: podejrzenie skrętu jądra – natychmiast SOR/urologia, USG doppler, nie odkładać eksploracji.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "poczatek",
+            "jest": "nagle"
+          },
+          {
+            "pytanie": "bol_teraz",
+            "min": 7
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Jądro uniesione lub ułożone poprzecznie: objaw skrętu jądra.",
+      "gdy": {
+        "pytanie": "wyglad",
+        "jest": [
+          "wyzej",
+          "poprzecznie"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Ból jądra trwający do 12 h: skręt niewykluczony – ocena tego samego dnia z USG doppler, nie antybiotyk i kontrola za tydzień.",
+      "gdy": {
+        "pytanie": "godziny",
+        "jest": [
+          "do3",
+          "3_6",
+          "6_12"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Utrzymujące się nudności lub wielokrotne wymioty przy bólu jądra.",
+      "gdy": {
+        "pytanie": "wymioty",
+        "jest": [
+          "nudnosci",
+          "wiele"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Obrzęk i zaczerwienienie moszny lub gorączka ≥ 38 °C: zapalenie najądrza/jądra, możliwy ropień albo późny skręt.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "wyglad",
+            "jest": [
+              "obrzek",
+              "zaczerwienienie"
+            ]
+          },
+          {
+            "pytanie": "temperatura",
+            "min": 38
+          },
+          {
+            "pytanie": "goraczka",
+            "jest": "dreszcze"
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Wyczuwalny twardy guzek jądra: wykluczyć guz jądra (USG).",
+      "gdy": {
+        "pytanie": "wyglad",
+        "jest": "twarde"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Uraz moszny: wykluczyć krwiak/pęknięcie jądra.",
+      "gdy": {
+        "pytanie": "uraz",
+        "jest": "uraz"
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Uwypuklenie w pachwinie z bólem i wymiotami: podejrzenie uwięźniętej przepukliny.",
+      "gdy": {
+        "pytanie": "pachwina",
+        "jest": "tak"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Krwiomocz z bólem podbrzusza: kamica moczowodowa lub inna patologia dróg moczowych.",
+      "gdy": {
+        "pytanie": "mocz",
+        "jest": "krew"
+      }
+    }
+  ]
+}

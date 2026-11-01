@@ -1,0 +1,103 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "skręt powrózka nasiennego (skręt jądra prawego)",
+      "p": 0.72,
+      "za": [
+        "pretest: mężczyzna 19 lat z ostrą moszną — drugi szczyt zachorowań na skręt przypada na okres dojrzewania i wczesną dorosłość; wśród >12-latków z podejrzeniem skrętu w kohorcie TORSAFUF skręt potwierdzono u ok. 60% (1266+807 wykluczonych) → umiarkowanie podnosi (PMID 37897515)",
+        "nagły początek w ciągu minut, ból 8/10 → silnie podnosi skręt, obniża zapalenie najądrza (które narasta stopniowo) [wiedza modelu, niezweryfikowane — kierunek LR]",
+        "jądro uniesione (high-riding) → +1 pkt TWIST, silnie podnosi skręt",
+        "obrzęk moszny → +2 pkt TWIST",
+        "nudności i wymioty → +1 pkt TWIST; wymioty mają jedne z najwyższych LR+ dla skrętu wobec zapalenia najądrza [wiedza modelu, niezweryfikowane — wartość LR]",
+        "TWIST z samych danych z ankiety = 4 (obrzęk 2 + wymioty 1 + jądro wysoko 1) bez badania fizykalnego; twarde jądro (+2) i brak odruchu nosidłowego (+1) NIEZNANE → realny wynik 4–7; w walidacji pediatrycznej grupa pośrednia 3–4: skręt 13%, wysoka 5–7: 61% (PMID 35970737); u dorosłych TWIST 6–7 PPV 80%, AUROC 0,89 (PMID 39129651)",
+        "wcześniejszy, samoistnie ustępujący epizod podobnego bólu → podnosi (przemijający skręt, zniekształcenie typu bell clapper; PMID 12603424)",
+        "ból bez ulgi po uniesieniu jądra (ujemny objaw Prehna) → słabo podnosi skręt / słabo obniża zapalenie najądrza [wiedza modelu, niezweryfikowane]",
+        "ból w podbrzuszu towarzyszący → typowe promieniowanie przy skręcie, słabo podnosi"
+      ],
+      "przeciw": [
+        "brak badania fizykalnego — dane pochodzą z samoopisu w aplikacji; pacjent może błędnie ocenić położenie jądra → umiarkowanie obniża pewność, nie kierunek",
+        "TWIST może być zaniżony we wczesnej fazie (<6 h) i przy małym stopniu skrętu (PMID 35970737) — to argument przeciw uspokajaniu się niskim wynikiem, nie przeciw rozpoznaniu"
+      ]
+    },
+    {
+      "nazwa": "zapalenie najądrza",
+      "p": 0.09,
+      "za": [
+        "pretest: najczęstsze rozpoznanie ostrej moszny w populacji ogólnej (seria 620 pacjentów SOR: zapalenie najądrza najczęstszym rozpoznaniem w dopplerze; PMID 20040771)",
+        "obrzęk moszny — niespecyficzny"
+      ],
+      "przeciw": [
+        "nagły początek w ciągu minut → silnie obniża",
+        "brak gorączki i dreszczy → umiarkowanie obniża",
+        "brak objawów dyzurycznych i wydzieliny → umiarkowanie obniża",
+        "brak kontaktów seksualnych bez prezerwatywy w 3 mies. → obniża etiologię Chlamydia/rzeżączka (główną w tym wieku)",
+        "brak świnki/obrzęku ślinianek → obniża zapalenie jądra wirusowe",
+        "wymioty i jądro uniesione → obniżają"
+      ]
+    },
+    {
+      "nazwa": "skręt przyczepka jądra",
+      "p": 0.07,
+      "za": [
+        "ostry ból jednostronny; w seriach operacyjnych część eksploracji z podejrzeniem skrętu kończy się skrętem przyczepka (PMID 16730939)"
+      ],
+      "przeciw": [
+        "szczyt zachorowań u chłopców 7–12 lat, rzadziej u 19-latka → pretest niski [wiedza modelu, niezweryfikowane]",
+        "ból 8/10, wymioty, jądro uniesione — nietypowe dla skrętu przyczepka → umiarkowanie obniża"
+      ]
+    },
+    {
+      "nazwa": "kolka nerkowa prawostronna z bólem rzutowanym do jądra",
+      "p": 0.04,
+      "za": [
+        "nagły ból, nudności i wymioty, ból podbrzusza"
+      ],
+      "przeciw": [
+        "obrzęk moszny i jądro uniesione → silnie obniżają (kolka nie daje zmian w mosznie)",
+        "brak dolegliwości przy oddawaniu moczu"
+      ]
+    },
+    {
+      "nazwa": "przepuklina pachwinowa uwięźnięta",
+      "p": 0.02,
+      "za": [
+        "ból podbrzusza, wymioty, powiększenie moszny"
+      ],
+      "przeciw": [
+        "brak uwypuklenia w pachwinie powiększającego się przy kaszlu/staniu → umiarkowanie obniża",
+        "jądro uniesione — nie pasuje"
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "uraz krocza lub moszny (zaprzeczył)",
+    "gorączka ≥38 °C i dreszcze (zaprzeczył) — mniej przemawia za ropniem/zapaleniem jądra"
+  ],
+  "red_flags_otwarte": [
+    "nagły silny ból jądra u 19-latka trwający 3–6 h — okno ratowania jądra się zamyka; ryzyko orchidektomii rośnie po ok. 6 h 30 min od początku bólu (PMID 37897515), czas 8,5 h ma czułość 73% dla jądra nieuratowanego (PMID 29354505)",
+    "jądro uniesione wyżej niż drugie (objaw skrętu)",
+    "utrzymujące się nudności po wymiotach",
+    "brak badania fizykalnego i parametrów życiowych (NIEZNANE)",
+    "wstyd i niechęć do badania — ryzyko zwłoki z winy pacjenta"
+  ],
+  "nastepny_krok": "Natychmiast skierować pacjenta na SOR z dyżurem urologicznym (transport bez zwłoki, 112 gdy nie ma szybkiego dojazdu) z adnotacją „podejrzenie skrętu jądra prawego, ból od 3–6 h” — bez antybiotyku i bez czekania na USG w POZ; USG doppler wolno wykonać tylko, jeśli nie opóźnia eksploracji, a przy silnym podejrzeniu klinicznym eksploracja i tak jest wskazana mimo prawidłowego dopplera (PMID 16730939).",
+  "co_zmieniloby_zdanie": "Prawidłowy przepływ w dopplerze z powiększonym, przekrwionym najądrzem, gorączka i ropomocz u pacjenta ocenionego przez urologa obniżyłyby skręt poniżej 10% i otworzyły leczenie zapalenia najądrza — ale to wynik oceny w szpitalu, nie argument za antybiotykiem i kontrolą za tydzień w POZ.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla ostrej moszny/skrętu jądra (tylko wiersze przykładowe); pamiec/zespol.md — brak wpisów dla tej prezentacji",
+    "PubMed zapytanie 1: 'TWIST score testicular torsion validation' (15 wyników)",
+    "PubMed zapytanie 2: 'acute scrotum etiology adolescents adults incidence torsion epididymitis' (4 wyniki)",
+    "PubMed zapytanie 3: 'testicular torsion duration of symptoms salvage rate orchiectomy hours' (7 wyników)",
+    "PubMed zapytanie 4: 'intermittent testicular torsion previous episodes of pain' (1 wynik)",
+    "Seizilles de Mazancourt E i wsp. World J Urol 2023 — kohorta TORSAFUF >12 lat, 1266 skrętów; ryzyko orchidektomii rośnie po 6 h 30 min; PMID 37897515; DOI 10.1007/s00345-023-04671-x (streszczenie sprawdzone)",
+    "Howe AS i wsp. Transl Androl Urol 2017 — czas 8,5 h czułość 73%/swoistość 80% dla jądra nieuratowanego; 15 h ≈ 50% ratowania; PMID 29354505; DOI 10.21037/tau.2017.09.10 (streszczenie sprawdzone)",
+    "Hisamatsu E i wsp. J Pediatr Urol 2022 — walidacja TWIST: skręt w grupach niskiej/pośredniej/wysokiej 1,3%/13%/61%; TWIST zaniżony <6 h; PMID 35970737; DOI 10.1016/j.jpurol.2022.07.013 (streszczenie sprawdzone)",
+    "Schultz-Swarthfigure CT, Kelly AM. Emerg Med Australas 2024 — TWIST u dorosłych AUROC 0,89, TWIST 6–7 PPV 80%; PMID 39129651; DOI 10.1111/1742-6723.14479 (streszczenie sprawdzone)",
+    "Yagil Y i wsp. J Ultrasound Med 2010 — 620 pacjentów SOR z ostrą moszną; zapalenie najądrza najczęstszym rozpoznaniem; doppler dla skrętu czułość 94%, swoistość 96%; PMID 20040771; DOI 10.7863/jum.2010.29.1.11 (streszczenie sprawdzone)",
+    "Pepe P i wsp. Eur J Radiol 2006 — przy klinicznym podejrzeniu skrętu eksploracja zalecana nawet przy pozornie prawidłowym dopplerze; skręt przyczepka wśród eksploracji; PMID 16730939; DOI 10.1016/j.ejrad.2006.04.016 (streszczenie sprawdzone)",
+    "Kamaledeen S, Surana R. BJU Int 2003 — połowa dzieci ze skrętem miała wcześniejsze epizody bólu (przemijający skręt, bell clapper); PMID 12603424; DOI 10.1046/j.1464-410x.2003.03083.x (streszczenie sprawdzone)",
+    "Wartości LR dla pojedynczych objawów (nagły początek, wymioty, objaw Prehna) — [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Ból głowy z nadużywania leków przeciwbólowych na podłożu przewlekłego pierwotnego bólu głowy",
+      "p": 0.62,
+      "za": [
+        "Leki przeciwbólowe (ketoprofen, paracetamol, preparaty złożone z kofeiną) ponad 20 dni w miesiącu od około 6 miesięcy",
+        "Ból prawie codzienny, obustronny, uciskający, 5/10, stały charakter, maksimum po przebudzeniu (typowe dla nadużywania leków i odstawienia kofeiny w nocy)",
+        "Wcześniej epizodyczne bóle głowy kilka razy w roku, czyli istnieje pierwotne podłoże",
+        "Krótki sen poniżej 6 godzin jako czynnik chronifikacji"
+      ],
+      "przeciw": [
+        "Nie wiadomo, co było pierwsze: zmiana wzorca bólu czy częste przyjmowanie leków (rozpoznanie wymaga wykluczenia innej przyczyny)",
+        "Liczba tabletek na dobę i dawka kofeiny NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Migrena z aurą wzrokową (współistniejąca, istotna dla bezpieczeństwa antykoncepcji estrogenowej)",
+      "p": 0.15,
+      "za": [
+        "Migotanie i zygzaki przed oczami poprzedzające ból",
+        "Kobieta w wieku średnim z wcześniejszymi epizodycznymi bólami głowy"
+      ],
+      "przeciw": [
+        "Ból obustronny, uciskający, umiarkowany, bez wymiotów, bez nasilenia przy wysiłku i schylaniu — fenotyp bólu typu napięciowego",
+        "Czas trwania aury, jej jednostronność, objawy czuciowe lub ruchowe i to, czy aura jest nowa od 6 miesięcy — NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Ból głowy w obturacyjnym bezdechu sennym",
+      "p": 0.06,
+      "za": [
+        "Ból po przebudzeniu słabnący w ciągu dnia",
+        "Zły sen poniżej 6 godzin; u kobiet bezdech częściej daje poranne bóle głowy i niewydolny sen (PMID 42030838)"
+      ],
+      "przeciw": [
+        "Brak danych o chrapaniu, bezdechach obserwowanych, senności dziennej, masie ciała — NIEZNANE"
+      ]
+    },
+    {
+      "nazwa": "Proces wewnątrzczaszkowy ze wzmożonym ciśnieniem śródczaszkowym (guz mózgu, idiopatyczne nadciśnienie wewnątrzczaszkowe)",
+      "p": 0.03,
+      "za": [
+        "Zmiana wzorca bólu głowy w 46. roku życia (flaga SNNOOP10: zmiana wzorca, PMID 30587518)",
+        "Ból maksymalny po przebudzeniu",
+        "Ból z aurą miał w przeglądzie Detsky'ego dodatni iloraz wiarygodności 12,9 dla istotnej zmiany w neuroobrazowaniu (PMID 23074404) — przy prawdopodobieństwie przedtestowym 0,9% daje to rząd kilku–kilkunastu procent, z szerokim przedziałem"
+      ],
+      "przeciw": [
+        "Brak wymiotów porannych, brak nasilenia przy kaszlu, kichaniu, parciu i schylaniu (LR- dla wymiotów 0,47, dla nasilenia przy Valsalvie 0,70; PMID 23074404)",
+        "Ból niezmienny od 6 miesięcy, bez progresji, bez objawów ogniskowych w ankiecie",
+        "Badanie neurologiczne i dno oka NIEZNANE — to jedyne, co realnie wyklucza"
+      ]
+    },
+    {
+      "nazwa": "Zakrzepica zatok żylnych mózgu",
+      "p": 0.01,
+      "za": [
+        "Złożona antykoncepcja hormonalna (etynyloestradiol + drospirenon) jako czynnik prozakrzepowy",
+        "Codzienny ból głowy, nasilony rano"
+      ],
+      "przeciw": [
+        "Przebieg stabilny przez 6 miesięcy bez progresji, bez napadów, bez objawów ogniskowych i zaburzeń widzenia stałych",
+        "Dno oka NIEZNANE"
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Ból piorunujący (szczyt w ciągu minuty) — wykluczony odpowiedzią pacjentki; krwotok podpajęczynówkowy i rozwarstwienie tętnicy w ostrej fazie mało prawdopodobne",
+    "Ból nasilany kaszlem, kichaniem, parciem, schylaniem — zaprzeczony",
+    "Wymioty poranne — zaprzeczone",
+    "Progresja bólu w ciągu 6 miesięcy — zaprzeczona (ból podobny cały czas)",
+    "Nadciśnienie tętnicze jako przyczyna — pomiar w ostatnich 3 miesiącach poniżej 140/90 mmHg",
+    "Choroba nowotworowa, immunosupresja, gorączka i objawy ogólne — zaprzeczone w ankiecie (lista objawów: nic z tych rzeczy)",
+    "Zakaźne dla otoczenia — brak gorączki i objawów zapalenia opon; brak wskazań do izolacji"
+  ],
+  "red_flags_otwarte": [
+    "Aura wzrokowa u kobiety przyjmującej złożoną antykoncepcję estrogenową: przy migrenie z aurą antykoncepcja złożona jest przeciwwskazana z powodu ryzyka udaru niedokrwiennego (PMID 41630559, 36126006; CDC zaleca unikać); dane obserwacyjne z 2025 r. tego nie potwierdziły dla nowoczesnych dawek (PMID 41406065), ale nie zmieniają przeciwwskazania. Wykluczy: potwierdzenie, że to nie aura migrenowa, albo zmiana na antykoncepcję bez estrogenu",
+    "Charakter aury nieustalony: aura nietypowa (trwająca ponad 60 minut, zawsze w tym samym polu widzenia, z niedowładem, zaburzeniami mowy, nowa po 40. roku życia) wymaga różnicowania z przemijającym niedokrwieniem i zmianą w płacie potylicznym. Wykluczy: szczegółowy wywiad aury i prawidłowe badanie neurologiczne",
+    "Zmiana wzorca bólu głowy po 40. roku życia z maksimum porannym (SNNOOP10) przy nieznanym badaniu neurologicznym i dnie oka — guz, idiopatyczne nadciśnienie wewnątrzczaszkowe, zakrzepica zatok żylnych niewykluczone. Wykluczy: prawidłowe badanie neurologiczne z oceną dna oka (brak tarczy zastoinowej)",
+    "Codzienny ketoprofen od 6 miesięcy łącznie z drospirenonem: ryzyko krwawienia z przewodu pokarmowego, uszkodzenia nerek i hiperkaliemii [wiedza modelu, niezweryfikowane]. Wykluczy: brak objawów krwawienia, prawidłowa morfologia, kreatynina z eGFR, potas",
+    "Bezdech senny niewykluczony (zły sen, ból po przebudzeniu). Wykluczy: wywiad chrapania i bezdechów, skala senności, masa ciała",
+    "Zatrucie tlenkiem węgla jako przyczyna porannych bólów głowy niewykluczone — nie pytano o piecyk lub junkers ani o bóle u domowników [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Wizyta w tym tygodniu z pełnym badaniem neurologicznym i oceną dna oka oraz szczegółowym wywiadem aury; do tego czasu odstawić złożoną antykoncepcję estrogenową i zastąpić metodą bez estrogenu (progestagen lub wkładka z lewonorgestrelem; PMID 42029625). Rezonans magnetyczny głowy: nie jako pierwszy krok, ale uzasadniony planowo przy zmianie wzorca po 40. roku życia z aurą; pilnie (pilność 2) przy nieprawidłowym badaniu neurologicznym, tarczy zastoinowej lub aurze nietypowej.",
+  "co_zmieniloby_zdanie": "Obniżyłbym pilność do 4, gdyby badanie neurologiczne i dno oka były prawidłowe, aura okazała się typowa i obecna od lat (lub nie była aurą), a antykoncepcja estrogenowa została już zamieniona; podniósłbym do 2 przy jakimkolwiek objawie ogniskowym, tarczy zastoinowej lub aurze trwającej ponad godzinę.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dotyczących bólu głowy i antykoncepcji w bibliotece (tylko przykłady)",
+    "PubMed zapytanie 1: 'migraine with aura combined hormonal contraceptives ischemic stroke risk' (30 wyników)",
+    "PubMed zapytanie 2: 'neuroimaging chronic headache normal neurological examination intracranial abnormality yield' — odrzucone limitem częstości (nieskuteczne)",
+    "PubMed zapytanie 3: 'SNNOOP10 red flags secondary headache' (6 wyników)",
+    "PubMed zapytanie 4: 'neuroimaging headache normal neurological examination significant intracranial abnormality prevalence' (3 wyniki)",
+    "PubMed zapytanie 5: 'medication overuse headache diagnosis management review' od 2019 (458 wyników)",
+    "PubMed zapytanie 6: 'medication overuse headache[Title] AND (guideline[Title] OR consensus[Title] OR review[Title])' od 2020 (43 wyniki)",
+    "PubMed zapytanie 7: 'morning headache obstructive sleep apnea prevalence' (66 wyników)",
+    "Do TP i wsp. Red and orange flags for secondary headaches in clinical practice: SNNOOP10 list. Neurology 2019;92(3):134-144. PMID 30587518, DOI 10.1212/WNL.0000000000006697 — streszczenie sprawdzone: zmiana wzorca, nadużywanie leków przeciwbólowych, tarcza zastoinowa jako flagi",
+    "Ontario Health Technology Assessment. Neuroimaging for the evaluation of chronic headaches. Ont Health Technol Assess Ser 2010;10(26):1-57. PMID 23074404 (bez DOI) — streszczenie sprawdzone: prawdopodobieństwo przedtestowe 0,9%; ból z aurą LR+ 12,9 (LR- 0,52); wymioty LR- 0,47; nasilenie przy Valsalvie LR+ 2,3, LR- 0,70; nieprawidłowe badanie neurologiczne LR+ 5,3",
+    "Perrone U i wsp. Safety and efficacy of hormonal therapies used to treat endometriosis in women suffering migraine. Expert Opin Drug Saf 2026. PMID 41630559, DOI 10.1080/14740338.2026.2627190 — streszczenie sprawdzone: antykoncepcja złożona przeciwwskazana przy migrenie z aurą z powodu ryzyka udaru niedokrwiennego",
+    "Paradise SL i wsp. Evidence-Based Contraception: Common Questions and Answers. Am Fam Physician 2022;106(3):251-259. PMID 36126006 (bez DOI) — streszczenie sprawdzone: migrena z aurą zwiększa ryzyko udaru, złożone tabletki je zwiększają, CDC zaleca unikać",
+    "Ihara K i wsp. Estrogen exposure from modern contraceptives and vascular risk in women with migraine. Cephalalgia 2025;45(12). PMID 41406065, DOI 10.1177/03331024251404924 — streszczenie sprawdzone: kobiety 18–45 lat, brak istotnego wzrostu ryzyka naczyniowego przy nowoczesnych tabletkach; migrena z aurą bez antykoncepcji HR udaru 2,45 (dane obserwacyjne, nie obejmują wieku 46 lat)",
+    "Batur P i wsp. Use of combined hormonal contraception and stroke. Headache 2023;63(6):813-821. PMID 36752588, DOI 10.1111/head.14473 — streszczenie sprawdzone: migrena zwiększa ryzyko udaru u użytkowniczek antykoncepcji złożonej (OR 2,00); dawka etynyloestradiolu ≥30 µg OR 1,52",
+    "Waluszewska I i wsp. Cardiovascular Safety of Hormonal Contraception. Med Sci (Basel) 2026;14(2). PMID 42029625, DOI 10.3390/medsci14020201 — streszczenie sprawdzone: migrena z aurą i wiek modyfikują ryzyko; metody progestagenowe i wkładka z lewonorgestrelem preferowane przy przeciwwskazaniach do estrogenu",
+    "Borończyk M i wsp. Migraine and stroke. J Headache Pain 2025;26(1):39. PMID 39979846, DOI 10.1186/s10194-025-01973-w — streszczenie sprawdzone: migrena z aurą niezależnym czynnikiem ryzyka udaru; udar może być mylony z migreną (stroke chameleon)",
+    "Soontrapa P i wsp. Effect of Educational and Behavioral Interventions on Medication-Overuse Headache. Pain Res Manag 2026. PMID 42460454, DOI 10.1155/prm/3699422 — streszczenie sprawdzone: ograniczenie leków doraźnych kluczowe dla remisji; krótka edukacja zmniejsza użycie leków i częstość bólu",
+    "Trotta L i wsp. Women and obstructive sleep apnea syndrome: the OSAF study. Sleep Med 2026;144:108932. PMID 42030838, DOI 10.1016/j.sleep.2026.108932 — streszczenie sprawdzone: kobiety z bezdechem częściej zgłaszają poranne bóle głowy i niewydolny sen",
+    "[wiedza modelu, niezweryfikowane]: kategorie WHO/CDC MEC dla antykoncepcji złożonej przy migrenie z aurą (kategoria 4); interakcja ketoprofen + drospirenon (hiperkaliemia); tlenek węgla jako przyczyna porannych bólów głowy; definicja aury nietypowej (>60 minut, objawy ruchowe)"
+  ]
+}

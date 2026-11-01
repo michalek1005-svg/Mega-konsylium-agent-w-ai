@@ -1,0 +1,103 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Klasyczny chłoniak Hodgkina",
+      "p": 0.55,
+      "za": [
+        "węzeł na szyi/nad obojczykiem > 2 cm bolesny po alkoholu — rzadki, ale znany, swoisty objaw chłoniaka Hodgkina (PMID 31780609, 39734971)",
+        "objawy B: utrata 7 kg w 3 miesiące, zlewne poty nocne, stany podgorączkowe 37,8 °C",
+        "uogólniony świąd bez wysypki (PMID 39734971 wymienia świąd jako objaw chłoniaka Hodgkina)",
+        "kaszel > 3 tygodni — możliwa masa śródpiersia (PMID 39734971: objawy oddechowe przy zajęciu śródpiersia)",
+        "eozynofilia 0,9 G/l, limfopenia 0,8 G/l, OB 62 mm/h, niedokrwistość Hb 12,1 g/dl, trombocytoza 420 G/l, leukocytoza 11,8 G/l [wiedza modelu, niezweryfikowane: elementy typowe dla chłoniaka Hodgkina i czynników rokowniczych zaawansowanej choroby]"
+      ],
+      "przeciw": [
+        "wiek 55 lat — poza głównym szczytem zachorowań (mediana wieku ok. połowy 4. dekady, PMID 33493434), ale drugi szczyt u starszych [wiedza modelu, niezweryfikowane]",
+        "brak badania fizykalnego i obrazowania (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Rak płuca z przerzutami do węzłów nadobojczykowych",
+      "p": 0.12,
+      "za": [
+        "palacz, 55 lat, kaszel > 3 tygodni, utrata masy ciała",
+        "węzeł nadobojczykowy u mężczyzny w starszym wieku — niezależne predyktory złośliwości (okolica nadobojczykowa RR 3,72; płeć męska RR 2,72; wiek RR 1,05/rok; PMID 12569376)"
+      ],
+      "przeciw": [
+        "ból węzła po alkoholu i świąd z eozynofilią lepiej pasują do chłoniaka Hodgkina",
+        "zlewne poty nocne i gorączka mniej typowe"
+      ]
+    },
+    {
+      "nazwa": "Chłoniak nieziarniczy",
+      "p": 0.12,
+      "za": [
+        "objawy B, powiększony węzeł, wiek 55 lat, OB 62 mm/h"
+      ],
+      "przeciw": [
+        "ból po alkoholu i eozynofilia przemawiają za chłoniakiem Hodgkina [wiedza modelu, niezweryfikowane]"
+      ]
+    },
+    {
+      "nazwa": "Gruźlica płuc z gruźliczym zapaleniem węzłów chłonnych",
+      "p": 0.1,
+      "za": [
+        "kaszel > 3 tygodni, poty nocne, chudnięcie, stany podgorączkowe, palenie",
+        "gruźlicze zapalenie węzłów szyjnych to główna diagnoza różnicowa chłoniaka węzłowego (PMID 37599529)",
+        "limfopenia, OB 62 mm/h"
+      ],
+      "przeciw": [
+        "ból węzła po alkoholu, świąd i eozynofilia nie pasują do gruźlicy [wiedza modelu, niezweryfikowane]",
+        "brak danych o kontakcie, bezdomności, alkoholizmie, immunosupresji (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Zespół wypalenia zawodowego lub depresja",
+      "p": 0.01,
+      "za": [
+        "przeciążenie pracą, interpretacja żony"
+      ],
+      "przeciw": [
+        "anhedonia i przygnębienie: wcale; myśli rezygnacyjne: nie; apetyt bez zmian",
+        "objawy somatyczne wyprzedziły gorsze samopoczucie",
+        "obiektywne odchylenia: OB 62 mm/h, gorączka, utrata 7 kg, węzeł > 2 cm, eozynofilia, limfopenia, niedokrwistość — nie tłumaczą się stanem psychicznym"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "myśli samobójcze — pacjent zaprzecza (ankieta)",
+    "ostre objawy alarmowe z listy ankiety w ostatnich dniach — pacjent zaprzecza ('nic z tych rzeczy'); nie wyklucza to jednak cech zespołu żyły głównej górnej, bo nie były badane fizykalnie"
+  ],
+  "red_flags_otwarte": [
+    "masa śródpiersia z zagrożeniem uciśnięcia tchawicy lub zespołem żyły głównej górnej (kaszel > 3 tyg. + węzeł nadobojczykowy) — NIE wykluczone; wykluczy: badanie fizykalne (obrzęk twarzy/szyi, poszerzone żyły szyjne i klatki, stridor, duszność w pozycji leżącej, ortopnoe) i RTG klatki piersiowej PA i boczne dziś; masa śródpiersia może dawać ucisk dróg oddechowych i żyły głównej górnej (PMID 40470453)",
+    "gruźlica płuc prątkująca — zakaźna dla otoczenia (rodzina, praca) — NIE wykluczona; wykluczy: RTG klatki piersiowej, a przy zmianach — plwocina na prątki (bakterioskopia, posiew, test molekularny); do czasu wyniku maseczka i ograniczenie kontaktów [wiedza modelu, niezweryfikowane]",
+    "nowotwór złośliwy (chłoniak Hodgkina, chłoniak nieziarniczy, rak płuca z przerzutem do węzła nadobojczykowego) — nieodwracalne pogorszenie stopnia zaawansowania przy opóźnieniu tygodni; wykluczy tylko badanie histopatologiczne węzła (biopsja wycięciowa lub gruboigłowa; sama biopsja cienkoigłowa nie wystarcza do rozpoznania chłoniaka Hodgkina — PMID 39734971: wymagana biopsja węzła z oceną histologiczną i immunofenotypową)",
+    "niedokrwistość i ewentualne zajęcie szpiku/wątroby — NIEZNANE; wymaga rozszerzenia badań (rozmaz, LDH, próby wątrobowe, kreatynina, albumina, HIV, HBV, HCV)",
+    "brak parametrów życiowych (saturacja, częstość oddechów, ciśnienie, tętno) — NIEZNANE"
+  ],
+  "nastepny_krok": "Dziś: badanie fizykalne z oceną węzłów, śledziony i wątroby oraz cech zespołu żyły głównej górnej, z saturacją, RTG klatki piersiowej PA i boczne w trybie pilnym i wystawienie karty diagnostyki i leczenia onkologicznego (DiLO) z pilnym skierowaniem do hematologa/chirurga na biopsję wycięciową węzła nadobojczykowego; przy duszności spoczynkowej, stridorze lub obrzęku twarzy — SOR natychmiast.",
+  "co_zmieniloby_zdanie": "Prawidłowe RTG klatki piersiowej i badanie fizykalne bez cech ucisku śródpiersia obniżyłyby pilność do 3 (diagnostyka onkologiczna w ciągu dni), ale nie usunęłyby wskazania do biopsji węzła; masa śródpiersia z objawami ucisku lub zmiany jamiste podniosłyby pilność do 1.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla chłoniaków, limfadenopatii ani gruźlicy w bibliotece (tylko pozycje przykładowe); pamiec/zespol.md — brak wpisów dotyczących tej prezentacji",
+    "PubMed zapytanie 1: 'alcohol-induced pain Hodgkin lymphoma' (15 wyników) → PMID 31780609, PMID 39734971",
+    "PubMed zapytanie 2: 'Hodgkin lymphoma pruritus eosinophilia B symptoms prognosis' (0 wyników — nieskuteczne)",
+    "PubMed zapytanie 3: 'supraclavicular lymphadenopathy malignancy risk primary care' (3 wyniki) → PMID 12569376, PMID 14722499",
+    "PubMed zapytanie 4: 'Hodgkin lymphoma diagnosis treatment review[Title] OR classical Hodgkin lymphoma[Title] review' od 2020 (261 wyników, przejrzane bez cytowania)",
+    "PubMed zapytanie 5: 'lymphadenopathy evaluation excisional biopsy versus fine needle aspiration lymphoma' od 2015 (0 wyników — nieskuteczne)",
+    "PubMed zapytanie 6: 'Hodgkin lymphoma[Title] AND review[Publication Type] AND (clinical presentation OR diagnosis)' od 2019 → PMID 39239794, PMID 33493434",
+    "PubMed zapytanie 7: 'pruritus[Title] AND (Hodgkin OR lymphoma)[Title]' (168 wyników, bez cytowania)",
+    "PubMed zapytanie 8: 'superior vena cava syndrome lymphoma mediastinal mass airway compression' od 2010 → PMID 40470453",
+    "PubMed zapytanie 9: 'tuberculous lymphadenitis[Title] AND lymphoma[Title] differential diagnosis' → PMID 37599529",
+    "PMID 39734971 — Cardoso T, Gonçalves L. Hodgkin Lymphoma As the Underlying Cause of a Chronic Cough. Cureus 2024;16(11):e74778. DOI 10.7759/cureus.74778 (streszczenie sprawdzone: objawy B, świąd, ból po alkoholu, objawy oddechowe przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła z oceną histologiczną i immunofenotypową)",
+    "PMID 31780609 — Ma L i wsp. Hodgkin lymphoma presenting as alcohol-induced back pain. BMJ Case Rep 2019;12(11). DOI 10.1136/bcr-2018-228440 (streszczenie sprawdzone: ból wywołany alkoholem — rzadki, znany objaw chłoniaka Hodgkina)",
+    "PMID 12569376 — Chau I i wsp. Rapid access multidisciplinary lymph node diagnostic clinic: analysis of 550 patients. Br J Cancer 2003;88(3):354-61. DOI 10.1038/sj.bjc.6600738 (streszczenie sprawdzone: predyktory złośliwości — okolica nadobojczykowa RR 3,72, płeć męska RR 2,72, wiek RR 1,05, ≥2 okolice RR 6,41)",
+    "PMID 14722499 — Leung AK, Robson WL. Childhood cervical lymphadenopathy. J Pediatr Health Care 2004;18(1):3-7. DOI 10.1016/j.pedhc.2003.08.008 (streszczenie sprawdzone: węzły nadobojczykowe niosą znacznie wyższe ryzyko nowotworu; praca pediatryczna — ekstrapolacja)",
+    "PMID 33493434 — Brice P i wsp. Classical Hodgkin lymphoma. Lancet 2021;398(10310):1518-27. DOI 10.1016/S0140-6736(20)32207-8 (streszczenie sprawdzone: mediana wieku w połowie 4. dekady; choroba wysoce uleczalna)",
+    "PMID 39239794 — Ansell SM. Hodgkin lymphoma: 2025 update on diagnosis, risk-stratification, and management. Am J Hematol 2024;99(12):2367-78. DOI 10.1002/ajh.27470 (streszczenie sprawdzone: dokładna ocena stopnia zaawansowania krytyczna dla wyboru leczenia; PET do oceny odpowiedzi)",
+    "PMID 40470453 — Anai S i wsp. Tracheal stenosis and superior vena cava syndrome caused by a large mediastinal mass due to ATLL. Cureus 2025;17(5):e83537. DOI 10.7759/cureus.83537 (streszczenie sprawdzone: masa śródpiersia w chłoniaku może powodować zespół żyły głównej górnej i zwężenie tchawicy, szybko postępujące)",
+    "PMID 37599529 — Liu N i wsp. US + CEUS w różnicowaniu gruźliczego zapalenia węzłów szyjnych i chłoniaka. Clin Hemorheol Microcirc 2023;85(3):261-75. DOI 10.3233/CH-231876 (streszczenie sprawdzone: gruźlicze zapalenie węzłów szyjnych jako diagnoza różnicowa chłoniaka)",
+    "Karta DiLO, wskazania do maseczki i diagnostyki prątków, typowe odchylenia laboratoryjne w chłoniaku Hodgkina — [wiedza modelu, niezweryfikowane]"
+  ]
+}

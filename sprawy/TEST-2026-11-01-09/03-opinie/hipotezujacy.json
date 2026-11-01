@@ -1,0 +1,100 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Ból głowy z nadużywania leków na podłożu migreny z aurą",
+      "p": 0.6,
+      "za": [
+        "Ból głowy prawie codziennie od 6 miesięcy przy wcześniejszych bólach kilka razy w roku: przekształcenie bólu pierwotnego w przewlekły.",
+        "Leki przeciwbólowe ponad 20 dni w miesiącu, w tym preparaty złożone z kofeiną, ketoprofen i paracetamol; leki 'nie pomagają' (typowe dla nadużywania).",
+        "Ból najsilniejszy rano po przebudzeniu i słabnący w ciągu dnia: zgodne z bólem z odstawienia leku i kofeiny po nocy.",
+        "Zygzaki i migotanie przed oczami przed bólem: przemawia za migreną z aurą jako bólem podstawowym."
+      ],
+      "przeciw": [
+        "Charakter uciskający, obustronny, 5/10 bardziej przypomina ból typu napięciowego niż migrenę (nie przeczy nadużywaniu, ale zmienia ból podstawowy).",
+        "Liczba tabletek na dobę i ilość kofeiny są NIEZNANE, więc stopnia nadużywania nie da się policzyć."
+      ]
+    },
+    {
+      "nazwa": "Przewlekły ból głowy typu napięciowego",
+      "p": 0.12,
+      "za": [
+        "Ból uciskający jak obręcz, obustronny, umiarkowany (5/10), bez nasilenia przy wysiłku i parciu.",
+        "Brak wymiotów, krótki sen poniżej 6 godzin jako czynnik podtrzymujący."
+      ],
+      "przeciw": [
+        "Aura wzrokowa przed bólem nie pasuje do bólu typu napięciowego jako jedynego rozpoznania.",
+        "Przy ponad 20 dniach leków w miesiącu nadużywanie leków i tak musi być rozpoznane obok."
+      ]
+    },
+    {
+      "nazwa": "Ból głowy związany z obturacyjnym bezdechem sennym lub niedoborem snu",
+      "p": 0.08,
+      "za": [
+        "Ból obecny już po przebudzeniu i ustępujący w ciągu dnia: typowy wzorzec porannego bólu głowy.",
+        "Pacjentka zgłasza sen poniżej 6 godzin lub zły sen; krótszy całkowity czas snu i niewypoczywający sen wiążą się z porannym bólem głowy (PMID 31963788)."
+      ],
+      "przeciw": [
+        "Brak danych o chrapaniu, bezdechach, senności dziennej, masie ciała (NIEZNANE).",
+        "Aura wzrokowa i nadużywanie leków lepiej tłumaczą całość obrazu."
+      ]
+    },
+    {
+      "nazwa": "Ból głowy polekowy związany z etynyloestradiolem lub odstawieniem kofeiny",
+      "p": 0.06,
+      "za": [
+        "Stosuje złożoną antykoncepcję estrogenowo-progestagenową (etynyloestradiol z drospirenonem); estrogeny mogą nasilać migrenę i aurę [wiedza modelu, niezweryfikowane].",
+        "Leki złożone z kofeiną i nieznane spożycie kawy: ból z odstawienia kofeiny pojawia się po nocnej przerwie."
+      ],
+      "przeciw": [
+        "Nie wiadomo, czy początek bólów zbiegł się z rozpoczęciem antykoncepcji ani czy ból nasila się w przerwie bez tabletek."
+      ]
+    },
+    {
+      "nazwa": "Wtórny ból głowy z przyczyny wewnątrzczaszkowej (guz mózgu, idiopatyczne nadciśnienie śródczaszkowe, zakrzepica zatok żylnych mózgu)",
+      "p": 0.04,
+      "za": [
+        "Ból najsilniejszy rano po przebudzeniu i zmiana wzorca bólu po 40. roku życia (od kilku razy w roku do codziennego).",
+        "Złożona antykoncepcja hormonalna jest czynnikiem ryzyka zakrzepicy zatok żylnych mózgu [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Brak wymiotów porannych, brak nasilenia przy kaszlu i parciu, brak objawów alarmowych w ankiecie, ból stały, niezmieniający się od 6 miesięcy.",
+        "Ciśnienie tętnicze prawidłowe; badanie neurologiczne i dno oka NIEZNANE, a od nich zależy ten szacunek."
+      ]
+    }
+  ],
+  "pilnosc": 3,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Nagły, piorunujący ból głowy (zaprzecza).",
+    "Wymioty poranne przy bólu (zaprzecza).",
+    "Nasilenie bólu przy kaszlu, kichaniu, parciu lub schylaniu (zaprzecza).",
+    "Progresja nasilenia w ciągu 6 miesięcy (ból podobny cały czas).",
+    "Nadciśnienie tętnicze w ostatnich 3 miesiącach (pomiar prawidłowy, poniżej 140/90 mm Hg)."
+  ],
+  "red_flags_otwarte": [
+    "Badanie neurologiczne i ocena dna oka nie wykonane (NIEZNANE): obrzęk tarczy nerwu wzrokowego lub objaw ogniskowy zmieniają decyzję o MRI na pilną.",
+    "Migrena z aurą u kobiety 46 lat stosującej złożoną antykoncepcję z etynyloestradiolem: przeciwwskazanie z powodu ryzyka udaru niedokrwiennego (PMID 41630559, 39979846); niejasne, czy aura jest nowa i jak długo trwa.",
+    "Cechy aury NIEZNANE (czas trwania, czy zawsze ta sama, czy bywa bez bólu, czy jednostronne objawy czuciowe lub ruchowe): aura nietypowa lub przedłużona jest wskazaniem do neuroobrazowania (PMID 31891197).",
+    "Zmiana wzorca bólu po 40. roku życia (z epizodycznego w codzienny): wskazanie względne do neuroobrazowania, jeśli nie ustąpi po odstawieniu leków (PMID 31891197)."
+  ],
+  "nastepny_krok": "Wizyta w gabinecie w tym tygodniu z badaniem neurologicznym i oceną dna oka; jeśli są prawidłowe, rozpoznać ból głowy z nadużywania leków i zamiast MRI rozpocząć odstawienie leków doraźnych razem z profilaktyką oraz zamienić antykoncepcję złożoną na metodę bez estrogenu.",
+  "co_zmieniloby_zdanie": "Objaw ogniskowy, obrzęk tarczy nerwu wzrokowego, aura nietypowa lub przedłużona albo brak poprawy po 2–3 miesiącach skutecznego odstawienia leków przesunęłyby wtórną przyczynę wewnątrzczaszkową wyżej i uzasadniły MRI.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak polskiej wytycznej dla bólu głowy z nadużywania leków ani neuroobrazowania w bólu głowy (tylko wpisy przykładowe); pamiec/zespol.md: brak wniosków dotyczących bólu głowy.",
+    "PubMed zapytanie 1: medication overuse headache[Title] AND (withdrawal OR management) AND (review[Publication Type] OR guideline[Publication Type]), od 2019 (103 wyniki).",
+    "PubMed zapytanie 2: migraine with aura AND combined hormonal contraceptives AND ischemic stroke, od 2017 (30 wyników).",
+    "PubMed zapytanie 3: neuroimaging[Title] AND headache AND (normal neurological examination OR incidental findings) AND yield (5 wyników).",
+    "PubMed zapytanie 4: medication overuse headache AND withdrawal AND preventive AND randomized controlled trial[Publication Type], od 2018 (18 wyników).",
+    "PubMed zapytanie 5: morning headache[Title] AND sleep apnea (10 wyników).",
+    "Carlsen LN i wsp. Comparison of 3 Treatment Strategies for Medication Overuse Headache: A Randomized Clinical Trial. JAMA Neurol 2020;77(9):1069-1078. PMID 32453406, DOI 10.1001/jamaneurol.2020.1179. Streszczenie sprawdzone: odstawienie z profilaktyką od początku: wyleczenie z bólu z nadużywania 96,8% (30/31) vs 74,3% sama profilaktyka; powrót do bólu epizodycznego 74,2%.",
+    "Evans RW i wsp. Neuroimaging for Migraine: AHS Systematic Review and Evidence-Based Guideline. Headache 2020;60(2):318-336. PMID 31891197, DOI 10.1111/head.13720. Streszczenie sprawdzone: brak potrzeby neuroobrazowania przy migrenie z prawidłowym badaniem neurologicznym bez cech atypowych (stopień A); rozważyć przy aurze nietypowej, przedłużonej, zmianie częstości lub cech bólu (stopień C).",
+    "Perrone U i wsp. Safety and efficacy of hormonal therapies used to treat endometriosis in women suffering migraine. Expert Opin Drug Saf 2026. PMID 41630559, DOI 10.1080/14740338.2026.2627190. Streszczenie sprawdzone: złożona antykoncepcja hormonalna przeciwwskazana w migrenie z aurą z powodu ryzyka udaru niedokrwiennego.",
+    "Ihara K i wsp. Estrogen exposure from modern contraceptives and vascular risk in women with migraine. Cephalalgia 2025;45(12). PMID 41406065, DOI 10.1177/03331024251404924. Streszczenie sprawdzone: dane przeciwne (kohorta 18–45 lat, bez istotnego wzrostu ryzyka naczyniowego przy nowoczesnej antykoncepcji złożonej); nie obejmuje wieku 46 lat; autorzy wzywają do badań prospektywnych.",
+    "Borończyk M i wsp. Migraine and stroke: correlation, coexistence, dependence. J Headache Pain 2025;26:39. PMID 39979846, DOI 10.1186/s10194-025-01973-w. Streszczenie sprawdzone: migrena z aurą jest niezależnym czynnikiem ryzyka udaru; estrogeny w antykoncepcji złożonej wymienione jako czynnik wspólny.",
+    "Spałka J i wsp. Morning Headache as an Obstructive Sleep Apnea-Related Symptom. Brain Sci 2020;10(1):57. PMID 31963788, DOI 10.3390/brainsci10010057. Streszczenie sprawdzone: poranny ból głowy u 29% kierowanych na polisomnografię; związany z płcią żeńską, niewypoczywającym snem i krótszym całkowitym czasem snu, nie z ciężkością bezdechu.",
+    "Seo MY i wsp. Improvement of morning headache in adults with OSA after positive airway pressure therapy. Sci Rep 2023;13:14620. PMID 37669991, DOI 10.1038/s41598-023-34896-0. Streszczenie sprawdzone: częstość porannego bólu głowy spadła z 53,4% do 16,4% po leczeniu dodatnim ciśnieniem w drogach oddechowych.",
+    "Kryteria ICHD-3 bólu głowy z nadużywania leków (ból ≥15 dni w miesiącu; proste leki przeciwbólowe ≥15 dni, złożone ≥10 dni w miesiącu przez >3 miesiące) [wiedza modelu, niezweryfikowane].",
+    "Estrogeny jako czynnik nasilający aurę i złożona antykoncepcja jako czynnik ryzyka zakrzepicy zatok żylnych mózgu [wiedza modelu, niezweryfikowane]."
+  ]
+}

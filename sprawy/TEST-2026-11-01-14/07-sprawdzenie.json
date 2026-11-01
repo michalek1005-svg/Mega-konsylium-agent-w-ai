@@ -1,0 +1,152 @@
+{
+  "fakty": {
+    "kartka": "ZOLTA",
+    "podsumowanie": {
+      "potwierdzone": 11,
+      "bez_zrodla": 5,
+      "sprzeczne": 0,
+      "nieaktualne": 0,
+      "zrodla_poziom_1": "zrodla/ zawiera tylko MANIFEST.md — brak polskich wytycznych i ChPL; wszystkie werdykty z poziomu 2–3",
+      "polskie_wytyczne_pubmed": "zapytanie: (Polish OR Polska OR 'Polskie Towarzystwo') AND (gout OR 'septic arthritis') AND (guidelines OR recommendations OR zalecenia) oraz Reumatologia[Journal] AND gout AND recommendations — brak polskiej wytycznej dla dny/septycznego zapalenia stawu w PubMed; twierdzenie projektu o braku polskiego źródła potwierdzone w zasięgu PubMed"
+    },
+    "twierdzenia": [
+      {
+        "twierdzenie": "Ok. 7 % artropatii krystalicznych ma równoczesne zakażenie stawu (PMID 38901050)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38901050, DOI 10.26635/6965.6510 (Mukerji 2024, N Z Med J)",
+        "cytat": "7.2% of patients diagnosed with CA had concomitant SA",
+        "co_mowi_zrodlo": "Populacja: 567 chorych z dodatnim nakłuciem stawu na oddziale ratunkowym w Nowej Zelandii (427 artropatia krystaliczna, 140 septyczne); retrospektywne, 10 lat. Populacja i wartość zgodne z projektem."
+      },
+      {
+        "twierdzenie": "Immunosupresja i dna w wywiadzie są głównymi czynnikami predysponującymi do współistnienia zakażenia i artropatii krystalicznej (PMID 38901050)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38901050, DOI 10.26635/6965.6510",
+        "cytat": "greatest predisposing factors for SACA were previous history of gout, rheumatoid arthritis, being immunocompromised or having joint metalware",
+        "co_mowi_zrodlo": "Zgodne; źródło wymienia dodatkowo RZS i metal w stawie."
+      },
+      {
+        "twierdzenie": "Cytoza płynu stawowego >50 000/µl LR 7,7; <25 000/µl LR 0,32 (PMID 17405973)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 17405973, DOI 10.1001/jama.297.13.1478 (Margaretten 2007, JAMA)",
+        "cytat": "for counts <25,000/microL: LR, 0.32; for counts >50,000/microL: LR, 7.7; for counts >100,000/microL: LR, 28.0",
+        "co_mowi_zrodlo": "Metaanaliza 14 badań, 6242 chorych, 653 z septycznym zapaleniem stawu natywnego (niegonokokowym). Wartości dokładnie zgodne. Dodatkowo: ≥25 000 LR 2,9; PMN ≥90 % LR 3,4."
+      },
+      {
+        "twierdzenie": "Próg cytozy 32 000/mm³ daje 100 % czułości dla zakażenia nałożonego na artropatię krystaliczną (PMID 38901050)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 38901050, DOI 10.26635/6965.6510",
+        "cytat": "SF WCC cutoff of 32,000/mm3 allowed for 100% sensitivity and approximately 50% specificity",
+        "co_mowi_zrodlo": "Zgodne. Uwaga: swoistość ok. 50 %, co projekt pomija — próg służy wykluczeniu, nie potwierdzeniu zakażenia; nie zmienia wniosku projektu (zakres 25–50 tys. traktowany jako nierozstrzygnięty)."
+      },
+      {
+        "twierdzenie": "Kryształy moczanu w płynie nie wykluczają zakażenia; septyczne zapalenie stawu to stan nagły niszczący staw w ciągu dni (PMID 35611099)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 35611099, DOI 10.31138/mjr.33.1.75 (Tzanis 2022, Mediterr J Rheumatol)",
+        "cytat": "presence of monosodium urate (MSU) crystals cannot exclude infection ... septic arthritis is a medical emergency which can lead to rapid joint destruction",
+        "co_mowi_zrodlo": "Opis 2 przypadków + przegląd 3 serii (14, 25, 30 chorych). Słabe źródło (kazuistyka), ale twierdzenie zgodne i potwierdzone niezależnie przez PMID 38901050. „W ciągu dni” — źródło mówi „rapid”, bez liczby dni."
+      },
+      {
+        "twierdzenie": "Gorączka ma czułość 57 % w septycznym zapaleniu stawu (PMID 17405973)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 17405973, DOI 10.1001/jama.297.13.1478",
+        "cytat": "fever (sensitivity, 57%; 95% CI, 52%-62%)",
+        "co_mowi_zrodlo": "Zgodne; dreszcze czułość 19 %."
+      },
+      {
+        "twierdzenie": "Krótkotrwałe NLPZ przy metotreksacie ≤30 mg/tydz. bez czynników ryzyka nie wymagają dodatkowego monitorowania; przy odwodnieniu i niewydolności nerek postępowanie indywidualne (PMID 40779298)",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 40779298, DOI 10.1080/17425255.2025.2546127 (den Uil 2025, Expert Opin Drug Metab Toxicol)",
+        "cytat": "no additional safety monitoring is required during short-term NSAID use in patients using LD-MTX in the absence of risk factors",
+        "co_mowi_zrodlo": "Przegląd narracyjny; LD-MTX ≤30 mg/tydz., NLPZ ≤14 dni. Czynniki ryzyka: niewydolność nerek, MTX >20 mg/tydz., cukrzyca, odwodnienie, ASA w dawce przeciwbólowej. Chory: MTX 12,5–15 mg, kreatynina 1,1 mg/dl — warunki projektu (plan B) zgodne. Zdanie projektu o „ostrym uszkodzeniu nerek i spadku klirensu MTX w sepsie” jest wnioskowaniem z czynników ryzyka źródła (odwodnienie, niewydolność nerek), nie bezpośrednim cytatem — dopuszczalne, ale to opinia autorów (\"In our opinion\")."
+      },
+      {
+        "twierdzenie": "Paracetamol 1 g doustnie na ból [wiedza modelu, niezweryfikowane]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 23794268, DOI 10.1002/14651858.CD010210.pub2 (Cochrane 2013: paracetamol 1000 mg pojedyncza dawka u dorosłych); PMID 23420266, DOI 10.1093/ageing/afs200 (BGS 2013: maks. 4 g/24 h)",
+        "cytat": "ibuprofen 400 mg + paracetamol 1000 mg ... No serious adverse events ... maximum daily dose (4 g/24 h) is not exceeded",
+        "co_mowi_zrodlo": "Pojedyncza dawka 1000 mg u dorosłych standardowa w badaniach RCT; maks. 4 g/dobę. Etykietę [wiedza modelu] można zastąpić źródłem poziomu 2. Brak ChPL w zrodla/ (poziom 1) — zalecić dodanie."
+      },
+      {
+        "twierdzenie": "Progi eskalacji: ciśnienie skurczowe <100 mmHg, oddechy ≥22/min, splątanie [qSOFA, wiedza modelu]",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 26903338, DOI 10.1001/jama.2016.0287 (Singer 2016, Sepsis-3, JAMA)",
+        "cytat": "respiratory rate of 22/min or greater, altered mentation, or systolic blood pressure of 100 mm Hg or less",
+        "co_mowi_zrodlo": "Poprawka drobna: Sepsis-3 podaje ciśnienie skurczowe ≤100 mmHg (nie <100). qSOFA ≥2 z 3 kryteriów. Etykietę [wiedza modelu] można zastąpić PMID 26903338."
+      },
+      {
+        "twierdzenie": "Progi eskalacji: tętno >100/min, saturacja <94 %",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — nie należą do qSOFA (PMID 26903338); brak polskiego/europejskiego źródła w zrodla/ i w przeszukanym PubMed",
+        "cytat": "",
+        "co_mowi_zrodlo": "Twierdzenie nieliczbowe w sensie dawki/przeciwwskazania — progi ostrożnościowe; muszą zachować etykietę [wiedza modelu, niezweryfikowane] (w projekcie etykieta jest). Nie obniżają pilności, więc nie generują kartki czerwonej."
+      },
+      {
+        "twierdzenie": "Najbliższą dawkę metotreksatu wstrzymać do decyzji szpitala w ostrym zakażeniu [wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 3,
+        "zrodlo": "PMID 28339817, DOI 10.1093/rheumatology/kew479 (BSR/BHPR 2017, wytyczna DMARD) — streszczenie niedostępne w PubMed; treść z pamięci modelu",
+        "cytat": "",
+        "co_mowi_zrodlo": "Wytyczna BSR/BHPR 2017 zaleca wstrzymanie DMARD w czasie poważnego zakażenia [z pamięci, niezweryfikowane w tekście]. Brak ChPL metotreksatu w zrodla/. Etykieta w projekcie obecna — utrzymać do czasu dodania ChPL/wytycznej."
+      },
+      {
+        "twierdzenie": "Glikokortykosteroidu nie odstawiać (ryzyko niewydolności nadnerczy) [wiedza modelu]",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w zrodla/; nie szukano w PubMed (twierdzenie ogólne, nieliczbowe, oznaczone etykietą)",
+        "cytat": "",
+        "co_mowi_zrodlo": "Etykieta w projekcie obecna. Dopuszczalne w FINAL z etykietą."
+      },
+      {
+        "twierdzenie": "Kolchicyna i NLPZ podane przed punkcją maskują gorączkę i opóźniają rozpoznanie zakażenia",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak — w projekcie bez etykiety; żadna z cytowanych prac (17405973, 38901050, 35611099, 40779298) nie mówi o maskowaniu gorączki przez kolchicynę/NLPZ",
+        "cytat": "",
+        "co_mowi_zrodlo": "POPRAWKA: dodać etykietę [wiedza modelu, niezweryfikowane] do tego zdania w DLACZEGO. Twierdzenie farmakologicznie wiarygodne, ale nieudokumentowane."
+      },
+      {
+        "twierdzenie": "Antybiotyku w POZ nie podawać przed posiewami, chyba że wstrząs lub transport wielogodzinny",
+        "werdykt": "BEZ_ZRODLA",
+        "poziom_zrodla": 4,
+        "zrodlo": "brak w projekcie; farmakolog w 03-opinie cytuje PMID 42950136 (Khodadadi 2026, Clin Infect Dis) i PMID 42423760 (Bönnen 2026) dla wczesnej punkcji z mikrobiologią — nie weryfikowano osobno",
+        "cytat": "",
+        "co_mowi_zrodlo": "POPRAWKA: dodać etykietę [wiedza modelu, niezweryfikowane] lub przenieść do ŹRÓDEŁ PMID 42950136 z opinii farmakologa (poziom 2) po sprawdzeniu, że streszczenie mówi o pobraniu posiewów przed antybiotykiem."
+      },
+      {
+        "twierdzenie": "Brak polskiej wytycznej dla septycznego zapalenia stawu i dny w zrodla/ i w PubMed",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 1,
+        "zrodlo": "zrodla/MANIFEST.md (katalog pusty poza manifestem); PubMed: 2 zapytania celowane w polskie wytyczne — 0 trafień merytorycznych",
+        "cytat": "",
+        "co_mowi_zrodlo": "Dostępna wytyczna europejska: EULAR 2016 dla dny (PMID 27457514, DOI 10.1136/annrheumdis-2016-209707) — leczenie napadu: kolchicyna, NLPZ, GKS doustne/dostawowe lub kombinacja; cel SUA <6 mg/dl. Zgodna z planem B projektu (GKS preferowane u chorego już na GKS to decyzja kliniczna, nie sprzeczność)."
+      },
+      {
+        "twierdzenie": "Pilność 1 (natychmiast) — septyczne zapalenie stawu jako stan nagły",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PMID 35611099; PMID 17405973 (prompt identification reduces morbidity and mortality)",
+        "cytat": "prompt identification and treatment of septic arthritis can substantially reduce morbidity and mortality",
+        "co_mowi_zrodlo": "Zgodne z wetem najgorszego scenariusza i jednomyślnością 6/6."
+      }
+    ],
+    "poprawki": [
+      "DLACZEGO: zdanie o maskowaniu gorączki przez kolchicynę/NLPZ — dodać etykietę [wiedza modelu, niezweryfikowane].",
+      "REKOMENDACJA: zdanie o niepodawaniu antybiotyku w POZ — dodać etykietę [wiedza modelu, niezweryfikowane] albo cytować PMID 42950136 (po weryfikacji streszczenia).",
+      "WRÓĆ/ESKALUJ: ciśnienie skurczowe ≤100 mmHg (Sepsis-3, PMID 26903338) zamiast <100; qSOFA można cytować zamiast etykiety; tętno >100/min i saturacja <94 % pozostają z etykietą [wiedza modelu].",
+      "Paracetamol 1 g: etykietę można zastąpić PMID 23794268 (Cochrane 2013) + maks. 4 g/dobę (PMID 23420266); docelowo ChPL do zrodla/.",
+      "Wstrzymanie metotreksatu: zachować etykietę; można wskazać BSR/BHPR 2017 (PMID 28339817) jako poziom 3 z pamięci.",
+      "Próg 32 000/mm³: dopisać, że swoistość ok. 50 % (próg wykluczający, nie potwierdzający).",
+      "ŹRÓDŁA: uzupełnić o EULAR 2016 (PMID 27457514) jako poziom 3 dla planu B (leczenie napadu dny)."
+    ]
+  }
+}

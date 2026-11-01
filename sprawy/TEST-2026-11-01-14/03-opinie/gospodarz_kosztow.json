@@ -1,0 +1,59 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "septyczne zapalenie stawu kolanowego", "p": 0,
+     "za": ["gorączka 38,6 °C i dreszcze", "immunosupresja: metotreksat 12,5–15 mg/tydzień + glikokortykosteroid doustny", "rana/otarcie skóry i zmiany łuszczycowe w okolicy kolana (wrota)", "CRP 186 mg/l, WBC 15,9 G/l, neutrofile 13,2 G/l", "całkowita niemożność ruchu"],
+     "przeciw": ["wcześniejszy epizod podagry (niepotwierdzony)", "kwas moczowy 8,1 mg/dl"]},
+    {"nazwa": "napad dny moczanowej w stawie kolanowym", "p": 0,
+     "za": ["epizod w palcu stopy 2 lata temu (sposób rozpoznania NIEZNANY)", "kwas moczowy 8,1 mg/dl", "brak leczenia obniżającego kwas moczowy"],
+     "przeciw": ["dreszcze i gorączka 38,6 °C", "pierwszy napad w dużym stawie przy immunosupresji", "hiperurykemia nie rozstrzyga i nie wyklucza zakażenia"]},
+    {"nazwa": "septyczne zapalenie stawu współistniejące z dną moczanową", "p": 0,
+     "za": ["kryształy nie wykluczają zakażenia: 23,6% chorych z septycznym zapaleniem stawu miało równocześnie artropatię krystaliczną (PMID 38901050)"],
+     "przeciw": []}
+  ],
+  "pilnosc": 1,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "ostre zapalenie jednego stawu z gorączką 38,6 °C i dreszczami u chorego na metotreksacie i glikokortykosteroidzie — septyczne zapalenie stawu niewykluczone",
+    "rana/otarcie skóry w okolicy kolana — wrota zakażenia",
+    "całkowita niemożność ruchu biernego",
+    "parametry życiowe NIEZNANE — możliwa posocznica"
+  ],
+  "nastepny_krok": "Skierować dziś, natychmiast, na szpitalny oddział ratunkowy / ortopedię z wnioskiem o punkcję kolana przed antybiotykiem (cytoza z odsetkiem neutrofili, barwienie Grama, posiew, kryształy w mikroskopie polaryzacyjnym) i 2 zestawy posiewów krwi; nie leczyć w POZ empirycznie kolchicyną i niesteroidowym lekiem przeciwzapalnym.",
+  "co_zmieniloby_zdanie": "Nic dostępnego w POZ: dopiero płyn stawowy z cytozą <25 000/µl, ujemnym Gramem i obecnymi kryształami moczanu pozwoliłby leczyć jak napad dny bez hospitalizacji (posiew nadal do odbioru).",
+  "badania": [
+    {"nazwa": "punkcja stawu kolanowego z badaniem płynu: cytoza i odsetek neutrofili, barwienie Grama, posiew, kryształy w mikroskopie polaryzacyjnym", "cel": "rozstrzygnięcie septyczne zapalenie stawu vs napad dny vs oba naraz", "zmienia_decyzje": true, "kolejnosc": 1,
+     "uwagi": "Jedyne badanie rozstrzygające; uzasadnione zawsze przy otwartej red flag. Cytoza ≥50 000/µl LR 7,7, >100 000/µl LR 28, <25 000/µl LR 0,32 (PMID 17405973). Próg 32 000/µl miał 100% czułości dla zakażenia (PMID 38901050). Kryształy NIE kończą diagnostyki — posiew obowiązkowo (PMID 29398463, 38901050). Pobrać przed antybiotykiem; wykonuje SOR/ortopedia, nie POZ."},
+    {"nazwa": "posiewy krwi (2 zestawy)", "cel": "identyfikacja patogenu i ocena bakteriemii, gdy posiew płynu ujemny lub antybiotyk musi poprzedzić punkcję", "zmienia_decyzje": true, "kolejnosc": 1,
+     "uwagi": "Tanie, pobierane równolegle z punkcją; u części chorych z koegzystencją dny i zakażenia rozpoznanie oparto na dodatnim posiewie krwi (PMID 29398463)."},
+    {"nazwa": "parametry życiowe (ciśnienie, tętno, oddechy, saturacja, świadomość)", "cel": "ocena posocznicy i trybu transportu", "zmienia_decyzje": true, "kolejnosc": 0,
+     "uwagi": "Bezkosztowe, przy pierwszym kontakcie; NIEZNANE w wywiadzie. Nie zmienia kierunku (szpital), zmienia tryb (zespół ratownictwa vs transport własny)."},
+    {"nazwa": "morfologia z rozmazem, kreatynina, aminotransferazy, mleczany", "cel": "toksyczność metotreksatu (cytopenia), funkcja nerek przed antybiotykiem/lekami, posocznica", "zmienia_decyzje": true, "kolejnosc": 2,
+     "uwagi": "Wykonać w szpitalu przy przyjęciu; ostatnie badania kontrolne przy metotreksacie NIEZNANE. Nie opóźniać skierowania na ich wynik w POZ."},
+    {"nazwa": "radiogram kolana", "cel": "wyjściowy obraz, ciało obce, zmiany kostne", "zmienia_decyzje": false, "kolejnosc": 3,
+     "uwagi": "W ostrym okresie nie odróżnia zakażenia od dny; tanie, nie blokuje ścieżki — tylko jako dodatek w szpitalu [wiedza modelu, niezweryfikowane]."}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "powtórne oznaczenie kwasu moczowego", "powod": "Wynik 8,1 mg/dl już jest; ani wysoki, ani prawidłowy nie rozstrzyga — w napadzie bywa prawidłowy, a hiperurykemia nie wyklucza zakażenia [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "powtórne CRP/OB/morfologia w POZ przed skierowaniem", "powod": "CRP 186 mg/l i leukocytoza z wczoraj są wysokie w obu hipotezach; ponowienie nie zmienia decyzji o punkcji, a zabiera godziny."},
+    {"nazwa": "prokalcytonina", "powod": "Wynik ujemny nie zwolni z punkcji przy tej prezentacji, dodatni nie zastąpi posiewu — X = Y [wiedza modelu, niezweryfikowane]."},
+    {"nazwa": "rezonans magnetyczny lub tomografia kolana", "powod": "Kolejka i koszt; nie rozstrzyga zakażenia vs kryształy — robi to płyn stawowy."},
+    {"nazwa": "USG kolana jako warunek skierowania", "powod": "Nie zmienia decyzji o punkcji przy jawnym wysięku i niemożności ruchu; ewentualnie jako prowadzenie igły w szpitalu."},
+    {"nazwa": "próba leczenia kolchicyną i niesteroidowym lekiem przeciwzapalnym ze sprawdzeniem efektu za 48–72 h", "powod": "Najdroższa opcja: odroczenie leczenia zakażenia o dni grozi zniszczeniem chrząstki i posocznicą; glikokortykosteroid i metotreksat już maskują objawy. Poprawa po leczeniu przeciwzapalnym nie wyklucza zakażenia."}
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla ostrego zapalenia stawu/septycznego zapalenia stawu (tylko przykładowe wiersze)",
+    "pamiec/zespol.md — brak wpisów dotyczących problemu",
+    "PubMed, zapytanie 1: 'septic arthritis synovial fluid analysis diagnosis crystals coexistence gout' (6 wyników; użyte 38901050, 29398463)",
+    "PubMed, zapytanie 2: 'septic arthritis serum procalcitonin OR CRP diagnostic accuracy native joint[Title/Abstract]' od 2010 (48 wyników; nie użyto — nieskuteczne)",
+    "PubMed, zapytanie 3: 'septic arthritis[Title] adults management review' od 2015 (58 wyników; użyto 42568852)",
+    "PubMed, zapytanie 4: 'Margaretten does this adult patient have septic arthritis JAMA' (użyto 17405973)",
+    "PubMed, zapytanie 5: 'serum urate during acute gout flare normal levels[Title/Abstract]' (0 wyników)",
+    "PubMed, zapytanie 6: 'serum uric acid acute gout attack[Title]' (5 wyników; streszczeń nie sprawdzono, nie użyto)",
+    "Margaretten ME i wsp. Does this adult patient have septic arthritis? JAMA 2007;297:1478-88. PMID 17405973, DOI 10.1001/jama.297.13.1478 — streszczenie sprawdzone: LR cytozy płynu <25 000 = 0,32; ≥50 000 = 7,7; >100 000 = 28; dreszcze czułość 19%",
+    "Mukerji S i wsp. Concomitant septic and crystal arthropathy. N Z Med J 2024;137:67-78. PMID 38901050, DOI 10.26635/6965.6510 — streszczenie sprawdzone: 23,6% septycznych zapaleń stawu z kryształami; immunosupresja i dna w wywiadzie czynnikami ryzyka; próg cytozy 32 000/mm3 = 100% czułości",
+    "Prior-Español Á i wsp. Coexistence of septic and crystal-induced arthritis: 25 cases. Reumatol Clin 2018;15:e81-e85. PMID 29398463, DOI 10.1016/j.reuma.2017.12.015 — streszczenie sprawdzone: najczęściej kolano i kryształy moczanu, S. aureus 48% MSSA + 12% MRSA, kryształy mogą maskować zakażenie",
+    "Johansson A i wsp. Septic arthritis and its mimics. Health Sci Rep 2026;9:e72845. PMID 42568852, DOI 10.1002/hsr2.72845 — streszczenie sprawdzone: wśród kultur z kolana 8% septycznych zapaleń stawu; 90-dniowa śmiertelność 8% vs 4% w dnie"
+  ]
+}

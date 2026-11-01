@@ -1,0 +1,555 @@
+{
+ "format": "ms-ankieta-1",
+ "kod": "T6-GGG",
+ "tytul": "Ból w lewej okolicy lędźwiowej",
+ "opis": "Od rana boli mnie w krzyżu po lewej stronie, promieniuje do pachwiny, jak kamica 5 lat temu. Wziąłem No-Spę i Ketonal, trochę lepiej. Raz zrobiło mi się słabo w łazience. Proszę o coś mocniejszego na kolkę.",
+ "pytania": [
+  {
+   "id": "slabo_jak",
+   "typ": "jeden",
+   "tekst": "Co dokładnie stało się w łazience, gdy zrobiło Ci się słabo?",
+   "krotko": "epizod osłabienia",
+   "opcje": [
+    {
+     "w": "zemdlal",
+     "t": "Straciłem przytomność albo upadłem"
+    },
+    {
+     "w": "prawie",
+     "t": "Pociemniało mi w oczach, musiałem usiąść, ale nie straciłem przytomności"
+    },
+    {
+     "w": "lekko",
+     "t": "Tylko lekko zakręciło mi się w głowie"
+    }
+   ],
+   "bo": "68 lat, pierwszy od 5 lat ból lędźwiowo-pachwinowy + omdlenie/presynkopa: obowiązkowo wykluczyć pęknięcie tętniaka aorty brzusznej (AAA) i krwawienie zaotrzewnowe; kolka nerkowa rzadko daje omdlenie."
+  },
+  {
+   "id": "objawy_teraz",
+   "typ": "wiele",
+   "tekst": "Czy masz teraz któreś z tych objawów?",
+   "krotko": "objawy wstrząsu i niedokrwienia",
+   "opcje": [
+    {
+     "w": "blady",
+     "t": "Jestem blady, spocony, zimny"
+    },
+    {
+     "w": "slabnie",
+     "t": "Znowu robi mi się słabo, gdy wstaję"
+    },
+    {
+     "w": "klatka",
+     "t": "Ból lub ucisk w klatce piersiowej"
+    },
+    {
+     "w": "dusznosc",
+     "t": "Duszność"
+    },
+    {
+     "w": "pulsuje",
+     "t": "Czuję pulsowanie w brzuchu"
+    },
+    {
+     "w": "nogi",
+     "t": "Noga zimna, blada lub zdrętwiała"
+    },
+    {
+     "w": "brak",
+     "t": "Nic z tych rzeczy",
+     "wyklucza": true
+    }
+   ],
+   "bo": "Objawy hipoperfuzji, ortostazy, ACS, niedokrwienia kończyny, tętniącego guza: każdy = 112."
+  },
+  {
+   "id": "bol_teraz",
+   "typ": "skala",
+   "tekst": "Jak silny jest ból w tej chwili, po lekach?",
+   "krotko": "nasilenie bólu teraz",
+   "skala": [
+    "brak bólu",
+    "najgorszy, jaki można sobie wyobrazić"
+   ],
+   "bo": "Ból ≥ 8 mimo ketoprofenu i drotaweryny: niewystarczająca analgezja lub inna przyczyna; pilna ocena."
+  },
+  {
+   "id": "goraczka",
+   "typ": "jeden",
+   "tekst": "Czy od rana masz gorączkę albo dreszcze?",
+   "krotko": "gorączka lub dreszcze",
+   "opcje": [
+    {
+     "w": "nie",
+     "t": "Nie"
+    },
+    {
+     "w": "dreszcze",
+     "t": "Tak, dreszcze"
+    },
+    {
+     "w": "goraczka",
+     "t": "Tak, mierzyłem gorączkę"
+    }
+   ],
+   "bo": "Gorączka przy podejrzeniu zatkanej nerki = zakażenie górnych dróg moczowych z zastojem (urosepsa), wskazanie do pilnego odbarczenia."
+  },
+  {
+   "id": "pomiar",
+   "typ": "jeden",
+   "tekst": "Czy po tym zasłabnięciu ktoś zmierzył Ci ciśnienie i tętno?",
+   "krotko": "pomiar ciśnienia i tętna",
+   "opcje": [
+    {
+     "w": "tak",
+     "t": "Tak, mam wynik"
+    },
+    {
+     "w": "moge",
+     "t": "Nie, ale mogę zmierzyć teraz"
+    },
+    {
+     "w": "nie",
+     "t": "Nie i nie mam czym"
+    }
+   ],
+   "bo": "Parametry hemodynamiczne kluczowe przy omdleniu u 68-latka; bez nich nie da się wykluczyć wstrząsu na odległość."
+  },
+  {
+   "id": "skurczowe",
+   "typ": "liczba",
+   "tekst": "Jakie było górne ciśnienie (pierwsza liczba)?",
+   "krotko": "ciśnienie skurczowe",
+   "min": 50,
+   "max": 260,
+   "krok": 1,
+   "jednostka": "mmHg",
+   "gdy": {
+    "pytanie": "pomiar",
+    "jest": [
+     "tak",
+     "moge"
+    ]
+   },
+   "bo": "SBP < 90 mmHg = 112; < 100 mmHg u nadciśnieniowca budzi niepokój (względna hipotensja)."
+  },
+  {
+   "id": "tetno",
+   "typ": "liczba",
+   "tekst": "Jakie było tętno (puls)?",
+   "krotko": "tętno",
+   "min": 30,
+   "max": 200,
+   "krok": 1,
+   "jednostka": "/min",
+   "gdy": {
+    "pytanie": "pomiar",
+    "jest": [
+     "tak",
+     "moge"
+    ]
+   },
+   "bo": "Tachykardia > 100/min (lub indeks wstrząsowy HR/SBP > 1) przy omdleniu: krwawienie. Uwaga na beta-blokery maskujące tachykardię."
+  },
+  {
+   "id": "mocz",
+   "typ": "wiele",
+   "tekst": "Co zauważyłeś przy oddawaniu moczu od rana?",
+   "krotko": "objawy z dróg moczowych",
+   "opcje": [
+    {
+     "w": "krew",
+     "t": "Mocz czerwony lub różowy"
+    },
+    {
+     "w": "malo",
+     "t": "Bardzo mało moczu albo wcale"
+    },
+    {
+     "w": "piecze",
+     "t": "Pieczenie lub częste parcie"
+    },
+    {
+     "w": "zwykle",
+     "t": "Nic nietypowego",
+     "wyklucza": true
+    }
+   ],
+   "bo": "Krwiomocz wspiera kamicę (choć bywa i w AAA); bezmocz = obustronna przeszkoda lub jedyna nerka lub hipoperfuzja – pilne."
+  },
+  {
+   "id": "wymioty",
+   "typ": "jeden",
+   "tekst": "Czy wymiotujesz?",
+   "krotko": "wymioty",
+   "opcje": [
+    {
+     "w": "nie",
+     "t": "Nie"
+    },
+    {
+     "w": "raz",
+     "t": "Raz lub dwa razy"
+    },
+    {
+     "w": "ciagle",
+     "t": "Wielokrotnie, nie mogę nic utrzymać"
+    }
+   ],
+   "bo": "Uporczywe wymioty uniemożliwiają leczenie doustne i nawadnianie – wskazanie do oceny w SOR."
+  },
+  {
+   "id": "przebieg",
+   "typ": "jeden",
+   "tekst": "Jak zachowuje się ból od rana?",
+   "krotko": "przebieg bólu",
+   "opcje": [
+    {
+     "w": "napady",
+     "t": "Przychodzi falami, wiję się, nie mogę znaleźć pozycji"
+    },
+    {
+     "w": "staly",
+     "t": "Jest stały, rozrywający, nie zmienia się"
+    },
+    {
+     "w": "nagle",
+     "t": "Zaczął się nagle, w jednej chwili, z pełną siłą"
+    }
+   ],
+   "bo": "Ból falujący z niepokojem ruchowym = typowo kolka; stały, rozrywający lub piorunujący początek = AAA/rozwarstwienie."
+  },
+  {
+   "id": "aorta",
+   "typ": "jeden",
+   "tekst": "Czy lekarz mówił Ci kiedyś o poszerzeniu dużej tętnicy w brzuchu (aorty)?",
+   "krotko": "znane poszerzenie aorty",
+   "opcje": [
+    {
+     "w": "tak",
+     "t": "Tak"
+    },
+    {
+     "w": "nie",
+     "t": "Nie"
+    },
+    {
+     "w": "nigdy_usg",
+     "t": "Nigdy nie miałem USG brzucha"
+    }
+   ],
+   "bo": "Znany AAA = 112. Brak USG w wywiadzie: ryzyko nieocenione (mężczyzna 65+, przesiewowo zalecane USG aorty)."
+  },
+  {
+   "id": "choroby",
+   "typ": "wiele",
+   "tekst": "Na co chorujesz albo co Cię dotyczy?",
+   "krotko": "choroby i czynniki ryzyka",
+   "opcje": [
+    {
+     "w": "nadcisnienie",
+     "t": "Nadciśnienie"
+    },
+    {
+     "w": "serce",
+     "t": "Choroba serca lub zawał"
+    },
+    {
+     "w": "cukrzyca",
+     "t": "Cukrzyca"
+    },
+    {
+     "w": "nerki",
+     "t": "Choroba nerek"
+    },
+    {
+     "w": "jedna_nerka",
+     "t": "Mam tylko jedną nerkę"
+    },
+    {
+     "w": "wrzody",
+     "t": "Wrzody żołądka lub krwawienie z przewodu pokarmowego"
+    },
+    {
+     "w": "palenie",
+     "t": "Palę lub paliłem papierosy"
+    },
+    {
+     "w": "brak",
+     "t": "Nic z tych rzeczy",
+     "wyklucza": true
+    }
+   ],
+   "bo": "Czynniki ryzyka AAA (palenie, nadciśnienie, ChNS); przeciwwskazania do NLPZ (CKD, wrzody, niewydolność serca); jedyna nerka + przeszkoda = pilne."
+  },
+  {
+   "id": "rozrzedzajace",
+   "typ": "jeden",
+   "tekst": "Czy bierzesz leki na rozrzedzenie krwi?",
+   "krotko": "leki przeciwkrzepliwe/przeciwpłytkowe",
+   "opcje": [
+    {
+     "w": "nie",
+     "t": "Nie"
+    },
+    {
+     "w": "aspiryna",
+     "t": "Tak, aspirynę (np. Acard, Polocard)"
+    },
+    {
+     "w": "doustne",
+     "t": "Tak, np. Xarelto, Eliquis, Pradaxa, Acenokumarol, Warfin"
+    },
+    {
+     "w": "inne",
+     "t": "Tak, inne"
+    }
+   ],
+   "bo": "Antykoagulacja zwiększa ryzyko krwawienia zaotrzewnowego i wpływa na wybór NLPZ."
+  },
+  {
+   "id": "leki",
+   "typ": "tekst",
+   "tekst": "Jakie leki bierzesz na stałe? Wpisz nazwy z opakowań.",
+   "krotko": "leki stałe",
+   "podpowiedz": "Na przykład: Bisocard 5 mg rano, Tamsulosyna 0,4 mg",
+   "bo": "Beta-blokery maskują tachykardię; diuretyki/IKA/sartany + NLPZ = ryzyko ostrego uszkodzenia nerek."
+  },
+  {
+   "id": "ketonal_ile",
+   "typ": "jeden",
+   "tekst": "Ile tabletek Ketonalu wziąłeś od rana?",
+   "krotko": "dawka ketoprofenu dziś",
+   "opcje": [
+    {
+     "w": "1",
+     "t": "Jedną"
+    },
+    {
+     "w": "2",
+     "t": "Dwie"
+    },
+    {
+     "w": "3",
+     "t": "Trzy lub więcej"
+    }
+   ],
+   "bo": "Planowanie dalszej analgezji; maks. dawka dobowa ketoprofenu, ryzyko nerkowe u 68-latka."
+  },
+  {
+   "id": "alergie",
+   "typ": "jeden",
+   "tekst": "Czy masz uczulenie na jakieś leki?",
+   "krotko": "alergie na leki",
+   "opcje": [
+    {
+     "w": "nie",
+     "t": "Nie"
+    },
+    {
+     "w": "przeciwbolowe",
+     "t": "Tak, na leki przeciwbólowe"
+    },
+    {
+     "w": "kontrast",
+     "t": "Tak, na kontrast do badań"
+    },
+    {
+     "w": "inne",
+     "t": "Tak, na inne"
+    }
+   ],
+   "bo": "Wybór analgezji i ewentualnej angio-TK z kontrastem."
+  },
+  {
+   "id": "wyniki",
+   "typ": "wiele",
+   "tekst": "Jakie badania miałeś w ostatnim roku?",
+   "krotko": "badania z ostatniego roku",
+   "opcje": [
+    {
+     "w": "kreatynina",
+     "t": "Krew: kreatynina lub badanie nerek"
+    },
+    {
+     "w": "usg",
+     "t": "USG brzucha"
+    },
+    {
+     "w": "mocz",
+     "t": "Badanie moczu"
+    },
+    {
+     "w": "brak",
+     "t": "Żadnych z tych",
+     "wyklucza": true
+    }
+   ],
+   "bo": "Wyjściowa czynność nerek (eGFR) decyduje o bezpieczeństwie NLPZ; ostatnie USG: czy oceniono aortę i nerki."
+  },
+  {
+   "id": "egfr",
+   "typ": "jeden",
+   "tekst": "Czy wynik badania nerek był w normie?",
+   "krotko": "wynik kreatyniny/eGFR",
+   "opcje": [
+    {
+     "w": "norma",
+     "t": "Tak, w normie"
+    },
+    {
+     "w": "nieprawidlowy",
+     "t": "Nie, był nieprawidłowy"
+    }
+   ],
+   "gdy": {
+    "pytanie": "wyniki",
+    "jest": "kreatynina"
+   },
+   "bo": "eGFR < 30 lub CKD = unikać NLPZ; dokładną wartość lekarz potwierdzi w dokumentacji."
+  },
+  {
+   "id": "obawy",
+   "typ": "tekst",
+   "tekst": "Czego najbardziej się obawiasz i czego oczekujesz od tej porady?",
+   "krotko": "obawy i oczekiwania",
+   "bezNieznanych": true
+  }
+ ],
+ "flagi": [
+  {
+   "poziom": "112",
+   "dlaLekarza": "Omdlenie z utratą przytomności u 68-latka z bólem lędźwiowo-pachwinowym: wykluczyć pękający AAA / krwawienie zaotrzewnowe.",
+   "gdy": {
+    "pytanie": "slabo_jak",
+    "jest": "zemdlal"
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Presynkopa przy bólu lędźwiowym w wieku 68 lat: ocena hemodynamiczna i USG aorty dziś.",
+   "gdy": {
+    "pytanie": "slabo_jak",
+    "jest": "prawie"
+   }
+  },
+  {
+   "poziom": "112",
+   "dlaLekarza": "Objawy hipoperfuzji/ortostazy, ból w klatce, duszność, tętniący brzuch lub niedokrwienie kończyny.",
+   "gdy": {
+    "pytanie": "objawy_teraz",
+    "jest": [
+     "blady",
+     "slabnie",
+     "klatka",
+     "dusznosc",
+     "pulsuje",
+     "nogi"
+    ]
+   }
+  },
+  {
+   "poziom": "112",
+   "dlaLekarza": "Ciśnienie skurczowe < 90 mmHg.",
+   "gdy": {
+    "pytanie": "skurczowe",
+    "max": 89
+   }
+  },
+  {
+   "poziom": "112",
+   "dlaLekarza": "Tętno > 120/min po omdleniu.",
+   "gdy": {
+    "pytanie": "tetno",
+    "min": 121
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Ciśnienie skurczowe < 100 mmHg lub tętno > 100/min: względna hipotensja/tachykardia.",
+   "gdy": {
+    "ktorekolwiek": [
+     {
+      "pytanie": "skurczowe",
+      "max": 99
+     },
+     {
+      "pytanie": "tetno",
+      "min": 101
+     }
+    ]
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Ból ≥ 8/10 mimo NLPZ i drotaweryny.",
+   "gdy": {
+    "pytanie": "bol_teraz",
+    "min": 8
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Gorączka/dreszcze przy podejrzeniu przeszkody w drogach moczowych: ryzyko urosepsy, pilne odbarczenie.",
+   "gdy": {
+    "pytanie": "goraczka",
+    "jest": [
+     "dreszcze",
+     "goraczka"
+    ]
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Bezmocz/skąpomocz: przeszkoda obustronna, jedyna nerka lub hipoperfuzja.",
+   "gdy": {
+    "pytanie": "mocz",
+    "jest": "malo"
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Uporczywe wymioty: brak możliwości leczenia doustnego.",
+   "gdy": {
+    "pytanie": "wymioty",
+    "jest": "ciagle"
+   }
+  },
+  {
+   "poziom": "112",
+   "dlaLekarza": "Ból stały, rozrywający lub o piorunującym początku: wykluczyć AAA/rozwarstwienie aorty.",
+   "gdy": {
+    "pytanie": "przebieg",
+    "jest": [
+     "staly",
+     "nagle"
+    ]
+   }
+  },
+  {
+   "poziom": "112",
+   "dlaLekarza": "Znany tętniak aorty brzusznej + ból lędźwiowy + zasłabnięcie.",
+   "gdy": {
+    "pytanie": "aorta",
+    "jest": "tak"
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Jedyna nerka przy podejrzeniu przeszkody w drogach moczowych.",
+   "gdy": {
+    "pytanie": "choroby",
+    "jest": "jedna_nerka"
+   }
+  },
+  {
+   "poziom": "pilne",
+   "dlaLekarza": "Doustna antykoagulacja przy bólu lędźwiowym i zasłabnięciu: ryzyko krwawienia zaotrzewnowego.",
+   "gdy": {
+    "pytanie": "rozrzedzajace",
+    "jest": "doustne"
+   }
+  }
+ ]
+}

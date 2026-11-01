@@ -1,0 +1,684 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "T11-LLL",
+  "tytul": "Wymioty, biegunka i osłabienie od 3 dni",
+  "opis": "Od 3 dni wymiotuję i mam biegunkę, chyba coś zjadłam, wnuczek też chorował. Jestem bardzo słaba, ciężko mi się oddycha, boli brzuch. Cukier mam niezły, 180. Cukrzycę mam od dawna.",
+  "pytania": [
+    {
+      "id": "oddech",
+      "typ": "jeden",
+      "tekst": "Jak wygląda Twój oddech w tej chwili?",
+      "krotko": "charakter duszności",
+      "opcje": [
+        {
+          "w": "gleboki",
+          "t": "Oddycham bardzo głęboko i szybko, nie mogę tego uspokoić"
+        },
+        {
+          "w": "brak_tchu",
+          "t": "Brakuje mi powietrza nawet w spoczynku lub przy mówieniu"
+        },
+        {
+          "w": "wysilek",
+          "t": "Brakuje mi tchu tylko przy chodzeniu"
+        },
+        {
+          "w": "zwykly",
+          "t": "Oddycham normalnie, czuję tylko osłabienie"
+        }
+      ],
+      "bo": "Oddech Kussmaula = kwasica metaboliczna (kwasica ketonowa, także euglikemiczna; kwasica mleczanowa przy metforminie i odwodnieniu). Duszność spoczynkowa: także ostry zespół wieńcowy o nietypowym obrazie, zatorowość, sepsa."
+    },
+    {
+      "id": "swiadomosc",
+      "typ": "wiele",
+      "tekst": "Czy Ty albo osoby obok zauważyły dziś coś z tej listy?",
+      "krotko": "zaburzenia świadomości i krążenia",
+      "opcje": [
+        {
+          "w": "senna",
+          "t": "Jestem bardzo senna/senny, trudno mnie dobudzić"
+        },
+        {
+          "w": "splatanie",
+          "t": "Myli mi się, gdzie jestem lub co się dzieje"
+        },
+        {
+          "w": "omdlenie",
+          "t": "Zemdlałam/zemdlałem albo prawie zemdlałam/zemdlałem"
+        },
+        {
+          "w": "zawroty_wstanie",
+          "t": "Kręci mi się w głowie, gdy wstaję"
+        },
+        {
+          "w": "bol_klatki",
+          "t": "Ból, ucisk lub pieczenie w klatce piersiowej"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Zaburzenia świadomości, omdlenie: wstrząs hipowolemiczny/septyczny, ciężka kwasica. Hipotonia ortostatyczna = odwodnienie istotne. Ból w klatce u 61-letniej chorej z wieloletnią cukrzycą: nietypowy zawał (nudności, duszność, osłabienie)."
+    },
+    {
+      "id": "picie",
+      "typ": "jeden",
+      "tekst": "Czy jesteś w stanie wypić i zatrzymać płyny?",
+      "krotko": "tolerancja płynów doustnych",
+      "opcje": [
+        {
+          "w": "nic",
+          "t": "Nie, wymiotuję wszystko, nawet łyk wody"
+        },
+        {
+          "w": "malo",
+          "t": "Tylko małe łyki, często wracają"
+        },
+        {
+          "w": "tak",
+          "t": "Tak, piję i nie zwracam"
+        }
+      ],
+      "bo": "Brak tolerancji płynów doustnych dyskwalifikuje nawadnianie w domu."
+    },
+    {
+      "id": "mocz",
+      "typ": "jeden",
+      "tekst": "Kiedy ostatnio oddałaś/oddałeś mocz?",
+      "krotko": "ostatnia mikcja",
+      "opcje": [
+        {
+          "w": "do6h",
+          "t": "W ciągu ostatnich 6 godzin"
+        },
+        {
+          "w": "6_12h",
+          "t": "6–12 godzin temu"
+        },
+        {
+          "w": "ponad12h",
+          "t": "Ponad 12 godzin temu"
+        },
+        {
+          "w": "duzo",
+          "t": "Oddaję mocz bardzo często i dużo"
+        }
+      ],
+      "bo": "Skąpomocz/bezmocz: ostre uszkodzenie nerek (przednerkowe), ryzyko kumulacji metforminy i kwasicy mleczanowej. Wielomocz mimo odwodnienia: diureza osmotyczna."
+    },
+    {
+      "id": "leki_cukrzyca",
+      "typ": "wiele",
+      "tekst": "Które z tych leków bierzesz? Zaznacz wszystkie.",
+      "krotko": "leki przeciwcukrzycowe i nerkowo-istotne",
+      "opcje": [
+        {
+          "w": "metformina",
+          "t": "Metformina (np. Metformax, Siofor, Glucophage)"
+        },
+        {
+          "w": "flozyna",
+          "t": "Lek z końcówką -flozyna (np. Jardiance, Forxiga, Xigduo, Synjardy)"
+        },
+        {
+          "w": "insulina",
+          "t": "Insulina"
+        },
+        {
+          "w": "pochodna_su",
+          "t": "Gliklazyd lub glimepiryd (np. Diaprel, Amaryl)"
+        },
+        {
+          "w": "zastrzyk_glp1",
+          "t": "Zastrzyk raz w tygodniu (np. Ozempic, Trulicity, Mounjaro)"
+        },
+        {
+          "w": "moczopedne",
+          "t": "Lek moczopędny (np. furosemid, indapamid, hydrochlorotiazyd)"
+        },
+        {
+          "w": "cisnienie_ace",
+          "t": "Lek na ciśnienie z końcówką -pril lub -sartan"
+        },
+        {
+          "w": "brak",
+          "t": "Żadnego z nich",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Kluczowe: flozyna (iSGLT2) = ryzyko euglikemicznej kwasicy ketonowej przy glikemii 180 mg/dl; metformina/iACE/sartany/diuretyki = leki do czasowego odstawienia przy odwodnieniu (sick day rules); GLP-1 RA może nasilać objawy GI; SU/insulina = ryzyko hipoglikemii przy braku jedzenia."
+    },
+    {
+      "id": "insulina_dawki",
+      "typ": "jeden",
+      "tekst": "Co robisz z insuliną w ostatnich dniach?",
+      "krotko": "dawkowanie insuliny w chorobie",
+      "opcje": [
+        {
+          "w": "jak_zwykle",
+          "t": "Biorę jak zwykle"
+        },
+        {
+          "w": "mniej",
+          "t": "Biorę mniej"
+        },
+        {
+          "w": "odstawilam",
+          "t": "Nie biorę, bo nie jem"
+        }
+      ],
+      "gdy": {
+        "pytanie": "leki_cukrzyca",
+        "jest": "insulina"
+      },
+      "bo": "Odstawienie insuliny bazalnej przy chorobie = ryzyko kwasicy ketonowej."
+    },
+    {
+      "id": "ketony",
+      "typ": "jeden",
+      "tekst": "Czy mierzyłaś/mierzyłeś w tych dniach ketony (paskiem w moczu albo glukometrem z krwi)?",
+      "krotko": "ketony",
+      "opcje": [
+        {
+          "w": "nie",
+          "t": "Nie mierzyłam/mierzyłem"
+        },
+        {
+          "w": "ujemne",
+          "t": "Tak, wynik ujemny lub śladowy"
+        },
+        {
+          "w": "dodatnie",
+          "t": "Tak, wynik dodatni (+ lub więcej)"
+        },
+        {
+          "w": "wysokie",
+          "t": "Tak, wynik wysoki (+++ albo powyżej 1,5 mmol/l z krwi)"
+        }
+      ],
+      "bo": "Ketonemia ≥ 3 mmol/l lub ketonuria ++ przy objawach = podejrzenie kwasicy ketonowej niezależnie od glikemii (szczególnie przy iSGLT2)."
+    },
+    {
+      "id": "cukier_zakres",
+      "typ": "jeden",
+      "tekst": "Jakie wartości cukru miałaś/miałeś w glukometrze w ostatnich 3 dniach?",
+      "krotko": "zakres glikemii w chorobie",
+      "opcje": [
+        {
+          "w": "ponizej70",
+          "t": "Zdarzały się poniżej 70"
+        },
+        {
+          "w": "70_250",
+          "t": "Między 70 a 250"
+        },
+        {
+          "w": "250_400",
+          "t": "Zdarzały się 250–400"
+        },
+        {
+          "w": "powyzej400",
+          "t": "Zdarzały się powyżej 400 lub glukometr pokazywał HI"
+        },
+        {
+          "w": "nie_mierzylam",
+          "t": "Mierzyłam/mierzyłem tylko raz"
+        }
+      ],
+      "bo": "Hipoglikemia (SU/insulina bez jedzenia) vs hiperglikemia > 250 mg/dl (kwasica ketonowa, stan hiperglikemiczno-hipermolalny)."
+    },
+    {
+      "id": "pomiary_dom",
+      "typ": "wiele",
+      "tekst": "Czy możesz teraz zmierzyć w domu którąś z tych rzeczy?",
+      "krotko": "dostępne pomiary domowe",
+      "opcje": [
+        {
+          "w": "cisnienie",
+          "t": "Ciśnienie i tętno (ciśnieniomierz)"
+        },
+        {
+          "w": "temperatura",
+          "t": "Temperaturę"
+        },
+        {
+          "w": "saturacja",
+          "t": "Saturację (pulsoksymetr na palec)"
+        },
+        {
+          "w": "brak",
+          "t": "Nie mam takich urządzeń",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Parametry życiowe są konieczne do oceny odwodnienia i sepsy; pytania liczbowe pojawią się tylko przy dostępnym urządzeniu."
+    },
+    {
+      "id": "cisnienie_skurczowe",
+      "typ": "liczba",
+      "tekst": "Zmierz ciśnienie: jaka jest górna (pierwsza) liczba?",
+      "krotko": "ciśnienie skurczowe",
+      "min": 50,
+      "max": 250,
+      "krok": 1,
+      "jednostka": "mmHg",
+      "gdy": {
+        "pytanie": "pomiary_dom",
+        "jest": "cisnienie"
+      },
+      "bo": "SBP < 90 mmHg = hipotonia/wstrząs; < 100 mmHg kryterium qSOFA."
+    },
+    {
+      "id": "tetno",
+      "typ": "liczba",
+      "tekst": "Jakie tętno (puls) pokazał ciśnieniomierz?",
+      "krotko": "tętno",
+      "min": 30,
+      "max": 200,
+      "krok": 1,
+      "jednostka": "/min",
+      "gdy": {
+        "pytanie": "pomiary_dom",
+        "jest": "cisnienie"
+      },
+      "bo": "Tachykardia > 100/min: odwodnienie, sepsa, kwasica."
+    },
+    {
+      "id": "temp_wartosc",
+      "typ": "liczba",
+      "tekst": "Jaka jest temperatura?",
+      "krotko": "temperatura ciała",
+      "min": 34,
+      "max": 43,
+      "krok": 0.1,
+      "jednostka": "°C",
+      "gdy": {
+        "pytanie": "pomiary_dom",
+        "jest": "temperatura"
+      },
+      "bo": "Gorączka > 38,5 °C: postać inwazyjna, sepsa; hipotermia też niepokojąca."
+    },
+    {
+      "id": "saturacja_wartosc",
+      "typ": "liczba",
+      "tekst": "Jaki wynik pokazał pulsoksymetr (SpO2)?",
+      "krotko": "saturacja",
+      "min": 60,
+      "max": 100,
+      "krok": 1,
+      "jednostka": "%",
+      "gdy": {
+        "pytanie": "pomiary_dom",
+        "jest": "saturacja"
+      },
+      "bo": "Prawidłowa saturacja przy duszności przemawia za kwasicą (oddech kompensacyjny), niska za przyczyną płucno-sercową."
+    },
+    {
+      "id": "stolec",
+      "typ": "wiele",
+      "tekst": "Jak wygląda stolec i wymioty? Zaznacz wszystko, co pasuje.",
+      "krotko": "charakter wymiotów i stolca",
+      "opcje": [
+        {
+          "w": "krew_stolec",
+          "t": "Krew w stolcu lub czarny, smolisty stolec"
+        },
+        {
+          "w": "krew_wymioty",
+          "t": "Krew w wymiotach lub coś jak fusy od kawy"
+        },
+        {
+          "w": "wodnisty_czesto",
+          "t": "Wodnista biegunka więcej niż 6 razy na dobę"
+        },
+        {
+          "w": "zielone",
+          "t": "Wymioty zielone lub o zapachu kału"
+        },
+        {
+          "w": "brak",
+          "t": "Nic z tych rzeczy",
+          "wyklucza": true
+        }
+      ],
+      "bo": "Krwawienie z przewodu pokarmowego, biegunka inwazyjna/niedokrwienna, niedrożność; częstość stolców – nasilenie utraty płynów."
+    },
+    {
+      "id": "brzuch_bol",
+      "typ": "skala",
+      "tekst": "Jak silny jest ból brzucha w tej chwili?",
+      "krotko": "nasilenie bólu brzucha",
+      "skala": [
+        "brak bólu",
+        "najgorszy, jaki można sobie wyobrazić"
+      ],
+      "bo": "Ból nieproporcjonalnie silny: niedokrwienie krezki, perforacja, zapalenie trzustki; ból brzucha bywa też objawem kwasicy ketonowej."
+    },
+    {
+      "id": "brzuch_jaki",
+      "typ": "jeden",
+      "tekst": "Jaki jest ten ból brzucha?",
+      "krotko": "charakter bólu brzucha",
+      "opcje": [
+        {
+          "w": "kurcze",
+          "t": "Kurczowy, przychodzi falami, mija po wypróżnieniu"
+        },
+        {
+          "w": "staly",
+          "t": "Stały, nie mija"
+        },
+        {
+          "w": "twardy",
+          "t": "Stały, brzuch twardy, boli przy ruchu i kaszlu"
+        }
+      ],
+      "gdy": {
+        "pytanie": "brzuch_bol",
+        "min": 1
+      },
+      "bo": "Ból stały, objawy otrzewnowe: ostry brzuch zamiast nieżytu."
+    },
+    {
+      "id": "przewlekle",
+      "typ": "wiele",
+      "tekst": "Czy lekarz kiedyś stwierdził u Ciebie którąś z tych chorób?",
+      "krotko": "choroby przewlekłe",
+      "opcje": [
+        {
+          "w": "nerki",
+          "t": "Choroba nerek lub słaba praca nerek"
+        },
+        {
+          "w": "serce",
+          "t": "Niewydolność serca, zawał, choroba wieńcowa"
+        },
+        {
+          "w": "watroba",
+          "t": "Choroba wątroby"
+        },
+        {
+          "w": "trzustka",
+          "t": "Zapalenie trzustki"
+        },
+        {
+          "w": "alkohol",
+          "t": "Problem z alkoholem"
+        },
+        {
+          "w": "brak",
+          "t": "Żadnej z nich",
+          "wyklucza": true
+        }
+      ],
+      "bo": "PChN, niewydolność serca, choroba wątroby i alkohol zwiększają ryzyko kwasicy mleczanowej i ostrego uszkodzenia nerek; ograniczają nawadnianie w domu."
+    },
+    {
+      "id": "wyniki_nerki",
+      "typ": "jeden",
+      "tekst": "Czy w ostatnim roku miałaś/miałeś badanie krwi na kreatyninę (pracę nerek)?",
+      "krotko": "ostatnia kreatynina/eGFR",
+      "opcje": [
+        {
+          "w": "prawidlowy",
+          "t": "Tak, wynik był w normie"
+        },
+        {
+          "w": "nieprawidlowy",
+          "t": "Tak, lekarz mówił, że nerki pracują słabiej"
+        },
+        {
+          "w": "nie_pamietam",
+          "t": "Tak, ale nie pamiętam wyniku"
+        },
+        {
+          "w": "nie",
+          "t": "Nie"
+        }
+      ],
+      "bo": "Wyjściowe eGFR: dawka metforminy, ryzyko jej kumulacji przy odwodnieniu."
+    },
+    {
+      "id": "leki_inne",
+      "typ": "tekst",
+      "tekst": "Jakie inne leki i suplementy bierzesz? Przepisz nazwy z opakowań.",
+      "krotko": "pozostałe leki i suplementy",
+      "podpowiedz": "Na przykład: Bisocard 5 mg, Ibuprom, magnez",
+      "bo": "Pełna lista leków (NLPZ nasilają AKI; leki wydłużające QT przy zaburzeniach elektrolitowych)."
+    },
+    {
+      "id": "obawy",
+      "typ": "tekst",
+      "tekst": "Czego najbardziej się obawiasz i czego oczekujesz od lekarza?",
+      "krotko": "obawy i oczekiwania",
+      "bezNieznanych": true
+    }
+  ],
+  "flagi": [
+    {
+      "poziom": "112",
+      "dlaLekarza": "Głęboki szybki oddech lub duszność spoczynkowa przy wymiotach i cukrzycy: podejrzenie kwasicy metabolicznej (kwasica ketonowa także euglikemiczna, kwasica mleczanowa) lub przyczyny sercowo-płucnej.",
+      "gdy": {
+        "pytanie": "oddech",
+        "jest": [
+          "gleboki",
+          "brak_tchu"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Zaburzenia świadomości, omdlenie lub ból w klatce piersiowej: wstrząs, ciężka kwasica lub ostry zespół wieńcowy.",
+      "gdy": {
+        "pytanie": "swiadomosc",
+        "jest": [
+          "senna",
+          "splatanie",
+          "omdlenie",
+          "bol_klatki"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Zawroty przy wstawaniu: hipotonia ortostatyczna, istotne odwodnienie.",
+      "gdy": {
+        "pytanie": "swiadomosc",
+        "jest": "zawroty_wstanie"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Brak tolerancji płynów doustnych: nawadnianie w domu niewykonalne, ocena dziś (płyny dożylne).",
+      "gdy": {
+        "pytanie": "picie",
+        "jest": [
+          "nic",
+          "malo"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Brak moczu > 6 h lub wielomocz mimo wymiotów: ostre uszkodzenie nerek / diureza osmotyczna; pilnie kreatynina, elektrolity, gazometria.",
+      "gdy": {
+        "pytanie": "mocz",
+        "jest": [
+          "6_12h",
+          "ponad12h",
+          "duzo"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Bezmocz > 12 h z wymiotami: ciężkie odwodnienie/AKI.",
+      "gdy": {
+        "pytanie": "mocz",
+        "jest": "ponad12h"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Inhibitor SGLT2 przy wymiotach i biegunce: ryzyko euglikemicznej kwasicy ketonowej mimo glikemii 180 mg/dl; ketony we krwi i gazometria dziś.",
+      "gdy": {
+        "pytanie": "leki_cukrzyca",
+        "jest": "flozyna"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Odstawiona insulina w chorobie: ryzyko kwasicy ketonowej.",
+      "gdy": {
+        "pytanie": "insulina_dawki",
+        "jest": "odstawilam"
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Wysokie ketony z objawami: podejrzenie kwasicy ketonowej.",
+      "gdy": {
+        "pytanie": "ketony",
+        "jest": "wysokie"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Dodatnie ketony: ocena dziś (gazometria, ketonemia).",
+      "gdy": {
+        "pytanie": "ketony",
+        "jest": "dodatnie"
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Hipoglikemia lub glikemia > 250 mg/dl w chorobie: korekta leczenia, ocena kwasicy/HHS.",
+      "gdy": {
+        "pytanie": "cukier_zakres",
+        "jest": [
+          "ponizej70",
+          "250_400",
+          "powyzej400"
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Ciśnienie skurczowe < 90 mmHg: hipotonia, możliwy wstrząs.",
+      "gdy": {
+        "pytanie": "cisnienie_skurczowe",
+        "max": 89
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Ciśnienie skurczowe 90–100 mmHg lub tętno > 110/min: istotne odwodnienie/sepsa.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "wszystkie": [
+              {
+                "pytanie": "cisnienie_skurczowe",
+                "min": 90
+              },
+              {
+                "pytanie": "cisnienie_skurczowe",
+                "max": 100
+              }
+            ]
+          },
+          {
+            "pytanie": "tetno",
+            "min": 110
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Tętno ≥ 130/min: ciężkie odwodnienie, sepsa lub zaburzenia rytmu.",
+      "gdy": {
+        "pytanie": "tetno",
+        "min": 130
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Gorączka ≥ 38,5 °C lub hipotermia < 35,5 °C: zakażenie inwazyjne, sepsa.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "temp_wartosc",
+            "min": 38.5
+          },
+          {
+            "pytanie": "temp_wartosc",
+            "max": 35.5
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "SpO2 < 92%: niewydolność oddechowa.",
+      "gdy": {
+        "pytanie": "saturacja_wartosc",
+        "max": 91
+      }
+    },
+    {
+      "poziom": "112",
+      "dlaLekarza": "Krew w wymiotach lub smolisty stolec: krwawienie z przewodu pokarmowego.",
+      "gdy": {
+        "pytanie": "stolec",
+        "jest": [
+          "krew_wymioty",
+          "krew_stolec"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Biegunka > 6/dobę lub wymioty fekaloidalne/żółciowe: ciężka utrata płynów lub niedrożność.",
+      "gdy": {
+        "pytanie": "stolec",
+        "jest": [
+          "wodnisty_czesto",
+          "zielone"
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Silny ból brzucha (≥ 7/10) lub objawy otrzewnowe: ostry brzuch do wykluczenia.",
+      "gdy": {
+        "ktorekolwiek": [
+          {
+            "pytanie": "brzuch_bol",
+            "min": 7
+          },
+          {
+            "pytanie": "brzuch_jaki",
+            "jest": "twardy"
+          }
+        ]
+      }
+    },
+    {
+      "poziom": "pilne",
+      "dlaLekarza": "Choroba nerek, serca, wątroby lub alkohol przy odwodnieniu i metforminie: wysokie ryzyko AKI i kwasicy mleczanowej.",
+      "gdy": {
+        "pytanie": "przewlekle",
+        "jest": [
+          "nerki",
+          "serce",
+          "watroba",
+          "alkohol"
+        ]
+      }
+    }
+  ]
+}

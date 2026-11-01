@@ -1,0 +1,135 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Kolka nerkowa w przebiegu kamicy moczowodowej",
+      "p": 0.125,
+      "wymienili": [
+        "bayes",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Pęknięty lub objawowy (przeciekający do przestrzeni zaotrzewnowej) tętniak aorty brzusznej",
+      "p": 0.093,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Pęknięty lub objawowy tętniak aorty brzusznej",
+      "p": 0.085,
+      "wymienili": [
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "Objawowy (pękający, zaotrzewnowo ograniczony) tętniak aorty brzusznej",
+      "p": 0.078,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "Kolka nerkowa w przebiegu lewostronnej kamicy moczowodowej (nawrót)",
+      "p": 0.061,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.017,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 1,
+    "mediana_wazona": 1.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Badanie fizykalne (tętniący guz, tętno na kończynach dolnych, asymetria ciśnień) NIEZNANE",
+      "Brak badania fizykalnego (tętniący guz, tętno na kończynach dolnych, objawy otrzewnowe) — NIEZNANE.",
+      "Brak jakiegokolwiek obrazowania aorty w wywiadzie.",
+      "Ból stały, rozrywający u mężczyzny 68 lat palącego z nadciśnieniem — pęknięcie tętniaka aorty brzusznej lub rozwarstwienie aorty niewykluczone.",
+      "Ból stały, rozrywający u mężczyzny 68 lat palącego z nadciśnieniem: tętniak aorty brzusznej / rozwarstwienie niewykluczone (nigdy USG aorty)",
+      "Ból stały, rozrywający — reguła ankiety [NATYCHMIAST 112] spełniona.",
+      "Kwas acetylosalicylowy + ketoprofen w nieznanej dawce — ryzyko krwawienia i maskowania bólu.",
+      "Leczenie przeciwpłytkowe (kwas acetylosalicylowy) + niesteroidowy lek przeciwzapalny w nieznanej dawce",
+      "Leki przeciwpłytkowe (kwas acetylosalicylowy 75 mg) + ketoprofen w nieznanej dawce — ryzyko nasilenia krwawienia i uszkodzenia nerek; dawka NIEZNANA.",
+      "Ostre rozwarstwienie aorty: nie wykluczone; wykluczyłoby angio-TK aorty.",
+      "Presynkopa + ciśnienie skurczowe 104 mmHg + tętno 108/min u chorego leczonego amlodypiną 10 mg — możliwy wstrząs krwotoczny wczesny.",
+      "Presynkopa + ciśnienie skurczowe 104 mmHg + tętno 108/min u leczonego nadciśnieniowca (wskaźnik wstrząsowy >1) — możliwy wstrząs krwotoczny wyrównany.",
+      "Presynkopa przy bólu lędźwiowym",
+      "Pęknięty lub objawowy tętniak aorty brzusznej: NIE wykluczony. Wykluczyłoby: badanie USG lub angio-TK aorty w szpitalu pokazujące aortę o średnicy prawidłowej (<30 mm) bez krwiaka zaotrzewnowego. Fizykalne badanie brzucha nie wystarcza (tętniący guz wyczuwalny tylko u 26% błędnie rozpoznanych pęknięć, PMID 1619721).",
+      "Względna hipotensja (RR skurczowe 104 mmHg przy leczonym nadciśnieniu) i tachykardia 108/min, wskaźnik wstrząsowy ok. 1,0",
+      "brak badania przedmiotowego i aktualnych parametrów życiowych",
+      "ból stały, rozrywający od rana",
+      "ból stały, rozrywający u mężczyzny 68 lat z czynnikami ryzyka tętniaka",
+      "ból stały, rozrywający u palacza 68 lat z nadciśnieniem — tętniak aorty brzusznej lub rozwarstwienie aorty niewykluczone",
+      "dawka ketoprofenu dziś NIEZNANE",
+      "kwas acetylosalicylowy plus ketoprofen w nieznanej dawce — zwiększone ryzyko krwawienia i ostrego uszkodzenia nerek przy hipoperfuzji",
+      "nieznana dawka ketoprofenu przy aspirynie (krwawienie, nerki)",
+      "presynkopa przy bólu lędźwiowym",
+      "presynkopa z RR skurczowym 104 mmHg i tętnem 108/min u chorego na amlodypinie 10 mg (wartość wyjściowa prawdopodobnie wyższa) — względna hipotensja i tachykardia",
+      "presynkopa z tętnem 108/min i ciśnieniem skurczowym 104 mmHg u chorego z leczonym nadciśnieniem (wskaźnik wstrząsowy ok. 1,0)",
+      "przeciwpłytkowy kwas acetylosalicylowy + ketoprofen w nieznanej dawce (krwawienie, maskowanie bólu)",
+      "pęknięty tętniak aorty brzusznej — nie wykluczony; nigdy nie miał USG",
+      "względna hipotensja (104 mmHg u chorego z nadciśnieniem) i tachykardia 108/min"
+    ],
+    "wykluczone": [
+      "Gorączka i dreszcze (pacjent zaprzecza) — urosepsa mniej prawdopodobna, choć nie wykluczona przy tachykardii",
+      "Gorączka i dreszcze (pacjent zaprzecza; możliwe maskowanie przez ketoprofen)",
+      "Gorączka i dreszcze (zakażona kamica z zatkaniem dróg moczowych mniej prawdopodobna) — pacjent zaprzecza.",
+      "Utrata przytomności — pacjent zaprzecza (presynkopa, nie omdlenie).",
+      "Wymioty (pacjent zaprzecza)",
+      "Zakażenie groźne dla otoczenia — brak przesłanek (stan niezakaźny)",
+      "gorączka i dreszcze (zakażona, zatkana nerka mniej prawdopodobna)",
+      "gorączka i dreszcze (zgłasza brak) — mniej prawdopodobna zakażona, zablokowana nerka",
+      "uczulenia na leki (brak)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "wysoka",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "wysoka",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

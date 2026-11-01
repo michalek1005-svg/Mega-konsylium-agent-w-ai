@@ -1,0 +1,115 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe lub odstawienne (brak leku sprawczego na liście)",
+      "p": 0.01,
+      "za": [
+        "świąd uogólniony bez wysypki bywa polekowy (opioidy, inhibitory konwertazy angiotensyny, statyny, leki bez recepty) [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "pacjent deklaruje brak leków i suplementów",
+        "żaden lek nie tłumaczy jednocześnie gorączki 37,8 °C, potów nocnych, utraty 7 kg, węzła szyjnego > 2 cm i eozynofilii",
+        "ból węzła po alkoholu nie jest objawem polekowym"
+      ]
+    },
+    {
+      "nazwa": "chłoniak Hodgkina (rozpoznanie niepolekowe; poza kompetencją farmakologa, p celowo 0)",
+      "p": 0.0,
+      "za": [
+        "triada objawów B, świąd bez wysypki, ból węzła po alkoholu (PMID 39734971, 31780609), eozynofilia 0,9 G/l, limfopenia 0,8 G/l, OB 62 mm/h, niedokrwistość Hb 12,1 g/dl, nadpłytkowość PLT 420 G/l"
+      ],
+      "przeciw": [
+        "wiek 55 lat (drugi szczyt zachorowań, ale możliwe też chłoniaki nieziarnicze, gruźlica, rak płuca u palacza) [wiedza modelu, niezweryfikowane]"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "wysoka",
+  "red_flags_wykluczone": [
+    "objawy polekowe jako wyjaśnienie zespołu (brak leków i suplementów)"
+  ],
+  "red_flags_otwarte": [
+    "węzeł szyjny lub nadobojczykowy > 2 cm z objawami B (reguła PILNE ankiety)",
+    "kaszel > 3 tygodni z potami i chudnięciem u palacza: gruźlica, rak płuca, masa śródpiersia",
+    "nieznane parametry życiowe i badanie fizykalne (zespół żyły głównej górnej, duszność, stridor)"
+  ],
+  "nastepny_krok": "Nie włączać żadnego leczenia empirycznego (glikokortykosteroidy, antybiotyk, zwłaszcza fluorochinolon, leki przeciwdepresyjne) przed RTG klatki piersiowej i biopsją wycinającą węzła; dziś skierowanie z kartą diagnostyki i leczenia onkologicznego do hematologa lub chirurga.",
+  "co_zmieniloby_zdanie": "Ujawnienie leku lub suplementu przyjmowanego w ostatnich 3 miesiącach (np. allopurinol, karbamazepina, fenytoina — zespół DRESS lub pseudochłoniak polekowy) albo nadużywania alkoholu zmieniłoby moją ocenę udziału przyczyny polekowej.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "brak leczenia przyczynowego do czasu rozpoznania histopatologicznego",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "do wyniku biopsji",
+      "uwagi": "Rozpoznanie wymaga biopsji węzła z oceną histologiczną i immunofenotypową (PMID 39734971).",
+      "zrodlo": "PMID 39734971, DOI 10.7759/cureus.74778"
+    },
+    {
+      "lek": "emolienty miejscowo",
+      "dawka": "2–3 razy na dobę na całe ciało",
+      "droga": "na skórę",
+      "czas": "doraźnie, objawowo",
+      "uwagi": "Świąd w chłoniaku zależy od cytokin (IL-31, IL-1), słabo odpowiada na leki przeciwhistaminowe (PMID 38489975 — mechanizm cytokinowy); leczenie objawowe nie może opóźnić diagnostyki.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane] dla dawkowania; mechanizm: PMID 38489975"
+    },
+    {
+      "lek": "cetyryzyna",
+      "dawka": "10 mg raz na dobę",
+      "droga": "doustnie",
+      "czas": "doraźnie do konsultacji hematologicznej",
+      "uwagi": "Opcjonalnie, efekt w świądzie chłoniakowym zwykle mierny; bez interakcji (brak innych leków).",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "paracetamol",
+      "dawka": "500–1000 mg co 6–8 h, maksymalnie 3 g na dobę przy spożywaniu alkoholu",
+      "droga": "doustnie",
+      "czas": "doraźnie przy gorączce",
+      "uwagi": "Preferowany przed niesteroidowymi lekami przeciwzapalnymi, które mogą maskować przebieg gorączki; zapisywać temperaturę w dzienniczku.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "przygotowanie do ewentualnej chemioterapii (zadanie dla hematologa, sygnalizacja z POZ)",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "przed leczeniem",
+      "uwagi": "Bezwzględne zaprzestanie palenia (bleomycyna w schemacie ABVD — toksyczność płucna; PMID 31780609 opisuje leczenie ABVD), serologia HBV/HCV/HIV, spirometria z DLCO i echokardiografia wyjściowo (antracykliny).",
+      "zrodlo": "PMID 31780609 (schemat ABVD); pozostałe [wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "glikokortykosteroidy ogólnie (prednizon, deksametazon) — także „na świąd” lub „na węzły”",
+      "powod": "Przed biopsją mogą zmniejszyć węzły i zatrzeć obraz histologiczny chłoniaka, wydłużając diagnostykę: w pierwotnym chłoniaku OUN steroidy przed rozpoznaniem dawały „znikający guz” u 21% i wydłużały czas do rozpoznania (mediana 82 vs 9 dni; PMID 42600538); podobnie miejscowe steroidy zacierają obraz w biopsji skóry (PMID 42719903) i obniżają wydajność biopsji (PMID 42795965). Ekstrapolacja na chłoniaka węzłowego [wiedza modelu, niezweryfikowane co do wielkości efektu]."
+    },
+    {
+      "lek": "antybiotyk empiryczny, szczególnie fluorochinolon (lewofloksacyna, moksyfloksacyna, cyprofloksacyna)",
+      "powod": "Kaszel > 3 tygodni z potami i chudnięciem wymaga wykluczenia gruźlicy; fluorochinolon częściowo leczy gruźlicę, daje przejściową poprawę, fałszywie ujemne posiewy i sprzyja oporności [wiedza modelu, niezweryfikowane — zapytania PubMed bez trafnego streszczenia]."
+    },
+    {
+      "lek": "leki przeciwdepresyjne, benzodiazepiny, leki nasenne „na wypalenie”",
+      "powod": "Brak przesłanek do depresji (anhedonia/przygnębienie: wcale, objawy somatyczne poprzedziły złe samopoczucie, apetyt bez zmian); leczenie psychotropowe utrwali błędne rozpoznanie i opóźni diagnostykę onkologiczną."
+    },
+    {
+      "lek": "alkohol",
+      "powod": "Wywołuje ból węzła (objaw charakterystyczny dla chłoniaka Hodgkina, PMID 31780609) i ogranicza bezpieczną dawkę paracetamolu; zalecić abstynencję."
+    }
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej ani ChPL dla tej sytuacji (tylko wiersze przykładowe); pamiec/zespol.md — brak wpisów dotyczących limfadenopatii",
+    "PubMed zapytanie 1: 'alcohol-induced pain Hodgkin lymphoma' (skuteczne)",
+    "PubMed zapytanie 2: 'corticosteroids before biopsy lymphoma diagnosis delay' (skuteczne)",
+    "PubMed zapytanie 3: 'Hodgkin lymphoma pruritus[Title]' (skuteczne)",
+    "PubMed zapytanie 4: '(glucocorticoids OR steroids) AND lymphadenopathy AND (masking OR \"before biopsy\") AND lymphoma' (nieskuteczne — wyniki nietrafne)",
+    "PubMed zapytania 5–6: fluorochinolony a opóźnienie rozpoznania gruźlicy (nieskuteczne — 0 / nietrafne wyniki)",
+    "PMID 39734971 — Cardoso T, Gonçalves L. Hodgkin Lymphoma As the Underlying Cause of a Chronic Cough. Cureus 2024. DOI 10.7759/cureus.74778 (streszczenie sprawdzone: objawy B, świąd, ból po alkoholu, kaszel przy zajęciu śródpiersia; rozpoznanie wymaga biopsji węzła)",
+    "PMID 31780609 — Ma L i wsp. Hodgkin lymphoma presenting as alcohol-induced back pain. BMJ Case Rep 2019. DOI 10.1136/bcr-2018-228440 (streszczenie sprawdzone: ból po alkoholu rzadki, znany objaw HL; leczenie ABVD)",
+    "PMID 38489975 — Wen X i wsp. Serum cytokines and pruritus in Hodgkin and angioimmunoblastic T-cell lymphoma. Int Immunopharmacol 2024. DOI 10.1016/j.intimp.2024.111777 (streszczenie sprawdzone: świąd powiązany z IL-31, IL-1β, IL-1α)",
+    "PMID 36388637 — Quddusi FI, Youssef MJ. 'Look Beyond the Skin': chronic pruritus. SAGE Open Med Case Rep 2022. DOI 10.1177/2050313X221136008 (streszczenie sprawdzone: przewlekły świąd uogólniony jako objaw HL ze śródpiersia, ustąpił po leczeniu)",
+    "PMID 42600538 — Glinka P i wsp. Primary CNS lymphoma: vanishing tumor. Clin Neurol Neurosurg 2026. DOI 10.1016/j.clineuro.2026.109595 (streszczenie sprawdzone: steroidy przed rozpoznaniem — znikający guz 21%, mediana 82 vs 9 dni do rozpoznania)",
+    "PMID 42719903 — Dasher A i wsp. CTCL as mimicker of atopic dermatitis. Cureus 2026. DOI 10.7759/cureus.114292 (streszczenie sprawdzone: steroidy miejscowe zacierają obraz histologiczny; odstawić przed biopsją)",
+    "PMID 42795965 — Cioboată ML i wsp. Primary vitreoretinal lymphoma. J Clin Med 2026. DOI 10.3390/jcm15187193 (streszczenie sprawdzone: wcześniejsze steroidy związane z niediagnostyczną pierwszą cytologią)",
+    "[wiedza modelu, niezweryfikowane]: dawki paracetamolu i cetyryzyny, fluorochinolony a maskowanie gruźlicy, przygotowanie do ABVD (palenie a bleomycyna, serologia, DLCO, echokardiografia)"
+  ]
+}

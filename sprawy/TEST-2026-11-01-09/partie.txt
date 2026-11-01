@@ -1,0 +1,10 @@
+1: nagly_start neuro goraczka_kark wymioty
+2: dynamika wczesniej_bole
+3: dni_bolu dni_lekow dawki
+4: inne_leki_bol pora wysilek
+5: charakter towarzyszace nasilenie
+6: chrapanie kawa
+7: cisnienie badania badania_wynik
+8: badania_jakie choroby leki_stale
+9: miesiaczki alergie nastroj
+10: obawy

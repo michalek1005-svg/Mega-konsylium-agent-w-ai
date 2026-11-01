@@ -1,0 +1,101 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Euglikemiczna cukrzycowa kwasica ketonowa związana z inhibitorem SGLT2 (flozyną)",
+      "p": 0.40,
+      "za": [
+        "Przyjmuje flozynę i od 3 dni wymiotuje, ma biegunkę i przyjmuje tylko małe łyki płynów: głodzenie i odwodnienie to najczęstszy czynnik wyzwalający (11/15 przypadków w przeglądzie PMID 42882058).",
+        "Oddech głęboki i szybki, którego nie może uspokoić (obraz oddechu Kussmaula), oraz senność z trudnym dobudzeniem: objawy kwasicy metabolicznej.",
+        "Glikemia 70–250 mg/dl, obecnie 180 mg/dl, nie wyklucza kwasicy ketonowej; przy flozynie kwasica bywa ciężka przy glikemii prawidłowej lub niskiej (PMID 42882058, 42749635).",
+        "Ciągły ból brzucha 5/10 i wymioty są typowe także dla samej kwasicy ketonowej, nie tylko dla nieżytu."
+      ],
+      "przeciw": [
+        "Ketonów nie mierzono (NIEZNANE), brak gazometrii: rozpoznanie wyłącznie kliniczne.",
+        "Ten sam obraz (Kussmaul, senność) daje kwasica mleczanowa przy metforminie i ostrym uszkodzeniu nerek; obie mogą współistnieć."
+      ]
+    },
+    {
+      "nazwa": "Kwasica mleczanowa związana z metforminą przy ostrym przednerkowym uszkodzeniu nerek",
+      "p": 0.20,
+      "za": [
+        "Metformina kontynuowana przy 3-dniowej utracie płynów; inhibitor konwertazy lub sartan i flozyna dodatkowo zmniejszają przesączanie kłębuszkowe w odwodnieniu [wiedza modelu, niezweryfikowane].",
+        "Kwasica mleczanowa związana z metforminą najczęściej towarzyszy ostremu uszkodzeniu nerek i zaczyna się objawami żołądkowo-jelitowymi lub dusznością (PMID 42696402, 42377238).",
+        "Ciśnienie skurczowe 98 mmHg i tętno 112/min: hipoperfuzja nasilająca produkcję mleczanu."
+      ],
+      "przeciw": [
+        "Kreatynina/eGFR NIEZNANE, mocz oddany w ciągu ostatnich 6 godzin, więc brak jawnego bezmoczu.",
+        "Rzadsza niż kwasica ketonowa przy flozynie w tym kontekście (zapadalność poniżej 10/100 000 pacjento-lat wg PMID 42696402)."
+      ]
+    },
+    {
+      "nazwa": "Wstrząs hipowolemiczny lub septyczny w przebiegu zakaźnego nieżytu żołądkowo-jelitowego",
+      "p": 0.15,
+      "za": [
+        "Kontakt z chorym wnukiem, wymioty i biegunka od 3 dni: zakaźna etiologia wyjściowa jest wiarygodna.",
+        "Wskaźnik wstrząsowy około 1,1 (tętno 112 / skurczowe 98 mmHg), senność, nietolerancja płynów doustnych."
+      ],
+      "przeciw": [
+        "Gorączka i temperatura NIEZNANE, brak krwi w stolcu i wymiotach.",
+        "Sam nieżyt słabo tłumaczy oddech Kussmaula bez współistniejącej kwasicy; to raczej tło i wyzwalacz niż pełne rozpoznanie."
+      ]
+    },
+    {
+      "nazwa": "Ostra choroba jamy brzusznej (ostre niedokrwienie jelit, ostre zapalenie trzustki)",
+      "p": 0.10,
+      "za": [
+        "Ból brzucha stały, nie mija, u 61-letniej kobiety z wieloletnią cukrzycą i statyną (ryzyko naczyniowe).",
+        "Kwasica, hipotensja i senność pasują też do niedokrwienia jelit lub ciężkiego zapalenia trzustki z wtórną kwasicą mleczanową."
+      ],
+      "przeciw": [
+        "Wywiad epidemiologiczny (chory wnuczek) i biegunka od początku przemawiają za infekcją.",
+        "Ból 5/10, brak krwi w stolcu; badanie fizykalne brzucha NIEZNANE."
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy o nietypowym obrazie",
+      "p": 0.05,
+      "za": [
+        "Kobieta 61 lat z długą cukrzycą: duszność, osłabienie, nudności i ból brzucha mogą być równoważnikiem bólu wieńcowego [wiedza modelu, niezweryfikowane].",
+        "Hipotensja i tachykardia mogą wynikać z dysfunkcji lewej komory."
+      ],
+      "przeciw": [
+        "Brak bólu w klatce piersiowej w ankiecie; obraz zaczął się od biegunki i wymiotów z kontaktem zakaźnym."
+      ]
+    }
+  ],
+  "pilnosc": 1,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Krew w stolcu i wymiotach (pacjentka zaznaczyła: nic z tych rzeczy)",
+    "Bezmocz (mocz oddany w ciągu ostatnich 6 godzin)"
+  ],
+  "red_flags_otwarte": [
+    "Oddech głęboki i szybki (Kussmaul) przy cukrzycy i flozynie: podejrzenie kwasicy metabolicznej",
+    "Senność, trudności z dobudzeniem: zaburzenia świadomości",
+    "Ciśnienie skurczowe 98 mmHg i tętno 112/min: hipoperfuzja, możliwy wstrząs",
+    "Nietolerancja płynów doustnych: nawadnianie w domu niewykonalne",
+    "Inhibitor SGLT2 przy wymiotach i biegunce bez pomiaru ketonów",
+    "Stały ból brzucha bez badania fizykalnego (ostra choroba jamy brzusznej niewykluczona)",
+    "Kreatynina/eGFR nieznane przy metforminie, flozynie i inhibitorze konwertazy/sartanie"
+  ],
+  "nastepny_krok": "Wezwać zespół ratownictwa medycznego (112) do natychmiastowego transportu na szpitalny oddział ratunkowy z informacją o flozynie i metforminie, gdzie konieczna jest gazometria z luką anionową, beta-hydroksymaślan i mleczan; leczenie domowe i samo odstawienie metforminy są niewłaściwe.",
+  "co_zmieniloby_zdanie": "Prawidłowa gazometria (pH i wodorowęglany w normie) z ujemnym beta-hydroksymaślanem i prawidłowym mleczanem obniżyłaby kwasice do p poniżej 0,10 i przesunęła rozpoznanie na odwodnienie w nieżycie żołądkowo-jelitowym, wciąż wymagające płynów dożylnych.",
+  "zrodla": [
+    "zrodla/MANIFEST.md: brak plików merytorycznych (tylko przykłady); pamiec/zespol.md: brak wpisów o flozynach/kwasicy.",
+    "PubMed zapytanie 1 (bez wyników): euglycemic diabetic ketoacidosis SGLT2 inhibitor gastroenteritis vomiting",
+    "PubMed zapytanie 2 (bez wyników): metformin-associated lactic acidosis acute kidney injury dehydration[Title/Abstract]",
+    "PubMed zapytanie 3 (173 wyniki): euglycemic diabetic ketoacidosis[Title] SGLT2, od 2018",
+    "PubMed zapytanie 4 (245 wyników): metformin-associated lactic acidosis[Title], od 2015",
+    "PubMed zapytanie 5 (bez wyników): sick day rules SGLT2 inhibitors metformin acute illness",
+    "PubMed zapytanie 6 (91 wyników): euglycemic diabetic ketoacidosis SGLT2 inhibitors review[Publication Type], od 2019",
+    "PubMed zapytanie 7 (20 wyników): \"sick day\" SGLT2 inhibitor",
+    "Itagaki H, Endo T. Ketoacidosis at Hypoglycemic and Low Glucose Levels Associated with SGLT2 Inhibitor Use: systematic review. J Clin Med 2026;15(19). PMID 42882058, DOI 10.3390/jcm15197595 (streszczenie sprawdzone: 15 przypadków, mediana wieku 61 lat, mediana glikemii 68 mg/dl, mediana pH 7,17, głodzenie/słabe przyjmowanie doustne wyzwalaczem w 11/15)",
+    "Iwamoto M i wsp. Favorable CGM metrics do not exclude SGLT2 inhibitor-associated euDKA. Endocr J 2026. PMID 42749635, DOI 10.1507/endocrj.EJ26-0282 (streszczenie sprawdzone: ciężka kwasica przy akceptowalnej glikemii, zasady dnia choroby oparte na objawach, nie na glikemii)",
+    "Cai J i wsp. Early-onset euDKA following henagliflozin initiation. Front Endocrinol 2026;17:1882272. PMID 42483676, DOI 10.3389/fendo.2026.1882272 (streszczenie sprawdzone: wymioty i minimalne przyjmowanie doustne przez 72 h przy kontynuacji flozyny i metforminy, pH 7,043, glukoza 8,5 mmol/l)",
+    "Adnani H i wsp. MALA and relative euglycemic ketoacidosis precipitated by a GLP-1 RA. Kidney360 2026. PMID 42696402, DOI 10.34067/KID.0000001379 (streszczenie sprawdzone: MALA zapadalność poniżej 10/100 000 pacjento-lat, śmiertelność 30–50%, najczęściej z ostrym uszkodzeniem nerek; współistnienie z kwasicą ketonową maskowaną niską glikemią; zalecany wczesny pomiar beta-hydroksymaślanu)",
+    "Epitropoulos F i wsp. Concurrent MALA and euDKA. Endocrinol Diabetes Metab Case Rep 2026(3). PMID 42789768, DOI 10.1530/EDM-26-0025 (streszczenie sprawdzone: odwodnienie i ostre uszkodzenie nerek upośledzające klirens metforminy, mieszana kwasica)",
+    "Welsch E i wsp. Atypical Presentation of MALA. Clin Pract Cases Emerg Med 2026;10(2):182-186. PMID 42377238, DOI 10.5811/cpcem.50572 (streszczenie sprawdzone: MALA zwykle z objawami żołądkowo-jelitowymi, może dominować duszność i tachypnoe)",
+    "Wpływ inhibitora konwertazy/sartanu na przesączanie w odwodnieniu oraz nietypowy obraz zespołu wieńcowego u kobiet z cukrzycą: [wiedza modelu, niezweryfikowane]"
+  ]
+}

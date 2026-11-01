@@ -1,0 +1,8 @@
+1: dusznosc omdlenie bol_teraz promieniowanie
+2: goraczka temperatura dynamika
+3: ucisk wysilek zakrzepica
+4: hormony ciaza choroby
+5: leki przeciwbolowe pomoglo
+6: alergia badania
+7: tetno cisnienie_skurczowe saturacja
+8: obawy

@@ -1,0 +1,61 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "ostre zapalenie osierdzia (poinfekcyjne, idiopatyczne)",
+      "p": 0.66,
+      "za": ["ból zamostkowy kłujący, nasilany w pozycji leżącej i przy głębokim wdechu, ulga w pozycji siedzącej pochylonej", "infekcja górnych dróg oddechowych tydzień wcześniej", "promieniowanie do barku/łopatki (typowe dla podrażnienia osierdzia i nerwu przeponowego) [wiedza modelu, niezweryfikowane]", "stan podgorączkowy 37,6 °C", "ból niezależny od wysiłku i niebolesny uciskowo"],
+      "przeciw": ["brak EKG, osłuchiwania (tarcie osierdziowe) i echokardiografii — rozpoznanie wyłącznie z wywiadu"]
+    },
+    {
+      "nazwa": "zapalenie mięśnia sercowego z zajęciem osierdzia",
+      "p": 0.14,
+      "za": ["poinfekcyjny początek u młodej osoby", "tętno 96/min przy temperaturze jedynie 37,6 °C", "zajęcie mięśnia sercowego u ok. 20% chorych z zapaleniem osierdzia (PMID 41850763)"],
+      "przeciw": ["brak duszności, kołatań, omdleń", "ból stały, niezależny od wysiłku"]
+    },
+    {
+      "nazwa": "zatorowość płucna",
+      "p": 0.06,
+      "za": ["ból opłucnowy (nasilany wdechem)", "antykoncepcja hormonalna estrogenowa (kryterium PERC dodatnie)", "tętno 96/min"],
+      "przeciw": ["brak duszności", "brak unieruchomienia, zabiegów, urazu w ostatnich 4 tygodniach", "ulga w pozycji pochylonej przemawia za osierdziem"]
+    },
+    {
+      "nazwa": "zapalenie płuc z zapaleniem opłucnej",
+      "p": 0.06,
+      "za": ["niedawna infekcja", "gorączka, ból nasilany wdechem"],
+      "przeciw": ["brak duszności; kaszel NIEZNANY", "ulga w pozycji pochylonej nietypowa dla opłucnej"]
+    },
+    {
+      "nazwa": "nerwoból międzyżebrowy lub ból mięśniowo-szkieletowy",
+      "p": 0.05,
+      "za": ["hipoteza pacjentki i lekarza prowadzącego"],
+      "przeciw": ["ból nie nasila się przy ucisku ani skręcie tułowia", "zależność od pozycji ciała (leżenie vs pochylenie) i stan podgorączkowy nie pasują"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "ostry zespół wieńcowy — klinicznie bardzo mało prawdopodobny (38 lat, ból niezależny od wysiłku, kłujący, pozycyjny); formalnie rozstrzyga EKG",
+    "rozwarstwienie aorty — mało prawdopodobne: ból od 2 dni o stałym nasileniu, bez nagłego rozdzierającego początku i bez omdlenia (ciśnienie NIEZNANE)",
+    "odma prężna — brak duszności przez 2 dni"
+  ],
+  "red_flags_otwarte": [
+    "zapalenie mięśnia sercowego (myopericarditis) — wywiad go nie wyklucza; wykluczy prawidłowa troponina i EKG bez zaburzeń rytmu/przewodzenia; myopericarditis jest czynnikiem złego rokowania kwalifikującym do hospitalizacji w protokole triage (PMID 15028364)",
+    "tamponada lub duży wysięk osierdziowy — ankieta nie wyklucza (brak ciśnienia, badania fizykalnego); wykluczy prawidłowe ciśnienie bez tętna paradoksalnego, brak poszerzenia żył szyjnych, a przy wątpliwościach echokardiografia",
+    "zatorowość płucna — PERC niespełnione z powodu estrogenów (PMID 18318689); wykluczy niska ocena kliniczna (Wells) i prawidłowy D-dimer",
+    "czynniki złego rokowania zapalenia osierdzia: gorączka >38 °C, podostry przebieg, duży wysięk, brak odpowiedzi na NLPZ (PMID 17502574, 15028364) — dziś nieobecne lub NIEZNANE; brak odpowiedzi na ibuprofen po ok. tygodniu przesuwa chorą do diagnostyki szpitalnej"
+  ],
+  "nastepny_krok": "Badanie w gabinecie jeszcze dziś: EKG 12-odprowadzeniowe, ciśnienie tętnicze, saturacja, osłuchiwanie (tarcie osierdziowe) z oznaczeniem troponiny i CRP; przy podwyższonej troponinie, tętnie paradoksalnym/hipotonii lub saturacji <95% — skierowanie na SOR.",
+  "co_zmieniloby_zdanie": "Prawidłowe EKG lub typowe dla zapalenia osierdzia uniesienia ST, ujemna troponina, saturacja ≥95% i stabilne ciśnienie obniżyłyby pilność do 3 i pozwoliły leczyć ambulatoryjnie ibuprofenem z kolchicyną i kontrolą po 7 dniach.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla zapalenia osierdzia ani zatorowości płucnej (tylko pozycje przykładowe); pamiec/zespol.md — reguła EKG w gabinecie przed planem (PRZYKLAD-001)",
+    "PubMed zapytanie: \"myopericarditis troponin acute pericarditis prognosis\" → PMID 41850763 (DOI 10.1136/openhrt-2026-004019): zajęcie mięśnia sercowego u 70/351 (19,9%) chorych z zapaleniem osierdzia; myopericarditis — niższy odsetek remisji, częstsza przejściowa dysfunkcja skurczowa (13,5% vs 2,1%) — streszczenie sprawdzone",
+    "PMID 23846679 (DOI 10.2459/JCM.0b013e3283641161): wzrost cTnT u 60,9% hospitalizowanych z zapaleniem osierdzia, bez gorszego rokowania odległego — streszczenie sprawdzone",
+    "PubMed zapytanie: \"pericarditis[Title] AND (prognostic OR predictors OR \\\"poor prognosis\\\") AND (triage OR outpatient)\" → PMID 17502574 (DOI 10.1161/CIRCULATIONAHA.106.662114): gorączka >38 °C, podostry przebieg, duży wysięk/tamponada, nieskuteczność aspiryny/NLPZ jako wskaźniki złego rokowania; płeć żeńska HR 1,65 dla powikłań; tamponada 3,1%, nawroty 18,3% — streszczenie sprawdzone",
+    "PMID 15028364 (DOI 10.1016/j.jacc.2003.09.055): chorzy bez czynników złego rokowania (m.in. bez myopericarditis, gorączki >38 °C) leczeni ambulatoryjnie bezpiecznie; 84,7% niskiego ryzyka, bez tamponady w obserwacji — streszczenie sprawdzone",
+    "PMID 41534803 (DOI 10.1016/j.tcm.2026.01.002): ESC 2025 i ACC — NLPZ i kolchicyna w zapaleniu osierdzia i myopericarditis, ocena cech wysokiego ryzyka — streszczenie sprawdzone",
+    "PubMed zapytania: \"pulmonary embolism rule-out criteria[Title/Abstract] AND (validation OR prospective)\" (53 trafienia) oraz \"Kline JA[Author] AND \\\"pulmonary embolism rule-out criteria\\\" AND prospective multicenter\" → PMID 18318689 (DOI 10.1111/j.1538-7836.2008.02944.x): PERC wymaga m.in. braku stosowania estrogenów i tętna <100/min; niska ocena kliniczna + PERC(-) — 1,0% fałszywie ujemnych — streszczenie sprawdzone",
+    "Zapytania bez trafień (nieliczone jako skuteczne): \"acute pericarditis high-risk features outpatient management[Title/Abstract]\", \"pulmonary embolism pleuritic chest pain oral contraceptives young women\", \"PERC rule pulmonary embolism estrogen hormone use\"",
+    "Promieniowanie bólu do barku jako cecha osierdziowa; ostrożność z NLPZ w izolowanym zapaleniu mięśnia sercowego — [wiedza modelu, niezweryfikowane]"
+  ]
+}
