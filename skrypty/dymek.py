@@ -79,8 +79,22 @@ def wpis(d: dict) -> dict:
 
 
 def wpisy_tablicy(a) -> list:
-    """Zdarzenia 'tablica' z --tablica / --skresl: najważniejsze ustalenia i skreślenia w Pokoju lekarskim."""
+    """Zdarzenia 'tablica' z --tablica / --skresl (ustalenia i skreślenia) oraz 'prognoza' z --prognoza (wykres rozpoznań)."""
     out = []
+    if a.prognoza:
+        roz = []
+        for czesc in re.split(r"[;\n]", a.prognoza):
+            m = re.match(r"^\s*(.+?)\s*[=:]\s*([\d.,]+)\s*%?\s*$", czesc)
+            if not m:
+                continue
+            p = float(m.group(2).replace(",", "."))
+            roz.append({"nazwa": skroc(m.group(1), 60), "p": round(p / 100 if p > 1 else p, 3)})
+        if not roz:
+            sys.exit('--prognoza: podaj "Rozpoznanie=0,40;Inne=0,25"')
+        w = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "zdarzenie": "prognoza", "faza": faza(a.faza), "rozpoznania": roz[:5]}
+        if a.rola:
+            w["rola"] = rola(a.rola)
+        out.append(w)
     for tekst, skreslone in [(x, False) for x in (a.tablica or [])] + [(x, True) for x in (a.skresl or [])]:
         w = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "zdarzenie": "tablica",
              "faza": faza(a.faza), "tekst": skroc(tekst, 140), "skreslone": skreslone}
@@ -102,10 +116,11 @@ def main() -> None:
     ap.add_argument("--tablica", action="append", help="zapisz na tablicy w Pokoju najważniejsze ustalenie (≤140 znaków; można podać kilka razy)")
     ap.add_argument("--skresl", action="append", help="skreśl na tablicy odrzuconą hipotezę/ustalenie (ten sam tekst co wcześniej albo nowy, od razu skreślony)")
     ap.add_argument("--powod", help="dlaczego odrzucono (≤120 znaków) – pokazuje się pod skreślonym wpisem")
+    ap.add_argument("--prognoza", help='bieżące prawdopodobieństwa rozpoznań dla wykresu Lekarza prowadzącego: "Rozpoznanie=0,40;Inne=0,25" (do 5 pozycji)')
     a = ap.parse_args()
     if not a.sprawa.is_dir():
         sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")
-    if (a.tablica or a.skresl) and not (a.skrot or a.tresc or a.wiele):
+    if (a.tablica or a.skresl or a.prognoza) and not (a.skrot or a.tresc or a.wiele):
         # same wpisy na tablicę, bez dymka
         if not a.faza:
             sys.exit("Podaj --faza (etap, od którego wpis jest widoczny na tablicy).")

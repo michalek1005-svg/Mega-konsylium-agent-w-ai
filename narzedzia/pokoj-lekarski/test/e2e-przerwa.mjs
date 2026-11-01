@@ -62,6 +62,9 @@ assert.ok(await r.locator('#tablica .etap').count() >= 5, 'etapy konsylium na ta
 assert.equal(await r.locator('#tablica .etap.biezacy').count(), 1, 'jeden etap bieżący');
 assert.equal(await r.locator('#tablica .ustalenia li').count(), 2, 'dwa ustalenia na tablicy');
 assert.match(await r.locator('#tablica .ustalenia li.skreslone s').innerText(), /Krwawienie/, 'odrzucona hipoteza skreślona');
+// mały wykres prognoz dla lekarza prowadzącego: procenty tylko tu, nie w dymkach
+assert.equal(await r.locator('#prognoza').isVisible(), true, 'wykres prognoz widoczny');
+assert.match(await r.locator('#prognoza').innerText(), /Prognoza rozpoznań[\s\S]*\d+%/i, 'prognoza w procentach');
 await p.screenshot({ path: join(tu, '..', '_zrzut-tablica.png') });
 // sygnał „AI pracuje” z powłoki
 await p.evaluate(() => document.getElementById('ramka').contentWindow.postMessage({ typ: 'ms-ai', aktywne: true, od: Date.now() - 30000 }, '*'));

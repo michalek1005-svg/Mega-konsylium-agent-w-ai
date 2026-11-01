@@ -269,6 +269,7 @@ ${podpisy(wpisy)}`;
       el.classList.toggle('niedawno', el.dataset.kto === poprz && poprz !== w.kto);
     });
     rysujTablice(k.si);
+    rysujPrognoze(k.si);
     ustawZegar(sc.czas);
     // dymek: najpierw „pisze…”, potem treść
     const dymki = $('dymki');
@@ -524,6 +525,19 @@ ${podpisy(wpisy)}`;
       finally { b.disabled = false; t.focus(); }
     });
   })();
+
+  // ---------- prognoza rozpoznań: mały wykres tylko dla Lekarza prowadzącego (Michał 1.11) ----------
+  // Dymki nie mają procentów; prawdopodobieństwa są tylko tutaj: średnia opinii → agregacja → zdarzenia „prognoza”.
+  function rysujPrognoze(si) {
+    const el = $('prognoza'); if (!el) return;
+    const lista = (scen && scen.tablica && scen.tablica.prognozy) || [];
+    const akt = lista.filter((p) => p.si <= si).pop();
+    if (!akt || !akt.rozpoznania.length) { el.hidden = true; el.innerHTML = ''; return; }
+    const max = Math.max(...akt.rozpoznania.map((r) => r.p), 0.01);
+    el.hidden = false;
+    el.innerHTML = `<div class="pr-gora"><b>Prognoza rozpoznań</b><span>dla Ciebie · ${esc(akt.zrodlo)}</span></div>` +
+      akt.rozpoznania.map((r) => `<div class="pr-wiersz" title="${esc(r.nazwa)} · ${Math.round(r.p * 100)}%"><span class="pr-nazwa">${esc(r.nazwa)}</span><span class="pr-belka"><i style="width:${Math.round(100 * r.p / max)}%"></i></span><span class="pr-p">${Math.round(r.p * 100)}%</span></div>`).join('');
+  }
 
   // ---------- tablica ustaleń (Michał 1.11: zamiast paska etapów na dole) ----------
   // Na tablicy: stan prac (etapy: zrobione ✓, bieżący, przed nami), temat, najważniejsze ustalenia zapisane przez

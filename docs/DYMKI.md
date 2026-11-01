@@ -56,3 +56,13 @@ Zdarzenie w `_log.jsonl`: `{"ts":"…","zdarzenie":"tablica","rola":"ordynator",
 `--skresl … --powod "troponina ujemna ×2"` dopisuje pod skreśleniem, dlaczego odrzucono. `--tablica` i `--skresl` można podać kilka razy i łączyć z dymkiem (`--skrot`). Tekst ≤140 znaków, jedno konkretne ustalenie (rozpoznanie z prawdopodobieństwem, wykluczona red flag, kluczowy fakt z wywiadu, decyzja o badaniu).
 `--skresl` z tym samym tekstem co wcześniejszy wpis przekreśla tamten wpis; z nowym tekstem dopisuje go od razu skreślony. Na tablicy widać ostatnie 6 wpisów; `--faza` mówi, od którego etapu wpis jest widoczny przy odtwarzaniu.
 Ordynator zapisuje na tablicę co najmniej: lidera rankingu po agregacji, każdą jawnie wykluczoną red flag (skreśloną) i decyzję z projektu rekomendacji.
+
+## Prognoza rozpoznań (wykres dla Lekarza prowadzącego, od 1.11.2026)
+
+Michał chce widzieć na żywo prawdopodobieństwa rozpoznań w procentach – ale tylko na małym wykresie w rogu Pokoju, nigdy w dymkach. Wykres bierze: średnią opinii ślepej tury (wstępnie), ranking z agregacji, a potem każde zdarzenie `prognoza`:
+
+```
+python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --prognoza "Kolka żółciowa=0,55;Zapalenie dróg żółciowych=0,20;Wrzód=0,10"
+```
+
+Ordynator zapisuje prognozę po każdej rundzie konsylium i po projekcie rekomendacji (do 5 rozpoznań, liczby 0–1 albo procenty). Można łączyć z dymkiem i `--tablica`.

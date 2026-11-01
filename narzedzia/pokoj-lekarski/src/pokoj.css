@@ -330,3 +330,16 @@ html.osadzony .legenda { display: none; }
 @keyframes para { 0% { opacity: 0; transform: translateY(3px) scaleY(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-6px) scaleY(1.1); } }
 @media (prefers-reduced-motion: reduce) { .pokoj.przerwa .kubki .para { animation: none; opacity: .7; } .pokoj.przerwa .narada-kropka { animation: none; } }
 .pokoj .podpis { transition: opacity .8s; } .pokoj.przerwa .podpis { opacity: .35; }
+
+/* prognoza rozpoznań – mały wykres dla Lekarza prowadzącego (Michał 1.11); dane: scenariusz.tablica.prognozy */
+.prognoza { position: absolute; right: 1.2cqw; bottom: 1.2cqw; width: 22cqw; min-width: 150px; padding: .8cqw 1cqw; border-radius: 1cqw; background: var(--dymek); color: var(--dymek-txt); box-shadow: 0 .4cqw 1.4cqw rgba(10,54,52,.18); font-size: max(8.5px, .9cqw); line-height: 1.3; z-index: 4; }
+.prognoza .pr-gora { display: flex; flex-direction: column; gap: .1cqw; margin-bottom: .5cqw; }
+.prognoza .pr-gora b { font-size: max(9px, .95cqw); letter-spacing: .05em; text-transform: uppercase; color: var(--g-prowadzacy); }
+.prognoza .pr-gora span { color: var(--dymek-mut); font-size: max(8px, .8cqw); }
+.prognoza .pr-wiersz { display: grid; grid-template-columns: minmax(0, 1fr) 6cqw 3cqw; gap: .6cqw; align-items: center; margin-top: .25cqw; }
+.prognoza .pr-nazwa { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prognoza .pr-belka { height: .6cqw; min-height: 5px; border-radius: 9px; background: rgba(184,98,46,.15); overflow: hidden; }
+.prognoza .pr-belka i { display: block; height: 100%; background: var(--g-prowadzacy); border-radius: 9px; transition: width .6s ease; }
+.prognoza .pr-p { font-family: var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--dymek-mut); }
+.pokoj.przerwa .prognoza { opacity: .85; }
+@container (max-width: 620px) { .prognoza { display: none; } }

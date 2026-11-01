@@ -416,8 +416,47 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
   const wnioski = wnioskiZFinal(pliki['09-FINAL.md']);
   const wszystkie = zywe.length ? polacz(zywe, sceny) : sceny;
   tablica.ustalenia = ustaleniaZLogu(zdarzenia, wszystkie);
+  tablica.prognozy = prognozy(pliki, zdarzenia, wszystkie, tablica);
   if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki', wnioski };
   return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny: wszystkie, tablica, zrodlo: sceny.length ? 'log+pliki' : 'log', wnioski };
+}
+
+// Prognoza rozpoznań na żywo (Michał 1.11: „chcę widzieć na żywo, jakie są prognozy procentowo – mały wykres dla mnie”).
+// Kolejno: średnia z opinii ślepej tury (wstępnie), ranking z agregacji, potem każde zdarzenie „prognoza” w _log.jsonl
+// (skrypty/dymek.py --prognoza "Rozpoznanie=0,40;Inne=0,25"). Każdy wpis ma numer sceny (si), od której obowiązuje.
+export function prognozy(pliki, zdarzenia, sceny, tablica) {
+  const out = [];
+  const siSceny = (id) => sceny.findIndex((s) => s.id === id);
+  const norm = (lista) => {
+    const suma = lista.reduce((a, r) => a + r.p, 0) || 1;
+    return lista.map((r) => ({ nazwa: r.nazwa, p: Math.max(0, Math.min(1, r.p / Math.max(1, suma))) })).sort((a, b) => b.p - a.p).slice(0, 5);
+  };
+  const siSlepa = siSceny('slepa');
+  if (siSlepa >= 0) {
+    const suma = new Map(); let n = 0;
+    for (const r of LEKARZE) {
+      const o = json(pliki, `03-opinie/${r}.json`);
+      if (!o || !Array.isArray(o.rozpoznania)) continue;
+      n++;
+      for (const x of o.rozpoznania) { if (!(x.p > 0)) continue; const k = String(x.nazwa).trim().toLowerCase(); const w = suma.get(k) || { nazwa: x.nazwa, p: 0 }; w.p += x.p; suma.set(k, w); }
+    }
+    if (n) out.push({ si: siSlepa, zrodlo: `średnia ${n} opinii ślepej tury (wstępnie)`, rozpoznania: norm([...suma.values()].map((w) => ({ nazwa: w.nazwa, p: w.p / n }))) });
+  }
+  const siAgr = siSceny('agregat');
+  if (siAgr >= 0 && tablica.ranking.length) out.push({ si: siAgr, zrodlo: 'agregacja (ważona pula log-odds)', rozpoznania: tablica.ranking.map((r) => ({ nazwa: r.nazwa, p: r.p })) });
+  for (const z of zdarzenia) {
+    if (z.zdarzenie !== 'prognoza') continue;
+    let lista = Array.isArray(z.rozpoznania) ? z.rozpoznania : [];
+    if (!lista.length && typeof z.tekst === 'string') lista = z.tekst.split(/[;\n]/).map((s) => { const m = s.match(/^\s*(.+?)\s*[=:]\s*([\d.,]+)\s*%?\s*$/); if (!m) return null; let p = parseFloat(m[2].replace(',', '.')); if (p > 1) p /= 100; return { nazwa: m[1], p }; }).filter(Boolean);
+    lista = lista.filter((r) => r && r.nazwa && r.p >= 0).map((r) => ({ nazwa: utnij(String(r.nazwa), 60), p: +r.p }));
+    if (!lista.length) continue;
+    const f = z.faza ? fazaNaId(z.faza) : null;
+    let si = f ? siSceny(f.id) : -1;
+    if (si < 0) si = f ? Math.max(0, sceny.findIndex((s) => fazaNaId(s.tytul).rz > f.rz) - 1) : sceny.length - 1;
+    if (si < 0) si = Math.max(0, sceny.length - 1);
+    out.push({ si, zrodlo: (z.rola ? (rola(z.rola) === 'ordynator' ? 'ordynator' : rola(z.rola)) : 'konsylium') + (f ? ' · ' + f.tytul : ''), rozpoznania: lista.sort((a, b) => b.p - a.p).slice(0, 5), ts: z.ts || null });
+  }
+  return out.sort((a, b) => a.si - b.si);
 }
 
 // Tablica ustaleń (Michał 1.11): lekarze zapisują na tablicy najważniejsze rzeczy, odrzucone skreślają.
