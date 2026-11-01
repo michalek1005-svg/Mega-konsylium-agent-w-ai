@@ -79,3 +79,12 @@ Plik zapisuje `skrypty/ai_aktywnosc.ps1`, wywoływany przez hooki Claude Code w 
 ```
 
 `-Dioda` zapala diodę **Scroll Lock** na czas pracy i gasi ją po zakończeniu (jeśli klawiatura ma tę diodę). Caps Lock celowo nie: jego przełączenie zmienia pisanie na wielkie litery.
+
+## Literatura w konsylium na żywo (wniosek z 1.11.2026)
+
+W pierwszym przebiegu na żywo lekarze mieli PubMed, ale korzystali z niego słabo: ordynator ograniczył każdą rolę do 3 wyszukiwań „bo lekarz czeka”, w rundzie 2 zakazał wyszukiwań, a wiele zapytań dało 0 wyników. Od teraz:
+
+1. **Bez limitu wyszukiwań.** Czas konsylium nie jest ważniejszy od źródeł. Każda rola lekarska i Sprawdzający faktów wykonuje **co najmniej 3 skuteczne zapytania** do PubMed (zapytanie bez wyników nie liczy się; wtedy zmienić hasła, użyć MeSH, rozszerzyć lata). Zapytania i PMID zapisać w polu `zrodla` opinii.
+2. **Nazwa narzędzia.** Na komputerze użytkownika wtyczka PubMed nazywa się `mcp__plugin_pubmed_PubMed__*` (w chmurze `mcp__PubMed__*`). Ordynator sprawdza na starcie, która istnieje, i podaje właściwą nazwę każdej roli. Gdy wtyczki nie ma, zostaje E-utilities (`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=…`) przez WebFetch.
+3. **Pytanie użytkownika ma pierwszeństwo przed torem.** Jeśli lekarz pyta o czynnik etiologiczny, ordynator w `01-wywiad.md` zapisuje „Pytanie: czynnik etiologiczny”, a konsylium odpowiada rankingiem czynników (leki, składniki, ekspozycje) z mechanizmem i uzasadnieniem; pilność jest wtedy tylko dopiskiem. Rekomendacja „oceń dziś” bez odpowiedzi na pytanie jest błędem procesu.
+4. **Każde twierdzenie w dymku INFO i w 09-FINAL** ma PMID/DOI albo etykietę `[wiedza modelu, niezweryfikowane]`; etykieta na tezie głównej oznacza, że opinia jest niekompletna i wraca do roli.
