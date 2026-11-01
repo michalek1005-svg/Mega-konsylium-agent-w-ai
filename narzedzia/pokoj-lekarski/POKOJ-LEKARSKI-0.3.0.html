@@ -325,6 +325,17 @@ html.osadzony .legenda { display: none; }
 @media (prefers-reduced-motion: reduce) { .postac.aktywna .u-otw, .postac.aktywna .u-zam { animation: none; } }
 /* dymek obok tablicy (żeby jej nie zasłaniał): węższy, z ogonem w stronę mówiącego */
 .dymek.boczny, .dymek.pelny.boczny { max-width: 25cqw; min-width: 16cqw; max-height: 24cqw; }
+/* przerwa (wątek Graficzny 1.11, makieta-3): tabliczka „Narada” nad drzwiami i parujące kubki na stole */
+.pokoj .kubki, .pokoj .narada-znak { opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+.pokoj.przerwa .kubki, .pokoj.przerwa .narada-znak { opacity: 1; transition-delay: 1.6s; }
+.pokoj.przerwa .narada-kropka { animation: ai-kr 1.3s ease-in-out infinite; }
+.kubki .para { opacity: 0; transform-box: fill-box; transform-origin: 50% 100%; }
+.pokoj.przerwa .kubki .para { animation: para 3.2s ease-in-out infinite; }
+.pokoj.przerwa .kubki g:nth-child(2) .para { animation-delay: .7s; } .pokoj.przerwa .kubki g:nth-child(3) .para { animation-delay: 1.3s; }
+.pokoj.przerwa .kubki g:nth-child(4) .para { animation-delay: 2s; } .pokoj.przerwa .kubki g:nth-child(5) .para { animation-delay: 2.5s; }
+@keyframes para { 0% { opacity: 0; transform: translateY(3px) scaleY(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-6px) scaleY(1.1); } }
+@media (prefers-reduced-motion: reduce) { .pokoj.przerwa .kubki .para { animation: none; opacity: .7; } .pokoj.przerwa .narada-kropka { animation: none; } }
+.pokoj .podpis { transition: opacity .8s; } .pokoj.przerwa .podpis { opacity: .35; }
 </style>
 </head>
 <body>
@@ -1304,6 +1315,9 @@ ${zaStolem}
   <rect x="680" y="568" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(-5 697 580)"/>
 </g>
 ${przedStolem}
+<!-- przerwa (AI pracuje): parujące kubki na stole i tabliczka „Narada” nad drzwiami – widoczne tylko w .pokoj.przerwa -->
+<g class="kubki" aria-hidden="true"><g transform="translate(430,520)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(530,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(668,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(772,522)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(600,578)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g></g>
+<g class="narada-znak" transform="translate(16,14)" aria-hidden="true"><rect width="176" height="30" rx="15" fill="#0F5E58"/><circle class="narada-kropka" cx="17" cy="15" r="5" fill="#7ff0d9"/><text id="narada-czas" x="30" y="20" font-family="var(--font)" font-size="12" font-weight="800" letter-spacing=".4" fill="#fff">NARADA · AI pracuje</text></g>
 <g id="dym" aria-hidden="true"></g>
 
 <!-- roślina -->
@@ -1536,6 +1550,7 @@ ${podpisy(wpisy)}`;
     if (!przerwa) return;
     const t = mmss(Date.now() - przerwaOd);
     $('tablica').innerHTML = `<div class="gora"><span class="faza">Konsylium pracuje</span><span class="czas">${t}</span></div><div class="narada"><b>Narada · ${t}</b><span>Lekarze czytają literaturę i piszą opinie. Wrócą z gotową wypowiedzią.</span></div><div class="ai-kropki" aria-hidden="true"><i></i><i></i><i></i></div>`;
+    const zn = $('narada-czas'); if (zn) zn.textContent = 'NARADA · AI pracuje ' + t;
     $('napisy').innerHTML = `<span class="nap-temat"><b>AI pracuje · ${t}</b>Lekarze są poza pokojem; nowa wypowiedź pojawi się sama.</span>`;
     rysujChipAi();
   }
