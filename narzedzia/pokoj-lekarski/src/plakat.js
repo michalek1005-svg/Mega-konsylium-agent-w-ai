@@ -2,7 +2,8 @@
 // (żartobliwy hołd dla serialowego lekarza; rysunek autorski, bez zdjęć, bez nazwisk aktorów).
 // Technika: kolorowy papier z ziarnem, miękkie plamy pigmentu (rozmycie), kreski pastelu, chropowate brzegi
 // (feDisplacementMap) i „ząbek” papieru prześwitujący przez pigment. Układ współrzędnych: 200 × 250.
-// PLAKAT_DEFS wstawia się raz w scenie; <use href="#pl-rys"> pokazuje ten sam rysunek w powiększeniu.
+// PLAKAT_SZKIC to szkic wektorowy; zasoby/maluj-plakat.py przemalowuje go kreskami pastelu do zasoby/plakat.jpg
+// (zasoby/README.md). W scenie jest obraz (PLAKAT_DEFS, osadzony przez build.mjs jako data:), napis i serce do cmoknięcia.
 const PLAKAT_W = 200, PLAKAT_H = 250;
 
 function plKreski(n, x0, y0, x1, y1, dx, dy, kolor, gr, op, seed) {
@@ -31,7 +32,7 @@ function plWlosy() {
   return `<g fill="none" stroke-width=".9" stroke-linecap="round" opacity=".75">${out}</g>`;
 }
 
-const PLAKAT_DEFS = `
+const PLAKAT_SZKIC = `
 <defs>
   <filter id="pl-kreda" x="-4%" y="-4%" width="108%" height="108%">
     <feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="3" seed="3" result="szum"/>
@@ -62,7 +63,7 @@ const PLAKAT_DEFS = `
   <radialGradient id="pl-teczowka" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#9cc3e0"/><stop offset=".6" stop-color="#4f86b4"/><stop offset="1" stop-color="#2c4f72"/></radialGradient>
   <clipPath id="pl-twarz-clip"><path d="M70,84 C69,60 82,46 100,46 C118,46 131,60 130,84 C130,100 127,112 120,122 C113,131 107,135 100,135 C93,135 87,131 80,122 C73,112 70,100 70,84 Z"/></clipPath>
   <clipPath id="pl-ramka"><rect x="0" y="0" width="${PLAKAT_W}" height="${PLAKAT_H}" rx="2"/></clipPath>
-  <g id="pl-rys" clip-path="url(#pl-ramka)">
+  <g id="pl-szkic" clip-path="url(#pl-ramka)">
     <!-- papier pastelowy -->
     <rect width="${PLAKAT_W}" height="${PLAKAT_H}" fill="url(#pl-tlo)"/>
     <g filter="url(#pl-kreda)">
@@ -172,13 +173,20 @@ const PLAKAT_DEFS = `
         ${plKreski(7, -14, 6, 10, 2, 6, 6, '#a72a2c', 1.3, .55, 41)}
       </g>
 
-      <!-- pasek z napisem -->
-      <rect x="0" y="222" width="${PLAKAT_W}" height="28" fill="#eadfca"/>
-      <path d="M0,222 L${PLAKAT_W},222" stroke="#b9ab90" stroke-width="1.5"/>
-      <!-- napis pastelą -->
-      <text x="100" y="241" text-anchor="middle" font-family="var(--font, sans-serif)" font-size="15" font-weight="800" letter-spacing="1.4" fill="#2f3447" opacity=".9">WSZYSCY KŁAMIĄ</text>
     </g>
     <!-- ząbek papieru: drobne jasne i ciemne ziarno na całości -->
     <rect width="${PLAKAT_W}" height="${PLAKAT_H}" fill="#fff" filter="url(#pl-papier)" opacity=".55"/>
+  </g>
+</defs>`;
+
+const PLAKAT_OBRAZ = '/*@@PLAKAT@@*/';
+const PLAKAT_DEFS = `
+<defs>
+  <path id="pl-serce" d="M0,-6 c-6,-10 -22,-6 -21,6 c1,10 14,16 21,23 c7,-7 20,-13 21,-23 c1,-12 -15,-16 -21,-6z" fill="#d9413f"/>
+  <g id="pl-rys">
+    <image href="data:image/jpeg;base64,${PLAKAT_OBRAZ}" x="0" y="0" width="${PLAKAT_W}" height="${PLAKAT_H}" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="0" y="222" width="${PLAKAT_W}" height="28" fill="#e6dcc8"/>
+    <path d="M0,222 L${PLAKAT_W},222" stroke="#b9ab90" stroke-width="1.5"/>
+    <text x="100" y="241" text-anchor="middle" font-family="var(--font, sans-serif)" font-size="15" font-weight="800" letter-spacing="1.4" fill="#2f3447" opacity=".9">WSZYSCY KŁAMIĄ</text>
   </g>
 </defs>`;

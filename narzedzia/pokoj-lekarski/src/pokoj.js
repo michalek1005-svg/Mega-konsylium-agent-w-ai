@@ -127,7 +127,7 @@ ${podloga}
 
 <!-- plakat z serduszkiem: realistyczny rysunek pastelowy (src/plakat.js); kliknięcie pokazuje go w powiększeniu -->
 ${PLAKAT_DEFS}
-<g id="plakat" transform="translate(251,58) scale(.54)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
+<g id="plakat" transform="translate(268,86) scale(.36)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
   <rect x="-7" y="-7" width="${PLAKAT_W + 14}" height="${PLAKAT_H + 14}" rx="6" fill="var(--listwa)"/>
   <rect x="-2" y="-2" width="${PLAKAT_W + 4}" height="${PLAKAT_H + 4}" fill="#efe9dd"/>
   <use href="#pl-rys"/>
@@ -411,7 +411,7 @@ ${podpisy(wpisy)}`;
       { duration: 4800, easing: 'ease-in-out', fill: 'none' });
     setTimeout(() => {
       for (let k = 0; k < 4; k++) {
-        const h = document.querySelector('#pl-serce path').cloneNode(false);
+        const h = document.querySelector('#pl-serce').cloneNode(false); h.removeAttribute('id');
         h.removeAttribute('transform'); h.setAttribute('class', 'serce');
         h.setAttribute('transform', `translate(${280 + k * 10},${170}) scale(.7)`);
         g.appendChild(h);
