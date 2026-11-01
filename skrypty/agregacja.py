@@ -2,9 +2,10 @@
 """
 Agregacja opinii ślepej tury → 03-opinie/_agregat.json
 
-Użycie:  python3 skrypty/agregacja.py sprawy/<ID>
+Użycie:  python3 skrypty/agregacja.py sprawy/<ID> [--runda N]
+         (opinie po rundzie: 03-opinie/<rola>-runda<N>.json – brana jest najnowsza runda każdej roli)
 
-Rozpoznanie: ważona pula logitów (waga = waga_roli[rozpoznanie] × k[rola]), ε dla niewymienionych, softmax.
+Rozpoznanie: ważona pula logitów (waga = waga_roli[rozpoznanie] × k[rola]), ε dla niewymienionych, sigmoid; skalowanie tylko gdy suma > 1.
 Pilność:     ważona mediana (tor pilnosc) + WETO lekarza 'najgorszy_scenariusz' (gdy ma red_flags_otwarte).
 Zgoda:       ważony udział lekarzy z tym samym rozpoznaniem nr 1 co lider → flaga NISKA_ZGODA (< próg).
              (dawna miara 1 − entropia top_n zostaje jako zgoda_entropia)
@@ -59,14 +60,14 @@ def wazona_mediana(pary: list[tuple[float, float]]) -> float:
     return pary[-1][0]
 
 
-def agreguj(sprawa: Path) -> dict:
+def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
     cfg = wagi()
     kal = kalibracja()
     syn = wczytaj_yaml(CONFIG / "synonimy.yaml") if (CONFIG / "synonimy.yaml").exists() else {}
     eps = float(cfg["agregacja"]["epsilon_niewymienione"])
     top_n = int(cfg["agregacja"]["top_n"])
 
-    opinie = wczytaj_opinie(sprawa)
+    opinie = wczytaj_opinie(sprawa, do_rundy)
     if not opinie:
         sys.exit(f"Brak opinii w {sprawa/'03-opinie'}")
 
@@ -125,12 +126,17 @@ def agreguj(sprawa: Path) -> dict:
             suma_logit[d] += w * logit(p)
             suma_wag[d] += w
 
-    # pula logarytmiczna → score, softmax
-    score = {d: (suma_logit[d] / suma_wag[d]) if suma_wag[d] > 0 else -math.inf for d in wszystkie}
-    mx = max(score.values()) if score else 0.0
-    ex = {d: math.exp(s - mx) if s > -math.inf else 0.0 for d, s in score.items()}
-    z = sum(ex.values()) or 1.0
-    p_agr = {d: ex[d] / z for d in wszystkie}
+    # pula logarytmiczna: p = sigmoid(ważona średnia logitów) dla każdego rozpoznania osobno.
+    # Bez softmaxu (1.11.2026: softmax zawyżał lidera, np. oceny 0,50–0,55 → 0,64). Skalujemy w dół tylko,
+    # gdy suma > 1; wtedy żadne p nie wychodzi ponad oceny lekarzy.
+    p_agr = {}
+    for d in wszystkie:
+        if suma_wag[d] > 0:
+            p_agr[d] = 1 / (1 + math.exp(-suma_logit[d] / suma_wag[d]))
+    suma_p = sum(p_agr.values())
+    if suma_p > 1:
+        p_agr = {d: v / suma_p for d, v in p_agr.items()}
+    wszystkie = set(p_agr)
     ranking = sorted(p_agr.items(), key=lambda x: -x[1])[:top_n]
 
     # zgoda = 1 - entropia znormalizowana top_n
@@ -211,6 +217,8 @@ def agreguj(sprawa: Path) -> dict:
                               "pilnosc": round(waga_w_torze(rola, "pilnosc", cfg, kal), 3),
                               "k": k_roli(rola, kal)} for rola in opinie},
         "liczba_opinii": len(opinie),
+        "pliki_opinii": {r: op.get("_plik") for r, op in opinie.items()},
+        "runda_opinii": max((op.get("_runda", 0) for op in opinie.values()), default=0),
         "rozpoznanie_nr1_lekarzy": {r: nazwy_wyswietlane[k] for r, k in top1.items()},
         "runda": runda,
         "mniejszosc_chroniona": chronione,
@@ -222,14 +230,17 @@ def agreguj(sprawa: Path) -> dict:
 
 
 def main() -> None:
-    if len(sys.argv) != 2:
-        sys.exit(__doc__)
-    sprawa = Path(sys.argv[1]).resolve()
-    wynik = agreguj(sprawa)
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("sprawa")
+    ap.add_argument("--runda", type=int, default=None, help="agreguj opinie najwyżej z tej rundy (0 = ślepa tura)")
+    a = ap.parse_args()
+    sprawa = Path(a.sprawa).resolve()
+    wynik = agreguj(sprawa, a.runda)
     out = sprawa / "03-opinie" / "_agregat.json"
     zapisz_json(out, wynik)
     log(sprawa, "skrypt", "agregacja", str(out.relative_to(sprawa)))
-    print(f"Zapisano {out}")
+    print(f"Zapisano {out}  (opinie: {', '.join(f'{r}={f}' for r, f in wynik['pliki_opinii'].items())})")
     print("Ranking:")
     for r in wynik["ranking"]:
         print(f"  {r['p']:.3f}  {r['rozpoznanie']}   ({', '.join(r['wymienili']) or 'nikt — tylko ε'})")

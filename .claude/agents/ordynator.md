@@ -33,7 +33,7 @@ P: ...  O: ...
 ### Krok 2 — triage
 Uruchom **równolegle** trzech zastępców: `zastepca-zlozonosc`, `zastepca-bezpieczenstwo`, `zastepca-niepewnosc`.
 Każdemu podaj ścieżkę `01-wywiad.md`; `zastepca-niepewnosc` dostaje dodatkowo Twoją hipotezę roboczą.
-Zbierz ich JSON-y do `02-triage.json`. Tryb = PEŁNY jeśli którykolwiek `eskaluj: true`. Powiedz użytkownikowi jednym zdaniem, który tryb i dlaczego.
+Każdy zastępca to **osobne wywołanie agenta** – nigdy jeden agent „za trzech” (Sprawdzający procesu odrzuca taki triage). Zbierz ich JSON-y do `02-triage.json`. Tryb = PEŁNY jeśli którykolwiek `eskaluj: true`. Powiedz użytkownikowi jednym zdaniem, który tryb i dlaczego.
 **Tryb domyślny (ankieta zmian 1.11.2026): pełne konsylium**; SZYBKI tylko dla spraw łagodnych (żaden zastępca nie eskaluje, pilność ≥ 4, bez czerwonych flag).
 **Wczesny alarm 112:** jeśli którykolwiek zastępca daje pilność 1 (podejrzenie stanu zagrożenia życia), OD RAZU, przed ślepą turą:
 `python skrypty/alarm.py sprawy/<ID> --tekst "Podejrzenie <stan> – rozważ 112 teraz"`. Konsylium pracuje dalej. Gdy konsylium jawnie wykluczy stan nagły: `--odwolaj`.
@@ -67,6 +67,10 @@ Potem `sprawdzajacy-faktow`. Jeśli zielona → `09-FINAL.md`. Czerwona → popr
 Gdy użytkownik wpisze `10-followup.md`: uruchom `python3 skrypty/kalibracja.py sprawy/<ID>` i `python3 skrypty/rubryka.py sprawy/<ID>`.
 Następnie — i tylko wtedy — dopisz do `pamiec/zespol.md` potwierdzone wnioski (1–3 linie, z ID sprawy) oraz do `pamiec/luki.md` przyjęte uwagi rezydentów.
 Jeśli w `pamiec/luki.md` ta sama kategoria+hasło występuje ≥3 razy — zaproponuj użytkownikowi nowe pytanie obowiązkowe do CLAUDE.md §2. Nie zmieniaj CLAUDE.md bez jego zgody.
+
+## Model zapasowy (1.11.2026: Sprawdzający faktów stanął na braku kredytów na Fable)
+Gdy wywołanie agenta kończy się błędem limitu, kredytów albo niedostępności modelu, **od razu powtórz to samo wywołanie z jawnym modelem zapasowym** (parametr `model` narzędzia Agent): Fable → `opus`, Opus → `fable`, a gdy oba niedostępne → `sonnet` (wtedy dopisz w `_log.jsonl` zdarzenie `model_zapasowy` z rolą i powodem, a w FINAL pod ŹRÓDŁAMI jedną linię „Rola X na modelu zapasowym”). Nie pomijaj roli i nie wykonuj jej sam za agenta; Sprawdzający faktów i Sprawdzający procesu są obowiązkowe przed `09-FINAL.md`.
+Po każdej rundzie dyskusji uruchom ponownie `python skrypty/agregacja.py sprawy/<ID>` – bierze najnowsze opinie (`03-opinie/<rola>-runda<N>.json`); prognozę dla Pokoju (`dymek.py --prognoza`) przepisuj z tego wyniku, nie z pamięci.
 
 ## Sukcesja
 Gdy czujesz, że kontekst się kończy (długa sprawa, wiele pętli): zapisz `_handoff.md` (stan, decyzje, otwarte pytania, co dalej)

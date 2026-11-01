@@ -70,17 +70,29 @@ def kanon(nazwa: str, synonimy: dict | None = None) -> str:
     return n
 
 
-def wczytaj_opinie(sprawa: Path) -> dict[str, dict]:
-    """{rola: opinia} z 03-opinie/*.json (bez plików zaczynających się od '_')."""
+def wczytaj_opinie(sprawa: Path, do_rundy: int | None = None) -> dict[str, dict]:
+    """{rola: opinia} z 03-opinie/*.json (bez plików zaczynających się od '_').
+
+    Opinia po rundzie dyskusji: 03-opinie/<rola>-runda<N>.json (pełna opinia) albo pole "runda": N w JSON-ie.
+    Dla każdej roli bierzemy NAJNOWSZĄ rundę (≤ do_rundy, jeśli podano); przy remisie – plik zmieniony później.
+    (Błąd z 1.11.2026: skrypt brał opinie ślepej tury zamiast ostatniej rundy.)
+    """
     kat = sprawa / "03-opinie"
-    wynik = {}
-    for p in sorted(kat.glob("*.json")):
+    najlepsze: dict[str, tuple] = {}
+    for p in kat.glob("*.json"):
         if p.name.startswith("_"):
             continue
         op = wczytaj_json(p)
-        if op and "rola" in op:
-            wynik[op["rola"]] = op
-    return wynik
+        if not op or "rola" not in op:
+            continue
+        m = re.search(r"-runda[_-]?(\d+)\.json$", p.name)
+        runda = int(op.get("runda", m.group(1) if m else 0) or 0)
+        if do_rundy is not None and runda > do_rundy:
+            continue
+        klucz = (runda, p.stat().st_mtime)
+        if op["rola"] not in najlepsze or klucz > najlepsze[op["rola"]][0]:
+            najlepsze[op["rola"]] = (klucz, {**op, "_plik": p.name, "_runda": runda})
+    return {r: v[1] for r, v in sorted(najlepsze.items())}
 
 
 def frontmatter(p: Path) -> tuple[dict, str]:

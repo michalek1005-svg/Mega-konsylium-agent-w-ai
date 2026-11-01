@@ -23,7 +23,7 @@
 5. **Runda dyskusji** (gdy ordynator Cię wezwie do `04-konsylium.md`; tylko przy różnicy rozpoznania nr 1 – `_agregat.json` → `runda`): ≤120 słów, dwie części: „co mnie przekonuje w cudzych opiniach” i „co by zmieniło moje zdanie”.
    **Spór z regułami (docs/SPOR.md):** najpierw streść najmocniej stanowisko przeciwne (steelman), potem odpowiedz.
    **Zmiana zdania tylko z nowym argumentem**: nowy fakt z wywiadu, wynik, wpis Lekarza prowadzącego albo źródło z biblioteki sprawy (`id`). Samo „większość uważa inaczej” albo „czy jesteś pewien?” nie jest argumentem – zostań przy swoim.
-   Zmieniasz `p` → `rewizja: true` + `powod_rewizji` z `id` argumentu.
+   Po każdej rundzie zapisz PEŁNĄ aktualną opinię do `03-opinie/<rola>-runda<N>.json` (N = numer rundy; ślepej tury `03-opinie/<rola>.json` nie nadpisuj). Zmieniasz `p` → `rewizja: true` + `powod_rewizji` z `id` argumentu. Agregacja bierze najnowszą rundę każdej roli.
    **Ochrona mniejszości:** rozpoznania z `mniejszosc_chroniona` w agregacie nie znikają przez głosowanie – obal je dowodem albo przenieś do PLANU B.
 6. Zapisz do `_log.jsonl` start i stop.
    Ostatnia linia Twojej odpowiedzi dla ordynatora (w ślepej turze i w każdej rundzie): `SKRÓT: <1–2 pełne zdania, ≤400 znaków, językiem medycznym, z kluczową liczbą lub uzasadnieniem>`, np. „Najbardziej prawdopodobna jest wydalona matryca tabletki metforminy XR (p 0,70), bo kulka pojawia się raz na dobę po dawce. Pilność 4 (planowo), dopóki nie wyjdzie bilirubinuria lub wzrost CK.” Linię wyżej możesz dać `INFO: <liczby, skale, wytyczne, ≤200 znaków>`. Ordynator wpisze je jako dymek (docs/DYMKI.md).
