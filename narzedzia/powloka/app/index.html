@@ -289,7 +289,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       // Tafla mówi prawdę: przy udostępnieniu aplikacja nie jest już „Offline”, tylko w sieci lokalnej
       $off.textContent = wl ? (akt.length ? 'iPad ✓' : 'Sieć lokalna') : 'Offline';
       $off.title = wl ? (akt.length ? 'iPad połączony na stałe (' + akt.length + ')' : 'Udostępniono dla iPada w sieci lokalnej; bez internetu') : 'Bez sieci';
-      window.msStanIpad = { wlaczony: wl, aktywne: akt.length, blad: s && s.blad || null };
+      window.msStanIpad = { wlaczony: wl, aktywne: akt.length, byl: !!(s && s.polaczone && s.polaczone.length), blad: s && s.blad || null };
       if (window.msOdswiezDziala) window.msOdswiezDziala();
     }
     function pokazPanel(t) { $p.hidden = !t; $b.setAttribute('aria-pressed', String(!!t)); if (t) { pokazPanelFolderu(false); I.stan().then(pokazStan); } }
@@ -371,7 +371,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       var m = biezacy && dostepne[biezacy] !== false;
       w.push(m && gotowe[biezacy] ? wiersz('ok', 'Moduł: ' + NAZWY[biezacy]) : wiersz(m ? 'uwaga' : 'blad', m ? 'Moduł jeszcze się ładuje' : 'Ten moduł nie jest dołączony'));
       if (folder) w.push(sprawa ? wiersz(Date.now() - sprawaCzas < 15 * 60000 ? 'ok' : 'info', 'Sprawa: ' + sprawa, Date.now() - sprawaCzas < 15 * 60000 ? 'zmieniana w ciągu ostatnich 15 minut (konsylium na żywo)' : 'ostatnia zmiana ' + new Date(sprawaCzas).toLocaleString('pl-PL')) : wiersz('info', 'Brak spraw w folderze', 'Pojawią się po pierwszym wywiadzie.'));
-      if (!naIpadzie && ip) w.push(ip.blad ? wiersz('blad', 'iPad: ' + ip.blad) : !ip.wlaczony ? wiersz('info', 'iPad: udostępnianie wyłączone') : ip.aktywne ? wiersz('ok', 'iPad połączony na stałe (' + ip.aktywne + ')') : wiersz('uwaga', 'iPad: czekam na połączenie', 'Zeskanuj kod QR albo otwórz ikonę Konsylium na iPadzie.'));
+      if (!naIpadzie && ip) w.push(ip.blad ? wiersz('blad', 'iPad: ' + ip.blad) : !ip.wlaczony ? wiersz('info', 'iPad: udostępnianie wyłączone') : ip.aktywne ? wiersz('ok', 'iPad połączony na stałe (' + ip.aktywne + ')') : ip.byl ? wiersz('uwaga', 'iPad stracił połączenie', 'Połączy się sam, gdy wróci do Wi‑Fi; sprawdź, czy iPad nie jest uśpiony.') : wiersz('info', 'iPad: udostępnione, czekam na pierwsze połączenie', 'Zeskanuj kod QR albo otwórz ikonę Konsylium na iPadzie.'));
       var ai = document.documentElement.classList.contains('ai-aktywne');
       w.push(ai ? wiersz('ok', 'AI pracuje teraz', document.getElementById('ai-pracuje').textContent) : wiersz('info', 'AI czeka', 'Konsylium (Claude) nie pracuje w tej chwili; to normalne między etapami.'));
       $li.innerHTML = ''; w.forEach(function (x) { $li.appendChild(x); });

@@ -142,6 +142,16 @@ try {
   await zrzut(ipad, 'wywiad-pytanie');
   await w.tap('.opcja[data-w="nie"]');
   await w.waitForSelector('[data-akcja="zywo-wyslij"]', { timeout: 8000 });
+  // 4b. Wspólny stan na dysku + „Wznów po kodzie” (Michał 1.11): komputer przejmuje ten sam wywiad po kodzie
+  const sesja = await czekaj(() => { try { const s = readFileSync(join(kat, 'sesja.json'), 'utf8'); return JSON.parse(s).historia.length >= 2 && s; } catch { return false; } }, 6000, 'sesja.json z opisem i odpowiedzią');
+  assert.ok(!sesja.includes('85010112345') && !sesja.includes('Kowalski'), 'sesja.json też bez danych osobowych');
+  const wpc = await czekaj(() => pc.frames().find((f) => f.url().includes('moduly/wywiad.html')), 10000, 'ramka wywiadu na komputerze');
+  await wpc.waitForSelector('#wznow-pole', { timeout: 8000 });
+  await wpc.fill('#wznow-pole', kod.toLowerCase());
+  await wpc.click('#wznow-form button');
+  await czekaj(async () => /odpowiedzi\s*2/.test((await wpc.textContent('#lekarz')).replace(/\s+/g, ' ')), 8000, 'komputer pokazuje ten sam wywiad');
+  assert.match(await wpc.textContent('#lekarz'), new RegExp('Kod wywiadu:\\s*' + kod));
+  await wpc.waitForSelector('[data-akcja="zywo-wyslij"]', { timeout: 8000 });
   await w.tap('[data-akcja="zywo-wyslij"]');
   const md = await czekaj(() => existsSync(join(kat, '01-wywiad.md')) && readFileSync(join(kat, '01-wywiad.md'), 'utf8'), 5000, '01-wywiad.md');
   assert.match(md, /zażółcenie białek oczu.*O: Nie/);

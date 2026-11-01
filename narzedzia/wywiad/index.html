@@ -37,6 +37,13 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .zywo-stan { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px; border-radius: 14px; font-size: 12.5px; }
 .zywo-stan b { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--petrol); }
 .zywo-stan .blad { color: var(--uwaga); }
+.zywo-stan .kod-duzy { font-size: 15px; letter-spacing: .12em; font-family: ui-monospace, Consolas, monospace; }
+.kafel.wznow { cursor: default; }
+.wznow-kod { display: flex; gap: 8px; margin-top: 8px; }
+.wznow-kod input { flex: 1 1 120px; min-width: 0; border: 0; border-radius: 14px; padding: 10px 12px; font: inherit; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; background: var(--pole); color: var(--ink); box-shadow: inset 0 0 0 1px var(--pole-obrys); }
+.wznow-lista { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; }
+.wznow-lista .cicho { color: var(--mut); font-size: 12px; }
+.wznow-wpis b { font-family: ui-monospace, Consolas, monospace; letter-spacing: .1em; }
 .wyniki-lista { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .wyniki-lista li { display: flex; gap: 8px; align-items: flex-start; justify-content: space-between; padding: 8px 10px; border-radius: 12px; font-size: 12.5px; }
 .wyniki-lista li span { white-space: pre-wrap; max-height: 5.5em; overflow: hidden; }
@@ -339,15 +346,78 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       (Z.dostepny ? '<button type="button" class="kafel glowny-kafel" data-akcja="tryb" data-tryb="zywo"' + (Z.folder ? '' : ' disabled') + '><b>Na żywo z Konsylium</b>' +
         '<span>' + (Z.folder ? 'Pacjent opisuje dolegliwości, a Claude czyta zanonimizowane odpowiedzi w folderze Konsylium i na bieżąco dopisuje kolejne pytania.'
           : 'Najpierw wybierz folder Konsylium w menu po lewej (kopia repo Konsylium na tym komputerze).') + '</span></button>' : '') +
+      (Z.dostepny && Z.folder ? '<div class="kafel wznow" id="wznow"><b>Wznów wywiad po kodzie</b><span>Trwający wywiad możesz kontynuować na komputerze albo na iPadzie: wpisz kod albo wybierz z listy.</span>' +
+        '<form class="wznow-kod" id="wznow-form"><input id="wznow-pole" inputmode="latin" autocapitalize="characters" autocomplete="off" maxlength="7" placeholder="np. QWE-7K2" aria-label="Kod wywiadu"><button class="przycisk" type="submit">Wznów</button></form>' +
+        '<div class="wznow-lista" id="wznow-lista"></div></div>' : '') +
       '<button type="button" class="kafel' + (Z.dostepny ? '' : ' glowny-kafel') + '" data-akcja="tryb" data-tryb="opis"><b>1. Opis pacjenta dla AI</b>' +
       '<span>Pacjent opisuje dolegliwości własnymi słowami. Kopiujesz opis do Konsylium, a AI przygotowuje pytania dla tego pacjenta.</span></button>' +
       '<button type="button" class="kafel" data-akcja="tryb" data-tryb="wczytaj"><b>2. Wczytaj ankietę od AI</b>' +
       '<span>Wklej odpowiedź z czatu Konsylium albo otwórz plik .json. Pacjent odpowiada na pytania dobrane przez AI.</span></button>' +
       '<button type="button" class="link" data-akcja="tryb" data-tryb="standard" style="align-self:flex-start">Ankieta standardowa, bez AI</button></div>';
     $tel.innerHTML = h;
+    if (document.getElementById('wznow')) rysujWznow();
+  }
+  // ── wznawianie wywiadu po kodzie (Michał 1.11: iPad i komputer mają widzieć ten sam wywiad) ──
+  // Stan sesji (odpowiedzi po anonimizacji) leży w wywiad-na-zywo/<KOD>/sesja.json; każde urządzenie, które
+  // ma otwarty ten wywiad, co 1,5 s sprawdza, czy ktoś inny zapisał nowszy stan, i go przejmuje.
+  function rysujWznow() {
+    var $l = document.getElementById('wznow-lista'), $f = document.getElementById('wznow-form');
+    if (!$l || !$f) return;
+    $f.addEventListener('submit', function (e) { e.preventDefault(); wznow(document.getElementById('wznow-pole').value); });
+    MsMost.lista('wywiad-na-zywo').then(function (l) {
+      var k = (l || []).filter(function (x) { return x.katalog && /^[A-Z0-9]{3}-[A-Z0-9]{3}$/.test(x.nazwa); }).sort(function (a, b) { return (b.zmiana || 0) - (a.zmiana || 0); }).slice(0, 6);
+      if (!k.length) { $l.innerHTML = '<span class="cicho">Brak trwających wywiadów w folderze Konsylium.</span>'; return; }
+      $l.innerHTML = k.map(function (x) {
+        var d = x.zmiana ? new Date(x.zmiana) : null, swiezy = d && Date.now() - x.zmiana < 6 * 3600000;
+        return '<button type="button" class="link wznow-wpis" data-akcja="wznow" data-kod="' + esc(x.nazwa) + '"><b>' + esc(x.nazwa) + '</b>' + (d ? ' · ' + (swiezy ? d.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString('pl-PL')) : '') + '</button>';
+      }).join('');
+    }, function () { $l.innerHTML = '<span class="cicho">Nie da się odczytać listy wywiadów.</span>'; });
+  }
+  function wznow(kod) {
+    kod = String(kod || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (kod.length === 6) kod = kod.slice(0, 3) + '-' + kod.slice(3);
+    var $p = document.getElementById('wznow-pole');
+    if (!/^[A-Z0-9]{3}-[A-Z0-9]{3}$/.test(kod)) { if ($p) { $p.setCustomValidity('Kod ma 6 znaków, np. QWE-7K2'); $p.reportValidity(); } return; }
+    MsMost.czytaj('wywiad-na-zywo/' + kod + '/sesja.json').then(function (r) {
+      var s = null; try { s = r && r.tekst ? JSON.parse(r.tekst) : null; } catch (e) {}
+      if (!s || !Array.isArray(s.historia)) { if ($p) { $p.setCustomValidity('Nie ma wywiadu ' + kod + ' w folderze Konsylium (albo zaczęto go w starszej wersji aplikacji).'); $p.reportValidity(); } return; }
+      przejmij(s, r.zmiana);
+      bledyAnkiety = []; wybor = null; ustawBank(); zapisz(); rysuj(); ustawFokus(); startZywo();
+    }, function (e) { if ($p) { $p.setCustomValidity('Nie da się czytać folderu: ' + e.message); $p.reportValidity(); } });
+  }
+  function przejmij(s, zmiana) {
+    stan = s; stan.tryb = 'zywo'; stan.kod = String(s.kod || '').toUpperCase();
+    Z.sesjaZmiana = zmiana || 0; Z.sesjaOd = s.urzadzenie || ''; Z.ostatniaZmiana = 0; Z.numer = s.numer || 0;
+  }
+  var URZADZENIE = 'u' + Math.random().toString(36).slice(2, 10);
+  function zapiszSesje() {
+    // kopia stanu do wznowienia na innym urządzeniu: teksty odpowiedzi po anonimizacji (jak w stan.json)
+    var s = JSON.parse(JSON.stringify(stan));
+    s.historia = (s.historia || []).map(function (x) { return typeof x.wartosc === 'string' ? { id: x.id, wartosc: anon(x.wartosc) } : x; });
+    if (s.opisKroku1) s.opisKroku1 = anon(s.opisKroku1);
+    s.format = 'ms-na-zywo-sesja-1'; s.urzadzenie = URZADZENIE; s.zapisano = new Date().toISOString(); s.numer = Z.numer;
+    return MsMost.zapisz(Z.katalog() + '/sesja.json', JSON.stringify(s)).then(function () { Z.sesjaOd = URZADZENIE; });
+  }
+  function sprawdzSesje() {
+    if (stan.tryb !== 'zywo' || !Z.folder) return;
+    MsMost.czytaj(Z.katalog() + '/sesja.json').then(function (r) {
+      if (!r || !r.tekst || r.zmiana === Z.sesjaZmiana) return;
+      var s = null; try { s = JSON.parse(r.tekst); } catch (e) { return; }
+      Z.sesjaZmiana = r.zmiana;
+      if (!s || s.urzadzenie === URZADZENIE || !Array.isArray(s.historia)) return;
+      // ktoś odpowiada na innym urządzeniu: pokaż ten sam stan tutaj
+      if (s.historia.length < stan.historia.length && !s.wyslano) return;
+      var byloPyt = S.nastepne(B, stan.historia).pytanie;
+      przejmij(s, r.zmiana); Z.sesjaZmiana = r.zmiana;
+      Z.przejeto = new Date().toLocaleTimeString('pl-PL');
+      ustawBank(); zapisz(); wybor = null; analizuje = false;
+      var teraz = S.nastepne(B, stan.historia).pytanie;
+      if (!byloPyt || !teraz || teraz.id !== byloPyt.id) { rysuj(); ustawFokus(); } else rysujLekarzaTeraz();
+    }).catch(function () {});
   }
 
   function rysujWczytaj() {
+
     var h = '<div class="start"><div class="modul-pacjenta">Krok 2 · ankieta od AI</div><h3 class="pytanie">Wczytaj ankietę od Konsylium</h3>' +
       '<p class="pomoc">Skopiuj z czatu odpowiedź z blokiem JSON i wklej ją tutaj. Możesz wkleić całą wiadomość, aplikacja sama znajdzie ankietę.</p>' +
       '<textarea id="pole-ankieta" class="pole wklesly" spellcheck="false" placeholder="{ &quot;format&quot;: &quot;ms-ankieta-1&quot;, … }"></textarea>' +
@@ -557,7 +627,8 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     h += '<div class="metryka"><span>kod <b>' + stan.kod + '</b></span><span>odpowiedzi <b>' + stan.historia.length + '</b></span><span>bank <b>' + B.wersja + '</b></span></div>';
 
     if (stan.tryb === 'zywo') {
-      h += '<div class="sekcja"><div class="zywo-stan wklesly"><b>Na żywo z Konsylium</b><span>Folder: ' + esc(Z.katalog()) + '</span>' +
+      h += '<div class="sekcja"><div class="zywo-stan wklesly"><b>Na żywo z Konsylium</b><span>Kod wywiadu: <b class="kod-duzy">' + esc(stan.kod) + '</b> – wpisz go na iPadzie albo na komputerze („Wznów wywiad po kodzie”), żeby kontynuować tam.</span><span>Folder: ' + esc(Z.katalog()) + '</span>' +
+        (Z.przejeto ? '<span>Odpowiedzi dopisywane też z innego urządzenia (ostatnio ' + Z.przejeto + ').</span>' : '') +
         '<span>' + (stan.ankieta ? 'Pytania od Claude: wersja ' + esc(String(stan.ankietaWersja || 1)) + (stan.koniecAI ? ' · Claude zakończył pytania' : '') : 'Czeka na pierwsze pytania od Claude.') + '</span>' +
         (Z.ostatniZapis ? '<span>Ostatni zapis odpowiedzi: ' + Z.ostatniZapis + '</span>' : '') +
         (Z.blad ? '<span class="blad">' + esc(Z.blad) + '</span>' : '') + '</div></div>';
@@ -666,6 +737,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     if (!b) return;
     var a = b.dataset.akcja;
     if (a === 'tryb') { startuj(b.dataset.tryb); return; }
+    if (a === 'wznow') { wznow(b.dataset.kod); return; }
     if (a === 'zywo-koniec') { stan.koniecAI = true; stan.koniecRecznie = true; zapisz(); synchronizuj(); rysuj(); return; }
     if (a === 'zywo-wyslij') { wyslijDoKonsylium(); return; }
     if (a === 'pokoj') { if (window.MsMost) { MsMost.wyslij('pokoj', { zywo: true }).catch(function () {}); MsMost.otworzModul('pokoj').catch(function () {}); } return; }
@@ -813,6 +885,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       if (!dane.czekaNaPytania) Z.czekaOd = 0;
       MsMost.zapisz(Z.katalog() + '/stan.json', JSON.stringify(dane, null, 2)).then(function () {
         Z.ostatniZapis = new Date().toLocaleTimeString('pl-PL'); Z.blad = ''; rysujLekarzaTeraz();
+        return zapiszSesje().then(function () { return MsMost.czytaj(Z.katalog() + '/sesja.json'); }).then(function (r) { if (r) Z.sesjaZmiana = r.zmiana; }).catch(function () {});
       }, function (e) { Z.blad = 'Nie zapisano odpowiedzi: ' + e.message; rysujLekarzaTeraz(); });
     }, 250);
   }
@@ -862,7 +935,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     clearInterval(Z.odpytywanie);
     if (stan.tryb !== 'zywo') return;
     Z.ostatniaZmiana = 0;
-    Z.odpytywanie = setInterval(function () { odpytaj(); if (Z.czekaOd) rysujCzekanie(); }, 1500);
+    Z.odpytywanie = setInterval(function () { odpytaj(); sprawdzSesje(); if (Z.czekaOd) rysujCzekanie(); }, 1500);
     synchronizuj(); odpytaj();
   }
   function rysujCzekanie() { var r = S.nastepne(B, stan.historia); if (!r.pytanie && !stan.koniecAI && !analizuje) rysujPacjenta(null, r.stan); }
