@@ -59,9 +59,10 @@ POMOC = json.loads((KORZEN / "config" / "pomoc-pl.json").read_text(encoding="utf
 ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_systemowy", "terapeuta_act", "terapeuta_humanistyczny",
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
-SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b",
-        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b",
-        r"\bz (mojego |w[łl]asnego )?do[sś]wiadczenia\b", r"\bw mojej praktyce\b", r"\bmoi (pacjenci|klienci)\b", r"\bmiałe?m (kiedy[sś] )?(pacjent|klient)"]
+SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b(?=.{0,60}(terapeut|podej[sś]|zesp[oó][lł]|szko[lł]|cbt|act))",
+        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b", r"\b\w+[aeiuyę]ł(e|a)m\b", r"\b\w*(szed|sz|mog|jad|nios|wiod)ł(e|a)m\b",
+        r"\bz (mojego |w[łl]asnego )?do[sś]wiadczenia\b", r"\bw mojej praktyce\b", r"\bmoi (pacjenci|klienci)\b",
+        r"\brozumiem dok[lł]adnie", r"\bwszystko (b[eę]dzie dobrze|si[eę] u[lł]o[zż]y)", r"\bka[zż]dy tak ma\b", r"\bmusisz\b", r"\bg[lł]owa do g[oó]ry", r"\bmnie te[zż] (si[eę] )?(to|tak)", r"\bdlaczego (jeszcze )?nie\b", r"\bmiałe?m (kiedy[sś] )?(pacjent|klient)"]
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -176,6 +177,9 @@ def podsumuj(s: dict) -> None:
         print("Filtr słownikowy: poziom ≥3. Aplikacja już pokazała kartę kryzysową z numerami. Strażnik ryzyka NAJPIERW; odpowiedź wg docs/BEZPIECZENSTWO.md (pytanie wprost, numery, kontakt z człowiekiem teraz). Obniżyć poziom można tylko z nowym faktem (pole obnizam_ryzyko).")
     elif maks == 2:
         print("Filtr słownikowy: sygnał pośredni poziomu 2 (bierne myśli o śmierci, pożegnanie, pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co”, dostęp do środków). Strażnik ustala, o co chodzi; w odpowiedzi OBOWIĄZKOWO łagodne pytanie wprost o myśli samobójcze, plan i środki, jeden element planu bezpieczeństwa i numer pomocy. To nie jest skrypt kryzysowy.")
+    odp_zesp = len({w.get("odpowiedz_na") for w in s["zespol"]})
+    if odp_zesp and odp_zesp % 5 == 0 and maks < 2:
+        print(f"INFORMACJA ZWROTNA (docs/SZTUKA-ROZMOWY.md §3): to {odp_zesp + 1}. tura – jeśli pasuje, na końcu krótko: „W skali 0–10: jak minął tydzień?” albo „Na ile te rozmowy pomagają?” (zamiast innego pytania).")
     if maks < 2 and s["zespol"] and int(s["zespol"][-1].get("ryzyko") or 0) >= 2:
         print(f"PAMIĘTAJ: poziom ryzyka z poprzedniej tury = {s['zespol'][-1].get('ryzyko')} – to dolna granica tej tury (obniża tylko nowy fakt). Jeśli pytanie o plan i środki nie dostało jeszcze odpowiedzi, wróć do niego (łagodnie, jednym zdaniem).")
     # krótka ścieżka (decyzja Michała 1.11.2026 07:45): krótka wiadomość bez treści do pracy przy ryzyku 0 → strażnik + prowadzący, bez panelu i sędziego
@@ -269,7 +273,7 @@ def cmd_odpowiedz(a) -> None:
         sys.exit(f"Flagi strażnika {aktywne}: ustaw kryzys: true i kierunek (przemoc / mania / somatyczny / inni) – także przy ryzyku samobójczym 0 (docs/ROZMOWA.md §5).")
     if (ryz >= 3 or aktywne) and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
-    ostrz = [w for w in SZWY if re.search(w, tekst, re.I)]
+    ostrz = [w for w in SZWY if re.search(w, bez_cytatow(tekst), re.I)]  # cytaty słów użytkownika i gotowe zdania – bez detektora
     if filtr < 2 and dolna == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
         ostrz.append("poziom 2 z wcześniejszych tur: sprawdź, czy pytanie o plan i dostęp do środków dostało już odpowiedź – jeśli nie, wróć do niego")
     if bez_cytatow(tekst).count("?") > 1:

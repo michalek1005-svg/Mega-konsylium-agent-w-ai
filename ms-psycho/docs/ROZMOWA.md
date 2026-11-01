@@ -8,10 +8,12 @@ Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza probl
 - **Najpierw rozumienie, potem zmiana:** odzwierciedlenie, pytania pogłębiające, nazywanie emocji i wzorców; technika (eksperyment, ćwiczenie, zadanie między rozmowami) dopiero, gdy jest zrozumienie i zgoda osoby.
 - **W tle zespół:** terapeuci różnych podejść **spierają się** (linia `SPÓR:`), **wspierają** (dopowiadają, co inny widzi trafnie) i dochodzą do **ostatecznej opinii**; prowadzący wybiera jedną drogę na tę turę. Nic z tej machinerii nie trafia do tekstu – tylko do „Pokaż, kto co myślał”.
 - **Jedna lub kilka wiadomości:** odpowiedź może przyjść jak w komunikatorze – `"wiadomosci": ["…", "…"]` w odp.json (najwyżej 4; każda 1–4 zdania; zwykle: 1) uznanie / odzwierciedlenie, 2) myśl lub obserwacja, 3) jedno pytanie albo propozycja). Aplikacja wyświetla je po kolei, z pauzą „pisze…”. Pojedynczy `"tekst"` nadal działa. W kryzysie zawsze jedna wiadomość z kartą.
-- **Kiedy seria, a kiedy jedna wiadomość:** seria przy tempie NORMALNIE i DO NAMYSŁU, gdy odpowiedź ma naturalne części; przy KRÓTKIEJ ŚCIEŻCE i SZYBKO – jedna. Pytanie do osoby tylko w **ostatniej** wiadomości (inaczej odpowie, zanim przeczyta resztę). Żadna wiadomość krótsza niż 6 słów. Gotowe zdanie do wysłania komuś piszemy w cudzysłowie „…” – jego znak zapytania nie liczy się jako pytanie w turze. `rozmowa.py` ostrzega o każdym z tych przypadków.
+- **Kiedy seria, a kiedy jedna wiadomość:** seria przy tempie NORMALNIE i DO NAMYSŁU, gdy odpowiedź ma naturalne części; przy KRÓTKIEJ ŚCIEŻCE i SZYBKO – jedna. Pytanie do osoby tylko w **ostatniej** wiadomości (inaczej odpowie, zanim przeczyta resztę). Żadna wiadomość krótsza niż 6 słów. Gotowe zdanie do wysłania komuś i pytanie „do siebie” z techniki (np. „czy mogę z tym dziś coś zrobić?”) piszemy w cudzysłowie „…” – jego znak zapytania nie liczy się jako pytanie w turze. `rozmowa.py` ostrzega o każdym z tych przypadków.
 - **Bez udawanego doświadczenia:** psychoterapeuta AI nie mówi „z mojego doświadczenia”, „moi klienci”, „w mojej praktyce” – mówi „wiele osób…”, „badania pokazują…” (z PMID w źródłach). Detektor szwów to wyłapuje.
 - **Wywiad:** jeśli w ostatnich 7 dniach był wywiad (zakładka Wywiad), `rozmowa.py czekaj` wypisuje jego flagi; strażnik bierze je pod uwagę, a prowadzący w turze 1 pyta, czy dotyczą tej samej osoby.
 - Tempo (§3a), bezpieczeństwo (§5) i granice („narzędzie testowe, nie zastępuje psychoterapeuty”) bez zmian.
+
+- **Jak mówimy i jak prowadzimy rozmowę:** `docs/SZTUKA-ROZMOWY.md` (dowody, schemat pierwszej rozmowy, struktura kolejnych, zasady języka, lista kontrolna sędziego).
 
 ## 1. Pliki (aplikacja ↔ Claude)
 

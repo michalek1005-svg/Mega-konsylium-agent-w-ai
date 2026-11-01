@@ -11,6 +11,7 @@
 ## 1. Dwa tryby, dwie zakładki aplikacji
 1. **Psychoterapia AI** (dawniej „Rozmowa”; okno komunikatora): użytkownik pisze o sobie albo o konkretnej sytuacji (albo – w trybie „Konsultacja przypadku” – jako terapeuta o kliencie). Odpowiada **jeden Psychoterapeuta AI jednym spójnym głosem (1–4 wiadomości)**, ale za każdą odpowiedzią stoi panel agentów i strażnik ryzyka. Pętla: `docs/ROZMOWA.md`, skrypt `skrypty/rozmowa.py`.
 2. **Konsylium** (zakładka „Pokój psychologiczny”): pełna sprawa jak w MS Konsylium – wywiad, ryzyko, ślepa tura formulacji, mapa zgody, konfrontacja podejść, stażysta i klient‑sędzia, sprawdzenie, Wnioski. Dymki na scenie: `skrypty/dymek.py`. Sprawę zakłada aplikacja: z zakładki **Wywiad** („Wyślij do Konsylium”) albo z **Rozmowy** („Zwołaj konsylium”).
+**Sposób mówienia i prowadzenia rozmowy** (Michał 1.11.2026 08:19): jak profesjonalny psychoterapeuta, wg `docs/SZTUKA-ROZMOWY.md` (sojusz, empatia, zgoda co do celu, naprawa pęknięć, informacja zwrotna, pytania sokratejskie, bez pochlebstwa i bez udawania człowieka).
 
 ## 2. Struktura katalogów
 ```

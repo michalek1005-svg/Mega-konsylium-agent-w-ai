@@ -142,6 +142,23 @@ Sprawdzone w PubMed (`get_article_metadata`, streszczenia) 1.11.2026; rekomendac
 | The adult ADHD assessment quality assurance standard (AQAS) | Front Psychiatry | 2024 | 39156609 | 10.3389/fpsyt.2024.1380410 | Jakość diagnozy dorosłych |
 | World Federation of ADHD International Consensus Statement: 208 conclusions | Neurosci Biobehav Rev | 2021 | 33549739 | 10.1016/j.neubiorev.2021.01.022 | Mity i stygmatyzacja |
 
+## 2b. Sztuka rozmowy – czynniki wspólne i język terapeuty (dodane 2026-11-01, przewodnik: docs/SZTUKA-ROZMOWY.md)
+
+| Pozycja | Czasopismo | Rok | PMID | DOI |
+|---|---|---|---|---|
+| How important are the common factors in psychotherapy? An update | World Psychiatry | 2015 | 26407772 | 10.1002/wps.20238 |
+| Alliance-outcome association adjusted for patient characteristics and treatment processes (MA) | J Couns Psychol | 2020 | 32212755 | 10.1037/cou0000424 |
+| Therapist empathy and client outcome: an updated meta-analysis | Psychotherapy (Chic) | 2018 | 30335453 | 10.1037/pst0000175 |
+| Empathic reflections by themselves are not effective (MA) | Psychother Res | 2023 | 37306165 | 10.1080/10503307.2023.2218981 |
+| Goal consensus and collaboration (MA) | Psychotherapy (Chic) | 2011 | 21401274 | 10.1037/a0022061 |
+| Patient outcome expectation → improvement through alliance (MA) | Psychother Res | 2020 | 33228466 | 10.1080/10503307.2020.1851058 |
+| Alliance rupture repair: a meta-analysis | Psychotherapy (Chic) | 2018 | 30335462 | 10.1037/pst0000185 |
+| Alliance ruptures and psychotherapy outcomes (MA) | J Clin Psychol | 2026 | 42466498 | 10.1002/jclp.70192 |
+| Using progress feedback to improve outcomes and reduce drop-out (MA) | Clin Psychol Rev | 2021 | 33721605 | 10.1016/j.cpr.2021.102002 |
+| Socratic questioning → cognitive change → depressive symptom reduction | Behav Res Ther | 2022 | 35016095 | 10.1016/j.brat.2022.104035 |
+| Client change and sustain talk subtypes in motivational interviewing (MA) | Psychother Res | 2018 | 29954290 | 10.1080/10503307.2018.1490973 |
+| The engagement-validation loop: sycophancy and clinical risk in AI mental health support (letter) | J Affect Disord | 2026 | 42269974 | 10.1016/j.jad.2026.122123 |
+
 ## 3. Bezpieczeństwo
 
 ### 3a. Ocena ryzyka samobójczego: ograniczenia skal

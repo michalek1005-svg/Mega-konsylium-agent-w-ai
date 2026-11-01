@@ -24,3 +24,5 @@ Gdy PubMed da **mniej niż 3 trafne wyniki** na zapytanie, powtórz je w Europe 
 
 ## Przewodniki problemowe
 - **ADHD u dorosłych:** `docs/ADHD-DOROSLI.md` (źródła z PMID, jak rozmawiać, kto co wnosi w Pokoju). Czytaj, gdy w sprawie lub rozmowie pada ADHD albo jego obraz.
+
+- **Sztuka rozmowy (Psychoterapia AI):** `docs/SZTUKA-ROZMOWY.md` – gdy proponujesz zdania do odpowiedzi, pisz je zgodnie z §4 (odzwierciedlenie, które coś dodaje; tentatywność; walidacja bez pochlebstwa; pytanie sokratejskie; zgoda przed radą).
