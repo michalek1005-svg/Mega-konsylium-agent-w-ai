@@ -11,3 +11,11 @@
 {"ts": "2026-11-01T00:34:51+00:00", "rola": "poz_pragmatyk", "zdarzenie": "stop", "plik": "03-opinie/poz_pragmatyk.json"}
 {"ts":"2026-11-01T00:35:18Z","rola":"farmakolog","zdarzenie":"stop","plik":"03-opinie/farmakolog.json"}
 {"ts": "2026-11-01T00:35:53+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts": "2026-11-01T00:37:06Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start_dyskusja", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:37:06Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop_dyskusja", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:37:09+00:00", "rola": "poz_pragmatyk", "zdarzenie": "rewizja", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"rewizja_04"}
+{"ts":"2026-11-01T00:37:20Z","rola":"farmakolog","zdarzenie":"rewizja","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:37:29Z", "rola": "hipotezujacy", "zdarzenie": "start_dyskusja", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:37:29Z", "rola": "hipotezujacy", "zdarzenie": "stop_dyskusja", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:38:10+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}

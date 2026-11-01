@@ -2,7 +2,7 @@
   "ranking": [
     {
       "rozpoznanie": "cefuroksym",
-      "p": 0.79,
+      "p": 0.812,
       "wymienili": [
         "bayes",
         "hipotezujacy",
@@ -12,7 +12,7 @@
     },
     {
       "rozpoznanie": "pokrzywka w przebiegu zakażenia wirusowego",
-      "p": 0.091,
+      "p": 0.083,
       "wymienili": [
         "bayes",
         "hipotezujacy",
@@ -22,7 +22,7 @@
     },
     {
       "rozpoznanie": "erdosteina",
-      "p": 0.073,
+      "p": 0.066,
       "wymienili": [
         "bayes",
         "hipotezujacy",
@@ -32,7 +32,7 @@
     },
     {
       "rozpoznanie": "substancja pomocnicza lub konserwant",
-      "p": 0.023,
+      "p": 0.018,
       "wymienili": [
         "bayes",
         "hipotezujacy",
@@ -41,17 +41,12 @@
       ]
     },
     {
-      "rozpoznanie": "bromfenak w kroplach",
-      "p": 0.012,
-      "wymienili": [
-        "bayes",
-        "hipotezujacy",
-        "najgorszy_scenariusz",
-        "poz_pragmatyk"
-      ]
+      "rozpoznanie": "lewofloksacyna z kortykosteroidem w kroplach",
+      "p": 0.011,
+      "wymienili": []
     }
   ],
-  "zgoda": 0.545,
+  "zgoda": 0.581,
   "flagi": [],
   "pilnosc": {
     "wynik": 2,

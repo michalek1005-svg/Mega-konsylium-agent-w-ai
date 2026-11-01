@@ -1,0 +1,42 @@
+=== najgorszy_scenariusz
+1. Zaćma: 3–4 dni za mało na uczulenie pierwotne; jeśli był cefuroksym dokomorowo — wzmocnienie istniejącego uczulenia [wiedza modelu]; cefuroksym ↑0,55; przy zabiegu drugiego oka okulista nie może podać cefuroksymu dokomorowo (PMID 29911363, 34489227). Zabieg NIEZNANY.
+2. Erdosteina ↓0,12 (przyjmuje argument bayesa o niskiej częstości bazowej).
+3. Pilność 2 — weto utrzymane: obrzęk krtani, krążenie przy bisoprololu, śluzówki nikt jawnie nie wykluczył. Przyjmuje, że SJS po 15 min mało prawdopodobny.
+4. Odrzuca „sprawca nieustalony”: etykieta „podejrzenie natychmiastowej nadwrażliwości: cefuroksym (także dokomorowo), cefalosporyny o podobnym R1 — ceftriakson, cefotaksym, cefepim; erdosteina; do weryfikacji alergologicznej”; penicylin i cefazoliny nie blokować; odsunięcie od przygotowywania cefalosporyn.
+SKRÓT: Prawdopodobne natychmiastowe, IgE-zależne wzmocnienie istniejącego uczulenia na cefuroksym (zawodowe, możliwy cefuroksym dokomorowy przy zabiegu zaćmy). Etykieta musi wymieniać cefuroksym, cefalosporyny o podobnym R1 i erdosteinę, a pilność 2 utrzymuję, dopóki nie wykluczy się jawnie obrzęku krtani, objawów krążeniowych przy bisoprololu i zmian śluzówkowych.
+P: cefuroksym=0,55 erdosteina=0,12 pokrzywka=0,10 PILNOŚĆ=2
+=== poz_pragmatyk
+1. Zaćma przekonuje: cefuroksym trzecią drogą w tygodniu; wzmocnienie istniejącego uczulenia; ↑0,55; okulista musi wiedzieć przed drugim okiem.
+2. Erdosteina ↓0,15, nie 0,03 — tolerancja dawek z dni 1–2 i zabieg NIEZNANE; agregat 0,79 zbyt pewny.
+3. Pilność 2.
+4. Etykieta: „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (prawdopodobny sprawca) i erdosteinę (możliwy) — do weryfikacji alergologicznej” + unikać ceftriaksonu i cefotaksymu; „sprawca nieustalony” nikogo nie chroni, „beta-laktamy” za szerokie.
+SKRÓT: Natychmiastowa reakcja nadwrażliwości najpewniej na cefuroksym, prawdopodobnie przy wcześniejszym uczuleniu zawodowym, które mogła wzmocnić ekspozycja dokomorowa przy operacji zaćmy (do potwierdzenia). Erdosteina pozostaje możliwym sprawcą do czasu potwierdzenia tolerancji dawek cefuroksymu z dni 1–2.
+P: cefuroksym=0,55 erdosteina=0,15 pokrzywka=0,12
+=== gospodarz_kosztow
+1. Zabieg to wniosek, nie fakt; najtańsze rozstrzygające badanie: karta informacyjna z okulistyki (0 zł). Zmienia stawkę etykiety: drugie oko = znów cefuroksym dokomorowo; diagnostyka alergologiczna PRZED zabiegiem drugiego oka.
+2. Erdosteina ↓0,15; „jedyny nowy lek” to sygnał czasowy, nie dowód; nie testować, unikać.
+3. Pilność 4→3; weto 2 przyjmuje dla dzisiejszego kontaktu.
+4. Wycofuje „sprawca nieustalony”: „Podejrzenie natychmiastowej nadwrażliwości na cefuroksym (także dokomorowo; unikać cefalosporyn R1 metoksyimino: ceftriaksonu, cefotaksymu) oraz na erdosteinę; do diagnostyki alergologicznej; NIE jest to alergia na wszystkie beta-laktamy”.
+SKRÓT: Natychmiastowa nadwrażliwość najpewniej na cefuroksym; jeśli była operacja zaćmy, cefuroksym działał kilkoma drogami w ciągu kilku dni, raczej wzmacniając istniejące uczulenie niż je wywołując. Etykietę zawęzić do cefuroksymu, cefalosporyn z R1 metoksyimino i erdosteiny, a testy skórne z cefuroksymem i ewentualną prowokację wykonać przed operacją drugiego oka.
+P: cefuroksym=0,50 erdosteina=0,15 pokrzywka=0,18
+=== bayes
+1. Zaćma: brak nowego uczulenia w 3–4 dni; wzmocnienie istniejącej odpowiedzi IgE — tłumaczyłoby, czemu zareagowała dopiero 3.–4. dawka doustna. Na razie neutralne; po potwierdzeniu LR 1,5–2 → ok. 0,83.
+2. Przyjmuje argument POZ i hipotezującego: reakcja dopiero na 3.–4. dawkę LR 0,6→0,35; erdosteina LR 1,5, baza ×2 (niedoraportowanie) — nadal 0,07 (2 opisy vs tysiące dla cefalosporyn).
+3. Pilność 3→2 — przyjmuje weto.
+4. Etykieta: „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (prawdopodobne) i erdosteinę (możliwe); nie podawać ich ani cefalosporyn o podobnym R1 (ceftriakson, cefotaksym) do diagnostyki”.
+SKRÓT: Utrzymuję rozpoznanie IgE-zależnej nadwrażliwości natychmiastowej na cefuroksym (p≈0,75), wzmocnionej zawodową ekspozycją na beta-laktamy i ewentualnie dokomorowym cefuroksymem w operacji zaćmy, z erdosteiną jako możliwym sprawcą (p≈0,07). Etykieta powinna wymieniać oba leki i cefalosporyny o podobnym łańcuchu R1, nie „sprawcę nieustalonego”.
+P: cefuroksym=0,75 erdosteina=0,07 pokrzywka=0,13
+=== farmakolog
+1. Cefuroksym dokomorowy 1,0 mg/0,1 ml (PMID 41784986) ≈1/500 dawki doustnej; anafilaksja opisana (PMID 23850230, 34489227, 29911363). 3–4 dni za krótko na uczulenie pierwotne; odpowiedź anamnestyczna — kolejne ekspozycje podnoszą IgE, co osłabia argument „nie reagowała na pierwszą dawkę”. Po potwierdzeniu karty zabiegu ↑~0,60.
+2. Erdosteina 0,18 (0,03 za mało — jedyny nowy lek, PMID 33546741 niemal identyczny obraz; 0,27 za dużo).
+3. Pilność 2: odstawić dziś oba, od najbliższego dyżuru nie przygotowuje cefalosporyn i.v.
+4. Etykieta: „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (unikać cefalosporyn z podobnym R1: ceftriakson, cefotaksym, cefepim) i erdosteinę — do weryfikacji testami”; przy drugim oku zamiast cefuroksymu dokomorowo moksyfloksacyna 0,5 mg/0,1 ml (PMID 41784986).
+SKRÓT: Najpewniej natychmiastowa IgE-zależna nadwrażliwość na cefuroksym: uczulenie zawodowe, wzmocnione kolejnymi ekspozycjami (możliwy cefuroksym dokomorowy 1 mg), ujawnione przy kofaktorze infekcji; erdosteina pozostaje drugim podejrzanym. Pilność 2: odstawić oba leki i wpisać do dokumentacji podejrzenie z wymienionymi cefalosporynami o podobnym łańcuchu R1.
+P: cefuroksym=0,55 erdosteina=0,18 pokrzywka=0,10
+=== hipotezujacy
+1. Zabieg niepotwierdzony; pierwotna odpowiedź IgE 7–10+ dni [wiedza modelu] — bodziec przypominający u uczulonej, reakcja dopiero przy 3.–4. dawce doustnej; osłabia główny argument przeciw cefuroksymowi; ryzyko anafilaksji przy drugim oku (PMID 29911363, 34489227).
+2. Erdosteina ↓0,15: „jedyny nowy lek” ×2–3, beta-laktamy >10× częściej; unikanie nic nie kosztuje.
+3. Pilność 2 dziś; po wykluczeniu objawów oddechowych/krążeniowych diagnostyka 3.
+4. Etykieta: „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (także dokomorowy) i cefalosporyny o podobnym R1 (ceftriakson, cefotaksym, cefepim) oraz na erdosteinę — do weryfikacji alergologicznej”.
+SKRÓT: Cefuroksym pozostaje głównym podejrzanym (p=0,50), z uczuleniem wcześniejszym (zawodowym lub po kursach) i prawdopodobnym wzmocnieniem przez cefuroksym dokomorowy przy zabiegu zaćmy, który wymaga potwierdzenia; erdosteinę obniżam do 0,15 z powodu bardzo niskiej częstości bazowej, a w dokumentacji należy wpisać swoistą etykietę obejmującą cefuroksym dokomorowy, cefalosporyny o podobnym łańcuchu R1 i erdosteinę.
+P: cefuroksym=0.50 erdosteina=0.15 pokrzywka=0.18

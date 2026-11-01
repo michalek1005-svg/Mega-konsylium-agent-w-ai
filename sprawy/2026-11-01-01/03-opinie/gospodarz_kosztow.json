@@ -4,12 +4,13 @@
   "rozpoznania": [
     {
       "nazwa": "cefuroksym",
-      "p": 0.38,
+      "p": 0.5,
       "za": [
         "Beta-laktamy są najczęstszą przyczyną natychmiastowych reakcji polekowych; reakcja ok. 15 min po dawce = reakcja natychmiastowa (EAACI: 1–6 h od ostatniej dawki).",
         "Wcześniejsza wielokrotna tolerancja NIE przeczy alergii IgE-zależnej — jest jej warunkiem: uczulenie powstaje w czasie wcześniejszych, tolerowanych ekspozycji [wiedza modelu, niezweryfikowane].",
         "Ekspozycja zawodowa: pielęgniarka oddziału neurologii z intensywną terapią; opisano pielęgniarkę (53 l.) uczuloną na cefuroksym drogą wziewną w pracy, u której pierwsza ciężka reakcja wystąpiła po DOUSTNYM cefuroksymie w czasie infekcji dróg oddechowych (PMID 29114903) — obraz niemal identyczny.",
-        "Wysypka dłoni i stóp + obrzęk powieki odległy od miejsca kropli = reakcja układowa, zgodna z drogą doustną."
+        "Wysypka dłoni i stóp + obrzęk powieki odległy od miejsca kropli = reakcja układowa, zgodna z drogą doustną.",
+        "Runda 04: jeśli 3–4 dni temu była operacja zaćmy z cefuroksymem dokomorowym (standard; anafilaksja na dokomorowy cefuroksym opisana: PMID 29911363; PMID 34489227, DOI 10.18176/jiaci.0741), to cefuroksym działał tu trzema drogami w ciągu kilku dni. Pierwotne uczulenie IgE w 3–4 dni jest mało prawdopodobne, bardziej prawdopodobne jest wzmocnienie istniejącego uczulenia [wiedza modelu, niezweryfikowane]. Sam zabieg pozostaje NIEZNANE."
       ],
       "przeciw": [
         "Reakcja w 3. dniu kuracji (ok. 5. dawka), a NIEZNANE, czy wcześniejsze dawki tego kursu były bez objawów — IgE-zależna reakcja zwykle ujawnia się po pierwszej dawce kursu u osoby już uczulonej [wiedza modelu, niezweryfikowane].",
@@ -19,7 +20,7 @@
     },
     {
       "nazwa": "erdosteina",
-      "p": 0.27,
+      "p": 0.15,
       "za": [
         "Jedyny lek NOWY w dniu reakcji (jeśli była to pierwsza dawka epizodu — NIEZNANE); bezpośrednia sekwencja czasowa.",
         "Opisano kobietę z ostrym zakażeniem górnych dróg oddechowych, u której erdosteina wywołała rumieniowe ogniska na DŁONIACH + obrzęk naczynioruchowy, potwierdzone próbą prowokacyjną (PMID 33546741); drugi opis ciężkiej nadwrażliwości potwierdzonej testem płatkowym i LTT (PMID 22697021).",
@@ -27,12 +28,13 @@
       ],
       "przeciw": [
         "Nadwrażliwość na erdosteinę jest rzadka — w PubMed pojedyncze opisy przypadków.",
-        "Brak zwalidowanych testów skórnych i swoistych IgE — nie da się jej potwierdzić inaczej niż prowokacją [wiedza modelu, niezweryfikowane]."
+        "Brak zwalidowanych testów skórnych i swoistych IgE — nie da się jej potwierdzić inaczej niż prowokacją [wiedza modelu, niezweryfikowane].",
+        "Runda 04: niska częstość bazowa (pojedyncze opisy przypadków) słusznie podniesiona przez bayesa; 'jedyny nowy lek' to sygnał czasowy, nie przyczynowy."
       ]
     },
     {
       "nazwa": "pokrzywka w przebiegu zakażenia wirusowego",
-      "p": 0.22,
+      "p": 0.18,
       "za": [
         "Trwa ostre zakażenie dróg oddechowych (chrypa, katar, zapalenie gardła i krtani) — zakażenia są częstą przyczyną ostrej pokrzywki i obrzęku naczynioruchowego; większość etykiet 'alergii na beta-laktam' nadanych w czasie infekcji nie potwierdza się w diagnostyce (DGAKI 2025: >90% podejrzeń wykluczonych, PMID 40083843).",
         "Infekcja jest też kofaktorem obniżającym próg reakcji na lek [wiedza modelu, niezweryfikowane]."
@@ -44,7 +46,7 @@
     },
     {
       "nazwa": "bromfenak w kroplach",
-      "p": 0.04,
+      "p": 0.03,
       "za": [
         "NLPZ są drugą po beta-laktamach przyczyną nadwrażliwości polekowej (PMID 39517081, 42050829); możliwa rola kofaktora."
       ],
@@ -56,7 +58,7 @@
     },
     {
       "nazwa": "lewofloksacyna z kortykosteroidem w kroplach",
-      "p": 0.03,
+      "p": 0.02,
       "za": [
         "Fluorochinolony mogą wywołać reakcję natychmiastową [wiedza modelu, niezweryfikowane]; możliwe przeniesienie kropli palcami na drugie oko."
       ],
@@ -68,7 +70,11 @@
     }
   ],
   "pozostale_kandydaty": [
-    {"nazwa": "substancja pomocnicza lub konserwant", "p": 0.02, "uwaga": "Chlorek benzalkonium z kropli daje głównie kontaktowe zapalenie skóry powiek typu późnego (dni), po stronie leczonej — nie pasuje. Substancje pomocnicze tabletek cefuroksymu/kapsułek erdosteiny — teoretycznie; nazwy handlowe NIEZNANE. Nie diagnozować, chyba że diagnostyka obu substancji czynnych wyjdzie ujemna, a reakcja się powtórzy."}
+    {
+      "nazwa": "substancja pomocnicza lub konserwant",
+      "p": 0.02,
+      "uwaga": "Chlorek benzalkonium z kropli daje głównie kontaktowe zapalenie skóry powiek typu późnego (dni), po stronie leczonej — nie pasuje. Substancje pomocnicze tabletek cefuroksymu/kapsułek erdosteiny — teoretycznie; nazwy handlowe NIEZNANE. Nie diagnozować, chyba że diagnostyka obu substancji czynnych wyjdzie ujemna, a reakcja się powtórzy."
+    }
   ],
   "mechanizm": "Najbardziej prawdopodobna reakcja natychmiastowa (początek <1 h): IgE-zależna (alergia na lek nabyta w czasie wcześniejszych, tolerowanych kursów lub zawodowo) albo nie-IgE-zależna aktywacja komórek tucznych; kofaktory: ostra infekcja wirusowa, przemęczenie/praca nocna. Rozmieszczenie (dłonie, stopy, powieka oka nieleczonego) wskazuje na reakcję UKŁADOWĄ, nie kontaktową. Bisoprolol nie jest sprawcą, ale beta-adrenolityk może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę — istotne przy planowaniu prowokacji [wiedza modelu, niezweryfikowane].",
   "wyjasnienie_tolerancji": "„Wcześniej tolerowany” nie wyklucza alergii — alergia IgE-zależna wymaga wcześniejszej ekspozycji uczulającej; każdy wcześniejszy kurs cefuroksymu/erdosteiny mógł uczulić bez objawów [wiedza modelu, niezweryfikowane]. U pracownika szpitala dodatkowym źródłem uczulenia na cefuroksym jest ekspozycja zawodowa (aerozol/kontakt przy przygotowywaniu i.v.) — PMID 29114903, 42616753. Infekcja może też obniżyć próg reakcji przy dawce, która wcześniej była tolerowana.",
@@ -95,6 +101,13 @@
     "Asymetria kosztów etykiet decyduje o kolejności: błędna etykieta na cefuroksym/beta-laktamy jest droga (szersze antybiotyki, MRSA, C. difficile), etykieta na erdosteinę — praktycznie darmowa. Dlatego cały wysiłek diagnostyczny kierujemy na cefuroksym, a erdosteinę rozstrzygamy przez wykluczenie."
   ],
   "badania": [
+    {
+      "nazwa": "Karta informacyjna z zabiegu okulistycznego / pytanie do okulisty",
+      "cel": "Czy była operacja zaćmy z cefuroksymem dokomorowym (Aprokam) i czy planowane jest drugie oko",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Koszt 0 zł. Jeśli tak: cefuroksym wysoko, ekspozycja wielodrogowa. Okulista musi przed drugim okiem dostać informację i użyć innego antybiotyku dokomorowego, a test alergologiczny musi się odbyć przed zabiegiem."
+    },
     {
       "nazwa": "Wywiad uzupełniający + dokumentacja fotograficzna zmian",
       "cel": "Domknięcie NIEZNANE (kolejność dawek, morfologia, objawy układowe, ekspozycja zawodowa)",
@@ -153,17 +166,38 @@
     }
   ],
   "nie_zlecac": [
-    {"nazwa": "Jakiekolwiek testy na erdosteinę (skórne, sIgE, BAT, LTT, prowokacja)", "powod": "Brak zwalidowanych stężeń i testów in vitro; w literaturze tylko opisy przypadków (PMID 33546741, 22697021). Lek zbędny klinicznie — unikanie kosztuje 0 zł i niczego pacjentce nie odbiera. Wynik nie zmieni decyzji."},
-    {"nazwa": "Panele IgE 'na leki' / panele alergenów / IgE całkowite", "powod": "Nie wskazują sprawcy, generują wyniki fałszywie dodatnie i kaskadę; IgE całkowite nie ma związku z alergią polekową."},
-    {"nazwa": "Ostra tryptaza teraz (po >24 h)", "powod": "Okno diagnostyczne minęło; teraz to wartość wyjściowa, a ta nie rozróżnia kandydatów."},
-    {"nazwa": "Testy płatkowe z kroplami lub chlorkiem benzalkonium", "powod": "Dotyczą reakcji późnych kontaktowych w oku leczonym; obecna reakcja jest natychmiastowa i układowa."},
-    {"nazwa": "Diagnostyka wirusologiczna (PCR, panele oddechowe), CRP, morfologia 'dla etiologii reakcji'", "powod": "Dodatni wynik wirusa nie wyklucza alergii na lek (infekcja bywa kofaktorem), więc nie zmienia etykiety ani dalszej ścieżki."},
-    {"nazwa": "Testy na bromfenak (NLPZ)", "powod": "Bardzo niskie prawdopodobieństwo; nadwrażliwość krzyżowa na NLPZ nie ma użytecznych testów skórnych/in vitro — rozstrzyga prowokacja (PMID 42050829, 18991698), nieuzasadniona przy tym prawdopodobieństwie. Wyjątek: wywiad nadwrażliwości na NLPZ."},
-    {"nazwa": "Testy krzyżowe z całą grupą beta-laktamów 'na wszelki wypadek'", "powod": "Badamy tylko leki, których pacjentka realnie będzie potrzebować (cefuroksym, amoksycylina, ewentualnie cefazolina)."}
+    {
+      "nazwa": "Jakiekolwiek testy na erdosteinę (skórne, sIgE, BAT, LTT, prowokacja)",
+      "powod": "Brak zwalidowanych stężeń i testów in vitro; w literaturze tylko opisy przypadków (PMID 33546741, 22697021). Lek zbędny klinicznie — unikanie kosztuje 0 zł i niczego pacjentce nie odbiera. Wynik nie zmieni decyzji."
+    },
+    {
+      "nazwa": "Panele IgE 'na leki' / panele alergenów / IgE całkowite",
+      "powod": "Nie wskazują sprawcy, generują wyniki fałszywie dodatnie i kaskadę; IgE całkowite nie ma związku z alergią polekową."
+    },
+    {
+      "nazwa": "Ostra tryptaza teraz (po >24 h)",
+      "powod": "Okno diagnostyczne minęło; teraz to wartość wyjściowa, a ta nie rozróżnia kandydatów."
+    },
+    {
+      "nazwa": "Testy płatkowe z kroplami lub chlorkiem benzalkonium",
+      "powod": "Dotyczą reakcji późnych kontaktowych w oku leczonym; obecna reakcja jest natychmiastowa i układowa."
+    },
+    {
+      "nazwa": "Diagnostyka wirusologiczna (PCR, panele oddechowe), CRP, morfologia 'dla etiologii reakcji'",
+      "powod": "Dodatni wynik wirusa nie wyklucza alergii na lek (infekcja bywa kofaktorem), więc nie zmienia etykiety ani dalszej ścieżki."
+    },
+    {
+      "nazwa": "Testy na bromfenak (NLPZ)",
+      "powod": "Bardzo niskie prawdopodobieństwo; nadwrażliwość krzyżowa na NLPZ nie ma użytecznych testów skórnych/in vitro — rozstrzyga prowokacja (PMID 42050829, 18991698), nieuzasadniona przy tym prawdopodobieństwie. Wyjątek: wywiad nadwrażliwości na NLPZ."
+    },
+    {
+      "nazwa": "Testy krzyżowe z całą grupą beta-laktamów 'na wszelki wypadek'",
+      "powod": "Badamy tylko leki, których pacjentka realnie będzie potrzebować (cefuroksym, amoksycylina, ewentualnie cefazolina)."
+    }
   ],
   "koszt_etykiety": "Etykieta alergii na penicyliny/beta-laktamy: w kohorcie 64 141 osób skorygowany HR zakażenia MRSA 1,69 (95% CI 1,51–1,90) i C. difficile 1,26 (1,12–1,40); wyraźnie częstsze stosowanie makrolidów (IRR 4,15), klindamycyny (3,89), fluorochinolonów (2,10); 55% nadwyżki MRSA wynikało z antybiotyków alternatywnych (PMID 29950489). Podobnie w POZ w Wielkiej Brytanii (PMID 39756694) i po zabiegach (aOR nowego MRSA 2,71; PMID 38372001). Dla pielęgniarki 64 l. (przyszłe zabiegi, profilaktyka cefazoliną, częste kontakty ze szpitalem) precyzyjna etykieta ('cefuroksym' albo 'erdosteina') ma większą wartość niż każde pojedyncze badanie.",
-  "pilnosc": 4,
-  "uzasadnienie_pilnosci": "Czekanie na diagnostykę jest bezpieczne pod warunkiem odstawienia obu podejrzanych leków (już zastąpione azytromycyną) — testy skórne i tak wykonuje się 4–6 tyg. po reakcji. Skierowanie do alergologa wystawić teraz (kolejka). Warunek bezpieczeństwa: ten sam dzień — telefoniczne/osobiste wykluczenie objawów krtaniowych, oddechowych i krążeniowych (chrypa infekcyjna je maskuje); badanie wykluczające red flagi jest zawsze uzasadnione.",
+  "pilnosc": 3,
+  "uzasadnienie_pilnosci": "Runda 04: zmiana na 3. Testy skórne nadal najwcześniej 4–6 tyg. po reakcji, ale okulistę trzeba poinformować w tym tygodniu, a diagnostyka musi się zakończyć przed operacją drugiego oka. Weto najgorszego scenariusza (2) przyjmuję dla dzisiejszego, bezkosztowego kontaktu: trzeba wykluczyć obrzęk krtani maskowany chrypą oraz objawy oddechowe i krążeniowe, a także ustalić przebieg zabiegu okulistycznego.",
   "pewnosc": "srednia",
   "red_flags_wykluczone": [],
   "red_flags_otwarte": [
@@ -198,6 +232,11 @@
     "PubMed: Bousquet PJ i in. Provocation tests in diagnosing drug hypersensitivity. Curr Pharm Des 2008;14:2792-802. PMID 18991698, DOI 10.2174/138161208786369731",
     "PubMed: Dogan S i in. Assessment of pediatric patients with suspected NSAID hypersensitivity. Allergy Asthma Proc 2024;45:e81-6. PMID 39517081, DOI 10.2500/aap.2024.45.240061",
     "zrodla/MANIFEST.md — brak polskich wytycznych dla alergii polekowej w bibliotece (poziom 1 milczy).",
-    "[wiedza modelu, niezweryfikowane]: okno pobrania tryptazy, termin testów skórnych 4–6 tyg., wspólny łańcuch R1 metoksyimino (cefuroksym/ceftriakson/cefotaksym), dostępność sIgE na cefuroksym i BAT w Polsce, wpływ beta-adrenolityku na anafilaksję, procedura zgłoszenia podejrzenia choroby zawodowej."
-  ]
+    "[wiedza modelu, niezweryfikowane]: okno pobrania tryptazy, termin testów skórnych 4–6 tyg., wspólny łańcuch R1 metoksyimino (cefuroksym/ceftriakson/cefotaksym), dostępność sIgE na cefuroksym i BAT w Polsce, wpływ beta-adrenolityku na anafilaksję, procedura zgłoszenia podejrzenia choroby zawodowej.",
+    "PubMed: Kędziora W, Żarnowski T. Wstrząs anafilaktyczny po podaniu Aprokamu do komory przedniej. Klin Oczna 2016;118:298-300. PMID 29911363 (DOI brak w rekordzie)",
+    "PubMed: Mahiat C i in. Anaphylactic shock following cataract surgery: a documented intracameral cefuroxime allergy. J Investig Allergol Clin Immunol 2022;32:236-8. PMID 34489227, DOI 10.18176/jiaci.0741"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Hipoteza operacji zaćmy z cefuroksymem dokomorowym podnosi cefuroksym (0,38→0,50) i zwiększa wagę decyzyjną etykiety, bo przy drugim oku pacjentka znowu dostałaby cefuroksym dokomorowo. Uwzględniłem niską częstość bazową nadwrażliwości na erdosteinę (0,27→0,15). Pilność 4→3: diagnostyka alergologiczna musi się odbyć przed operacją drugiego oka. Weto 2 przyjmuję dla dzisiejszego wykluczenia red flag.",
+  "etykieta_rewizja": "Zamiast 'sprawca nieustalony' (ryzyko ponownej ekspozycji w szpitalu): 'Podejrzenie natychmiastowej nadwrażliwości 31.10.2026 na CEFUROKSYM (w tym dokomorowo) — unikać cefuroksymu i cefalosporyn o łańcuchu R1 metoksyimino (ceftriakson, cefotaksym) — oraz na ERDOSTEINĘ; do diagnostyki alergologicznej. NIE jest to alergia na wszystkie beta-laktamy; penicyliny i cefazolina do oceny przez alergologa.' Etykieta nazywa leki i ma jawny zakres."
 }

@@ -4,7 +4,7 @@
   "rozpoznania": [
     {
       "nazwa": "cefuroksym",
-      "p": 0.83,
+      "p": 0.75,
       "za": [
         "pretest: beta-laktamy to najczęstsza przyczyna natychmiastowych reakcji polekowych; w globalnej bazie farmakowigilancji cefuroksym ma najsilniejszy sygnał dysproporcji dla anafilaksji spośród 15 najczęściej zgłaszanych leków (ROR 40,9; PMID 40484712) → silnie w górę",
         "częstość reakcji alergicznych na cefalosporyny ok. 1,67‰ podań (PMID 39034149), anafilaksji ok. 6,1/10 000 ekspozycji (PMID 41037695) → rząd wielkości ~10× wyższy niż dla pozostałych kandydatów",
@@ -22,7 +22,7 @@
     },
     {
       "nazwa": "pokrzywka w przebiegu zakażenia wirusowego",
-      "p": 0.1,
+      "p": 0.13,
       "za": [
         "trwa ostra infekcja górnych dróg oddechowych (chrypka, katar, zapalenie gardła i krtani) → zakażenia są częstą przyczyną ostrej pokrzywki (głównie u dzieci, rzadziej u dorosłych; PMID 22825024, PMID 28697833) → umiarkowany pretest",
         "u większości osób z etykietą „uczulenia na antybiotyk” nadaną w czasie infekcji próba prowokacji jest ujemna [wiedza modelu, niezweryfikowane]"
@@ -34,7 +34,7 @@
     },
     {
       "nazwa": "erdosteina",
-      "p": 0.03,
+      "p": 0.07,
       "za": [
         "przyjęta w tym samym momencie co cefuroksym, prawdopodobnie pierwsza dawka w tym epizodzie (NIEZNANE) → chronologia równie zgodna jak dla cefuroksymu",
         "opisano reakcję po erdosteinie przyjętej z powodu infekcji górnych dróg oddechowych: obrzęk naczynioruchowy + wysypka na dłoniach w ciągu 2 h, potwierdzone próbą prowokacji (rumień trwały polekowy + anafilaksja; PMID 33546741) → obraz „dłonie + obrzęk” jest zbieżny"
@@ -108,8 +108,8 @@
     "5. Wywiad zawodowy: objawy przy rozpuszczaniu antybiotyków i.v. w pracy (świąd dłoni, nieżyt nosa, pokrzywka) → LR ok. 3–5 dla uczulenia na beta-laktamy [wiedza modelu, niezweryfikowane].",
     "6. Tryptaza w surowicy: wartościowa tylko w 1–4 h po reakcji z porównaniem z wartością wyjściową (≥24 h) [wiedza modelu, niezweryfikowane]; po dobie traci wartość dla tego epizodu — można oznaczyć wyjściową."
   ],
-  "pilnosc": 3,
-  "pilnosc_uzasadnienie": "Dla pytania etiologicznego: reakcja minęła ok. dobę temu, cefuroksym i erdosteina odstawione, azytromycyna nie reaguje krzyżowo z beta-laktamami → kluczowe jest dziś udokumentowanie podejrzenia i uniknięcie ponownej ekspozycji (w tym zawodowej), a alergolog w optymalnym oknie 4–6 tygodni. Jeśli objawy trwają/narastają (duszność, świst, chrypka nowa lub nasilona, zasłabnięcie) → pilność 1.",
+  "pilnosc": 2,
+  "pilnosc_uzasadnienie": "Rewizja 3→2: dziś udokumentować podejrzenie, wykluczyć przetrwałe objawy oddechowe/krążeniowe i odsunąć od przygotowywania beta-laktamów do diagnostyki; alergolog w oknie 4–6 tygodni. Objawy duszności/stridoru/zasłabnięcia → pilność 1.",
   "pewnosc": "srednia",
   "red_flags_wykluczone": [
     "Ciężka opóźniona reakcja skórna (zespół Stevensa-Johnsona/toksyczna nekroliza naskórka, DRESS) jako mechanizm TEJ reakcji — niezgodna z początkiem po 15 min (nie wyklucza zmian śluzówkowych, które pozostają NIEZNANE)"
@@ -121,8 +121,8 @@
     "Ponowna ekspozycja zawodowa na beta-laktamy w pracy (przygotowywanie i.v.) przed diagnostyką",
     "Zmiany śluzówkowe — NIEZNANE"
   ],
-  "nastepny_krok": "Wpisać do dokumentacji „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (p ok. 0,83) — nie podawać cefuroksymu ani cefalosporyn o podobnym łańcuchu R1 do czasu diagnostyki” i skierować do poradni alergologicznej na testy skórne z cefuroksymem i determinantami penicylin za 4–6 tygodni, z adnotacją o zawodowej ekspozycji na beta-laktamy i.v.",
-  "co_zmieniloby_zdanie": "Informacja, że poprzednie dawki cefuroksymu z dni 1–2 nie zostały przyjęte lub były bez objawów, a erdosteina była dziś pierwszą dawką, albo utrzymywanie się pokrzywki przez kilka dni po odstawieniu obu leków doustnych, obniżyłyby cefuroksym poniżej 0,6.",
+  "nastepny_krok": "Dziś wpisać do dokumentacji „podejrzenie natychmiastowej nadwrażliwości na cefuroksym (prawdopodobne) i erdosteinę (możliwe) — nie podawać obu ani cefalosporyn o podobnym łańcuchu R1 (ceftriakson, cefotaksym) do czasu diagnostyki” i skierować do alergologa na testy z cefuroksymem za 4–6 tygodni z adnotacją o zawodowej ekspozycji na beta-laktamy i.v.",
+  "co_zmieniloby_zdanie": "Potwierdzenie operacji zaćmy z dokomorowym cefuroksymem 3–4 dni temu podniosłoby cefuroksym do ok. 0,83; potwierdzenie objawów już po dawkach z dni 1–2 — do >0,9; utrzymywanie się pokrzywki po odstawieniu obu leków doustnych obniżyłoby go poniżej 0,5.",
   "nieznane_o_najwyzszej_wartosci": [
     "Czy dawki cefuroksymu z dni 1–2 były przyjęte i bez objawów; czy erdosteina była pierwszą dawką",
     "Czy 3–4 dni temu była operacja oka (np. zaćmy) z dokomorowym cefuroksymem",
@@ -151,6 +151,10 @@
     "PubMed: Marrouche N, Grattan C. Childhood urticaria. Curr Opin Allergy Clin Immunol 2012;12(5):485-90. PMID 22825024, DOI 10.1097/ACI.0b013e3283574cb3",
     "PubMed: Tang N i wsp. [Clinical characteristics of urticaria in children versus adults]. Zhongguo Dang Dai Er Ke Za Zhi 2017;19(7):790-795. PMID 28697833, DOI 10.7499/j.issn.1008-8830.2017.07.012",
     "zrodla/ (biblioteka kuratorowana): brak polskich wytycznych dla alergii polekowej — MANIFEST zawiera tylko przykłady",
-    "Pozostałe twierdzenia oznaczone [wiedza modelu, niezweryfikowane]"
-  ]
+    "Pozostałe twierdzenia oznaczone [wiedza modelu, niezweryfikowane]",
+    "PubMed: Kędziora W, Żarnowski T. [Wstrząs anafilaktyczny po dokomorowym podaniu Aprokamu (cefuroksym) w operacji zaćmy]. Klin Oczna 2016;118(4):298-300. PMID 29911363 (brak DOI w rekordzie)"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda dyskusji: (1) przyjmuję argument POZ/hipotezującego, że reakcja na 3.–4. dawkę cefuroksymu przy bezobjawowych wcześniejszych dawkach jest silniejszym argumentem niż zakładałem — LR dla cefuroksymu 0,6→0,35, dla erdosteiny jako pierwszej dawki 1,3→1,5 [wiedza modelu, niezweryfikowane: większość natychmiastowych reakcji IgE występuje po pierwszej dawce kursu]; (2) pretest erdosteiny 0,2→0,4 (niedoraportowanie — lek stosowany głównie w kilku krajach). Surowy posterior: cefuroksym 85,5%, erdosteina 7,0%, wirusowa 5,8%; po spłaszczeniu ×0,6: 78% / 5% / 15%; przyjęte 0,75 / 0,07 / 0,13. (3) Hipoteza operacji zaćmy z dokomorowym cefuroksymem (PMID 29911363, PMID 34489227) — warunkowo, do potwierdzenia: pierwotne uczulenie w 3–4 dni jest mało prawdopodobne, ale wtórna odpowiedź (booster) u osoby wcześniej uczulonej zawodowo podnosi poziom swoistych IgE w ciągu kilku dni i tłumaczy, czemu reakcja wystąpiła dopiero na 3.–4. dawkę doustną → po potwierdzeniu operacji LR ok. 1,5–2 dla cefuroksymu (powrót do ~0,83). (4) Pilność 3→2: przyjmuję weto najgorszego scenariusza — otwarte obrzęk krtani maskowany chrypką, bisoprolol i ryzyko ekspozycji zawodowej na beta-laktamy już na najbliższym dyżurze.",
+  "etykieta_w_dokumentacji": "Nazwać konkretnych podejrzanych (cefuroksym — prawdopodobny, erdosteina — możliwa) z zakresem unikania; NIE „sprawca nieustalony” (nie chroni przed ceftriaksonem i.v. na OIT) i NIE „uczulenie na beta-laktamy” (nadmierna etykieta odbiera penicyliny i zwiększa ryzyko gorszych antybiotyków) [wiedza modelu, niezweryfikowane]."
 }

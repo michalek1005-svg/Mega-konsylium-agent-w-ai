@@ -1,4 +1,28 @@
-# 01 — Wywiad (zamknięty)
+# 01 — Wywiad (zamknięty; uzupełniony 01.11.2026 00:40 wg korekty lekarza)
+
+## PYTANIE WIODĄCE (korekta lekarza POZ, 01.11.2026)
+**Głównym problemem jest INFEKCJA**, reakcja na leki jest wątkiem dodatkowym. Konsylium ma ustalić:
+1. **Etiologię infekcji** — jakie czynniki (wirusowe, bakteryjne, atypowe) i dlaczego.
+2. **Dlaczego przebieg był tak nagły**: nagły początek, **silne osłabienie i nagły kaszel**.
+3. **Leczenie** infekcji (czy antybiotyk w ogóle, jaki, czy leczenie przeciwwirusowe, objawowe).
+4. Wątek dodatkowy: czynnik etiologiczny reakcji nadwrażliwości (część B, już omówiona).
+
+## Infekcja — dane
+- Początek **nagły**, 2 dni temu: chrypka, **kaszel produktywny (nagły)**, katar, zapalenie gardła i krtani, **silne osłabienie**.
+- Tło: praca na oddziale neurologii z intensywną terapią (kontakt z ciężko chorymi, wentylowanymi; praca nocna, przemęczenie), 64 l., nadwaga, niepaląca, bisoprolol (skurcze nadkomorowe).
+- Pora roku: koniec października / początek listopada (Polska).
+- Leczenie dotąd: sama włączyła cefuroksym 500 mg (od 2 dni); obecnie azytromycyna i nebulizacje z budezonidu.
+- Od 3–4 dni krople do JEDNEGO oka (lewofloksacyna + kortykosteroid, bromfenak) — **powód kropli NIEZNANY** (zapalenie spojówek? zabieg?).
+- Badań laboratoryjnych i obrazowych brak.
+
+### NIEZNANE (infekcja)
+- Gorączka (wysokość, dreszcze), bóle mięśni, ból głowy — nasilenie „rozbicia”.
+- Duszność, SpO2, osłuchiwanie płuc, częstość oddechów, RR, tętno (bisoprolol maskuje tachykardię).
+- Kontakt z chorymi (oddział, dom), ogniska na oddziale.
+- Szczepienia: grypa 2026/27, COVID-19, krztusiec (Tdap) — daty.
+- Test antygenowy/PCR grypa/COVID/RSV — nie wykonano.
+- Charakter plwociny, napadowość kaszlu, świst wdechowy, wymioty po kaszlu.
+- Powód leczenia oka (zaczerwienienie, wydzielina, zabieg).
 
 **Pytanie konsylium (od lekarza POZ):** uczulenie/reakcja nadwrażliwości jest przyjęte jako oczywiste. Konsylium ma ustalić **czynnik etiologiczny** (który lek lub składnik) i **wytłumaczenie**: mechanizm, chronologię, rolę wcześniejszej tolerancji, możliwą ekspozycję zawodową, rolę kropli i substancji pomocniczych, jak rozróżnić kandydatów i co to potwierdzi.
 
