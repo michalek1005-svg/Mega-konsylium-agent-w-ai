@@ -84,6 +84,7 @@ def wczytaj_opinie(sprawa: Path, do_rundy: int | None = None) -> dict[str, dict]
             continue
         op = wczytaj_json(p)
         if not op or "rola" not in op:
+            print(f"UWAGA: {p.name} pominięty – brak pola \"rola\".", file=sys.stderr)
             continue
         m = re.search(r"-runda[_-]?(\d+)\.json$", p.name)
         runda = int(op.get("runda", m.group(1) if m else 0) or 0)

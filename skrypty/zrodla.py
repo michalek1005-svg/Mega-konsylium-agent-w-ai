@@ -123,7 +123,7 @@ def lokalne(sprawa: Path, q: str, kto: str) -> None:
 
 
 def rpl(sprawa: Path, inn: str | None, nazwa: str | None, kto: str) -> None:
-    q = {"size": "10"}
+    q = {"size": "100"}
     if nazwa:
         q["name"] = nazwa
     else:
@@ -133,7 +133,10 @@ def rpl(sprawa: Path, inn: str | None, nazwa: str | None, kto: str) -> None:
     if not lista:
         print("RPL: brak wyników. Uwaga: commonName to INN po łacinie (Metforminum, nie metformina).")
         return
-    for x in lista[:10]:
+    # najpierw preparaty jednoskładnikowe (commonName dokładnie jak zapytanie), potem złożone
+    if inn and not nazwa:
+        lista = sorted(lista, key=lambda x: (str(x.get("commonName") or "").strip().lower() != inn.strip().lower(), str(x.get("medicinalProductName") or "")))
+    for x in lista[:15]:
         opis = f"{x.get('medicinalProductName')} · {x.get('commonName')} · {x.get('pharmaceuticalFormName') or x.get('pharmaceuticalForm') or ''} · {x.get('medicinalProductPower') or ''}"
         print(f"[RPL: {x.get('medicinalProductName')}] {opis}")
         zapisz(sprawa, {"typ": "rpl", "id": str(x.get("id") or x.get("medicinalProductName")), "tytul": opis, "kto_pobral": kto})

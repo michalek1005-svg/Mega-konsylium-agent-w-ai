@@ -38,7 +38,8 @@ def logit(p: float) -> float:
 
 
 def waga_w_torze(rola: str, tor: str, cfg: dict, kal: dict, nazwa_rozp: str | None = None) -> float:
-    w = float(cfg["role"].get(rola, {}).get(tor, 0.0))
+    # konsultant dołączony do sprawy (np. alergolog), którego nie ma w wagi.yaml: wagi z sekcji "konsultant"
+    w = float(cfg["role"].get(rola, cfg.get("konsultant", {})).get(tor, 0.0))
     if tor == "rozpoznanie" and rola == "farmakolog" and nazwa_rozp:
         pref = cfg.get("wyjatki", {}).get("farmakolog_prefiks_polekowe", "objawy polekowe")
         if nazwa_rozp.lower().startswith(pref.lower()):
@@ -201,8 +202,10 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
         powody.append("spór o czerwoną flagę: " + "; ".join(sporne))
     if any(v == "tak" for v in polekowe.values()) and not any("polek" in n.lower() for n in rozne_top1):
         powody.append("farmakolog: przyczyna polekowa TAK")
-    runda = {"potrzebna": bool(powody), "powody": powody,
-             "test_zgody": None if powody else "pełna zgoda: jeden adwokat diabła z jednym kontrargumentem, bez rundy"}
+    r_op = max((op.get("_runda", 0) for op in opinie.values()), default=0)
+    runda = {"potrzebna": bool(powody), "powody": powody, "po_rundzie": r_op,
+             "test_zgody": None if powody else (f"po rundzie {r_op}: zgoda co do rozpoznania nr 1, kolejna runda niepotrzebna" if r_op
+                                                else "pełna zgoda: jeden adwokat diabła z jednym kontrargumentem, bez rundy")}
 
     wynik = {
         "ranking": [{"rozpoznanie": nazwy_wyswietlane[d], "p": round(p, 3), "wymienili": kto_wymienil[d]} for d, p in ranking],
@@ -246,7 +249,10 @@ def main() -> None:
         print(f"  {r['p']:.3f}  {r['rozpoznanie']}   ({', '.join(r['wymienili']) or 'nikt — tylko ε'})")
     print(f"Zgoda: {wynik['zgoda']}  Flagi: {wynik['flagi'] or '-'}")
     r = wynik["runda"]
-    print("Runda dyskusji: " + ("TAK – " + "; ".join(r["powody"]) if r["potrzebna"] else "NIE – " + r["test_zgody"]))
+    print(("Kolejna runda: " if r.get("po_rundzie") else "Runda dyskusji: ") + ("TAK – " + "; ".join(r["powody"]) if r["potrzebna"] else "NIE – " + r["test_zgody"]))
+    spoza = [x for x in wynik["pliki_opinii"] if x not in wagi()["role"]]
+    if spoza:
+        print("Konsultanci spoza stałego składu (wagi z sekcji konsultant w config/wagi.yaml): " + ", ".join(spoza))
     if wynik["mniejszosc_chroniona"]:
         print("Mniejszość chroniona (obalić dowodem albo plan B): " + "; ".join(f"{m['rozpoznanie']} ({m['p_max']:.2f}{', czerwona flaga' if m['czerwona_flaga'] else ''})" for m in wynik["mniejszosc_chroniona"]))
     pil = wynik["pilnosc"]
