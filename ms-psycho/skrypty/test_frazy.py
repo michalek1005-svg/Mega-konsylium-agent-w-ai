@@ -28,10 +28,13 @@ PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZM
  ("W zeszłym miesiącu znowu się pocięłam", 3), ("mam ochotę się pociąć", 3), ("okaleczyłam się", 3), ("zrobiłam sobie krzywdę", 3),
  ("rozdałem swoje rzeczy", 3), ("pożegnałem się ze wszystkimi", 3), ("mam sznur w piwnicy", 3), ("stanę na moście", 3), ("mąż mnie dusił", 3),
  ("przepraszam za wszystko", 2), ("chciałabym już być z nim", 2), ("nie biorę leków na cukrzycę, bo po co", 2), ("nie widzę sensu życia", 2),
- ("Po co to wszystko, i tak nic się nie zmieni.", 1), ("mam dość życia", 1), ("czuję się beznadziejna", 1),
+ ("Po co to wszystko, i tak nic się nie zmieni.", 1), ("mam dość życia", 1), ("czuję się beznadziejna", 1), ("jestem beznadziejny we wszystkim", 1), ("to wszystko jest beznadziejne", 1), ("beznadzieja, nic mi nie wychodzi", 1),
 ]
 CZYSTE = ["Od tygodnia kłócę się z siostrą o opiekę nad mamą", "Jak powiedzieć szefowi, że nie wezmę nadgodzin?",
           "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem", "spotkajmy się przy moście", "jutro idę na sznurowanie butów? nie", "chcę być z nim szczera", "Koleżanka dała mi Concertę, po niej skończyłam projekt", "plama zniknęła po praniu"]
-bledy = [(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
+# poziom 0 wymagany (fałszywy alarm z PC 1.11.2026: „mam beznadziejnego chłopa” = o kimś innym, nie o sobie)
+BEZ_ALARMU = ["mam beznadziejnego chłopa", "mam beznadziejnego chlopa", "beznadziejny film wczoraj", "mam beznadziejną szefową", "beznadziejna pogoda dziś"]
+bledy = ([(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
+         + [(t, 0, poziom(t)) for t in BEZ_ALARMU if poziom(t) > 0])
 for t, m, p in bledy: print(f"BŁĄD: oczekiwano ≥{m}, jest {p}: {t}")
-print(f"{len(PRZYPADKI) + len(CZYSTE) - len(bledy)}/{len(PRZYPADKI) + len(CZYSTE)} OK"); sys.exit(1 if bledy else 0)
+print(f"{len(PRZYPADKI) + len(CZYSTE) + len(BEZ_ALARMU) - len(bledy)}/{len(PRZYPADKI) + len(CZYSTE) + len(BEZ_ALARMU)} OK"); sys.exit(1 if bledy else 0)

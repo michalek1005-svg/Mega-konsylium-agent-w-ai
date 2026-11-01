@@ -122,7 +122,7 @@
     "mam dosc zycia",
     "zmeczony zyciem",
     "zmeczona zyciem",
-    "beznadziej",
+    "beznadziej(?!n\\w{0,3} (chlop|facet|mez|maz|partner|chlopak|dziewczyn|zon|szef|kolez|koleg|tesc|sasiad|brat|siostr|ojc|ojciec|matk|mam[aey]|tat[aeyo]|syn|cork|film|serial|ksiazk|pogod|obiad|jedzeni|mecz|druzyn|rzad|polityk|nauczyciel|lekarz|kierowc|obslug|sklep|firm|prac[ay] (szef|kolez)))",
     "po co to wszystko",
     "nic sie nie zmieni",
     "nie widze sensu",
