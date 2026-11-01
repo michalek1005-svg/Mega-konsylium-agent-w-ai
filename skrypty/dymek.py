@@ -86,6 +86,8 @@ def wpisy_tablicy(a) -> list:
              "faza": faza(a.faza), "tekst": skroc(tekst, 140), "skreslone": skreslone}
         if a.rola:
             w["rola"] = rola(a.rola)
+        if skreslone and a.powod:
+            w["powod"] = skroc(a.powod, 120)
         out.append(w)
     return out
 
@@ -99,6 +101,7 @@ def main() -> None:
     ap.add_argument("--wiele", type=Path, help="plik JSONL z wieloma dymkami")
     ap.add_argument("--tablica", action="append", help="zapisz na tablicy w Pokoju najważniejsze ustalenie (≤140 znaków; można podać kilka razy)")
     ap.add_argument("--skresl", action="append", help="skreśl na tablicy odrzuconą hipotezę/ustalenie (ten sam tekst co wcześniej albo nowy, od razu skreślony)")
+    ap.add_argument("--powod", help="dlaczego odrzucono (≤120 znaków) – pokazuje się pod skreślonym wpisem")
     a = ap.parse_args()
     if not a.sprawa.is_dir():
         sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")

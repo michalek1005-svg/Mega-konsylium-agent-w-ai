@@ -53,6 +53,6 @@ python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1"
 ```
 
 Zdarzenie w `_log.jsonl`: `{"ts":"…","zdarzenie":"tablica","rola":"ordynator","faza":"Konsylium runda 1","tekst":"…","skreslone":false}`.
-`--tablica` i `--skresl` można podać kilka razy i łączyć z dymkiem (`--skrot`). Tekst ≤140 znaków, jedno konkretne ustalenie (rozpoznanie z prawdopodobieństwem, wykluczona red flag, kluczowy fakt z wywiadu, decyzja o badaniu).
+`--skresl … --powod "troponina ujemna ×2"` dopisuje pod skreśleniem, dlaczego odrzucono. `--tablica` i `--skresl` można podać kilka razy i łączyć z dymkiem (`--skrot`). Tekst ≤140 znaków, jedno konkretne ustalenie (rozpoznanie z prawdopodobieństwem, wykluczona red flag, kluczowy fakt z wywiadu, decyzja o badaniu).
 `--skresl` z tym samym tekstem co wcześniejszy wpis przekreśla tamten wpis; z nowym tekstem dopisuje go od razu skreślony. Na tablicy widać ostatnie 6 wpisów; `--faza` mówi, od którego etapu wpis jest widoczny przy odtwarzaniu.
 Ordynator zapisuje na tablicę co najmniej: lidera rankingu po agregacji, każdą jawnie wykluczoną red flag (skreśloną) i decyzję z projektu rekomendacji.

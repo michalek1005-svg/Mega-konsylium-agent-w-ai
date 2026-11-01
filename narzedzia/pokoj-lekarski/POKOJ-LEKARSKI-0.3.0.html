@@ -817,9 +817,10 @@ function ustaleniaZLogu(zdarzenia, sceny) {
     if (si < 0) si = f ? Math.max(0, sceny.findIndex((s) => fazaNaId(s.tytul).rz > f.rz) - 1) : sceny.length - 1;
     if (si < 0) si = Math.max(0, sceny.length - 1);
     const tekst = utnij(bezMarkdown(String(z.tekst)).replace(/\s+/g, ' ').trim(), 140);
+    const powod = z.powod ? utnij(bezMarkdown(String(z.powod)).replace(/\s+/g, ' ').trim(), 120) : null;
     const stary = z.skreslone ? out.find((u) => !u.skreslone && norm(u.tekst) === norm(tekst)) : null;
-    if (stary) { stary.skreslone = true; stary.siSkreslenia = si; continue; }
-    out.push({ tekst, skreslone: !!z.skreslone, si, siSkreslenia: z.skreslone ? si : null, kto: z.rola ? rola(z.rola) : null });
+    if (stary) { stary.skreslone = true; stary.siSkreslenia = si; if (powod) stary.powod = powod; continue; }
+    out.push({ tekst, skreslone: !!z.skreslone, si, siSkreslenia: z.skreslone ? si : null, kto: z.rola ? rola(z.rola) : null, powod });
   }
   return out;
 }
