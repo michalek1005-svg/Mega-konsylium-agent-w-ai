@@ -48,6 +48,7 @@ Potem `sprawdzajacy-faktow`. Jeśli zielona → `09-FINAL.md`. Czerwona → popr
    każdy lekarz czyta agregat + inne opinie i odpowiada w ≤120 słowach: „co mnie przekonuje / co by zmieniło moje zdanie".
    Jeśli `lekarz-najgorszy-scenariusz` ma `red_flags_otwarte` — pilność nie może być niższa od jego oceny, dopóki w protokole nie wykluczysz jej jawnie (z argumentem i źródłem).
 4. Napisz `05-projekt.md` w formacie FINAL (CLAUDE.md §6). Jedna rekomendacja. Plan B. NIEZNANE.
+   REKOMENDACJA: jedno zdanie, jedno działanie, bez prawdopodobieństw (te idą do DLACZEGO). DLACZEGO: najpierw jedno zdanie odpowiedzi na PYTANIE WIODĄCE użytkownika; łącznie ≤80 słów. PLAN B: najwyżej 6 warunków „jeśli … to …”, pozostałe do `05-projekt.md`. Gdy zalecenie odbiega od wytycznej (polskiej, WHO, europejskiej), napisz to jednym zdaniem z powodem. Zbierz linie `BRAK_PL:` z opinii i dopisz je pod ŹRÓDŁAMI jako lista brakujących polskich wytycznych.
 5. **Rezydenci**: `python3 skrypty/pakiet_rezydenta.py sprawy/<ID> --persona losowa` → stdout to **jedyna** treść, jaką przekazujesz
    agentowi `rezydent`. Uruchom 2 rezydentów (3 gdy `ryzyko ≥ 7`), każdego z osobnym `--seed`. Zapisz do `06-rezydenci/R<n>.md`.
    Nie streszczaj im nic. Nie odpowiadaj na ich pytania o zespół.
