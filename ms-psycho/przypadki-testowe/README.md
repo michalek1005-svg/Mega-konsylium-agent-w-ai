@@ -1,6 +1,6 @@
 # Przypadki psychologiczne do testów „brata psychologicznego”
 
-10 syntetycznych przypadków dorosłych (tylko wiek i płeć), w tym samym formacie co M57-KOL dla konsylium medycznego. Folder każdego przypadku zawiera:
+11 syntetycznych przypadków dorosłych (tylko wiek i płeć), w tym samym formacie co M57-KOL dla konsylium medycznego. Folder każdego przypadku zawiera:
 - `01-wywiad.md`: opis własnymi słowami, pytania z odpowiedziami, flagi (same fakty, bez hipotez), NIEZNANE, skale i pytanie użytkownika;
 - `wywiad.json`: te same dane w JSON.
 
@@ -16,6 +16,7 @@
 | PSY-08 | K 45 | Jaką terapię wybrać na nerwicę lękową? |
 | PSY-09 | M 31 | Jak pomóc partnerce z jej lękiem? |
 | PSY-10 | K 26 | Jak poradzić sobie z samotnością w nowym mieście? |
+| PSY-11 | K 32 | Czy to ADHD i co mogę z tym zrobić? (ADHD dorosłych; docs/ADHD-DOROSLI.md) |
 
 Kryteria oceny obu trybów: `KRYTERIA-OCENY.md`. Klucze do oceny: `_KLUCZE-NIE-DLA-APLIKACJI.md` — nie wgrywać do aplikacji i nie dawać agentom.
 — Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.

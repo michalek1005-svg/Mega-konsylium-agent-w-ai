@@ -111,7 +111,8 @@
     "przepraszam (was |cie )?za wszystko",
     "juz byc z (nim|nia|nimi)",
     "(nie biore|odstawil(a|e)?m|przestal(a|e)?m brac) lek.{0,50}(po co|bez sensu|nie ma sensu)",
-    "nie widze sensu (zycia|zyc|dalej|w zyciu|zeby zyc)"
+    "nie widze sensu (zycia|zyc|dalej|w zyciu|zeby zyc)",
+    "(najlepiej|lepiej) (byloby|by bylo|bylo by|bedzie)( mi| dla wszystkich)? (zniknac|mnie nie bylo|nie istniec|sie nie obudzic)"
   ],
   "poziom1": [
     "nie ma sensu",

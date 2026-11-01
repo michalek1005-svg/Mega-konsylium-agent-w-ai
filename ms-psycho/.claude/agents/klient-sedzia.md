@@ -11,3 +11,5 @@ Wcielasz się w osobę z `01-wywiad.md` (konsylium) albo – w trybie Rozmowa, g
 — Narzędzie testowe i edukacyjne marki MS. Nie służy do diagnozy ani terapii realnych osób.
 
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
+
+Przy ADHD (docs/ADHD-DOROSLI.md §3) sprawdzasz dodatkowo: krótko, jedna myśl na wiadomość, jeden konkretny krok, zero moralizowania.

@@ -118,6 +118,30 @@ Skróty: NMA (network meta-analysis) = sieciowa metaanaliza; MA = metaanaliza; R
 
 ---
 
+## 2a. ADHD u dorosłych (dodane 2026-11-01, przewodnik: docs/ADHD-DOROSLI.md)
+
+Sprawdzone w PubMed (`get_article_metadata`, streszczenia) 1.11.2026; rekomendacje PTP – strona Termedia (widoczny tylko początek).
+
+| Pozycja | Czasopismo | Rok | PMID | DOI | Do czego |
+|---|---|---|---|---|---|
+| Updated European Consensus Statement on diagnosis and treatment of adult ADHD | Eur Psychiatry | 2019 | 30453134 | 10.1016/j.eurpsy.2018.11.001 | Oś: obraz, diagnoza, leczenie multimodalne |
+| Diagnostyka i postępowanie terapeutyczne u dorosłych z ADHD – rekomendacje PTP 2024 (Gondek i wsp.) | Psychiatria Spersonalizowana | 2024 | — | 10.5114/psychs.2024.142908 | Polska ścieżka i realia; pełny tekst do pobrania |
+| Comparative efficacy and acceptability of pharmacological, psychological, and neurostimulatory interventions for ADHD in adults (component NMA) | Lancet Psychiatry | 2025 | 39701638 | 10.1016/S2215-0366(24)00360-2 | Co działa: leki vs CBT/psychoedukacja/uważność |
+| Benefits and harms of ADHD interventions: umbrella review | BMJ | 2025 | 41297970 | 10.1136/bmj-2025-085875 | Pewność dowodów u dorosłych |
+| Comparative efficacy and tolerability of medications for ADHD (NMA) | Lancet Psychiatry | 2018 | 30097390 | 10.1016/S2215-0366(18)30269-4 | Leki – ogólnie, bez dawek |
+| Meta-analysis of cognitive-behavioral treatments for adult ADHD | J Consult Clin Psychol | 2017 | 28504540 | 10.1037/ccp0000216 | Wielkość efektu CBT |
+| A meta-analysis of the intervention effect of CBT on adult ADHD | J Affect Disord | 2026 | 41483880 | 10.1016/j.jad.2025.121107 | CBT: objawy, nastrój, funkcje wykonawcze |
+| CBT for adults with ADHD extends beyond core symptoms (MA) | Psychol Psychother | 2023 | 36794797 | 10.1111/papt.12455 | CBT a objawy emocjonalne |
+| CBT + pharmacotherapy vs pharmacotherapy alone in adult ADHD (MA) | J Atten Disord | 2023 | 38084075 | 10.1177/10870547231214969 | Łączenie terapii z lekami |
+| Association between suicidal spectrum behaviors and ADHD (MA) | Neurosci Biobehav Rev | 2019 | 31129238 | 10.1016/j.neubiorev.2019.05.022 | Strażnik: ryzyko samobójcze |
+| Non-suicidal self-injury in individuals with ADHD (MA) | Psychiatry Res | 2026 | 41633106 | 10.1016/j.psychres.2026.116975 | Strażnik: samookaleczenia |
+| ADHD medications and work disability and mental health outcomes (register) | JAMA Netw Open | 2024 | 38506810 | 10.1001/jamanetworkopen.2024.2859 | Leki a hospitalizacje i zachowania samobójcze |
+| Evidence of emotion dysregulation as a core symptom of adult ADHD (SR) | PLoS One | 2023 | 36608036 | 10.1371/journal.pone.0280131 | Dysregulacja emocji |
+| Adverse experiences of women with undiagnosed ADHD | Sci Rep | 2025 | 40594310 | 10.1038/s41598-025-04782-y | Późna diagnoza u kobiet |
+| Little evidence for late-onset ADHD in a longitudinal sample of women | J Consult Clin Psychol | 2019 | 30570306 | 10.1037/ccp0000353 | Różnicowanie przy „ADHD od dorosłości” |
+| The adult ADHD assessment quality assurance standard (AQAS) | Front Psychiatry | 2024 | 39156609 | 10.3389/fpsyt.2024.1380410 | Jakość diagnozy dorosłych |
+| World Federation of ADHD International Consensus Statement: 208 conclusions | Neurosci Biobehav Rev | 2021 | 33549739 | 10.1016/j.neubiorev.2021.01.022 | Mity i stygmatyzacja |
+
 ## 3. Bezpieczeństwo
 
 ### 3a. Ocena ryzyka samobójczego: ograniczenia skal
@@ -190,6 +214,8 @@ Uwaga: liczby z tabeli (punkty odcięcia, α) pochodzą ze streszczeń w PubMed.
 ---
 
 ## Do pobrania przez użytkownika (Michał, w przeglądarce)
+
+- Rekomendacje PTP 2024 – ADHD u dorosłych (Gondek i wsp., doi:10.5114/psychs.2024.142908), pełny tekst z termedia.pl → `zrodla-psycho/ptp-2024-adhd-dorosli.md`.
 PDF-y i dokumenty, których agenci nie mogą pobrać z tego środowiska. Każdy zapisać do `zrodla-psycho/` i dopisać do manifestu:
 1. **NICE NG222**: pełny PDF wytycznej i PDF „January 2026 exceptional surveillance” (sprawdzić, czy coś zmieniono).
 2. **NICE NG225**: PDF i tabela „do not use risk assessment tools and scales to predict future suicide”. Sformułowanie trzeba potwierdzić w PDF.

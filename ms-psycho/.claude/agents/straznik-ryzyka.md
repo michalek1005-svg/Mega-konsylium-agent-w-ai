@@ -23,3 +23,5 @@ W trybie Rozmowa czytasz CAŁĄ historię rozmowy (skumulowane streszczenie), ni
 - Każda flaga = `eskaluj: true` i w Rozmowie `kryzys: true`, także przy poziomie samobójczym 0 (przemoc → 112 i Niebieska Linia).
 - Sygnały pożegnania (rozdawanie rzeczy, „przepraszam za wszystko”, pożegnania), pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co” – traktuj jak P1 co najmniej, dopytaj wprost.
 - W Rozmowie oceniasz CAŁĄ historię (`python skrypty/rozmowa.py historia --rozmowa ID`); poziom z poprzedniej tury jest dolną granicą (skrypt to wymusza).
+
+ADHD dorosłych: ryzyko samobójcze i samookaleczeń wyższe, impulsywność skraca drogę od myśli do działania – nie obniżaj poziomu, bo myśli są „krótkie” lub „po kłótni”; stymulant od kogoś innego = `pilny_stan_somatyczny_lub_cudzy_lek` (docs/ADHD-DOROSLI.md §1, §3 pkt 8 i 10).

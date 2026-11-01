@@ -14,3 +14,5 @@ Plik: `03-formulacje/diagnosta.json`.
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
 
 Źródła: gdy PubMed daje <3 trafień, **obowiązkowo Europe PMC** przez WebFetch – szczegóły w docs/WSPOLNE-TERAPEUTA.md, sekcja „Europe PMC – obowiązkowe drugie źródło”.
+
+ADHD dorosłych: docs/ADHD-DOROSLI.md §4 (dzieciństwo, ≥2 obszary, ASRS = nasilenie, różnicowanie z ChAD, lękiem, depresją, snem, substancjami).

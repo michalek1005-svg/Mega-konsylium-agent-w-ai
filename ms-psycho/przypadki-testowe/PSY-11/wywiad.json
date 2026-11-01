@@ -1,0 +1,69 @@
+{
+ "kod": "PSY-11",
+ "plec": "kobieta",
+ "wiek": 32,
+ "tytul": "Podejrzenie ADHD w dorosłości",
+ "opis": "Obejrzałam kilka filmów o ADHD u kobiet i jakbym oglądała siebie. Całe życie odkładam wszystko na ostatnią chwilę, gubię rzeczy, w pracy przegapiłam dwa terminy i szef zaczął pytać. Czuję się jak oszustka, która zaraz zostanie zdemaskowana.",
+ "odpowiedzi": [
+  {
+   "pytanie": "Od kiedy masz takie trudności?",
+   "odpowiedz": "Odkąd pamiętam. W szkole mówili, że jestem zdolna, ale leniwa i chaotyczna."
+  },
+  {
+   "pytanie": "Co najbardziej przeszkadza teraz?",
+   "odpowiedz": "Odkładam rzeczy do ostatniej chwili, spóźniam się, gubię klucze. W pracy dwa razy przegapiłam termin."
+  },
+  {
+   "pytanie": "W ilu miejscach to widać?",
+   "odpowiedz": "W pracy, w domu i w finansach (zapominam o rachunkach)."
+  },
+  {
+   "pytanie": "Nastrój w ostatnich 2 tygodniach?",
+   "odpowiedz": "Raczej w porządku, ale wieczorem często czuję się beznadziejnie przez to, co zawaliłam."
+  },
+  {
+   "pytanie": "Czy bywały okresy kilku dni z dużo mniejszą potrzebą snu i bardzo podwyższonym nastrojem?",
+   "odpowiedz": "Nie"
+  },
+  {
+   "pytanie": "Sen?",
+   "odpowiedz": "Zasypiam po 1:00, scrolluję telefon."
+  },
+  {
+   "pytanie": "Alkohol, inne substancje?",
+   "odpowiedz": "Wino 2–3 razy w tygodniu, czasem marihuana na sen. Kawa 5 dziennie."
+  },
+  {
+   "pytanie": "Czy zdarza Ci się myśleć, że lepiej byłoby nie żyć?",
+   "odpowiedz": "Po kłótniach z partnerem czasem przez chwilę, potem przechodzi."
+  },
+  {
+   "pytanie": "Czy kiedykolwiek się samookaleczałaś?",
+   "odpowiedz": "Nie"
+  },
+  {
+   "pytanie": "Choroby, leki?",
+   "odpowiedz": "Brak. Koleżanka dała mi kilka tabletek Concerty, raz wzięłam przed ważnym projektem."
+  },
+  {
+   "pytanie": "Kto jest blisko?",
+   "odpowiedz": "Partner – kłócimy się o obowiązki w domu; siostra."
+  },
+  {
+   "pytanie": "Wcześniejsza pomoc psychologiczna?",
+   "odpowiedz": "Psycholog w liceum, bez diagnozy."
+  },
+  {
+   "pytanie": "Czego oczekujesz?",
+   "odpowiedz": "Chcę wiedzieć, czy to ADHD i co mogę z tym zrobić, zanim stracę pracę."
+  }
+ ],
+ "flagi": [],
+ "nieznane": [
+  "objawy w dzieciństwie potwierdzone przez bliskich lub świadectwa",
+  "częstość myśli rezygnacyjnych i czy pojawiały się poza kłótniami",
+  "ilość marihuany"
+ ],
+ "skale": "ASRS v1.1 część A = 5/6 pozytywnych; PHQ-9 = 8 pkt (pytanie 9: „kilka dni”); GAD-7 = 9 pkt",
+ "pytanie": "Czy to ADHD i co mogę z tym zrobić?"
+}

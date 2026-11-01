@@ -21,3 +21,6 @@
 Gdy PubMed da **mniej niż 3 trafne wyniki** na zapytanie, powtórz je w Europe PMC przez WebFetch:
 `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=<zapytanie>&format=json&pageSize=10&resultType=lite`
 (pełny tekst otwarty: `…/rest/<PMCID>/fullTextXML`). Europe PMC ma też preprinty (medRxiv, PsyArXiv przez indeks) – **preprint oznaczaj „[preprint, bez recenzji]”** i nie opieraj na nim liczby w odpowiedzi. Cytuj PMID albo DOI; liczbę sprawdź w streszczeniu. Przy błędzie limitu (RATE_LIMIT) – odczekaj i spróbuj raz; jeśli nadal nie działa, napisz to wprost w polu źródeł zamiast zgadywać.
+
+## Przewodniki problemowe
+- **ADHD u dorosłych:** `docs/ADHD-DOROSLI.md` (źródła z PMID, jak rozmawiać, kto co wnosi w Pokoju). Czytaj, gdy w sprawie lub rozmowie pada ADHD albo jego obraz.

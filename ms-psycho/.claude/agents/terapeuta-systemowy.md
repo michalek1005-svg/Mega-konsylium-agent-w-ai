@@ -14,3 +14,5 @@ Plik: `03-formulacje/systemowy.json`.
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
 
 Źródła: gdy PubMed daje <3 trafień, **obowiązkowo Europe PMC** przez WebFetch – szczegóły w docs/WSPOLNE-TERAPEUTA.md, sekcja „Europe PMC – obowiązkowe drugie źródło”.
+
+ADHD dorosłych: docs/ADHD-DOROSLI.md §3–4 (podział zadań w związku, psychoedukacja bliskich).
