@@ -6,6 +6,7 @@ const { app, BrowserWindow, session, ipcMain, dialog, shell } = require('electro
 const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
+const os = require('node:os');
 const { utworzSerwer, adresySieci } = require('./serwer-ipad.js');
 
 app.setName('MS Konsylium Narzędzia');
@@ -145,8 +146,16 @@ function stanIpad() {
   const adresy = process.env.MS_IPAD_ADRES ? [{ adres: process.env.MS_IPAD_ADRES, nazwa: 'test', wirtualna: false }] : adresySieci();
   const klucz = ustawienia().ipadKlucz || '';
   const url = (a) => 'http://' + a + ':' + IPAD_PORT + '/?k=' + klucz;
+  // Stały adres (Michał 1.11, PWA na ekranie iPada): nazwa komputera w sieci lokalnej (mDNS, „nazwa.local”) nie zmienia się,
+  // gdy router przydzieli inny adres IP; Windows 10/11 i iPadOS rozumieją .local bez instalowania czegokolwiek.
+  const host = process.env.MS_IPAD_ADRES ? null : String(os.hostname() || '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
+  const staly = host && adresy.length ? host + '.local' : null;
   const s = { wlaczony: !!ipad.serwer, blad: ipad.blad, port: IPAD_PORT, polaczone: ipad.polaczone.slice(-5), aktywne: ipad.serwer && ipad.serwer.polaczeni ? ipad.serwer.polaczeni() : [], adresy: adresy.map((x) => ({ ...x, url: url(x.adres) })) };
-  if (s.wlaczony && adresy[0]) { s.url = url(adresy[0].adres); s.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.url)).toString('base64'); }
+  if (s.wlaczony && adresy[0]) {
+    s.url = url(adresy[0].adres);
+    if (staly) s.urlStaly = url(staly);
+    s.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.urlStaly || s.url)).toString('base64');
+  }
   return s;
 }
 function wlaczIpad(okno) {
