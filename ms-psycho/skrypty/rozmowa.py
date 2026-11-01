@@ -256,7 +256,10 @@ def cmd_odpowiedz(a) -> None:
     # dolna granica = filtr nowych wiadomości ORAZ poziom z poprzedniej odpowiedzi zespołu i filtr całej historii
     # (próba 1.11.2026: „nie mam takich myśli” bez nowego faktu nie może zejść z 2 do 0)
     poprzedni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
-    historia = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["ja"]] or [0])
+    # po udokumentowanym obniżeniu (obnizam_ryzyko) historia liczy się dopiero od wiadomości po nim –
+    # inaczej to samo dawne zdanie wymuszało obnizam_ryzyko w każdej kolejnej turze (uwaga z PC 1.11.2026)
+    od = max([x.get("odpowiedz_na", 0) for x in s["zespol"] if x.get("obnizam_ryzyko")] or [0])
+    historia = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["ja"] if w.get("n", 0) > od] or [0])
     dolna = max(filtr, poprzedni, historia)
     if ryz < dolna and not d.get("obnizam_ryzyko"):
         zrodlo = "filtr słownikowy" if dolna == filtr else ("poprzednia ocena strażnika" if dolna == poprzedni else "filtr wcześniejszych wiadomości")
