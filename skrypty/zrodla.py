@@ -32,13 +32,51 @@ def teraz() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def pobierz(url: str) -> dict:
+def _kontekst_ssl():
+    """Weryfikacja certyfikatów zawsze włączona. Kolejno: magazyn systemu (truststore), certifi, domyślny."""
+    import ssl
     try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=20) as r:
+        import truststore  # type: ignore
+        return truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        import certifi  # type: ignore
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:  # noqa: BLE001
+        return ssl.create_default_context()
+
+
+def _przez_powershell(url: str) -> dict | None:
+    """Windows: Invoke-RestMethod korzysta z magazynu certyfikatów Windows, który sam dociąga brakujący
+    certyfikat pośredni (RPL na PC Michała: CERTIFICATE_VERIFY_FAILED w Pythonie 3.12). Weryfikacja zostaje włączona."""
+    import os
+    import subprocess
+    if os.name != "nt":
+        return None
+    cmd = ("[Console]::OutputEncoding=[Text.Encoding]::UTF8; "
+           f"(Invoke-WebRequest -UseBasicParsing -TimeoutSec 25 -Uri '{url}' -Headers @{{'Accept'='application/json'}}).Content")
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, timeout=40)
+        if r.returncode == 0 and r.stdout.strip():
+            return json.loads(r.stdout.decode("utf-8-sig"))
+    except Exception:  # noqa: BLE001
+        return None
+    return None
+
+
+def pobierz(url: str) -> dict:
+    blad = None
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=20, context=_kontekst_ssl()) as r:
             return json.loads(r.read().decode("utf-8"))
     except Exception as e:  # noqa: BLE001
-        print(f"Źródło niedostępne ({e.__class__.__name__}: {e}). Użyj etykiety [wiedza modelu, niezweryfikowane].", file=sys.stderr)
-        sys.exit(2)
+        blad = e
+    d = _przez_powershell(url)
+    if d is not None:
+        return d
+    print(f"Źródło niedostępne ({blad.__class__.__name__}: {blad}). Użyj etykiety [wiedza modelu, niezweryfikowane].", file=sys.stderr)
+    sys.exit(2)
 
 
 def biblioteka(sprawa: Path) -> list[dict]:
