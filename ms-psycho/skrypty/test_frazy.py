@@ -6,6 +6,7 @@ F = json.loads((Path(__file__).resolve().parent.parent / "config" / "frazy-ryzyk
 def bo(t): return "".join(c for c in unicodedata.normalize("NFD", t.lower()) if unicodedata.category(c) != "Mn").replace("ł", "l")
 def poziom(t):
     s = bo(t)
+    for z in F.get("zaprzeczenia", []): s = re.sub(z, " ", s)
     if any(re.search(r, s) for r in F["poziom3"] + F.get("przemoc", [])): return 3
     for lv in (2, 1):
         if any(re.search(r, s) for r in F[f"poziom{lv}"]): return lv
@@ -16,6 +17,8 @@ if len(sys.argv) > 1:  # tryb podglądu: python skrypty/test_frazy.py "tekst" �
 PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZMOWA-tury i typowe sformułowania
  ("Wczoraj szef mnie skrytykował przy wszystkich i przez chwilę myślałam, że najlepiej byłoby zniknąć. Ale już ok.", 2),
  ("lepiej by było, żeby mnie nie było", 2), ("chciałabym po prostu zniknąć", 1),
+ ("nie mam myśli samobójczych, ale ile tabletek by wystarczyło", 3), ("nie mam myśli samobójczych, tylko nie chce mi się już żyć", 3), ("już nie mam myśli samobójczych, ale wczoraj się pocięłam", 3),
+ ("nie mam chęci do życia", 2), ("nie mam już siły żyć", 2), ("nie mam po co żyć", 2),
  ("chcę się zabić", 3), ("Chyba się zabiję", 3), ("myślę żeby się zabić", 3), ("Nie chcę już żyć", 3), ("nie chce mi się już żyć", 3),
  ("Czasem w pracy myślę, ile tabletek by wystarczyło, ale to takie głupie myśli.", 3),
  ("No dobra, szukałam w internecie, ile tabletek trzeba. Ale nic nie zrobię.", 3),
@@ -33,7 +36,7 @@ PRZYPADKI = [  # (tekst, minimalny poziom) – sygnały z przypadki-testowe/ROZM
 CZYSTE = ["Od tygodnia kłócę się z siostrą o opiekę nad mamą", "Jak powiedzieć szefowi, że nie wezmę nadgodzin?",
           "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem", "spotkajmy się przy moście", "jutro idę na sznurowanie butów? nie", "chcę być z nim szczera", "Koleżanka dała mi Concertę, po niej skończyłam projekt", "plama zniknęła po praniu"]
 # poziom 0 wymagany (fałszywy alarm z PC 1.11.2026: „mam beznadziejnego chłopa” = o kimś innym, nie o sobie)
-BEZ_ALARMU = ["mam beznadziejnego chłopa", "mam beznadziejnego chlopa", "beznadziejny film wczoraj", "mam beznadziejną szefową", "beznadziejna pogoda dziś"]
+BEZ_ALARMU = ["nie mam myśli samobójczych", "Nie, nie mam myśli samobójczych.", "Nie mam żadnych myśli samobójczych, po prostu jestem zmęczona", "nigdy nie miałam myśli samobójczych", "nie myślę o samobójstwie", "nie chcę się zabić, chcę tylko odpocząć", "bez myśli samobójczych", "Nie mam takich myśli", "mam beznadziejnego chłopa", "mam beznadziejnego chlopa", "beznadziejny film wczoraj", "mam beznadziejną szefową", "beznadziejna pogoda dziś"]
 bledy = ([(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
          + [(t, 0, poziom(t)) for t in BEZ_ALARMU if poziom(t) > 0])
 for t, m, p in bledy: print(f"BŁĄD: oczekiwano ≥{m}, jest {p}: {t}")

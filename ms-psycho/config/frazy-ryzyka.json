@@ -112,7 +112,8 @@
     "juz byc z (nim|nia|nimi)",
     "(nie biore|odstawil(a|e)?m|przestal(a|e)?m brac) lek.{0,50}(po co|bez sensu|nie ma sensu)",
     "nie widze sensu (zycia|zyc|dalej|w zyciu|zeby zyc)",
-    "(najlepiej|lepiej) (byloby|by bylo|bylo by|bedzie)( mi| dla wszystkich)? (zniknac|mnie nie bylo|nie istniec|sie nie obudzic)"
+    "(najlepiej|lepiej) (byloby|by bylo|bylo by|bedzie)( mi| dla wszystkich)? (zniknac|mnie nie bylo|nie istniec|sie nie obudzic)",
+    "nie mam (juz )?(checi|sily|ochoty|po co|dla kogo|dla czego|po co dalej) (do )?zy(c|cia)"
   ],
   "poziom1": [
     "nie ma sensu",
@@ -145,5 +146,13 @@
     "boje sie wracac (dzis |dzisiaj |teraz )?do domu",
     "mnie bije",
     "mnie (dusil|dusila|bil|bila|uderzyl|uderzyla|pobil|pobila|zgwalcil|kopal|kopala)"
+  ],
+  "_zaprzeczenia_opis": "Decyzja Michała 1.11.2026 15:39 („Jak nie mam to nie mam i kontynuuje rozmowę”): wyraźne zaprzeczenie myśli samobójczych nie podnosi poziomu. Fragmenty pasujące do zaprzeczenia są usuwane z tekstu PRZED sprawdzeniem poziomów; reszta zdania jest sprawdzana normalnie (np. „nie mam myśli samobójczych, ale ile tabletek…” = 3). Nie obejmuje „nie chce mi się żyć” (to nie zaprzeczenie).",
+  "zaprzeczenia": [
+    "\\b(nie|nigdy nie|juz nie) (mam|miewam|mialam|mialem|mialabym|mialbym|odczuwam) (zadnych |takich |tych )?(mysli( (samobojcz\\w*|o samobojstwie|o odebraniu sobie zycia|zeby sie zabic))?|(checi|zamiarow|planow|planu) (samobojcz\\w*|odebrania sobie zycia|zabicia sie))",
+    "\\b(nie|nigdy nie|juz nie) (mysle|myslalam|myslalem|mysle juz) o (samobojstwie|odebraniu sobie zycia|zabiciu sie|smierci|tym, zeby sie zabic)",
+    "\\b(nie|nigdy nie) (chce|chcialam|chcialem|zamierzam|planuje) (sie zabic|zabic sie|odebrac sobie zycia|popelnic samobojstwa)",
+    "\\b(zadnych|bez) mysli (samobojcz\\w*|o samobojstwie)",
+    "\\bnie (jestem|bylam|bylem) samobojc\\w*"
   ]
 }

@@ -166,6 +166,8 @@ var FRAZY = /*@@FRAZY@@*/null;
   // Filtr słownikowy w aplikacji – działa zanim cokolwiek trafi do modelu (docs/BEZPIECZENSTWO.md §3)
   function ryzykoLokalne(t) {
     var s = bezOgonkow(t), w = { poziom: 0, frazy: [] };
+    // decyzja Michała 1.11.2026: wyraźne zaprzeczenie („nie mam myśli samobójczych”) nie podnosi poziomu
+    ((FRAZY && FRAZY.zaprzeczenia) || []).forEach(function (re) { s = s.replace(new RegExp(re, 'g'), ' '); });
     ((FRAZY && FRAZY.poziom3) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 3; w.frazy.push(m[0]); } });
     ((FRAZY && FRAZY.przemoc) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 3; w.przemoc = true; w.frazy.push(m[0]); } });
     if (!w.poziom) ((FRAZY && FRAZY.poziom2) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = 2; w.frazy.push(m[0]); } });

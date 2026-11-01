@@ -79,6 +79,8 @@ def bez_ogonkow(t: str) -> str:
 
 def ryzyko_slownik(t: str) -> tuple[int, list[str]]:
     s = bez_ogonkow(t)
+    for re_ in FRAZY.get("zaprzeczenia", []):  # decyzja Michała 1.11.2026: wyraźne zaprzeczenie nie podnosi poziomu
+        s = re.sub(re_, " ", s)
     for poziom, klucz in ((3, "poziom3"), (3, "przemoc"), (2, "poziom2"), (1, "poziom1")):
         traf = [m.group(0) for re_ in FRAZY.get(klucz, []) if (m := re.search(re_, s))]
         if traf:
@@ -181,7 +183,7 @@ def podsumuj(s: dict) -> None:
     if odp_zesp and odp_zesp % 5 == 0 and maks < 2:
         print(f"INFORMACJA ZWROTNA (docs/SZTUKA-ROZMOWY.md §3): to {odp_zesp + 1}. tura – jeśli pasuje, na końcu krótko: „W skali 0–10: jak minął tydzień?” albo „Na ile te rozmowy pomagają?” (zamiast innego pytania).")
     if maks < 2 and s["zespol"] and int(s["zespol"][-1].get("ryzyko") or 0) >= 2:
-        print(f"PAMIĘTAJ: poziom ryzyka z poprzedniej tury = {s['zespol'][-1].get('ryzyko')} – to dolna granica tej tury (obniża tylko nowy fakt). Jeśli pytanie o plan i środki nie dostało jeszcze odpowiedzi, wróć do niego (łagodnie, jednym zdaniem).")
+        print(f"PAMIĘTAJ: poziom ryzyka z poprzedniej tury = {s['zespol'][-1].get('ryzyko')} – to dolna granica tej tury (obniża tylko nowy fakt). Jeśli osoba nie odpowiedziała na pytanie o plan i środki – wróć do niego łagodnie; jeśli odpowiedziała (także „nie mam”) – NIE pytaj ponownie, prowadź rozmowę dalej (decyzja Michała 1.11.2026).")
     # krótka ścieżka (decyzja Michała 1.11.2026 07:45): krótka wiadomość bez treści do pracy przy ryzyku 0 → strażnik + prowadzący, bez panelu i sędziego
     ostatni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
     tekst_nowych = " ".join(w.get("tekst", "") for w in s["nowe"])
@@ -263,7 +265,7 @@ def cmd_odpowiedz(a) -> None:
     dolna = max(filtr, poprzedni, historia)
     if ryz < dolna and not d.get("obnizam_ryzyko"):
         zrodlo = "filtr słownikowy" if dolna == filtr else ("poprzednia ocena strażnika" if dolna == poprzedni else "filtr wcześniejszych wiadomości")
-        sys.exit(f"Dolna granica ryzyka w tej rozmowie to {dolna} ({zrodlo}), a odpowiedź ma {ryz}. Poziom obniża tylko strażnik z NOWYM faktem (nie samym zaprzeczeniem): dodaj pole obnizam_ryzyko z tym faktem.")
+        sys.exit(f"Dolna granica ryzyka w tej rozmowie to {dolna} ({zrodlo}), a odpowiedź ma {ryz}. Poziom obniża tylko strażnik z faktem: dodaj pole obnizam_ryzyko (wyraźne zaprzeczenie myśli samobójczych wystarcza, jeśli w rozmowie nie padły metoda, środki, plan ani samookaleczenie – docs/ROZMOWA.md §5).")
     if (ryz >= 3 or filtr >= 3) and not d.get("kryzys"):
         numery = [n["numer"] for n in POMOC["numery"]]
         if not any(n.replace(" ", "") in tekst.replace(" ", "") for n in numery):
@@ -278,7 +280,7 @@ def cmd_odpowiedz(a) -> None:
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, bez_cytatow(tekst), re.I)]  # cytaty słów użytkownika i gotowe zdania – bez detektora
     if filtr < 2 and dolna == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
-        ostrz.append("poziom 2 z wcześniejszych tur: sprawdź, czy pytanie o plan i dostęp do środków dostało już odpowiedź – jeśli nie, wróć do niego")
+        ostrz.append("poziom 2 z wcześniejszych tur: jeśli pytanie o plan i środki nie dostało odpowiedzi – wróć do niego; jeśli osoba zaprzeczyła – nie pytaj ponownie")
     if bez_cytatow(tekst).count("?") > 1:
         ostrz.append("więcej niż jedno pytanie w turze (docs/ROZMOWA.md §4)")
     if len(czesci) > 1:
