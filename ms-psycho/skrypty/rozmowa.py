@@ -176,6 +176,8 @@ def podsumuj(s: dict) -> None:
         print("Filtr słownikowy: poziom ≥3. Aplikacja już pokazała kartę kryzysową z numerami. Strażnik ryzyka NAJPIERW; odpowiedź wg docs/BEZPIECZENSTWO.md (pytanie wprost, numery, kontakt z człowiekiem teraz). Obniżyć poziom można tylko z nowym faktem (pole obnizam_ryzyko).")
     elif maks == 2:
         print("Filtr słownikowy: sygnał pośredni poziomu 2 (bierne myśli o śmierci, pożegnanie, pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co”, dostęp do środków). Strażnik ustala, o co chodzi; w odpowiedzi OBOWIĄZKOWO łagodne pytanie wprost o myśli samobójcze, plan i środki, jeden element planu bezpieczeństwa i numer pomocy. To nie jest skrypt kryzysowy.")
+    if maks < 2 and s["zespol"] and int(s["zespol"][-1].get("ryzyko") or 0) >= 2:
+        print(f"PAMIĘTAJ: poziom ryzyka z poprzedniej tury = {s['zespol'][-1].get('ryzyko')} – to dolna granica tej tury (obniża tylko nowy fakt). Jeśli pytanie o plan i środki nie dostało jeszcze odpowiedzi, wróć do niego (łagodnie, jednym zdaniem).")
     # krótka ścieżka (decyzja Michała 1.11.2026 07:45): krótka wiadomość bez treści do pracy przy ryzyku 0 → strażnik + prowadzący, bez panelu i sędziego
     ostatni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
     tekst_nowych = " ".join(w.get("tekst", "") for w in s["nowe"])
@@ -189,7 +191,8 @@ def podsumuj(s: dict) -> None:
         pytan = tekst_nowych.count("?")
         namysl = (slow_n > 120 or pytan >= 2 or s["tryb"] == "konsultacja"
                   or (slow_n > 25 and re.search(r"\b(dlaczego|czemu|pomoz mi zrozumiec|jak to rozumiec|co o tym myslisz|nie wiem co (robic|zrobic)|nie wiem,? czy|decyzj)", bez_ogonkow(tekst_nowych))))
-        if maks == 0 and ostatni == 0 and not namysl and slow_n <= 30 and pytan == 1:
+        leki = re.search(r"\b(lek|leki|lekow|tablet|concert|medikinet|elvanse|atomoks|strattera|dawk|recept|stymul|psychiatr|antydepres|pigul|marihuan|alkohol)", bez_ogonkow(tekst_nowych))
+        if maks == 0 and ostatni == 0 and not namysl and not leki and slow_n <= 30 and pytan == 1:
             print(f"TEMPO: SZYBKO (docs/ROZMOWA.md §3a) – jedno proste pytanie przy ryzyku 0: strażnik + 1 podejście, odpowiedź 40–120 słów, bez sędziego. W odp.json \"tempo\": \"szybko\".")
         elif namysl:
             print(f"TEMPO: DO NAMYSŁU (docs/ROZMOWA.md §3a) – strażnik + panel 4–5 + źródła (PubMed, Europe PMC) + klient-sędzia; odpowiedź do ok. 450 słów. Pasek: rozmowa.py pracuje … --etap \"przemyśla dokładniej\". W odp.json \"tempo\": \"namysl\".")
@@ -267,6 +270,8 @@ def cmd_odpowiedz(a) -> None:
     if (ryz >= 3 or aktywne) and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, tekst, re.I)]
+    if filtr < 2 and dolna == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
+        ostrz.append("poziom 2 z wcześniejszych tur: sprawdź, czy pytanie o plan i dostęp do środków dostało już odpowiedź – jeśli nie, wróć do niego")
     if bez_cytatow(tekst).count("?") > 1:
         ostrz.append("więcej niż jedno pytanie w turze (docs/ROZMOWA.md §4)")
     if len(czesci) > 1:

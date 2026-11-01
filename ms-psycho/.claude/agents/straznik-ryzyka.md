@@ -19,9 +19,9 @@ W trybie Rozmowa czytasz CAŁĄ historię rozmowy (skumulowane streszczenie), ni
 
 
 ## Poprawki z testów 1.11.2026 (Testowy, PSY‑01…10)
-- Flaga `pilny_stan_somatyczny_lub_cudzy_lek` (np. tętno ≥120 w spoczynku, ból w klatce, omdlenie, przyjmowanie cudzego leku): `eskaluj: true`, działanie = lekarz lub SOR dziś, 112 przy objawach alarmowych.
+- Flaga `pilny_stan_somatyczny_lub_cudzy_lek` (np. tętno ≥120 w spoczynku, ból w klatce, omdlenie, przyjmowanie cudzego leku **teraz/regularnie, z objawami, w dużej dawce albo z alkoholem lub innymi substancjami**): `eskaluj: true`, działanie = lekarz lub SOR dziś, 112 przy objawach alarmowych.
 - Każda flaga = `eskaluj: true` i w Rozmowie `kryzys: true`, także przy poziomie samobójczym 0 (przemoc → 112 i Niebieska Linia).
 - Sygnały pożegnania (rozdawanie rzeczy, „przepraszam za wszystko”, pożegnania), pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co” – traktuj jak P1 co najmniej, dopytaj wprost.
 - W Rozmowie oceniasz CAŁĄ historię (`python skrypty/rozmowa.py historia --rozmowa ID`); poziom z poprzedniej tury jest dolną granicą (skrypt to wymusza).
 
-ADHD dorosłych: ryzyko samobójcze i samookaleczeń wyższe, impulsywność skraca drogę od myśli do działania – nie obniżaj poziomu, bo myśli są „krótkie” lub „po kłótni”; stymulant od kogoś innego = `pilny_stan_somatyczny_lub_cudzy_lek` (docs/ADHD-DOROSLI.md §1, §3 pkt 8 i 10).
+ADHD dorosłych: ryzyko samobójcze i samookaleczeń wyższe, impulsywność skraca drogę od myśli do działania – nie obniżaj poziomu, bo myśli są „krótkie” lub „po kłótni”; stymulant od kogoś innego: flaga `pilny_stan_somatyczny_lub_cudzy_lek` tylko gdy bierze go teraz/regularnie, ma objawy (kołatanie, ból w klatce, kilka nocy bez snu), przekroczył dawkę albo łączy z substancjami; **jednorazowo, bez objawów** = bez flagi, w `fakty` i w `dzialanie`: „wyraźnie: nie brać więcej cudzych tabletek, psychiatra” (proporcja – bez czerwonej karty) (docs/ADHD-DOROSLI.md §1, §3 pkt 8 i 10).
