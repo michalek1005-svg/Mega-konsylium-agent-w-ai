@@ -4,7 +4,7 @@
   "rozpoznania": [
     {
       "nazwa": "inne wirusowe zakażenie dróg oddechowych",
-      "p": 0.45,
+      "p": 0.42,
       "za": [
         "pretest: jesienią w POZ dominują rinowirusy, sezonowe koronawirusy, paragrypa, metapneumowirus [wiedza modelu, niezweryfikowane] → pretest ok. 60%",
         "katar + chrypka + zapalenie gardła i krtani (przewaga górnych dróg) → słabo w górę (LR ok. 1,3)"
@@ -15,7 +15,7 @@
     },
     {
       "nazwa": "COVID-19",
-      "p": 0.3,
+      "p": 0.28,
       "za": [
         "pretest: w Polsce w sezonach 2024/25 i 2025/26 aktywność COVID-19 rosła pierwsza i szczytowała we wrześniu, zanim pojawiła się grypa (styczeń/luty) i RSV (luty/marzec) (PMID 42797869); u dorosłych hospitalizowanych w sezonie 2025/26 COVID-19 dominował jesienią (PMID 42646670) → koniec października: krążenie nadal istotne, pretest ok. 20%",
         "chrypka, ból gardła, katar, silne osłabienie — typowe dla wariantów Omicron [wiedza modelu, niezweryfikowane] → LR ok. 1,3",
@@ -28,7 +28,7 @@
     },
     {
       "nazwa": "grypa",
-      "p": 0.1,
+      "p": 0.13,
       "za": [
         "nagły początek + osłabienie: u osób ≥60 lat złe samopoczucie LR 2,6, a połączenie gorączka + kaszel + nagły początek LR 5,4 (PMID 15728170) → gorączka NIEZNANA, więc użyto LR ok. 2,5 (bez składnika gorączki)",
         "praca w szpitalu → LR ok. 1,2"
@@ -66,8 +66,8 @@
   "kandydaci_poza_limitem_5": [
     {
       "nazwa": "adenowirusowa gorączka gardłowo-spojówkowa",
-      "p": 0.03,
-      "uzasadnienie": "Zapalenie gardła + powód kropli do oka NIEZNANY. Jeśli było to zapalenie spojówek (a nie zabieg), LR ok. 3–5, bo zapalenie spojówek z adenowirusa zaczyna się zwykle jednostronnie i po kilku dniach obejmuje drugie oko, z obrzękiem powiek [wiedza modelu, niezweryfikowane]. Bromfenak to jednak typowy lek pooperacyjny (zaćma), co obniża tę ścieżkę; netto LR ok. 1,5."
+      "p": 0.05,
+      "uzasadnienie": "Zapalenie gardła + powód kropli do oka NIEZNANY. Jeśli było to zapalenie spojówek (a nie zabieg), LR ok. 3–5, bo zapalenie spojówek z adenowirusa zaczyna się zwykle jednostronnie i po kilku dniach obejmuje drugie oko, z obrzękiem powiek [wiedza modelu, niezweryfikowane]. Bromfenak to jednak typowy lek pooperacyjny (zaćma), co obniża tę ścieżkę; netto LR ok. 1,5. Rewizja: kolejność oko → gardło (krople 3–4 dni, objawy oddechowe 2 dni) pasuje do gorączki gardłowo-spojówkowej (argument hipotezującego) → 0,03→0,05; dalej ograniczone przez bromfenak (schemat pooperacyjny)."
     },
     {
       "nazwa": "bakteryjne zapalenie krtani lub tchawicy",
@@ -154,5 +154,14 @@
     "PubMed: Marrouche N, Grattan C. Childhood urticaria. Curr Opin Allergy Clin Immunol 2012;12(5):485-90. PMID 22825024, DOI 10.1097/ACI.0b013e3283574cb3",
     "zrodla/ (biblioteka kuratorowana): brak polskich wytycznych dla zakażeń dróg oddechowych — MANIFEST zawiera tylko przykłady",
     "Pozostałe twierdzenia oznaczone [wiedza modelu, niezweryfikowane]"
-  ]
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda dyskusji A: (1) grypa 0,10→0,13 — przy NIEZNANEJ aktualnej aktywności grypy w sezonie 2026/27 nie mogę wykluczyć wcześniejszego startu sezonu, więc dopuszczam szerszy pretest (5→7%) [wiedza modelu, niezweryfikowane]; obraz kliniczny już był w LR, nie liczę go drugi raz. (2) adenowirus 0,03→0,05 — kolejność oko przed gardłem. (3) inne wirusowe 0,45→0,42, COVID-19 0,30→0,28. Decyzje bez zmian: test przed oseltamiwirem, bez antybiotyku.",
+  "dyskusja_A": {
+    "1_grypa": "Różnica 0,10 vs 0,30 nie zmienia decyzji dziś, jeśli test jest dostępny — wszyscy zlecają test. Zmienia ją tylko, gdy testu nie ma: próg leczenia empirycznego oseltamiwirem szacuję na ok. 25–30% (umiarkowana korzyść objawowa vs nudności/wymioty, PMID 37306992) [wiedza modelu, niezweryfikowane].",
+    "2_oseltamiwir": "Wyłącznie po dodatnim teście. Wyjątek: test niedostępny dziś + gorączka ≥38,5°C z dreszczami/bólami mięśni (wtedy grypa ok. 30%) albo pogorszenie/duszność — można leczyć empirycznie.",
+    "3_azytromycyna": "Brak wskazania: krztusiec w 2. dobie z kaszlem produktywnym ok. 0,5%, Mycoplasma ok. 1%. Odstawić; wrócić do PCR w kierunku krztuśca przy kaszlu napadowym >2 tygodnie.",
+    "4_adenowirus_a_czesc_B": "Ma znaczenie tylko po potwierdzeniu, że krople były na zapalenie spojówek, a drugie oko ma przekrwienie spojówki i wydzielinę: wtedy obrzęk powieki traci wartość jako objaw alergii, a w części B cefuroksym spada z ok. 0,75 do ok. 0,6, pokrzywka wirusowa rośnie do ok. 0,25. Wysypka dłoni i stóp 15 min po dawce nadal przemawia za reakcją polekową. Bez tej informacji (bromfenak sugeruje zabieg) część B bez zmian.",
+    "5_EKG": "Jako rutyna — nadmiar: bez bólu w klatce, duszności, kołatań ani omdlenia bezwzględne ryzyko zawału w tym tygodniu jest małe mimo względnego wzrostu po grypie, a azytromycynę odstawiamy, więc QTc nie zmieni decyzji. Wskazane przy objawach sercowych, nasileniu skurczów nadkomorowych lub gdyby azytromycyna miała zostać [wiedza modelu, niezweryfikowane]."
+  }
 }

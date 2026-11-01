@@ -3,43 +3,49 @@
   "pytanie": "Część A: etiologia i leczenie ostrej infekcji dróg oddechowych (nagły początek 2 dni temu: chrypka, nagły kaszel produktywny, katar, zapalenie gardła i krtani, silne osłabienie) u 64-letniej pielęgniarki oddziału neurologii z intensywną terapią; początek listopada, Polska.",
   "rozpoznania": [
     {
-      "nazwa": "grypa",
-      "p": 0.30,
-      "za": [
-        "Nagły początek z silnym osłabieniem nieproporcjonalnym do objawów miejscowych — klasyczny obraz choroby grypopodobnej (ogólnoustrojowa odpowiedź cytokinowa) [wiedza modelu, niezweryfikowane].",
-        "Ekspozycja zawodowa: oddział z ciężko chorymi, zabiegi generujące aerozol (odsysanie, wentylacja); początek sezonu grypowego w Polsce (koniec października/listopad) [wiedza modelu, niezweryfikowane]."
-      ],
-      "przeciw": [
-        "Gorączka, bóle mięśni i dreszcze NIEZNANE — bez nich obraz grypy jest niepewny.",
-        "Początek listopada to zwykle wczesna faza sezonu, z mniejszym udziałem grypy niż w styczniu–marcu [wiedza modelu, niezweryfikowane]; stan szczepienia 2026/27 NIEZNANY."
-      ]
-    },
-    {
-      "nazwa": "COVID-19",
-      "p": 0.20,
-      "za": [
-        "Chrypka, zapalenie gardła, katar, kaszel i silne zmęczenie mieszczą się w typowym obrazie obecnych wariantów SARS-CoV-2 [wiedza modelu, niezweryfikowane].",
-        "Praca w szpitalu — stała ekspozycja; wiek 64 lata i nadwaga to czynniki ryzyka cięższego przebiegu."
-      ],
-      "przeciw": [
-        "Klinicznie nieodróżnialny od grypy — rozstrzyga wyłącznie test.",
-        "Szczepienia i wcześniejsze zakażenia NIEZNANE."
-      ]
-    },
-    {
       "nazwa": "inne wirusowe zakażenie dróg oddechowych",
-      "p": 0.20,
+      "p": 0.3,
       "za": [
         "Rinowirusy, wirusy paragrypy, metapneumowirus i sezonowe koronawirusy najczęściej dają zapalenie krtani z chrypką, katarem i kaszlem jesienią [wiedza modelu, niezweryfikowane].",
         "Kaszel produktywny w ostrym zapaleniu oskrzeli jest zwykle wirusowy i nie oznacza zakażenia bakteryjnego (PMID 28626858)."
       ],
       "przeciw": [
         "Silne osłabienie i bardzo nagły początek są mniej typowe dla rinowirusa niż dla grypy."
-      ]
+      ],
+      "p_przed_rewizja": 0.2
+    },
+    {
+      "nazwa": "COVID-19",
+      "p": 0.28,
+      "za": [
+        "Chrypka, zapalenie gardła, katar, kaszel i silne zmęczenie mieszczą się w typowym obrazie obecnych wariantów SARS-CoV-2 [wiedza modelu, niezweryfikowane].",
+        "Praca w szpitalu — stała ekspozycja; wiek 64 lata i nadwaga to czynniki ryzyka cięższego przebiegu.",
+        "Jesienny wzrost COVID-19 w Polsce poprzedza sezon grypowy (PMID 42797869)."
+      ],
+      "przeciw": [
+        "Klinicznie nieodróżnialny od grypy — rozstrzyga wyłącznie test.",
+        "Szczepienia i wcześniejsze zakażenia NIEZNANE."
+      ],
+      "p_przed_rewizja": 0.2
+    },
+    {
+      "nazwa": "grypa",
+      "p": 0.15,
+      "za": [
+        "Nagły początek z silnym osłabieniem nieproporcjonalnym do objawów miejscowych — klasyczny obraz choroby grypopodobnej (ogólnoustrojowa odpowiedź cytokinowa) [wiedza modelu, niezweryfikowane].",
+        "Ekspozycja zawodowa: oddział z ciężko chorymi, zabiegi generujące aerozol (odsysanie, wentylacja); początek sezonu grypowego w Polsce (koniec października/listopad) [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Gorączka, bóle mięśni i dreszcze NIEZNANE — bez nich obraz grypy jest niepewny.",
+        "Początek listopada to zwykle wczesna faza sezonu, z mniejszym udziałem grypy niż w styczniu–marcu [wiedza modelu, niezweryfikowane]; stan szczepienia 2026/27 NIEZNANY.",
+        "Polski nadzór 2024/25 i 2025/26: COVID-19 szczytuje we wrześniu, grypa w styczniu/lutym, RSV w lutym/marcu (PMID 42797869, DOI 10.3390/v18091038) — na przełomie października i listopada grypa ma niski udział.",
+        "W przeglądzie JAMA (PMID 15728170, DOI 10.1001/jama.293.8.987) żaden objaw nie ma LR >2 w populacji ogólnej. U ≥60 lat złe samopoczucie ma LR 2,6, a gorączka z kaszlem i nagłym początkiem LR 5,4, ale gorączka jest u niej NIEZNANA."
+      ],
+      "p_przed_rewizja": 0.3
     },
     {
       "nazwa": "adenowirusowa gorączka gardłowo-spojówkowa",
-      "p": 0.10,
+      "p": 0.08,
       "za": [
         "Krople do JEDNEGO oka włączone 3–4 dni temu, czyli 1–2 dni PRZED objawami oddechowymi, z NIEZNANEGO powodu. Jeśli powodem było zapalenie spojówek, sekwencja 'zapalenie spojówek → zapalenie gardła, krtani, katar' jest typowa dla adenowirusa [wiedza modelu, niezweryfikowane].",
         "Adenowirusowe zapalenie rogówki i spojówki często zaczyna się w jednym oku i w kolejnych dniach zajmuje drugie; w opisanym ognisku nacieki rogówki były obustronne u 46% chorych (PMID 23719580, DOI 10.1097/ICL.0b013e31828ef19b). Obrzęk powieki DRUGIEGO oka może więc być zakażeniem przeniesionym na drugie oko, a nie (tylko) obrzękiem naczynioruchowym.",
@@ -48,25 +54,47 @@
       "przeciw": [
         "Zestaw kropli (fluorochinolon + kortykosteroid + bromfenak) bardziej pasuje do leczenia po zabiegu oka niż do wirusowego zapalenia spojówek.",
         "Gorączka i węzeł przeduszny NIEZNANE."
-      ]
+      ],
+      "p_przed_rewizja": 0.1
     },
     {
       "nazwa": "zakażenie RSV",
-      "p": 0.07,
+      "p": 0.05,
       "za": [
         "RSV krąży jesienią/zimą i jest istotną przyczyną zakażeń u dorosłych ≥60 lat [wiedza modelu, niezweryfikowane]; ekspozycja zawodowa."
       ],
       "przeciw": [
         "Częściej przebiega stopniowo, z przewagą kataru i świstów, rzadziej z nagłym 'rozbiciem' [wiedza modelu, niezweryfikowane]."
-      ]
+      ],
+      "p_przed_rewizja": 0.07
     }
   ],
   "pozostali_kandydaci_poza_top5": [
-    {"nazwa": "bakteryjne zapalenie płuc", "p": 0.04, "uwaga": "Brak osłuchiwania, SpO2, częstości oddechów i CRP — nie da się wykluczyć; 2. doba infekcji wirusowej to raczej za wcześnie na nadkażenie, ale grypa usposabia do zapalenia płuc wywołanego przez S. pneumoniae lub S. aureus [wiedza modelu, niezweryfikowane]."},
-    {"nazwa": "zakażenie Mycoplasma pneumoniae", "p": 0.04, "uwaga": "Zwykle początek stopniowy, przewlekający się suchy kaszel; nagły początek przemawia przeciw."},
-    {"nazwa": "krztusiec", "p": 0.02, "uwaga": "Faza nieżytowa nieodróżnialna; rozważyć przy kaszlu napadowym ≥2 tygodnie, świście wdechowym, wymiotach po kaszlu; stan szczepienia Tdap NIEZNANY."},
-    {"nazwa": "bakteryjne zapalenie krtani lub tchawicy", "p": 0.02, "uwaga": "Rzadkie u dorosłych; zwykle nadkażenie po wirusowym, z narastającą dusznością i gorączką."},
-    {"nazwa": "zapalenie nagłośni", "p": 0.01, "uwaga": "Katar i kaszel przemawiają przeciw; czerwone flagi: ból przy połykaniu nieproporcjonalny do obrazu gardła, ślinienie się, stłumiony głos, stridor, pozycja wymuszona."}
+    {
+      "nazwa": "bakteryjne zapalenie płuc",
+      "p": 0.04,
+      "uwaga": "Brak osłuchiwania, SpO2, częstości oddechów i CRP — nie da się wykluczyć; 2. doba infekcji wirusowej to raczej za wcześnie na nadkażenie, ale grypa usposabia do zapalenia płuc wywołanego przez S. pneumoniae lub S. aureus [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "zakażenie Mycoplasma pneumoniae",
+      "p": 0.04,
+      "uwaga": "Zwykle początek stopniowy, przewlekający się suchy kaszel; nagły początek przemawia przeciw."
+    },
+    {
+      "nazwa": "krztusiec",
+      "p": 0.02,
+      "uwaga": "Faza nieżytowa nieodróżnialna; rozważyć przy kaszlu napadowym ≥2 tygodnie, świście wdechowym, wymiotach po kaszlu; stan szczepienia Tdap NIEZNANY."
+    },
+    {
+      "nazwa": "bakteryjne zapalenie krtani lub tchawicy",
+      "p": 0.02,
+      "uwaga": "Rzadkie u dorosłych; zwykle nadkażenie po wirusowym, z narastającą dusznością i gorączką."
+    },
+    {
+      "nazwa": "zapalenie nagłośni",
+      "p": 0.01,
+      "uwaga": "Katar i kaszel przemawiają przeciw; czerwone flagi: ból przy połykaniu nieproporcjonalny do obrazu gardła, ślinienie się, stłumiony głos, stridor, pozycja wymuszona."
+    }
   ],
   "nagly_przebieg": {
     "patofizjologia": "Nagły początek z silnym osłabieniem to typowy obraz zakażenia wirusem o szybkiej replikacji w nabłonku dróg oddechowych (zwłaszcza grypy). Krótka inkubacja (1–4 dni) i gwałtowny wyrzut interferonów typu I, IL-6 i TNF-α dają objawy ogólne (osłabienie, bóle mięśni, gorączka) w ciągu godzin, wyprzedzając lub przewyższając objawy miejscowe [wiedza modelu, niezweryfikowane].",
@@ -129,8 +157,11 @@
     "Wtórne bakteryjne zapalenie płuc po grypie (pogorszenie po wstępnej poprawie, nawrót gorączki)."
   ],
   "nastepny_krok": "Dziś zbadać pacjentkę w gabinecie (SpO2, częstość oddechów, temperatura, ciśnienie, osłuchiwanie, oba oczy) z jednoczesnym złożonym szybkim testem SARS-CoV-2/grypa A/B (± RSV): przy dodatnim wyniku grypy włączyć oseltamiwir 75 mg 2×/d przez 5 dni, a cefuroksym, azytromycynę i budezonid odstawić, jeśli badanie nie wykaże zapalenia płuc ani świstów.",
-  "co_zmieniloby_zdanie": "SpO2 <94%, ogniskowe trzeszczenia lub CRP >100 mg/l zmieniłyby rozpoznanie wiodące na bakteryjne zapalenie płuc ze wskazaniem do antybiotyku (amoksycylina, nie cefalosporyna), a zapalenie spojówek z wydzieliną i węzłem przedusznym — na zakażenie adenowirusowe.",
+  "co_zmieniloby_zdanie": "SpO2 <94%, ogniskowe trzeszczenia lub CRP >100 mg/l zmieniłyby rozpoznanie wiodące na bakteryjne zapalenie płuc ze wskazaniem do antybiotyku (amoksycylina, nie cefalosporyna), a zapalenie spojówek z wydzieliną i węzłem przedusznym — na zakażenie adenowirusowe. Dodatni test na grypę lub dane z nadzoru o wczesnym starcie sezonu grypowego 2026/27 przywróciłyby grypie pierwsze miejsce.",
   "zrodla": [
+    "PubMed PMID 42797869 — Seasonal and Age-Stratified Patterns of Influenza, COVID-19, and RSV in Poland (2024-2026). Viruses 2026. DOI 10.3390/v18091038",
+    "PubMed PMID 15728170 — Call SA i wsp. Does this patient have influenza? JAMA 2005. DOI 10.1001/jama.293.8.987",
+    "PubMed PMID 29365305 — Kwong JC i wsp. Acute Myocardial Infarction after Laboratory-Confirmed Influenza Infection. N Engl J Med 2018. DOI 10.1056/NEJMoa1702090",
     "PubMed PMID 28626858 — Smith SM i wsp. Antibiotics for acute bronchitis. Cochrane Database Syst Rev 2017. DOI 10.1002/14651858.CD000245.pub4",
     "PubMed PMID 25640810 — Dobson J i wsp. Oseltamivir treatment for influenza in adults: a meta-analysis of randomised controlled trials. Lancet 2015. DOI 10.1016/S0140-6736(14)62449-1",
     "PubMed PMID 24718923 — Jefferson T i wsp. Neuraminidase inhibitors for preventing and treating influenza in adults and children. Cochrane Database Syst Rev 2014. DOI 10.1002/14651858.CD008965.pub4",
@@ -146,5 +177,14 @@
     "PubMed PMID 33500632 — β-Lactam Allergy and Cross-Reactivity: A Clinician's Guide. J Asthma Allergy 2021. DOI 10.2147/JAA.S242061",
     "[wiedza modelu, niezweryfikowane] — sezonowość wirusów w Polsce, patofizjologia nagłego początku, wpływ pracy nocnej i bisoprololu, dawki paracetamolu/amoksycyliny/doksycykliny, modyfikacja dawki oseltamiwiru w niewydolności nerek, progi CRP i wskazania do RTG, zasady powrotu do pracy.",
     "zrodla/ — brak polskich wytycznych (NPOA, KLRwP) w bibliotece; MANIFEST zawiera tylko przykłady."
-  ]
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Przyjmuję argument epidemiologiczny bayesa: polskie dane z nadzoru 2024–26 (PMID 42797869) umieszczają szczyt grypy w styczniu–lutym, a COVID-19 we wrześniu; obraz kliniczny bez potwierdzonej gorączki daje LR najwyżej ok. 2,6 (PMID 15728170), co nie podnosi niskiego prawdopodobieństwa wyjściowego do 0,30. Grypa 0,30→0,15, COVID-19 0,20→0,28, inne wirusy 0,20→0,30, adenowirus 0,10→0,08, RSV 0,07→0,05. Etiologia wirusowa łącznie bez zmian (ok. 0,86).",
+  "dyskusja_A": {
+    "1_grypa_p": "Różnica 0,10 vs 0,30 nie zmienia decyzji dziś: w obu wariantach rozstrzyga szybki test grypa/SARS-CoV-2. Zmienia ją tylko wtedy, gdy testu nie da się wykonać (wtedy przy p ok. 0,15 nie leczyć empirycznie).",
+    "2_oseltamiwir": "Wyłącznie po dodatnim teście. Jest ok. 48 h od początku, prawdopodobieństwo wyjściowe ok. 0,15, a korzyść to skrócenie objawów o ok. 17–25 h (PMID 24718923, 25640810). Empirycznie tylko gdy testu nie ma, a lokalny nadzór pokazuje krążenie grypy, albo przy pogorszeniu lub cechach zajęcia dolnych dróg oddechowych.",
+    "3_azytromycyna": "Nie widzę wskazania. Krztuśca w 2. dobie nie da się rozpoznać, a uzasadnieniem byłby kontakt z potwierdzonym przypadkiem albo kaszel napadowy ≥2 tygodnie. Mycoplasma jest mało prawdopodobna przy nagłym początku. Azytromycynę odstawić.",
+    "4_adenowirus_a_czesc_B": "Adenowirus może wyjaśnić obrzęk powieki drugiego oka (zapalenie spojówek przeniesione na drugie oko), ale nie zmian na dłoniach i stopach 15 min po dawce. Część B słabnie tylko w zakresie 'oka jako dowodu obrzęku naczynioruchowego': cefuroksym spada o ok. 0,05, pod warunkiem że badanie wykaże zapalenie spojówek drugiego oka. Etykieta leków bez zmian.",
+    "5_EKG": "U tej pacjentki raczej standard niż nadmiar, jeśli EKG jest w gabinecie. Uzasadnienie: 64-letnia kobieta z zaburzeniami rytmu na bisoprololu i 'silnym osłabieniem', które może być nietypowym objawem ostrego zespołu wieńcowego (coś rzadkiego o typowym obrazie). Ryzyko zawału w 7 dni po potwierdzonej grypie jest ok. 6 razy większe (współczynnik zapadalności 6,05), po RSV 3,5 razy, po innych wirusach 2,8 razy (PMID 29365305, DOI 10.1056/NEJMoa1702090). Bezwzględnie wskazane przy bólu w klatce piersiowej, duszności, kołataniu serca lub kontynuacji azytromycyny."
+  }
 }

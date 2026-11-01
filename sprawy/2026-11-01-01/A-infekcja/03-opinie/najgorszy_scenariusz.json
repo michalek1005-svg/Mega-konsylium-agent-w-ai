@@ -4,7 +4,7 @@
   "rozpoznania": [
     {
       "nazwa": "grypa",
-      "p": 0.28,
+      "p": 0.15,
       "za": [
         "Nagły początek (godziny) z silnym osłabieniem, kaszlem, bólem gardła, chrypką i katarem — klasyczny obraz grypopodobny [wiedza modelu, niezweryfikowane].",
         "Ekspozycja zawodowa: oddział intensywnej terapii, procedury generujące aerozol (odsysanie, wentylacja) — duże inokulum [wiedza modelu, niezweryfikowane].",
@@ -17,7 +17,7 @@
     },
     {
       "nazwa": "COVID-19",
-      "p": 0.22,
+      "p": 0.28,
       "za": [
         "Krąży całorocznie, z jesiennym wzrostem; nagły początek i silne zmęczenie częste [wiedza modelu, niezweryfikowane].",
         "Ekspozycja na oddziale; możliwa „cicha” hipoksemia — saturacja NIEZNANA."
@@ -28,7 +28,7 @@
     },
     {
       "nazwa": "inne wirusowe zakażenie dróg oddechowych",
-      "p": 0.25,
+      "p": 0.3,
       "za": [
         "Rinowirusy, wirusy paragrypy (zapalenie krtani z chrypką), metapneumowirus — najczęstsze jesienią [wiedza modelu, niezweryfikowane].",
         "Kaszel produktywny w pierwszych dniach jest typowy dla wirusowego zapalenia tchawicy i oskrzeli i nie wskazuje na bakterie [wiedza modelu, niezweryfikowane]."
@@ -64,11 +64,31 @@
     }
   ],
   "kandydaci_poza_lista_p": [
-    {"nazwa": "zakażenie RSV", "p": 0.05, "uwaga": "sezon RSV zaczyna się w listopadzie; u starszych dorosłych może dawać ciężki przebieg i również zwiększa ryzyko zawału (współczynnik 3,5; PMID 29365305)."},
-    {"nazwa": "zakażenie Mycoplasma pneumoniae", "p": 0.03, "uwaga": "początek raczej stopniowy; ważne, bo może dawać rumień wielopostaciowy / wysypkę z zapaleniem błon śluzowych (dłonie, stopy) [wiedza modelu, niezweryfikowane]; azytromycyna ma sens tylko przy tym rozpoznaniu lub krztuścu."},
-    {"nazwa": "krztusiec", "p": 0.02, "uwaga": "faza nieżytowa nieodróżnialna; uzasadnienie badania PCR rośnie, gdy kaszel stanie się napadowy; zakaźny dla pacjentów i personelu [wiedza modelu, niezweryfikowane]."},
-    {"nazwa": "bakteryjne zapalenie krtani lub tchawicy", "p": 0.02, "uwaga": "rzadkie u dorosłych; podejrzewać przy narastającej duszności i stridorze."},
-    {"nazwa": "zapalenie nagłośni", "p": 0.01, "uwaga": "rzadkie, ale śmiertelność u dorosłych 1–20%, 17% wymaga interwencji w drogach oddechowych (Felton 2021, PMID 34787558); zgon po wypisaniu z rozpoznaniem „bólu gardła” (Morton 2019, PMID 31359308). Chrypka + ból gardła = obowiązkowe pytania o odynofagię, dysfagię, ślinienie, stridor."}
+    {
+      "nazwa": "zakażenie RSV",
+      "p": 0.05,
+      "uwaga": "sezon RSV zaczyna się w listopadzie; u starszych dorosłych może dawać ciężki przebieg i również zwiększa ryzyko zawału (współczynnik 3,5; PMID 29365305)."
+    },
+    {
+      "nazwa": "zakażenie Mycoplasma pneumoniae",
+      "p": 0.03,
+      "uwaga": "początek raczej stopniowy; ważne, bo może dawać rumień wielopostaciowy / wysypkę z zapaleniem błon śluzowych (dłonie, stopy) [wiedza modelu, niezweryfikowane]; azytromycyna ma sens tylko przy tym rozpoznaniu lub krztuścu."
+    },
+    {
+      "nazwa": "krztusiec",
+      "p": 0.02,
+      "uwaga": "faza nieżytowa nieodróżnialna; uzasadnienie badania PCR rośnie, gdy kaszel stanie się napadowy; zakaźny dla pacjentów i personelu [wiedza modelu, niezweryfikowane]."
+    },
+    {
+      "nazwa": "bakteryjne zapalenie krtani lub tchawicy",
+      "p": 0.02,
+      "uwaga": "rzadkie u dorosłych; podejrzewać przy narastającej duszności i stridorze."
+    },
+    {
+      "nazwa": "zapalenie nagłośni",
+      "p": 0.01,
+      "uwaga": "rzadkie, ale śmiertelność u dorosłych 1–20%, 17% wymaga interwencji w drogach oddechowych (Felton 2021, PMID 34787558); zgon po wypisaniu z rozpoznaniem „bólu gardła” (Morton 2019, PMID 31359308). Chrypka + ból gardła = obowiązkowe pytania o odynofagię, dysfagię, ślinienie, stridor."
+    }
   ],
   "nagly_przebieg": "Nagły początek z silnym osłabieniem to cecha grypy (i części zakażeń SARS-CoV-2): szybka replikacja w nabłonku dróg oddechowych i wyrzut cytokin (interferony, interleukina 6, czynnik martwicy nowotworów) dają objawy ogólne w ciągu godzin [wiedza modelu, niezweryfikowane]. Nagły kaszel produktywny = złuszczanie nabłonka krtani, tchawicy i oskrzeli z nadwrażliwością receptorów kaszlowych, nie dowód zakażenia bakteryjnego [wiedza modelu, niezweryfikowane]. Czynniki nasilające: wiek 64 l. (immunosenescencja), nadwaga, przewlekły niedobór snu przy pracy nocnej [wiedza modelu, niezweryfikowane], duże inokulum na OIT. Perspektywa najgorszego scenariusza: „silne osłabienie” u 64-latki z zaburzeniami rytmu nie może być przypisane infekcji bez wykluczenia: (1) hipoksemii (saturacja NIEZNANA), (2) ostrego zespołu wieńcowego — ryzyko zawału rośnie 6-krotnie w 7 dniach po grypie (Kwong 2018, PMID 29365305), (3) zapalenia mięśnia sercowego / arytmii, (4) wczesnej sepsy z wtórnego zapalenia płuc (PMID 42736923). Bisoprolol tłumi tachykardię — prawidłowe tętno NIE uspokaja, a skala oceny ciężkości oparta na tętnie zaniży wynik. Dodatkowo wczorajsza reakcja nadwrażliwości mogła sama dać osłabienie i spadek ciśnienia — niezmierzone.",
   "leczenie": {
@@ -116,6 +136,8 @@
   "nastepny_krok": "Dziś wizyta osobista z pomiarem saturacji, częstości oddechów, ciśnienia, osłuchiwaniem, EKG i testem grypa A/B + SARS-CoV-2, z zaświadczeniem o niezdolności do pracy na OIT i decyzją o oseltamiwirze przy dodatnim teście na grypę jeszcze w oknie 48 h.",
   "co_zmieniloby_zdanie": "Prawidłowe parametry życiowe (saturacja ≥ 95%, oddechy < 20/min, ciśnienie prawidłowe), czyste osłuchiwanie, EKG bez nowych zmian, brak objawów nagłośniowych i brak problemu z okiem obniżyłyby pilność do 3 i potwierdziły niepowikłane wirusowe zakażenie dróg oddechowych leczone objawowo, bez antybiotyku.",
   "zrodla": [
+    "Majewska W i wsp. Seasonal and Age-Stratified Patterns of Influenza, COVID-19, and RSV in Poland (2024-2026). Viruses 2026;18(9):1038. PMID 42797869, DOI 10.3390/v18091038",
+    "Haghjoo M i wsp. Effect of COVID-19 medications on corrected QT interval and induction of torsade de pointes. Int J Clin Pract 2021;75(7):e14182. PMID 33759318, DOI 10.1111/ijcp.14182",
     "Kwong JC i wsp. Acute Myocardial Infarction after Laboratory-Confirmed Influenza Infection. N Engl J Med 2018;378(4):345-353. PMID 29365305, DOI 10.1056/NEJMoa1702090",
     "Hanula R i wsp. Evaluation of Oseltamivir Used to Prevent Hospitalization in Outpatients With Influenza: A Systematic Review and Meta-Analysis. JAMA Intern Med 2024;184(1):18-27. PMID 37306992, DOI 10.1001/jamainternmed.2023.0699",
     "Felton P i wsp. A Retrospective Cohort Study of Acute Epiglottitis in Adults. West J Emerg Med 2021;22(6):1326-1334. PMID 34787558, DOI 10.5811/westjem.2021.8.52657",
@@ -129,5 +151,7 @@
     "pamiec/zespol.md — wpis 2026-10-31 PRZYKLAD-001 (EKG w gabinecie u kobiety 50+ z obciążeniem sercowym).",
     "zrodla/MANIFEST.md — brak polskich wytycznych dot. zakażeń dróg oddechowych / grypy (tylko wiersze przykładowe); poziom 1 hierarchii pusty.",
     "Pozostałe twierdzenia oznaczone [wiedza modelu, niezweryfikowane]."
-  ]
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda A: przyjmuję argument bayesa z polskiego nadzoru 2024–26 (Majewska 2026, PMID 42797869, DOI 10.3390/v18091038 — zweryfikowane: COVID-19 szczytuje we wrześniu, grypa w styczniu/lutym) — grypa 0,28→0,15, COVID-19 0,22→0,28, inne wirusy 0,25→0,30. Zmiana nie dotyka żadnej decyzji dziś: test rozstrzyga etiologię, a ryzyko zawału po infekcji dotyczy też RSV (3,5) i innych wirusów (2,8), nie tylko grypy (PMID 29365305). Przyjmuję argument farmakologa za odstawieniem azytromycyny: jednoczesny beta-adrenolityk był czynnikiem ryzyka krytycznego wydłużenia QTc (Haghjoo 2021, PMID 33759318). Uwaga dla Sprawdzającego faktów: PMID 23719580 (hipotezujący) dotyczy czucia rogówki w adenowirusowym zapaleniu rogówki i spojówek, nie kolejności objawów ocznych i oddechowych. Pilność 2 bez zmian — żadna rola nie wykluczyła jawnie hipoksemii, zapalenia płuc, zawału ani zapalenia nagłośni."
 }

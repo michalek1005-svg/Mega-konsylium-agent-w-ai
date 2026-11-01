@@ -3,7 +3,7 @@
   "rozpoznania": [
     {
       "nazwa": "COVID-19",
-      "p": 0.24,
+      "p": 0.26,
       "za": [
         "Krąży przez cały rok, z falami jesiennymi; nagły początek z chrypką, bólem gardła, katarem i silnym osłabieniem jest typowy dla obecnych wariantów [wiedza modelu, niezweryfikowane].",
         "Wysoka ekspozycja zawodowa (oddział z intensywną terapią, ciężko chorzy)."
@@ -14,7 +14,7 @@
     },
     {
       "nazwa": "grypa",
-      "p": 0.22,
+      "p": 0.15,
       "za": [
         "NAGŁY początek z silnym osłabieniem (prostracją) to klasyczny wzorzec grypy [wiedza modelu, niezweryfikowane].",
         "Kontakt szpitalny; wiek 64 l. i nadwaga — dłuższe zdrowienie (Nguyen 2025, PMID 41211613)."
@@ -26,7 +26,7 @@
     },
     {
       "nazwa": "inne wirusowe zakażenie dróg oddechowych",
-      "p": 0.24,
+      "p": 0.3,
       "za": [
         "Rinowirusy, wirusy paragrypy (chrypka, zapalenie krtani), metapneumowirus i enterowirusy to najczęstsze przyczyny jesiennych zakażeń; katar + zapalenie gardła i krtani + kaszel pasują [wiedza modelu, niezweryfikowane].",
         "Enterowirus mógłby też tłumaczyć zmiany na dłoniach i stopach (choroba dłoni, stóp i jamy ustnej) — do sprawdzenia w jamie ustnej."
@@ -37,7 +37,7 @@
     },
     {
       "nazwa": "zakażenie RSV",
-      "p": 0.1,
+      "p": 0.08,
       "za": [
         "Sezon RSV zaczyna się w październiku/listopadzie; dorośli ≥60 l. są grupą ryzyka; kaszel produktywny, katar [wiedza modelu, niezweryfikowane]."
       ],
@@ -79,7 +79,8 @@
       "uzasadnienie": "W ostrym zapaleniu oskrzeli antybiotyk nie zwiększa odsetka poprawy (RR 1,07; 95% CI 0,99–1,15), skraca kaszel średnio o ok. 0,5 dnia, a działania niepożądane występują u 1 na 24 leczonych (Smith 2017, Cochrane, PMID 28626858).",
       "cefuroksym": "Odstawić na stałe w tym epizodzie: brak wskazania + podejrzenie nadwrażliwości (część B).",
       "azytromycyna": "Odstawić, jeśli badanie, saturacja i CRP nie wskazują na zapalenie płuc. Pozostawić tylko przy klinicznym podejrzeniu zakażenia Mycoplasma pneumoniae (kaszel z gorączką narastający >5–7 dni, zmiany osłuchowe, młody kontakt domowy) albo krztuśca (kaszel napadowy ≥2 tygodnie); dodatkowo każdy nowy lek zaciemnia ocenę reakcji z części B [wiedza modelu, niezweryfikowane].",
-      "gdyby_zapalenie_plac": "Przy potwierdzonym klinicznie/radiologicznie pozaszpitalnym zapaleniu płuc u pacjentki z niewyjaśnioną reakcją na cefuroksym: do czasu diagnostyki alergologicznej lek spoza beta-laktamów, np. doksycyklina 200 mg w 1. dobie, potem 100 mg/d przez 5–7 dni [wiedza modelu, niezweryfikowane; dawkowanie wg ChPL]. Amoksycylina ma inny łańcuch boczny R1 niż cefuroksym i zwykle jest tolerowana (Antunez 2006, PMID 16461141), ale wybór beta-laktamu zostawiam na po konsultacji alergologicznej."
+      "gdyby_zapalenie_plac": "Przy potwierdzonym klinicznie/radiologicznie pozaszpitalnym zapaleniu płuc u pacjentki z niewyjaśnioną reakcją na cefuroksym: do czasu diagnostyki alergologicznej lek spoza beta-laktamów, np. doksycyklina 200 mg w 1. dobie, potem 100 mg/d przez 5–7 dni [wiedza modelu, niezweryfikowane; dawkowanie wg ChPL]. Amoksycylina ma inny łańcuch boczny R1 niż cefuroksym i zwykle jest tolerowana (Antunez 2006, PMID 16461141), ale wybór beta-laktamu zostawiam na po konsultacji alergologicznej.",
+      "azytromycyna_runda": "Runda A: brak wskazania do utrzymania — krztusiec wymaga kaszlu ≥2 tygodni lub kontaktu z potwierdzonym przypadkiem, Mycoplasma nie ma cech klinicznych w 2. dobie; odstawić."
     },
     "przeciwwirusowe": {
       "oseltamiwir": "Tylko przy DODATNIM teście na grypę (lub dużym prawdopodobieństwie klinicznym w czasie potwierdzonej aktywności grypy): 75 mg 2 razy na dobę przez 5 dni, najlepiej do 48 h od początku objawów — pacjentka jest na granicy okna (2. doba) [dawkowanie: ChPL, wiedza modelu, niezweryfikowane]. Korzyść: w badaniu ALICE (podstawowa opieka zdrowotna, 15 krajów, w tym Polska) skrócenie zdrowienia średnio o ok. 1 dzień, o 2–3 dni u starszych z chorobami współistniejącymi; więcej nudności i wymiotów (Butler 2019, PMID 31839279); podobna korzyść przy otyłości (Nguyen 2025, PMID 41211613); zysk QALY istotny statystycznie, gdy objawy trwały ≤48 h (Bruyndonckx 2021, PMID 35094790). U 64-latki bez ciężkich chorób przewlekłych to wskazanie względne, ale przemawia za nim ciężkie osłabienie i praca z pacjentami wysokiego ryzyka. Odpłatność/refundacja w Polsce — sprawdzić aktualne obwieszczenie [NIEZNANE].",
@@ -111,7 +112,8 @@
       "RTG klatki piersiowej rutynowo bez cech zapalenia płuc.",
       "Wymaz z gardła na posiew przy obrazie wirusowym.",
       "Diagnostyki krztuśca w 2. dobie kaszlu (ma sens dopiero przy kaszlu napadowym ≥2 tygodnie)."
-    ]
+    ],
+    "ekg_runda": "Runda A: EKG dziś TAK u tej pacjentki (64 l., skurcze dodatkowe, bisoprolol, nieproporcjonalne osłabienie; ryzyko zawału w 7 dni po grypie — PMID 29365305 cytowany przez najgorszy scenariusz) — badanie dostępne w gabinecie, trwa kilka minut. Nie jako standard dla każdej infekcji."
   },
   "praca": {
     "zakaznosc": "Grypa: zakaźna od ok. 1 dnia przed objawami do 5–7 dni po ich początku; COVID-19: najbardziej w pierwszych 5 dniach, zakaźność możliwa do ok. 10 dni; RSV: zwykle 3–8 dni [wiedza modelu, niezweryfikowane]. Pacjenci oddziału neurologii z intensywną terapią (wentylowani, starzy, po udarze) są grupą wysokiego ryzyka ciężkiego przebiegu.",
@@ -124,7 +126,8 @@
     "kofaktor": "Ostra infekcja obniża próg aktywacji mastocytów — reakcja na lek mogła wystąpić przy dawce wcześniej tolerowanej (spójne z częścią B) [wiedza modelu, niezweryfikowane].",
     "pokrzywka_infekcyjna": "Samo zakażenie wirusowe może wywołać ostrą pokrzywkę i obrzęk powiek — przy ustalaniu sprawcy w części B to realna alternatywa (szacowałem p ok. 0,12).",
     "oko": "Jeśli krople były na zapalenie spojówek (a nie po zabiegu), wirusowe (adenowirusowe) zapalenie spojówek przechodzące na drugie oko mogłoby tłumaczyć obrzęk powieki drugiego oka niezależnie od leków. Rozstrzyga pytanie o powód kropli i badanie spojówek (przekrwienie, wydzielina, grudki, powiększony węzeł przeduszny).",
-    "skora_dlonie_stopy": "Pęcherzyki/grudki na dłoniach i stopach + nadżerki w jamie ustnej → enterowirus (choroba dłoni, stóp i jamy ustnej), nie lek. Zmiany tarczowate → rumień wielopostaciowy (Mycoplasma pneumoniae, opryszczka) — wtedy azytromycyna ma uzasadnienie i trzeba obejrzeć błony śluzowe [wiedza modelu, niezweryfikowane]."
+    "skora_dlonie_stopy": "Pęcherzyki/grudki na dłoniach i stopach + nadżerki w jamie ustnej → enterowirus (choroba dłoni, stóp i jamy ustnej), nie lek. Zmiany tarczowate → rumień wielopostaciowy (Mycoplasma pneumoniae, opryszczka) — wtedy azytromycyna ma uzasadnienie i trzeba obejrzeć błony śluzowe [wiedza modelu, niezweryfikowane].",
+    "oko_runda": "Runda A: jeśli badanie spojówek obu oczu i powód kropli potwierdzą wirusowe zapalenie spojówek przechodzące na drugie oko, obrzęk powieki przestaje być objawem reakcji na lek; w części B cefuroksym spadłby ok. 0,55→0,45, pokrzywka infekcyjna wzrosłaby. Wysypka dłoni i stóp 15 min po dawce nadal przemawia za lekiem. Adenowirus jest też bardzo zakaźny — dodatkowy argument za zwolnieniem."
   },
   "pilnosc": 2,
   "pilnosc_uzasadnienie": "Dziś: ocena saturacji, częstości oddechów i krtani (chrypka maskuje obrzęk), test w oknie dla oseltamiwiru (2. doba) i decyzja o zwolnieniu (ochrona pacjentów oddziału z intensywną terapią). Bez cech alarmowych dalsze leczenie ambulatoryjne.",
@@ -158,5 +161,7 @@
     "Maltezou HC i wsp. Vaccination policies for healthcare personnel. Vaccine X 2022;11:100172. PMID 35719325, DOI 10.1016/j.jvacx.2022.100172",
     "Antunez C i wsp. Immediate allergic reactions to cephalosporins: cross-reactivity. J Allergy Clin Immunol 2006;117(2):404-10. PMID 16461141, DOI 10.1016/j.jaci.2005.10.032",
     "zrodla/ — brak polskich wytycznych (np. Rekomendacje postępowania w pozaszpitalnych zakażeniach układu oddechowego, NPOA); progi CRP, CRB-65, dawkowanie (paracetamol, oseltamiwir, doksycyklina), okresy zakaźności, zasady e-ZLA i finansowania testów — [wiedza modelu, niezweryfikowane]"
-  ]
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda A: przyjmuję argument sezonowości z polskiego nadzoru (bayes, PMID 42797869 — grypa szczytuje I–II, na przełomie X/XI niskie prawdopodobieństwo wstępne): grypa 0,22→0,15, inne wirusy 0,24→0,30, COVID-19 0,24→0,26, RSV 0,10→0,08. Różnica nie zmienia decyzji na dziś (test rozstrzyga), ale wzmacnia: oseltamiwir tylko po dodatnim teście, nie empirycznie."
 }

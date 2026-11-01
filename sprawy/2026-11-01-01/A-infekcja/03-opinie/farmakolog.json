@@ -2,11 +2,46 @@
   "rola": "farmakolog",
   "uwaga_metodologiczna": "Część A (infekcja), ślepa tura. Zgodnie z rolą (waga 0 w torze rozpoznania) p dla rozpoznań infekcyjnych = 0; przy każdej pozycji podano tylko konsekwencję farmakologiczną (co zmienia w leczeniu). Biblioteka zrodla/ nie zawiera ChPL ani polskich wytycznych dla zakażeń oddechowych — dawki oznaczone [wiedza modelu, niezweryfikowane], o ile nie wskazano PMID.",
   "rozpoznania": [
-    {"nazwa": "grypa", "p": 0, "za": ["Konsekwencja farmakologiczna: jedyna pozycja z realną opcją przeciwwirusową w POZ (oseltamiwir) — ale okno 48 h jest na granicy lub minione, a korzyść u ambulatoryjnych umiarkowana (PMID 37306992)."], "przeciw": []},
-    {"nazwa": "COVID-19", "p": 0, "za": ["Konsekwencja farmakologiczna: nirmatrelwir z rytonawirem (okno 5 dni) — istotne interakcje: budezonid (zespół Cushinga/supresja nadnerczy przy rytonawirze, PMID 23807527, 22844010), bisoprolol (umiarkowanie, częściowo CYP3A4)."], "przeciw": []},
-    {"nazwa": "krztusiec", "p": 0, "za": ["Konsekwencja farmakologiczna: jedyne rozpoznanie, przy którym azytromycyna ma jasne wskazanie (leczenie + ograniczenie transmisji na OIT); wymaga napadowego kaszlu / kontaktu / PCR."], "przeciw": []},
-    {"nazwa": "adenowirusowa gorączka gardłowo-spojówkowa", "p": 0, "za": ["Konsekwencja farmakologiczna: tłumaczyłaby krople do jednego oka (początek 3–4 dni temu, przed objawami oddechowymi) i obrzęk drugiej powieki; leczenie wyłącznie objawowe — antybiotyk ogólnie bezzasadny, steryd do oka tylko wg okulisty."], "przeciw": []},
-    {"nazwa": "bakteryjne zapalenie płuc", "p": 0, "za": ["Konsekwencja farmakologiczna: jedyne rozpoznanie (obok krztuśca/Mycoplasma), przy którym antybiotyk jest wskazany; przy podejrzeniu nadwrażliwości na cefuroksym — wybór spoza cefalosporyn (doksycyklina lub makrolid; fluorochinolon oddechowy tylko gdy konieczny — QT, MRGPRX2)."], "przeciw": []}
+    {
+      "nazwa": "grypa",
+      "p": 0,
+      "za": [
+        "Konsekwencja farmakologiczna: jedyna pozycja z realną opcją przeciwwirusową w POZ (oseltamiwir) — ale okno 48 h jest na granicy lub minione, a korzyść u ambulatoryjnych umiarkowana (PMID 37306992)."
+      ],
+      "przeciw": []
+    },
+    {
+      "nazwa": "COVID-19",
+      "p": 0,
+      "za": [
+        "Konsekwencja farmakologiczna: nirmatrelwir z rytonawirem (okno 5 dni) — istotne interakcje: budezonid (zespół Cushinga/supresja nadnerczy przy rytonawirze, PMID 23807527, 22844010), bisoprolol (umiarkowanie, częściowo CYP3A4)."
+      ],
+      "przeciw": []
+    },
+    {
+      "nazwa": "krztusiec",
+      "p": 0,
+      "za": [
+        "Konsekwencja farmakologiczna: jedyne rozpoznanie, przy którym azytromycyna ma jasne wskazanie (leczenie + ograniczenie transmisji na OIT); wymaga napadowego kaszlu / kontaktu / PCR."
+      ],
+      "przeciw": []
+    },
+    {
+      "nazwa": "adenowirusowa gorączka gardłowo-spojówkowa",
+      "p": 0,
+      "za": [
+        "Konsekwencja farmakologiczna: tłumaczyłaby krople do jednego oka (początek 3–4 dni temu, przed objawami oddechowymi) i obrzęk drugiej powieki; leczenie wyłącznie objawowe — antybiotyk ogólnie bezzasadny, steryd do oka tylko wg okulisty."
+      ],
+      "przeciw": []
+    },
+    {
+      "nazwa": "bakteryjne zapalenie płuc",
+      "p": 0,
+      "za": [
+        "Konsekwencja farmakologiczna: jedyne rozpoznanie (obok krztuśca/Mycoplasma), przy którym antybiotyk jest wskazany; przy podejrzeniu nadwrażliwości na cefuroksym — wybór spoza cefalosporyn (doksycyklina lub makrolid; fluorochinolon oddechowy tylko gdy konieczny — QT, MRGPRX2)."
+      ],
+      "przeciw": []
+    }
   ],
   "nagly_przebieg": {
     "ocena_farmakologa": "Nagły początek z silnym osłabieniem (prostracją) i nagłym kaszlem to fenotyp typowy dla grypy (wczesna, silna odpowiedź interferonowa i cytokinowa) [wiedza modelu, niezweryfikowane]; ustalenie etiologii należy do internisty. Z perspektywy leków:",
@@ -42,7 +77,8 @@
       "uzasadnienie": "Meta-analiza RCT u ambulatoryjnych z potwierdzoną grypą: brak redukcji hospitalizacji (RR 0,79; 0,48–1,29), także w podgrupie wyższego ryzyka i ≥ 65 lat; więcej nudności (RR 1,43) i wymiotów (RR 1,83) (PMID 37306992). Wiek 64 lata to granica grupy ryzyka; nadwaga sama w sobie nie kwalifikuje (otyłość olbrzymia tak) [wiedza modelu, niezweryfikowane]. Argument za leczeniem: personel OIT (skrócenie objawów i ewentualnie wydalania wirusa) — słaby.",
       "interakcje": "Brak istotnych z bisoprololem, azytromycyną, budezonidem [wiedza modelu, niezweryfikowane].",
       "profilaktyka_domownikow": "Rozważyć u domowników z grupy ryzyka (decyzja lekarza prowadzącego) [wiedza modelu, niezweryfikowane].",
-      "zrodlo": "PMID 37306992"
+      "zrodlo": "PMID 37306992",
+      "plan_B": "Jeśli testu nie da się wykonać dziś, a od początku objawów minęło ≤ 48 h — dopuszczalny empiryczny oseltamiwir 75 mg 2×/d (niskie ryzyko: nudności/wymioty; brak interakcji z bisoprololem, azytromycyną, budezonidem), z odstawieniem po ujemnym teście. Po 48 h bez testu — nie, poza ciężkim/pogarszającym się przebiegiem. Przy dodatnim teście na grypę leczyć niezależnie od sezonowego prawdopodobieństwa a priori."
     },
     "covid19_przeciwwirusowe": {
       "decyzja": "Przy dodatnim teście na SARS-CoV-2 rozważyć nirmatrelwir z rytonawirem (≤ 5 dni od początku objawów, wiek i czynniki ryzyka na granicy wskazań) [wiedza modelu, niezweryfikowane].",
@@ -51,11 +87,36 @@
       "zrodlo": "PMID 41772767, 23807527; dawki [wiedza modelu, niezweryfikowane]"
     },
     "objawowe": [
-      {"lek": "Paracetamol", "dawka": "500–1000 mg co 6–8 h, max 4 g/d", "uwagi": "Lek przeciwgorączkowy z wyboru — NLPZ ogólnie unikać (aktywna pokrzywka, kofaktor reakcji z części B).", "zrodlo": "[wiedza modelu, niezweryfikowane]"},
-      {"lek": "Lek przeciwhistaminowy II generacji (cetyryzyna 10 mg lub bilastyna 20 mg 1×/d)", "dawka": "1×/d", "uwagi": "Na pokrzywkę/obrzęk; bez istotnego wpływu na QT — nie stosować hydroksyzyny (QT + azytromycyna).", "zrodlo": "[wiedza modelu, niezweryfikowane]"},
-      {"lek": "Sól fizjologiczna donosowo; ksylometazolina donosowo krótko", "dawka": "ksylometazolina 0,1% 1 dawka do każdego otworu nosa do 3×/d, ≤ 5–7 dni", "uwagi": "Bez pseudoefedryny doustnej — skurcze nadkomorowe (proarytmicznie), wzrost ciśnienia przy beta-blokerze.", "zrodlo": "[wiedza modelu, niezweryfikowane]"},
-      {"lek": "Miód / dekstrometorfan na kaszel nocny (gdy męczący, suchy)", "dawka": "dekstrometorfan 15–30 mg do 3–4×/d", "uwagi": "Brak interakcji serotoninergicznych w obecnej liście leków; kodeiny unikać. Mukolityki (w tym erdosteina) — bez korzyści, erdosteina podejrzana w części B.", "zrodlo": "[wiedza modelu, niezweryfikowane]"},
-      {"lek": "Nawodnienie, oszczędzanie głosu", "dawka": "—", "uwagi": "Chrypka w ostrym zapaleniu krtani — oszczędzanie głosu skuteczniejsze niż leki.", "zrodlo": "[wiedza modelu, niezweryfikowane]"}
+      {
+        "lek": "Paracetamol",
+        "dawka": "500–1000 mg co 6–8 h, max 4 g/d",
+        "uwagi": "Lek przeciwgorączkowy z wyboru — NLPZ ogólnie unikać (aktywna pokrzywka, kofaktor reakcji z części B).",
+        "zrodlo": "[wiedza modelu, niezweryfikowane]"
+      },
+      {
+        "lek": "Lek przeciwhistaminowy II generacji (cetyryzyna 10 mg lub bilastyna 20 mg 1×/d)",
+        "dawka": "1×/d",
+        "uwagi": "Na pokrzywkę/obrzęk; bez istotnego wpływu na QT — nie stosować hydroksyzyny (QT + azytromycyna).",
+        "zrodlo": "[wiedza modelu, niezweryfikowane]"
+      },
+      {
+        "lek": "Sól fizjologiczna donosowo; ksylometazolina donosowo krótko",
+        "dawka": "ksylometazolina 0,1% 1 dawka do każdego otworu nosa do 3×/d, ≤ 5–7 dni",
+        "uwagi": "Bez pseudoefedryny doustnej — skurcze nadkomorowe (proarytmicznie), wzrost ciśnienia przy beta-blokerze.",
+        "zrodlo": "[wiedza modelu, niezweryfikowane]"
+      },
+      {
+        "lek": "Miód / dekstrometorfan na kaszel nocny (gdy męczący, suchy)",
+        "dawka": "dekstrometorfan 15–30 mg do 3–4×/d",
+        "uwagi": "Brak interakcji serotoninergicznych w obecnej liście leków; kodeiny unikać. Mukolityki (w tym erdosteina) — bez korzyści, erdosteina podejrzana w części B.",
+        "zrodlo": "[wiedza modelu, niezweryfikowane]"
+      },
+      {
+        "lek": "Nawodnienie, oszczędzanie głosu",
+        "dawka": "—",
+        "uwagi": "Chrypka w ostrym zapaleniu krtani — oszczędzanie głosu skuteczniejsze niż leki.",
+        "zrodlo": "[wiedza modelu, niezweryfikowane]"
+      }
     ],
     "bisoprolol": "Kontynuować. Wstrzymać doraźnie przy skurczowym ciśnieniu < 100 mmHg lub tętnie < 50/min (odwodnienie, gorączka) i skonsultować [wiedza modelu, niezweryfikowane]. Pamiętać, że maskuje tachykardię — oceniać ciężkość po częstości oddechów, SpO2, ciśnieniu, stanie świadomości."
   },
@@ -67,7 +128,8 @@
       "EKG z QTc + potas, magnez — jeśli azytromycyna ma być kontynuowana (bisoprolol, skurcze nadkomorowe).",
       "PCR w kierunku krztuśca z wymazu z nosogardła — tylko przy kaszlu napadowym/kontakcie."
     ],
-    "co_zmienia_decyzje": "Dodatni test na grypę ≤ 48 h → oseltamiwir; dodatni SARS-CoV-2 → rozważyć nirmatrelwir z rytonawirem i odstawić budezonid; SpO2 < 92–94%, częstość oddechów ≥ 22–24/min, ognisko osłuchowe, CRP wysokie → RTG, antybiotyk spoza cefalosporyn, ocena hospitalizacji; ujemne testy i dobry stan → wyłącznie leczenie objawowe [progi: wiedza modelu, niezweryfikowane]."
+    "co_zmienia_decyzje": "Dodatni test na grypę ≤ 48 h → oseltamiwir; dodatni SARS-CoV-2 → rozważyć nirmatrelwir z rytonawirem i odstawić budezonid; SpO2 < 92–94%, częstość oddechów ≥ 22–24/min, ognisko osłuchowe, CRP wysokie → RTG, antybiotyk spoza cefalosporyn, ocena hospitalizacji; ujemne testy i dobry stan → wyłącznie leczenie objawowe [progi: wiedza modelu, niezweryfikowane].",
+    "ekg": "EKG dziś: obowiązkowe przy kontynuacji azytromycyny (QTc) lub przy bólu w klatce, duszności nieproporcjonalnej do zmian płucnych, nowych kołataniach/nasileniu skurczów nadkomorowych (ryzyko zawału po grypie). Po odstawieniu azytromycyny i bez objawów sercowych — tanie i rozsądne u 64-latki z arytmią na beta-blokerze, ale nie warunek decyzji."
   },
   "praca": {
     "zalecenie": "Zwolnienie lekarskie; bez pracy na OIT do ustąpienia gorączki ≥ 24 h bez leków przeciwgorączkowych i wyraźnej poprawy objawów; przy grypie zwykle ok. 5–7 dni od początku, przy COVID-19 wg procedur szpitala, przy krztuścu do 5. dnia skutecznej antybiotykoterapii [wiedza modelu, niezweryfikowane].",
@@ -93,19 +155,76 @@
   "nastepny_krok": "Dziś: odstawić cefuroksym, erdosteinę i budezonid (gdy brak świstów), wykonać szybki test grypa/SARS-CoV-2 i ocenić SpO2/częstość oddechów/osłuchiwanie — azytromycynę kontynuować tylko przy wskazaniu (krztusiec, zapalenie płuc) i wtedy z EKG (QTc).",
   "co_zmieniloby_zdanie": "Dodatni test na grypę w ciągu 48 h od początku (oseltamiwir) lub na SARS-CoV-2 (nirmatrelwir z rytonawirem po odstawieniu budezonidu), albo ognisko osłuchowe/obniżona SpO2 z wysokim CRP (antybiotyk spoza cefalosporyn) zmieniłyby plan z wyłącznie objawowego na przyczynowy.",
   "plan_farmakologiczny": [
-    {"lek": "Cefuroksym", "dawka": "—", "droga": "—", "czas": "odstawić", "uwagi": "Brak wskazań (wirusowe) + podejrzenie nadwrażliwości.", "zrodlo": "PMID 28626858"},
-    {"lek": "Azytromycyna", "dawka": "krztusiec: 500 mg dzień 1., 250 mg dni 2–5", "droga": "doustnie", "czas": "tylko przy wskazaniu", "uwagi": "EKG z QTc, K, Mg; bez innych leków wydłużających QT.", "zrodlo": "PMID 33759318, 38104755; dawka [wiedza modelu, niezweryfikowane]"},
-    {"lek": "Budezonid w nebulizacji", "dawka": "—", "droga": "—", "czas": "odstawić, chyba że świsty/stridor", "uwagi": "Może nasilać chrypkę; interakcja z rytonawirem.", "zrodlo": "PMID 23807527, 22844010"},
-    {"lek": "Oseltamiwir", "dawka": "75 mg 2×/d (30 mg 2×/d przy klirensie 30–60 ml/min)", "droga": "doustnie", "czas": "5 dni", "uwagi": "Tylko przy dodatnim teście na grypę ≤ 48 h lub przy ciężkim/pogarszającym się przebiegu; nudności/wymioty.", "zrodlo": "PMID 37306992; dawka [wiedza modelu, niezweryfikowane]"},
-    {"lek": "Paracetamol", "dawka": "500–1000 mg co 6–8 h, max 4 g/d", "droga": "doustnie", "czas": "doraźnie", "uwagi": "Zamiast NLPZ.", "zrodlo": "[wiedza modelu, niezweryfikowane]"},
-    {"lek": "Bisoprolol", "dawka": "1,25 mg/d", "droga": "doustnie", "czas": "kontynuować", "uwagi": "Wstrzymać przy SBP < 100 mmHg lub tętnie < 50/min.", "zrodlo": "[wiedza modelu, niezweryfikowane]"}
+    {
+      "lek": "Cefuroksym",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "odstawić",
+      "uwagi": "Brak wskazań (wirusowe) + podejrzenie nadwrażliwości.",
+      "zrodlo": "PMID 28626858"
+    },
+    {
+      "lek": "Azytromycyna",
+      "dawka": "krztusiec: 500 mg dzień 1., 250 mg dni 2–5",
+      "droga": "doustnie",
+      "czas": "tylko przy wskazaniu",
+      "uwagi": "EKG z QTc, K, Mg; bez innych leków wydłużających QT.",
+      "zrodlo": "PMID 33759318, 38104755; dawka [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Budezonid w nebulizacji",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "odstawić, chyba że świsty/stridor",
+      "uwagi": "Może nasilać chrypkę; interakcja z rytonawirem.",
+      "zrodlo": "PMID 23807527, 22844010"
+    },
+    {
+      "lek": "Oseltamiwir",
+      "dawka": "75 mg 2×/d (30 mg 2×/d przy klirensie 30–60 ml/min)",
+      "droga": "doustnie",
+      "czas": "5 dni",
+      "uwagi": "Tylko przy dodatnim teście na grypę ≤ 48 h lub przy ciężkim/pogarszającym się przebiegu; nudności/wymioty.",
+      "zrodlo": "PMID 37306992; dawka [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Paracetamol",
+      "dawka": "500–1000 mg co 6–8 h, max 4 g/d",
+      "droga": "doustnie",
+      "czas": "doraźnie",
+      "uwagi": "Zamiast NLPZ.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Bisoprolol",
+      "dawka": "1,25 mg/d",
+      "droga": "doustnie",
+      "czas": "kontynuować",
+      "uwagi": "Wstrzymać przy SBP < 100 mmHg lub tętnie < 50/min.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
   ],
   "nie_podawac": [
-    {"lek": "Cefalosporyny (cefuroksym, ceftriakson, cefotaksym, cefepim)", "powod": "Bez wskazań w infekcji wirusowej; podejrzenie nadwrażliwości (część B)."},
-    {"lek": "Pseudoefedryna i inne doustne sympatykomimetyki", "powod": "Skurcze nadkomorowe, wzrost ciśnienia przy beta-blokerze."},
-    {"lek": "Ogólnoustrojowe niesteroidowe leki przeciwzapalne", "powod": "Aktywna pokrzywka/kofaktor reakcji nadwrażliwości."},
-    {"lek": "Hydroksyzyna, ondansetron, fluorochinolony ogólnie razem z azytromycyną", "powod": "Sumowanie wydłużenia QT przy bisoprololu i skurczach nadkomorowych."},
-    {"lek": "Erdosteina i inne mukolityki", "powod": "Brak korzyści w ostrej infekcji; erdosteina podejrzana w części B."}
+    {
+      "lek": "Cefalosporyny (cefuroksym, ceftriakson, cefotaksym, cefepim)",
+      "powod": "Bez wskazań w infekcji wirusowej; podejrzenie nadwrażliwości (część B)."
+    },
+    {
+      "lek": "Pseudoefedryna i inne doustne sympatykomimetyki",
+      "powod": "Skurcze nadkomorowe, wzrost ciśnienia przy beta-blokerze."
+    },
+    {
+      "lek": "Ogólnoustrojowe niesteroidowe leki przeciwzapalne",
+      "powod": "Aktywna pokrzywka/kofaktor reakcji nadwrażliwości."
+    },
+    {
+      "lek": "Hydroksyzyna, ondansetron, fluorochinolony ogólnie razem z azytromycyną",
+      "powod": "Sumowanie wydłużenia QT przy bisoprololu i skurczach nadkomorowych."
+    },
+    {
+      "lek": "Erdosteina i inne mukolityki",
+      "powod": "Brak korzyści w ostrej infekcji; erdosteina podejrzana w części B."
+    }
   ],
   "zrodla": [
     "PubMed: Smith SM i wsp. Antibiotics for acute bronchitis. Cochrane Database Syst Rev 2017;6:CD000245. PMID 28626858, DOI 10.1002/14651858.CD000245.pub4",
@@ -119,5 +238,7 @@
     "PubMed: Ridolo E i wsp. Factors and co-factors influencing clinical manifestations in nsLTPs allergy. Front Allergy 2023;4:1253304. PMID 37841053, DOI 10.3389/falgy.2023.1253304",
     "ChPL (oseltamiwir, nirmatrelwir z rytonawirem, azytromycyna, budezonid w zawiesinie do nebulizacji) — brak w zrodla/; dawki i modyfikacje nerkowe [wiedza modelu, niezweryfikowane]",
     "Progi kliniczne (SpO2, częstość oddechów, CRP), zasady powrotu do pracy, dawki leków objawowych — [wiedza modelu, niezweryfikowane]"
-  ]
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda A: dodano plan B dla oseltamiwiru (empirycznie, gdy test niedostępny dziś i ≤ 48 h od początku; odstawić po ujemnym teście) oraz doprecyzowano wskazania do EKG. Stanowisko główne bez zmian: test przed leczeniem przeciwwirusowym; cefuroksym, azytromycyna, budezonid — odstawić. p rozpoznań infekcyjnych pozostaje 0 (rola)."
 }
