@@ -12,3 +12,5 @@ Formulacja: kto należy do systemu (rodzina, para, praca), jaką funkcję może 
 Plik: `03-formulacje/systemowy.json`.
 
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
+
+Źródła: gdy PubMed daje <3 trafień, **obowiązkowo Europe PMC** przez WebFetch – szczegóły w docs/WSPOLNE-TERAPEUTA.md, sekcja „Europe PMC – obowiązkowe drugie źródło”.

@@ -145,7 +145,7 @@ def podsumuj(s: dict) -> None:
     if maks >= 3:
         print("Filtr słownikowy: poziom ≥3. Aplikacja już pokazała kartę kryzysową z numerami. Strażnik ryzyka NAJPIERW; odpowiedź wg docs/BEZPIECZENSTWO.md (pytanie wprost, numery, kontakt z człowiekiem teraz). Obniżyć poziom można tylko z nowym faktem (pole obnizam_ryzyko).")
     elif maks == 2:
-        print("Filtr słownikowy: bierne myśli o śmierci (poziom 2). W tej odpowiedzi OBOWIĄZKOWO pytanie wprost o plan/zamiar i o dostęp do środków, jeden element planu bezpieczeństwa i numer pomocy. To nie jest skrypt kryzysowy.")
+        print("Filtr słownikowy: sygnał pośredni poziomu 2 (bierne myśli o śmierci, pożegnanie, pragnienie połączenia ze zmarłym, zaniechanie leczenia „bo po co”, dostęp do środków). Strażnik ustala, o co chodzi; w odpowiedzi OBOWIĄZKOWO łagodne pytanie wprost o myśli samobójcze, plan i środki, jeden element planu bezpieczeństwa i numer pomocy. To nie jest skrypt kryzysowy.")
     print(f"1) rozmowa.py pracuje --rozmowa {s['id']} --panel straznik_ryzyka,<2–3 podejścia>,prowadzacy   2) strażnik + panel (osobne wywołania)   3) scalenie w jeden głos   4) klient-sędzia   5) rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
 
 
@@ -202,7 +202,11 @@ def cmd_odpowiedz(a) -> None:
             sys.exit("Poziom ≥3: odpowiedź musi zawierać numery pomocy z config/pomoc-pl.json (albo ustaw kryzys: true – aplikacja pokaże je sama).")
     if filtr == 2 and ryz <= 2 and "?" not in tekst:
         sys.exit("Poziom 2 (bierne myśli): odpowiedź musi zawierać pytanie wprost o plan/zamiar i dostęp do środków.")
-    if ryz >= 3 and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
+    flagi = d.get("flagi") or {}
+    aktywne = [k for k, v in flagi.items() if v] if isinstance(flagi, dict) else []
+    if aktywne and not d.get("kryzys"):
+        sys.exit(f"Flagi strażnika {aktywne}: ustaw kryzys: true i kierunek (przemoc / mania / somatyczny / inni) – także przy ryzyku samobójczym 0 (docs/ROZMOWA.md §5).")
+    if (ryz >= 3 or aktywne) and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, tekst, re.I)]
     if tekst.count("?") > 1:
@@ -228,6 +232,8 @@ def cmd_odpowiedz(a) -> None:
     if d.get("reakcja"):
         w["reakcja"] = str(d["reakcja"])[:8]
         w["reakcja_na"] = na
+    if d.get("kierunek"):
+        w["kierunek"] = str(d["kierunek"])
     if d.get("obnizam_ryzyko"):
         w["obnizam_ryzyko"] = str(d["obnizam_ryzyko"])
     k = kat(a.rozmowa)
@@ -245,8 +251,8 @@ def cmd_odpowiedz(a) -> None:
         print(f"UWAGA (detektor szwów / granic): {ostrz} – sprawdź, czy jeden głos nie zdradza machinerii i nie łamie granic.")
     if slow > 220 and not d.get("kryzys"):
         print("UWAGA: ponad 220 słów (docs/ROZMOWA.md §4; treść bezpieczeństwa się nie liczy, ale sprawdź, czy da się krócej).")
-    if slow > 120 and ryz >= 4:
-        print("UWAGA: poziom 4 – tekst ≤80–120 słów, tylko tor bezpieczeństwa (docs/ROZMOWA.md §5).")
+    if slow > 90 and ryz >= 4:
+        print(f"UWAGA: poziom 4 – {slow} słów; cel ≤80, tylko tor bezpieczeństwa (docs/ROZMOWA.md §5).")
 
 
 def cmd_formulacja(a) -> None:

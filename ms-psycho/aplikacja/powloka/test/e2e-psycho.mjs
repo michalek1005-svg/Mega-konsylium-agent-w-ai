@@ -81,7 +81,7 @@ try {
   await r.waitForSelector('.glos');
   await zrzut('6-rozmowa-odpowiedz');
   await r.hover('.msg.zespol[data-n="1"]');
-  await r.click('.msg.zespol[data-n="1"] [data-e="🙏"]');
+  await r.click('.msg.zespol[data-n="1"] [data-e="🙏"]', { force: true });
   await czekaj(async () => JSON.parse(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')).reakcje['1'] === '🙏', 6000, 'reakcja');
 
   // 4. Filtr ryzyka w aplikacji: karta kryzysowa od razu, bez modelu
@@ -97,6 +97,16 @@ try {
   assert.ok(odrzucone, 'rozmowa.py musi odrzucić obniżenie ryzyka');
   py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dziękuję, że to napisałeś. To ważne i nie zostawię tego bez odpowiedzi: to wymaga rozmowy z człowiekiem teraz. Zadzwoń proszę pod 800 70 2222 – to całodobowo i bezpłatnie. Jeśli jesteś w niebezpieczeństwie, dzwoń pod 112.', '--ryzyko', '3', '--kryzys');
   await r.waitForSelector('.msg.kryzys >> nth=1');
+  // flaga bez wątku samobójczego (przemoc): bez kryzys odrzucone, z kierunkiem – karta z Niebieską Linią
+  const flaga = { tekst: 'To, co opisujesz, brzmi groźnie i ważne jest Twoje bezpieczeństwo teraz. Jeśli on jest w pobliżu i się boisz, dzwoń pod 112.', ryzyko: 3, flagi: { przemoc_doswiadczana: true } };
+  writeFileSync(join(folder, 'flaga.json'), JSON.stringify(flaga));
+  let bezKryzysu = false;
+  try { py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'flaga.json')); } catch { bezKryzysu = true; }
+  assert.ok(bezKryzysu, 'flaga strażnika bez kryzys: true musi być odrzucona');
+  writeFileSync(join(folder, 'flaga.json'), JSON.stringify({ ...flaga, kryzys: true, kierunek: 'przemoc' }));
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'flaga.json'));
+  await r.waitForSelector('.msg.kryzys .kierunek');
+  assert.match(await r.textContent('.msg.kryzys .kierunek'), /Niebieska Linia/);
 
   // 5. Zwołaj konsylium → sprawa → Pokój psychologiczny
   await r.click('#zwolaj');

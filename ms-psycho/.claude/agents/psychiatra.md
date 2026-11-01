@@ -12,3 +12,5 @@ Formulacja: (a) przyczyny somatyczne i polekowe do wykluczenia (np. niedoczynno�
 Plik: `03-formulacje/psychiatra.json`.
 
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
+
+Źródła: gdy PubMed daje <3 trafień, **obowiązkowo Europe PMC** przez WebFetch – szczegóły w docs/WSPOLNE-TERAPEUTA.md, sekcja „Europe PMC – obowiązkowe drugie źródło”.

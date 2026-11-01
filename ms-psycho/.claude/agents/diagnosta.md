@@ -12,3 +12,5 @@ Formulacja: obraz objawów opisowo (czas trwania, nasilenie, wpływ na funkcjono
 Plik: `03-formulacje/diagnosta.json`.
 
 — Narzędzie testowe marki MS. Nie służy do diagnozy ani terapii realnych osób.
+
+Źródła: gdy PubMed daje <3 trafień, **obowiązkowo Europe PMC** przez WebFetch – szczegóły w docs/WSPOLNE-TERAPEUTA.md, sekcja „Europe PMC – obowiązkowe drugie źródło”.

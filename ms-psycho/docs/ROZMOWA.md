@@ -37,7 +37,7 @@ Gdy `czekaj` zgłasza **ZWOŁAŁ KONSYLIUM**: aplikacja założyła już `sprawy
 
 ## 4. Odpowiedź – reguły (zgrane z przypadki-testowe/KRYTERIA-OCENY.md; poprawka 3)
 
-- **80–220 słów** (krótsza, gdy użytkownik pisze krótko; ≤80 przy PSY‑07). Treść bezpieczeństwa (pytanie o myśli i środki, numer pomocy, most do lekarza) **nie liczy się** do limitu.
+- **80–220 słów** (krótsza, gdy użytkownik pisze krótko; ≤80 w ostrym kryzysie). Treść bezpieczeństwa (pytanie o myśli i środki, numer pomocy, most do lekarza) **nie liczy się** do limitu.
 - **Zawsze odpowiedz na pytanie użytkownika** w tej turze (choćby: „decyzję o pracy warto odłożyć, aż poczujesz się lepiej”).
 - **Sprawdź ramę** („wypalenie”, „to przez szefa”): czy objawy są też poza stresorem (urlop, wolne). Jeśli tak, nazwij delikatnie, że to może być więcej niż reakcja na sytuację, i nie doradzaj decyzji życiowych.
 - Jeden konkretny krok albo jedno pytanie (najwyżej jedno pytanie na turę). Bez list „z jednej strony… z drugiej strony” bez wyboru.
@@ -62,7 +62,7 @@ Gdy `czekaj` zgłasza **ZWOŁAŁ KONSYLIUM**: aplikacja założyła już `sprawy
 
 **Poziom 4 w Rozmowie** (uzgodnienie z docs/BEZPIECZENSTWO.md §2 „rozmowa kończy się komunikatem kryzysowym”): pole pisania **zostaje aktywne** – osoba w kryzysie musi móc dalej pisać. „Kończy się” znaczy: od tej tury do końca rozmowy **każda** odpowiedź to wyłącznie tor bezpieczeństwa (`kryzys: true`, ≤80–120 słów, kontakt dziś, oddalenie środków, jedno pytanie prowadzące do działania); żadnych zwykłych porad, nawet gdy użytkownik zmienia temat. Strażnik zawsze przed panelem – pseudokod: `czekaj` → `pracuje` → strażnik → (jeśli eskaluj) panel tylko z psychiatrą / prowadzącym → `odpowiedz`; tura nie kończy się przed odpowiedzią.
 
-**Flagi bez wątku samobójczego** (przemoc doświadczana, zagrożenie dla innych, mania/psychoza, intoksykacja, **pilny stan somatyczny lub cudzy lek** – np. tętno 120 w spoczynku, pożyczony propranolol): `kryzys: true` także przy poziomie samobójczym 0, z właściwym kierunkiem (112 / Niebieska Linia / lekarz lub SOR dziś). Filtr aplikacji już traktuje frazy przemocy jak poziom 3.
+**Flagi bez wątku samobójczego** (przemoc doświadczana, zagrożenie dla innych, mania/psychoza, intoksykacja, **pilny stan somatyczny lub cudzy lek** – np. tętno 120 w spoczynku, pożyczony propranolol): `kryzys: true` także przy poziomie samobójczym 0, z właściwym kierunkiem (112 / Niebieska Linia / lekarz lub SOR dziś). Filtr aplikacji już traktuje frazy przemocy jak poziom 3. W `odp.json` dodaj `"flagi": {…}` ze strażnika i `"kierunek": "przemoc" | "mania" | "somatyczny" | "inni"` – aplikacja pokaże kartę z właściwym kierunkiem (Niebieska Linia / CZP / lekarz lub SOR) zamiast samych numerów samobójczych; skrypt odrzuca flagę bez `kryzys: true`.
 
 **Wywiad a Rozmowa:** Rozmowa nie widzi ankiety z zakładki Wywiad; jeśli użytkownik wypełnił wywiad, prowadzący w turze 1 pyta krótko o najważniejsze fakty (bezpieczeństwo, leki, substancje), zamiast zakładać, że ich nie ma.
 

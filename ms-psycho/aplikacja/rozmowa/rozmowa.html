@@ -169,8 +169,10 @@ var FRAZY = /*@@FRAZY@@*/null;
     if (!w.poziom) ((FRAZY && FRAZY.poziom1) || []).forEach(function (re) { var m = new RegExp(re).exec(s); if (m) { w.poziom = Math.max(w.poziom, 1); w.frazy.push(m[0]); } });
     return w;
   }
-  function numeryHtml() {
-    return '<ul>' + ((POMOC && POMOC.numery) || []).map(function (n) {
+  function numeryHtml(pierwsze) {
+    var lista = ((POMOC && POMOC.numery) || []).slice();
+    if (pierwsze) lista = lista.filter(function (n) { return pierwsze.indexOf(n.numer) >= 0; }).concat(lista.filter(function (n) { return pierwsze.indexOf(n.numer) < 0; }));
+    return '<ul>' + lista.map(function (n) {
       return '<li><span class="nr">' + esc(n.numer) + '</span><span><b>' + esc(n.nazwa) + '</b><br><small>' + esc(n.kiedy) + ' · ' + esc(n.godziny) + '</small></span></li>';
     }).join('') + '</ul>' + (POMOC && POMOC.bez_skierowania ? '<small>' + esc(POMOC.bez_skierowania) + '</small>' : '');
   }
@@ -240,13 +242,13 @@ var FRAZY = /*@@FRAZY@@*/null;
         if (m.typ === 'zwolaj') { h += '<div class="dzien">Zwołano konsylium' + (m.sprawa ? ' · sprawa ' + esc(m.sprawa) : '') + '</div>'; return; }
         var odp = stan.zespol.some(function (z) { return z.odpowiedz_na >= m.n; });
         h += '<div class="msg ja"><span class="kto">Ty</span>' + md(m.tekst) + '<span class="czas">' + godz(m.ts) + '<span class="stan-wys" title="' + (odp ? 'Zespół odpowiedział' : 'Zapisane w folderze') + '">' + (odp ? ' ✓✓' : ' ✓') + '</span></span>' + (emoZespolu(m.n) ? '<span class="emo" title="Reakcja terapeuty">' + esc(emoZespolu(m.n)) + '</span>' : '') + '</div>';
-        if (m.ryzykoLokalne >= 3 && m.przemoc) h += kryzysHtml('Z tego, co piszesz, możesz być teraz w niebezpieczeństwie ze strony innej osoby. Twoje bezpieczeństwo jest najważniejsze. Przy zagrożeniu dzwoń od razu pod 112. Niebieska Linia 800 120 002 pomaga całodobowo w sytuacji przemocy:', 'aplikacja');
+        if (m.ryzykoLokalne >= 3 && m.przemoc) h += kryzysHtml('Z tego, co piszesz, możesz być teraz w niebezpieczeństwie ze strony innej osoby. Twoje bezpieczeństwo jest najważniejsze. Przy zagrożeniu dzwoń od razu pod 112. Niebieska Linia 800 120 002 pomaga całodobowo w sytuacji przemocy:', 'aplikacja', 'przemoc');
         else if (m.ryzykoLokalne && m.ryzykoLokalne >= 3) h += kryzysHtml('Widzę w Twojej wiadomości słowa, które mogą znaczyć, że jest Ci teraz bardzo ciężko. Twoje bezpieczeństwo jest najważniejsze. Jeśli myślisz o zrobieniu sobie krzywdy, porozmawiaj teraz z człowiekiem:', 'aplikacja');
         else if (m.ryzykoLokalne === 2) h += '<div class="msg system">🤍 Dziękuję, że to napisałeś/napisałaś. Takie myśli warto traktować poważnie – zespół zaraz o nie dopyta. Gdyby zrobiły się silniejsze, możesz od razu zadzwonić: <b>800 70 2222</b> (całodobowo), <b>116 123</b>, a przy zagrożeniu życia <b>112</b>.</div>';
         return;
       }
       var reakcja = stan.reakcje[m.n];
-      if (m.kryzys) { h += kryzysHtml(m.tekst, 'Terapeuta AI'); return; }
+      if (m.kryzys) { h += kryzysHtml(m.tekst, 'Terapeuta AI', m.kierunek); return; }
       h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(m.tekst);
       if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
       if (m.glosy && m.glosy.length) {
@@ -268,8 +270,15 @@ var FRAZY = /*@@FRAZY@@*/null;
     rysujPracuje();
   }
   function emoZespolu(n) { var e = null; stan.zespol.forEach(function (z) { if (z.reakcja && (z.reakcja_na || z.odpowiedz_na) === n) e = z.reakcja; }); return e; }
-  function kryzysHtml(tekst, kto) {
-    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + numeryHtml() + '<small class="nie-terapia">MS Konsylium Psychologiczne to narzędzie testowe, nie terapia – w kryzysie rozmawiaj z człowiekiem.</small></div>';
+  var KIERUNKI = {
+    przemoc: { pierwsze: ['112', '800 120 002'], wstep: 'Przy zagrożeniu ze strony innej osoby: 112. Niebieska Linia pomaga całodobowo w sytuacji przemocy.' },
+    mania: { pierwsze: ['112'], wstep: 'Taki stan warto pokazać specjaliście jeszcze dziś: Centrum Zdrowia Psychicznego albo izba przyjęć szpitala psychiatrycznego – bez skierowania. Przy zagrożeniu: 112.' },
+    somatyczny: { pierwsze: ['112'], wstep: 'To wymaga lekarza dziś – lekarz rodzinny, nocna pomoc lekarska albo SOR. Przy bólu w klatce, duszności lub omdleniu: 112.' },
+    inni: { pierwsze: ['112'], wstep: 'Gdy komuś grozi niebezpieczeństwo: 112.' }
+  };
+  function kryzysHtml(tekst, kto, kierunek) {
+    var k = KIERUNKI[kierunek];
+    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + (k && kto !== 'aplikacja' ? '<p class="kierunek"><b>' + esc(k.wstep) + '</b></p>' : '') + numeryHtml(k && k.pierwsze) + '<small class="nie-terapia">MS Konsylium Psychologiczne to narzędzie testowe, nie terapia – w kryzysie rozmawiaj z człowiekiem.</small></div>';
   }
   function świeże(ts, s) { var t = Date.parse(ts); return t && Date.now() - t < s * 1000; }
   function czekaNaOdpowiedz() {
