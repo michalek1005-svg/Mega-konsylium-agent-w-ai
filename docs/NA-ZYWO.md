@@ -68,7 +68,7 @@ Ordynator **przed każdą wypowiedzią roli i przed każdą rundą** sprawdza no
 python skrypty/uwagi_lekarza.py sprawy/<ID>          # tylko nowe (znacznik _uwagi-przeczytane.json)
 python skrypty/uwagi_lekarza.py sprawy/<ID> --czekaj 600   # czeka do 10 min, np. przed werdyktem
 ```
-Każdą uwagę przekazuje właściwym rolom w treści ich promptu („Lekarz prowadzący dopisał: …”), a one odnoszą się do niej w najbliższej wypowiedzi (medycznie, nie „dziękuję za uwagę”). Fakt podany przez lekarza prowadzącego ma rangę odpowiedzi z wywiadu: trafia do `01-wywiad.md` jako dopisek z godziną i może zmienić ranking. Po `09-FINAL.md` ordynator czeka jeszcze 10 minut na uwagi (`--czekaj 600`); nowa uwaga otwiera dodatkową rundę i poprawkę werdyktu.
+Każdą uwagę przekazuje właściwym rolom w treści ich promptu („Lekarz prowadzący dopisał: …”), a one odnoszą się do niej w najbliższej wypowiedzi (medycznie, nie „dziękuję za uwagę”). Fakt podany przez lekarza prowadzącego ma rangę odpowiedzi z wywiadu: trafia do `01-wywiad.md` jako dopisek z godziną i może zmienić ranking. **Tuż przed zapisem `09-FINAL.md` obowiązkowo** jeszcze raz `uwagi_lekarza.py sprawy/<ID>` (bez czekania) – uwaga dopisana w trakcie pisania werdyktu nie może przepaść. Znacznik pamięta klucze przeczytanych wpisów, a uszkodzone wiersze pliku są pomijane z ostrzeżeniem. Po `09-FINAL.md` ordynator czeka jeszcze 10 minut na uwagi (`--czekaj 600`); nowa uwaga otwiera dodatkową rundę i poprawkę werdyktu.
 
 ## 4. Co zainstalować na Windows
 

@@ -1015,7 +1015,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     // a potem sprawdzenie, że katalog naprawdę jest pusty (00-surowe.md, 01-wywiad.md, _log.jsonl); zajęty → kolejny numer.
     var zajety = function (id) {
       return Promise.all(['00-surowe.md', '01-wywiad.md', '_log.jsonl'].map(function (f) {
-        return MsMost.czytaj('sprawy/' + id + '/' + f).then(function (t) { return t != null && String(t).length > 0; }, function () { return false; });
+        return MsMost.czytaj('sprawy/' + id + '/' + f).then(function (t) { var x = t && typeof t === 'object' ? t.tekst : t; return x != null && String(x).length > 0; }, function () { return false; });
       })).then(function (w) { return w.some(Boolean); });
     };
     var sprobuj = function (n, ile) {
@@ -1033,7 +1033,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     var md = doKonsylium().tekst;
     // ponowne wysłanie tego samego wywiadu trafia do jego sprawy, ale tylko jeśli ta sprawa naprawdę należy do tego kodu
     var gotowe = stan.sprawa
-      ? MsMost.czytaj('sprawy/' + stan.sprawa + '/_log.jsonl').then(function (t) { return String(t || '').indexOf('"kod":"' + stan.kod + '"') !== -1 ? stan.sprawa : (stan.sprawa = null, nowyIdSprawy()); }, function () { stan.sprawa = null; return nowyIdSprawy(); })
+      ? MsMost.czytaj('sprawy/' + stan.sprawa + '/_log.jsonl').then(function (t) { return String((t && typeof t === 'object' ? t.tekst : t) || '').indexOf('"kod":"' + stan.kod + '"') !== -1 ? stan.sprawa : (stan.sprawa = null, nowyIdSprawy()); }, function () { stan.sprawa = null; return nowyIdSprawy(); })
       : nowyIdSprawy();
     gotowe.then(function (id) {
       var naglowek = '<!-- wywiad ' + stan.kod + ' · sprawa założona przez aplikację MS Konsylium ' + new Date().toISOString() + ' -->\n';

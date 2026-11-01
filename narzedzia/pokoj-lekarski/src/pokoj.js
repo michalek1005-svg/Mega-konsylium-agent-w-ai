@@ -572,7 +572,19 @@ ${podpisy(wpisy)}`;
     dymki.appendChild(d); ustawDymek(d, kto);
     document.querySelectorAll('.postac').forEach((el) => el.classList.toggle('aktywna', el.dataset.kto === kto));
   }
-  async function powiedzLekarz(tekst) {
+  // MsMost.czytaj zwraca { tekst, zmiana } albo null (starsze wersje: sam tekst). Nigdy nie zapisujemy obiektu jako tekstu.
+function tekstPliku(r) {
+  if (r == null) return '';
+  if (typeof r === 'object') return typeof r.tekst === 'string' ? r.tekst : '';
+  return String(r);
+}
+// dopisywanie do .jsonl: zachowuje poprawne wiersze, odrzuca śmieci typu „[object Object]”
+function dopiszJsonl(stare, wpis) {
+  const wiersze = String(stare || '').split('\n').filter((l) => { const t = l.trim(); if (!t) return false; try { JSON.parse(t); return true; } catch { return false; } });
+  wiersze.push(JSON.stringify(wpis));
+  return wiersze.join('\n') + '\n';
+}
+async function powiedzLekarz(tekst) {
     tekst = String(tekst || '').replace(/\s+/g, ' ').trim();
     if (!tekst || !sprawaZywa || !window.MsMost) return false;
     const sc = scen && kroki.length ? scen.sceny[kroki[kroki.length - 1].si] : null;
@@ -582,9 +594,8 @@ ${podpisy(wpisy)}`;
     if (tekst.length > 400) wpis.tresc = tekst.length > 600 ? tekst.slice(0, 599).replace(/\s+\S*$/, '') + '…' : tekst;
     const plik = 'sprawy/' + sprawaZywa + '/uwagi-lekarza.jsonl';
     let stare = '';
-    try { stare = await window.MsMost.czytaj(plik); } catch { stare = ''; }
-    stare = String(stare || '');
-    await window.MsMost.zapisz(plik, (stare && !stare.endsWith('\n') ? stare + '\n' : stare) + JSON.stringify(wpis) + '\n');
+    try { stare = tekstPliku(await window.MsMost.czytaj(plik)); } catch { stare = ''; }
+    await window.MsMost.zapisz(plik, dopiszJsonl(stare, wpis));
     // głos lekarza zatrzymuje odtwarzanie na kilka sekund, żeby jego dymek był widoczny; potem dyskusja idzie dalej
     const bylaGra = gra; if (gra) ustawGre(false);
     cichoDo = Date.now() + 6000;
@@ -646,8 +657,8 @@ ${podpisy(wpisy)}`;
     const plik = 'sprawy/' + sprawaZywa + '/uwagi-lekarza.jsonl';
     try {
       let stare = '';
-      try { stare = String((await window.MsMost.czytaj(plik)) || ''); } catch { stare = ''; }
-      await window.MsMost.zapisz(plik, (stare && !stare.endsWith('\n') ? stare + '\n' : stare) + JSON.stringify(wpis) + '\n');
+      try { stare = tekstPliku(await window.MsMost.czytaj(plik)); } catch { stare = ''; }
+      await window.MsMost.zapisz(plik, dopiszJsonl(stare, wpis));
       pytanieWyslane = p.id; $('pytanie').hidden = true;
       cichoDo = Date.now() + 5000;
       dymekTymczasowy('lekarz_prowadzacy', `Odpowiadam: ${opcja}.`, 'Lekarz prowadzący');

@@ -31,7 +31,8 @@ await p.evaluate(([src, pl]) => {
   const teraz = Date.now();
   const OP = {
     ping: () => 'ms-powloka-1', folder: () => 'C:/Konsylium',
-    czytaj: ([s]) => { if (!(s in window.__pliki)) throw new Error('Nie ma pliku ' + s); return window.__pliki[s]; },
+    // jak powloka/main.js: { tekst, zmiana } albo null, gdy pliku nie ma
+    czytaj: ([s]) => (s in window.__pliki ? { tekst: window.__pliki[s], zmiana: teraz } : null),
     zapisz: ([s, t]) => { window.__pliki[s] = t; return true; },
     lista: ([s]) => { const pre = s ? s + '/' : ''; const m = new Map(); for (const k of Object.keys(window.__pliki)) { if (!k.startsWith(pre)) continue; const r = k.slice(pre.length).split('/'); const n = r[0]; if (!m.has(n)) m.set(n, { nazwa: n, katalog: r.length > 1, zmiana: teraz }); } return [...m.values()]; },
     czytajFolder: ([s]) => { const pre = s + '/'; return Object.keys(window.__pliki).filter((k) => k.startsWith(pre)).map((k) => ({ sciezka: k.slice(pre.length), tekst: window.__pliki[k] })); },
@@ -68,6 +69,8 @@ await r.locator('#glos-tekst').fill('Druga uwaga.');
 await r.locator('#glos-wyslij').click();
 await p.waitForTimeout(500);
 assert.equal((await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').length, 2, 'dwa wpisy w pliku');
+assert.doesNotMatch(await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl']), /object Object/, 'plik uwag bez „[object Object]” (czytaj zwraca obiekt)');
+assert.ok((await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').every((l) => JSON.parse(l).pelny), 'każdy wiersz to poprawny wpis');
 // panele na żywo: alarm 112, plakietka asystentów, pytanie konsylium z przyciskami → odpowiedź w uwagi-lekarza.jsonl
 await p.evaluate(() => {
   const k = 'sprawy/2026-10-31-02/_log.jsonl', t = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');

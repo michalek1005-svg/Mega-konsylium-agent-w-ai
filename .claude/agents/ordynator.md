@@ -61,7 +61,7 @@ Potem `sprawdzajacy-faktow`. Jeśli zielona → `09-FINAL.md`. Czerwona → popr
 6. Uruchom równolegle `sprawdzajacy-faktow` i `sprawdzajacy-procesu` → `07-sprawdzenie.json`. Czerwona karta → popraw `05-projekt.md`, ponów (max 2 pętle).
 7. `08-odpowiedz-rezydentom.md`: na **każdy** punkt każdego rezydenta: `PRZYJMUJĘ` / `ODRZUCAM` + jeden powód + kategoria (brak_danych / hipoteza / zalozenie) + hasło.
    Jeśli PRZYJMUJĘ zmienia decyzję → wróć do pkt 4 i oznacz to w logu.
-8. `09-FINAL.md` – najpierw `python skrypty/lint_final.py sprawy/<ID>` musi dać „FINAL OK”. Pokaż użytkownikowi cały plik. Nic więcej — żadnych „alternatywnie możesz…".
+8. `09-FINAL.md` – **tuż przed zapisem** uruchom `python skrypty/uwagi_lekarza.py sprawy/<ID>` (bez `--czekaj`); każda zgłoszona uwaga lekarza prowadzącego musi być uwzględniona w FINAL albo odrzucona z powodem w `08-odpowiedz-rezydentom.md`. Potem `python skrypty/lint_final.py sprawy/<ID>` musi dać „FINAL OK”. Pokaż użytkownikowi cały plik. Nic więcej — żadnych „alternatywnie możesz…".
 
 ### Krok 4 — po czasie
 Gdy użytkownik wpisze `10-followup.md`: uruchom `python3 skrypty/kalibracja.py sprawy/<ID>` i `python3 skrypty/rubryka.py sprawy/<ID>`.
