@@ -1,0 +1,13 @@
+{"ts": "2026-11-01T00:32:31Z", "rola": "hipotezujacy", "zdarzenie": "start", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:32:43Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:32:43+00:00", "rola": "bayes", "zdarzenie": "start", "plik": "03-opinie/bayes.json"}
+{"ts":"2026-11-01T00:32:53Z","rola":"farmakolog","zdarzenie":"start","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:33:01+00:00", "rola": "poz_pragmatyk", "zdarzenie": "start", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts": "2026-11-01T00:34:11Z", "rola": "hipotezujacy", "zdarzenie": "stop", "plik": "03-opinie/hipotezujacy.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"start"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"stop"}
+{"ts": "2026-11-01T00:34:46Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:34:49Z", "rola": "bayes", "zdarzenie": "stop", "plik": "03-opinie/bayes.json"}
+{"ts": "2026-11-01T00:34:51+00:00", "rola": "poz_pragmatyk", "zdarzenie": "stop", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts":"2026-11-01T00:35:18Z","rola":"farmakolog","zdarzenie":"stop","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:35:53+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
