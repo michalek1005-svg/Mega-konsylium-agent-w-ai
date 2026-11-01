@@ -1,0 +1,146 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "Pozostałość tabletki o przedłużonym uwalnianiu",
+      "p": 0.218,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "Tabletka widmo",
+      "p": 0.126,
+      "wymienili": [
+        "bayes"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — metformina",
+      "p": 0.09,
+      "wymienili": [
+        "farmakolog"
+      ]
+    },
+    {
+      "rozpoznanie": "Niestrawione resztki pokarmowe",
+      "p": 0.065,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "Zagęszczenie moczu przy małej podaży płynów",
+      "p": 0.059,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.077,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 4,
+    "mediana_wazona": 4.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Alkohol i zioła/suplementy NIEZNANE (odpowiedź ogólna)",
+      "Alkohol i zioła/suplementy NIEZNANE (odpowiedź ogólna) — możliwe polekowe lub toksyczne uszkodzenie wątroby nie w pełni wykluczone",
+      "Daty badań laboratoryjnych NIEZNANE - jeśli wyniki sprzed objawów, wykluczenia cholestazy, rabdomiolizy i uszkodzenia nerek nie obowiązują",
+      "Daty badań laboratoryjnych NIEZNANE — jeśli badania sprzed pojawienia się objawów, wykluczenie cholestazy i miopatii jest nieaktualne",
+      "Daty badań laboratoryjnych NIEZNANE — jeśli wyniki sprzed wystąpienia ciemnego moczu, wykluczenie uszkodzenia wątroby i rabdomiolizy jest niepełne",
+      "HbA1c i wyrównanie cukrzycy NIEZNANE — czy metformina XR działa skutecznie (nie dotyczy pilności)",
+      "Obiekt w stolcu nieobejrzany i niezachowany — tabletka widmo nie jest potwierdzona",
+      "Obiekt w stolcu nieobejrzany przez lekarza - pasożyt nie jest wykluczony do czasu identyfikacji (zakaźność dla otoczenia)",
+      "Ocena twardówek i stanu nawodnienia nieudokumentowana szczegółowo",
+      "Odwodnienie u chorej na indapamidzie i perindoprylu z metforminą przy małym spożyciu płynów - ryzyko pogorszenia funkcji nerek i kumulacji metforminy; brak aktualnego RR i ciężaru właściwego moczu",
+      "Porfiria ostra (ciemniejący mocz) - nieprawdopodobna bez bólu brzucha i objawów neurologicznych, nie badano porfobilinogenu; utrzymywać tylko jako flagę przy nawrocie z bólem brzucha",
+      "antykoncepcja NIEZNANA u 40-latki na rozuwastatynie, ezetymibie i peryndoprylu — leki przeciwwskazane w ciąży [wiedza modelu, niezweryfikowane]",
+      "data badań laboratoryjnych NIEZNANA — nie wiadomo, czy CK, ALT, bilirubina i kreatynina pochodzą z okresu ciemnego moczu",
+      "daty badań laboratoryjnych NIEZNANE — jeśli ALT, bilirubina, CK, kreatynina sprzed ciemnego moczu, nie wykluczają uszkodzenia wątroby ani rabdomiolizy",
+      "eGFR NIEZNANY w momencie objawu — istotne przy metforminie i odwodnieniu",
+      "kulka nieobejrzana — nie wykluczono złogu żółciowego ani pasożyta",
+      "małe spożycie płynów u pacjentki na inhibitorze konwertazy angiotensyny i metforminie — ryzyko ostrego uszkodzenia nerek przy odwodnieniu (biegunka, wymioty, gorączka) [wiedza modelu, niezweryfikowane]"
+    ],
+    "wykluczone": [
+      "Cholestaza/żółtaczka mechaniczna (np. nowotwór dróg żółciowych lub trzustki) - wykluczona względnie: bilirubina i enzymy wątrobowe w normie, stolec prawidłowej barwy, bilirubina w moczu ujemna, brak żółtaczki i świądu",
+      "Hemoliza/hemoglobinuria - krew w moczu ujemna, bilirubina prawidłowa",
+      "Krwawienie z przewodu pokarmowego — stolec prawidłowej barwy, bez krwi i smolistości",
+      "Krwawienie z przewodu pokarmowego: stolec normalnego koloru, bez krwi i smolistości",
+      "Krwiomocz z dróg moczowych (nowotwór, kamica nerkowa) - krew w moczu ujemna",
+      "Krwiomocz — badanie ogólne moczu bez krwi",
+      "Krwiomocz: badanie ogólne moczu bez krwi",
+      "Kwasica mleczanowa przy metforminie - brak objawów, kreatynina w normie",
+      "Nowotwór jelita grubego z krwawieniem - brak krwi, smolistych stolców, spadku masy ciała (morfologia/ferrytyna nie podane - patrz otwarte)",
+      "Objawy ogólne nowotworu lub zakażenia — brak gorączki, spadku masy ciała",
+      "Objawy ogólne: brak gorączki, spadku masy ciała, bólu brzucha",
+      "Ostra niewydolność nerek przy odwodnieniu na inhibitorze konwertazy + diuretyku - kreatynina w normie wg relacji",
+      "Polekowe uszkodzenie wątroby (rosuwastatyna, ezetymib, metformina) - ALT/AST/bilirubina w normie wg relacji",
+      "Rabdomioliza statynowa — brak bólów i osłabienia mięśni, kinaza kreatynowa i kreatynina prawidłowe (PMID 34987920 jako tło kliniczne)",
+      "Rabdomioliza/miopatia statynowa (rosuwastatyna w Ezehron Duo): brak bólów i osłabienia mięśni, CK i kreatynina w normie, brak krwi w moczu",
+      "Rabdomioliza/miopatia statynowa - brak bólu i osłabienia mięśni, kinaza kreatynowa w normie, krew w moczu ujemna; ciemny mocz jest objawem alarmowym miopatii statynowej (PMID 39316353), ale tu bez korelatów",
+      "bilirubinuria i krwinkomocz w badaniu ogólnym moczu — ujemne wg wywiadu (data NIEZNANA)",
+      "bóle i osłabienie mięśni — zaprzeczone; CK prawidłowa wg wywiadu (data NIEZNANA)",
+      "ciąża — zaprzeczona",
+      "krwawienie z przewodu pokarmowego (stolec prawidłowej barwy)",
+      "krwiomocz (badanie ogólne moczu bez krwi wg użytkownika)",
+      "kwasica mleczanowa w przebiegu metforminy — brak objawów ogólnych, nudności, bólu brzucha, osłabienia; kreatynina prawidłowa",
+      "polekowe uszkodzenie wątroby z cholestazą — ALT, bilirubina prawidłowe, brak żółtaczki, świądu, odbarwienia stolca",
+      "rabdomioliza (CK prawidłowa, brak bólów i osłabienia mięśni; pacjentka na statynie z ezetymibem — Ezehron Duo)",
+      "rabdomioliza statynowa — brak objawów mięśniowych, CK i badanie moczu prawidłowe (z zastrzeżeniem nieznanej daty badań)",
+      "stolec odbarwiony, smolisty lub z krwią — zaprzeczone",
+      "uszkodzenie nerek (kreatynina prawidłowa)",
+      "Żółtaczka, świąd, odbarwiony stolec — brak; bilirubina i bilirubina w moczu prawidłowe",
+      "Żółtaczka/cholestaza: bilirubina i transaminazy w normie, brak bilirubiny w moczu, brak zażółcenia, świądu, odbarwionego stolca (z zastrzeżeniem nieznanych dat badań)",
+      "żółtaczka / cholestaza (bilirubina, ALT prawidłowe; brak zażółcenia, świądu, odbarwionego stolca)",
+      "żółtaczka, świąd, ból brzucha, gorączka, spadek masy ciała — zaprzeczone"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.005,
+      "pilnosc": 0.603,
+      "k": 1.0047
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.994,
+      "pilnosc": 0.596,
+      "k": 0.9941
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.496,
+      "pilnosc": 0.991,
+      "k": 0.9914
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.505,
+      "pilnosc": 0.606,
+      "k": 1.0097
+    }
+  },
+  "liczba_opinii": 6
+}

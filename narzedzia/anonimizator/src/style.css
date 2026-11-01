@@ -1,0 +1,95 @@
+/* Wygląd marki MS — paleta „Laguna” i klasy jak w Nawigatorze (kod/app/globals.css),
+   przepisane jako kopia (bez zależności od repo Nawigatora). */
+/*@@FONT@@*/
+/*@@MS-TOKENY@@*/
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  background: var(--scene); background-attachment: fixed; background-color: var(--bg-viewport);
+  color: var(--ink); font-size: 14px;
+}
+.scena { min-height: 100vh; padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 18px; }
+
+/* nagłówek — logo z literą K w lewym górnym rogu, jak N w Nawigatorze */
+.naglowek { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.logo {
+  width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center;
+  font-weight: 800; font-size: 28px; letter-spacing: -1px; color: #F7FBFA;
+  background: linear-gradient(150deg, #157268, #0F5E58);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7);
+}
+.tytul { flex: 1; min-width: 220px; }
+.tytul h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -.4px; }
+.tytul p { margin: 3px 0 0; font-size: 12px; color: var(--mut); display: flex; align-items: center; gap: 7px; }
+.kropka { width: 8px; height: 8px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 3px rgba(63,191,138,.2); }
+.pasek { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px; border-radius: 999px;
+  background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+
+/* układ: strony po lewej, panel po prawej */
+.uklad { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 22px; align-items: start; }
+@media (max-width: 980px) { .uklad { grid-template-columns: 1fr; } }
+.tafla { border-radius: 36px; background: var(--tafla); box-shadow: var(--tafla-cien);
+  backdrop-filter: blur(26px) saturate(140%); -webkit-backdrop-filter: blur(26px) saturate(140%); }
+#obszar { padding: 22px; min-height: 70vh; position: relative; }
+.panel { padding: 22px; position: sticky; top: 18px; max-height: calc(100vh - 36px); overflow-y: auto; }
+
+.powitanie { display: grid; place-items: center; min-height: 60vh; }
+.powitanie[hidden] { display: none; }
+.upusc { max-width: 520px; text-align: center; padding: 40px 34px; border-radius: 28px; border: 2px dashed var(--pole-obrys);
+  background: var(--panel); box-shadow: var(--panel-cien); cursor: pointer; transition: border-color .15s, transform .15s; }
+.upusc.nad, .upusc:hover { border-color: var(--petrol); }
+.upusc.nad { transform: scale(1.01); }
+.upusc-ikona { font-size: 34px; color: var(--petrol); }
+.upusc-tytul { font-size: 18px; font-weight: 800; margin: 8px 0 4px; }
+
+/* strony dokumentu */
+.strony { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.strona { position: relative; background: #fff; border-radius: 6px; box-shadow: var(--strona-cien); overflow: hidden; line-height: 0; }
+.strona canvas { display: block; width: 100%; height: auto; }
+.strona-nr { position: absolute; left: 8px; top: 8px; font-size: 11px; line-height: 1; padding: 5px 8px; border-radius: 999px;
+  background: rgba(15,94,88,.85); color: #fff; font-weight: 700; z-index: 3; pointer-events: none; }
+.warstwa { position: absolute; inset: 0; cursor: crosshair; touch-action: none; z-index: 2; }
+
+/* ramki: kolor wg kategorii */
+.r { position: absolute; border-radius: 2px; cursor: pointer; }
+.r.on { background: color-mix(in srgb, var(--k) 55%, rgba(0,0,0,.55)); outline: 1.5px solid var(--k); }
+.r.off { background: transparent; outline: 1.5px dashed color-mix(in srgb, var(--k) 80%, transparent); }
+.r:hover { outline-width: 2.5px; }
+.r .x { position: absolute; right: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; border: 0; background: #A83A38;
+  color: #fff; font-size: 12px; line-height: 18px; text-align: center; padding: 0; cursor: pointer; display: none; }
+.r:hover .x { display: block; }
+.r.blysk { animation: blysk .9s ease 2; }
+@keyframes blysk { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--k) 45%, transparent); } }
+.r.rysowana { background: rgba(15,94,88,.25); outline: 1.5px solid #0F5E58; pointer-events: none; }
+.podglad .r.on { background: #000; outline: none; }
+.podglad .r.off { display: none; }
+.podglad .r .x { display: none !important; }
+.podglad .warstwa { cursor: default; }
+
+/* panel kategorii */
+.kategorie { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.kat { border-radius: 16px; background: var(--panel); box-shadow: var(--panel-cien); padding: 10px 12px; }
+.kat summary { list-style: none; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 650; font-size: 13px; }
+.kat summary::-webkit-details-marker { display: none; }
+.kat summary .ile { margin-left: auto; font-size: 11px; color: var(--mut); font-weight: 600; white-space: nowrap; }
+.kat summary .kolor { width: 10px; height: 10px; border-radius: 3px; background: var(--k); flex: none; }
+.kat summary::after { content: '▸'; color: var(--mut); font-size: 11px; transition: transform .15s; }
+.kat[open] summary::after { transform: rotate(90deg); }
+.kat ul { list-style: none; margin: 8px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 3px; max-height: 220px; overflow-y: auto; }
+.kat li { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; line-height: 1.4; padding: 4px 4px; border-radius: 8px; }
+.kat li:hover { background: var(--btn); }
+.kat li .t { cursor: pointer; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.kat li .p { display: block; color: var(--mut); font-size: 11px; }
+input[type="checkbox"] { accent-color: var(--on); width: 16px; height: 16px; margin: 0; flex: none; cursor: pointer; }
+.pomoc { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.6; color: var(--mut); }
+.pomoc b { color: var(--ink); }
+.akcje { display: flex; flex-direction: column; gap: 8px; }
+.ostrzezenie { margin-top: 14px; }
+.pasek-postepu { height: 6px; border-radius: 99px; background: var(--btn); overflow: hidden; margin: -4px 0 14px; }
+.pasek-postepu div { height: 100%; width: 0; background: var(--petrol); transition: width .2s; }
+
+/* w aplikacji MS Konsylium (powłoka z szklaną taflą i paskiem ikon): bez własnego tła, logo i przełącznika motywu */
+html.osadzony, html.osadzony body { background: transparent !important; }
+html.osadzony body::after, html.osadzony body::before { display: none !important; }
+html.osadzony .naglowek .logo, html.osadzony #b-motyw { display: none !important; }

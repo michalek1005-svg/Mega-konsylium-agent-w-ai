@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Follow-up użytkownika (front-matter YAML w 10-followup.md)",
+  "type": "object",
+  "required": ["rozpoznanie_potwierdzone", "pilnosc_faktyczna", "czy_decyzja_byla_wlasciwa"],
+  "properties": {
+    "rozpoznanie_potwierdzone": {"type": "string", "description": "jak ustalono ostatecznie; 'nieustalone' jeśli nie wiadomo"},
+    "pilnosc_faktyczna": {"type": "integer", "minimum": 1, "maximum": 5, "description": "jaka pilność była z perspektywy czasu właściwa"},
+    "czy_decyzja_byla_wlasciwa": {"type": "string", "enum": ["tak", "czesciowo", "nie"]},
+    "nastepny_krok_byl": {"type": "string", "enum": ["wlasciwy", "za_malo", "za_duzo", "niewlasciwy"]},
+    "komentarz": {"type": "string"},
+    "data": {"type": "string", "format": "date"}
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "kamica żółciowa",
+      "p": 0.806,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "choroba wrzodowa",
+      "p": 0.055,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "zawał serca",
+      "p": 0.029,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "ostre zapalenie trzustki",
+      "p": 0.026,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "dyspepsja czynnościowa",
+      "p": 0.026,
+      "wymienili": [
+        "bayes"
+      ]
+    }
+  ],
+  "zgoda": 0.625,
+  "flagi": [],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 3.0,
+    "weto": {
+      "rola": "najgorszy_scenariusz",
+      "pilnosc": 2,
+      "red_flags_otwarte": [
+        "OZW u kobiety 54 l. — brak EKG",
+        "ostre zapalenie trzustki — brak lipazy",
+        "zapalenie pęcherzyka — nie zmierzono temperatury"
+      ],
+      "zamiast": 3.0
+    }
+  },
+  "red_flags": {
+    "otwarte": [
+      "OZW u kobiety 54 l. — brak EKG",
+      "brak EKG w gabinecie — do zrobienia na miejscu",
+      "ostre zapalenie trzustki — brak lipazy",
+      "zapalenie pęcherzyka — nie zmierzono temperatury",
+      "zapalenie trzustki (brak lipazy)"
+    ],
+    "wykluczone": [
+      "krwawienie",
+      "krwawienie z przewodu pokarmowego",
+      "perforacja (bez obrony mięśniowej)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "wysoka",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.0,
+      "pilnosc": 0.6,
+      "k": 1.0
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 1.0,
+      "pilnosc": 0.6,
+      "k": 1.0
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.5,
+      "pilnosc": 1.0,
+      "k": 1.0
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.5,
+      "pilnosc": 0.6,
+      "k": 1.0
+    }
+  },
+  "liczba_opinii": 6
+}

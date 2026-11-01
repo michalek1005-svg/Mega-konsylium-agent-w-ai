@@ -1,0 +1,8 @@
+# Tabela synonimów rozpoznań do dopasowania opinii z follow-upem (kalibracja.py).
+# Klucz = forma kanoniczna (mała litera), wartości = warianty. Ordynator dopisuje w miarę potrzeb.
+kamica żółciowa: [kamica pęcherzyka żółciowego, cholelithiasis, kolka żółciowa]
+choroba wrzodowa: [wrzód żołądka, wrzód dwunastnicy, choroba wrzodowa żołądka i dwunastnicy, peptic ulcer]
+ostre zapalenie trzustki: [ozt, zapalenie trzustki, pancreatitis]
+zawał serca: [ostry zespół wieńcowy, ozw, nstemi, stemi, zawał mięśnia sercowego]
+refluks żołądkowo-przełykowy: [gerd, choroba refluksowa, refluks]
+dyspepsja czynnościowa: [dyspepsja, niestrawność czynnościowa]

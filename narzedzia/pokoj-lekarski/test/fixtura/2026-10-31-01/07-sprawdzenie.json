@@ -1,0 +1,5 @@
+{"petla": 2,
+ "fakty": {"kartka": "ZOLTA", "uwagi": ["Każda liczba ma źródło albo etykietę; p zgodne z agregatem.", "Dawka diklofenaku tylko z etykietą poziomu 4 — przed realnym użyciem potwierdzić w ChPL.", "Poprawione w FINAL: zakres p z dyskusji, etykieta okna USG, NLPZ dopiero po troponinie."]},
+ "proces": {"kartka": "ZOLTA", "uwagi": ["Blokery z pętli 1 usunięte; 08 odpowiada na 9/9 punktów; rewizja_projektu w logu.", "Poprawione w FINAL: USG wprost w REKOMENDACJI.", "Uwagi dla aplikacji: hipoteza ordynatora w osobnym pliku; jednolity log; pakiet_rezydenta bez powtórzeń person i z tematami pytań; weto w agregacie; synonimy rozpoznań."]},
+ "rubryka": {"za_przeciw_obecne": 13, "komunikat": 13},
+ "petla_1": {"fakty": "CZERWONA", "proces": "CZERWONA"}}

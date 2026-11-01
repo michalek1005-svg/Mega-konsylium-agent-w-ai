@@ -1,0 +1,62 @@
+<!--@@HEAD@@-->
+<div class="scena">
+  <header class="naglowek">
+    <div class="logo" aria-hidden="true">K</div>
+    <div class="tytul">
+      <h1>Pokój lekarski</h1>
+      <p><span class="kropka" aria-hidden="true"></span><span id="opis-sprawy">Konsylium AI · marka MS</span><span class="chip" id="chip-tryb" hidden></span><span class="chip chip-ai" id="chip-ai" hidden title="Konsylium (Claude) pracuje teraz na tym komputerze"></span></p>
+    </div>
+    <div class="pasek" role="toolbar" aria-label="Sprawa i wygląd">
+      <button class="nk-button" id="wczytaj" type="button" title="Wybierz folder sprawy, np. sprawy/2026-10-31-02">Wczytaj sprawę…</button>
+      <button class="nk-button nk-on" id="wnioski-btn" type="button" hidden title="Wnioski końcowe konsylium (09-FINAL)">Wnioski</button>
+      <button class="nk-button" id="zywo" type="button" hidden title="Wybierz folder sprawy, która właśnie trwa. Pokój co 3 sekundy dociąga nowe dymki.">Na żywo…</button>
+      <button class="nk-button" id="protokol-btn" type="button" hidden aria-pressed="false" title="Pokaż lub ukryj protokół dyskusji">Protokół</button>
+      <button class="nk-button" id="prognoza-btn" type="button" hidden aria-pressed="false" title="Tylko dla Ciebie: bieżące prawdopodobieństwa rozpoznań w procentach (dymki ich nie mają)">Prognoza %</button>
+      <button class="nk-button" id="motyw" type="button" aria-label="Przełącz tryb jasny lub ciemny">Tryb jasny</button>
+    </div>
+    <input id="folder" type="file" webkitdirectory multiple hidden>
+  </header>
+
+  <div class="uklad">
+    <section class="tafla pokoj-ramka" aria-label="Pokój lekarski">
+      <div class="pokoj" id="pokoj">
+        <svg class="rys" id="rys" viewBox="0 0 1200 700" role="img" aria-label="Pokój lekarski z ordynatorem, sześcioma lekarzami, trzema zastępcami, dwoma sprawdzającymi i rezydentami za szybą"></svg>
+        <div class="tablica" id="tablica" aria-live="polite"></div>
+        <div class="dymki" id="dymki"></div>
+        <div class="wnioski" id="wnioski" hidden role="dialog" aria-labelledby="wnioski-t"></div>
+        <aside class="prognoza" id="prognoza" hidden aria-label="Prognoza rozpoznań dla lekarza prowadzącego"></aside>
+        <div class="alarm-pasek" id="alarm" hidden role="alert"><span class="alarm-ikona" aria-hidden="true">112</span><span class="alarm-tekst" id="alarm-tekst"></span><span class="alarm-dop">Konsylium pracuje dalej w tle.</span></div>
+        <div class="pytanie-karta" id="pytanie" hidden role="dialog" aria-labelledby="pytanie-t"><p class="nk-label">Konsylium pyta Ciebie · jedno pytanie rozstrzyga spór</p><p class="pytanie-t" id="pytanie-t"></p><p class="pytanie-bo" id="pytanie-bo"></p><div class="pytanie-opcje" id="pytanie-opcje"></div><p class="pytanie-blad" role="alert"></p></div>
+        <div class="plakietka" id="plakietka" hidden aria-live="polite"><span class="plakietka-kropka" aria-hidden="true"></span><span id="plakietka-t">konsultuje się</span></div>
+      </div>
+      <div class="napisy" id="napisy" aria-live="polite"></div>
+      <div class="sterowanie">
+        <button class="nk-button" id="wstecz" type="button" aria-label="Poprzednia wypowiedź">◀</button>
+        <button class="nk-button nk-on" id="graj" type="button" aria-label="Odtwarzaj lub zatrzymaj">❚❚</button>
+        <button class="nk-button" id="dalej" type="button" aria-label="Następna wypowiedź">▶</button>
+        <label class="nk-label" for="tempo">Tempo</label>
+        <select class="tempo" id="tempo">
+          <option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
+        </select>
+      </div>
+      <form class="glos" id="glos" hidden autocomplete="off" aria-label="Twój głos w dyskusji">
+        <span class="nk-label">Lekarz prowadzący</span>
+        <textarea id="glos-tekst" rows="1" placeholder="Dopisz do dyskusji: pytanie, uwaga, dodatkowy fakt… (Enter wysyła)" maxlength="1200"></textarea>
+        <button class="nk-button nk-on" id="glos-wyslij" type="submit">Powiedz</button>
+        <span class="glos-blad" role="alert"></span>
+      </form>
+      <div class="legenda" id="legenda"></div>
+    </section>
+
+    <aside class="tafla protokol" aria-label="Protokół konsylium">
+      <h2>Protokół</h2>
+      <p class="nk-label">Kliknij wpis albo postać, żeby przeczytać całość</p>
+      <div class="lista" id="lista"></div>
+      <div class="szczegol" id="szczegol" hidden></div>
+    </aside>
+  </div>
+  <p class="stopka">Narzędzie testowe i edukacyjne marki MS. Działa offline, niczego nie wysyła. Dymki pokazują opinie lekarzy językiem medycznym; pełny tekst jest w protokole po kliknięciu.</p>
+</div>
+<script>
+/*@@JS@@*/
+</script>

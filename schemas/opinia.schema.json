@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Opinia lekarza stałego (03-opinie/<rola>.json)",
+  "type": "object",
+  "required": [
+    "rola",
+    "rozpoznania",
+    "pilnosc",
+    "pewnosc",
+    "red_flags_wykluczone",
+    "red_flags_otwarte",
+    "nastepny_krok",
+    "co_zmieniloby_zdanie",
+    "zrodla"
+  ],
+  "properties": {
+    "rola": {
+      "type": "string",
+      "enum": [
+        "hipotezujacy",
+        "bayes",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk",
+        "farmakolog",
+        "gospodarz_kosztow"
+      ]
+    },
+    "rozpoznania": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "nazwa",
+          "p"
+        ],
+        "properties": {
+          "nazwa": {
+            "type": "string",
+            "description": "mianownik, po polsku, bez skrótów"
+          },
+          "p": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "za": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "przeciw": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "icd10": {
+            "type": "string",
+            "pattern": "^[A-Z][0-9]{2}(\\.[0-9A-Z]{1,2})?$",
+            "description": "kod ICD-10 (np. M10.0); rozpoznania o tej samej kategorii 3-znakowej agregacja łączy w jedno"
+          }
+        }
+      },
+      "description": "farmakolog: pusta lista (bez rankingu), ocenia przyczyna_polekowa"
+    },
+    "pilnosc": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "1 natychmiast … 5 obserwacja"
+    },
+    "pewnosc": {
+      "type": "string",
+      "enum": [
+        "niska",
+        "srednia",
+        "wysoka"
+      ]
+    },
+    "red_flags_wykluczone": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "red_flags_otwarte": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nastepny_krok": {
+      "type": "string"
+    },
+    "co_zmieniloby_zdanie": {
+      "type": "string"
+    },
+    "zrodla": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rewizja": {
+      "type": "boolean",
+      "description": "true, jeśli p zmienione po rundzie dyskusji"
+    },
+    "powod_rewizji": {
+      "type": "string"
+    },
+    "plan_farmakologiczny": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nie_podawac": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "plan_poz": {
+      "type": "object"
+    },
+    "badania": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nie_zlecac": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "przyczyna_polekowa": {
+      "type": "string",
+      "enum": [
+        "tak",
+        "nie",
+        "mozliwa"
+      ],
+      "description": "tylko farmakolog: czy objawy mogą być polekowe (lek, interakcja, dawka)"
+    },
+    "polskie_wytyczne": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "wynik obowiązkowego zapytania o polskie wytyczne: karta z zrodla/ albo PMID/DOI; 'BRAK_PL: <zapytanie>' gdy nie ma"
+    }
+  }
+}
