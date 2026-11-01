@@ -1,0 +1,46 @@
+{
+  "rola": "gospodarz_kosztow",
+  "rozpoznania": [
+    {"nazwa": "Wydalanie matrycy tabletki o przedłużonym uwalnianiu", "p": 0,
+     "za": ["Siofor XR (metformina o przedłużonym uwalnianiu) od kilku miesięcy", "pojedyncza kulka, czasowo związana z przyjęciem leku", "żółtawa otoczka, okrągły kształt", "brak objawów przewodu pokarmowego, stolec prawidłowej barwy", "opis przypadku: struktura przypominająca pasożyta w stolcu u kobiety na metforminie XR, dalsza diagnostyka uznana za zbędną (PMID 40209786)"],
+     "przeciw": ["NIEZNANE: rozmiar, twardość, wygląd kulki; czy tabletka połykana w całości"]},
+    {"nazwa": "Zagęszczenie moczu", "p": 0,
+     "za": ["mało pije", "badanie ogólne moczu bez odchyleń poza barwą (bez bilirubiny, krwi, urobilinogenu w nadmiarze wg użytkownika)", "bilirubina, ALT, CK, kreatynina w normie", "ciemny mocz opisywany rzadko"],
+     "przeciw": ["NIEZNANE: dokładny ciężar właściwy moczu i daty badań"]},
+    {"nazwa": "Pasożytnicza choroba jelit", "p": 0,
+     "za": ["pacjentka może interpretować kulkę jako pasożyta"],
+     "przeciw": ["brak objawów brzusznych, spadku masy ciała", "pojedyncza kulka związana czasowo z lekiem", "kształt kulisty nie odpowiada typowym członom tasiemca ani owsikom [wiedza modelu, niezweryfikowane]"]}
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "żółtaczka / cholestaza (bilirubina, ALT prawidłowe; brak zażółcenia, świądu, odbarwionego stolca)",
+    "rabdomioliza (CK prawidłowa, brak bólów i osłabienia mięśni; pacjentka na statynie z ezetymibem — Ezehron Duo)",
+    "krwiomocz (badanie ogólne moczu bez krwi wg użytkownika)",
+    "krwawienie z przewodu pokarmowego (stolec prawidłowej barwy)",
+    "uszkodzenie nerek (kreatynina prawidłowa)"
+  ],
+  "red_flags_otwarte": [],
+  "nastepny_krok": "Bez nowych badań: poprosić pacjentkę, by przy następnym wystąpieniu wyłowiła kulkę, opłukała ją wodą i porównała kształt/rozmiar z tabletką Siofor XR (lub przyniosła do poradni), z jednoczesnym potwierdzeniem, że połyka tabletkę w całości z posiłkiem wieczornym, oraz zwiększyła podaż płynów i obserwowała barwę moczu.",
+  "co_zmieniloby_zdanie": "Kulka niepodobna do tabletki (ruchoma, segmentowana, nitkowata), nawracająca niezależnie od leku albo pojawienie się objawów (ból brzucha, spadek masy, żółtaczka, bóle mięśni, ciemny mocz utrzymujący się mimo nawodnienia) — wtedy badanie kału na pasożyty / powtórne badanie ogólne moczu z bilirubiną i urobilinogenem staje się uzasadnione.",
+  "zrodla": [
+    "PubMed: K-Sarı I. i wsp. Presence of Ghost Capsules in Stool Mimicking Parasites due to Extended Release Metformin. Clin Lab 2025;71(4). PMID 40209786, DOI 10.7754/Clin.Lab.2024.241019",
+    "PubMed: Sun D. i wsp. Ghost-Pill-Buster: intact levetiracetam ER tablets after dissolution testing. CNS Drugs 2016;30(5):455-60. PMID 27048352, DOI 10.1007/s40263-016-0332-9 (matryca wydalona nienaruszona, mimo uwolnienia ok. 90% substancji czynnej in vitro)",
+    "PubMed: Overberg A. i wsp. 'Ghost tablet' husks excreted in feces in large bupropion XL overdose. Clin Toxicol 2019;57(2):141-142. PMID 30117332, DOI 10.1080/15563650.2018.1494276",
+    "ChPL metforminy o przedłużonym uwalnianiu — możliwość wydalania pozostałości tabletki [wiedza modelu, niezweryfikowane; brak ChPL w zrodla/]",
+    "zrodla/MANIFEST.md — brak polskiego źródła dla tej sytuacji"
+  ],
+  "badania": [
+    {"nazwa": "Oględziny kulki przez pacjentkę / w gabinecie (porównanie z tabletką Siofor XR)", "cel": "potwierdzenie matrycy tabletki", "zmienia_decyzje": true, "kolejnosc": 1, "uwagi": "koszt zerowy; dodatni → uspokojenie, edukacja, kontynuacja leczenia; ujemny/nietypowy → badanie kału na pasożyty"},
+    {"nazwa": "Kontrola glikemii (HbA1c) przy najbliższej planowej wizycie", "cel": "pośrednia ocena, czy lek działa mimo wydalania matrycy; HbA1c jest NIEZNANE", "zmienia_decyzje": true, "kolejnosc": 2, "uwagi": "zlecić w ramach rutynowej kontroli cukrzycy, nie jako badanie pilne; zły wynik → korekta leczenia przeciwcukrzycowego, nie zmiana preparatu z powodu kulek"},
+    {"nazwa": "Powtórne badanie ogólne moczu z ciężarem właściwym", "cel": "potwierdzenie zagęszczenia moczu po nawodnieniu", "zmienia_decyzje": false, "kolejnosc": 3, "uwagi": "tylko gdy ciemny mocz utrzymuje się mimo zwiększenia podaży płynów; poprzednie badanie bez odchyleń poza barwą"}
+  ],
+  "nie_zlecac": [
+    {"nazwa": "Badanie kału na pasożyty (jaja/cysty)", "powod": "przy kulce zgodnej z tabletką wynik ujemny i dodatni nie zmienia postępowania wobec kulki; fałszywie dodatnie/niespecyficzne wyniki generują kaskadę; zlecić dopiero, gdy oględziny nie potwierdzą tabletki (PMID 40209786: dalsza diagnostyka uznana za zbędną)"},
+    {"nazwa": "USG jamy brzusznej", "powod": "brak bólu, żółtaczki, nieprawidłowych enzymów wątrobowych i bilirubiny; kolejka i incydentaloma bez wpływu na decyzję"},
+    {"nazwa": "Ponowne próby wątrobowe, bilirubina, CK, kreatynina", "powod": "niedawno prawidłowe, brak nowych objawów; ten sam wynik nie zmieni decyzji (daty badań NIEZNANE — powtórzyć tylko, jeśli starsze niż kilka miesięcy lub pojawią się objawy)"},
+    {"nazwa": "Porfiryny w moczu, mioglobina w moczu", "powod": "brak objawów i prawidłowe badanie ogólne moczu oraz CK; niskie prawdopodobieństwo przedtestowe"},
+    {"nazwa": "Zmiana preparatu metforminy na postać o natychmiastowym uwalnianiu", "powod": "wydalanie matrycy nie oznacza braku wchłaniania leku (PMID 27048352); zmiana tylko przy złej kontroli glikemii lub nietolerancji"}
+  ],
+  "uwagi_gospodarza": "Czekanie jest bezpieczne: brak otwartych red flag po prawidłowych bilirubinie, ALT, CK, kreatyninie i badaniu ogólnym moczu. Gdyby najgorszy scenariusz wskazał otwartą red flagę (np. przy dacie badań sprzed wielu miesięcy), badanie ją wykluczające jest uzasadnione zawsze. Zaznaczam: tabletki nie należy kruszyć ani dzielić z powodu kulek."
+}

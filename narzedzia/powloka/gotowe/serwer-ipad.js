@@ -60,6 +60,7 @@ function utworzSerwer(o) {
   const STATYCZNE = {
     '/': [path.join(o.katalogApp, 'ipad.html'), 'text/html; charset=utf-8'],
     '/index.html': [path.join(o.katalogApp, 'ipad.html'), 'text/html; charset=utf-8'],
+    '/moduly/rozmowa.html': [path.join(o.katalogApp, 'moduly', 'rozmowa.html'), 'text/html; charset=utf-8'],
     '/moduly/wywiad.html': [path.join(o.katalogApp, 'moduly', 'wywiad.html'), 'text/html; charset=utf-8'],
     '/moduly/anonimizator.html': [path.join(o.katalogApp, 'moduly', 'anonimizator.html'), 'text/html; charset=utf-8'],
     '/moduly/pokoj.html': [path.join(o.katalogApp, 'moduly', 'pokoj.html'), 'text/html; charset=utf-8'],
@@ -154,7 +155,7 @@ function utworzSerwer(o) {
     if (p === '/manifest.webmanifest') {
       // start_url z kluczem: ikona na ekranie głównym iPada ma osobne ciasteczka i pamięć niż Safari
       const m = {
-        name: 'MS Konsylium', short_name: 'Konsylium', lang: 'pl', display: 'standalone', orientation: 'any',
+        name: 'MS Konsylium Psychologiczne', short_name: 'MS Psycho', lang: 'pl', display: 'standalone', orientation: 'any',
         start_url: kluczOk ? './?k=' + encodeURIComponent(k) : './', scope: './',
         background_color: '#E6EBEE', theme_color: '#E6EBEE',
         icons: [{ src: 'ikona.png', sizes: '512x512', type: 'image/png', purpose: 'any' }]

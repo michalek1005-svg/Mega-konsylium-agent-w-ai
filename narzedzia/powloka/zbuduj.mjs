@@ -34,20 +34,35 @@ for (const kat of [katA, join(katA, 'dist')]) {
 if (plikA) copyFileSync(plikA, join(build, 'app', 'moduly', 'anonimizator.html'));
 else console.warn('Anonimizator nie jest zbudowany: moduł pokaże komunikat „nie dołączono”.');
 
-// 2b. Pokój lekarski (widok konsylium na żywo)
-const katP = join(narzedzia, 'pokoj-lekarski');
-const plikP = existsSync(katP) ? readdirSync(katP).filter((x) => /^POKOJ-LEKARSKI-.*\.html$/.test(x))
+// 2b. Pokój psychologiczny (widok konsylium na żywo; brat psychologiczny)
+const katP = join(narzedzia, 'pokoj-psychologiczny');
+const plikP = existsSync(katP) ? readdirSync(katP).filter((x) => /^POKOJ-PSYCHOLOGICZNY-.*\.html$/.test(x))
   .sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop() : null;
 if (plikP) copyFileSync(join(katP, plikP), join(build, 'app', 'moduly', 'pokoj.html'));
-else console.warn('Pokój lekarski nie jest zbudowany (cd narzedzia/pokoj-lekarski && npm ci && node build.mjs).');
+else console.warn('Pokój psychologiczny nie jest zbudowany (cd narzedzia/pokoj-psychologiczny && npm ci && node build.mjs).');
 
 // 3. Powłoka z konfiguracją wklejoną do HTML
 const tokeny = readFileSync(join(narzedzia, 'wspolne', 'ms-tokeny.css'), 'utf8');
 const wywiadHtml = readFileSync(join(build, 'app', 'moduly', 'wywiad.html'), 'utf8');
 const fontCss = (wywiadHtml.match(/@font-face\{[^}]+\}/g) || []).join('');
-const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ wywiad: true, anonimizator: !!plikA, pokoj: !!plikP })};</script>`;
+
+// 2c. Rozmowa (okno komunikatora z jednym terapeutą AI, narzedzia/rozmowa): jeden plik, sieć zablokowana, krój wbudowany
+{
+  const CSP_MOD = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'";
+  let r = readFileSync(join(narzedzia, 'rozmowa', 'index.html'), 'utf8')
+    .replace(/<link rel="stylesheet" href="\.\.\/wspolne\/ms-tokeny\.css">\n?/, '')
+    .replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss)
+    .replace('<script src="../wspolne/ms-most.js"></script>', () => '<script>\n' + readFileSync(join(narzedzia, 'wspolne', 'ms-most.js'), 'utf8') + '\n</script>')
+    .replace('<meta charset="utf-8">', () => `<meta charset="utf-8">\n<meta http-equiv="Content-Security-Policy" content="${CSP_MOD}">\n<meta name="referrer" content="no-referrer">`);
+  const adresyR = r.replace(/data:[^)'"]+/g, '').match(/(src|href)=["']https?:\/\/[^"']+/g);
+  if (adresyR) throw new Error('Rozmowa: adresy sieciowe w module: ' + adresyR.join(', '));
+  writeFileSync(join(build, 'app', 'moduly', 'rozmowa.html'), r);
+}
+const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ rozmowa: true, wywiad: true, anonimizator: !!plikA, pokoj: !!plikP })};</script>`;
+// Prezent „Dla Halusi” (Michał 1.11.2026): TYLKO w pierwszej wersji (0.1.*); od 0.2.0 znika sam
+const prezent = /^0\.1\./.test(pkg.version) ? readFileSync(join(tu, 'zasoby', 'prezent-halusia.html'), 'utf8') : '';
 const powloka = readFileSync(join(tu, 'app', 'index.html'), 'utf8')
-  .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss);
+  .replace('<!--KONFIGURACJA-->', () => konf).replace('<!--PREZENT-->', () => prezent).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss);
 writeFileSync(join(build, 'app', 'index.html'), powloka.replace('<!--IPAD-GLOWA-->\n', ''));
 
 // 3b. Ta sama powłoka dla iPada (Safari w sieci lokalnej, serwer-ipad.js): most przez HTTP zamiast preload.js,
@@ -59,7 +74,7 @@ const glowaIpad = [
   '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
   '<meta name="apple-mobile-web-app-capable" content="yes">',
   '<meta name="mobile-web-app-capable" content="yes">',
-  '<meta name="apple-mobile-web-app-title" content="MS Konsylium">',
+  '<meta name="apple-mobile-web-app-title" content="MS Psycho">',
   '<meta name="apple-mobile-web-app-status-bar-style" content="default">',
   '<meta name="theme-color" content="#E6EBEE">',
   '<meta name="format-detection" content="telephone=no">',
@@ -74,14 +89,14 @@ copyFileSync(join(tu, 'main.js'), join(build, 'main.js'));
 copyFileSync(join(tu, 'preload.js'), join(build, 'preload.js'));
 copyFileSync(join(tu, 'zasoby', 'ikona.png'), join(build, 'ikona.png'));
 writeFileSync(join(build, 'package.json'), JSON.stringify({ name: pkg.name, productName: pkg.productName, version: pkg.version, main: 'main.js' }, null, 2));
-console.log('Złożono aplikację w', build, plikA ? '(z anonimizatorem)' : '(bez anonimizatora)', plikP ? '(z pokojem lekarskim)' : '(bez pokoju)');
+console.log('Złożono aplikację w', build, plikA ? '(z anonimizatorem)' : '(bez anonimizatora)', plikP ? '(z pokojem psychologicznym)' : '(bez pokoju)', prezent ? '(z prezentem startowym)' : '');
 // 3c. Kopia gotowych plików w repo (gotowe/): komputer Michała nie ma node ani gita, operator pobiera archiwum commitu
 //     z GitHuba i podmienia zawartość resources\app zainstalowanej aplikacji (patrz gotowe/README.md).
 const gotowe = join(tu, 'gotowe');
 rmSync(gotowe, { recursive: true, force: true });
 cpSync(build, gotowe, { recursive: true });
 writeFileSync(join(gotowe, 'README.md'), [
-  '# Gotowe pliki aplikacji MS Konsylium (bez budowania)',
+  '# Gotowe pliki aplikacji MS Konsylium Psychologiczne (bez budowania)',
   '',
   'Ten katalog to wynik `node zbuduj.mjs` (zawartość `resources\\app` w zainstalowanej aplikacji Windows). Generowany automatycznie — nie edytować ręcznie.',
   '',
@@ -101,10 +116,10 @@ const out = join(tu, 'out');
 rmSync(out, { recursive: true, force: true });
 const [katalog] = await packager({
   dir: build, out, platform: 'win32', arch: 'x64', overwrite: true,
-  name: 'MS-Konsylium', executableName: 'MS Konsylium', icon: join(tu, 'zasoby', 'ikona.ico'),
-  appCopyright: 'Marka MS', win32metadata: { ProductName: 'MS Konsylium', FileDescription: 'MS Konsylium', CompanyName: 'MS' },
+  name: 'MS-Konsylium-Psychologiczne', executableName: 'MS Konsylium Psychologiczne', icon: join(tu, 'zasoby', 'ikona.ico'),
+  appCopyright: 'Marka MS', win32metadata: { ProductName: 'MS Konsylium Psychologiczne', FileDescription: 'MS Konsylium Psychologiczne (test)', CompanyName: 'MS' },
   electronVersion: pkg.devDependencies.electron, asar: true, prune: false
 });
-const zip = join(out, `MS-Konsylium-${pkg.version}-win-x64.zip`);
+const zip = join(out, `MS-Konsylium-Psychologiczne-${pkg.version}-win-x64.zip`);
 execFileSync('zip', ['-qr9', zip, '.'], { cwd: katalog });
 console.log('Gotowe:', zip);

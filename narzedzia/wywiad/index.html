@@ -1,6 +1,6 @@
-<title>MS Wywiad z pacjentem</title>
+<title>MS Wywiad z klientem</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Adaptacyjny wywiad z pacjentem dla Konsylium AI: opis własnymi słowami, pytania dobierane na bieżąco, kopia do Konsylium po anonimizacji.">
+<meta name="description" content="Adaptacyjny wywiad z klientem dla Konsylium psychologicznego AI: opis własnymi słowami, pytania dobierane na bieżąco, kopia do Konsylium po anonimizacji.">
 <!--@@FONT-LINK@@-->
 <link rel="stylesheet" href="../wspolne/ms-tokeny.css">
 <style>
@@ -217,7 +217,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     <div class="marka">
       <div class="logo" aria-label="Konsylium AI" title="Konsylium AI">K</div>
       <div>
-        <h1>Wywiad z pacjentem</h1>
+        <h1>Wywiad z klientem</h1>
         <p><span class="kropka-ok"></span> Działa offline · dane nie opuszczają tego komputera</p>
       </div>
     </div>
@@ -230,7 +230,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       <button id="od-nowa" class="przycisk" type="button">Nowy wywiad</button>
       <button id="wczytaj-ai" class="przycisk" type="button">Wczytaj ankietę od AI</button>
       <button id="dolacz-wyniki" class="przycisk" type="button" hidden title="Otwiera anonimizator. Zanonimizowane wyniki wrócą do tego wywiadu.">Dołącz wyniki badań</button>
-      <button id="widok-lekarza" class="przycisk" type="button" aria-pressed="false" title="Pokaż lub ukryj podsumowanie dla lekarza">Podsumowanie dla lekarza</button>
+      <button id="widok-lekarza" class="przycisk" type="button" aria-pressed="false" title="Pokaż lub ukryj podsumowanie dla terapeuty">Podsumowanie dla terapeuty</button>
       <button id="motyw" class="przycisk" type="button" title="Motyw jasny / ciemny">Motyw</button>
     </div>
   </header>
@@ -242,7 +242,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     </section>
 
     <aside aria-labelledby="t-lekarz">
-      <div class="naglowek-panelu"><h2 id="t-lekarz">Podsumowanie dla lekarza</h2><span class="na-zywo">na żywo</span></div>
+      <div class="naglowek-panelu"><h2 id="t-lekarz">Podsumowanie dla terapeuty</h2><span class="na-zywo">na żywo</span></div>
       <div class="lekarz tafla" id="lekarz"></div>
     </aside>
   </main>
@@ -344,15 +344,15 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   function rysujStart() {
     var h = '<div class="start"><div class="modul-pacjenta">Nowy wywiad</div><h3 class="pytanie">Jak chcesz przeprowadzić wywiad?</h3>' +
       (Z.dostepny ? '<button type="button" class="kafel glowny-kafel" data-akcja="tryb" data-tryb="zywo"' + (Z.folder ? '' : ' disabled') + '><b>Na żywo z Konsylium</b>' +
-        '<span>' + (Z.folder ? 'Pacjent opisuje dolegliwości, a Claude czyta zanonimizowane odpowiedzi w folderze Konsylium i na bieżąco dopisuje kolejne pytania.'
+        '<span>' + (Z.folder ? 'Klient opisuje swoją sytuację, a Claude czyta zanonimizowane odpowiedzi w folderze Konsylium i na bieżąco dopisuje kolejne pytania.'
           : 'Najpierw wybierz folder Konsylium w menu po lewej (kopia repo Konsylium na tym komputerze).') + '</span></button>' : '') +
       (Z.dostepny && Z.folder ? '<div class="kafel wznow" id="wznow"><b>Wznów wywiad po kodzie</b><span>Trwający wywiad możesz kontynuować na komputerze albo na iPadzie: wpisz kod albo wybierz z listy.</span>' +
         '<form class="wznow-kod" id="wznow-form"><input id="wznow-pole" inputmode="latin" autocapitalize="characters" autocomplete="off" maxlength="7" placeholder="np. QWE-7K2" aria-label="Kod wywiadu"><button class="przycisk" type="submit">Wznów</button></form>' +
         '<div class="wznow-lista" id="wznow-lista"></div></div>' : '') +
-      '<button type="button" class="kafel' + (Z.dostepny ? '' : ' glowny-kafel') + '" data-akcja="tryb" data-tryb="opis"><b>1. Opis pacjenta dla AI</b>' +
-      '<span>Pacjent opisuje dolegliwości własnymi słowami. Kopiujesz opis do Konsylium, a AI przygotowuje pytania dla tego pacjenta.</span></button>' +
+      '<button type="button" class="kafel' + (Z.dostepny ? '' : ' glowny-kafel') + '" data-akcja="tryb" data-tryb="opis"><b>1. Opis klienta dla AI</b>' +
+      '<span>Klient opisuje sytuację własnymi słowami. Kopiujesz opis do Konsylium, a AI przygotowuje pytania dla tej osoby.</span></button>' +
       '<button type="button" class="kafel" data-akcja="tryb" data-tryb="wczytaj"><b>2. Wczytaj ankietę od AI</b>' +
-      '<span>Wklej odpowiedź z czatu Konsylium albo otwórz plik .json. Pacjent odpowiada na pytania dobrane przez AI.</span></button>' +
+      '<span>Wklej odpowiedź z czatu Konsylium albo otwórz plik .json. Klient odpowiada na pytania dobrane przez AI.</span></button>' +
       '<button type="button" class="link" data-akcja="tryb" data-tryb="standard" style="align-self:flex-start">Ankieta standardowa, bez AI</button></div>';
     $tel.innerHTML = h;
     if (document.getElementById('wznow')) rysujWznow();
@@ -466,7 +466,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     var a = '';
     if (nowe112.length) {
       a += '<div class="alarm" role="alertdialog" aria-labelledby="alarm-t"><div class="numer">112</div><h3 id="alarm-t">Zadzwoń teraz pod numer alarmowy</h3>' +
-        '<p>' + esc(nowe112[0].dlaPacjenta) + '</p><small>Numer alarmowy: 112 (lub 999 – pogotowie ratunkowe). Lekarz widzi już ten alarm.</small>' +
+        '<p>' + esc(nowe112[0].dlaPacjenta) + '</p><small>Numer alarmowy: 112 (lub 999 – pogotowie ratunkowe). Terapeuta widzi już ten alarm. Całodobowo w kryzysie psychicznym: 800 70 2222.</small>' +
         '<button class="przycisk" type="button" data-akcja="potwierdz" data-flagi="' + nowe112.map(function (f) { return f.id; }).join(',') + '" style="align-self:flex-start">Pomoc wezwana albo to pomyłka: wróć do ankiety</button></div>';
     }
     var h = '';
@@ -485,34 +485,34 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       h = '<div class="postep"><div class="postep-tekst"><span>Chwileczkę</span><span>' + zadano + ' odpowiedzi</span></div><div class="tor wklesly"><i style="width:' + proc + '%"></i></div></div>' +
         '<div class="czekanie"><div class="kolko" aria-hidden="true"></div><h3>Dobieram kolejne pytania…</h3>' +
         '<p>Na podstawie Twoich odpowiedzi przygotowuję następne pytanie. To zwykle kilkanaście sekund.</p>' +
-        (ile_s > 90 ? '<small>Czekam już ' + ile_s + ' s. Lekarz: sprawdź, czy sesja Claude działa (podsumowanie dla lekarza).</small>' : '') + '</div>' +
+        (ile_s > 90 ? '<small>Czekam już ' + ile_s + ' s. Terapeuta: sprawdź, czy sesja Claude działa (podsumowanie dla terapeuty).</small>' : '') + '</div>' +
         '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz"' + (zadano > 1 ? '' : ' disabled') + '>Wstecz</button>' +
-        '<div class="prawe"><button class="link" type="button" data-akcja="zywo-koniec" title="Dla lekarza: zakończ bez dalszych pytań od Claude">Zakończ wywiad</button></div></div>';
+        '<div class="prawe"><button class="link" type="button" data-akcja="zywo-koniec" title="Dla terapeuty: zakończ bez dalszych pytań od Claude">Zakończ wywiad</button></div></div>';
       $tel.innerHTML = h + a; return;
     }
     if (!n) {
       if (stan.tryb === 'zywo') {
-        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
+        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer terapeucie. Jeśli poczujesz się wyraźnie gorzej albo pomyślisz o zrobieniu sobie krzywdy, nie czekaj: zadzwoń pod 112 albo 800 70 2222 (całodobowo).</p>' +
           '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>' +
-          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>' + (stan.wyslano ? 'Wywiad jest w folderze Konsylium (' + esc(Z.katalog()) + '/01-wywiad.md). Claude zaczyna konsylium, a przebieg zobaczysz w zakładce Pokój lekarski.'
+          '<div class="dla-lekarza wklesly"><b>Dla terapeuty</b><span>' + (stan.wyslano ? 'Wywiad jest w folderze Konsylium (' + esc(Z.katalog()) + '/01-wywiad.md). Claude zaczyna konsylium, a przebieg zobaczysz w zakładce Pokój psychologiczny.'
             : 'Wywiad po anonimizacji trafi do folderu Konsylium. Claude od razu zacznie konsylium.') + '</span>' +
           '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="zywo-wyslij">' + (stan.wyslano ? 'Wyślij ponownie' : 'Wyślij do Konsylium') + '</button>' +
-          '<button class="przycisk" type="button" data-akcja="pokoj">Pokój lekarski</button>' +
+          '<button class="przycisk" type="button" data-akcja="pokoj">Pokój psychologiczny</button>' +
           '<button class="link" type="button" data-akcja="kopiuj-koniec">albo kopiuj do schowka</button></div>' +
           '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
         h += '<div class="nawigacja"><button class="przycisk" type="button" data-akcja="wstecz">Wstecz</button></div>';
         $tel.innerHTML = h + a; return;
       }
       if (stan.tryb === 'opis') {
-        h += '<div class="koniec"><h3>Dziękujemy za opis.</h3><p>Lekarz przygotuje teraz pytania dopasowane do Ciebie. Przekaż komputer lekarzowi. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p></div>' +
-          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Skopiuj opis do czatu Konsylium. AI odpowie ankietą, którą wczytasz przyciskiem „Wczytaj ankietę od AI”.</span>' +
+        h += '<div class="koniec"><h3>Dziękujemy za opis.</h3><p>Terapeuta przygotuje teraz pytania dopasowane do Ciebie. Przekaż mu komputer. Jeśli poczujesz się wyraźnie gorzej albo pomyślisz o zrobieniu sobie krzywdy, nie czekaj: zadzwoń pod 112 albo 800 70 2222 (całodobowo).</p></div>' +
+          '<div class="dla-lekarza wklesly"><b>Dla terapeuty</b><span>Skopiuj opis do czatu Konsylium. AI odpowie ankietą, którą wczytasz przyciskiem „Wczytaj ankietę od AI”.</span>' +
           '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj opis do Konsylium</button>' +
           '<button class="przycisk" type="button" data-akcja="tryb" data-tryb="wczytaj">Wczytaj ankietę od AI</button></div>' +
           '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
       } else {
-        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer lekarzowi albo osobie z rejestracji. Jeśli objawy wyraźnie się nasilą, nie czekaj: zadzwoń pod 112.</p>' +
+        h += '<div class="koniec"><h3>Dziękujemy, to już wszystko.</h3><p>Przekaż teraz komputer terapeucie. Jeśli poczujesz się wyraźnie gorzej albo pomyślisz o zrobieniu sobie krzywdy, nie czekaj: zadzwoń pod 112 albo 800 70 2222 (całodobowo).</p>' +
           '<p>Odpowiedzi: ' + zadano + '. Możesz jeszcze wrócić i coś poprawić.</p></div>' +
-          '<div class="dla-lekarza wklesly"><b>Dla lekarza</b><span>Wywiad przejdzie przez anonimizator i trafi do schowka. Wklej go w czacie Konsylium.</span>' +
+          '<div class="dla-lekarza wklesly"><b>Dla terapeuty</b><span>Wywiad przejdzie przez anonimizator i trafi do schowka. Wklej go w czacie Konsylium.</span>' +
           '<div class="rzad-start"><button class="przycisk glowny" type="button" data-akcja="kopiuj-koniec">Kopiuj wywiad do Konsylium</button></div>' +
           '<span class="potwierdzenie" id="potw-koniec" aria-live="polite"></span></div>';
       }
@@ -526,7 +526,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     }
 
     h += '<div class="modul-pacjenta">' + esc(nazwaModulu(n.modul)) + '</div>';
-    if (stan.tryb === 'zywo' && n.id === 'opis') h += '<p class="wyniki-pacjent">Twoje odpowiedzi czyta na bieżąco asystent AI Konsylium (bez imienia, nazwiska i PESEL) i dobiera kolejne pytania.</p>';
+    if (stan.tryb === 'zywo' && n.id === 'opis') h += '<p class="wyniki-pacjent">Twoje odpowiedzi czyta na bieżąco asystent AI Konsylium psychologicznego (bez imienia, nazwiska i PESEL) i dobiera kolejne pytania. To nie jest terapia.</p>';
     h += '<h3 class="pytanie" id="tresc-pytania">' + esc(wyborZOpisu && n.tekstPoOpisie ? n.tekstPoOpisie : n.tekst) + '</h3>';
     if (wyborZOpisu) h += '<p class="z-opisu">Zaznaczyłem to, co wynika z Twojego opisu. Popraw, jeśli trzeba.</p>';
     h += rysujOdpowiedz(n);
@@ -606,7 +606,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   function rysujAnalize(st, szkic) {
     var tekst = szkic !== null ? szkic : st.o.opis;
     if (typeof tekst !== 'string' || !tekst.trim()) {
-      return '<div class="sekcja"><h3>Opis pacjenta</h3><div class="spokoj wklesly">' + (szkic !== null ? 'Pacjent zaczyna pisać…' : 'Czeka na opis dolegliwości własnymi słowami.') + '</div></div>';
+      return '<div class="sekcja"><h3>Opis klienta</h3><div class="spokoj wklesly">' + (szkic !== null ? 'Klient zaczyna pisać…' : 'Czeka na opis sytuacji własnymi słowami.') + '</div></div>';
     }
     var an = st.analiza, h = '<div class="sekcja"><h3>Opis pacjenta' + (szkic !== null ? ' <span class="na-zywo" style="text-transform:none;letter-spacing:0">pisze…</span>' : '') + '</h3>';
     h += '<blockquote class="opis wklesly">' + podswietl(tekst, an.slady) + '</blockquote>';
@@ -661,7 +661,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     h += '</div>';
 
     h += '<div class="sekcja"><h3>Odpowiedzi</h3>';
-    if (!stan.historia.length) h += '<div class="spokoj wklesly">Pacjent jeszcze nie odpowiedział.</div>';
+    if (!stan.historia.length) h += '<div class="spokoj wklesly">Klient jeszcze nie odpowiedział.</div>';
     else h += '<ol class="odpowiedzi" id="lista-odp">' + stan.historia.map(function (x, i) {
       var q = S.pytanieWg(B, x.id);
       var li = '<li><span class="nr">' + (i + 1) + '</span><span><span class="p">' + esc(q.krotko) + '</span><br><span class="o' + (S.czyNieznane(x.wartosc) ? ' nieznane' : '') + '">' +
@@ -829,7 +829,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
   function ustawWidokLekarza(pokaz) {
     $uklad.classList.toggle('tylko-pacjent', !pokaz);
     $wl.setAttribute('aria-pressed', String(pokaz));
-    $wl.textContent = pokaz ? 'Ukryj podsumowanie' : 'Podsumowanie dla lekarza';
+    $wl.textContent = pokaz ? 'Ukryj podsumowanie' : 'Podsumowanie dla terapeuty';
   }
   ustawWidokLekarza(!!window.MS_MOTYW_Z_SYSTEMU);
   $wl.addEventListener('click', function () { ustawWidokLekarza($wl.getAttribute('aria-pressed') !== 'true'); });
@@ -952,7 +952,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
         .then(function () { return id; });
     }).then(function (id) {
       stan.sprawa = id; stan.wyslano = new Date().toISOString(); zapisz(); synchronizuj(); rysuj();
-      var p2 = document.getElementById('potw-koniec'); if (p2) p2.textContent = 'Zapisano. Założono sprawę ' + id + ' w folderze Konsylium – Claude zaczyna konsylium, Pokój lekarski ją pokazuje.';
+      var p2 = document.getElementById('potw-koniec'); if (p2) p2.textContent = 'Zapisano. Założono sprawę ' + id + ' w folderze Konsylium – Claude zaczyna konsylium, Pokój psychologiczny ją pokazuje.';
       MsMost.wyslij('pokoj', { zywo: true, sprawa: id }).catch(function () {});
     }, function (e) { if (potw) potw.textContent = 'Nie udało się zapisać: ' + e.message; });
   }

@@ -19,16 +19,18 @@ import sys
 import time
 from pathlib import Path
 
-PLIK = "uwagi-lekarza.jsonl"
+# brat psychologiczny: Pokój psychologiczny zapisuje uwagi-terapeuty.jsonl; stary plik lekarza czytany dla zgodności
+PLIK = "uwagi-terapeuty.jsonl"
+PLIK_STARY = "uwagi-lekarza.jsonl"
 ZNACZNIK = "_uwagi-przeczytane.json"
 
 
 def wczytaj(sprawa: Path) -> list[dict]:
-    p = sprawa / PLIK
-    if not p.exists():
+    tekst = "".join((sprawa / f).read_text(encoding="utf-8") + "\n" for f in (PLIK, PLIK_STARY) if (sprawa / f).exists())
+    if not tekst:
         return []
     out = []
-    for l in p.read_text(encoding="utf-8").splitlines():
+    for l in tekst.splitlines():
         l = l.strip()
         if not l:
             continue

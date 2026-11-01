@@ -1,0 +1,17 @@
+# Numery i miejsca pomocy w Polsce. JEDYNE źródło numerów dla agentów i aplikacji (docs/BEZPIECZENSTWO.md §5).
+# Strażnik ryzyka i prowadzący czytają ten plik; nigdy nie podają numerów z pamięci modelu.
+# Do weryfikacji przez Michała przed wdrożeniem (godziny 116 123 niepotwierdzone).
+zagrozenie_zycia:
+  numer: "112"
+  opis: "Numer alarmowy, całodobowo"
+kryzys_psychiczny:
+  numer: "800 70 2222"
+  opis: "Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym, całodobowo, bezpłatnie"
+telefon_zaufania_dorosli:
+  numer: "116 123"
+  opis: "Telefon zaufania dla osób dorosłych w kryzysie emocjonalnym (godziny pracy do sprawdzenia; nie przedstawiać jako całodobowy)"
+przemoc_domowa:
+  numer: "800 120 002"
+  opis: "Ogólnopolskie Pogotowie dla Ofiar Przemocy w Rodzinie „Niebieska Linia”, całodobowo"
+bez_skierowania:
+  opis: "Psychiatra w ramach NFZ bez skierowania; Centrum Zdrowia Psychicznego w rejonie (punkt zgłoszeniowo-koordynacyjny); izba przyjęć szpitala psychiatrycznego"

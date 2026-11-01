@@ -1,4 +1,4 @@
-# Gotowe pliki aplikacji MS Konsylium (bez budowania)
+# Gotowe pliki aplikacji MS Konsylium Psychologiczne (bez budowania)
 
 Ten katalog to wynik `node zbuduj.mjs` (zawartość `resources\app` w zainstalowanej aplikacji Windows). Generowany automatycznie — nie edytować ręcznie.
 

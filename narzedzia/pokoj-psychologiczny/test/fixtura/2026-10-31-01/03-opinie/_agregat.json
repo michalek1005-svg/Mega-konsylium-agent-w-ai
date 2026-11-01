@@ -1,0 +1,145 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "ostre zapalenie pęcherzyka żółciowego",
+      "p": 0.34,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "kolka żółciowa w przebiegu kamicy pęcherzyka żółciowego",
+      "p": 0.125,
+      "wymienili": [
+        "bayes",
+        "najgorszy_scenariusz"
+      ]
+    },
+    {
+      "rozpoznanie": "Objawowa kamica pęcherzyka żółciowego (kolka żółciowa)",
+      "p": 0.065,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    },
+    {
+      "rozpoznanie": "Kolka żółciowa w przebiegu objawowej kamicy pęcherzyka żółciowego",
+      "p": 0.037,
+      "wymienili": [
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "dyspepsja lub choroba wrzodowa żołądka i dwunastnicy",
+      "p": 0.032,
+      "wymienili": [
+        "bayes"
+      ]
+    }
+  ],
+  "zgoda": 0.244,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Niedokrwienie mięśnia sercowego o nietypowym obrazie — brak elektrokardiogramu przy profilu ryzyka sercowo-naczyniowego",
+      "Ostre zapalenie pęcherzyka żółciowego — dodatni objaw Murphy'ego przy 3 dniach dolegliwości; gorączka mogła być maskowana ibuprofenem",
+      "Ostre zapalenie trzustki / kamica przewodowa — brak lipazy, bilirubiny, prób wątrobowych",
+      "cholestaza / kamica przewodowa / zapalenie dróg żółciowych — brak bilirubiny i prób wątrobowych",
+      "ciąża pozamaciczna — wiek 54 l. czyni ją bardzo mało prawdopodobną, status menopauzalny NIEZNANY",
+      "ciąża — status miesiączki/menopauzy NIEZNANY; znaczenie głównie dla doboru leków i obrazowania; wykluczy: wywiad menopauzalny lub test beta-hCG",
+      "ciąża — status miesiączkowania NIEZNANY (mało prawdopodobna w wieku 54 lat, ale niewykluczona przed badaniami)",
+      "funkcja nerek (kreatynina, eGFR) NIEZNANA — ogranicza bezpieczne dawkowanie niesteroidowych leków przeciwzapalnych",
+      "ibuprofen przyjęty w ostatniej dobie mógł zamaskować gorączkę i część odczynu zapalnego; temperatura 36,9 °C nie wyklucza ostrego zapalenia pęcherzyka żółciowego",
+      "kamica przewodowa / zapalenie dróg żółciowych — żółtaczka oceniana tylko przez pacjentkę; wykluczy: prawidłowa bilirubina, ALT, AST, ALP, GGTP i nieposzerzony przewód żółciowy wspólny w USG",
+      "kamica przewodowa / żółciopochodne ostre zapalenie trzustki — wymaga lipazy, bilirubiny, ALT/AST, ALP/GGTP",
+      "kamica przewodowa / żółciowe ostre zapalenie trzustki — brak bilirubiny, ALT, AST, fosfatazy zasadowej, GGTP, lipazy/amylazy",
+      "lipaza NIEZNANA",
+      "maskowanie objawów przez NLPZ (ibuprofen 2 × 400 mg wczoraj) — brak gorączki i obrony mięśniowej mniej wiarygodny",
+      "nowotwór pęcherzyka żółciowego / trzustki / dróg żółciowych (nieodwracalne przy opóźnieniu tygodni) — nawracające dolegliwości od roku, kobieta 54 l. z otyłością; wykluczy: USG jamy brzusznej bez zmian ogniskowych, prawidłowe próby cholestatyczne",
+      "ostre zapalenie pęcherzyka żółciowego (Murphy dodatni, ból 3 dni, gorączka mogła być maskowana ibuprofenem) — wymaga CRP, leukocytozy i USG",
+      "ostre zapalenie pęcherzyka żółciowego — Murphy dodatni, brak morfologii i białka C-reaktywnego; gorączka mogła być maskowana ibuprofenem",
+      "ostre zapalenie pęcherzyka żółciowego — Murphy dodatni, ból 3 dni, gorączka mogła być maskowana ibuprofenem; brak CRP/leukocytów/USG",
+      "ostre zapalenie pęcherzyka żółciowego — objaw Murphy'ego dodatni, 3 dni bólu; nie wykluczone, dopóki brak CRP, leukocytozy i USG; wykluczy: prawidłowe CRP i leukocyty oraz USG bez pogrubienia ściany / płynu okołopęcherzykowego / sonograficznego objawu Murphy'ego",
+      "ostre zapalenie trzustki — brak lipazy",
+      "ostre zapalenie trzustki — wykluczy: lipaza poniżej 3-krotności górnej granicy normy",
+      "ostry zespół wieńcowy z atypową lokalizacją bólu — brak EKG u kobiety 50+ z czynnikami ryzyka sercowo-naczyniowego",
+      "ostry zespół wieńcowy z bólem w nadbrzuszu — kobieta 54 l. z nadciśnieniem i hipercholesterolemią, brak EKG; pretest niski (ból jednoznacznie poposiłkowy, bez duszności i potów), ale nie wykluczony",
+      "ostry zespół wieńcowy z bólem w nadbrzuszu — kobieta z 3 czynnikami ryzyka sercowo-naczyniowego, EKG nie wykonane; wykluczy: prawidłowe EKG spoczynkowe w gabinecie, a przy wątpliwości troponina wysokoczuła",
+      "próby wątrobowe i bilirubina NIEZNANE — nie wiadomo, czy można bezpiecznie kontynuować atorwastatynę",
+      "sercowa przyczyna bólu w nadbrzuszu u kobiety z czynnikami ryzyka — EKG nie wykonano",
+      "status menopauzalny i ewentualna hormonalna terapia zastępcza lub antykoncepcja estrogenowa NIEZNANE — estrogeny zwiększają ryzyko kamicy żółciowej"
+    ],
+    "wykluczone": [
+      "Krwawienie z przewodu pokarmowego — brak smolistych stolców i krwi w stolcu",
+      "Niestabilność hemodynamiczna — RR 138/86 mmHg, HR 84/min",
+      "Otrzewnowa obrona mięśniowa — nieobecna w badaniu",
+      "jawna żółtaczka (klinicznie nie zauważona)",
+      "krwawienie z górnego odcinka przewodu pokarmowego — brak smolistych stolców i krwi w stolcu, tętno 84/min",
+      "krwawienie z przewodu pokarmowego (brak smolistych i krwistych stolców) — w zakresie wywiadu",
+      "krwawienie z przewodu pokarmowego (brak smolistych stolców i krwi)",
+      "krwawienie z przewodu pokarmowego po niesteroidowych lekach przeciwzapalnych — klinicznie mało prawdopodobne (brak smolistych stolców i krwi w stolcu), ale bez aktualnej morfologii",
+      "niestabilność hemodynamiczna (HR 84, RR 138/86)",
+      "niestabilność hemodynamiczna (RR 138/86 mmHg, HR 84/min)",
+      "objawy cholangitis w wywiadzie (żółtaczka, ciemny mocz, odbarwione stolce, dreszcze) — zaprzeczone, ale bez potwierdzenia laboratoryjnego",
+      "otrzewnowe objawy rozlane (brak obrony mięśniowej)",
+      "otrzewnowe zapalenie rozlane (brak obrony mięśniowej)",
+      "perforacja wrzodu / zapalenie otrzewnej — wykluczone klinicznie z rozsądną pewnością: brak obrony mięśniowej, stabilne parametry życiowe (wymaga ponownej oceny brzucha, gdyż ibuprofen może maskować)",
+      "rozwarstwienie aorty / pękający tętniak aorty brzusznej — mało prawdopodobne: ból kolkowy związany z posiłkami, nawracający od roku, ciśnienie 138/86; [wiedza modelu, niezweryfikowane]",
+      "wstrząs septyczny / ciężkie zapalenie dróg żółciowych — brak gorączki, dreszczy, żółtaczki; tętno i ciśnienie prawidłowe",
+      "Żółtaczka, ciemny mocz, odbarwione stolce — nie stwierdzono (w ocenie pacjentki, bez bilirubiny)",
+      "żółtaczka / ciemny mocz / odbarwione stolce (wg wywiadu — bez badań laboratoryjnych)"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.005,
+      "pilnosc": 0.603,
+      "k": 1.0047
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.994,
+      "pilnosc": 0.596,
+      "k": 0.9941
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.496,
+      "pilnosc": 0.991,
+      "k": 0.9914
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.505,
+      "pilnosc": 0.606,
+      "k": 1.0097
+    }
+  },
+  "liczba_opinii": 6
+}

@@ -38,9 +38,9 @@
   var pytania = [
     // ── START ───────────────────────────────────────────────
     { id: 'opis', modul: 'start', typ: 'tekst', priorytet: 101, pominiecie: true, nieWiem: false,
-      tekst: 'Opisz krótko własnymi słowami, co Ci dolega i od kiedy.',
-      podpowiedz: 'Na przykład: „Od wczoraj boli mnie brzuch pod prawymi żebrami, zwłaszcza po jedzeniu. Raz zwymiotowałam.”',
-      krotko: 'opis dolegliwości własnymi słowami',
+      tekst: 'Opisz krótko własnymi słowami, co się dzieje, od kiedy i z czym przychodzisz.',
+      podpowiedz: 'Na przykład: „Od trzech miesięcy unikam rozmów z nowym szefem. Przed spotkaniami nie śpię, a zadania odkładam na noc.”',
+      krotko: 'opis sytuacji własnymi słowami',
       bo: 'Punkt wyjścia. Analiza opisu wybiera moduły, uzupełnia odpowiedzi podane wprost i od razu sprawdza czerwone flagi.' },
     { id: 'powod', modul: 'start', typ: 'wiele', priorytet: 100, nieWiem: false,
       tekst: 'Z czym się dziś zgłaszasz? Zaznacz wszystko, co pasuje.',

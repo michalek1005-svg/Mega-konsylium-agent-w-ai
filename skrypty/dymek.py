@@ -3,8 +3,8 @@
 Dymek do Pokoju lekarskiego → dopisuje zdarzenie "wypowiedz" do sprawy/<ID>/_log.jsonl (format: docs/DYMKI.md).
 
 Użycie (ordynator, po każdej wypowiedzi albo zbiorczo po kroku):
-  python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "Tabletka widmo 0,70, pilność 4." [--info "p=0,70 · Bristol 6"] [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
-  python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
+  python3 skrypty/dymek.py sprawy/<ID> --rola cbt --faza "Ślepa tura" --skrot "Unikanie rozmów z szefem podtrzymuje lęk; pierwszy krok to aktywizacja." [--info "PHQ-9 19 · GAD-7 9"] [--temat "..."] [--plik 03-opinie/bayes.json] [--persona "..."]
+  python3 skrypty/dymek.py sprawy/<ID> --rola prowadzacy --faza "Konsylium runda 1" --tablica "Podejście wiodące: CBT (aktywizacja)" --skresl "Terapia par — przemoc w relacji"
     (--tablica zapisuje na tablicy w Pokoju najważniejsze ustalenie; --skresl skreśla odrzuconą hipotezę; można łączyć z dymkiem)
   python3 skrypty/dymek.py sprawy/<ID> --wiele dymki.jsonl     # wiele naraz: jedna linia JSON = jeden dymek (te same pola)
 
@@ -23,12 +23,18 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROLE = {"ordynator", "z_zlozonosc", "z_bezpieczenstwo", "z_niepewnosc", "hipotezujacy", "bayes", "najgorszy_scenariusz",
-        "poz_pragmatyk", "farmakolog", "gospodarz_kosztow", "s_fakty", "s_proces", "R1", "R2", "R3", "lekarz_prowadzacy"}
-ALIASY = {"zastepca_zlozonosc": "z_zlozonosc", "zastepca_bezpieczenstwo": "z_bezpieczenstwo", "zastepca_niepewnosc": "z_niepewnosc",
-          "sprawdzajacy_faktow": "s_fakty", "sprawdzajacy_procesu": "s_proces"}
-FAZY = ["Wywiad", "Triage", "Ślepa tura", "Agregacja", "Konsylium · runda", "Projekt", "Rezydenci", "Sprawdzenie",
-        "Odpowiedź rezydentom", "Werdykt", "Follow-up"]
+# Konsylium psychologiczne: prowadzący, 7 klinicystów, strażnik ryzyka + 2 zastępców, 3 sprawdzających, stażyści S1–S3, terapeuta prowadzący (użytkownik)
+ROLE = {"prowadzacy", "straznik_ryzyka", "z_zlozonosc", "z_niepewnosc", "cbt", "psychodynamiczny", "systemowy", "act",
+        "humanistyczny", "diagnosta", "psychiatra", "s_zrodla", "s_etyka", "klient_sedzia", "S1", "S2", "S3", "terapeuta_prowadzacy"}
+ALIASY = {"ordynator": "prowadzacy", "superwizor": "prowadzacy", "straznik": "straznik_ryzyka", "zastepca_bezpieczenstwo": "straznik_ryzyka",
+          "z_bezpieczenstwo": "straznik_ryzyka", "zastepca_zlozonosc": "z_zlozonosc", "zastepca_niepewnosc": "z_niepewnosc",
+          "terapeuta_cbt": "cbt", "terapeuta_psychodynamiczny": "psychodynamiczny", "terapeuta_systemowy": "systemowy",
+          "terapeuta_act": "act", "trzeciej_fali": "act", "terapeuta_humanistyczny": "humanistyczny",
+          "sprawdzajacy_zrodel": "s_zrodla", "zrodla": "s_zrodla", "sprawdzajacy_etyki": "s_etyka", "etyka": "s_etyka",
+          "klient-sedzia": "klient_sedzia", "sedzia": "klient_sedzia", "stazysta": "S1",
+          "lekarz_prowadzacy": "terapeuta_prowadzacy", "psycholog_prowadzacy": "terapeuta_prowadzacy", "uzytkownik": "terapeuta_prowadzacy"}
+FAZY = ["Wywiad", "Ryzyko", "Triage", "Ślepa tura", "Mapa zgody", "Agregacja", "Konsylium · runda", "Projekt", "Stażyści", "Rezydenci",
+        "Sprawdzenie", "Odpowiedź stażystom", "Plan wsparcia", "Wnioski", "Werdykt", "Follow-up"]
 MAX = 400
 MAX_TRESC = 600
 MAX_INFO = 200
@@ -36,8 +42,10 @@ MAX_INFO = 200
 
 def rola(r: str) -> str:
     n = re.sub(r"[-\s]+", "_", r.strip()).removeprefix("lekarz_")
-    if re.fullmatch(r"[rR]\d", n):
-        return n.upper()
+    if re.fullmatch(r"[rRsS]\d", n):
+        return "S" + n[1]
+    if re.fullmatch(r"(rezydent|stazysta)_?\d", n, re.I):
+        return "S" + n[-1]
     n = n.lower()
     n = ALIASY.get(n, n)
     if n not in ROLE:

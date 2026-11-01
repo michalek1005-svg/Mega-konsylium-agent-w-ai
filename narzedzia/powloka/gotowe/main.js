@@ -9,7 +9,7 @@ const crypto = require('node:crypto');
 const os = require('node:os');
 const { utworzSerwer, adresySieci } = require('./serwer-ipad.js');
 
-app.setName('MS Konsylium Narzędzia');
+app.setName('MS Konsylium Psychologiczne'); // osobne ustawienia i folder od Konsylium lekarskiego
 // testy automatyczne: osobny katalog danych aplikacji (localStorage, ustawienia)
 if (process.env.MS_DANE_APLIKACJI) app.setPath('userData', process.env.MS_DANE_APLIKACJI);
 
@@ -129,7 +129,7 @@ const PLIKI = {
 };
 
 // ── iPad: udostępnienie w sieci lokalnej (domyślnie wyłączone) ──
-const IPAD_PORT = Number(process.env.MS_IPAD_PORT) || 8765;
+const IPAD_PORT = Number(process.env.MS_IPAD_PORT) || 8766; // 8765 = Konsylium lekarskie; obie aplikacje mogą działać naraz
 let ipad = { serwer: null, blad: null, polaczone: [] };
 function kluczIpad(nowy) {
   const u = ustawienia();

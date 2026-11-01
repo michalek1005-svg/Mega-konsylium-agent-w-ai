@@ -1,6 +1,6 @@
 // Test całej ścieżki „na żywo” w prawdziwym Electronie (Linux + Xvfb w CI/chmurze):
 // wywiad → stan.json → „Claude” (skrypty/wywiad_na_zywo.py) dopisuje pytania → pacjent odpowiada →
-// 01-wywiad.md po anonimizacji → dymki konsylium (skrypty/dymek.py) → Pokój lekarski na żywo.
+// 01-wywiad.md po anonimizacji → dymki konsylium (skrypty/dymek.py) → Pokój psychologiczny na żywo.
 // Użycie: node zbuduj.mjs --bez-paczki && xvfb-run -a node test/e2e-na-zywo.mjs
 import { createRequire } from 'node:module';
 const { _electron: electron } = createRequire(import.meta.url)('playwright'); // Playwright globalnie albo w projekcie
@@ -37,7 +37,33 @@ try {
   // 1. Folder Konsylium widoczny w menu
   await czekaj(async () => (await okno.textContent('#folder-sciezka')).includes(folder), 5000, 'ścieżka folderu');
 
+  // 1a. Prezent startowy (tylko wersja 0.1.x): zakrywa aplikację, otwiera się kliknięciem i sam znika
+  if (await okno.$('#prezent')) {
+    await okno.click('#prezent');
+    await czekaj(async () => !(await okno.$('#prezent')), 20000, 'zniknięcie prezentu');
+  }
+
+  // 1b. Rozmowa (domyślna zakładka): wiadomość → rozmowa/<KOD>/wiadomosci.jsonl → odpowiedź zespołu jednym głosem
+  const rz = await ramka('rozmowa');
+  await rz.waitForSelector('#tekst');
+  await rz.fill('#tekst', 'Klient unika szefa od dwóch tygodni, jak zacząć rozmowę o tym?');
+  await rz.click('#wyslij');
+  const kodR = await czekaj(() => existsSync(join(folder, 'rozmowa')) && execFileSync('ls', [join(folder, 'rozmowa')], { encoding: 'utf8' }).trim().split('\n')[0], 5000, 'katalog rozmowy');
+  const katR = join(folder, 'rozmowa', kodR);
+  await czekaj(() => existsSync(join(katR, 'wiadomosci.jsonl')), 5000, 'wiadomosci.jsonl');
+  const pierwsza = JSON.parse(readFileSync(join(katR, 'wiadomosci.jsonl'), 'utf8').trim().split('\n')[0]);
+  assert.match(pierwsza.tekst, /unika szefa/);
+  assert.match(py('rozmowa.py', 'czekaj', '--kod', kodR, '--limit', '5'), /unika szefa/);
+  py('rozmowa.py', 'panel', '--kod', kodR, '--role', 'cbt,systemowy,straznik');
+  await rz.waitForSelector('text=zespół pracuje', { timeout: 8000 });
+  writeFileSync(join(folder, 'odp.json'), JSON.stringify({ tekst: 'Zacznij od tego, czego klient się spodziewa po tej rozmowie.', panel: ['cbt', 'systemowy', 'straznik'], ryzyko: 0, glosy: [{ rola: 'cbt', skrot: 'unikanie podtrzymuje lęk' }], odbiorca: 'terapeuta' }));
+  py('rozmowa.py', 'odpowiedz', '--kod', kodR, '--plik', join(folder, 'odp.json'));
+  await new Promise((r) => setTimeout(r, 3000));
+  await rz.waitForSelector('.wiad.on >> text=czego klient się spodziewa', { timeout: 8000 });
+  assert.ok(!existsSync(join(katR, 'panel.json')), 'panel.json usunięty po odpowiedzi');
+
   // 2. Wywiad na żywo: opis z danymi osobowymi (mają zniknąć przed zapisem)
+  await okno.click('button.modul[data-modul="wywiad"]');
   const w = await ramka('wywiad');
   await w.waitForSelector('[data-tryb="zywo"]:not([disabled])');
   await w.click('[data-tryb="zywo"]');
@@ -103,7 +129,7 @@ try {
   assert.ok(!/85010112345|Kowalski|Nowak/.test(md), '01-wywiad.md bez danych osobowych');
   assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), /Wywiad wysłany/);
 
-  // 7. Konsylium pisze dymki z pełną treścią, Pokój lekarski pokazuje je na żywo
+  // 7. Konsylium pisze dymki z pełną treścią, Pokój psychologiczny pokazuje je na żywo
   // aplikacja sama założyła czystą sprawę dla tego wywiadu (Michał 1.11: „znowu miesza sprawy”)
   const idSprawy = (await czekaj(() => existsSync(join(kat, 'sprawa.txt')) && readFileSync(join(kat, 'sprawa.txt'), 'utf8').trim(), 5000, 'sprawa.txt'));
   assert.match(idSprawy, /^\d{4}-\d{2}-\d{2}-\d{2}$/, 'nazwa sprawy RRRR-MM-DD-NN');
@@ -111,22 +137,22 @@ try {
   assert.ok(existsSync(join(sprawa, '00-surowe.md')) && existsSync(join(sprawa, '01-wywiad.md')) && existsSync(join(sprawa, '_log.jsonl')), 'sprawa z wywiadem i logiem');
   assert.match(readFileSync(join(sprawa, '01-wywiad.md'), 'utf8'), /\*\*Pacjent:\*\*/, 'wiek i płeć w nagłówku wywiadu');
   assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), new RegExp('ZAŁOŻYŁA JUŻ sprawę sprawy/' + idSprawy));
-  py('dymek.py', sprawa, '--rola', 'ordynator', '--faza', 'Wywiad', '--temat', 'Ból w prawym podżebrzu po tłustym posiłku', '--skrot', 'Zaczynamy.',
+  py('dymek.py', sprawa, '--rola', 'prowadzacy', '--faza', 'Wywiad', '--temat', 'Ból w prawym podżebrzu po tłustym posiłku', '--skrot', 'Zaczynamy.',
     '--tresc', 'Pacjent z bólem w prawym podżebrzu nasilającym się po posiłku tłustym, bez żółtaczki i gorączki. Zaczynamy od triage.');
   await okno.click('button.modul[data-modul="pokoj"]');
   const pk = await ramka('pokoj');
   await pk.waitForSelector('text=na żywo z folderu Konsylium', { timeout: 10000 });
-  py('dymek.py', sprawa, '--rola', 'bayes', '--faza', 'Ślepa tura', '--skrot', 'Kolka żółciowa 0,55.',
+  py('dymek.py', sprawa, '--rola', 'psychodynamiczny', '--faza', 'Ślepa tura', '--skrot', 'Kolka żółciowa 0,55.',
     '--tresc', 'Najbardziej prawdopodobna jest kolka żółciowa (p≈0,55) w przebiegu kamicy pęcherzyka żółciowego. Brak gorączki i żółtaczki obniża prawdopodobieństwo zapalenia dróg żółciowych.',
     '--info', 'p=0,55 · Tokio 2018: kryteria niespełnione');
   await pk.waitForSelector('.dymek.pelny >> text=kamicy pęcherzyka żółciowego', { timeout: 15000 });
   assert.match(await pk.textContent('.dymek.pelny .info'), /Tokio 2018/);
 
   // 8. Wnioski końcowe: 09-FINAL.md otwiera ekran wniosków w Pokoju
-  writeFileSync(join(sprawa, '09-FINAL.md'), 'REKOMENDACJA: USG jamy brzusznej w trybie pilnym (do 24 h).\nPILNOŚĆ: 2 dziś — PEWNOŚĆ: średnia\nDLACZEGO: Kolka żółciowa najbardziej prawdopodobna.\nPLAN B: Gorączka lub żółtaczka: SOR.\nCZEGO NIE WIEMY: wyniki badań\nWRÓĆ / ESKALUJ GDY: gorączka, żółtaczka\nŹRÓDŁA: Tokio 2018\n— Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.\n');
+  writeFileSync(join(sprawa, '09-FINAL.md'), 'FORMULACJA: Ból po posiłkach podtrzymuje lęk o zdrowie i unikanie jedzenia.\nKIERUNEK PRACY: CBT lęku o zdrowie po wykluczeniu przyczyny somatycznej (USG jamy brzusznej).\nCO NAJPIERW: dzienniczek posiłków i objawów przez 7 dni\nCZEGO NIE PRZEOCZYĆ: kolka żółciowa, gorączka lub żółtaczka: SOR\nPLAN BEZPIECZEŃSTWA: przesiew ujemny dnia 2026-11-01\nZDANIE ODRĘBNE: brak\nCZEGO NIE WIEMY: wyniki badań\nWRÓĆ / ESKALUJ GDY: gorączka, żółtaczka\nŹRÓDŁA: Tokio 2018\n— Narzędzie testowe i edukacyjne marki MS. Nie służy do diagnozy ani terapii realnych osób.\n');
   await pk.waitForSelector('#wnioski:not([hidden]) .rek', { timeout: 10000 });
-  assert.match(await pk.textContent('#wnioski .rek'), /USG jamy brzusznej/);
-  assert.match(await pk.textContent('#wnioski dl'), /PLAN B/);
+  assert.match(await pk.textContent('#wnioski .rek'), /CBT lęku o zdrowie/);
+  assert.match(await pk.textContent('#wnioski dl'), /CZEGO NIE PRZEOCZYĆ/);
   await okno.screenshot({ path: join(tmpdir(), 'ms-na-zywo-wnioski.png') });
 
   assert.deepEqual(sieci, [], 'aplikacja nie łączy się z siecią');
