@@ -528,11 +528,15 @@ ${podpisy(wpisy)}`;
 
   // ---------- prognoza rozpoznań: mały wykres tylko dla Lekarza prowadzącego (Michał 1.11) ----------
   // Dymki nie mają procentów; prawdopodobieństwa są tylko tutaj: średnia opinii → agregacja → zdarzenia „prognoza”.
+  // Wykres jest opcjonalny (Michał 1.11: „ma być opcjonalny do wyświetlenia po kliknięciu”): przycisk „Prognoza %” w nagłówku.
+  let prognozaWidoczna = false;
+  $('prognoza-btn').addEventListener('click', () => { prognozaWidoczna = !prognozaWidoczna; $('prognoza-btn').setAttribute('aria-pressed', String(prognozaWidoczna)); $('prognoza-btn').classList.toggle('nk-on', prognozaWidoczna); if (kroki.length) rysujPrognoze(kroki[i].si); });
   function rysujPrognoze(si) {
     const el = $('prognoza'); if (!el) return;
     const lista = (scen && scen.tablica && scen.tablica.prognozy) || [];
     const akt = lista.filter((p) => p.si <= si).pop();
-    if (!akt || !akt.rozpoznania.length) { el.hidden = true; el.innerHTML = ''; return; }
+    $('prognoza-btn').hidden = !akt || !akt.rozpoznania.length;
+    if (!akt || !akt.rozpoznania.length || !prognozaWidoczna) { el.hidden = true; el.innerHTML = ''; return; }
     const max = Math.max(...akt.rozpoznania.map((r) => r.p), 0.01);
     el.hidden = false;
     el.innerHTML = `<div class="pr-gora"><b>Prognoza rozpoznań</b><span>dla Ciebie · ${esc(akt.zrodlo)}</span></div>` +
