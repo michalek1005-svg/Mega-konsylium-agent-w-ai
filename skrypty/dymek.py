@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROLE = {"ordynator", "z_zlozonosc", "z_bezpieczenstwo", "z_niepewnosc", "hipotezujacy", "bayes", "najgorszy_scenariusz",
-        "poz_pragmatyk", "farmakolog", "gospodarz_kosztow", "s_fakty", "s_proces", "R1", "R2", "R3"}
+        "poz_pragmatyk", "farmakolog", "gospodarz_kosztow", "s_fakty", "s_proces", "R1", "R2", "R3", "lekarz_prowadzacy"}
 ALIASY = {"zastepca_zlozonosc": "z_zlozonosc", "zastepca_bezpieczenstwo": "z_bezpieczenstwo", "zastepca_niepewnosc": "z_niepewnosc",
           "sprawdzajacy_faktow": "s_fakty", "sprawdzajacy_procesu": "s_proces"}
 FAZY = ["Wywiad", "Triage", "Ślepa tura", "Agregacja", "Konsylium · runda", "Projekt", "Rezydenci", "Sprawdzenie",

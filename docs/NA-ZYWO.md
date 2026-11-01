@@ -40,6 +40,7 @@ python skrypty/wywiad_na_zywo.py zakoncz --kod KOD          # koniec bez nowych 
 Zasady:
 
 - **Szybko.** Pacjent czeka przy komputerze. Odpowiadaj na stan w kilkanaście sekund. Pierwsza partia: 3–4 pytania wykluczające stany nagłe dla tego opisu. Potem partie po 2–3 pytania, dopisywane, zanim pacjent skończy poprzednie (podsumowanie mówi, ile zostało w kolejce).
+- **Klikalnie, nie pisemnie (Michał 1.11.2026).** Pacjent nie ma dużo pisać: pytania `jeden`, `wiele`, `skala`, tak/nie/nie wiem, godziny i czasy z listy opcji. Pytanie `tekst` tylko wtedy, gdy nie da się go zamknąć w opcjach (np. nazwa leku z opakowania), najwyżej 2–3 na całą ankietę.
 - Format pytań i flag: `narzedzia/wywiad/FORMAT-ANKIETY.md` (per „Ty”, formy „zauważyłaś/zauważyłeś”, bez sugerowania rozpoznania, uzasadnienie w `bo`, flaga `112`/`pilne` przy każdym pytaniu o zagrożenie). Plik `--pytania` to lista pytań albo `{"pytania": […], "flagi": […]}`.
 - **Tylko dopisuj.** Nie zmieniaj ani nie usuwaj pytań, na które pacjent mógł już odpowiedzieć. Nowe pytanie ważniejsze od czekających oznacz wyższym `priorytet` (np. 95).
 - Nie pytaj o to, co jest już w odpowiedziach albo w `zOpisu`. Pytania warunkowe opieraj na `gdy`.
@@ -55,7 +56,19 @@ Gdy podsumowanie mówi „Wywiad wysłany”:
 1. Załóż `sprawy/<RRRR-MM-DD-NN>/`, skopiuj `wywiad-na-zywo/<KOD>/01-wywiad.md` jako `00-surowe.md` i `01-wywiad.md` (wywiad już jest zamknięty: lista NIEZNANE jedzie dalej, bez dodatkowych tur pytań, chyba że lekarz dopisze odpowiedzi w czacie).
 2. Prowadź konsylium według `CLAUDE.md` i `PROMPT-NADZORCA.md`, z modelami jak w `.claude/agents/`.
 3. **Dymki od razu po każdej wypowiedzi**, nie po całym kroku: `python skrypty/dymek.py sprawy/<ID> --rola … --faza "…" --skrot "…" [--info "…"]`. Skrót to 1–2 pełne zdania językiem medycznym (do 400 znaków), a `--info` to linia z liczbami, skalami i wytycznymi (docs/DYMKI.md). Na początku każdej fazy dymek ordynatora z `--temat`.
-4. Na końcu `09-FINAL.md` jak zwykle. Lekarz widzi przebieg w zakładce Pokój lekarski.
+4. **Dymki tylko z treścią medyczną** (docs/DYMKI.md): opinie i zdania lekarzy, bez wag, agregacji i opisu procesu. Etapy techniczne dostają najwyżej jeden dymek ordynatora z `--temat`.
+5. Na końcu `09-FINAL.md` jak zwykle. Lekarz widzi przebieg w zakładce Pokój lekarski.
+
+## Lekarz prowadzący w dyskusji (Michał 1.11.2026)
+
+Użytkownik ma w Pokoju lekarskim rolę **Lekarz prowadzący** i pole „Dopisz do dyskusji”. Każdy wpis aplikacja dopisuje do `sprawy/<ID>/uwagi-lekarza.jsonl` (linia JSON: `ts`, `rola: lekarz_prowadzacy`, `faza`, `skrot`, `pelny`) i od razu pokazuje jako dymek nad jego postacią.
+
+Ordynator **przed każdą wypowiedzią roli i przed każdą rundą** sprawdza nowe wpisy:
+```
+python skrypty/uwagi_lekarza.py sprawy/<ID>          # tylko nowe (znacznik _uwagi-przeczytane.json)
+python skrypty/uwagi_lekarza.py sprawy/<ID> --czekaj 600   # czeka do 10 min, np. przed werdyktem
+```
+Każdą uwagę przekazuje właściwym rolom w treści ich promptu („Lekarz prowadzący dopisał: …”), a one odnoszą się do niej w najbliższej wypowiedzi (medycznie, nie „dziękuję za uwagę”). Fakt podany przez lekarza prowadzącego ma rangę odpowiedzi z wywiadu: trafia do `01-wywiad.md` jako dopisek z godziną i może zmienić ranking. Po `09-FINAL.md` ordynator czeka jeszcze 10 minut na uwagi (`--czekaj 600`); nowa uwaga otwiera dodatkową rundę i poprawkę werdyktu.
 
 ## 4. Co zainstalować na Windows
 

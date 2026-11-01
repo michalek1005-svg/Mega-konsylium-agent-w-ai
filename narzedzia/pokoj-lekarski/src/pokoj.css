@@ -23,7 +23,8 @@
   --tablica: #e8efed; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #46625d;
   --cien-postaci: rgba(0,0,0,.45);
   --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
-  --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a;
+  --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a; --g-prowadzacy: #b8622e;
+  --dym: rgba(226,232,230,.55);
   --dymek: #f4f8f7; --dymek-txt: #14302D; --dymek-mut: #4d6762;
   --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace;
@@ -48,7 +49,7 @@
     --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
     --tablica: #ffffff; --tablica-rama: #8fa9a2;
     --cien-postaci: rgba(10,54,52,.22);
-    --dymek: #ffffff;
+    --dymek: #ffffff; --dym: rgba(90,110,106,.28);
   }
 }
 :root[data-theme="light"], :root[data-motyw="jasny"] {
@@ -70,7 +71,7 @@
   --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
   --tablica: #ffffff; --tablica-rama: #8fa9a2;
   --cien-postaci: rgba(10,54,52,.22);
-  --dymek: #ffffff;
+  --dymek: #ffffff; --dym: rgba(90,110,106,.28);
 }
 
 * { box-sizing: border-box; }
@@ -143,6 +144,21 @@ body {
 @keyframes kiw { 50% { transform: translateY(-1.5px); } }
 .podpis { font-family: var(--font); font-size: 11px; font-weight: 700; fill: var(--ink); paint-order: stroke; stroke: var(--sciana); stroke-width: 3px; }
 .postac .podpis-maly, .podpis.podpis-maly { font-size: 9.5px; }
+
+/* dym z papierosa ordynatora (bajer): kłęby rosną, dryfują i znikają; żar jaśnieje przy wdechu */
+.dym-kleb { fill: var(--dym); transform-box: fill-box; transform-origin: center; pointer-events: none; filter: blur(1.5px); }
+.papieros .zar { transition: fill .6s, filter .6s; }
+.serce { fill: #d9413f; transform-box: fill-box; transform-origin: center; pointer-events: none; }
+.postac { transform-box: view-box; transform-origin: 0 0; }
+.papieros .zar.zar-on { fill: #ffb24a; filter: drop-shadow(0 0 3px #ff9a3d); }
+
+/* głos lekarza prowadzącego (tylko w aplikacji, na żywo) */
+.glos { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; margin: 8px 6px 2px; padding: 8px 8px 8px 14px;
+  border-radius: 22px; background: var(--panel); box-shadow: var(--panel-cien); }
+.glos textarea { border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 13.5px; line-height: 1.4; resize: none; min-height: 24px; max-height: 120px; padding: 4px 0; outline: none; }
+.glos textarea::placeholder { color: var(--mut); }
+.glos .glos-blad { grid-column: 1 / -1; font-size: 11.5px; color: var(--alarm); display: none; }
+.glos.blad .glos-blad { display: block; }
 
 /* dymki */
 .dymki { position: absolute; inset: 0; pointer-events: none; }

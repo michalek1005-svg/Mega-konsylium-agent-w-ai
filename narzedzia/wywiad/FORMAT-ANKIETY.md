@@ -17,6 +17,7 @@ Aplikacja nie wykonuje żadnego kodu z pliku. Plik zawiera tylko dane, a warunki
 
 - Od 8 do 20 pytań, najwyżej 60. Język ma być prosty i zwracać się do pacjenta per „Ty”. Formy żeńsko-męskie zapisuj jako „zauważyłaś/zauważyłeś”.
 - **Najpierw pytania wykluczające stany nagłe** dla tego opisu, potem charakterystyka objawu, potem choroby, leki, alergie i ryzyko. Na koniec obawy i oczekiwania pacjenta (`bezNieznanych: true`).
+- **Klikalnie, nie pisemnie (Michał 1.11.2026):** pacjent ma klikać, nie pisać. Używaj `jeden`, `wiele`, `skala`, opcji tak/nie/nie wiem oraz list godzin i czasów. `tekst` tylko gdy odpowiedzi nie da się zamknąć w opcjach (nazwa leku z opakowania), najwyżej 2–3 w ankiecie; `liczba` dla pomiarów.
 - Nie pytaj o to, co pacjent już jasno napisał. Analiza z prośby pokazuje, co rozpoznano.
 - Każde pytanie, którego odpowiedź może oznaczać zagrożenie, musi mieć flagę w `flagi`: `112` dla stanu nagłego, `pilne` dla oceny tego samego dnia.
 - Treść pytań nie może sugerować rozpoznania. Uzasadnienie dla lekarza wpisz w `bo`, bo pacjent go nie widzi.

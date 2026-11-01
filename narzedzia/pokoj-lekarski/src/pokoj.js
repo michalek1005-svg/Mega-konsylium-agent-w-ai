@@ -5,9 +5,11 @@
   const $ = (id) => document.getElementById(id);
   const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const W = 1200, H = 700;
-  const KOLOR = { ordynator: 'var(--g-ordynator)', lekarz: 'var(--g-lekarz)', zastepca: 'var(--g-zastepca)', sprawdzajacy: 'var(--g-sprawdzajacy)', rezydent: 'var(--g-rezydent)' };
-  const SKORA = ['#e9c4a6', '#d7a684', '#b9825e', '#f0d2b8', '#8d5b3d', '#e2b48f'];
+  const KOLOR = { ordynator: 'var(--g-ordynator)', lekarz: 'var(--g-lekarz)', zastepca: 'var(--g-zastepca)', sprawdzajacy: 'var(--g-sprawdzajacy)', rezydent: 'var(--g-rezydent)', prowadzacy: 'var(--g-prowadzacy)' };
+  // postacie białej rasy, kobiety i mężczyźni (Michał 1.11): jasne odcienie skóry; fryzury 1, 3, 5 kobiece, 0, 2, 4 męskie
+  const SKORA = ['#f3d9c4', '#ecc9ad', '#f6e1cf', '#e9c4a6', '#f1d2b9', '#e6bf9f'];
   const WLOSY = ['#2b211c', '#5a3b26', '#9b9590', '#1d1d22', '#7a4b2a', '#c9a46a'];
+  const KOBIETA = (f) => f % 2 === 1;
 
   // miejsca: x, y stóp, skala, warstwa (0 = za stołem, 1 = przed stołem), fryzura, okulary
   const MIEJSCA = {
@@ -17,12 +19,14 @@
     najgorszy_scenariusz: { x: 262, y: 566, s: 1.02, w: 1, f: 3 },
     poz_pragmatyk:        { x: 938, y: 566, s: 1.02, w: 1, f: 4 },
     farmakolog:           { x: 470, y: 668, s: 1.05, w: 1, f: 5 },
-    gospodarz_kosztow:    { x: 730, y: 668, s: 1.05, w: 1, f: 0 },
+    gospodarz_kosztow:    { x: 730, y: 668, s: 1.05, w: 1, f: 2 },
     z_zlozonosc:          { x: 214, y: 392, s: .78, w: 0, f: 3 },
     z_bezpieczenstwo:     { x: 274, y: 388, s: .78, w: 0, f: 0 },
     z_niepewnosc:         { x: 334, y: 392, s: .78, w: 0, f: 1, o: true },
     s_fakty:              { x: 1058, y: 444, s: .8, w: 0, f: 4, o: true },
-    s_proces:             { x: 1138, y: 444, s: .8, w: 0, f: 2 },
+    s_proces:             { x: 1138, y: 444, s: .8, w: 0, f: 5 },
+    // lekarz prowadzący (użytkownik aplikacji) — stoi z prawej przed stołem, pisze z paska pod sceną
+    lekarz_prowadzacy:    { x: 1040, y: 672, s: 1.05, w: 1, f: 0 },
   };
   const MIEJSCA_REZ = { 1: [[100]], 2: [[72], [130]], 3: [[58], [100], [142]] };
 
@@ -50,22 +54,31 @@
       : `<rect x="-17" y="-92" width="10" height="7" rx="1.5" fill="${kol}"/>`;
     const okulary = m.o ? `<g fill="none" stroke="#1e2a28" stroke-width="1.6"><circle cx="-6.5" cy="-123" r="4.6"/><circle cx="6.5" cy="-123" r="4.6"/><path d="M-2,-123 h4"/></g>` : '';
     const nogi = g === 'rezydent' ? '#3a3f4a' : '#24413d';
+    // ordynator jest gruby (Michał 1.11): szerszy tułów, brzuch, szerzej rozstawione nogi
+    const gruby = g === 'ordynator', tx = gruby ? 1.42 : 1;
+    const brzuch = gruby ? `<ellipse cx="0" cy="-${58 - dlugi}" rx="30" ry="22" fill="${fartuch}"/><path d="M-30,-${58 - dlugi} a30,22 0 0 0 60,0" fill="none" stroke="var(--fartuch-cien)" stroke-width="1.2"/>` : '';
+    const kolczyki = KOBIETA(m.f) ? `<circle cx="-16" cy="-118" r="1.8" fill="#d9c27a"/><circle cx="16" cy="-118" r="1.8" fill="#d9c27a"/>` : '';
+    const usta = KOBIETA(m.f) ? `<path d="M-4,-114 q4,2.5 8,0" fill="none" stroke="#b4555a" stroke-width="1.4" stroke-linecap="round"/>` : '';
     return `
 <g class="postac" data-kto="${id}" tabindex="0" role="button" aria-label="${esc(rola.nazwa)}" transform="translate(${m.x},${m.y}) scale(${s})" style="--g:${kol}">
   <ellipse cx="0" cy="0" rx="30" ry="7" fill="var(--cien-postaci)"/>
   <ellipse class="halo" cx="0" cy="0" rx="38" ry="10" fill="none" stroke="var(--petrol)" stroke-width="3"/>
   <g class="ciało">
+    <g transform="scale(${tx},1)">
     <rect x="-14" y="-48" width="11" height="47" rx="4" fill="${nogi}"/><rect x="3" y="-48" width="11" height="47" rx="4" fill="${nogi}"/>
     <rect x="-16" y="-4" width="14" height="5" rx="2.5" fill="#1b2120"/><rect x="2" y="-4" width="14" height="5" rx="2.5" fill="#1b2120"/>
     <path d="M-27,-${44 - dlugi} L-24,-98 Q-22,-108 -10,-109 L10,-109 Q22,-108 24,-98 L27,-${44 - dlugi} Z" fill="${fartuch}"/>
+    ${brzuch}
     <path d="M-10,-109 L0,-90 L10,-109 Z" fill="${g === 'rezydent' ? '#e8e2d6' : kol}"/>
     <path d="M0,-90 L0,-${46 - dlugi}" stroke="var(--fartuch-cien)" stroke-width="1.4"/>
     <rect x="-34" y="-104" width="10" height="44" rx="5" fill="${fartuch}"/><rect x="24" y="-104" width="10" height="44" rx="5" fill="${fartuch}"/>
     <circle cx="-29" cy="-58" r="5" fill="${skora}"/><circle cx="29" cy="-58" r="5" fill="${skora}"/>
-    ${plakietka}${stetoskop}
+    ${plakietka}
+    </g>
+    ${stetoskop}${g === 'ordynator' ? '<g class="papieros"><rect x="42" y="-71" width="2.6" height="13" rx="1" fill="#f4f1ea" transform="rotate(-28 43 -58)"/><circle class="zar" cx="47" cy="-70" r="1.7" fill="#ff8a3d"/></g>' : ''}
     <rect x="-6" y="-114" width="12" height="8" fill="${skora}"/>
-    <circle cx="0" cy="-125" r="17" fill="${skora}"/>
-    ${fry}${okulary}
+    <circle cx="0" cy="-125" r="${gruby ? 19 : 17}" fill="${skora}"/>
+    ${usta}${kolczyki}${fry}${okulary}
   </g>
 </g>`;
   }
@@ -112,6 +125,37 @@ ${podloga}
 <rect x="1013" y="66" width="6" height="180" fill="var(--listwa)"/><rect x="886" y="153" width="260" height="6" fill="var(--listwa)"/>
 <rect x="870" y="250" width="292" height="9" rx="3" fill="var(--listwa)"/>
 
+<!-- plakat z serduszkiem: rysunek pastelowy nieogolonego doktora z laską (żartobliwy hołd dla serialowego diagnosty; bez zdjęć i nazwisk) -->
+<defs>
+  <filter id="pastel" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="z"/><feColorMatrix in="z" type="matrix" values="0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .18 0" result="g"/><feBlend in="SourceGraphic" in2="g" mode="multiply"/></filter>
+  <radialGradient id="skora-p" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#f6ddc9"/><stop offset=".7" stop-color="#e2b89c"/><stop offset="1" stop-color="#b98a70"/></radialGradient>
+  <radialGradient id="tlo-p" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="#f3ebdc"/><stop offset="1" stop-color="#cdbfa8"/></radialGradient>
+  <linearGradient id="marynarka-p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4f66"/><stop offset="1" stop-color="#23263a"/></linearGradient>
+  <pattern id="zarost" width="2.2" height="2.2" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".55" fill="#4a3a33" opacity=".75"/></pattern>
+</defs>
+<g id="plakat" transform="translate(246,92)">
+  <rect x="-3" y="-3" width="124" height="104" rx="5" fill="var(--listwa)"/>
+  <rect x="0" y="0" width="118" height="98" rx="3" fill="url(#tlo-p)" filter="url(#pastel)"/>
+  <g transform="translate(46,46) scale(.8)">
+    <path d="M-30,44 L-24,12 Q-20,2 -8,0 L8,0 Q20,2 24,12 L30,44 Z" fill="url(#marynarka-p)"/>
+    <path d="M-8,0 L0,22 L8,0 Z" fill="#dfe6ee"/><path d="M-6,0 L0,16 L6,0 Z" fill="#8fa7c4" opacity=".8"/>
+    <rect x="-6" y="-14" width="12" height="16" fill="#d9ad92"/>
+    <ellipse cx="0" cy="-22" rx="17" ry="20" fill="url(#skora-p)"/>
+    <path d="M-17,-24 a17,20 0 0 1 34,0 q-6,-9 -17,-9 q-11,0 -17,9z" fill="#6d6762"/>
+    <path d="M-17,-22 q3,3 8,2 l-9,-6z M17,-22 q-3,3 -8,2 l9,-6z" fill="#6d6762"/>
+    <path d="M-15,-10 q4,12 15,12 q11,0 15,-12 q-4,6 -15,6 q-11,0 -15,-6z" fill="url(#zarost)"/>
+    <path d="M-12,-28 q5,-3 9,0 M3,-28 q4,-3 9,0" fill="none" stroke="#5a4a42" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="-6.5" cy="-24" rx="3.2" ry="2.2" fill="#fff"/><ellipse cx="6.5" cy="-24" rx="3.2" ry="2.2" fill="#fff"/>
+    <circle cx="-6" cy="-24" r="1.9" fill="#4a7fb0"/><circle cx="7" cy="-24" r="1.9" fill="#4a7fb0"/><circle cx="-6" cy="-24" r=".9"/><circle cx="7" cy="-24" r=".9"/>
+    <path d="M0,-22 q2,5 -1,7" fill="none" stroke="#b98a70" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M-5,-9 q5,2 10,-1" fill="none" stroke="#8b5a52" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M22,2 L34,42" stroke="#5a3b26" stroke-width="3" stroke-linecap="round"/><path d="M18,2 q4,-7 10,-2" fill="none" stroke="#5a3b26" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-30,-30 c-3,-5 -11,-3 -10,3 c1,5 7,8 10,11 c3,-3 9,-6 10,-11 c1,-6 -7,-8 -10,-3z" fill="#d9413f" opacity=".9"/>
+  </g>
+  <path d="M96,16 c-5,-8 -17,-4 -16,5 c1,8 11,12 16,17 c5,-5 15,-9 16,-17 c1,-9 -11,-13 -16,-5z" fill="#d9413f"/>
+  <text x="59" y="93" text-anchor="middle" font-family="var(--font)" font-size="8.5" font-weight="800" letter-spacing=".8" fill="#3a3f55">WSZYSCY KŁAMIĄ</text>
+</g>
+
 <!-- tablica -->
 <rect x="366" y="34" width="468" height="234" rx="12" fill="var(--tablica-rama)"/>
 <rect x="374" y="42" width="452" height="218" rx="7" fill="var(--tablica)"/>
@@ -119,7 +163,7 @@ ${podloga}
 <rect x="452" y="262" width="26" height="6" rx="2" fill="#0F5E58"/><rect x="484" y="262" width="26" height="6" rx="2" fill="#A83A38"/>
 
 <!-- zegar: czas bieżącej fazy -->
-<g transform="translate(276,142)"><circle r="30" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="5"/>
+<g transform="translate(206,142)"><circle r="30" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="5"/>
 ${Array.from({ length: 12 }, (_, k) => `<rect x="-1" y="-25" width="2" height="${k % 3 ? 3 : 6}" fill="var(--tablica-mut)" transform="rotate(${k * 30})"/>`).join('')}
 <line id="wsk-h" x1="0" y1="0" x2="0" y2="-13" stroke="var(--tablica-txt)" stroke-width="3" stroke-linecap="round"/>
 <line id="wsk-m" x1="0" y1="0" x2="0" y2="-20" stroke="var(--tablica-txt)" stroke-width="2" stroke-linecap="round"/>
@@ -156,12 +200,14 @@ ${zaStolem}
   <rect x="680" y="568" width="34" height="24" rx="2" fill="var(--fartuch)" transform="rotate(-5 697 580)"/>
 </g>
 ${przedStolem}
+<g id="dym" aria-hidden="true"></g>
 
 <!-- roślina -->
 <g transform="translate(1150,676)"><path d="M-22,0 L-18,-34 L18,-34 L22,0 Z" fill="var(--listwa)"/>
 <g fill="var(--g-zastepca)"><ellipse cx="-14" cy="-58" rx="10" ry="24" transform="rotate(-24 -14 -58)"/><ellipse cx="12" cy="-62" rx="10" ry="26" transform="rotate(20 12 -62)"/><ellipse cx="0" cy="-70" rx="9" ry="28"/></g></g>
 ${podpisy(wpisy)}`;
     MIEJSCA_AKT = miejsca;
+    startDymu();
     document.querySelectorAll('.postac').forEach((el) => {
       el.addEventListener('click', () => pokazOsobe(el.dataset.kto));
       el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pokazOsobe(el.dataset.kto); } });
@@ -231,6 +277,7 @@ ${podpisy(wpisy)}`;
     if (kroki.length === bylo && bylo) { if (i >= kroki.length - 1 && !gra) otworzCzekajaceWnioski(); return; }
     if (s.tablica.liczbaRezydentow !== rez || !bylo) rysujPokoj();
     rysujOs(); rysujListe();
+    if (bylo && Date.now() < cichoDo) { document.querySelectorAll('.wpis').forEach((el, n2) => { el.classList.toggle('biezacy', n2 === i); el.classList.toggle('przyszly', n2 > i); }); return; }
     if (!bylo) { rysujLegende(); const d = wAplikacji() ? pierwszyDyskusji() : -1; pokaz(d > 0 ? d : 0, true); return; }
     // na żywo w aplikacji: gdy trwa jeszcze etap techniczny, a pojawiła się dyskusja — przeskocz do niej
     if (wAplikacji() && techniczny(kroki[i])) { const d = pierwszyDyskusji(i); if (d > i) { pokaz(d); return; } }
@@ -283,7 +330,7 @@ ${podpisy(wpisy)}`;
     const d = document.createElement('div');
     const r = ROLE[w.kto] || { nazwa: w.kto, grupa: 'lekarz' };
     d.className = 'dymek wejscie' + (w.tresc ? ' pelny' : '');
-    d.style.setProperty('--g', r.grupa === 'rezydent' ? '#8a5f34' : r.grupa === 'zastepca' ? '#4b6e3c' : r.grupa === 'sprawdzajacy' ? '#5a5890' : '#0F5E58');
+    d.style.setProperty('--g', r.grupa === 'rezydent' ? '#8a5f34' : r.grupa === 'zastepca' ? '#4b6e3c' : r.grupa === 'sprawdzajacy' ? '#5a5890' : r.grupa === 'prowadzacy' ? '#8a4a1f' : '#0F5E58');
     const tresc = `<span class="kto">${esc(r.nazwa)}${w.persona ? ' · ' + esc(w.persona) : ''}</span>${esc(w.tresc || w.skrot)}${w.info ? `<span class="info">${esc(w.info)}</span>` : ''}`;
     const ruch = !bezPisania && !matchMedia('(prefers-reduced-motion: reduce)').matches;
     d.innerHTML = ruch ? '<span class="kropki" aria-label="mówi"><i></i><i></i><i></i></span>' : tresc;
@@ -322,7 +369,13 @@ ${podpisy(wpisy)}`;
     clearTimeout(timer);
     if (!gra) return;
     timer = setTimeout(() => {
-      if (i >= kroki.length - 1) { ustawGre(false); otworzCzekajaceWnioski(); return; }
+      if (i >= kroki.length - 1) {
+        ustawGre(false);
+        const koniec = scen && scen.wnioski && ['final', 'followup'].includes(scen.sceny[kroki[i].si].id);
+        const czekaj = koniec ? cmokPlakat((scen.sprawa || '') + '|' + i) : 0;
+        if (czekaj) setTimeout(otworzCzekajaceWnioski, czekaj - 600); else otworzCzekajaceWnioski();
+        return;
+      }
       pokaz(i + 1);
     }, czasKroku(kroki[i]));
   }
@@ -331,6 +384,109 @@ ${podpisy(wpisy)}`;
     const b = $('graj'); b.textContent = v ? '❚❚' : '▶︎ Odtwarzaj'; b.classList.toggle('nk-on', v);
     if (v && i >= kroki.length - 1) pokaz(0); else zaplanuj();
   }
+
+  // ---------- bajer: ordynator od czasu do czasu pali; dym rozchodzi się po pokoju i znika ----------
+  let dymTimer = null;
+  const bezRuchu = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function klebDymu() {
+    const g = $('dym'), m = MIEJSCA_AKT.ordynator; if (!g || !m || bezRuchu() || document.hidden) return;
+    const zar = document.querySelector('.postac[data-kto="ordynator"] .zar');
+    if (zar) { zar.classList.add('zar-on'); setTimeout(() => zar.classList.remove('zar-on'), 1400); }
+    const x0 = m.x + 48 * m.s, y0 = m.y - 72 * m.s;
+    // jeden wydech = kilka kłębów, każdy większy i wolniejszy; całość ok. 12–16 s
+    for (let k = 0; k < 7; k++) {
+      setTimeout(() => {
+        // bez createElementNS z adresem (strażnik budowania zabrania adresów w kodzie): kopia istniejącego kółka
+        const c = document.querySelector('.postac[data-kto="ordynator"] .zar').cloneNode(false);
+        c.removeAttribute('class'); c.setAttribute('class', 'dym-kleb'); c.removeAttribute('fill');
+        c.setAttribute('cx', x0); c.setAttribute('cy', y0); c.setAttribute('r', 5 + k * 1.5);
+        g.appendChild(c);
+        const dx = 60 + k * 45 + Math.random() * 50, dy = -(90 + k * 28 + Math.random() * 40), sk = 6 + k * 2.2, czas = 9000 + k * 1100 + Math.random() * 1500;
+        const a = c.animate([
+          { transform: 'translate(0px, 0px) scale(1)', opacity: 0 },
+          { transform: `translate(${dx * .18}px, ${dy * .2}px) scale(${sk * .3})`, opacity: .34, offset: .12 },
+          { transform: `translate(${dx * .65}px, ${dy * .7}px) scale(${sk * .8})`, opacity: .14, offset: .6 },
+          { transform: `translate(${dx}px, ${dy}px) scale(${sk})`, opacity: 0 }
+        ], { duration: czas, easing: 'cubic-bezier(.2,.6,.4,1)', fill: 'forwards' });
+        a.onfinish = () => c.remove();
+      }, 1500 + k * 420);
+    }
+  }
+  // koniec konsylium: ordynator podchodzi do plakatu i cmoka go w czoło (bajer, Michał 1.11)
+  let cmokBylo = '';
+  function cmokPlakat(klucz) {
+    const el = document.querySelector('.postac[data-kto="ordynator"]'), m = MIEJSCA_AKT.ordynator, g = $('dym');
+    if (!el || !m || bezRuchu() || cmokBylo === klucz) return 0;
+    cmokBylo = klucz;
+    const start = `translate(${m.x}px, ${m.y}px) scale(${m.s})`, cel = 'translate(304px, 300px) scale(.72) rotate(-5deg)';
+    el.animate([{ transform: start }, { transform: cel, offset: .32 }, { transform: cel, offset: .72 }, { transform: start }],
+      { duration: 4800, easing: 'ease-in-out', fill: 'none' });
+    setTimeout(() => {
+      for (let k = 0; k < 4; k++) {
+        const h = document.querySelector('#plakat path[fill="#d9413f"]').cloneNode(false);
+        h.removeAttribute('transform'); h.setAttribute('class', 'serce');
+        h.setAttribute('transform', `translate(${280 + k * 10},${170}) scale(.7)`);
+        g.appendChild(h);
+        h.animate([{ transform: `translate(${280 + k * 10}px, 170px) scale(.6)`, opacity: .95 }, { transform: `translate(${270 + k * 16}px, ${110 - k * 12}px) scale(1.1)`, opacity: 0 }],
+          { duration: 1500 + k * 200, delay: k * 120, easing: 'ease-out', fill: 'forwards' }).onfinish = () => h.remove();
+      }
+    }, 1600);
+    return 4800;
+  }
+  function startDymu() {
+    clearTimeout(dymTimer);
+    if (bezRuchu()) return;
+    const nastepny = () => { dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 38000 + Math.random() * 34000); };
+    dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 9000 + Math.random() * 9000);
+  }
+
+  // ---------- lekarz prowadzący: użytkownik dopisuje do dyskusji (plik sprawy/<ID>/uwagi-lekarza.jsonl) ----------
+  // Konsylium (Claude na tym komputerze) czyta ten plik przed każdą wypowiedzią: skrypty/uwagi_lekarza.py (docs/NA-ZYWO.md).
+  let sprawaZywa = null, odswiezZywo = null, cichoDo = 0; // cichoDo: do kiedy scena pokazuje dymek lekarza (odświeżenie go nie zdejmuje)
+  function dymekTymczasowy(kto, tekst, nazwa) {
+    const dymki = $('dymki');
+    dymki.querySelectorAll('.dymek').forEach((d) => { d.classList.add('stary'); setTimeout(() => d.remove(), 400); });
+    const d = document.createElement('div');
+    d.className = 'dymek wejscie pelny'; d.style.setProperty('--g', '#8a4a1f');
+    d.innerHTML = `<span class="kto">${esc(nazwa)}</span>${esc(tekst)}`;
+    dymki.appendChild(d); ustawDymek(d, kto);
+    document.querySelectorAll('.postac').forEach((el) => el.classList.toggle('aktywna', el.dataset.kto === kto));
+  }
+  async function powiedzLekarz(tekst) {
+    tekst = String(tekst || '').replace(/\s+/g, ' ').trim();
+    if (!tekst || !sprawaZywa || !window.MsMost) return false;
+    const sc = scen && kroki.length ? scen.sceny[kroki[kroki.length - 1].si] : null;
+    const faza = sc && !TECHNICZNE.has(sc.id) ? sc.tytul : 'Konsylium · runda 1';
+    const skrot = tekst.length > 400 ? tekst.slice(0, 399).replace(/\s+\S*$/, '') + '…' : tekst;
+    const wpis = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00'), zdarzenie: 'wypowiedz', rola: 'lekarz_prowadzacy', faza, skrot, pelny: tekst };
+    if (tekst.length > 400) wpis.tresc = tekst.length > 600 ? tekst.slice(0, 599).replace(/\s+\S*$/, '') + '…' : tekst;
+    const plik = 'sprawy/' + sprawaZywa + '/uwagi-lekarza.jsonl';
+    let stare = '';
+    try { stare = await window.MsMost.czytaj(plik); } catch { stare = ''; }
+    stare = String(stare || '');
+    await window.MsMost.zapisz(plik, (stare && !stare.endsWith('\n') ? stare + '\n' : stare) + JSON.stringify(wpis) + '\n');
+    // głos lekarza zatrzymuje odtwarzanie na kilka sekund, żeby jego dymek był widoczny; potem dyskusja idzie dalej
+    const bylaGra = gra; if (gra) ustawGre(false);
+    cichoDo = Date.now() + 6000;
+    dymekTymczasowy('lekarz_prowadzacy', tekst, 'Lekarz prowadzący');
+    setTimeout(() => { cichoDo = 0; if (!gra && (bylaGra || zywoTimer) && i < kroki.length - 1) ustawGre(true); }, 6000);
+    if (odswiezZywo) setTimeout(odswiezZywo, 300);
+    return true;
+  }
+  (function glos() {
+    const f = $('glos'), t = $('glos-tekst'), b = $('glos-wyslij'); if (!f) return;
+    const dopasuj = () => { t.style.height = 'auto'; t.style.height = Math.min(120, t.scrollHeight) + 'px'; };
+    t.addEventListener('input', dopasuj);
+    t.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); f.requestSubmit(); } e.stopPropagation(); });
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const tekst = t.value.trim(); if (!tekst) return;
+      b.disabled = true;
+      try { if (await powiedzLekarz(tekst)) { t.value = ''; dopasuj(); f.classList.remove('blad'); } }
+      catch (err) { f.classList.add('blad'); f.querySelector('.glos-blad').textContent = 'Nie udało się zapisać: ' + (err && err.message || err); }
+      finally { b.disabled = false; t.focus(); }
+    });
+  })();
 
   // ---------- tablica ----------
   function rysujTablice(si) {
@@ -369,7 +525,7 @@ ${podpisy(wpisy)}`;
     }));
   }
   function rysujLegende() {
-    const g = [['ordynator', 'Ordynator'], ['lekarz', 'Lekarze stali (6)'], ['zastepca', 'Zastępcy (triage)'], ['sprawdzajacy', 'Sprawdzający'], ['rezydent', 'Rezydenci za szybą']];
+    const g = [['ordynator', 'Ordynator'], ['lekarz', 'Lekarze stali (6)'], ['zastepca', 'Zastępcy (triage)'], ['sprawdzajacy', 'Sprawdzający'], ['rezydent', 'Rezydenci za szybą'], ['prowadzacy', 'Lekarz prowadzący (Ty)']];
     $('legenda').innerHTML = g.map(([k, t]) => `<span style="--g:${KOLOR[k]}"><i></i>${t}</span>`).join('');
   }
   function pokazSzczegol(w, sc) {
@@ -406,7 +562,7 @@ ${podpisy(wpisy)}`;
 
   // ---------- na żywo: folder sprawy czytany co 3 s (File System Access API: Chrome, Edge, powłoka Windows) ----------
   let zywoTimer = null;
-  function zatrzymajZywo() { clearInterval(zywoTimer); zywoTimer = null; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
+  function zatrzymajZywo() { clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
   async function czytajUchwyt(uchwyt, sciezka, pliki) {
     for await (const [nazwa, el] of uchwyt.entries()) {
       if (el.kind === 'directory') await czytajUchwyt(el, sciezka + nazwa + '/', pliki);
@@ -455,9 +611,10 @@ ${podpisy(wpisy)}`;
     if (tylkoSwieza && Date.now() - s.zmiana > 3 * 3600 * 1000) return false;
     zatrzymajZywo();
     let nazwa = s.nazwa, licz = 0;
+    sprawaZywa = nazwa; $('glos').hidden = false;
     const odswiez = async () => {
       try {
-        if (++licz % 5 === 0) { const n = await najnowszaSprawa(); if (n && n.nazwa !== nazwa) { nazwa = n.nazwa; scen = null; kroki = []; i = 0; } }
+        if (++licz % 5 === 0) { const n = await najnowszaSprawa(); if (n && n.nazwa !== nazwa) { nazwa = n.nazwa; sprawaZywa = nazwa; scen = null; kroki = []; i = 0; } }
         const pliki = {};
         for (const p of await window.MsMost.czytajFolder('sprawy/' + nazwa)) pliki[p.sciezka] = p.tekst;
         aktualizuj(zbudujScenariusz(pliki, nazwa));
@@ -465,6 +622,7 @@ ${podpisy(wpisy)}`;
       } catch (e) { $('opis-sprawy').textContent = 'Nie da się czytać folderu sprawy: ' + e.message; }
     };
     scen = null; kroki = []; i = 0;
+    odswiezZywo = odswiez;
     await odswiez();
     zywoPowloka = setInterval(odswiez, 3000);
     zywoTimer = zywoPowloka;

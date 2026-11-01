@@ -17,7 +17,7 @@ const siec = []; const bledy = [];
 p.on('request', (r) => { if (!r.url().startsWith('file:') && !r.url().startsWith('data:')) siec.push(r.url()); });
 p.on('pageerror', (e) => bledy.push(e.message));
 await p.goto('file://' + plik);
-assert.equal(await p.locator('.postac').count(), 14, '12 stałych postaci + 2 rezydentów');
+assert.equal(await p.locator('.postac').count(), 15, '12 stałych postaci + lekarz prowadzący + 2 rezydentów');
 await p.click('#dalej'); await p.waitForTimeout(1000);
 const kto = await p.locator('.postac.aktywna').getAttribute('data-kto');
 assert.ok(kto, 'ktoś mówi');
@@ -37,7 +37,7 @@ await p.evaluate((pl) => {
 }, pliki);
 await p.waitForTimeout(500);
 assert.match(await p.locator('#opis-sprawy').innerText(), /2026-10-31-01/);
-assert.equal(await p.locator('.postac').count(), 15, 'w sprawie 01 było 3 rezydentów');
+assert.equal(await p.locator('.postac').count(), 16, 'w sprawie 01 było 3 rezydentów');
 
 // tryb na żywo: udawany folder (File System Access API), do którego „ordynator” dopisuje dymek
 const p2 = await b.newPage({ viewport: { width: 1400, height: 900 } });

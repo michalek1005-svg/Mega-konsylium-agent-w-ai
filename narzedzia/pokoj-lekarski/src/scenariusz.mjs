@@ -23,6 +23,8 @@ export const ROLE = {
   R1: { nazwa: 'Rezydent R1', grupa: 'rezydent', inicjaly: 'R1' },
   R2: { nazwa: 'Rezydent R2', grupa: 'rezydent', inicjaly: 'R2' },
   R3: { nazwa: 'Rezydent R3', grupa: 'rezydent', inicjaly: 'R3' },
+  // użytkownik aplikacji (lekarz POZ) — dopisuje do dyskusji z Pokoju; plik sprawy/<ID>/uwagi-lekarza.jsonl
+  lekarz_prowadzacy:    { nazwa: 'Lekarz prowadzący', grupa: 'prowadzacy', inicjaly: 'LP' },
 };
 
 const LEKARZE = ['hipotezujacy', 'bayes', 'najgorszy_scenariusz', 'poz_pragmatyk', 'farmakolog', 'gospodarz_kosztow'];
@@ -41,6 +43,7 @@ export function rola(nazwa) {
     zastepca_niepewnosc: 'z_niepewnosc', niepewnosc: 'z_niepewnosc',
     sprawdzajacy_faktow: 's_fakty', fakty: 's_fakty', sprawdzajacy_procesu: 's_proces', proces: 's_proces',
     poz: 'poz_pragmatyk', pragmatyk: 'poz_pragmatyk', najgorszy: 'najgorszy_scenariusz', koszty: 'gospodarz_kosztow',
+    prowadzacy: 'lekarz_prowadzacy', lekarz_prowadzacy: 'lekarz_prowadzacy', uzytkownik: 'lekarz_prowadzacy', lekarz_poz: 'lekarz_prowadzacy',
   };
   return ROLE[n] ? n : (mapa[n] || null);
 }
@@ -87,10 +90,20 @@ function json(pliki, sciezka) {
   try { return JSON.parse(t); } catch { return null; }
 }
 
+// _log.jsonl (dymki agentów, dymek.py) + uwagi-lekarza.jsonl (wpisy lekarza prowadzącego z Pokoju); kolejność po czasie
 function log(pliki) {
-  const t = pliki['_log.jsonl'];
-  if (!t) return [];
-  return t.split(/\r?\n/).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+  const linie = (t) => (t ? t.split(/\r?\n/).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean) : []);
+  const agenci = linie(pliki['_log.jsonl']);
+  const lekarz = linie(pliki['uwagi-lekarza.jsonl']).map((z) => ({ ...z, zdarzenie: z.zdarzenie || 'wypowiedz', rola: 'lekarz_prowadzacy' }));
+  if (!lekarz.length) return agenci;
+  // stabilnie: wpis lekarza trafia za ostatnim dymkiem, który jest od niego starszy
+  const wynik = [...agenci];
+  for (const u of lekarz) {
+    let k = wynik.length;
+    while (k > 0 && wynik[k - 1].ts && u.ts && wynik[k - 1].ts > u.ts) k--;
+    wynik.splice(k, 0, u);
+  }
+  return wynik;
 }
 
 // pole „ETYKIETA: treść” z plików 05/09 (format FINAL)
@@ -205,7 +218,10 @@ function polacz(zywe, zPlikow) {
   const wynik = zPlikow.map((s) => ({ ...s, rz: fazaNaId(s.tytul).rz }));
   for (const z of zywe) {
     const k = wynik.findIndex((s) => s.id === z.id);
-    if (k >= 0) wynik[k] = { ...wynik[k], ...z, temat: z.temat || wynik[k].temat, czas: z.czas || wynik[k].czas };
+    // same uwagi lekarza prowadzącego nie zastępują sceny wyliczonej z plików — dopisują się na jej koniec
+    const tylkoLekarz = z.wypowiedzi.length && z.wypowiedzi.every((w) => w.kto === 'lekarz_prowadzacy');
+    if (k >= 0 && tylkoLekarz) wynik[k] = { ...wynik[k], wypowiedzi: [...wynik[k].wypowiedzi, ...z.wypowiedzi] };
+    else if (k >= 0) wynik[k] = { ...wynik[k], ...z, temat: z.temat || wynik[k].temat, czas: z.czas || wynik[k].czas };
     else wynik.push({ ...z, temat: z.temat || z.tytul });
   }
   return wynik.sort((a, b) => a.rz - b.rz).map(({ rz, ...s }) => s);

@@ -17,6 +17,8 @@ Pokój lekarski (`narzedzia/pokoj-lekarski/`) pokazuje konsylium jako szpitalny 
 
 ## Zasady skrótu
 
+**Decyzja Michała 1.11.2026:** dymek to **medyczne zdanie albo opinia lekarza**, nie zapis rozmowy między agentami. Uzgodnienia zespołu (wagi ról, log-odds, agregacja, „zgadzam się z Bayesem”, „przyjmuję uwagę”, opis własnych czynności, numer rundy, sprawdzenie procesu) zostają w plikach sprawy i w protokole, nie w dymkach. Liczby kliniczne (p, pilność, progi, PMID) tylko w linii INFO. Dymek bez treści medycznej nie powstaje.
+
 - 1–2 pełne zdania, najwyżej 400 znaków, po polsku, bez markdownu (decyzja Michała z 31.10.2026: pełniejsze zdania i dodatkowe informacje).
 - Język medyczny i treść, nie opis czynności. Podaj stanowisko, kluczową liczbę (p, pilność, wynik badania) i najważniejszy argument albo warunek zmiany zdania.
   Przykład: „Najbardziej prawdopodobna jest wydalona matryca tabletki metforminy o przedłużonym uwalnianiu (p 0,70), bo kulka pojawia się raz na dobę po dawce leku. Zmieniłaby to kulka twarda, warstwowa lub obecna w dni bez metforminy.”
@@ -34,7 +36,7 @@ Pokój lekarski (`narzedzia/pokoj-lekarski/`) pokazuje konsylium jako szpitalny 
 {"ts":"2026-11-01T10:05:00+00:00","zdarzenie":"wypowiedz","rola":"bayes","faza":"Ślepa tura","skrot":"Ostry zespół wieńcowy jest realny (p 0,30): ból zamostkowy od rana u palacza z cukrzycą. Pilność 1 do czasu EKG i troponiny.","temat":"…","plik":"03-opinie/bayes.json","persona":"…"}
 ```
 
-`rola`: `ordynator`, `z_zlozonosc`, `z_bezpieczenstwo`, `z_niepewnosc`, `hipotezujacy`, `bayes`, `najgorszy_scenariusz`, `poz_pragmatyk`, `farmakolog`, `gospodarz_kosztow`, `s_fakty`, `s_proces`, `R1`–`R3`. Skrypt przyjmuje też nazwy agentów (`lekarz-bayes`, `zastepca-bezpieczenstwo`). `temat` i `persona` (tylko u rezydentów) są opcjonalne.
+`rola`: `ordynator`, `lekarz_prowadzacy` (użytkownik; wpisy z Pokoju trafiają do `uwagi-lekarza.jsonl`, nie do `_log.jsonl`), `z_zlozonosc`, `z_bezpieczenstwo`, `z_niepewnosc`, `hipotezujacy`, `bayes`, `najgorszy_scenariusz`, `poz_pragmatyk`, `farmakolog`, `gospodarz_kosztow`, `s_fakty`, `s_proces`, `R1`–`R3`. Skrypt przyjmuje też nazwy agentów (`lekarz-bayes`, `zastepca-bezpieczenstwo`). `temat` i `persona` (tylko u rezydentów) są opcjonalne.
 
 Faza, która ma dymki, jest w pokoju pokazana z dymków. Faza bez dymków jest wyliczana z plików 01–10, więc starsze sprawy też działają.
 

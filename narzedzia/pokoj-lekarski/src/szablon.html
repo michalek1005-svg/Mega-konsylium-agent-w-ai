@@ -35,6 +35,12 @@
           <option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
         </select>
       </div>
+      <form class="glos" id="glos" hidden autocomplete="off" aria-label="Twój głos w dyskusji">
+        <span class="nk-label">Lekarz prowadzący</span>
+        <textarea id="glos-tekst" rows="1" placeholder="Dopisz do dyskusji: pytanie, uwaga, dodatkowy fakt… (Enter wysyła)" maxlength="1200"></textarea>
+        <button class="nk-button nk-on" id="glos-wyslij" type="submit">Powiedz</button>
+        <span class="glos-blad" role="alert"></span>
+      </form>
       <div class="legenda" id="legenda"></div>
     </section>
 
@@ -45,7 +51,7 @@
       <div class="szczegol" id="szczegol" hidden></div>
     </aside>
   </div>
-  <p class="stopka">Narzędzie testowe i edukacyjne marki MS. Działa offline, niczego nie wysyła. Dymki pokazują wypowiedzi agentów językiem medycznym; pełny tekst jest w protokole po kliknięciu.</p>
+  <p class="stopka">Narzędzie testowe i edukacyjne marki MS. Działa offline, niczego nie wysyła. Dymki pokazują opinie lekarzy językiem medycznym; pełny tekst jest w protokole po kliknięciu.</p>
 </div>
 <script>
 /*@@JS@@*/
