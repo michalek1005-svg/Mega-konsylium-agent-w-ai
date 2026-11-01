@@ -1,6 +1,6 @@
 # Biblioteka źródeł — manifest
 
-> Stan 1.11.2026: karty źródłowe (streszczenia kluczowych zaleceń z cytatami ≤25 słów i miejscem w dokumencie), nie pełne teksty. Polskie = poziom 1, europejskie/międzynarodowe = poziom 3. Karta oznaczona „ze streszczenia” nie zawiera dawek — dla liczb sięgaj do PubMed lub pełnego PDF. Lista dokumentów do pobrania przez użytkownika: docs/merytoryka/ZRODLA-INDEKS.md (gałąź merytoryki).
+> Stan 1.11.2026: karty źródłowe (streszczenia kluczowych zaleceń z cytatami ≤25 słów i miejscem w dokumencie), nie pełne teksty. Polskie = poziom 1, europejskie/międzynarodowe = poziom 3. Karta oznaczona „ze streszczenia” nie zawiera dawek — dla liczb sięgaj do PubMed lub pełnego PDF. Lista dokumentów do pobrania przez użytkownika: /mnt/project-files/konsylium/merytoryczny/ZRODLA-INDEKS.md i PL-WYTYCZNE-PUBMED.md.
 
 Co tu jest, ma **pierwszeństwo przed wiedzą modelu** (CLAUDE.md §5, poziom 1). Lekarze stali i Sprawdzający faktów
 zaczynają od tego pliku. Rezydenci **nie mają** tu dostępu.
