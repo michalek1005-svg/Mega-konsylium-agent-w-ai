@@ -151,11 +151,12 @@ body {
 .tablica .postep i { display: block; height: 100%; background: #0F5E58; border-radius: 9px; transition: width .6s ease; }
 /* Ustalenia: granatowy marker; Odrzucone: czerwony, przekreślone odręcznie */
 .tablica .ustalenia { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .15cqw; }
-.tablica .ustalenia li { font: 400 max(12.5px, 1.9cqw)/1.1 var(--marker); color: #1e3f8a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tablica .ustalenia li { font: 400 max(12px, 1.7cqw)/1.05 var(--marker); color: #1e3f8a; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow-wrap: anywhere; }
+.tablica .ustalenia li small { -webkit-line-clamp: 1; }
 .tablica .ustalenia li small { display: block; font: 600 max(7.5px, .78cqw)/1.25 var(--font); color: #5C7570; margin-left: 1.2cqw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tablica .ustalenia li.skreslone { color: #A83A38; }
 .tablica .ustalenia li.skreslone small { margin-left: 0; }
-.tablica .ustalenia li s { text-decoration: none; padding: 0 .15em; background: linear-gradient(transparent 48%, #A83A38 48%, #A83A38 60%, transparent 60%) no-repeat; background-size: 100% 100%; animation: skreslenie .7s ease-out both; }
+.tablica .ustalenia li s { text-decoration: none; padding: 0 .15em; background: linear-gradient(transparent 48%, #A83A38 48%, #A83A38 60%, transparent 60%) no-repeat; background-size: 100% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; animation: skreslenie .7s ease-out both; }
 @keyframes skreslenie { from { background-size: 0 100%; } }
 .tablica .ranking { display: flex; flex-direction: column; gap: .1cqw; }
 .tablica .wiersz { display: flex; gap: .8cqw; align-items: baseline; font: 400 max(12.5px, 1.9cqw)/1.1 var(--marker); color: #1e3f8a; }
