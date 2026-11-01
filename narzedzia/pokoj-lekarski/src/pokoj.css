@@ -261,3 +261,9 @@ html.osadzony .pokoj { width: min(100%, calc((100vh - 236px) * 1200 / 700)); mar
 /* pole lekarza prowadzącego ma się mieścić w oknie razem ze sceną (1920×1008 i mniejsze) */
 html.osadzony .glos { margin-top: 6px; }
 html.osadzony .legenda { display: none; }
+
+/* plakat w powiększeniu */
+#plakat { cursor: zoom-in; }
+.plakat-duzy { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(20, 28, 30, .55); backdrop-filter: blur(6px); cursor: zoom-out; animation: plakat-wej .25s ease-out; }
+.plakat-duzy svg { height: min(86vh, 900px); max-width: 92vw; border-radius: 10px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+@keyframes plakat-wej { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }

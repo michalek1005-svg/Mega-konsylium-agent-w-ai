@@ -32,7 +32,7 @@ const katalogSprawy = arg('--sprawa') || join(tu, 'test/fixtura/2026-10-31-02');
 const demo = zbudujScenariusz(wczytajSprawe(katalogSprawy), basename(katalogSprawy));
 
 const parser = czytaj('src/scenariusz.mjs').replace(/^export /gm, '');
-const js = `${parser}\nconst DEMO = ${JSON.stringify(demo).replace(/</g, '\\u003c')};\n${czytaj('../wspolne/ms-most.js')}\n${czytaj('src/pokoj.js')}`;
+const js = `${parser}\nconst DEMO = ${JSON.stringify(demo).replace(/</g, '\\u003c')};\n${czytaj('../wspolne/ms-most.js')}\n${czytaj('src/plakat.js')}\n${czytaj('src/pokoj.js')}`;
 const css = czytaj('src/pokoj.css').replace('/*@@FONT@@*/', () => fontCss);
 
 // strażnik: żadnych adresów sieciowych w kodzie i stylach (poza krojem w data:)

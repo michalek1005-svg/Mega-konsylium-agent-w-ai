@@ -125,35 +125,12 @@ ${podloga}
 <rect x="1013" y="66" width="6" height="180" fill="var(--listwa)"/><rect x="886" y="153" width="260" height="6" fill="var(--listwa)"/>
 <rect x="870" y="250" width="292" height="9" rx="3" fill="var(--listwa)"/>
 
-<!-- plakat z serduszkiem: rysunek pastelowy nieogolonego doktora z laską (żartobliwy hołd dla serialowego diagnosty; bez zdjęć i nazwisk) -->
-<defs>
-  <filter id="pastel" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="z"/><feColorMatrix in="z" type="matrix" values="0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .4 0 0 0 .18 0" result="g"/><feBlend in="SourceGraphic" in2="g" mode="multiply"/></filter>
-  <radialGradient id="skora-p" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#f6ddc9"/><stop offset=".7" stop-color="#e2b89c"/><stop offset="1" stop-color="#b98a70"/></radialGradient>
-  <radialGradient id="tlo-p" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="#f3ebdc"/><stop offset="1" stop-color="#cdbfa8"/></radialGradient>
-  <linearGradient id="marynarka-p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4f66"/><stop offset="1" stop-color="#23263a"/></linearGradient>
-  <pattern id="zarost" width="2.2" height="2.2" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".55" fill="#4a3a33" opacity=".75"/></pattern>
-</defs>
-<g id="plakat" transform="translate(246,92)">
-  <rect x="-3" y="-3" width="124" height="104" rx="5" fill="var(--listwa)"/>
-  <rect x="0" y="0" width="118" height="98" rx="3" fill="url(#tlo-p)" filter="url(#pastel)"/>
-  <g transform="translate(46,46) scale(.8)">
-    <path d="M-30,44 L-24,12 Q-20,2 -8,0 L8,0 Q20,2 24,12 L30,44 Z" fill="url(#marynarka-p)"/>
-    <path d="M-8,0 L0,22 L8,0 Z" fill="#dfe6ee"/><path d="M-6,0 L0,16 L6,0 Z" fill="#8fa7c4" opacity=".8"/>
-    <rect x="-6" y="-14" width="12" height="16" fill="#d9ad92"/>
-    <ellipse cx="0" cy="-22" rx="17" ry="20" fill="url(#skora-p)"/>
-    <path d="M-17,-24 a17,20 0 0 1 34,0 q-6,-9 -17,-9 q-11,0 -17,9z" fill="#6d6762"/>
-    <path d="M-17,-22 q3,3 8,2 l-9,-6z M17,-22 q-3,3 -8,2 l9,-6z" fill="#6d6762"/>
-    <path d="M-15,-10 q4,12 15,12 q11,0 15,-12 q-4,6 -15,6 q-11,0 -15,-6z" fill="url(#zarost)"/>
-    <path d="M-12,-28 q5,-3 9,0 M3,-28 q4,-3 9,0" fill="none" stroke="#5a4a42" stroke-width="2" stroke-linecap="round"/>
-    <ellipse cx="-6.5" cy="-24" rx="3.2" ry="2.2" fill="#fff"/><ellipse cx="6.5" cy="-24" rx="3.2" ry="2.2" fill="#fff"/>
-    <circle cx="-6" cy="-24" r="1.9" fill="#4a7fb0"/><circle cx="7" cy="-24" r="1.9" fill="#4a7fb0"/><circle cx="-6" cy="-24" r=".9"/><circle cx="7" cy="-24" r=".9"/>
-    <path d="M0,-22 q2,5 -1,7" fill="none" stroke="#b98a70" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M-5,-9 q5,2 10,-1" fill="none" stroke="#8b5a52" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M22,2 L34,42" stroke="#5a3b26" stroke-width="3" stroke-linecap="round"/><path d="M18,2 q4,-7 10,-2" fill="none" stroke="#5a3b26" stroke-width="3" stroke-linecap="round"/>
-    <path d="M-30,-30 c-3,-5 -11,-3 -10,3 c1,5 7,8 10,11 c3,-3 9,-6 10,-11 c1,-6 -7,-8 -10,-3z" fill="#d9413f" opacity=".9"/>
-  </g>
-  <path d="M96,16 c-5,-8 -17,-4 -16,5 c1,8 11,12 16,17 c5,-5 15,-9 16,-17 c1,-9 -11,-13 -16,-5z" fill="#d9413f"/>
-  <text x="59" y="93" text-anchor="middle" font-family="var(--font)" font-size="8.5" font-weight="800" letter-spacing=".8" fill="#3a3f55">WSZYSCY KŁAMIĄ</text>
+<!-- plakat z serduszkiem: realistyczny rysunek pastelowy (src/plakat.js); kliknięcie pokazuje go w powiększeniu -->
+${PLAKAT_DEFS}
+<g id="plakat" transform="translate(251,58) scale(.54)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
+  <rect x="-7" y="-7" width="${PLAKAT_W + 14}" height="${PLAKAT_H + 14}" rx="6" fill="var(--listwa)"/>
+  <rect x="-2" y="-2" width="${PLAKAT_W + 4}" height="${PLAKAT_H + 4}" fill="#efe9dd"/>
+  <use href="#pl-rys"/>
 </g>
 
 <!-- tablica -->
@@ -412,6 +389,17 @@ ${podpisy(wpisy)}`;
       }, 1500 + k * 420);
     }
   }
+  // plakat w powiększeniu: kliknięcie plakatu na ścianie, zamknięcie kliknięciem albo Esc
+  document.addEventListener('click', (e) => {
+    const stare = document.querySelector('.plakat-duzy');
+    if (stare) { stare.remove(); return; }
+    if (!e.target.closest || !e.target.closest('#plakat')) return;
+    const d = document.createElement('div');
+    d.className = 'plakat-duzy';
+    d.innerHTML = `<svg viewBox="-6 -6 ${PLAKAT_W + 12} ${PLAKAT_H + 12}" role="img" aria-label="Plakat: rysunek pastelowy doktora z laską i serduszkiem"><rect x="-6" y="-6" width="${PLAKAT_W + 12}" height="${PLAKAT_H + 12}" rx="4" fill="#efe9dd"/><use href="#pl-rys"/></svg>`;
+    document.body.appendChild(d);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelector('.plakat-duzy')?.remove(); });
   // koniec konsylium: ordynator podchodzi do plakatu i cmoka go w czoło (bajer, Michał 1.11)
   let cmokBylo = '';
   function cmokPlakat(klucz) {
@@ -423,7 +411,7 @@ ${podpisy(wpisy)}`;
       { duration: 4800, easing: 'ease-in-out', fill: 'none' });
     setTimeout(() => {
       for (let k = 0; k < 4; k++) {
-        const h = document.querySelector('#plakat path[fill="#d9413f"]').cloneNode(false);
+        const h = document.querySelector('#pl-serce path').cloneNode(false);
         h.removeAttribute('transform'); h.setAttribute('class', 'serce');
         h.setAttribute('transform', `translate(${280 + k * 10},${170}) scale(.7)`);
         g.appendChild(h);
