@@ -1,0 +1,34 @@
+{
+  "format": "ms-ankieta-1",
+  "kod": "SPR-03",
+  "tytul": "Obrzęk powieki i wysypka po lekach",
+  "opis": "Kobieta 64 l. Kilka dni temu krople do oka (lewofloksacyna ze sterydem) i bromfenak; obrzęk powieki drugiego oka oraz wysypka na dłoniach i stopach po lekach (cefuroksym, erdosteina w przeszłości). Obecnie azytromycyna i nebulizacje z budezonidu. Stale bisoprolol 1,25 mg.",
+  "pytania": [
+    {"id":"dusznosc","typ":"jeden","tekst":"Czy masz teraz duszność, świszczący oddech albo uczucie ściskania w gardle?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Duszność / świsty / ucisk w gardle","bo":"Anafilaksja; bisoprolol osłabia odpowiedź na adrenalinę."},
+    {"id":"jezyk","typ":"jeden","tekst":"Czy puchną Ci wargi lub język albo trudno Ci przełykać?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Obrzęk warg/języka, dysfagia","bo":"Obrzęk naczynioruchowy dróg oddechowych."},
+    {"id":"omdlenie","typ":"jeden","tekst":"Czy masz zawroty głowy, czujesz, że możesz zemdleć, albo zemdlałaś/zemdlałeś?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Zawroty / omdlenie","bo":"Hipotensja w anafilaksji."},
+    {"id":"brzuch","typ":"jeden","tekst":"Czy masz ból brzucha lub wymioty od czasu pojawienia się wysypki?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Ból brzucha / wymioty","bo":"Zajęcie drugiego układu = kryterium anafilaksji."},
+    {"id":"pomiary","typ":"tekst","tekst":"Jeśli mierzono: ciśnienie, tętno i saturację wpisz tutaj.","podpowiedz":"np. 130/80, 72/min, 97%","krotko":"RR, tętno, SpO2"},
+    {"id":"wysypka_wyglad","typ":"jeden","tekst":"Jak wygląda wysypka?","opcje":[{"w":"babel","t":"Wypukłe bąble, swędzą, zmieniają miejsce w ciągu godzin"},{"w":"plamy","t":"Czerwone plamy lub grudki, które stoją w miejscu"},{"w":"tarcza","t":"Okrągłe zmiany z ciemniejszym środkiem, jak tarcza"},{"w":"inne","t":"Inaczej"}],"krotko":"Morfologia wysypki","bo":"Pokrzywka vs osutka plamisto-grudkowa vs rumień wielopostaciowy/SJS."},
+    {"id":"pecherze","typ":"jeden","tekst":"Czy są pęcherze, złuszczanie skóry albo nadżerki w ustach, na oczach lub narządach płciowych?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Pęcherze / zmiany na śluzówkach","bo":"SJS/TEN."},
+    {"id":"bol_skory","typ":"jeden","tekst":"Czy skóra w miejscu wysypki boli lub piecze bardziej niż swędzi?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Ból skóry","bo":"Bolesność skóry sugeruje ciężką reakcję skórną."},
+    {"id":"goraczka","typ":"jeden","tekst":"Czy masz gorączkę (38°C lub więcej)?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Gorączka","bo":"Gorączka + wysypka: SJS, DRESS, infekcja."},
+    {"id":"powieka","typ":"wiele","tekst":"Jaki jest obrzęk powieki? Zaznacz wszystko, co pasuje.","opcje":[{"w":"swedzi","t":"Swędzi"},{"w":"boli","t":"Boli"},{"w":"czerwone","t":"Oko jest zaczerwienione"},{"w":"wydzielina","t":"Jest wydzielina z oka"},{"w":"wzrok","t":"Widzę gorzej niż zwykle"},{"w":"nic","t":"Nic z tych rzeczy","wyklucza":true}],"krotko":"Charakter obrzęku powieki","bo":"Kontaktowe zapalenie od kropli vs obrzęk naczynioruchowy vs zakażenie."},
+    {"id":"powieka_czas","typ":"tekst","tekst":"Od kiedy jest obrzęk powieki i czy się zmniejsza, czy rośnie?","podpowiedz":"np. od wczoraj, zmniejsza się","krotko":"Dynamika obrzęku"},
+    {"id":"kolejnosc","typ":"jeden","tekst":"Co zaczęło się pierwsze?","opcje":[{"w":"krople","t":"Krople do oczu"},{"w":"cefuroksym","t":"Antybiotyk cefuroksym"},{"w":"azytro","t":"Azytromycyna"},{"w":"nebul","t":"Nebulizacje z budezonidu"},{"w":"nie_pamietam","t":"Nie pamiętam"}],"krotko":"Pierwszy lek przed reakcją","bo":"Ustalenie podejrzanego leku."},
+    {"id":"objawy_start","typ":"tekst","tekst":"Ile czasu po ostatnim nowym leku pojawiły się wysypka i obrzęk?","podpowiedz":"np. 2 godziny po tabletce","krotko":"Czas od leku do reakcji","bo":"Reakcja natychmiastowa (<1 h) vs opóźniona."},
+    {"id":"leczenie","typ":"tekst","tekst":"Co już przyjęłaś/przyjąłeś na tę reakcję i czy pomogło?","podpowiedz":"np. lek przeciwhistaminowy, poprawa po godzinie","krotko":"Leczenie reakcji i efekt"},
+    {"id":"inne_leki","typ":"tekst","tekst":"Jakie inne leki, leki przeciwbólowe lub suplementy bierzesz?","podpowiedz":"np. ibuprofen, witamina D","krotko":"Inne leki, NLPZ, suplementy","bo":"NLPZ są kofaktorem pokrzywki."},
+    {"id":"alergie","typ":"tekst","tekst":"Czy wcześniej miałaś/miałeś uczulenie na leki, krople do oczu albo pokarmy? Jaka to była reakcja?","podpowiedz":"np. penicylina — wysypka","krotko":"Wcześniejsze alergie","bo":"Reaktywność krzyżowa beta-laktamów."},
+    {"id":"astma","typ":"jeden","tekst":"Czy chorujesz na astmę lub POChP?","opcje":[{"w":"tak","t":"Tak"},{"w":"nie","t":"Nie"}],"krotko":"Astma/POChP","bo":"Ryzyko ciężkiej anafilaksji; wskazanie do nebulizacji."},
+    {"id":"obawy","typ":"tekst","tekst":"Czego najbardziej się obawiasz i czego oczekujesz od wizyty?","krotko":"Obawy i oczekiwania","bezNieznanych":true}
+  ],
+  "flagi": [
+    {"poziom":"112","dlaLekarza":"Objawy oddechowe po leku: podejrzenie anafilaksji (bisoprolol — słabsza odpowiedź na adrenalinę).","gdy":{"ktorekolwiek":[{"pytanie":"dusznosc","jest":"tak"},{"pytanie":"jezyk","jest":"tak"}]}},
+    {"poziom":"112","dlaLekarza":"Zawroty/omdlenie przy reakcji skórnej: możliwa hipotensja w anafilaksji.","gdy":{"pytanie":"omdlenie","jest":"tak"}},
+    {"poziom":"pilne","dlaLekarza":"Reakcja skórna z objawami z przewodu pokarmowego: dwa układy, ocena w kierunku anafilaksji.","gdy":{"pytanie":"brzuch","jest":"tak"}},
+    {"poziom":"112","dlaLekarza":"Pęcherze/zmiany śluzówkowe: podejrzenie SJS/TEN.","gdy":{"pytanie":"pecherze","jest":"tak"}},
+    {"poziom":"pilne","dlaLekarza":"Bolesna skóra, gorączka lub zmiany tarczowate: wykluczyć ciężką skórną reakcję polekową.","gdy":{"ktorekolwiek":[{"pytanie":"bol_skory","jest":"tak"},{"pytanie":"goraczka","jest":"tak"},{"pytanie":"wysypka_wyglad","jest":"tarcza"}]}},
+    {"poziom":"pilne","dlaLekarza":"Pogorszenie widzenia lub bolesne oko po kroplach: ocena okulistyczna tego dnia.","gdy":{"pytanie":"powieka","jest":["wzrok","boli"]}}
+  ]
+}

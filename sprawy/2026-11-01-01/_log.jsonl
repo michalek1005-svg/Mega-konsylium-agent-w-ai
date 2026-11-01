@@ -1,0 +1,48 @@
+{"ts": "2026-11-01T00:32:31Z", "rola": "hipotezujacy", "zdarzenie": "start", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:32:43Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:32:43+00:00", "rola": "bayes", "zdarzenie": "start", "plik": "03-opinie/bayes.json"}
+{"ts":"2026-11-01T00:32:53Z","rola":"farmakolog","zdarzenie":"start","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:33:01+00:00", "rola": "poz_pragmatyk", "zdarzenie": "start", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts": "2026-11-01T00:34:11Z", "rola": "hipotezujacy", "zdarzenie": "stop", "plik": "03-opinie/hipotezujacy.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"start"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"stop"}
+{"ts": "2026-11-01T00:34:46Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:34:49Z", "rola": "bayes", "zdarzenie": "stop", "plik": "03-opinie/bayes.json"}
+{"ts": "2026-11-01T00:34:51+00:00", "rola": "poz_pragmatyk", "zdarzenie": "stop", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts":"2026-11-01T00:35:18Z","rola":"farmakolog","zdarzenie":"stop","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:35:53+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts": "2026-11-01T00:37:06Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start_dyskusja", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:37:06Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop_dyskusja", "plik": "03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:37:09+00:00", "rola": "poz_pragmatyk", "zdarzenie": "rewizja", "plik": "03-opinie/poz_pragmatyk.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"rewizja_04"}
+{"ts":"2026-11-01T00:37:20Z","rola":"farmakolog","zdarzenie":"rewizja","plik":"03-opinie/farmakolog.json"}
+{"ts": "2026-11-01T00:37:29Z", "rola": "hipotezujacy", "zdarzenie": "start_dyskusja", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:37:29Z", "rola": "hipotezujacy", "zdarzenie": "stop_dyskusja", "plik": "03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:38:10+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts": "2026-11-01T00:41:34Z", "rola": "hipotezujacy", "zdarzenie": "start", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:42:19Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start", "plik": "A-infekcja/03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:42:20+00:00", "rola": "poz_pragmatyk", "zdarzenie": "start", "plik": "A-infekcja/03-opinie/poz_pragmatyk.json"}
+{"ts":"2026-11-01T00:43:38Z","rola":"farmakolog","zdarzenie":"stop","plik":"A-infekcja/03-opinie/farmakolog.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"start","czesc":"A-infekcja"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"stop","czesc":"A-infekcja"}
+{"ts": "2026-11-01T00:43:54+00:00", "rola": "poz_pragmatyk", "zdarzenie": "stop", "plik": "A-infekcja/03-opinie/poz_pragmatyk.json"}
+{"ts": "2026-11-01T00:43:54Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop", "plik": "A-infekcja/03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:44:00Z", "rola": "bayes", "zdarzenie": "start", "plik": "A-infekcja/03-opinie/bayes.json"}
+{"ts": "2026-11-01T00:44:00Z", "rola": "bayes", "zdarzenie": "stop", "plik": "A-infekcja/03-opinie/bayes.json"}
+{"ts": "2026-11-01T00:44:23Z", "rola": "hipotezujacy", "zdarzenie": "stop", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
+{"ts":"2026-11-01T00:45:29Z","rola":"ordynator","zdarzenie":"protokol","plik":"04-konsylium.md"}
+{"ts":"2026-11-01T00:45:29Z","rola":"ordynator","zdarzenie":"final","plik":"09-FINAL.md"}
+{"ts":"2026-11-01T00:45:29Z","rola":"ordynator","zdarzenie":"raport_etiologia","plik":"RAPORT-ETIOLOGIA.md"}
+{"ts":"2026-11-01T00:45:41Z","rola":"farmakolog","zdarzenie":"rewizja","plik":"A-infekcja/03-opinie/farmakolog.json"}
+{"ts":"2026-11-01T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"rewizja_A"}
+{"ts": "2026-11-01T00:45:45+00:00", "rola": "poz_pragmatyk", "zdarzenie": "rewizja", "plik": "A-infekcja/03-opinie/poz_pragmatyk.json"}
+{"ts": "2026-11-01T00:45:46Z", "rola": "najgorszy_scenariusz", "zdarzenie": "start_dyskusja", "plik": "A-infekcja/03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:45:46Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop_dyskusja", "plik": "A-infekcja/03-opinie/najgorszy_scenariusz.json"}
+{"ts": "2026-11-01T00:46:01Z", "rola": "hipotezujacy", "zdarzenie": "start_dyskusja", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
+{"ts": "2026-11-01T00:46:01Z", "rola": "hipotezujacy", "zdarzenie": "stop_dyskusja", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"protokol_laczny_A_B","plik":"04-konsylium.md"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"final_A_B","plik":"09-FINAL.md"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"raport_A_B","plik":"RAPORT.md"}
+{"ts":"2026-11-01T01:06:51Z","rola":"ordynator","zdarzenie":"odpowiedz_sprawdzajacemu","plik":"08-odpowiedz-sprawdzajacemu.md"}
+{"ts":"2026-11-01T01:06:51Z","rola":"ordynator","zdarzenie":"final_v2","plik":"09-FINAL.md"}
+{"ts":"2026-11-01T01:06:51Z","rola":"ordynator","zdarzenie":"raport_v2","plik":"RAPORT.md"}

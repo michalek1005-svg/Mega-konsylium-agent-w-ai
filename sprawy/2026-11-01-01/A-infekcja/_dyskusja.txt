@@ -1,0 +1,47 @@
+=== farmakolog
+1. Rozbieżność grypy ma znaczenie tylko dla oseltamiwiru bez testu; test ją unieważnia.
+2. Najpierw test; gdy testu nie ma dziś i ≤48 h — dopuszcza empirycznie 75 mg 2×/d, odstawić po ujemnym; po 48 h bez testu nie, chyba że ciężki/pogarszający się przebieg (PMID 37306992).
+3. Azytromycyna bez wskazań: nagły początek z prostracją nie pasuje do krztuśca ani Mycoplasma; powrót tylko przy kaszlu napadowym, kontakcie z krztuścem, ognisku płucnym — z EKG, K, Mg (PMID 33759318).
+4. Adenowirus tłumaczy głównie obrzęk drugiej powieki, nie wysypkę 15 min po dawce; przy potwierdzeniu ~0,05 z cefuroksymu na pokrzywkę wirusową.
+5. EKG obowiązkowe przy kontynuacji makrolidu lub objawach sercowych; poza tym rozsądne, nie warunek.
+SKRÓT: Leczenie przyczynowe tylko po teście: oseltamiwir przy dodatniej grypie (empirycznie dopuszczalny ≤ 48 h, gdy testu nie ma dziś, i odstawiony po ujemnym wyniku); cefuroksym, budezonid i azytromycynę odstawić, bo nie ma cech krztuśca ani zapalenia płuc. EKG obowiązkowe przy kontynuacji makrolidu lub objawach sercowych, w pozostałych przypadkach opcjonalne.
+=== gospodarz_kosztow
+1. Przyjmuje sezonowość bayesa: grypa 0,28→0,18; spór nie zmienia decyzji — test i tak potrzebny.
+2. Oseltamiwir tylko po teście (wynik w 15 min); wyjątek: test niedostępny lub ciężki przebieg/zapalenie płuc — wtedy empirycznie niezależnie od czasu [wiedza modelu].
+3. Azytromycyna bez wskazań — odstawić.
+4. Adenowirus tłumaczy obrzęk powieki, nie wysypkę; badanie oka (przekrwienie, wydzielina, węzeł przyuszny) rozstrzyga za darmo; plan B bez zmian.
+5. EKG z niskim progiem: przy wizycie jeśli aparat jest; obowiązkowo przy objawach sercowych lub kontynuacji makrolidu.
+SKRÓT: Etiologia wirusowa (~0,9), bez antybiotyku; azytromycynę odstawić. Oseltamiwir tylko po dodatnim teście antygenowym, chyba że przebieg jest ciężki. EKG przy objawach sercowych, utrzymanym makrolidzie lub dostępności w gabinecie. Adenowirus może wyjaśniać obrzęk powieki, lecz nie wysypkę dłoni i stóp, więc diagnostyka cefuroksymu pozostaje.
+P: grypa=0,18 COVID-19=0,24 inne=0,27
+=== poz_pragmatyk
+1. Przyjmuje sezonowość: grypa 0,22→0,15; test w gabinecie w 15 min rozstrzyga.
+2. Oseltamiwir tylko po dodatnim teście (ALICE ~1 dzień); pacjentów OIT chroni zwolnienie, nie lek; wyjątek: brak testu przy lokalnej aktywności grypy.
+3. Azytromycyna bez wskazań (krztusiec: kaszel ≥2 tyg. lub kontakt; Mycoplasma brak cech w 2. dobie) — odstawić, usuwa też zaciemnianie części B.
+4. Adenowirus: pytanie o powód kropli + spojówki obu oczu; przy potwierdzeniu w B cefuroksym 0,55→0,45; wysypka 15 min nadal za lekiem; adenowirus bardzo zakaźny.
+5. EKG dziś — u tej pacjentki (64 l., skurcze, bisoprolol, osłabienie nieproporcjonalne, zawał po grypie).
+SKRÓT: Ostre wirusowe zakażenie dróg oddechowych bez wskazań do antybiotyku. Dziś: parametry życiowe, osłuchiwanie, test grypa/SARS-CoV-2, CRP i EKG; oseltamiwir tylko po dodatnim teście na grypę, odstawienie azytromycyny i cefuroksymu, zwolnienie z pracy na oddziale z intensywną terapią i badanie spojówek obu oczu.
+P: grypa=0,15 COVID-19=0,26 inne=0,30
+=== najgorszy_scenariusz
+1. Sprawdził PMID 42797869 — przyjmuje sezonowość: grypa 0,15, COVID-19 0,28, inne 0,30; zawał rośnie też po RSV (3,5) i innych wirusach (2,8) (PMID 29365305).
+2. Oseltamiwir po teście; empirycznie tylko gdy testu nie ma przy potwierdzonym krążeniu grypy (ognisko na oddziale) albo objawy z dolnych dróg/pogorszenie.
+3. Azytromycyna odstawić; wskazanie tylko przy kontakcie z krztuścem (najpierw PCR); przyjmuje argument farmakologa o QTc (PMID 33759318).
+4. Adenowirus nie tłumaczy 15 min; B zmienia się tylko przy obrzęku przed dawką lub obustronnej wydzielinie. UWAGA dla sprawdzającego: PMID 23719580 (cytowany przez hipotezującego) dotyczy czucia rogówki w adenowirusowym zapaleniu rogówki i spojówek — nie wspiera tezy o sekwencji oko → drogi oddechowe.
+5. EKG dziś — standard u tej pacjentki; weto 2 utrzymane.
+SKRÓT: Najpewniej wirusowe zakażenie dróg oddechowych z przewagą COVID-19 i innych wirusów nad grypą (sezonowość w Polsce), bez antybiotyku i azytromycyny, z oseltamiwirem tylko po dodatnim teście. Weto pilności 2: dziś saturacja, osłuchiwanie, EKG i test, dopóki hipoksemia, zawał po infekcji i zapalenie nagłośni nie zostaną jawnie wykluczone.
+P: grypa=0,15 COVID-19=0,28 inne=0,30 PILNOŚĆ=2
+=== bayes
+1. Spór grypy nie zmienia decyzji (test u wszystkich); próg empirycznego oseltamiwiru ~25–30% [wiedza modelu]; grypa 0,10→0,13 (nieznana aktywność sezonu), obrazu nie liczy drugi raz.
+2. Oseltamiwir po teście; wyjątek: brak testu + gorączka ≥38,5°C z dreszczami/bólami mięśni (grypa ~30%) lub pogorszenie.
+3. Azytromycyna bez wskazań: krztusiec w 2. dobie ~0,5%, Mycoplasma ~1%; PCR krztuśca przy kaszlu napadowym >2 tyg.
+4. Adenowirus zmienia B tylko gdy krople były na zapalenie spojówek i drugie oko ma przekrwienie z wydzieliną: cefuroksym 0,75→0,6, pokrzywka wirusowa →0,25.
+5. EKG rutynowo to nadmiar; tylko przy objawach sercowych [wiedza modelu].
+SKRÓT: Etiologia jest wirusowa w ok. 90%, a różnica w ocenie grypy (0,13 vs 0,30) nie zmienia dzisiejszych decyzji: test grypa/SARS-CoV-2, oseltamiwir tylko przy dodatnim wyniku, odstawienie azytromycyny i cefuroksymu. EKG jest wskazane wyłącznie przy objawach sercowych.
+P: grypa=0,13 COVID-19=0,28 inne=0,42
+=== hipotezujacy
+1. Przyjmuje bayesa: grypa 0,30→0,15 (PMID 42797869; LR ≤2,6 bez gorączki, PMID 15728170); dziś różnica nic nie zmienia.
+2. Oseltamiwir tylko po teście (~48 h, p grypy ~0,15, korzyść 17–25 h); empirycznie gdy brak testu przy krążeniu grypy lub pogorszeniu.
+3. Azytromycyna odstawić.
+4. Adenowirus tylko obrzęk drugiej powieki; przy zapaleniu spojówek drugiego oka cefuroksym −0,05; etykieta bez zmian.
+5. EKG raczej standard u tej pacjentki (osłabienie może być nietypowym OZW; zawał ×6 po grypie, ×3,5 RSV, ×2,8 inne wirusy, PMID 29365305).
+SKRÓT: Po uwzględnieniu polskiej sezonowości (szczyt COVID-19 we wrześniu, grypy w styczniu–lutym; PMID 42797869) najbardziej prawdopodobne jest zakażenie wirusem innym niż grypa lub SARS-CoV-2 (0,30) albo COVID-19 (0,28); grypa ma 0,15, oseltamiwir tylko po dodatnim teście, azytromycynę odstawić, a EKG wykonać ze względu na sześciokrotnie wyższe ryzyko zawału w tygodniu po grypie (PMID 29365305).
+P: grypa=0.15 COVID-19=0.28 inne=0.30

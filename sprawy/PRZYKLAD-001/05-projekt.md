@@ -1,0 +1,7 @@
+REKOMENDACJA: Dziś w gabinecie EKG, zlecić cito lipazę, ALT/AST/bilirubinę, CRP, morfologię oraz pilne USG jamy brzusznej; odstawić ibuprofen, przeciwbólowo paracetamol, dieta lekkostrawna; kontrola z wynikami za 2–3 dni.
+PILNOŚĆ: 2 (dziś badania wykluczające) — PEWNOŚĆ: średnia
+DLACZEGO: Obraz typowy dla objawowej kamicy pęcherzyka żółciowego (ból poposiłkowy po tłuszczach, promieniowanie pod łopatkę, Murphy dodatni, kobieta 54 l., BMI 31). Nie wykluczono jednak tanio wykluczalnych stanów groźnych: OZW u kobiety z czynnikami ryzyka (brak EKG) i zapalenia trzustki (brak lipazy). Brak gorączki i ból falujący przemawiają przeciw ostremu zapaleniu pęcherzyka.
+PLAN B: Jeśli USG potwierdzi kamicę bez cech zapalenia → skierowanie do chirurga ogólnego w trybie stabilnym (kwalifikacja do cholecystektomii). Jeśli lipaza >3× normy lub CRP wysokie lub gorączka → SOR. Jeśli USG prawidłowe i objawy trwają → gastroskopia.
+CZEGO NIE WIEMY: lipaza/próby wątrobowe/bilirubina (zlecone); EKG (do wykonania dziś); status menopauzalny; wywiad rodzinny chorób trzustki. Gdyby EKG wykazało zmiany niedokrwienne — decyzja zmienia się na SOR natychmiast.
+WRÓĆ / ESKALUJ GDY: ból ciągły >6 h, gorączka/dreszcze, żółtaczka, ciemny mocz, wymioty uniemożliwiające picie, ból w klatce/duszność/poty.
+ŹRÓDŁA: [wiedza modelu, niezweryfikowane] — do weryfikacji przez sprawdzającego faktów w zrodla/ (wytyczne PTG-E/PTChP) i PubMed.

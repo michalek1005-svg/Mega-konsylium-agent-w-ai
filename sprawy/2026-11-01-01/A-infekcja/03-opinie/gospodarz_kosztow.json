@@ -1,0 +1,200 @@
+{
+  "rola": "gospodarz_kosztow",
+  "uwaga_o_p": "p informacyjne; waga roli w torze 'rozpoznanie' = 0,0 (config/wagi.yaml). Służą do wyboru badań, które zmieniają decyzję.",
+  "rozpoznania": [
+    {
+      "nazwa": "grypa",
+      "p": 0.18,
+      "za": [
+        "Nagły początek z silnym osłabieniem ('rozbicie') to typowy obraz grypy; przełom października i listopada to początek sezonu [wiedza modelu, niezweryfikowane].",
+        "Ekspozycja zawodowa: oddział z ciężko chorymi, praca nocna."
+      ],
+      "przeciw": [
+        "Gorączka, bóle mięśni i ból głowy NIEZNANE.",
+        "W Polsce szczyt sezonu przypada zwykle na styczeń–marzec [wiedza modelu, niezweryfikowane]."
+      ]
+    },
+    {
+      "nazwa": "COVID-19",
+      "p": 0.24,
+      "za": [
+        "Całoroczna cyrkulacja; chrypka, ból gardła, katar i osłabienie pasują; ekspozycja szpitalna."
+      ],
+      "przeciw": [
+        "Brak swoistych cech (utrata węchu/smaku NIEZNANA); obraz kliniczny nie odróżnia COVID-19 od grypy — rozstrzyga tylko test."
+      ]
+    },
+    {
+      "nazwa": "inne wirusowe zakażenie dróg oddechowych",
+      "p": 0.27,
+      "za": [
+        "Paragrypa, rinowirusy i metapneumowirus często dają zapalenie krtani z chrypką i katarem [wiedza modelu, niezweryfikowane]; to najczęstsza grupa przyczyn."
+      ],
+      "przeciw": [
+        "Bardzo silne osłabienie i nagły początek pasują bardziej do grypy lub COVID-19."
+      ]
+    },
+    {
+      "nazwa": "adenowirusowa gorączka gardłowo-spojówkowa",
+      "p": 0.08,
+      "za": [
+        "Krople z antybiotykiem do JEDNEGO oka włączone 1–2 dni PRZED objawami gardłowo-krtaniowymi; powód kropli NIEZNANY. Jeśli to było zapalenie spojówek, sekwencja 'spojówki → gardło' i zajęcie drugiego oka po kilku dniach są typowe dla adenowirusa [wiedza modelu, niezweryfikowane].",
+        "Obrzęk powieki DRUGIEGO oka może być w części zajęciem drugiego oka, a nie tylko reakcją alergiczną."
+      ],
+      "przeciw": [
+        "Lewofloksacyna z kortykosteroidem i bromfenak to zestaw typowy po zabiegu na oku (np. operacji zaćmy), a nie w zapaleniu spojówek [wiedza modelu, niezweryfikowane].",
+        "Brak danych o zaczerwienieniu, wydzielinie i węźle przyusznym."
+      ]
+    },
+    {
+      "nazwa": "bakteryjne zapalenie płuc",
+      "p": 0.05,
+      "za": [
+        "64 lata, kaszel produktywny, silne osłabienie; bisoprolol maskuje tachykardię."
+      ],
+      "przeciw": [
+        "Dopiero 2. dzień; dominują objawy górnych dróg oddechowych; nie ma badania przedmiotowego. Plwocina ropna sama w sobie nie dowodzi zakażenia bakteryjnego [wiedza modelu, niezweryfikowane]."
+      ]
+    }
+  ],
+  "pozostale_kandydaty": [
+    {
+      "nazwa": "zakażenie RSV",
+      "p": 0.06,
+      "uwaga": "Ryzyko u dorosłych 60+; sezon jesienny. Nie zmienia leczenia (brak leczenia przyczynowego), zmienia tylko izolację w pracy."
+    },
+    {
+      "nazwa": "zakażenie Mycoplasma pneumoniae",
+      "p": 0.03,
+      "uwaga": "Raczej początek stopniowy; uzasadniałoby makrolid, ale tylko przy obrazie zapalenia płuc."
+    },
+    {
+      "nazwa": "krztusiec",
+      "p": 0.02,
+      "uwaga": "W 2. dobie trwa faza nieżytowa, której nie da się odróżnić od innych zakażeń. Badać tylko przy napadowym kaszlu trwającym ≥2 tygodnie."
+    },
+    {
+      "nazwa": "bakteryjne zapalenie krtani lub tchawicy",
+      "p": 0.01,
+      "uwaga": "Rzadkie; podejrzewać przy narastającym stridorze i wysokiej gorączce."
+    },
+    {
+      "nazwa": "zapalenie nagłośni",
+      "p": 0.01,
+      "uwaga": "Czerwona flaga: ślinienie się, ból przy połykaniu nieproporcjonalny do obrazu gardła, stridor, głos 'gorącego kartofla' → SOR."
+    }
+  ],
+  "nagly_przebieg": "Nagły początek z silnym osłabieniem to typowy obraz grypy: replikacja w nabłonku dróg oddechowych wyzwala gwałtowną odpowiedź interferonową i cytokinową (IL-6, TNF), która daje 'rozbicie', bóle mięśni i gorączkę. Nagły kaszel wynika z zapalenia krtani i tchawicy oraz ścieńczenia nabłonka, co odsłania zakończenia nerwowe odruchu kaszlowego. Wydzielina jest śluzowo-ropna także w zakażeniach wirusowych [wiedza modelu, niezweryfikowane]. Czynniki nasilające: wiek 64 lata (immunostarzenie), praca nocna i deprywacja snu osłabiająca odpowiedź przeciwwirusową, nadwaga, duża dawka wirusa przy kontakcie zawodowym z chorymi [wiedza modelu, niezweryfikowane]. Bisoprolol nie powoduje zakażenia, ale tłumi tachykardię odruchową: puls nie ostrzeże o odwodnieniu, sepsie ani hipoksemii, a pacjentka może odczuwać to jako większe osłabienie przy wysiłku. Dlatego trzeba zmierzyć SpO2, częstość oddechów i ciśnienie, a nie opierać się na tętnie [wiedza modelu, niezweryfikowane]. Leki i reakcja nadwrażliwości mogą dodatkowo pogłębiać osłabienie.",
+  "leczenie": {
+    "antybiotyk": {
+      "decyzja": "NIE w obecnym obrazie. Cefuroksym jest już odstawiony z powodu reakcji. Azytromycynę ODSTAWIĆ, jeśli badanie przedmiotowe i SpO2 nie wskażą na zapalenie płuc.",
+      "uzasadnienie": "W ostrym zapaleniu oskrzeli i kaszlu produktywnym bez choroby płuc antybiotyk nie poprawia stanu klinicznego (RR 1,07; 95% CI 0,99–1,15), skraca kaszel średnio o 0,46 dnia, a działania niepożądane występują częściej (RR 1,20; NNTH 24) (Cochrane, PMID 28626858). U tej pacjentki koszt niepotrzebnego antybiotyku już się zmaterializował: samodzielnie włączony cefuroksym poprzedził reakcję nadwrażliwości, która teraz wymaga diagnostyki alergologicznej i niesie ryzyko kosztownej etykiety.",
+      "azytromycyna_koszty": "Azytromycyna to kolejna nowa ekspozycja w trakcie wyjaśniania reakcji, co utrudnia ustalenie sprawcy. Dochodzą: selekcja oporności na makrolidy, ryzyko zakażenia C. difficile oraz wydłużenie QT [wiedza modelu, niezweryfikowane]. Azytromycyna ma sens tylko przy zapaleniu płuc o obrazie atypowym, w udokumentowanym krztuścu lub zakażeniu Mycoplasma.",
+      "gdy_zapalenie_pluc": "Jeśli badanie lub RTG wykaże zapalenie płuc: wybór antybiotyku uzgodnić z wątkiem alergii (część B). Amoksycylina ma inny łańcuch R1 niż cefuroksym i niską krzyżową reaktywność (PMID 29408440), ale przed diagnostyką alergologiczną pierwsza dawka powinna być pod obserwacją; alternatywą jest doksycyklina [wiedza modelu, niezweryfikowane]."
+    },
+    "przeciwwirusowe": {
+      "oseltamiwir": "Tylko przy dodatnim teście na grypę i nadal w oknie ok. 48 h od początku objawów; okno właśnie się zamyka. Dawka 75 mg 2×/d przez 5 dni [ChPL / wiedza modelu, niezweryfikowane]. 64 lata to jeszcze nie formalna grupa wiekowa ≥65 lat; o kwalifikacji decyduje otyłość (BMI NIEZNANE) i ciężkość przebiegu [wiedza modelu, niezweryfikowane]. W metaanalizie RCT u ambulatoryjnych chorych na grypę oseltamiwir nie zmniejszał ryzyka hospitalizacji (RR 0,79; 95% CI 0,48–1,29), także u osób ≥65 lat i z grupy ryzyka, i zwiększał nudności (RR 1,43) oraz wymioty (RR 1,83) (PMID 37306992, DOI 10.1001/jamainternmed.2023.0699). Wniosek kosztowy: po 48 h u stabilnej pacjentki nie podawać; podać, gdy pojawią się cechy zapalenia płuc lub pogorszenie albo konieczność hospitalizacji (wtedy niezależnie od czasu) [wiedza modelu, niezweryfikowane]. Oseltamiwir nie zastępuje wyłączenia z pracy.",
+      "covid19": "Przy dodatnim teście leczenie przeciwwirusowe (nirmatrelwir z rytonawirem) tylko przy czynnikach ryzyka ciężkiego przebiegu i do 5. dnia; trzeba wtedy sprawdzić interakcje rytonawiru z lekami stałymi [wiedza modelu, niezweryfikowane]. U 64-latki z nadwagą bez innych czynników ryzyka korzyść jest niepewna.",
+      "runda_A": "Oseltamiwir tylko po dodatnim teście. Test antygenowy daje wynik w ok. 15 min, więc leczenie empiryczne nie przyspiesza decyzji. Wyjątek: test niedostępny dziś albo cechy ciężkiego przebiegu lub zapalenia płuc; wtedy podać empirycznie niezależnie od 48 h [wiedza modelu, niezweryfikowane]."
+    },
+    "budezonid_nebulizacja": "Nie kontynuować rutynowo. Brak astmy i świstów, a w ostrym kaszlu i zapaleniu krtani u dorosłych brak dowodów korzyści [wiedza modelu, niezweryfikowane; w PubMed nie znalazłem badania u dorosłych]. Uzasadniony tylko przy świstach lub nadreaktywności oskrzeli po infekcji. Koszt to nie tylko lek, ale też nebulizator i czas pacjentki.",
+    "objawowe": "Paracetamol 0,5–1 g do 4×/d, maks. 4 g/d [wiedza modelu, niezweryfikowane]. Paracetamol zamiast NLPZ, bo do czasu wyjaśnienia reakcji (część B) nie wprowadzać leków, które są kofaktorem pokrzywki. Do tego nawodnienie, oszczędzanie głosu, sen. Mukolityków nie podawać: brak wyraźnej korzyści, a erdosteina jest jednym z podejrzanych sprawców reakcji."
+  },
+  "diagnostyka": {
+    "dzis_zmienia_decyzje": [
+      {
+        "nazwa": "Parametry życiowe: SpO2, częstość oddechów, ciśnienie tętnicze, temperatura, świadomość, osłuchiwanie płuc; oglądanie gardła i obu oczu",
+        "koszt": "0 zł",
+        "zmienia_decyzje": true,
+        "kolejnosc": 1,
+        "uwagi": "Rozstrzyga, czy to zakażenie górnych dróg oddechowych lub zapalenie oskrzeli (bez antybiotyku), czy podejrzenie zapalenia płuc (RTG, antybiotyk). Tętno jest niewiarygodne przy bisoprololu. Oko: zaczerwienienie, wydzielina i węzeł przyuszny przemawiają za adenowirusem."
+      },
+      {
+        "nazwa": "Szybki test antygenowy grypa A/B + SARS-CoV-2 (najlepiej z RSV), a przy dostępności PCR",
+        "koszt": "niski",
+        "zmienia_decyzje": true,
+        "kolejnosc": 2,
+        "uwagi": "Wynik zmienia trzy decyzje: (1) oseltamiwir; (2) czas wyłączenia z pracy i powiadomienie zespołu kontroli zakażeń, bo narażeni pacjenci OIT mogą wymagać profilaktyki; (3) odstawienie azytromycyny. Molekularny POCT poprawiał trafność leczenia przeciwwirusowego grypy (91% vs 65%) i częściej skracał antybiotykoterapię do <48 h (PMID 28392237); szybki PCR zmniejszał niepotrzebne podawanie oseltamiwiru (PMID 36384484). Ujemny test antygenowy nie wyklucza grypy."
+      },
+      {
+        "nazwa": "CRP (najlepiej przyłóżkowe)",
+        "koszt": "niski",
+        "zmienia_decyzje": true,
+        "kolejnosc": 3,
+        "uwagi": "TYLKO gdy obraz po badaniu jest niejednoznaczny (np. trzeszczenia bez innych cech). Przyłóżkowe CRP zmniejsza liczbę recept na antybiotyk (RR 0,77) bez pogorszenia zdrowienia (Cochrane, PMID 36250577); czułość 70%, swoistość 86% dla zakażenia bakteryjnego (PMID 41498909). Progi orientacyjne: <20 mg/l bez antybiotyku, 20–100 mg/l decyzja kliniczna lub odroczona, >100 mg/l antybiotyk [wiedza modelu, niezweryfikowane]. Grypa też podnosi CRP."
+      },
+      {
+        "nazwa": "RTG klatki piersiowej",
+        "koszt": "średni + dawka promieniowania",
+        "zmienia_decyzje": true,
+        "kolejnosc": 4,
+        "uwagi": "Tylko przy ogniskowych zmianach osłuchowych, SpO2 <94%, przyspieszonym oddechu, CRP >100 mg/l albo braku poprawy po 72 h [wiedza modelu, niezweryfikowane]."
+      }
+    ],
+    "nie_zlecac": [
+      {
+        "nazwa": "Wielopatogenowy panel PCR układu oddechowego",
+        "powod": "Poza grypą i COVID-19 wynik nie zmienia leczenia ambulatoryjnego. Wyjątek: ognisko na oddziale, wtedy płaci szpital w ramach dochodzenia epidemiologicznego."
+      },
+      {
+        "nazwa": "Prokalcytonina, morfologia z rozmazem, posiew plwociny",
+        "powod": "W ambulatoryjnym zakażeniu dróg oddechowych bez cech zapalenia płuc nie zmieniają decyzji."
+      },
+      {
+        "nazwa": "Serologia Mycoplasma / Chlamydophila, PCR na krztusiec",
+        "powod": "Serologia potrzebuje dwóch próbek w odstępie tygodni, więc nie wpływa na dzisiejsze leczenie. Badanie w kierunku krztuśca dopiero przy napadowym kaszlu ≥2 tyg."
+      },
+      {
+        "nazwa": "Wymaz z gardła lub test na paciorkowca",
+        "powod": "Kaszel, katar i chrypka przemawiają przeciw paciorkowcowemu zapaleniu gardła (niska punktacja w skali Centora) [wiedza modelu, niezweryfikowane]."
+      },
+      {
+        "nazwa": "EKG 'z powodu azytromycyny'",
+        "powod": "Tańsze jest odstawienie niepotrzebnej azytromycyny niż monitorowanie QT. EKG wykonać, jeśli makrolid zostaje albo pojawią się kołatania lub omdlenie."
+      },
+      {
+        "nazwa": "RTG klatki piersiowej rutynowo",
+        "powod": "Bez cech zapalenia płuc w badaniu przedmiotowym to promieniowanie i koszt bez zmiany decyzji."
+      }
+    ],
+    "ekg_runda_A": "EKG nie rutynowo, ale z niskim progiem: wykonać przy wizycie, jeśli aparat jest w gabinecie (koszt i ryzyko kaskady minimalne), a obowiązkowo przy bólu w klatce, duszności nieproporcjonalnej do zmian w płucach, nasileniu kołatań przy skurczach nadkomorowych albo jeśli azytromycyna zostaje. Względnie wyższe ryzyko zawału po grypie dotyczy grypy potwierdzonej, a ryzyko bezwzględne jest małe. Nie kierować na EKG osobno, jeśli nie ma objawów, a azytromycyna została odstawiona."
+  },
+  "praca": {
+    "zakaznosc": "Grypa: zakaźność największa przez pierwsze 3–4 dni, zwykle do ok. 5–7 dni od początku objawów; COVID-19: ok. 5–10 dni; adenowirus (zwłaszcza zapalenie spojówek): do ok. 2 tygodni [wiedza modelu, niezweryfikowane].",
+    "zwolnienie": "Zwolnienie lekarskie teraz. Powrót najwcześniej po ≥24 h bez gorączki bez leków przeciwgorączkowych, z wyraźną poprawą objawów i po upływie okresu zakaźności dla potwierdzonego patogenu; dokładne zasady ustala regulamin szpitala lub zespół kontroli zakażeń [wiedza modelu, niezweryfikowane].",
+    "ryzyko_OIT": "Pacjenci wentylowani i neurologiczni są szczególnie narażeni na ciężki przebieg zakażeń szpitalnych. Ograniczenie pracy chorego personelu i szczepienia personelu zmniejszają szpitalną transmisję grypy (przegląd, PMID 41752743, DOI 10.3390/medicina62020344). Przy dodatnim teście na grypę lub COVID-19 trzeba powiadomić zespół kontroli zakażeń, bo narażeni pacjenci mogą wymagać obserwacji lub profilaktyki. To najmocniejszy argument kosztowy za testem: koszt testu jest pomijalny wobec kosztu ogniska na OIT.",
+    "szczepienia": "Sprawdzić status szczepienia przeciw grypie (sezon 2026/27) i COVID-19; po wyzdrowieniu szczepić, jeśli brakuje."
+  },
+  "zwiazek_z_reakcja": "Infekcja może tłumaczyć część obrazu: (1) zakażenia wirusowe są częstą przyczyną ostrej pokrzywki i działają jako kofaktor obniżający próg reakcji na lek (część B); (2) obrzęk powieki 'drugiego' oka może być zajęciem drugiego oka w przebiegu wirusowego (adenowirusowego) zapalenia spojówek, a nie tylko reakcją alergiczną — rozstrzyga bezpłatne badanie oka (przekrwienie, wydzielina, węzeł przyuszny; sam obrzęk bez zapalenia spojówek przemawia za reakcją alergiczną) [wiedza modelu, niezweryfikowane]; (3) wysypki dłoni i stóp 15 min po leku infekcja nie tłumaczy dobrze; ten związek czasowy wskazuje na reakcję polekową. Konsekwencja kosztowa: każdy niepotrzebny lek w trakcie infekcji (cefuroksym, erdosteina, teraz azytromycyna) to kolejny kandydat do późniejszej diagnostyki alergologicznej i kolejna potencjalna etykieta.",
+  "koszt_niepotrzebnych_antybiotykow": "U tej pacjentki koszt jest już widoczny: reakcja nadwrażliwości po samodzielnie włączonym cefuroksymie. Teraz grozi etykieta 'alergia na beta-laktamy', która wiąże się z wyższym ryzykiem MRSA (HR 1,69) i C. difficile (HR 1,26) (PMID 29950489, DOI 10.1136/bmj.k2400). Do tego dochodzą działania niepożądane w ostrym zapaleniu oskrzeli (NNTH 24; PMID 28626858) i oporność. Azytromycyna dokłada kolejną ekspozycję bez wskazania.",
+  "pilnosc": 2,
+  "uzasadnienie_pilnosci": "Dziś: ocena parametrów życiowych (SpO2, oddech, ciśnienie) u 64-latki z silnym osłabieniem na bisoprololu i test na grypę/COVID-19. Wynik zmienia leczenie, izolację i bezpieczeństwo pacjentów OIT, a okno dla oseltamiwiru się zamyka. Czekanie z tymi tanimi badaniami nie jest bezpieczne ani tańsze.",
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "SpO2 <94%, duszność, przyspieszony oddech — NIEZNANE",
+    "Spadek ciśnienia, splątanie (tachykardia maskowana bisoprololem) — NIEZNANE",
+    "Stridor, ślinienie się, trudność połykania (zapalenie nagłośni lub obrzęk krtani — nakłada się na wątek alergiczny) — NIEZNANE",
+    "Ból w klatce piersiowej, krwioplucie — NIEZNANE",
+    "Pogorszenie po wstępnej poprawie (nadkażenie bakteryjne po grypie) — do obserwacji"
+  ],
+  "nastepny_krok": "Dziś wizyta osobista: SpO2, częstość oddechów, ciśnienie, temperatura, osłuchiwanie płuc i oglądanie obu oczu oraz szybki test antygenowy grypa A/B + SARS-CoV-2. Bez cech zapalenia płuc: odstawić azytromycynę i budezonid, leczyć objawowo paracetamolem, wystawić zwolnienie, a przy dodatnim teście powiadomić zespół kontroli zakażeń szpitala.",
+  "co_zmieniloby_zdanie": "SpO2 <94%, ogniskowe trzeszczenia lub CRP >100 mg/l przesunęłyby ocenę na zapalenie płuc: wtedy RTG, antybiotyk dobrany z uwzględnieniem wątku alergii oraz oseltamiwir przy dodatnim teście na grypę niezależnie od czasu od początku objawów.",
+  "zrodla": [
+    "PubMed: Smith SM i in. Antibiotics for acute bronchitis. Cochrane Database Syst Rev 2017;6:CD000245. PMID 28626858, DOI 10.1002/14651858.CD000245.pub4",
+    "PubMed: Smedemark SA i in. Biomarkers as point-of-care tests to guide prescription of antibiotics in people with acute respiratory infections in primary care. Cochrane Database Syst Rev 2022;10:CD010130. PMID 36250577, DOI 10.1002/14651858.CD010130.pub3",
+    "PubMed: Martínez-González NA i in. Point-of-care CRP testing to reduce antibiotic prescribing for RTIs in primary care: SR and MA. Antibiotics 2020;9:610. PMID 32948060, DOI 10.3390/antibiotics9090610",
+    "PubMed: Sahoo RK i in. Diagnostic accuracy of point-of-care CRP devices for acute RTIs: SR and MA. Infection 2026;54:683-706. PMID 41498909, DOI 10.1007/s15010-025-02721-7",
+    "PubMed: Hanula R i in. Evaluation of oseltamivir used to prevent hospitalization in outpatients with influenza: SR and MA. JAMA Intern Med 2024;184:18-27. PMID 37306992, DOI 10.1001/jamainternmed.2023.0699",
+    "PubMed: Brendish NJ i in. Routine molecular point-of-care testing for respiratory viruses in adults (ResPOC). Lancet Respir Med 2017;5:401-11. PMID 28392237, DOI 10.1016/S2213-2600(17)30120-0",
+    "PubMed: Bibby HL i in. Pragmatic RCT of rapid on-site influenza and RSV PCR testing. BMC Infect Dis 2022;22:854. PMID 36384484, DOI 10.1186/s12879-022-07796-3",
+    "PubMed: Huang WH i in. Strategies for preventing nosocomial influenza in acute-care hospitals: a narrative review. Medicina 2026;62:344. PMID 41752743, DOI 10.3390/medicina62020344",
+    "PubMed: Blumenthal KG i in. Risk of MRSA and C. difficile in patients with a documented penicillin allergy. BMJ 2018;361:k2400. PMID 29950489, DOI 10.1136/bmj.k2400",
+    "PubMed: Romano A i in. Cross-reactivity and tolerability of cephalosporins in patients with IgE-mediated hypersensitivity to penicillins. J Allergy Clin Immunol Pract 2018;6:1662-72. PMID 29408440, DOI 10.1016/j.jaip.2018.01.020",
+    "zrodla/MANIFEST.md — brak polskich wytycznych (np. Rekomendacje postępowania w pozaszpitalnych zakażeniach układu oddechowego) w bibliotece; poziom 1 milczy.",
+    "[wiedza modelu, niezweryfikowane]: dawkowanie oseltamiwiru i paracetamolu, okno 48 h, progi CRP, okresy zakaźności, zasady powrotu do pracy, kryteria wykonania RTG, rola bisoprololu w maskowaniu tachykardii, przebieg adenowirusowego zapalenia spojówek, brak korzyści z wziewnych kortykosteroidów w ostrym kaszlu u dorosłych."
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda A: przyjmuję argument sezonowości (bayes: na przełomie X/XI odsetek grypy wśród zakażeń niski), więc grypa 0,28→0,18, COVID-19 0,20→0,24, inne wirusy 0,19→0,27, adenowirus 0,10→0,08. Żadna decyzja się nie zmienia: test grypa/SARS-CoV-2 dziś i tak jest potrzebny, a oseltamiwir zależy od wyniku testu, nie od p sprzed testu.",
+  "zwiazek_z_reakcja_runda_A": "Adenowirus może tłumaczyć obrzęk powieki drugiego oka, ale nie wysypkę dłoni i stóp 15 min po leku. Plan części B się nie zmienia, bo testy z cefuroksymem są uzasadnione kosztem etykiety, a nie wielkością p. Rozróżnia bezpłatne badanie oka: przekrwienie i wydzielina oraz węzeł przyuszny przemawiają za adenowirusem, sam obrzęk powieki bez zapalenia spojówek za alergią."
+}

@@ -1,0 +1,300 @@
+{
+  "rola": "farmakolog",
+  "uwaga_metodologiczna": "Ślepa tura. Pytanie konsylium: czynnik etiologiczny reakcji nadwrażliwości (przyjętej). W tej sprawie p wypełnione dla leków/składników jako sprawców. Pozycja 'pokrzywka w przebiegu zakażenia wirusowego' ma p > 0 wyłącznie jako niepolekowa alternatywa w ocenie przyczynowości (WHO-UMC: 'czy inne przyczyny wyjaśniają objaw'), nie jako rozpoznanie internistyczne. Pozostałe p (po rewizji) = 0,07 (poza listą, max 5 pozycji): lewofloksacyna z kortykosteroidem w kroplach 0,02; inne (lateks/chlorheksydyna w pracy, pokarm, idiopatyczna) 0,05. Biblioteka zrodla/ nie zawiera ChPL ani polskich wytycznych dla tej sytuacji — skład preparatów oznaczony [wiedza modelu, niezweryfikowane].",
+  "rozpoznania": [
+    {
+      "nazwa": "cefuroksym",
+      "p": 0.55,
+      "za": [
+        "Reakcja typu natychmiastowego (ok. 15 min po dawce doustnej) z obrzękiem naczynioruchowym powieki i wysypką dłoni/stóp — fenotyp mastocytarny, zgodny z IgE-zależną nadwrażliwością na beta-laktam; cefalosporyny należą do najczęstszych przyczyn polekowych reakcji natychmiastowych (PMID 33385590: 68,9% potwierdzonych reakcji na cefalosporyny było natychmiastowych, 72,7% anafilaktycznych).",
+        "Swoista ekspozycja zawodowa: pielęgniarka OIT neurologicznego przygotowująca beta-laktamy i.v. Opisano dokładnie ten scenariusz: pielęgniarka 53 l., uczulenie na cefuroksym nabyte drogą wziewną w pracy, ciężka reakcja po doustnym cefuroksymie w trakcie infekcji oddechowej; potwierdzenie sIgE, BAT, SPT (PMID 29114903). Utajone uczulenie na beta-laktamy u 12% pielęgniarek bez wywiadu alergii (PMID 17445015).",
+        "Wspólny łańcuch boczny R1 (grupa metoksyiminowa) z ceftriaksonem i cefotaksymem — uczulenie nabyte na ceftriakson przy przygotowywaniu wlewów może manifestować się po cefuroksymie; reaktywność krzyżowa cefalosporyn zależy od R1 (PMID 25930196, 29408440, 36036421).",
+        "Możliwa dodatkowa ekspozycja kilka dni wcześniej: schemat kropli (lewofloksacyna + deksametazon/steryd oraz bromfenak do jednego oka) odpowiada typowemu postępowaniu po operacji zaćmy, w której standardowo podaje się cefuroksym dokomorowo — NIEZNANE, do sprawdzenia w karcie zabiegu [wiedza modelu, niezweryfikowane].",
+        "Kofaktor obecny: ostra infekcja dróg oddechowych obniża próg aktywacji mastocytów (PMID 37841053 — infekcje, NLPZ, deprywacja snu jako kofaktory); praca nocna/przemęczenie dodatkowo.",
+        "Runda 04: mechanizm odpowiedzi anamnestycznej — u osoby uprzednio uczulonej (praca, kursy) kolejne ekspozycje (ewentualny cefuroksym dokomorowy 1 mg/0,1 ml, PMID 41784986; dawki doustne z dni 1–2) mogą w ciągu kilku dni podnieść miano IgE i wywołać reakcję przy późniejszej, a nie pierwszej dawce [wiedza modelu, niezweryfikowane]; anafilaksja po cefuroksymie dokomorowym opisana (PMID 23850230, 34489227, 29911363)."
+      ],
+      "przeciw": [
+        "Jeśli dawki cefuroksymu z dni 1–2 tego epizodu były bez reakcji (NIEZNANE), u osoby uprzednio uczulonej reakcja IgE spodziewana byłaby raczej przy pierwszej dawce — kofaktor (narastająca infekcja) częściowo to tłumaczy, ale osłabia przypisanie.",
+        "Reakcja wystąpiła w dniu dołączenia nowego leku (erdosteiny) — reguła 'nowy lek = pierwszy podejrzany'.",
+        "Wielokrotna wcześniejsza tolerancja cefuroksymu (patrz wyjasnienie_tolerancji — nie wyklucza, ale obniża prawdopodobieństwo a priori)."
+      ]
+    },
+    {
+      "nazwa": "erdosteina",
+      "p": 0.18,
+      "za": [
+        "Jedyny lek dołączony w dniu reakcji, przyjęty jednocześnie z cefuroksymem; reakcja po 15 min.",
+        "Opis przypadku zaskakująco zbieżny: kobieta 35 l., infekcja górnych dróg oddechowych, w ciągu 2 h po erdosteinie wysypka na dłoniach (rumień trwały polekowy) i obrzęk warg/krtani; potwierdzone próbą prowokacyjną (PMID 33546741).",
+        "Wcześniejsza tolerancja nie wyklucza (jak dla każdego leku)."
+      ],
+      "przeciw": [
+        "Reakcje nadwrażliwości na erdosteinę są wyjątkowo rzadkie — w PubMed pojedyncze opisy przypadków (PMID 33546741 podaje, że to drugi opis w literaturze); profil działań niepożądanych głównie łagodny, żołądkowo-jelitowy.",
+        "Brak znanego mechanizmu uczulenia zawodowego ani reaktywności krzyżowej, która tłumaczyłaby uczulenie po wcześniejszej tolerancji.",
+        "Rumień trwały ma zwykle latencję 30 min–8 h i zmiany tarczowate o ostrych granicach — 15 min i obraz 'pokrzywkowy' bardziej pasują do IgE [wiedza modelu, niezweryfikowane]; morfologia NIEZNANA."
+      ]
+    },
+    {
+      "nazwa": "pokrzywka w przebiegu zakażenia wirusowego",
+      "p": 0.1,
+      "za": [
+        "Ostre zakażenie wirusowe górnych dróg oddechowych (katar, zapalenie gardła i krtani, nagły początek) jest częstą przyczyną ostrej pokrzywki/obrzęku naczynioruchowego u dorosłych i częstym powodem fałszywego etykietowania alergii na antybiotyk (PMID 39490659 — błędne etykiety z powodu osutek wirusowych).",
+        "Infekcja jest niezależnie kofaktorem — może być jedyną przyczyną albo wzmacniaczem reakcji na lek."
+      ],
+      "przeciw": [
+        "Ścisła chronologia 15 min po przyjęciu dwóch leków przemawia za związkiem przyczynowym z ekspozycją.",
+        "Pułapka morfologiczna: zmiany na dłoniach i stopach u dorosłej z zapaleniem gardła — gdy grudkowo-pęcherzykowe, bez świądu, utrzymujące się > 24 h, z enantemą w jamie ustnej — sugerują chorobę dłoni, stóp i ust (enterowirusy), nie lek [wiedza modelu, niezweryfikowane]."
+      ]
+    },
+    {
+      "nazwa": "substancja pomocnicza lub konserwant",
+      "p": 0.07,
+      "za": [
+        "Wcześniejsza tolerancja substancji czynnych przy zmianie preparatu (inny generyk cefuroksymu / inna postać erdosteiny) przemawia za składnikiem pomocniczym.",
+        "Kandydaci [wiedza modelu, niezweryfikowane — sprawdzić ChPL konkretnych serii]: makrogol (glikol polietylenowy) w otoczce tabletek cefuroksymu — znany alergen reakcji natychmiastowych; parahydroksybenzoesany i glikol propylenowy w otoczce; żelatyna kapsułek Erdomed; barwniki. Siarczyn sodu (bezwodny) w bromfenaku (Yellox) — ChPL ostrzega o reakcjach 'typu alergicznego' u osób wrażliwych. Chlorek benzalkonium w kroplach (opisane anafilaksje po kroplach do nosa z benzalkonium, PMID 23078861; po cewniku powlekanym, PMID 21109138).",
+        "Wspólna substancja pomocnicza obu leków przyjętych razem (np. makrogol) tłumaczyłaby nagłą reakcję po skumulowanej dawce."
+      ],
+      "przeciw": [
+        "Uczulenia na substancje pomocnicze są rzadkie w porównaniu z substancjami czynnymi.",
+        "Siarczyny i benzalkonium z kropli do jednego oka — ekspozycja układowa minimalna i trwała już 3–4 dni bez reakcji; reakcja nie była czasowo związana z zakropleniem (jeśli zakroplenie nie zbiegło się z dawką — NIEZNANE)."
+      ]
+    },
+    {
+      "nazwa": "bromfenak w kroplach",
+      "p": 0.03,
+      "za": [
+        "NLPZ (inhibitor COX) — NLPZ mogą wywoływać pokrzywkę/obrzęk naczynioruchowy mechanizmem nieimmunologicznym (przesunięcie metabolizmu kwasu arachidonowego na leukotrieny) oraz działać jako kofaktor innych reakcji (PMID 27865540); zawiera siarczyn sodu [wiedza modelu, niezweryfikowane]."
+      ],
+      "przeciw": [
+        "Dawka układowa z kropli do jednego oka jest znikoma (miejscowe ng; wchłanianie przez przewód nosowo-łzowy) — mało prawdopodobne istotne zahamowanie COX-1 układowo [wiedza modelu, niezweryfikowane].",
+        "Stosowany 3–4 dni bez reakcji; reakcja związana czasowo z dawką doustną, nie z zakropleniem.",
+        "Obrzęk drugiego (nieleczonego) oka — przeciw działaniu miejscowemu; brak wywiadu nadwrażliwości na NLPZ (NIEZNANE)."
+      ]
+    }
+  ],
+  "mechanizm": {
+    "najbardziej_prawdopodobny": "Natychmiastowa (typ I) IgE-zależna nadwrażliwość na cefuroksym, skierowana głównie przeciw determinancie łańcucha bocznego R1 (metoksyimino), z uczuleniem nabytym wcześniej — przez wielokrotne kursy terapeutyczne i/lub przewlekłą ekspozycję zawodową (aerozol, skóra) przy przygotowywaniu cefalosporyn i.v.; ujawniona przy obniżonym progu mastocytów w ostrej infekcji wirusowej. Obraz: obrzęk naczynioruchowy powieki + rumień/pokrzywka dłoni i stóp po 15 min — to reakcja uogólniona skórna (stopień I wg skal reakcji układowych); świąd/rumień dłoni i stóp jest typowym wczesnym objawem uogólnionej degranulacji mastocytów i bywa zwiastunem anafilaksji [wiedza modelu, niezweryfikowane].",
+    "IgE": "Uczulenie wymaga wcześniejszej ekspozycji (spełnione: kursy terapeutyczne + praca). Objawy w minutach–1 h po dawce. Potwierdzenie: testy skórne/BAT/sIgE, próba prowokacji (PMID 31749148, 29114903).",
+    "MRGPRX2": "Receptor mastocytów aktywowany bez IgE przez m.in. fluorochinolony, środki zwiotczające, opioidy (PMID 36341461, 39389528). Reakcja przy pierwszej ekspozycji i zależna od dawki/stężenia. W tej sprawie: lewofloksacyna jest agonistą MRGPRX2, ale z kropli do oka stężenie układowe jest zbyt małe, a lek był stosowany 3–4 dni bez reakcji — mechanizm mało prawdopodobny. Beta-laktamy i erdosteina nie są typowymi agonistami MRGPRX2 [wiedza modelu, niezweryfikowane]. Testy skórne mogą być fałszywie dodatnie przy agonistach MRGPRX2 (istotne przy interpretacji testów z fluorochinolonem).",
+    "NLPZ_niealergiczny": "Hamowanie COX-1 → nadprodukcja leukotrienów cysteinylowych → pokrzywka/obrzęk; wymaga dawki układowej. Bromfenak w kroplach — za mała ekspozycja jako przyczyna; może co najwyżej być słabym kofaktorem (PMID 27865540).",
+    "kofaktory": "Ostra infekcja, NLPZ, wysiłek, alkohol, deprywacja snu, miesiączka obniżają próg dawki wyzwalającej i nasilają reakcję (PMID 37841053, 40910423). U pacjentki: infekcja (pewna), deprywacja snu/praca nocna (prawdopodobna), NLPZ (śladowo). Kofaktory tłumaczą, dlaczego reakcja wystąpiła teraz, a nie przy wcześniejszych kursach lub w dniach 1–2.",
+    "beta_bloker": "Bisoprolol 1,25 mg/d nie wywołuje reakcji, ale może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę (u osób na beta-blokerach z oporną anafilaksją rozważa się glukagon) [wiedza modelu, niezweryfikowane]. Niska dawka beta1-selektywna — nie odstawiać, ale uwzględnić w planie awaryjnym."
+  },
+  "wyjasnienie_tolerancji": [
+    "Tolerancja wcześniejszych kursów nie chroni przed uczuleniem: każdy kurs jest okazją do wytworzenia IgE, które ujawnia się dopiero przy następnej ekspozycji (kurs N tolerowany → uczulenie → reakcja przy kursie N+1).",
+    "Między kursami terapeutycznymi trwała ekspozycja zawodowa małymi dawkami (aerozol przy rozpuszczaniu i odpowietrzaniu fiolek, kontakt skórny) — klasyczna droga uczulenia u pielęgniarek (PMID 29114903, 42616753, 42125910, 17445015); uszkodzona bariera skórna rąk (częste mycie, dezynfekcja) sprzyja uczuleniu przezskórnemu (PMID 42616753).",
+    "Możliwe uczulenie krzyżowe przez ceftriakson/cefotaksym (wspólny motyw metoksyiminowy R1), którymi pacjentka mogła się uczulić w pracy, bez nigdy nieprzyjętego ceftriaksonu terapeutycznie (PMID 25930196).",
+    "Kofaktor (ostra infekcja, przemęczenie) obniża próg — ta sama dawka, która wcześniej nie wywoływała objawów, teraz przekracza próg (PMID 37841053).",
+    "Inny preparat (generyk, inna otoczka/kapsułka) = inne substancje pomocnicze — 'tolerowany cefuroksym' mógł być innym produktem (NIEZNANE).",
+    "Dla erdosteiny ta sama logika: wcześniejsza tolerancja nie wyklucza (PMID 33546741 — reakcja na erdosteinę w trakcie infekcji)."
+  ],
+  "ekspozycja_zawodowa": {
+    "ocena": "Najważniejszy element wyjaśnienia. Oddział neurologii z intensywną terapią — typowo przygotowywane i.v.: ceftriakson, cefotaksym, cefuroksym, ceftazydym, cefepim, piperacylina z tazobaktamem, meropenem [wiedza modelu, niezweryfikowane — do potwierdzenia w wywiadzie]. Opisano uczulenie przez wdychanie ok. 10 µg cefuroksymu (próba prowokacji wziewnej wywołała uogólnioną pokrzywkę) bez świadomego kontaktu z lekiem (PMID 29114903).",
+    "konsekwencje": [
+      "Jeśli uczulenie na cefuroksym/R1 metoksyiminowy zostanie potwierdzone: ryzyko reakcji w pracy przy przygotowywaniu ceftriaksonu/cefotaksymu/cefuroksymu (opisano anafilaksję zawodową, PMID 42616753, 42125910).",
+      "Do czasu diagnostyki: ograniczyć udział w przygotowywaniu cefalosporyn i.v. (rękawice nitrylowe, bez odpowietrzania fiolek do powietrza, systemy zamknięte, w miarę możliwości wyłączenie z tej czynności).",
+      "Skierowanie do lekarza medycyny pracy; ocena podejrzenia choroby zawodowej po potwierdzeniu uczulenia [wiedza modelu, niezweryfikowane — przepisy krajowe nie w zrodla/].",
+      "Do wywiadu: objawy w pracy (katar, świąd, pokrzywka, wyprysk rąk przy przygotowywaniu antybiotyków), lateks, chlorheksydyna (PMID 29399806 — kontaktowe zapalenie skóry od cefalosporyn u pielęgniarek, współuczulenie na gumę/konserwanty)."
+    ]
+  },
+  "krople": {
+    "kontekst": "Lewofloksacyna + kortykosteroid (preparat złożony, np. z deksametazonem) i bromfenak do jednego oka to schemat typowy po operacji zaćmy [wiedza modelu, niezweryfikowane]. Jeśli była operacja 3–4 dni temu — sprawdzić kartę zabiegu: cefuroksym dokomorowo, powidon jodowy, chlorheksydyna, lateks, lidokaina (NIEZNANE). Dokomorowy cefuroksym byłby dodatkową ekspozycją wzmacniającą uczulenie.",
+    "lewofloksacyna_z_kortykosteroidem": "p = 0,02. Fluorochinolon jest agonistą MRGPRX2 i może wywołać reakcję IgE, ale ekspozycja układowa z kropli jest znikoma, stosowany 3–4 dni bez reakcji, reakcja nie związana z zakropleniem. Kortykosteroid miejscowy — reakcje natychmiastowe bardzo rzadkie.",
+    "bromfenak": "p = 0,03. NLPZ — za mała dawka układowa; siarczyn sodu jako konserwant/antyoksydant (ChPL Yellox — ostrzeżenie o reakcjach typu alergicznego) [wiedza modelu, niezweryfikowane].",
+    "konserwanty": "Chlorek benzalkonium — w większości kropli wielodawkowych; reakcje natychmiastowe opisane rzadko (PMID 23078861), częściej toksyczność powierzchni oka i wyprysk kontaktowy powiek (typ IV, opóźniony).",
+    "argument_kluczowy": "Obrzęk powieki oka NIEleczonego + zmiany na dłoniach i stopach = reakcja układowa, nie miejscowa. Przeciwko kroplom jako przyczynie przemawiają: chronologia (3–4 dni bez objawów, reakcja 15 min po leku doustnym), lokalizacja i minimalna ekspozycja układowa. Uwaga: przeniesienie kropli palcami na drugie oko daje wyprysk kontaktowy typu IV (godziny–dni, swędzący, złuszczający), nie obrzęk po 15 min.",
+    "zalecenie": "Kropli NIE odstawiać samodzielnie — przerwanie leczenia pooperacyjnego niesie ryzyko oczne; decyzja okulisty. Jeśli konieczna modyfikacja: preparaty bez konserwantu."
+  },
+  "substancje_pomocnicze": {
+    "do_sprawdzenia_w_ChPL_konkretnych_serii": [
+      "Cefuroksym (nazwa handlowa NIEZNANA): otoczka — makrogol (PEG), glikol propylenowy, parahydroksybenzoesany, barwniki [wiedza modelu, niezweryfikowane].",
+      "Erdomed (kapsułki twarde vs granulat/proszek — postać NIEZNANA): żelatyna kapsułki, barwniki, powidon, stearynian magnezu [wiedza modelu, niezweryfikowane].",
+      "Bromfenak (Yellox): siarczyn sodu bezwodny, chlorek benzalkonium, tyloksapol, edetynian disodu [wiedza modelu, niezweryfikowane].",
+      "Lewofloksacyna + steryd: chlorek benzalkonium [wiedza modelu, niezweryfikowane]."
+    ],
+    "logika": "Szukać składnika WSPÓLNEGO cefuroksymowi i erdosteinie (przyjęte razem) i NIEOBECNEGO w preparatach tolerowanych wcześniej. Szczególnie makrogol (PEG) — znany wyzwalacz reakcji natychmiastowych, obecny w wielu tabletkach powlekanych [wiedza modelu, niezweryfikowane]. Jeśli wspólny składnik istnieje — dołączyć go do testów skórnych."
+  },
+  "jak_rozroznic": [
+    "1. Doprecyzować chronologię (najwięcej informacji, zero kosztu): od kiedy i ile dawek cefuroksymu przed reakcją; czy erdosteina była pierwszą dawką w tym epizodzie; czy zakroplenie zbiegło się z dawką doustną; nazwy handlowe i serie wszystkich preparatów; czy była operacja oka i co podano okołozabiegowo.",
+    "2. Morfologia (zdjęcia): bąble przemijające < 24 h + obrzęk = mastocytarna (IgE/kofaktor); tarczowate, ostro odgraniczone, ciemniejące plamy w tym samym miejscu = rumień trwały (wzmacnia erdosteinę, PMID 33546741); grudki/pęcherzyki dłoni, stóp i jamy ustnej bez świądu = enterowiroza, nie lek; zmiany śluzówkowe/pęcherze/gorączka = reakcja ciężka opóźniona — natychmiastowa eskalacja.",
+    "3. Tryptaza: jeśli od reakcji < 4 h — pobrać teraz (optimum 30 min–2 h) i wartość podstawową ≥ 24 h później; wzrost > 20% + 2 µg/l potwierdza aktywację mastocytów [wiedza modelu, niezweryfikowane]. Po upływie okna — bez wartości.",
+    "4. Diagnostyka alergologiczna 4–6 tygodni po reakcji (nie później niż kilka miesięcy — IgE słabnie): testy punktowe i śródskórne z cefuroksymem, ceftriaksonem, cefazoliną oraz determinantami penicyliny; BAT z cefuroksymem; sIgE dostępne dla wybranych beta-laktamów (niska czułość). Algorytm wg EAACI (PMID 31749148); czułość testów skórnych dla cefalosporyn ok. 52% — połowa potwierdzeń wymaga prowokacji (PMID 33385590).",
+    "5. Erdosteina: brak zwalidowanych testów skórnych — rozstrzyga próba prowokacji doustnej w ośrodku alergologicznym, PO negatywnych testach z cefuroksymem (lub gdy testy z cefuroksymem są dodatnie i trzeba ustalić, czy erdosteina jest bezpieczna). Nie prowokować dwóch leków jednocześnie.",
+    "6. Antyhistaminiki odstawić ≥ 5–7 dni przed testami skórnymi [wiedza modelu, niezweryfikowane]; ogólnoustrojowe glikokortykosteroidy w krótkim kursie mniej istotne.",
+    "7. Wywiad zawodowy (objawy w pracy, wyprysk rąk) — dodatni zwiększa p cefuroksymu/R1 do > 0,7."
+  ],
+  "reaktywnosc_krzyzowa": {
+    "unikac_do_czasu_diagnostyki": [
+      "Cefuroksym (wszystkie postacie, także dokomorowa i i.v.).",
+      "Cefalosporyny z podobnym R1 (metoksyimino): ceftriakson, cefotaksym, cefepim; ostrożnie ceftazydym (Romano grupował je razem w testach, PMID 25930196).",
+      "Erdosteina.",
+      "Praktycznie w POZ: wszystkie cefalosporyny do czasu konsultacji alergologicznej."
+    ],
+    "prawdopodobnie_bezpieczne_po_ocenie_alergologa": [
+      "Cefazolina — unikatowy R1, brak reaktywności krzyżowej z innymi beta-laktamami (PMID 29913447, 42335159).",
+      "Penicyliny/aminopenicyliny — R1 odmienny od cefuroksymu; ryzyko niskie, ale u osoby z prawdopodobną reakcją natychmiastową na cefalosporynę zaleca się wcześniejsze testy z penicylinami (PMID 39021692 — u dzieci po reakcji na cefalosporyny często dodatnie testy z penicylinami; PMID 25930196).",
+      "Karbapenemy — reaktywność krzyżowa niska [wiedza modelu, niezweryfikowane]."
+    ],
+    "bezpieczne_strukturalnie": [
+      "Makrolidy (azytromycyna), doksycyklina — brak reaktywności krzyżowej z beta-laktamami.",
+      "Inne mukolityki (acetylocysteina, ambroksol) — strukturalnie odmienne od erdosteiny [wiedza modelu, niezweryfikowane]; w ostrej infekcji wirusowej zwykle zbędne."
+    ]
+  },
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Polekowa reakcja z eozynofilią i objawami ogólnymi — niezgodna z chronologią (latencja tygodnie, nie minuty) [wiedza modelu, niezweryfikowane]."
+  ],
+  "red_flags_otwarte": [
+    "Obrzęk krtani maskowany przez infekcyjną chrypkę — nowa duszność, stridor, chrypka narastająca, trudność połykania = anafilaksja do czasu wykluczenia.",
+    "Objawy krążeniowe i brzuszne w czasie reakcji NIEZNANE; bisoprolol może maskować tachykardię i osłabiać odpowiedź na adrenalinę.",
+    "Zmiany śluzówkowe, pęcherze, gorączka — NIEZNANE (ciężkie reakcje skórne trzeba wykluczyć oglądaniem).",
+    "Kontynuacja ekspozycji zawodowej na cefalosporyny w pracy przy prawdopodobnym uczuleniu.",
+    "Azytromycyna i budezonid dołączone po reakcji — nowe objawy w kolejnych dniach będą trudne do przypisania."
+  ],
+  "nastepny_krok": "Dziś: odstawić cefuroksym i erdosteinę (oba do czasu diagnostyki), wpisać do dokumentacji 'podejrzenie natychmiastowej nadwrażliwości na cefuroksym (cefalosporyny R1 metoksyiminowe) i erdosteinę — do weryfikacji', zebrać brakującą chronologię i nazwy handlowe oraz skierować do poradni alergologicznej na testy za 4–6 tygodni.",
+  "co_zmieniloby_zdanie": "Jeśli cefuroksym był przyjmowany przez 2 dni (≥ 3 dawki) bez objawów, a erdosteina była pierwszą dawką, i zmiany na dłoniach mają charakter tarczowatych plam trwałych — p erdosteiny wzrasta do ok. 0,4 i zrównuje się z cefuroksymem; dodatni wywiad objawów w pracy przy przygotowywaniu cefalosporyn podnosi cefuroksym > 0,7.",
+  "plan_farmakologiczny": [
+    {
+      "lek": "Cefuroksym",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "odstawić natychmiast",
+      "uwagi": "Główny podejrzany; nie wznawiać do czasu diagnostyki alergologicznej.",
+      "zrodlo": "PMID 31749148 (EAACI 2020), PMID 29114903"
+    },
+    {
+      "lek": "Erdosteina",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "odstawić natychmiast",
+      "uwagi": "Drugi podejrzany; w ostrej infekcji wirusowej mukolityk nie jest niezbędny.",
+      "zrodlo": "PMID 33546741"
+    },
+    {
+      "lek": "Lek przeciwhistaminowy II generacji (np. cetyryzyna lub bilastyna)",
+      "dawka": "cetyryzyna 10 mg 1×/d lub bilastyna 20 mg 1×/d na czczo",
+      "droga": "doustnie",
+      "czas": "do ustąpienia zmian, zwykle 3–7 dni",
+      "uwagi": "Odstawić ≥ 5–7 dni przed testami skórnymi. Bez interakcji istotnych z bisoprololem i azytromycyną.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Prednizon (tylko gdy obrzęk rozległy/nie ustępuje po antyhistaminiku)",
+      "dawka": "20–40 mg 1×/d rano",
+      "droga": "doustnie",
+      "czas": "3–5 dni, bez zmniejszania dawki",
+      "uwagi": "Nie zapobiega wczesnej fazie anafilaksji; nie jest lekiem ratunkowym.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Azytromycyna (już włączona)",
+      "dawka": "wg zlecenia",
+      "droga": "doustnie",
+      "czas": "kontynuować tylko przy wskazaniu bakteryjnym",
+      "uwagi": "Strukturalnie bezpieczna wobec beta-laktamów. Obraz kliniczny (katar, chrypka, gardło, 2 dni) sugeruje etiologię wirusową — wskazanie do antybiotyku wątpliwe (decyzja lekarza prowadzącego). Wydłużenie QT: ryzyko umiarkowane; z bisoprololem możliwa bradykardia — przy kołataniach/omdleniu EKG. Interakcja farmakokinetyczna z bisoprololem nieistotna.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Budezonid w nebulizacji (już włączony)",
+      "dawka": "wg zlecenia",
+      "droga": "wziewnie",
+      "czas": "krótko, objawowo",
+      "uwagi": "Nie ma związku z reakcją (podany po niej); nie wpływa istotnie na wynik testów skórnych.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Krople do oka (lewofloksacyna + steryd, bromfenak)",
+      "dawka": "bez zmian",
+      "droga": "do worka spojówkowego",
+      "czas": "wg okulisty",
+      "uwagi": "Niskie prawdopodobieństwo sprawstwa; nie odstawiać bez okulisty. Jeśli okulista zmienia — preparaty bez konserwantu i bez siarczynów.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Paracetamol zamiast NLPZ",
+      "dawka": "500–1000 mg do 4×/d, max 4 g/d (przy masie > 50 kg)",
+      "droga": "doustnie",
+      "czas": "w czasie infekcji i aktywnej pokrzywki",
+      "uwagi": "Ogólnoustrojowe NLPZ są kofaktorem i mogą nasilać pokrzywkę (PMID 27865540).",
+      "zrodlo": "PMID 27865540; dawkowanie [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Adrenalina we wstrzykiwaczu (do rozważenia)",
+      "dawka": "0,3 mg domięśniowo",
+      "droga": "domięśniowo, przednio-boczna powierzchnia uda",
+      "czas": "do czasu diagnostyki",
+      "uwagi": "Rozważyć ze względu na trwającą ekspozycję zawodową na cefalosporyny i nieustalonego sprawcę; bisoprolol może osłabiać odpowiedź — przy oporności SOR (glukagon). Bisoprololu nie odstawiać.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "Zgłoszenie działania niepożądanego",
+      "dawka": "—",
+      "droga": "—",
+      "czas": "w ciągu kilku dni",
+      "uwagi": "Zgłoszenie do Urzędu Rejestracji Produktów Leczniczych (podejrzewane: cefuroksym, erdosteina) z nazwami handlowymi i seriami.",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "lek": "Cefuroksym (każda postać, w tym dokomorowa)",
+      "powod": "Główny podejrzany sprawca reakcji natychmiastowej."
+    },
+    {
+      "lek": "Ceftriakson, cefotaksym, cefepim (ostrożnie ceftazydym)",
+      "powod": "Podobny łańcuch boczny R1 (metoksyimino) — reaktywność krzyżowa IgE (PMID 25930196)."
+    },
+    {
+      "lek": "Pozostałe cefalosporyny i penicyliny bez oceny alergologa",
+      "powod": "Do czasu testów; wyjątki (cefazolina, penicyliny) tylko po ocenie alergologicznej (PMID 31749148, 29913447)."
+    },
+    {
+      "lek": "Erdosteina",
+      "powod": "Drugi podejrzany; opisana reakcja natychmiastowa i rumień trwały na dłoniach (PMID 33546741)."
+    },
+    {
+      "lek": "Ogólnoustrojowe niesteroidowe leki przeciwzapalne w ostrej fazie",
+      "powod": "Kofaktor obniżający próg reakcji, nasilają pokrzywkę (PMID 27865540)."
+    },
+    {
+      "lek": "Ponowna 'próba' cefuroksymu w domu",
+      "powod": "Prowokacja tylko w ośrodku alergologicznym z zabezpieczeniem — ryzyko anafilaksji, zwłaszcza na beta-blokerze."
+    },
+    {
+      "lek": "Cefuroksym dokomorowo przy operacji zaćmy drugiego oka",
+      "powod": "Jeśli planowany zabieg drugiego oka — okulista musi wiedzieć o podejrzeniu; zamiana na profilaktykę niecefalosporynową (np. moksyfloksacyna dokomorowo 0,5 mg/0,1 ml, PMID 41784986). Anafilaksja po cefuroksymie dokomorowym opisana (PMID 23850230, 34489227, 29911363)."
+    }
+  ],
+  "zrodla": [
+    "PubMed: Merget R i wsp. Occupational generalized urticaria and anaphylaxis after inhalation of cefuroxime in a nurse. Am J Ind Med 2018;61(3):261-266. PMID 29114903, DOI 10.1002/ajim.22788",
+    "PubMed: Areia M i wsp. Occupational anaphylaxis induced by beta-lactam antibiotics exposure in a nurse. Occup Med 2026;76(6):453-455. PMID 42616753, DOI 10.1093/occmed/kqag087",
+    "PubMed: Catarina G i wsp. Occupational Anaphylaxis to Piperacillin-Tazobactam in a Nurse. J Investig Med High Impact Case Rep 2026;14. PMID 42125910, DOI 10.1177/23247096261450068",
+    "PubMed: Pinheiro V i wsp. Occupational allergic contact dermatitis caused by antibiotics in healthcare workers. Contact Dermatitis 2018;78(4):281-286. PMID 29399806, DOI 10.1111/cod.12960",
+    "PubMed: Cetinkaya F i wsp. Penicillin sensitivity among hospital nurses without a history of penicillin allergy. J Adv Nurs 2007;58(2):126-9. PMID 17445015, DOI 10.1111/j.1365-2648.2006.04155.x",
+    "PubMed: Sim DW i wsp. Fixed drug eruption and anaphylaxis induced concurrently by erdosteine: a case report. Allergy Asthma Clin Immunol 2021;17:15. PMID 33546741, DOI 10.1186/s13223-021-00517-6",
+    "PubMed: Romano A i wsp. Towards a more precise diagnosis of hypersensitivity to beta-lactams — an EAACI position paper. Allergy 2020;75(6):1300-1315. PMID 31749148, DOI 10.1111/all.14122",
+    "PubMed: Romano A i wsp. IgE-mediated hypersensitivity to cephalosporins: cross-reactivity and tolerability of alternative cephalosporins. J Allergy Clin Immunol 2015;136(3):685-691. PMID 25930196, DOI 10.1016/j.jaci.2015.03.012",
+    "PubMed: Romano A i wsp. Cross-reactivity and tolerability of cephalosporins in patients with IgE-mediated hypersensitivity to penicillins. J Allergy Clin Immunol Pract 2018;6(5):1662-1672. PMID 29408440, DOI 10.1016/j.jaip.2018.01.020",
+    "PubMed: Touati N i wsp. Cephalosporin hypersensitivity: descriptive analysis, cross-reactivity, and risk factors. J Allergy Clin Immunol Pract 2021;9(5):1994-2000. PMID 33385590, DOI 10.1016/j.jaip.2020.11.063",
+    "PubMed: Rukasin CRF i wsp. Advances in immunoglobulin E mediated antibiotic allergy. Curr Opin Pediatr 2022;34(6):609-615. PMID 36036421, DOI 10.1097/MOP.0000000000001171",
+    "PubMed: Mota I i wsp. Perioperative anaphylaxis including Kounis syndrome due to selective cefazolin allergy. Int Arch Allergy Immunol 2018;177(3):269-273. PMID 29913447, DOI 10.1159/000490182",
+    "PubMed: Jeffres MN. Cefazolin for all or just some? Am J Health Syst Pharm 2026. PMID 42335159, DOI 10.1093/ajhp/zxag138",
+    "PubMed: Eker N i wsp. Cross-reactivity between penicillins and cephalosporins in children with a history of cephalosporin allergy. Sisli Etfal Hastan Tip Bul 2024;58(2):155-158. PMID 39021692, DOI 10.14744/SEMB.2024.08286",
+    "PubMed: Burn MS i wsp. Diagnosis and clinical management of drug allergies in obstetrics and gynecology. Am J Obstet Gynecol 2025;232(3):243-261. PMID 39490659, DOI 10.1016/j.ajog.2024.10.025",
+    "PubMed: Yang F i wsp. Biological screening of a unique drug library targeting MRGPRX2. Front Immunol 2022;13:997389. PMID 36341461, DOI 10.3389/fimmu.2022.997389",
+    "PubMed: Ding J i wsp. Differential MRGPRX2-dependent activation of human mast cells by polymyxins and octapeptins. Eur J Pharmacol 2024;984:177050. PMID 39389528, DOI 10.1016/j.ejphar.2024.177050",
+    "PubMed: Ridolo E i wsp. Factors and co-factors influencing clinical manifestations in nsLTPs allergy. Front Allergy 2023;4:1253304. PMID 37841053, DOI 10.3389/falgy.2023.1253304",
+    "PubMed: Mohta A i wsp. Pediatric cofactor-enhanced food anaphylaxis: narrative review. Pediatr Allergy Immunol 2025;36(9):e70194. PMID 40910423, DOI 10.1111/pai.70194",
+    "PubMed: Sánchez-Borges M i wsp. Cofactors and comorbidities in patients with aspirin/NSAID hypersensitivity. Allergol Immunopathol 2017;45(6):573-578. PMID 27865540, DOI 10.1016/j.aller.2016.08.010",
+    "PubMed: Mezger E i wsp. Anaphylactic reaction following administration of nose drops containing benzalkonium chloride. Head Face Med 2012;8:29. PMID 23078861, DOI 10.1186/1746-160X-8-29",
+    "PubMed: Shih CK i wsp. Anaphylaxis to benzalkonium chloride-coated central venous catheter. J Clin Anesth 2010;22(8):632-4. PMID 21109138, DOI 10.1016/j.jclinane.2009.09.017",
+    "ChPL (Zinnat/generyki cefuroksymu, Erdomed, Yellox, krople lewofloksacyna + deksametazon) — brak w zrodla/; skład substancji pomocniczych [wiedza modelu, niezweryfikowane]",
+    "Dawkowanie leków przeciwhistaminowych, prednizonu, paracetamolu, adrenaliny; próg tryptazy 20% + 2 µg/l; odstawienie antyhistaminików przed testami — [wiedza modelu, niezweryfikowane]",
+    "PubMed: Reddy K i wsp. Intracameral cefuroxime use in cataract surgery after penicillin allergy reclassification. JAMA Ophthalmol 2026;144(4):325-332. PMID 41784986, DOI 10.1001/jamaophthalmol.2026.0040 (dawka 1,0 mg/0,1 ml; moksyfloksacyna 0,5 mg/0,1 ml)",
+    "PubMed: Moisseiev E, Levinger E. Anaphylactic reaction following intracameral cefuroxime injection during cataract surgery. J Cataract Refract Surg 2013;39(9):1432-4. PMID 23850230, DOI 10.1016/j.jcrs.2013.06.008",
+    "PubMed: Mahiat C i wsp. Anaphylactic shock following cataract surgery: a documented intracameral cefuroxime allergy. J Investig Allergol Clin Immunol 2021;32(3):236-238. PMID 34489227, DOI 10.18176/jiaci.0741",
+    "PubMed: Kędziora W, Żarnowski T. Wstrząs anafilaktyczny po podaniu Aprokamu do komory przedniej podczas operacji zaćmy. Klin Oczna 2016;118(4):298-300. PMID 29911363 (DOI niepodany w PubMed)"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda 04: hipoteza odpowiedzi anamnestycznej (booster przez kolejne ekspozycje: praca, ewentualny cefuroksym dokomorowy 3–4 dni temu, dawki z dni 1–2) osłabia główny argument przeciw cefuroksymowi (reakcja nie przy pierwszej dawce). Cefuroksym 0,50→0,55, erdosteina 0,20→0,18, pokrzywka wirusowa 0,12→0,10, substancja pomocnicza 0,08→0,07. Przy potwierdzeniu w karcie zabiegu cefuroksymu dokomorowego: cefuroksym ok. 0,60. Pozostałe p 0,07 (lewofloksacyna w kroplach 0,02; inne 0,05)."
+}

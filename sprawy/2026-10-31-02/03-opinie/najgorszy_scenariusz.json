@@ -1,0 +1,84 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "Pozostałość tabletki o przedłużonym uwalnianiu",
+      "p": 0.6,
+      "za": [
+        "Siofor XR 1 g od kilku miesięcy (matryca o przedłużonym uwalnianiu)",
+        "pojedyncza kulka, czasowo związana z przyjęciem leku",
+        "opis żółtawego, przypominającego pasożyta obiektu w kale po metforminie XR (PMID 40209786)",
+        "zjawisko 'ghost pill' znane dla tabletek o przedłużonym uwalnianiu (PMID 27048352)",
+        "stolec prawidłowej barwy, brak objawów żołądkowo-jelitowych"
+      ],
+      "przeciw": [
+        "nikt nie obejrzał obiektu; brak zachowanej próbki",
+        "nie wiadomo, czy tabletka połykana w całości"
+      ]
+    },
+    {
+      "nazwa": "Niestrawione resztki pokarmowe",
+      "p": 0.15,
+      "za": ["częsta przyczyna 'kuleczek' w stolcu", "brak innych objawów"],
+      "przeciw": ["zaprzeczenie spożycia nasion chia/tapioki", "związek czasowy z lekiem"]
+    },
+    {
+      "nazwa": "Zagęszczony mocz",
+      "p": 0.12,
+      "za": [
+        "pacjentka mało pije",
+        "badanie ogólne moczu prawidłowe poza barwą (bez krwi, bilirubiny, z prawidłowym urobilinogenem wg relacji)",
+        "ciemny mocz epizodyczny"
+      ],
+      "przeciw": ["ciężar właściwy moczu NIEZNANY - nie potwierdzono zagęszczenia liczbowo"]
+    },
+    {
+      "nazwa": "Robaczyca jelitowa",
+      "p": 0.03,
+      "za": ["obiekt w kale opisany jako 'kuleczka' - pacjentka może brać pasożyta za tabletkę i odwrotnie"],
+      "przeciw": [
+        "brak objawów, brak świądu odbytu, brak spadku masy ciała",
+        "człony tasiemca są płaskie, prostokątne i ruchome, nie okrągłe [wiedza modelu, niezweryfikowane]",
+        "wywiad podróży/surowego mięsa/zwierząt nie zebrany wprost (NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Kamica żółciowa",
+      "p": 0.02,
+      "za": ["żółtawa powłoka obiektu", "ciemny mocz"],
+      "przeciw": [
+        "brak bólu, żółtaczki, świądu",
+        "bilirubina, aminotransferazy, fosfataza zasadowa w normie wg relacji",
+        "stolec prawidłowej barwy",
+        "zaprzeczony wywiad kamiczy i 'kuracji oczyszczania wątroby'"
+      ]
+    }
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Cholestaza/żółtaczka mechaniczna (np. nowotwór dróg żółciowych lub trzustki) - wykluczona względnie: bilirubina i enzymy wątrobowe w normie, stolec prawidłowej barwy, bilirubina w moczu ujemna, brak żółtaczki i świądu",
+    "Polekowe uszkodzenie wątroby (rosuwastatyna, ezetymib, metformina) - ALT/AST/bilirubina w normie wg relacji",
+    "Rabdomioliza/miopatia statynowa - brak bólu i osłabienia mięśni, kinaza kreatynowa w normie, krew w moczu ujemna; ciemny mocz jest objawem alarmowym miopatii statynowej (PMID 39316353), ale tu bez korelatów",
+    "Hemoliza/hemoglobinuria - krew w moczu ujemna, bilirubina prawidłowa",
+    "Krwiomocz z dróg moczowych (nowotwór, kamica nerkowa) - krew w moczu ujemna",
+    "Nowotwór jelita grubego z krwawieniem - brak krwi, smolistych stolców, spadku masy ciała (morfologia/ferrytyna nie podane - patrz otwarte)",
+    "Kwasica mleczanowa przy metforminie - brak objawów, kreatynina w normie",
+    "Ostra niewydolność nerek przy odwodnieniu na inhibitorze konwertazy + diuretyku - kreatynina w normie wg relacji"
+  ],
+  "red_flags_otwarte": [
+    "Daty badań laboratoryjnych NIEZNANE - jeśli wyniki sprzed objawów, wykluczenia cholestazy, rabdomiolizy i uszkodzenia nerek nie obowiązują",
+    "Obiekt w stolcu nieobejrzany przez lekarza - pasożyt nie jest wykluczony do czasu identyfikacji (zakaźność dla otoczenia)",
+    "Odwodnienie u chorej na indapamidzie i perindoprylu z metforminą przy małym spożyciu płynów - ryzyko pogorszenia funkcji nerek i kumulacji metforminy; brak aktualnego RR i ciężaru właściwego moczu",
+    "Porfiria ostra (ciemniejący mocz) - nieprawdopodobna bez bólu brzucha i objawów neurologicznych, nie badano porfobilinogenu; utrzymywać tylko jako flagę przy nawrocie z bólem brzucha"
+  ],
+  "nastepny_krok": "Potwierdzić datę badań i przy następnym epizodzie ciemnego moczu wykonać tego samego dnia badanie ogólne moczu z ciężarem właściwym oraz bilirubinę, ALT, kinazę kreatynową i kreatyninę, a kolejną kuleczkę zachować i obejrzeć (rozpuszczona w wodzie otoczka tabletki vs struktura biologiczna).",
+  "co_zmieniloby_zdanie": "Podniósłbym pilność do 2, gdyby badania okazały się sprzed wystąpienia ciemnego moczu albo pojawiły się żółtaczka, odbarwiony stolec, ból mięśni, ból brzucha lub obiekt w kale okazał się ruchomy/członowany.",
+  "zrodla": [
+    "PubMed PMID 40209786, K-Sarı I i wsp. Presence of Ghost Capsules in Stool Mimicking Parasites due to Extended Release Metformin. Clin Lab 2025;71(4). doi:10.7754/Clin.Lab.2024.241019",
+    "PubMed PMID 27048352, Sun D i wsp. Ghost-Pill-Buster: intact levetiracetam ER tablets after dissolution testing. CNS Drugs 2016;30(5):455-60. doi:10.1007/s40263-016-0332-9",
+    "PubMed PMID 39316353, Kavey RW. Myopathy in Statin-Treated Children and Adolescents: A Practical Approach. Curr Atheroscler Rep 2024;26(12):683-692. doi:10.1007/s11883-024-01239-x",
+    "[wiedza modelu, niezweryfikowane] różnicowanie ciemnego moczu (bilirubinuria, hemoglobinuria, mioglobinuria, porfiryny, zagęszczenie) i morfologia członów tasiemca",
+    "zrodla/MANIFEST.md - brak polskiej wytycznej dla tej prezentacji"
+  ]
+}

@@ -1,0 +1,6 @@
+{"ts":"2026-10-31T00:00:00+00:00","rola":"ordynator","zdarzenie":"start","plik":"00-surowe.md"}
+{"ts": "2026-10-31T00:10:45+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts": "2026-10-31T00:10:45+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz medycyny paliatywnej seed=7"}
+{"ts": "2026-10-31T00:11:11+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts": "2026-10-31T00:11:11+00:00", "rola": "skrypt", "zdarzenie": "kalibracja", "plik": "pamiec/kalibracja.json"}
+{"ts": "2026-10-31T00:11:11+00:00", "rola": "skrypt", "zdarzenie": "rubryka", "plik": "_rubryka.json"}

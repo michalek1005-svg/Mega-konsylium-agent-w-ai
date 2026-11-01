@@ -1,0 +1,143 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "inne wirusowe zakażenie dróg oddechowych",
+      "p": 0.424,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "COVID-19",
+      "p": 0.317,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "grypa",
+      "p": 0.138,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "adenowirusowa gorączka gardłowo-spojówkowa",
+      "p": 0.041,
+      "wymienili": [
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "zakażenie RSV",
+      "p": 0.038,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    }
+  ],
+  "zgoda": 0.212,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Ból w klatce piersiowej, krwioplucie — NIEZNANE",
+      "Duszność, SpO2, częstość oddechów, osłuchiwanie — NIEZNANE (zapalenie płuc, w tym pogrypowe gronkowcowe).",
+      "Gorączka i jej przebieg NIEZNANE",
+      "Hipoksemia / zapalenie płuc (wirusowe lub wtórne bakteryjne) — saturacja, osłuchiwanie, częstość oddechów NIEZNANE. Co wyklucza: saturacja ≥ 95%, oddechy < 20/min, osłuchowo czysto.",
+      "Hipoksemia / zapalenie płuc — SpO2, częstość oddechów i osłuchiwanie NIEZNANE.",
+      "Hipoksemia/zapalenie płuc — SpO2, częstość oddechów i osłuchiwanie NIEZNANE.",
+      "Hipotensja/bradykardia przy odwodnieniu na bisoprololu; tachykardia maskowana.",
+      "Kontakt zakaźny z pacjentami OIT.",
+      "Kołatania/omdlenie na azytromycynie (QT, skurcze nadkomorowe).",
+      "Narastająca chrypka/stridor/ból przy połykaniu — obrzęk krtani alergiczny lub zapalenie nagłośni (maskowane przez infekcyjną chrypkę).",
+      "Obrzęk krtani lub zapalenie nagłośni (chrypka maskuje; ślinienie, stridor, ból przy połykaniu nieproporcjonalny) — NIEZNANE.",
+      "Obrzęk krtani w przebiegu reakcji nadwrażliwości nałożony na infekcyjną chrypkę — nie wykluczony (część B).",
+      "Odwodnienie i spadki ciśnienia przy silnym osłabieniu u 64-latki na beta-adrenolityku.",
+      "Ostry zespół wieńcowy, zapalenie mięśnia sercowego, arytmia wywołane infekcją (PMID 29365305) — maskowane bisoprololem. Co wyklucza: EKG dziś bez nowych zmian, brak bólu w klatce, duszności wysiłkowej, kołatań.",
+      "Pogorszenie po wstępnej poprawie (nadkażenie bakteryjne po grypie) — do obserwacji",
+      "Posocznica z maskowaną tachykardią (bisoprolol): splątanie, RR skurczowe <100 mm Hg, częstość oddechów ≥22/min → pilność 1",
+      "Sepsa maskowana przez bisoprolol (brak tachykardii) — oceniać oddechy, ciśnienie, świadomość, diurezę.",
+      "Sepsa z zamaskowaną tachykardią (bisoprolol) — ciśnienie, stan świadomości, diureza NIEZNANE.",
+      "SpO2 <94%, duszność, przyspieszony oddech — NIEZNANE",
+      "Spadek ciśnienia, splątanie (tachykardia maskowana bisoprololem) — NIEZNANE",
+      "Stridor, ślinienie się, trudność połykania (zapalenie nagłośni lub obrzęk krtani — nakłada się na wątek alergiczny) — NIEZNANE",
+      "Szczepienia przeciw grypie, COVID-19, krztuścowi NIEZNANE",
+      "Transmisja grypy/COVID-19/adenowirusa na pacjentów neurologicznego OIT — otwarta do czasu testu i zwolnienia z pracy.",
+      "Wczesna sepsa (wtórne zakażenie S. aureus / S. pneumoniae po grypie, PMID 42736923) — nie wykluczona bez parametrów życiowych.",
+      "Wtórne bakteryjne zapalenie płuc po grypie (pogorszenie po wstępnej poprawie, nawrót gorączki).",
+      "Zapalenie mięśnia sercowego / zaostrzenie arytmii przy infekcji wirusowej u osoby ze skurczami dodatkowymi.",
+      "Zapalenie nagłośni lub obrzęk krtani — ból przy połykaniu, ślinienie, stridor, głos „kluchowaty” (chrypka infekcyjna i reakcja alergiczna maskują się nawzajem).",
+      "Zapalenie nagłośni — nie wykluczone (PMID 34787558, 31359308). Co wyklucza: brak odynofagii/dysfagii nieproporcjonalnej, ślinienia, stridoru, zmiany barwy głosu na „kluskowaty”.",
+      "Zapalenie nagłośni/obrzęk krtani: chrypka maskuje; stridor, ślinotok, ból przy połykaniu, duszność → pilność 1",
+      "Zapalenie płuc/hipoksemia: SpO2, częstość oddechów, osłuchiwanie NIEZNANE",
+      "Zapalenie wnętrza gałki ocznej po ewentualnym zabiegu oka (nieodwracalna utrata wzroku) — powód kropli NIEZNANY. Co wyklucza: brak zabiegu albo brak bólu oka i spadku ostrości.",
+      "Zmiany śluzówkowe i tarczowate (rumień wielopostaciowy, zespół Stevensa-Johnsona) — morfologia wysypki NIEZNANA."
+    ],
+    "wykluczone": [
+      "Krztusiec jako przyczyna nagłego początku — faza nieżytowa narasta stopniowo; nagły początek z rozbiciem przemawia przeciw (nie wyklucza jako współzakażenia).",
+      "Zakażenie przeniesione przez kleszcze, podróż, gorączki tropikalne — brak danych sugerujących, nie dotyczy prezentacji [wiedza modelu, niezweryfikowane]."
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "niska",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "niska"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

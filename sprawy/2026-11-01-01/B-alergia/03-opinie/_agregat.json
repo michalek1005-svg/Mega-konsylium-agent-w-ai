@@ -1,0 +1,139 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "cefuroksym",
+      "p": 0.812,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "pokrzywka w przebiegu zakażenia wirusowego",
+      "p": 0.083,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "erdosteina",
+      "p": 0.066,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "substancja pomocnicza lub konserwant",
+      "p": 0.018,
+      "wymienili": [
+        "bayes",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "lewofloksacyna z kortykosteroidem w kroplach",
+      "p": 0.011,
+      "wymienili": []
+    }
+  ],
+  "zgoda": 0.581,
+  "flagi": [],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "Anafilaksja z obrzękiem krtani — zamaskowana chrypką infekcyjną; nie wykluczona (NIEZNANE objawy oddechowe/krążeniowe w czasie reakcji). Co wyklucza: brak stridoru, duszności, dysfagii, ślinienia, spadku ciśnienia i objawów brzusznych w czasie reakcji i obecnie; prawidłowa saturacja; ewentualnie laryngoskopia przy wątpliwości.",
+      "Azytromycyna i budezonid dołączone po reakcji — nowe objawy w kolejnych dniach będą trudne do przypisania.",
+      "Beta-adrenolityk (bisoprolol) — możliwy cięższy przebieg ewentualnej kolejnej reakcji i słabsza odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane].",
+      "Beta-bloker (bisoprolol) — może nasilać anafilaksję i osłabiać odpowiedź na adrenalinę",
+      "Dalsza ekspozycja zawodowa na cefuroksym (aerozol, kontakt) przy możliwym uczuleniu — ryzyko reakcji w pracy (Merget 2017).",
+      "Dalsza zawodowa ekspozycja na beta-laktamy przy niewyjaśnionym uczuleniu — ryzyko nawrotu w pracy.",
+      "Kontynuacja ekspozycji zawodowej na cefalosporyny w pracy przy prawdopodobnym uczuleniu.",
+      "Kryteria anafilaksji (objawy oddechowe, krążeniowe, żołądkowo-jelitowe w czasie reakcji) — NIEZNANE.",
+      "Maskowanie ciężkości przez bisoprolol (brak tachykardii, słabsza odpowiedź na adrenalinę) — nie wykluczone. Co wyklucza: pomiar ciśnienia w czasie/po reakcji; plan leczenia z glukagonem jako drugą linią przy nawrocie (PMID 41700292).",
+      "Nadkrtaniowe zapalenie (zapalenie nagłośni) u dorosłego jako przyczyna nagłej chrypki z bólem gardła — nie wykluczone. Co wyklucza: brak silnego bólu przy przełykaniu, ślinienia, stridoru; przy wątpliwości laryngoskopia [wiedza modelu, niezweryfikowane].",
+      "Objawy krążeniowe (spadek ciśnienia, zasłabnięcie) — NIEZNANE; przy objawach z 2 układów reakcja spełnia kryteria anafilaksji",
+      "Objawy krążeniowe i brzuszne w czasie reakcji NIEZNANE; bisoprolol może maskować tachykardię i osłabiać odpowiedź na adrenalinę.",
+      "Objawy krążeniowe/brzuszne (spadek ciśnienia, omdlenie, wymioty) w czasie reakcji NIEZNANE — od nich zależy, czy była to anafilaksja.",
+      "Objawy oddechowe (duszność, świsty) lub krążeniowe (spadek ciśnienia, omdlenie) w czasie reakcji — NIEZNANE",
+      "Obrzęk krtani maskowany chrypką infekcyjną — objawy oddechowe w czasie reakcji NIEZNANE.",
+      "Obrzęk krtani maskowany przez infekcyjną chrypkę — NIEZNANE, czy chrypka nasiliła się po reakcji.",
+      "Obrzęk krtani maskowany przez infekcyjną chrypkę — nowa duszność, stridor, chrypka narastająca, trudność połykania = anafilaksja do czasu wykluczenia.",
+      "Obrzęk krtani — chrypka infekcyjna maskuje objaw; brak danych o duszności, świście, stridorze w czasie reakcji",
+      "Obrzęk krtani/gardła maskowany infekcyjną chrypą — NIEZNANE",
+      "Ponowna ekspozycja na cefalosporynę dożylnie (szpital, zabieg drugiego oka) lub zawodowa — otwarta, dopóki dokumentacja i miejsce pracy nie zawierają ostrzeżenia.",
+      "Ponowna ekspozycja zawodowa na beta-laktamy w pracy (przygotowywanie i.v.) przed diagnostyką",
+      "Przyjmowanie bisoprololu — możliwa słabsza odpowiedź na adrenalinę przy nawrocie [wiedza modelu, niezweryfikowane].",
+      "Reakcja dwufazowa w ciągu najbliższych godzin — nie wykluczona; wymaga instrukcji i dostępu do adrenaliny.",
+      "Wczesna ciężka reakcja skórna (SJS/TEN, uogólniony pęcherzowy utrwalony rumień polekowy, rumień wielopostaciowy duży / wysypka z zapaleniem śluzówek w zakażeniu Mycoplasma) — nie wykluczona (morfologia NIEZNANA). Co wyklucza: bąble znikające < 24 h, brak zmian tarczowatych, pęcherzy, nadżerek śluzówek, bólu skóry.",
+      "Zakażenie przenoszone na pacjentów oddziału intensywnej terapii (grypa, COVID-19, krztusiec) — nie wykluczone.",
+      "Zmiany śluzówkowe — NIEZNANE",
+      "Zmiany śluzówkowe, pęcherze, gorączka (cięższe reakcje skórne) — NIEZNANE, mało prawdopodobne przy początku po 15 min",
+      "Zmiany śluzówkowe, pęcherze, gorączka — NIEZNANE (ciężkie reakcje skórne trzeba wykluczyć oglądaniem).",
+      "Zmiany śluzówkowe, pęcherze, zmiany tarczowate (zespół Stevensa-Johnsona, rumień wielopostaciowy) — morfologia NIEZNANA."
+    ],
+    "wykluczone": [
+      "Ciężka opóźniona reakcja skórna (zespół Stevensa-Johnsona/toksyczna nekroliza naskórka, DRESS) jako mechanizm TEJ reakcji — niezgodna z początkiem po 15 min (nie wyklucza zmian śluzówkowych, które pozostają NIEZNANE)",
+      "Ciężka reakcja opóźniona (zespół Stevensa-Johnsona/toksyczne martwicze oddzielanie się naskórka, DRESS) jako mechanizm tego epizodu — chronologia 15 min do niej nie pasuje (zmiany śluzówkowe i tak sprawdzić, bo morfologia NIEZNANA).",
+      "Krople jako jedyne wyjaśnienie zmian na stopach i obrzęku oka nieleczonego po 15 min — wykluczone anatomicznie i czasowo (brak drogi ogólnoustrojowej).",
+      "Polekowa reakcja z eozynofilią i objawami ogólnymi (DRESS) jako przyczyna obecnego epizodu — wykluczona chronologią (zbyt krótki czas od włączenia leków; typowy okres utajenia tygodnie) [wiedza modelu, niezweryfikowane].",
+      "Polekowa reakcja z eozynofilią i objawami ogólnymi — niezgodna z chronologią (latencja tygodnie, nie minuty) [wiedza modelu, niezweryfikowane].",
+      "Reakcja typu choroby posurowiczej — wykluczona chronologią (typowo 1–3 tygodnie) [wiedza modelu, niezweryfikowane]."
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "niska"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

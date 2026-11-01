@@ -1,0 +1,167 @@
+{
+  "rola": "bayes",
+  "pytanie": "Część A: etiologia, nagły przebieg i leczenie ostrej infekcji dróg oddechowych u 64-letniej pielęgniarki oddziału neurologii z intensywną terapią, koniec października/początek listopada, Polska.",
+  "rozpoznania": [
+    {
+      "nazwa": "inne wirusowe zakażenie dróg oddechowych",
+      "p": 0.42,
+      "za": [
+        "pretest: jesienią w POZ dominują rinowirusy, sezonowe koronawirusy, paragrypa, metapneumowirus [wiedza modelu, niezweryfikowane] → pretest ok. 60%",
+        "katar + chrypka + zapalenie gardła i krtani (przewaga górnych dróg) → słabo w górę (LR ok. 1,3)"
+      ],
+      "przeciw": [
+        "nagły początek z silnym osłabieniem → rinowirus zwykle łagodny i stopniowy → umiarkowanie w dół (LR ok. 0,6)"
+      ]
+    },
+    {
+      "nazwa": "COVID-19",
+      "p": 0.28,
+      "za": [
+        "pretest: w Polsce w sezonach 2024/25 i 2025/26 aktywność COVID-19 rosła pierwsza i szczytowała we wrześniu, zanim pojawiła się grypa (styczeń/luty) i RSV (luty/marzec) (PMID 42797869); u dorosłych hospitalizowanych w sezonie 2025/26 COVID-19 dominował jesienią (PMID 42646670) → koniec października: krążenie nadal istotne, pretest ok. 20%",
+        "chrypka, ból gardła, katar, silne osłabienie — typowe dla wariantów Omicron [wiedza modelu, niezweryfikowane] → LR ok. 1,3",
+        "praca na oddziale szpitalnym z ciężko chorymi (ogniska szpitalne) → LR ok. 1,3"
+      ],
+      "przeciw": [
+        "kaszel produktywny od początku → słabo w dół (LR ok. 0,9)",
+        "objawy nie odróżniają COVID-19 od innych wirusów — bez testu p pozostaje szerokie"
+      ]
+    },
+    {
+      "nazwa": "grypa",
+      "p": 0.13,
+      "za": [
+        "nagły początek + osłabienie: u osób ≥60 lat złe samopoczucie LR 2,6, a połączenie gorączka + kaszel + nagły początek LR 5,4 (PMID 15728170) → gorączka NIEZNANA, więc użyto LR ok. 2,5 (bez składnika gorączki)",
+        "praca w szpitalu → LR ok. 1,2"
+      ],
+      "przeciw": [
+        "pretest niski: przełom października i listopada to w Polsce okres międzysezonowy; szczyt grypy w styczniu/lutym (PMID 42797869) → pretest ok. 5%",
+        "katar/kichanie u osób starszych obniżają prawdopodobieństwo grypy (kichanie LR 0,47; PMID 15728170)",
+        "kaszel produktywny od początku (w grypie zwykle suchy) → LR ok. 0,8"
+      ]
+    },
+    {
+      "nazwa": "zakażenie RSV",
+      "p": 0.04,
+      "za": [
+        "kaszel produktywny i wiek >60 lat → słabo w górę (LR ok. 1,3)",
+        "praca w szpitalu → LR ok. 1,2"
+      ],
+      "przeciw": [
+        "pretest niski: szczyt RSV w lutym/marcu (PMID 42797869)"
+      ]
+    },
+    {
+      "nazwa": "bakteryjne zapalenie płuc",
+      "p": 0.04,
+      "za": [
+        "nagłe silne osłabienie i kaszel produktywny → LR ok. 1,5",
+        "wiek 64 lata, nadwaga; osłuchiwanie, SpO2, częstość oddechów i gorączka NIEZNANE — nie można obniżyć"
+      ],
+      "przeciw": [
+        "wyraźny komponent górnych dróg (katar, gardło, krtań) → LR ok. 0,5",
+        "pretest w POZ niski: zapalenie płuc dotyczy mniejszości dorosłych z ostrym kaszlem [wiedza modelu, niezweryfikowane]"
+      ]
+    }
+  ],
+  "kandydaci_poza_limitem_5": [
+    {
+      "nazwa": "adenowirusowa gorączka gardłowo-spojówkowa",
+      "p": 0.05,
+      "uzasadnienie": "Zapalenie gardła + powód kropli do oka NIEZNANY. Jeśli było to zapalenie spojówek (a nie zabieg), LR ok. 3–5, bo zapalenie spojówek z adenowirusa zaczyna się zwykle jednostronnie i po kilku dniach obejmuje drugie oko, z obrzękiem powiek [wiedza modelu, niezweryfikowane]. Bromfenak to jednak typowy lek pooperacyjny (zaćma), co obniża tę ścieżkę; netto LR ok. 1,5. Rewizja: kolejność oko → gardło (krople 3–4 dni, objawy oddechowe 2 dni) pasuje do gorączki gardłowo-spojówkowej (argument hipotezującego) → 0,03→0,05; dalej ograniczone przez bromfenak (schemat pooperacyjny)."
+    },
+    {
+      "nazwa": "bakteryjne zapalenie krtani lub tchawicy",
+      "p": 0.02,
+      "uzasadnienie": "Kaszel produktywny + chrypka pasują, ale pretest niski, a katar przemawia za wirusem."
+    },
+    {
+      "nazwa": "zakażenie Mycoplasma pneumoniae",
+      "p": 0.01,
+      "uzasadnienie": "Zwykle początek podstępny, kaszel suchy, męczący; nagły początek LR ok. 0,4."
+    },
+    {
+      "nazwa": "krztusiec",
+      "p": 0.005,
+      "uzasadnienie": "Nawrót krztuśca w Europie Środkowej, w tym w Polsce, w 2024 r. (PMID 40694423), ale 2. doba z nagłym kaszlem produktywnym to nie obraz krztuśca (faza nieżytowa stopniowa, napady kaszlu po 1–2 tyg.) → LR ok. 0,15. Wrócić do hipotezy, jeśli kaszel napadowy utrzyma się >2 tygodnie."
+    },
+    {
+      "nazwa": "zapalenie nagłośni",
+      "p": 0.001,
+      "uzasadnienie": "Katar i kaszel produktywny przemawiają przeciw; jednak chrypka maskuje — ostrzegawcze: ślinotok, ból przy połykaniu nieproporcjonalny do obrazu gardła, stridor, mowa „kluskowata”."
+    }
+  ],
+  "rachunek": {
+    "metoda": "Pretest (etiologia ostrej infekcji oddechowej u dorosłego w POZ, Polska, koniec października) × ilorazy wiarygodności (LR) 6 cech → posterior surowy → spłaszczenie log-LR ×0,7 (LR szacowane, częściowo skorelowane) → zaokrąglenie.",
+    "pretest_procent": "inne wirusowe 60; COVID-19 19,7; grypa 5,5; RSV 3,3; Mycoplasma 3,3; bakteryjne zapalenie płuc 3,3; adenowirus 2,2; krztusiec 1,6; bakteryjne zapalenie krtani lub tchawicy 1,1; zapalenie nagłośni 0,1. Źródło sezonowości: PMID 42797869, PMID 42646670; proporcje w obrębie „innych wirusów” i bakterii [wiedza modelu, niezweryfikowane].",
+    "LR": {
+      "nagly_poczatek_i_silne_oslabienie": "grypa 2,5 (PMID 15728170); bakteryjne zapalenie płuc 1,5; zapalenie nagłośni 1,5; COVID-19 1,3; bakteryjne zapalenie krtani lub tchawicy 1,3; adenowirus 1,0; RSV 0,8; inne wirusowe 0,6; Mycoplasma 0,4; krztusiec 0,3",
+      "katar_chrypka_gardlo": "inne wirusowe 1,3; COVID-19 1,3; RSV 1,2; adenowirus 1,2; grypa 1,0; krztusiec 1,0; Mycoplasma 0,8; bakteryjne zapalenie krtani lub tchawicy 0,8; bakteryjne zapalenie płuc 0,5; zapalenie nagłośni 0,3",
+      "kaszel_produktywny_od_poczatku": "bakteryjne zapalenie krtani lub tchawicy 2,0; bakteryjne zapalenie płuc 1,5; RSV 1,3; inne wirusowe 1,0; COVID-19 0,9; grypa 0,8; Mycoplasma 0,8; krztusiec 0,7; zapalenie nagłośni 0,5",
+      "praca_w_szpitalu": "COVID-19 1,3; grypa 1,2; RSV 1,2; pozostałe 1,0",
+      "oko_leczone_powod_nieznany": "adenowirus 1,5; pozostałe 1,0",
+      "czas_trwania_2_dni": "krztusiec 0,5; Mycoplasma 0,8; pozostałe 1,0",
+      "goraczka": "NIEZNANA → LR 1 (gdyby była ≥38°C z dreszczami, grypa ×~2–4, COVID-19 ×~1,5)"
+    },
+    "posterior_surowy": "inne wirusowe 40,9%; COVID-19 34,0%; grypa 11,4%; RSV 4,3%; adenowirus 3,4%; bakteryjne zapalenie płuc 3,2%; bakteryjne zapalenie krtani lub tchawicy 2,0%; Mycoplasma 0,6%; krztusiec 0,2%; zapalenie nagłośni <0,1%",
+    "po_splaszczeniu_0_7": "inne wirusowe 47,3%; COVID-19 29,7%; grypa 9,4%; RSV 4,1%; bakteryjne zapalenie płuc 3,3%; adenowirus 3,1%; bakteryjne zapalenie krtani lub tchawicy 1,7%; Mycoplasma 1,0%; krztusiec 0,3%",
+    "wniosek": "Łącznie etiologia wirusowa ok. 92%, bakteryjna ok. 6–7% (zapalenie płuc 3–4%, zapalenie krtani lub tchawicy ok. 2%, Mycoplasma 1%). Grypa i COVID-19 razem ok. 40% — to te dwa rozpoznania zmieniają leczenie i decyzję o pracy, więc szybki test ma najwyższą wartość informacyjną.",
+    "kontrola_bledow": "Błąd dostępności: „nagły początek” podsuwa grypę, ale na przełomie października i listopada pretest grypy jest niski. Błąd reprezentatywności: kaszel produktywny nie oznacza zakażenia bakteryjnego (barwna plwocina nie przewiduje korzyści z antybiotyku; PMID 24097128)."
+  },
+  "nagly_przebieg": "1) Patofizjologia: w zakażeniach wirusowych (szczególnie grypa i SARS-CoV-2) nagłe „rozbicie” to efekt ogólnoustrojowej odpowiedzi cytokinowej (interferony typu I, IL-6, TNF-α), która działa na OUN (zachowanie chorobowe: osłabienie, senność, brak apetytu); objawy pojawiają się w ciągu godzin po zakończeniu okresu wylęgania [wiedza modelu, niezweryfikowane]. Nagły kaszel wynika ze złuszczenia nabłonka rzęskowego krtani i tchawicy oraz nadwrażliwości receptorów kaszlowych; produktywność to wysięk zapalny, nie dowód zakażenia bakteryjnego (PMID 24097128). 2) Wiek 64 lata: immunostarzenie, a u osób ≥60 lat złe samopoczucie jest silniejszym wskaźnikiem grypy niż u młodszych (LR 2,6; PMID 15728170). 3) Praca nocna i przemęczenie: niedobór snu i zaburzenie rytmu dobowego osłabiają odpowiedź przeciwwirusową i nasilają subiektywne zmęczenie [wiedza modelu, niezweryfikowane]. 4) Bisoprolol: nie powoduje infekcji, ale (a) maskuje tachykardię — prawidłowe tętno nie wyklucza ciężkiego przebiegu ani posocznicy, (b) ogranicza przyspieszenie akcji serca przy gorączce, co może nasilać męczliwość i osłabienie (dawka 1,25 mg/d jest mała, więc efekt umiarkowany) [wiedza modelu, niezweryfikowane]. 5) Kontakt na oddziale z ciężko chorymi → wyższa dawka zakaźna i ekspozycja na wirusy krążące w szpitalu. 6) Dodatkowo reakcja nadwrażliwości (część B) i leki (azytromycyna) mogą subiektywnie nasilać złe samopoczucie.",
+  "leczenie": {
+    "antybiotyk": "Przy p(bakteryjne) ok. 6–7% antybiotyk nie jest wskazany empirycznie. U dorosłych z ostrym kaszlem w POZ amoksycylina nie przyniosła korzyści nawet w podgrupach z przewidywanym zapaleniem płuc lub zakażeniem mieszanym (PMID 34356738); w ostrym zapaleniu oskrzeli z barwną plwociną amoksycylina z klawulanianem nie skróciła kaszlu, a działania niepożądane częstsze (12% vs 3%; PMID 24097128). Cefuroksym: odstawić (brak wskazania + podejrzenie nadwrażliwości, część B). Azytromycyna: brak wskazania przy obrazie wirusowym; uzasadniona tylko przy potwierdzonym/silnie podejrzewanym krztuścu lub Mycoplasma, a nie „na wszelki wypadek”. Ryzyko: wydłużenie QT, działania żołądkowo-jelitowe, oporność [wiedza modelu, niezweryfikowane]. Rekomendacja: ODSTAWIĆ azytromycynę, jeśli osłuchiwanie, SpO2 i CRP nie wskazują na zapalenie płuc. Gdyby potwierdzono zapalenie płuc (RTG/osłuchiwanie + CRP), lekiem pierwszego wyboru w POZ jest amoksycylina, ale do czasu diagnostyki alergologicznej należy unikać beta-laktamów; alternatywą jest doksycyklina 200 mg w 1. dobie, potem 100 mg/d przez 5 dni [wiedza modelu, niezweryfikowane].",
+    "przeciwwirusowe": "Oseltamiwir 75 mg 2×/d przez 5 dni ma sens TYLKO przy potwierdzonej grypie (p bez testu ok. 10%) i najlepiej ≤48 h od początku objawów; pacjentka jest na granicy okna (2 doby). W metaanalizie oseltamiwir u ambulatoryjnych chorych na grypę nie zmniejszył ryzyka hospitalizacji (RR 0,79; 95% CI 0,48–1,29), również u osób ≥65 lat, a zwiększał nudności i wymioty (PMID 37306992). Przy dodatnim teście na grypę: włączyć (64 lata, kontakt z pacjentami OIT, możliwe skrócenie objawów); przy ujemnym — nie. COVID-19: przy dodatnim teście i czynnikach ryzyka ciężkiego przebiegu rozważyć leczenie przeciwwirusowe w ciągu 5 dni od początku objawów zgodnie z aktualnymi zaleceniami [wiedza modelu, niezweryfikowane] (sprawdzić interakcje: nirmatrelwir z rytonawirem — bisoprolol tylko umiarkowanie).",
+    "objawowe": "Paracetamol 500–1000 mg do 4×/d, maks. 4 g/d (przy masie ciała >50 kg) [wiedza modelu, niezweryfikowane]; na razie unikać NLPZ doustnych — NLPZ są kofaktorem reakcji nadwrażliwości (część B). Nawodnienie, odpoczynek, nawilżanie powietrza, oszczędzanie głosu przy zapaleniu krtani. Erdosteinę odstawić (podejrzenie z części B, brak istotnej korzyści w ostrej infekcji).",
+    "budezonid_w_nebulizacji": "Brak wskazania w ostrym wirusowym zapaleniu krtani/oskrzeli u dorosłej bez astmy [wiedza modelu, niezweryfikowane]. Wyjątek: przy potwierdzonym COVID-19 i ryzyku powikłań budezonid wziewny (800 µg 2×/d przez 14 dni, inhalator proszkowy) skracał czas do wyzdrowienia o ok. 2,9 dnia w PRINCIPLE (PMID 34388395; metaanaliza PMID 35144994), bez istotnego wpływu na hospitalizacje. Decyzja zależy więc od wyniku testu: COVID-19 dodatni → można kontynuować budezonid; ujemny → odstawić."
+  },
+  "diagnostyka": {
+    "dzis": [
+      "Szybki test antygenowy łączony grypa A/B + SARS-CoV-2 (± RSV) albo multipleks PCR — najwyższa wartość informacyjna: rozstrzyga ok. 40% prawdopodobieństwa, oseltamiwir/leczenie COVID-19 oraz zasady powrotu do pracy na OIT. Czułość testów antygenowych na grypę jest umiarkowana; wynik ujemny przy wysokim podejrzeniu → PCR [wiedza modelu, niezweryfikowane].",
+      "Pulsoksymetria, częstość oddechów, tętno (pamiętając o bisoprololu), ciśnienie, temperatura, osłuchiwanie płuc — ocena CRB-65 [wiedza modelu, niezweryfikowane].",
+      "CRP (szybki test w gabinecie, jeśli dostępny): <20 mg/l — antybiotyk niepotrzebny; 20–100 mg/l — decyzja kliniczna/odroczona; >100 mg/l lub zmiany osłuchowe — RTG klatki piersiowej i leczenie zapalenia płuc [wiedza modelu, niezweryfikowane]."
+    ],
+    "RTG": "Tylko przy ogniskowych zmianach osłuchowych, SpO2 <94%, częstości oddechów >20–24/min, CRP >100 mg/l lub braku poprawy po 3–5 dniach [wiedza modelu, niezweryfikowane].",
+    "co_zmienia_decyzje": "Dodatni test na grypę → oseltamiwir + izolacja od pacjentów; dodatni COVID-19 → izolacja, ocena leczenia przeciwwirusowego, budezonid ma uzasadnienie; SpO2 <94%, zmiany ogniskowe lub CRP >100 mg/l → zapalenie płuc (antybiotyk spoza beta-laktamów); kaszel napadowy >2 tyg. z wymiotami/świstem wdechowym → PCR w kierunku krztuśca."
+  },
+  "praca": "Zwolnienie lekarskie teraz. Pracuje na oddziale z chorymi wentylowanymi i ciężko chorymi neurologicznie — przeniesienie wirusa grozi ogniskiem szpitalnym. Powrót najwcześniej po ≥24 h bez gorączki (bez leków przeciwgorączkowych) i przy wyraźnej poprawie objawów; przy potwierdzonej grypie lub COVID-19 zgodnie z procedurą szpitalnego zespołu kontroli zakażeń (zwykle ok. 5 dni od początku objawów + maska do końca objawów) [wiedza modelu, niezweryfikowane]. Zgłosić do służby medycyny pracy/kontroli zakażeń, szczególnie przy dodatnim teście (ewentualne dochodzenie w sprawie ogniska). Wątek z części B: do czasu diagnostyki alergologicznej nie przygotowuje beta-laktamów i.v.",
+  "zwiazek_z_reakcja": "1) Kofaktor: ostra infekcja obniża próg aktywacji komórek tucznych i jest udokumentowanym kofaktorem reakcji anafilaktycznych (ok. 30% reakcji z kofaktorem; PMID 23909934) — to wyjaśnia, dlaczego wcześniej tolerowany lek mógł teraz wywołać reakcję. 2) Pokrzywka infekcyjna: zakażenie wirusowe samo może wywołać ostrą pokrzywkę (PMID 22825024) — w części B oszacowałem to na ok. 0,10–0,13; utrzymywanie się bąbli przez dni po odstawieniu leków przesunęłoby ciężar w stronę infekcji. 3) Oko: jeśli krople były na zapalenie spojówek (powód NIEZNANY), obrzęk powieki drugiego oka może być po prostu zajęciem drugiego oka przez to samo zakażenie (adenowirus — typowo drugie oko po kilku dniach) [wiedza modelu, niezweryfikowane], a nie objawem alergii; jeśli krople są pooperacyjne (zaćma), ta ścieżka odpada. Rozstrzyga: czy drugie oko ma przekrwienie spojówki, wydzielinę, łzawienie i powiększony węzeł przeduszny (zakażenie), czy tylko obrzęk powieki bez zapalenia spojówki i z świądem, który ustąpił w ciągu godzin (alergia). 4) COVID-19 i Mycoplasma też mogą dawać zmiany skórne (pokrzywka, osutki; Mycoplasma — zapalenie błon śluzowych) [wiedza modelu, niezweryfikowane].",
+  "pilnosc": 2,
+  "pilnosc_uzasadnienie": "Dziś: test grypa/COVID-19 (okno ≤48 h dla oseltamiwiru właśnie się zamyka), SpO2 i osłuchiwanie (bisoprolol maskuje tachykardię, chrypka maskuje krtań), odstawienie zbędnych antybiotyków i zwolnienie z pracy na OIT.",
+  "pewnosc": "srednia",
+  "pewnosc_komentarz": "Średnia co do podziału wirusowe (ok. 92%) vs bakteryjne; niska co do konkretnego wirusa bez testu.",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "Zapalenie płuc/hipoksemia: SpO2, częstość oddechów, osłuchiwanie NIEZNANE",
+    "Zapalenie nagłośni/obrzęk krtani: chrypka maskuje; stridor, ślinotok, ból przy połykaniu, duszność → pilność 1",
+    "Posocznica z maskowaną tachykardią (bisoprolol): splątanie, RR skurczowe <100 mm Hg, częstość oddechów ≥22/min → pilność 1",
+    "Gorączka i jej przebieg NIEZNANE",
+    "Szczepienia przeciw grypie, COVID-19, krztuścowi NIEZNANE"
+  ],
+  "nastepny_krok": "Dziś wykonać szybki test antygenowy grypa A/B + SARS-CoV-2 wraz z pomiarem SpO2, częstości oddechów i osłuchiwaniem; przy wyniku ujemnym i braku cech zapalenia płuc odstawić azytromycynę i budezonid, przy dodatnim teście na grypę włączyć oseltamiwir 75 mg 2×/d przez 5 dni.",
+  "co_zmieniloby_zdanie": "Gorączka ≥38,5°C z dreszczami i bólami mięśni podniosłaby grypę do ok. 25–30%; SpO2 <94%, ogniskowe trzeszczenia lub CRP >100 mg/l podniosłyby bakteryjne zapalenie płuc do >30% i uzasadniły antybiotyk spoza beta-laktamów.",
+  "zrodla": [
+    "PubMed: Majewska W i wsp. Seasonal and Age-Stratified Patterns of Influenza, COVID-19, and RSV in Poland (2024-2026). Viruses 2026;18(9). PMID 42797869, DOI 10.3390/v18091038",
+    "PubMed: Rzymski P i wsp. Comparison of the Clinical Course of Viral Respiratory Infections in Hospitalized Patients During the 2025/2026 Season in Poland. Vaccines 2026;14(8). PMID 42646670, DOI 10.3390/vaccines14080651",
+    "PubMed: Call SA i wsp. Does this patient have influenza? JAMA 2005;293(8):987-97. PMID 15728170, DOI 10.1001/jama.293.8.987",
+    "PubMed: Hanula R i wsp. Evaluation of Oseltamivir Used to Prevent Hospitalization in Outpatients With Influenza: A Systematic Review and Meta-Analysis. JAMA Intern Med 2024;184(1):18-27. PMID 37306992, DOI 10.1001/jamainternmed.2023.0699",
+    "PubMed: Bruyndonckx R i wsp. (GRACE) The Effect of Amoxicillin in Adult Patients Presenting to Primary Care with Acute Cough Predicted to Have Pneumonia or a Combined Viral-Bacterial Infection. Antibiotics 2021;10(7):817. PMID 34356738, DOI 10.3390/antibiotics10070817",
+    "PubMed: Llor C i wsp. Efficacy of anti-inflammatory or antibiotic treatment in patients with non-complicated acute bronchitis and discoloured sputum. BMJ 2013;347:f5762. PMID 24097128, DOI 10.1136/bmj.f5762",
+    "PubMed: Yu LM i wsp. Inhaled budesonide for COVID-19 in people at high risk of complications in the community in the UK (PRINCIPLE). Lancet 2021;398(10303):843-855. PMID 34388395, DOI 10.1016/S0140-6736(21)01744-X",
+    "PubMed: Lee TC i wsp. Inhaled corticosteroids for outpatients with COVID-19: a meta-analysis. Eur Respir J 2022;59(5). PMID 35144994, DOI 10.1183/13993003.02921-2021",
+    "PubMed: Neuschlova M i wsp. Resurgence of pertussis in Slovak Republic and surrounding Central European countries. Acta Microbiol Immunol Hung 2025;72(3):248-255. PMID 40694423, DOI 10.1556/030.2025.02654",
+    "PubMed: Rumik A, Paradowska-Stankiewicz I. Pertussis in Poland in 2022. Przegl Epidemiol 2024;78(4):428-438. PMID 40101009, DOI 10.32394/pe/195724",
+    "PubMed: Wölbing F i wsp. About the role and underlying mechanisms of cofactors in anaphylaxis. Allergy 2013;68(9):1085-92. PMID 23909934, DOI 10.1111/all.12193",
+    "PubMed: Marrouche N, Grattan C. Childhood urticaria. Curr Opin Allergy Clin Immunol 2012;12(5):485-90. PMID 22825024, DOI 10.1097/ACI.0b013e3283574cb3",
+    "zrodla/ (biblioteka kuratorowana): brak polskich wytycznych dla zakażeń dróg oddechowych — MANIFEST zawiera tylko przykłady",
+    "Pozostałe twierdzenia oznaczone [wiedza modelu, niezweryfikowane]"
+  ],
+  "rewizja": true,
+  "powod_rewizji": "Runda dyskusji A: (1) grypa 0,10→0,13 — przy NIEZNANEJ aktualnej aktywności grypy w sezonie 2026/27 nie mogę wykluczyć wcześniejszego startu sezonu, więc dopuszczam szerszy pretest (5→7%) [wiedza modelu, niezweryfikowane]; obraz kliniczny już był w LR, nie liczę go drugi raz. (2) adenowirus 0,03→0,05 — kolejność oko przed gardłem. (3) inne wirusowe 0,45→0,42, COVID-19 0,30→0,28. Decyzje bez zmian: test przed oseltamiwirem, bez antybiotyku.",
+  "dyskusja_A": {
+    "1_grypa": "Różnica 0,10 vs 0,30 nie zmienia decyzji dziś, jeśli test jest dostępny — wszyscy zlecają test. Zmienia ją tylko, gdy testu nie ma: próg leczenia empirycznego oseltamiwirem szacuję na ok. 25–30% (umiarkowana korzyść objawowa vs nudności/wymioty, PMID 37306992) [wiedza modelu, niezweryfikowane].",
+    "2_oseltamiwir": "Wyłącznie po dodatnim teście. Wyjątek: test niedostępny dziś + gorączka ≥38,5°C z dreszczami/bólami mięśni (wtedy grypa ok. 30%) albo pogorszenie/duszność — można leczyć empirycznie.",
+    "3_azytromycyna": "Brak wskazania: krztusiec w 2. dobie z kaszlem produktywnym ok. 0,5%, Mycoplasma ok. 1%. Odstawić; wrócić do PCR w kierunku krztuśca przy kaszlu napadowym >2 tygodnie.",
+    "4_adenowirus_a_czesc_B": "Ma znaczenie tylko po potwierdzeniu, że krople były na zapalenie spojówek, a drugie oko ma przekrwienie spojówki i wydzielinę: wtedy obrzęk powieki traci wartość jako objaw alergii, a w części B cefuroksym spada z ok. 0,75 do ok. 0,6, pokrzywka wirusowa rośnie do ok. 0,25. Wysypka dłoni i stóp 15 min po dawce nadal przemawia za reakcją polekową. Bez tej informacji (bromfenak sugeruje zabieg) część B bez zmian.",
+    "5_EKG": "Jako rutyna — nadmiar: bez bólu w klatce, duszności, kołatań ani omdlenia bezwzględne ryzyko zawału w tym tygodniu jest małe mimo względnego wzrostu po grypie, a azytromycynę odstawiamy, więc QTc nie zmieni decyzji. Wskazane przy objawach sercowych, nasileniu skurczów nadkomorowych lub gdyby azytromycyna miała zostać [wiedza modelu, niezweryfikowane]."
+  }
+}

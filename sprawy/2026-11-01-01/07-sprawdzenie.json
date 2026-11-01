@@ -1,0 +1,154 @@
+{
+  "petla": 2,
+  "fakty": {
+    "kartka": "ZIELONA",
+    "twierdzenia": [
+      {
+        "twierdzenie": "Pętla 2 — zakres: 09-FINAL.md v2 i RAPORT.md v2 po 08-odpowiedz-sprawdzajacemu.md. Zbiór PMID bez zmian względem pętli 1 (brak nowych PMID; FINAL cytuje 23 PMID, każdy z nich stoi w ŹRÓDŁACH i każdy ma zdanie w treści — brak źródeł osieroconych). Metadane 43 PMID pobrane z PubMed w pętli 1 pozostają w mocy.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed get_article_metadata (pętla 1); porównanie listy PMID FINAL v1 ↔ v2",
+        "cytat": "usunięte z ŹRÓDEŁ FINAL: 42646670, 15728170, 31359308, 36250577, 40339912, 34388395 — pozostają w RAPORT, gdzie są cytowane"
+      },
+      {
+        "twierdzenie": "Poprawka 1 (FINAL PLAN B(5), Merget 2017): 'uczulona drogą wziewną na niskie dawki cefuroksymu, bez przygotowywania iniekcji, z nawracającymi niewyjaśnionymi anafilaksjami w pracy, rozpoznaną dopiero po doustnym cefuroksymie w infekcji (PMID 29114903)'; droga przez przygotowywanie i.v. nazwana hipotezą konsylium.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29114903, DOI 10.1002/ajim.22788",
+        "cytat": "repeated anaphylactic reactions at work without involvement in drug-specific tasks ... after oral use of cefuroxime during a respiratory infection"
+      },
+      {
+        "twierdzenie": "Poprawka 2 (RAPORT część B 'Zawód'): opis Merget zgodny z abstraktem; 17445015 jako 12% dodatnich testów skórnych.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29114903, 17445015"
+      },
+      {
+        "twierdzenie": "Poprawka 3 (RAPORT A2): 'Kichanie u starszych obniża prawdopodobieństwo grypy (LR 0,47); przeciw grypie przemawia natomiast BRAK kataru (LR 0,49) — jej katar grypy nie obniża (PMID 15728170)'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 15728170, DOI 10.1001/jama.293.8.987",
+        "cytat": "absence of ... nasal congestion (LR, 0.49) ... presence of sneezing among older patients made influenza less likely (LR, 0.47)"
+      },
+      {
+        "twierdzenie": "Poprawka 4 (RAPORT A4): 'otyłość BMI ≥30 dokłada ok. 1 dzień, nadwaga — jak u niej — ok. 0,5 dnia; PMID 41211613'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 41211613, DOI 10.1111/irv.70185",
+        "cytat": "6.6 days for obese patients, 6.2 days for overweight, and 5.7 days for under/normal weight"
+      },
+      {
+        "twierdzenie": "Poprawka 5 (FINAL DLACZEGO): sezonowość przypisana PMID 42797869 tylko dla grypy/COVID-19 (szczyt wrzesień); 'inne wirusy oddechowe [udział: wiedza modelu, niezweryfikowane]'; opis w ŹRÓDŁACH 'nie obejmuje innych wirusów'; RAPORT A1 analogicznie.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 42797869, DOI 10.3390/v18091038"
+      },
+      {
+        "twierdzenie": "Poprawka 6 (FINAL PLAN B(4)): 'krztusiec w 2. dobie ~0,5%, Mycoplasma ~1% (szacunek konsylium)'; CZEGO NIE WIEMY(1): '0,25–0,30 (szacunek bayesa)'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "04-konsylium.md — etykieta szacunku obecna"
+      },
+      {
+        "twierdzenie": "Poprawka 7 (FINAL PLAN B(1)): 'oseltamiwir 75 mg 2×/d (dawka z RCT, PMID 25640810) przez 5 dni [czas leczenia: wiedza modelu, niezweryfikowane]'; '≤48 h [próg: wiedza modelu, niezweryfikowane]'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 25640810, DOI 10.1016/S0140-6736(14)62449-1",
+        "cytat": "randomised placebo-controlled, double-blind trials of 75 mg twice a day oseltamivir in adults",
+        "co_mowi_zrodlo": "W FINAL poprawne. RAPORT A6 nie został zsynchronizowany: nadal '75 mg 2×/d 5 dni [dawka: wiedza modelu]' (dawka ma źródło poziomu 2) i '≤48 h od początku' bez etykiety — niespójność etykiet FINAL↔RAPORT, bez wpływu na treść decyzji."
+      },
+      {
+        "twierdzenie": "Poprawka 8: 'Kaszel napadowy ≥2 tygodnie ... [kryterium: wiedza modelu, niezweryfikowane]' w FINAL PLAN B(4) i WRÓĆ/ESKALUJ.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "etykieta obecna w FINAL",
+        "co_mowi_zrodlo": "W RAPORT A3 i A6 '≥2 tyg.' pozostaje bez etykiety — drobne; RAPORT nie podlega §6."
+      },
+      {
+        "twierdzenie": "Poprawka 9 (budezonid): FINAL REKOMENDACJA 'odstawić', PLAN B(2) 'zostaje wyłącznie, gdy osłuchiwanie wykaże świsty [wiedza modelu]; przy nirmatrelwirze bezwzględnie odstawić'; RAPORT A6 identyczny warunek; PRINCIPLE (PMID 34388395) tylko w RAPORT jako kontekst po dodatnim teście.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 34388395, 23807527, 22844010; FINAL v2 ↔ RAPORT v2 spójne"
+      },
+      {
+        "twierdzenie": "Poprawka 10 (RAPORT A5): pełne kryterium zejścia z pilności 2 na 3 przeniesione z 04-konsylium A3 (SpO2 ≥95%, oddechy <20/min, ciśnienie prawidłowe, osłuchowo czysto, bez objawów nagłośniowych, EKG bez zmian, oko bez bólu) z etykietą progów.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "04-konsylium.md A3; FINAL PILNOŚĆ 2 bez zmian"
+      },
+      {
+        "twierdzenie": "Poprawka 11 (RAPORT A8): 'w badaniu scenariuszowym (deklaracje, nie obserwacja) >80% personelu zostałoby w domu przy dodatnim teście wobec 39% przy ujemnym (PMID 40339912)'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 40339912, DOI 10.1016/j.jhin.2025.04.018",
+        "cytat": "More than 80% ... would stay at home if they were LFD positive ... 39% ... if they were LFD negative"
+      },
+      {
+        "twierdzenie": "Poprawka 12: PMID 42646670 usunięty z ŹRÓDEŁ FINAL; przy okazji usunięte inne PMID bez zdania w FINAL. Nowo dodane w treści FINAL odwołania (29365305 ×6 w ESKALUJ; 34787558 '1–20%') są w ŹRÓDŁACH i zgodne z abstraktami.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 29365305 (IR 6,05), 34787558 (mortality 1–20%)"
+      },
+      {
+        "twierdzenie": "Poprawka 13: PMID 33759318 z dopiskiem 'kohorta hospitalizowanych z COVID-19, ekstrapolacja' w FINAL PLAN B(4) i ŹRÓDŁACH.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 33759318, DOI 10.1111/ijcp.14182"
+      },
+      {
+        "twierdzenie": "Poprawka 14: RAPORT A1 '~5–7% [wiedza modelu, niezweryfikowane]' i A9 'do ~2 tyg. [wiedza modelu, niezweryfikowane]' — etykiety przy liczbach.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "RAPORT.md v2"
+      },
+      {
+        "twierdzenie": "Poprawka 15: 'Sześć osobnych agentów (model Opus wg konfiguracji .claude/agents i wywołania przez nadzorcę; _log.jsonl rejestruje start/stop ról)'; z ŹRÓDEŁ FINAL usunięto 'dawki paracetamolu'.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "RAPORT.md 'Kto co powiedział'; FINAL ŹRÓDŁA",
+        "co_mowi_zrodlo": "Twierdzenie nazwane jako oparte na konfiguracji, nie na obserwacji — wystarczające."
+      },
+      {
+        "twierdzenie": "Dopisek redakcyjny (RAPORT A6): Cochrane PMID 28626858 — 'ocena globalna lekarza faworyzowała antybiotyk, RR 0,61, NNTB 11' — zgodne z abstraktem.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 2,
+        "zrodlo": "PubMed PMID 28626858, DOI 10.1002/14651858.CD000245.pub4",
+        "cytat": "improved according to clinician's global assessment (RR 0.61, 95% CI 0.48 to 0.79; NNTB 11)"
+      },
+      {
+        "twierdzenie": "Nowe liczby w FINAL v2 bez źródła poziomu 1–3 i bez etykiety: brak (sprawdzono DLACZEGO, PLAN B, CZEGO NIE WIEMY, WRÓĆ/ESKALUJ). 'Teleporada za 48–72 h' — termin organizacyjny, nie liczba kliniczna.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "09-FINAL.md v2 — przegląd pełnego tekstu"
+      },
+      {
+        "twierdzenie": "Dawki i progi z etykietą §5 poziom 4 (bez zmian): doksycyklina 200→100 mg; SpO2 <94%/<92%; oddechy ≥24/≥30; SBP <90; CRP >100; testy skórne po 4–6 tyg.; czas oseltamiwiru 5 dni; próg 48 h; świsty→budezonid. Biblioteka zrodla/ nadal pusta poza MANIFEST.md.",
+        "werdykt": "POTWIERDZONE",
+        "poziom_zrodla": 4,
+        "zrodlo": "09-FINAL.md v2 ŹRÓDŁA — lista [wiedza modelu, niezweryfikowane] kompletna i zgodna z treścią"
+      }
+    ]
+  },
+  "proces": {
+    "kartka": "ZIELONA",
+    "lista": [
+      {"punkt": "§6 REKOMENDACJA: jedno zdanie, bez 'lub/albo/rozważ'", "status": "OK", "plik": "09-FINAL.md", "uwaga": "Bez zmian wobec v1; 'albo' tylko jako warunki w PLAN B / ESKALUJ."},
+      {"punkt": "§6 PILNOŚĆ + PEWNOŚĆ", "status": "OK", "plik": "09-FINAL.md", "uwaga": "2 dziś — średnia; bez zmian, zgodne z _agregat.json."},
+      {"punkt": "§6 DLACZEGO ≤3 zdania", "status": "OK", "plik": "09-FINAL.md", "uwaga": "3 zdania po 28 / 38 / 36 słów (v1: ok. 170 słów w 3 zdaniach)."},
+      {"punkt": "§6 PLAN B, CZEGO NIE WIEMY, WRÓĆ/ESKALUJ, ŹRÓDŁA, stopka", "status": "OK", "plik": "09-FINAL.md, RAPORT.md"},
+      {"punkt": "§5: każda liczba kliniczna w FINAL ma źródło 1–3 albo etykietę", "status": "OK", "plik": "09-FINAL.md", "uwaga": "Wszystkie braki z pętli 1 usunięte."},
+      {"punkt": "Zgodność FINAL↔RAPORT: budezonid (świsty), pilność po EKG, Merget 2017, liczby agregatu", "status": "OK", "plik": "09-FINAL.md / RAPORT.md"},
+      {"punkt": "Zgodność FINAL↔RAPORT: etykiety oseltamiwiru", "status": "BRAK", "plik": "RAPORT.md A6", "uwaga": "FINAL: dawka z RCT (PMID 25640810), 5 dni i ≤48 h [wiedza modelu]; RAPORT A6 nadal '[dawka: wiedza modelu]' i '≤48 h' bez etykiety. Kosmetyczne — ujednolicić z FINAL. Analogicznie '≥2 tyg.' w RAPORT A3/A6 bez etykiety."},
+      {"punkt": "Źródła osierocone w ŹRÓDŁACH FINAL", "status": "OK", "plik": "09-FINAL.md", "uwaga": "23 PMID w treści = 23 PMID w ŹRÓDŁACH."},
+      {"punkt": "Nowe PMID w v2", "status": "OK", "uwaga": "Brak nowych; wszystkie zweryfikowane w pętli 1."},
+      {"punkt": "PMID 23719580 nieużyty jako dowód", "status": "OK", "plik": "RAPORT.md A9"},
+      {"punkt": "08-odpowiedz-sprawdzajacemu.md: każda uwaga przyjęta/odrzucona z powodem i miejscem", "status": "OK", "plik": "08-odpowiedz-sprawdzajacemu.md", "uwaga": "18 pozycji, wszystkie PRZYJMUJĘ, każda z kategorią i lokalizacją; żadna nie zmienia decyzji."},
+      {"punkt": "Struktura katalogów §1 (dwutorowość A/B, brak 02/05/06/08-rezydentom)", "status": "OK", "plik": "04-konsylium.md 'Uwaga procesowa'", "uwaga": "Odstępstwo jawnie udokumentowane; oznaczone jako wyjątek do zatwierdzenia przez użytkownika — bez zatwierdzenia sprawa nie zasila pamiec/."},
+      {"punkt": "Dostęp do PubMed", "status": "OK", "uwaga": "Pętla 2 nie wymagała nowych pobrań."}
+    ]
+  },
+  "rubryka": {
+    "za_przeciw_obecne": 13,
+    "komunikat": 13
+  }
+}

@@ -1,0 +1,16 @@
+29114903 | 10.1002/ajim.22788 | Occupational generalized urticaria and anaphylaxis after inhalation of cefuroxime in a nurse.
+33546741 | 10.1186/s13223-021-00517-6 | Fixed drug eruption and anaphylaxis induced concurrently by erdosteine: a case report.
+29911363 | None | [Anaphylactic shock due to Aprokam application to the anterior chamber during cataract surgery – case report].
+34489227 | 10.18176/jiaci.0741 | Anaphylactic Shock Following Cataract Surgery: A Documented Intracameral Cefuroxime Allergy.
+41784986 | 10.1001/jamaophthalmol.2026.0040 | Intracameral Cefuroxime Use in Cataract Surgery After Penicillin Allergy Reclassification.
+23850230 | 10.1016/j.jcrs.2013.06.008 | Anaphylactic reaction following intracameral cefuroxime injection during cataract surgery.
+17445015 | 10.1111/j.1365-2648.2006.04155.x | Penicillin sensitivity among hospital nurses without a history of penicillin allergy.
+22379603 | 10.4168/aair.2012.4.2.85 | IgE Sensitization to Cephalosporins in Health Care Workers.
+40484712 | 10.1111/cea.70092 | Identification of the Top 15 Drugs Associated With Anaphylaxis: A Pharmacovigilance Study.
+23909934 | 10.1111/all.12193 | About the role and underlying mechanisms of cofactors in anaphylaxis.
+31749148 | 10.1111/all.14122 | Towards a more precise diagnosis of hypersensitivity to beta-lactams - an EAACI position paper.
+38155501 | 10.1111/all.15996 | EAACI/ENDA position paper on drug provocation testing.
+29950489 | 10.1136/bmj.k2400 | Risk of meticillin resistantandin patients with a documented penicillin allergy: population based matched cohort study.
+41538374 | 10.12659/AJCR.949917 | Anaphylaxis and Cardiac Arrest Induced by Initial Intravenous Ceftriaxone: A Case Report.
+42592029 | 10.1155/crcc/6339253 | Anaphylactic Shock Probably due to a Cross-Reaction Between Cefuroxime and Piperacillin-Presentation of a Fatal Case, Diagnostic Considerations, and Literature Review.
+41700292 | 10.7759/cureus.101589 | Successful Resuscitation of Anaphylactic Shock With Central Nervous System Dysfunction in a Patient on Multiple Antihypertensive Therapies: A Case Report and Literature Review.
