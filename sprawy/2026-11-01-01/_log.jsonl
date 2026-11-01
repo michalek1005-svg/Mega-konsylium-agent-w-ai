@@ -40,3 +40,6 @@
 {"ts": "2026-11-01T00:45:46Z", "rola": "najgorszy_scenariusz", "zdarzenie": "stop_dyskusja", "plik": "A-infekcja/03-opinie/najgorszy_scenariusz.json"}
 {"ts": "2026-11-01T00:46:01Z", "rola": "hipotezujacy", "zdarzenie": "start_dyskusja", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
 {"ts": "2026-11-01T00:46:01Z", "rola": "hipotezujacy", "zdarzenie": "stop_dyskusja", "plik": "A-infekcja/03-opinie/hipotezujacy.json"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"protokol_laczny_A_B","plik":"04-konsylium.md"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"final_A_B","plik":"09-FINAL.md"}
+{"ts":"2026-11-01T00:54:11Z","rola":"ordynator","zdarzenie":"raport_A_B","plik":"RAPORT.md"}
