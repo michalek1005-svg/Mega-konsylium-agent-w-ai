@@ -611,9 +611,9 @@ var FRAZY = {"_opis":"Filtr słownikowy ryzyka (docs/BEZPIECZENSTWO.md §3). Dzi
     if (!pliki) return;
     most.lista('rozmowy').then(function (l) {
       var pref = stan.konto ? stan.konto.konto + '-' : null;
-      var k = (l || []).filter(function (x) { return x.katalog && !/^[._]/.test(x.nazwa) && (pref ? x.nazwa.indexOf(pref) === 0 : !/^k[a-z0-9]{5}-/.test(x.nazwa)); }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
+      var k = (l || []).filter(function (x) { return x.katalog && !/^[._]/.test(x.nazwa) && !(pref && /^k[a-z0-9]{5}-/.test(x.nazwa) && x.nazwa.indexOf(pref) !== 0); })  // rozmowy sprzed kont (bez prefiksu) widać na każdym koncie.sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa); });
       var s = $('lista'); s.innerHTML = '';
-      k.forEach(function (x) { var o = document.createElement('option'); o.value = x.nazwa; o.textContent = 'Rozmowa ' + x.nazwa.replace(/^k[a-z0-9]{5}-/, '').slice(0, 16).replace(/-(\d\d)(\d\d)$/, ' $1:$2'); if (x.nazwa === stan.id) o.selected = true; s.appendChild(o); });
+      k.forEach(function (x) { var o = document.createElement('option'); o.value = x.nazwa; o.textContent = (/^k[a-z0-9]{5}-/.test(x.nazwa) ? 'Rozmowa ' : 'Sprzed kont · ') + x.nazwa.replace(/^k[a-z0-9]{5}-/, '').slice(0, 16).replace(/-(\d\d)(\d\d)$/, ' $1:$2'); if (x.nazwa === stan.id) o.selected = true; s.appendChild(o); });
       s.hidden = k.length < 2;
     }).catch(function () {});
   }
