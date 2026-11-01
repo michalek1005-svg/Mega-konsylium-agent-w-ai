@@ -83,6 +83,8 @@
 <linearGradient id="sc-led" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3fbf8a" stop-opacity="0"/><stop offset=".5" stop-color="#3fbf8a"/><stop offset="1" stop-color="#3fbf8a" stop-opacity="0"/></linearGradient>
 <linearGradient id="sc-miasto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--okno-niebo)"/><stop offset="1" stop-color="var(--sciana)"/></linearGradient>
 <linearGradient id="sc-niebo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--niebo-gora)"/><stop offset="1" stop-color="var(--okno-niebo)"/></linearGradient>
+<radialGradient id="sc-swiatlo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="var(--swiatlo)" stop-opacity=".55"/><stop offset=".6" stop-color="var(--swiatlo)" stop-opacity=".15"/><stop offset="1" stop-color="var(--swiatlo)" stop-opacity="0"/></radialGradient>
+<linearGradient id="sc-poswiata" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fbf8a" stop-opacity="var(--poswiata)"/><stop offset="1" stop-color="#3fbf8a" stop-opacity="0"/></linearGradient>
 <filter id="sc-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
 <rect x="0" y="0" width="${W}" height="338" fill="url(#sc-sciana)"/>
 <polygon points="0,338 1200,338 1200,700 0,700" fill="var(--podloga)"/>
@@ -91,6 +93,7 @@ ${podloga}
 <!-- pasek LED pod sufitem: zielony = wszystko działa, pulsuje gdy AI pracuje -->
 <rect x="0" y="0" width="${W}" height="10" fill="var(--sciana)"/>
 <rect class="led" x="60" y="9" width="1080" height="4" rx="2" fill="url(#sc-led)" filter="url(#sc-glow)"/>
+<rect class="led-poswiata" x="60" y="13" width="1080" height="46" fill="url(#sc-poswiata)" aria-hidden="true"/>
 
 <!-- ekran na ścianie (Michał 1.11 04:09: zamiast okna): wykres prognoz po kliknięciu „Prognozy”; wygaszony pokazuje logo K -->
 <g id="ekran-sciana" role="button" aria-label="Okno z widokiem na miasto; po włączeniu „Prognoza %” ekran prognoz">
@@ -172,6 +175,7 @@ ${[[392, 588, 640], [808, 588, 640], [478, 616, 664], [722, 616, 664]].map(([x, 
 <ellipse cx="600" cy="490" rx="306" ry="106" fill="url(#sc-szklo)" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
 <ellipse cx="600" cy="490" rx="306" ry="106" fill="none" stroke="#3fbf8a" stroke-opacity=".45" stroke-width="1.5"/>
 <ellipse cx="600" cy="490" rx="250" ry="78" fill="none" stroke="#ffffff" stroke-opacity=".6"/>
+<ellipse class="swiatlo-stol" cx="600" cy="478" rx="290" ry="96" fill="url(#sc-swiatlo)" aria-hidden="true"/>
 <g opacity=".95">
   <!-- papiery i długopisy przy ekranach -->
   ${[[398, 452, -6], [802, 452, 8], [330, 502, -12], [872, 502, 14], [548, 549, 3], [652, 549, -4]].map(([x, y, r]) => `<g transform="translate(${x},${y}) rotate(${r})"><rect x="-16" y="-11" width="32" height="22" rx="1.5" fill="#fbfdfc" stroke="#c9d6d3"/><rect x="-12" y="-6" width="20" height="1.4" fill="#9fb2af"/><rect x="-12" y="-2" width="24" height="1.4" fill="#9fb2af"/><rect x="-12" y="2" width="14" height="1.4" fill="#9fb2af"/><rect x="12" y="-14" width="3" height="20" rx="1.5" fill="#0F5E58" transform="rotate(30 13 -4)"/></g>`).join('')}
