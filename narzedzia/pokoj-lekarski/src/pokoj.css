@@ -20,6 +20,7 @@
   --listwa: #24403c; --stol: #2b3d3a; --stol-blat: #34504b; --stol-krawedz: #1f302e;
   --szyba: rgba(140,210,220,.10); --szyba-obrys: rgba(160,220,225,.35);
   --okno-niebo: #0d2230; --okno-gwiazda: rgba(255,255,255,.55);
+  --niebo-gora: #06111c; --slonce: #e6edf0; --chmura: rgba(190,215,225,.10); --miasto-dal: #142a3a; --miasto-blizej: #0c1c29; --okno-swiatlo: #f2d48a; --drzewa: #0b2420; --tabliczka: #e8efed;
   --tablica: #e8efed; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #46625d;
   --cien-postaci: rgba(0,0,0,.45);
   --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
@@ -46,7 +47,7 @@
     --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
     --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
     --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
-    --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+    --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0); --niebo-gora: #5fa9d2; --slonce: #ffe39a; --chmura: rgba(255,255,255,.9); --miasto-dal: #b2c9d1; --miasto-blizej: #8eabb5; --okno-swiatlo: rgba(255,255,255,.6); --drzewa: #7ea779; --tabliczka: #ffffff;
     --tablica: #ffffff; --tablica-rama: #8fa9a2;
     --cien-postaci: rgba(10,54,52,.22);
     --dymek: #ffffff; --dym: rgba(238,243,242,.4);
@@ -68,7 +69,7 @@
   --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
   --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
   --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
-  --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+  --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0); --niebo-gora: #5fa9d2; --slonce: #ffe39a; --chmura: rgba(255,255,255,.9); --miasto-dal: #b2c9d1; --miasto-blizej: #8eabb5; --okno-swiatlo: rgba(255,255,255,.6); --drzewa: #7ea779; --tabliczka: #ffffff;
   --tablica: #ffffff; --tablica-rama: #8fa9a2;
   --cien-postaci: rgba(10,54,52,.22);
   --dymek: #ffffff; --dym: rgba(238,243,242,.4);
@@ -380,3 +381,12 @@ html.osadzony .legenda { display: none; }
 @keyframes gotowe { 0% { opacity: 0; transform: translateY(6px) scale(.6); } 20% { opacity: 1; transform: translateY(0) scale(1.1); } 35% { transform: scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-8px); } }
 /* ściana wideo oświetla ścianę; LED odbija się w posadzce */
 .pokoj svg.rys { filter: none; }
+
+/* okno z widokiem na miasto (Graficzny 1.11): chmury płyną, nocą światła w oknach migają z rzadka */
+#ekran-sciana .chmury g { animation: chmura 60s linear infinite alternate; }
+#ekran-sciana .chmury g:nth-child(2) { animation-duration: 85s; } #ekran-sciana .chmury g:nth-child(3) { animation-duration: 70s; animation-direction: alternate-reverse; }
+@keyframes chmura { to { translate: 36px 0; } }
+:root[data-motyw="ciemny"] #ekran-sciana .okna-miasta rect, :root[data-theme="dark"] #ekran-sciana .okna-miasta rect { animation: okno-swieci 9s steps(1) infinite; }
+@keyframes okno-swieci { 0%, 70% { opacity: 1; } 71%, 86% { opacity: .25; } 87% { opacity: 1; } }
+.tabliczka .podpis { font-size: 10px; fill: #14302D; stroke: none; }
+@media (prefers-reduced-motion: reduce) { #ekran-sciana .chmury g, #ekran-sciana .okna-miasta rect { animation: none !important; } }
