@@ -31,7 +31,7 @@ zrodla-psycho/           biblioteka źródeł (ZRODLA-PSYCHO.md, ok. 90 pozycji 
 przypadki-testowe/       syntetyczne przypadki PSY-01…10 (klucze oceny NIE są w tym folderze i nie mogą tu trafić)
 ```
 
-**Cel Pokoju (Michał 1.11.2026 07:47):** diagnostyka problemu i nakierowanie na rozwiązanie i leczenie (psychoterapia, psychiatria, ogólnie medycznie). **Rozmowa** 1:1 jest poradnikiem – docs/ROZMOWA.md.
+**Cel Pokoju (Michał 1.11.2026 07:47):** diagnostyka problemu i nakierowanie na rozwiązanie i leczenie (psychoterapia, psychiatria, ogólnie medycznie). **Psychoterapia AI** (zakładka „rozmowa”, szerzej używana) wygląda i działa jak psychoterapia: zespół w tle spiera się i wspiera, a psychoterapeuta AI odpowiada jedną lub kilkoma wiadomościami – docs/ROZMOWA.md §0.
 
 ## 3. Zespół (`.claude/agents/`)
 | Rola (plik) | Na scenie | Zadanie |

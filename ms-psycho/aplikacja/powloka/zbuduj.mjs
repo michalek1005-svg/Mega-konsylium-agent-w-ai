@@ -93,8 +93,8 @@ if (PREZENT) {
     if (!i) throw new Error('Prezent: nie znaleziono zrzutów do podmiany w prezent-start.html');
   }
   const zgoda = `<div id="zgoda" hidden role="dialog" aria-modal="true" aria-labelledby="zgoda-t"><div class="zgoda-karta">
-<h2 id="zgoda-t">To nie jest terapia</h2>
-<p>MS Konsylium Psychologiczne to narzędzie testowe. Nie jest psychoterapią, poradą psychologiczną ani diagnozą i nie zastępuje kontaktu z psychologiem, psychoterapeutą lub lekarzem. Rozmowy zostają na tym komputerze, w wybranym folderze.</p>
+<h2 id="zgoda-t">Narzędzie testowe</h2>
+<p>MS Konsylium Psychologiczne – Psychoterapia AI i Pokój psychologiczny – to narzędzie testowe marki MS. Prowadzi rozmowę na wzór psychoterapii, ale nie zastępuje psychoterapeuty, psychologa ani lekarza, a hipotezy z Pokoju nie są diagnozą. Rozmowy zostają na tym komputerze, w wybranym folderze.</p>
 <p class="zgoda-nr">Jeśli ktoś jest w kryzysie: <b>112</b> · <b>800 70 2222</b> (całodobowo) · <b>116 123</b></p>
 <button type="button" id="zgoda-ok">Rozumiem</button></div></div>`;
   prezentCss += `

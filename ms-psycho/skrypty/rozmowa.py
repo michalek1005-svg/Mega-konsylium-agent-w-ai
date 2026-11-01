@@ -202,7 +202,13 @@ def cmd_odpowiedz(a) -> None:
         d = json.loads(Path(a.plik).read_text(encoding="utf-8"))
     else:
         d = {"tekst": a.tekst, "ryzyko": a.ryzyko, "kryzys": a.kryzys, "reakcja": a.reakcja}
-    tekst = str(d.get("tekst") or "").strip()
+    # jedna albo kilka wiadomości (Michał 1.11.2026 07:59: „wydaje jedną bądź więcej wiadomości tekstowych”)
+    czesci = [str(x).strip() for x in (d.get("wiadomosci") or []) if str(x).strip()] or [str(d.get("tekst") or "").strip()]
+    if len(czesci) > 4:
+        sys.exit("Najwyżej 4 wiadomości w jednej odpowiedzi (docs/ROZMOWA.md §0).")
+    if d.get("kryzys") and len(czesci) > 1:
+        czesci = ["\n\n".join(czesci)]  # w kryzysie jedna wiadomość z kartą, nie seria dymków
+    tekst = "\n\n".join(czesci).strip()
     if not tekst:
         sys.exit("Pusta odpowiedź.")
     ryz = int(d.get("ryzyko") if d.get("ryzyko") is not None else -1)
@@ -258,17 +264,25 @@ def cmd_odpowiedz(a) -> None:
         w["kierunek"] = str(d["kierunek"])
     if d.get("obnizam_ryzyko"):
         w["obnizam_ryzyko"] = str(d["obnizam_ryzyko"])
+    seria = []
+    for i, cz in enumerate(czesci):
+        x = dict(w) if i == len(czesci) - 1 else {"n": n + i, "odpowiedz_na": na, "ts": w["ts"], "tekst": cz, "ryzyko": ryz, "kryzys": False, "glosy": [], "zrodla": []}
+        x["n"], x["tekst"] = n + i, cz
+        if len(czesci) > 1:
+            x["seria"] = [i + 1, len(czesci)]
+        seria.append(x)
+    w = seria[-1]
     k = kat(a.rozmowa)
     zesp = czytaj(k / "zespol.json", {}) or {}
     zesp.setdefault("rozmowa", a.rozmowa)
-    zesp.setdefault("wiadomosci", []).append(w)
+    zesp.setdefault("wiadomosci", []).extend(seria)
     zapisz(k / "zespol.json", zesp)
     zapisz(k / "pracuje.json", {"stan": "czeka", "ts": teraz(), "panel": [], "etap": ""})
     with open(k / "_log.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": w["ts"], "zdarzenie": "odpowiedz", "n": n, "na": na, "ryzyko": ryz, "filtr": filtr, "slow": slow,
                             "panel": [g["rola"] for g in glosy], "szwy": ostrz,
                             **{k: w[k] for k in ("wyzwalacze", "powod", "eksploracja", "flagi", "tempo") if k in w}}, ensure_ascii=False) + "\n")
-    print(f"OK: odpowiedź #{n} na wiadomość #{na} ({slow} słów, ryzyko {ryz}).")
+    print(f"OK: odpowiedź #{n}{'–#' + str(w['n']) if len(seria) > 1 else ''} na wiadomość #{na} ({len(seria)} wiad., {slow} słów, ryzyko {ryz}).")
     if ostrz:
         print(f"UWAGA (detektor szwów / granic): {ostrz} – sprawdź, czy jeden głos nie zdradza machinerii i nie łamie granic.")
     limit = {"krotko": 60, "szybko": 120, "namysl": 450}.get(str(d.get("tempo") or ""), 220)

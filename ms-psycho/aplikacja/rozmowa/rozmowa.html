@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:">
-<title>Rozmowa</title>
+<title>Psychoterapia AI</title>
 <style>
 /*@@FONT@@*/
 /*@@MS-TOKENY@@*/
@@ -105,8 +105,8 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
   <header class="naglowek">
     <div class="awatar-glowny cisza" id="awatar" aria-hidden="true">AI</div>
     <div>
-      <h1>Terapeuta AI</h1>
-      <div class="sub" id="sub">jeden głos · za nim pracuje zespół siedmiu podejść</div>
+      <h1>Psychoterapeuta AI</h1>
+      <div class="sub" id="sub">jeden głos · w tle zespół terapeutów różnych podejść</div>
     </div>
     <div class="prawy">
       <div class="tryb" role="group" aria-label="Rodzaj rozmowy">
@@ -129,7 +129,7 @@ html[data-motyw="ciemny"] .msg.kryzys li .nr { color: #ff8f8a; }
       <button class="wyslij" id="wyslij" type="submit" aria-label="Wyślij" disabled><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></button>
       <button class="zwolaj" id="zwolaj" type="button" title="Cały zespół omawia tę rozmowę w Pokoju psychologicznym i pisze Wnioski">Zwołaj konsylium <span aria-hidden="true">→</span></button>
     </form>
-    <p class="stopka">Narzędzie testowe marki MS – <b>to nie jest terapia ani diagnoza</b>. W kryzysie: <b>112</b> · <b>800 70 2222</b> · <b>116 123</b> (oba całodobowo).</p>
+    <p class="stopka">Psychoterapia AI – <b>narzędzie testowe marki MS</b>, nie zastępuje psychoterapeuty. W kryzysie: <b>112</b> · <b>800 70 2222</b> · <b>116 123</b> (oba całodobowo).</p>
   </div>
   <div class="panel-boczny" id="formulacja" hidden></div>
 </div>
@@ -232,13 +232,14 @@ var FRAZY = /*@@FRAZY@@*/null;
   function powitanie() {
     var t = stan.tryb === 'konsultacja'
       ? 'Dzień dobry 🙂 Opisz przypadek albo konkretną sytuację z pracy z klientem. Odpowiem jednym głosem, ale zanim odpowiem, omówi go zespół siedmiu podejść – od CBT po psychiatrę – a strażnik ryzyka przeczyta każdą wiadomość.'
-      : 'Cześć 🙂 Jestem terapeutą AI. Możesz napisać o czymś, co Cię teraz zajmuje – o konkretnej sytuacji, rozmowie, emocji. Odpowiem jednym głosem, ale za mną pracuje zespół terapeutów różnych podejść, który najpierw się nad tym zastanowi 🌱';
-    return '<div class="msg zespol"><span class="kto">Terapeuta AI</span>' + esc(t) + '<span class="czas">teraz</span></div>';
+      : 'Cześć 🙂 Jestem psychoterapeutą AI. Możesz pisać o tym, co Cię teraz zajmuje – o sytuacji, relacji, emocji, o tym, co wraca. Pracujemy jak na psychoterapii: najpierw dobrze rozumiem, potem razem szukamy zmiany, a do ważnych wątków wracamy w kolejnych rozmowach. Odpowiadam jednym głosem, ale za mną w tle rozmawia, spiera się i wspiera zespół terapeutów różnych podejść 🌱';
+    return '<div class="msg zespol"><span class="kto">Psychoterapeuta AI</span>' + esc(t) + '<span class="czas">teraz</span></div>';
   }
   function rysuj(naDol) {
     var el = $('rozmowa'), byl = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
-    var h = '<div class="msg system"><b>To nie jest terapia.</b> MS Konsylium Psychologiczne to narzędzie testowe. Nie zastępuje psychologa, psychoterapeuty ani lekarza i nie stawia diagnoz. Jeśli ktoś jest w kryzysie, zadzwoń: <b>112</b> albo <b>800 70 2222</b> (całodobowo).</div>';
+    var h = '<div class="msg system"><b>Psychoterapia AI – narzędzie testowe marki MS.</b> Za jednym psychoterapeutą AI pracuje w tle zespół terapeutów różnych podejść. Nie zastępuje psychoterapeuty, psychologa ani lekarza. Jeśli ktoś jest w kryzysie, zadzwoń: <b>112</b> albo <b>800 70 2222</b> (całodobowo).</div>';
     h += powitanie();
+    stan._kropki = 0;
     wiadomosci().forEach(function (x) {
       var m = x.m;
       if (x.typ === 'ja') {
@@ -251,9 +252,10 @@ var FRAZY = /*@@FRAZY@@*/null;
         return;
       }
       var reakcja = stan.reakcje[m.n];
-      if (m.kryzys) { h += kryzysHtml(m.tekst, 'Terapeuta AI', m.kierunek); return; }
-      if (piszeTeraz(m)) { h += '<div class="msg zespol na-zywo" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(pisanie.czesci.slice(0, pisanie.ile).join('')) + '<span class="kursor" aria-hidden="true"></span></div>'; return; }
-      h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Terapeuta AI</span>' + md(m.tekst);
+      if (m.kryzys) { h += kryzysHtml(m.tekst, 'Psychoterapeuta AI', m.kierunek); return; }
+      if (czekaWKolejce(m)) { if (!pisanie || pisanie.pauza) { if (!stan._kropki) { stan._kropki = 1; h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>Psychoterapeuta pisze…</div>'; } } return; }
+      if (piszeTeraz(m)) { h += '<div class="msg zespol na-zywo" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(pisanie.czesci.slice(0, pisanie.ile).join('')) + '<span class="kursor" aria-hidden="true"></span></div>'; return; }
+      h += '<div class="msg zespol" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(m.tekst);
       if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
       if (m.glosy && m.glosy.length) {
         var otw = pokazaneGlosy[m.n];
@@ -282,7 +284,7 @@ var FRAZY = /*@@FRAZY@@*/null;
   };
   function kryzysHtml(tekst, kto, kierunek) {
     var k = KIERUNKI[kierunek];
-    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + (k && kto !== 'aplikacja' ? '<p class="kierunek"><b>' + esc(k.wstep) + '</b></p>' : '') + numeryHtml(k && k.pierwsze) + '<small class="nie-terapia">MS Konsylium Psychologiczne to narzędzie testowe, nie terapia – w kryzysie rozmawiaj z człowiekiem.</small></div>';
+    return '<div class="msg kryzys" role="alert"><span class="kto">' + esc(kto === 'aplikacja' ? 'Bezpieczeństwo' : kto) + '</span>' + md(tekst) + (k && kto !== 'aplikacja' ? '<p class="kierunek"><b>' + esc(k.wstep) + '</b></p>' : '') + numeryHtml(k && k.pierwsze) + '<small class="nie-terapia">Psychoterapia AI to narzędzie testowe – w kryzysie rozmawiaj z człowiekiem.</small></div>';
   }
   function świeże(ts, s) { var t = Date.parse(ts); return t && Date.now() - t < s * 1000; }
   function czekaNaOdpowiedz() {
@@ -324,7 +326,7 @@ var FRAZY = /*@@FRAZY@@*/null;
     stan.potwZwolaj = false;
     if (!stan.ja.length) { blad('Najpierw napisz kilka zdań – konsylium potrzebuje materiału.'); return; }
     var dzis = new Date(), d = dzis.getFullYear() + '-' + ('0' + (dzis.getMonth() + 1)).slice(-2) + '-' + ('0' + dzis.getDate()).slice(-2);
-    var transkrypt = wiadomosci().map(function (x) { return (x.typ === 'ja' ? '**Użytkownik** (' : '**Terapeuta AI** (') + godz(x.ts) + '): ' + (x.m.tekst || ''); }).join('\n\n');
+    var transkrypt = wiadomosci().map(function (x) { return (x.typ === 'ja' ? '**Użytkownik** (' : '**Psychoterapeuta AI** (') + godz(x.ts) + '): ' + (x.m.tekst || ''); }).join('\n\n');
     var tekst = '# Rozmowa ' + stan.id + ' → konsylium\n\nTryb: ' + (stan.tryb === 'konsultacja' ? 'konsultacja przypadku (użytkownik = terapeuta)' : 'rozmowa o własnej sytuacji') + '\n\n## Zapis rozmowy\n\n' + transkrypt + '\n\n## Pytanie wiodące\n\nPytanie: ' + (stan.tryb === 'konsultacja' ? 'formulacja i kierunek pracy z tym przypadkiem' : 'co się dzieje w tej sytuacji i co mogę zrobić') + '\n';
     if (!pliki) { blad('Poza aplikacją nie da się zwołać konsylium.'); return; }
     most.lista('sprawy').then(function (l) {
@@ -354,25 +356,37 @@ var FRAZY = /*@@FRAZY@@*/null;
     if (!pliki || stan.demo || !stan.id) return;
     Promise.all([most.czytaj(kat() + '/zespol.json'), most.czytaj(kat() + '/pracuje.json')]).then(function (r) {
       var zm = false;
-      try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { var bylo = stan.zespol.reduce(function (a, x) { return Math.max(a, x.n || 0); }, 0); stan.zespol = w; zm = true; dzwiek(); var ost = w[w.length - 1]; if (ost && ost.n > bylo && !ost.kryzys) zacznijPisanie(ost); } } catch (e) {}
+      try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { var bylo = stan.zespol.reduce(function (a, x) { return Math.max(a, x.n || 0); }, 0); stan.zespol = w; zm = true; dzwiek(); var nowe = w.filter(function (x) { return x.n > bylo && !x.kryzys; }); if (nowe.length) zacznijPisanie(nowe); } } catch (e) {}
       try { var p = r[1] && JSON.parse(r[1].tekst); if (JSON.stringify(p) !== JSON.stringify(stan.pracuje)) { stan.pracuje = p; zm = true; } } catch (e) {}
       if (zm) rysuj(); else if (czekaNaOdpowiedz()) rysuj();
     }).catch(function () {});
   }
   // ---------- pisanie na żywo (Michał 1.11.2026 07:48): gotowa odpowiedź pojawia się słowo po słowie ----------
-  var pisanie = null;
-  function zacznijPisanie(m) {
+  var pisanie = null, kolejkaPisania = [];
+  // kilka wiadomości w jednej odpowiedzi (jak w komunikatorze): każda pisze się po kolei, z krótką pauzą „pisze…” między nimi
+  function zacznijPisanie(lista) {
     try { if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) {}
-    var slowa = String(m.tekst || '').split(/(\s+)/);
-    if (pisanie && pisanie.timer) clearInterval(pisanie.timer);
-    pisanie = { n: m.n, czesci: slowa, ile: 0 };
-    var krok = Math.max(1, Math.round(slowa.length / 160));   // dłuższa odpowiedź pisze się szybciej; całość w ok. 4–8 s
+    kolejkaPisania = kolejkaPisania.concat(lista);
+    if (!pisanie) nastepnaWiadomosc();
+  }
+  function nastepnaWiadomosc() {
+    var m = kolejkaPisania.shift();
+    if (!m) { pisanie = null; rysuj(true); return; }
+    var czesci = String(m.tekst || '').split(/(\s+)/), krok = Math.max(1, Math.round(czesci.length / 160));
+    pisanie = { n: m.n, czesci: czesci, ile: 0 };
     pisanie.timer = setInterval(function () {
       pisanie.ile += krok * 2;
-      if (pisanie.ile >= pisanie.czesci.length) { clearInterval(pisanie.timer); pisanie = null; }
+      if (pisanie.ile >= pisanie.czesci.length) {
+        clearInterval(pisanie.timer);
+        var ten = pisanie.n; pisanie = { n: -1, pauza: true, czesci: [], ile: 0 };
+        rysuj(true);
+        setTimeout(nastepnaWiadomosc, kolejkaPisania.length ? 900 : 0);
+        return;
+      }
       rysuj(true);
     }, 45);
   }
+  function czekaWKolejce(m) { return kolejkaPisania.some(function (x) { return x.n === m.n; }); }
   function piszeTeraz(m) { return pisanie && pisanie.n === m.n; }
   var ostDzwiek = 0;
   function dzwiek() {

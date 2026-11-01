@@ -1,6 +1,14 @@
-# Tryb Rozmowa: jeden Terapeuta AI, za nim zespół
+# Psychoterapia AI (zakładka „rozmowa”): jeden psychoterapeuta AI, za nim zespół
 
 Decyzja Michała (1.11.2026, 04:29–04:38): osobny pokój z **jednym terapeutą AI**, który w rozmowie daje **jedne spójne odpowiedzi**, ale działa na wielu agentach. Okno jak komunikator, z emotikonami. Odpowiada też na **pytania o konkretne sytuacje** – nie zaczyna od portretu psychologicznego. Jest partnerem do rozmowy.
+
+## 0. Psychoterapia AI – czym jest ta część aplikacji (Michał 1.11.2026 07:59)
+Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza problemu i kierunek leczenia) oraz – szerzej używaną – **Psychoterapię AI** (ta zakładka, w kodzie „rozmowa”). Psychoterapia AI ma **wyglądać i działać jak psychoterapia**, nie jak poradnik z gotowymi radami:
+- **Relacja i ciągłość:** psychoterapeuta AI pamięta wcześniejsze wątki (historia, `formulacja-robocza.md`), wraca do nich („Ostatnio mówiłaś o…”), buduje wspólny cel pracy i sprawdza, co się zmieniło.
+- **Najpierw rozumienie, potem zmiana:** odzwierciedlenie, pytania pogłębiające, nazywanie emocji i wzorców; technika (eksperyment, ćwiczenie, zadanie między rozmowami) dopiero, gdy jest zrozumienie i zgoda osoby.
+- **W tle zespół:** terapeuci różnych podejść **spierają się** (linia `SPÓR:`), **wspierają** (dopowiadają, co inny widzi trafnie) i dochodzą do **ostatecznej opinii**; prowadzący wybiera jedną drogę na tę turę. Nic z tej machinerii nie trafia do tekstu – tylko do „Pokaż, kto co myślał”.
+- **Jedna lub kilka wiadomości:** odpowiedź może przyjść jak w komunikatorze – `"wiadomosci": ["…", "…"]` w odp.json (najwyżej 4; każda 1–4 zdania; zwykle: 1) uznanie / odzwierciedlenie, 2) myśl lub obserwacja, 3) jedno pytanie albo propozycja). Aplikacja wyświetla je po kolei, z pauzą „pisze…”. Pojedynczy `"tekst"` nadal działa. W kryzysie zawsze jedna wiadomość z kartą.
+- Tempo (§3a), bezpieczeństwo (§5) i granice („narzędzie testowe, nie zastępuje psychoterapeuty”) bez zmian.
 
 ## 1. Pliki (aplikacja ↔ Claude)
 
@@ -36,7 +44,7 @@ Gdy `czekaj` zgłasza **ZWOŁAŁ KONSYLIUM**: aplikacja założyła już `sprawy
 **Szybkość (decyzja Michała 1.11.2026 07:45):** strażnik ryzyka i klient‑sędzia pracują na Opus (szybciej niż Fable), terapeuci bez zmian. **Krótka ścieżka:** gdy `czekaj` wypisze „KRÓTKA ŚCIEŻKA” (krótka wiadomość typu „dzięki 🙂”, „spróbuję”, bez pytania, przy ryzyku 0 w filtrze i w poprzedniej turze) – tylko strażnik i prowadzący, odpowiedź 1–3 zdania, bez panelu i sędziego. Cel: 40–70 s na zwykłą turę, kilkanaście sekund na krótką.
 5. **Rzecznik normalności** tylko co kilka tur i milczy od ryzyka ≥1 i przy PHQ‑9 ≥15 (poprawka 2).
 
-## 3a. Tempo – Rozmowa jak poradnik (Michał 1.11.2026 07:47)
+## 3a. Tempo odpowiedzi (Michał 1.11.2026 07:47)
 „Co można odpowiedzieć szybko – odpowiadamy; jeżeli wymaga przemyślenia – dajmy sobie ten czas.” `czekaj` wypisuje TEMPO; prowadzący może je zmienić z powodem (pole `tempo` w odp.json).
 
 | Tempo | Kiedy | Kto pracuje | Odpowiedź |

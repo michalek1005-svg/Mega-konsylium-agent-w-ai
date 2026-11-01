@@ -5,7 +5,7 @@
 ## 1. Co jest w aplikacji (pasek ikon po lewej)
 | Ikona | Zakładka | Do czego |
 |---|---|---|
-| 💬 | **Rozmowa** (startowa) | Okno jak komunikator. Piszesz o sobie albo o konkretnej sytuacji („O mojej sytuacji”) albo jako terapeuta o kliencie („Konsultacja przypadku”). Odpowiada jeden **Terapeuta AI**; nad paskiem widać, kto z zespołu teraz myśli; pod odpowiedzią „Pokaż, kto co myślał”. Emotikony do wstawiania i reakcje na odpowiedzi. „Zwołaj konsylium” przenosi rozmowę do Pokoju. |
+| 💬 | **Psychoterapia AI** (startowa) | Okno jak komunikator. Piszesz o sobie albo o konkretnej sytuacji („O mojej sytuacji”) albo jako terapeuta o kliencie („Konsultacja przypadku”). Odpowiada jeden **Terapeuta AI**; nad paskiem widać, kto z zespołu teraz myśli; pod odpowiedzią „Pokaż, kto co myślał”. Emotikony do wstawiania i reakcje na odpowiedzi. „Zwołaj konsylium” przenosi rozmowę do Pokoju. |
 | 📋 | **Wywiad** | Klikalny wywiad przed pełnym konsylium (opis własnymi słowami → pytania od AI na żywo → „Wyślij do Konsylium”). |
 | 👥 | **Pokój psychologiczny** | Krąg foteli: prowadzący z herbatą, 5 terapeutów różnych szkół, diagnosta, psychiatra; strażnik ryzyka i zastępcy przy ścianie, sprawdzający przy biurku, stażysta za szybą. Dymki, ściana z etapami, Wnioski. Pole „Terapeuta prowadzący” – Twój głos w dyskusji. |
 | 📁 | Folder | Wskaż folder `ms-psycho` (ten folder). |
