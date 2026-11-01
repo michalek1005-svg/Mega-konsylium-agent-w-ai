@@ -1237,8 +1237,9 @@ ${podpisy(wpisy)}`;
   function startDymu() {
     clearTimeout(dymTimer);
     if (bezRuchu()) return;
-    const nastepny = () => { dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 38000 + Math.random() * 34000); };
-    dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 9000 + Math.random() * 9000);
+    // co ok. 20 s (Michał 1.11): wydech, kłęby rozchodzą się i znikają, potem kolejny wdech
+    const nastepny = () => { dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 18000 + Math.random() * 4000); };
+    dymTimer = setTimeout(() => { klebDymu(); nastepny(); }, 4000 + Math.random() * 3000);
   }
 
   // ---------- lekarz prowadzący: użytkownik dopisuje do dyskusji (plik sprawy/<ID>/uwagi-lekarza.jsonl) ----------
