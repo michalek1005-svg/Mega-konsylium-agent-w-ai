@@ -157,7 +157,14 @@ const ETYK_RE = ETYKIETY
   }));
 
 // znajdź etykiety w wierszu (bez nakładania się; dłuższe pierwsze)
-export function etykietyWiersza(l) {
+// Słowa rodzajowe: nigdy nie są imieniem ani nazwiskiem (np. nagłówek „Wywiad wstępny (ankieta pacjenta)”).
+export const SLOWA_RODZAJOWE = new Set(['pacjent', 'pacjenta', 'pacjentka', 'pacjentki', 'pacjentce', 'pacjentke', 'pacjentem', 'pacjentowi',
+  'pacjenci', 'pacjentow', 'pacjentami', 'pacjentom', 'chory', 'chora', 'chorego', 'chorej', 'choremu', 'osoba', 'osoby', 'badany', 'badana',
+  'badanego', 'badanej', 'ankieta', 'ankiety', 'ankiecie', 'wywiad', 'wywiadu', 'lekarz', 'lekarza', 'kobieta', 'mezczyzna', 'dziecko',
+  'brak', 'nie', 'tak', 'wiem', 'nieznane', 'opisu', 'opis']);
+const rodzajowe = (t) => SLOWA_RODZAJOWE.has(normalizuj(t).replace(/[^a-z-]/g, ''));
+
+export function etykietyWiersza(l, tekstCiagly = false) {
   const zajete = new Array(l.norm.length).fill(false);
   const traf = [];
   for (const { e, k, re } of ETYK_RE) {
@@ -173,6 +180,8 @@ export function etykietyWiersza(l) {
       const krotka = ['ur', 'tel', 'pin', 'mail', 'login', 'haslo', 'imie', 'nazwisko', 'badany', 'badana',
         'podpis', 'badanie', 'wynik', 'material', 'norma', 'strona', 'metoda', 'jednostka', 'uwagi', 'miasto',
         'nip', 'pwz', 'opiekun', 'plec', 'wiek', 'adres', 'lekarz', 'pacjent', 'pacjentka', 'diagnosta', 'placowka'];
+      // tekst ciągły (wywiad): „Pacjentka zgłasza kaszel…” to zdanie, nie pole formularza
+      if (tekstCiagly && ['pacjent', 'pacjentka', 'badany', 'badana'].includes(e) && !dwukropek) continue;
       if (krotka.includes(e) && !dwukropek) {
         // dopuść bez dwukropka tylko gdy etykieta stoi na początku wiersza i za nią są słowa
         if (kropka && ['ur', 'tel'].includes(e)) { /* „ur. 01.02.1985”, „tel. 600…” */ } else {
@@ -192,6 +201,7 @@ export function etykietyWiersza(l) {
 export function wykryj(strony, opcje = {}) {
   const propozycje = [];
   const dodaj = (strona, slowa, kategoria, powod) => {
+    if (kategoria === 'pacjent') slowa = slowa.filter((w) => !rodzajowe(w.t));
     if (!slowa.length) return;
     const r = ramka(slowa);
     propozycje.push({ strona, ...r, kategoria, powod, tekst: slowa.map((w) => w.t).join(' ') });
@@ -201,7 +211,7 @@ export function wykryj(strony, opcje = {}) {
   for (const st of strony) {
     const ws = wiersze(st.slowa);
     ws.forEach((l, li) => {
-      const etyk = etykietyWiersza(l);
+      const etyk = etykietyWiersza(l, !!opcje.tekstCiagly);
       const synevoStopka = /synevo|sp\.? z o\.?o|krs|regon|bdo/.test(l.norm);
 
       // 1) etykieta → wartość
@@ -248,7 +258,7 @@ export function wykryj(strony, opcje = {}) {
           dodaj(st.nr, wart, et.k, 'po etykiecie „' + et.e + '”');
           if (et.k === 'pacjent') for (const w of wart) {
             const n = normalizuj(w.t).replace(/[^a-z-]/g, '');
-            if (n.length >= 3) znaneNazwiska.add(n);
+            if (n.length >= 3 && !SLOWA_RODZAJOWE.has(n)) znaneNazwiska.add(n);
           }
         }
       });

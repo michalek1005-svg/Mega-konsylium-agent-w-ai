@@ -132,3 +132,11 @@ test('wypowiedź pacjenta: imię i nazwisko oraz adres bez etykiet formularza', 
   for (const x of ['Kowalski', 'Jan ', '85010112345', 'Lipowej', 'Ewa', 'Anna Nowak']) assert.ok(!wynik.includes(x), x + ' → ' + wynik);
   for (const x of ['Od tygodnia mam kaszel', 'Jestem zmęczona od rana']) assert.ok(wynik.includes(x), wynik);
 });
+
+test('słowa rodzajowe („pacjent”, „pacjenta”) nie są usuwane jako dane osobowe', () => {
+  const t = '# Wywiad wstępny (ankieta pacjenta)\n### Tura 1 (pacjent, ankieta)\nP: Wiek  O: 64 (z opisu pacjenta)\n' +
+    'Pacjentka zgłasza kaszel od dwóch dni.\nPacjent: Jan Kowalski\nPowtórnie: Kowalski, ankieta pacjenta.';
+  const wynik = zanonimizujTekst(t, wykryjWTekscie(t));
+  for (const x of ['(ankieta pacjenta)', '(pacjent, ankieta)', '(z opisu pacjenta)', 'Pacjentka zgłasza kaszel od dwóch dni.', 'ankieta pacjenta.']) assert.ok(wynik.includes(x), x + ' → ' + wynik);
+  for (const x of ['Jan', 'Kowalski']) assert.ok(!wynik.includes(x), x + ' → ' + wynik);
+});
