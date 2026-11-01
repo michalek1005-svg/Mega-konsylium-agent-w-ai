@@ -163,10 +163,10 @@ ${podloga}
 <rect x="452" y="262" width="26" height="6" rx="2" fill="#0F5E58"/><rect x="484" y="262" width="26" height="6" rx="2" fill="#A83A38"/>
 
 <!-- zegar: czas bieżącej fazy -->
-<g transform="translate(206,142)"><circle r="30" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="5"/>
-${Array.from({ length: 12 }, (_, k) => `<rect x="-1" y="-25" width="2" height="${k % 3 ? 3 : 6}" fill="var(--tablica-mut)" transform="rotate(${k * 30})"/>`).join('')}
-<line id="wsk-h" x1="0" y1="0" x2="0" y2="-13" stroke="var(--tablica-txt)" stroke-width="3" stroke-linecap="round"/>
-<line id="wsk-m" x1="0" y1="0" x2="0" y2="-20" stroke="var(--tablica-txt)" stroke-width="2" stroke-linecap="round"/>
+<g transform="translate(216,142)"><circle r="24" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
+${Array.from({ length: 12 }, (_, k) => `<rect x="-1" y="-20" width="2" height="${k % 3 ? 3 : 5}" fill="var(--tablica-mut)" transform="rotate(${k * 30})"/>`).join('')}
+<line id="wsk-h" x1="0" y1="0" x2="0" y2="-10" stroke="var(--tablica-txt)" stroke-width="3" stroke-linecap="round"/>
+<line id="wsk-m" x1="0" y1="0" x2="0" y2="-16" stroke="var(--tablica-txt)" stroke-width="2" stroke-linecap="round"/>
 <circle r="2.6" fill="#A83A38"/></g>
 
 <!-- drzwi: korytarz rezydentów za szybą -->

@@ -257,4 +257,7 @@ html.osadzony .protokol { max-height: calc(100vh - 110px); }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
 ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--mut) 35%, transparent); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
 /* w aplikacji scena mieści się w oknie razem z paskiem sterowania */
-html.osadzony .pokoj { width: min(100%, calc((100vh - 170px) * 1200 / 700)); margin: 0 auto; }
+html.osadzony .pokoj { width: min(100%, calc((100vh - 236px) * 1200 / 700)); margin: 0 auto; }
+/* pole lekarza prowadzącego ma się mieścić w oknie razem ze sceną (1920×1008 i mniejsze) */
+html.osadzony .glos { margin-top: 6px; }
+html.osadzony .legenda { display: none; }
