@@ -418,6 +418,9 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
   tablica.ustalenia = ustaleniaZLogu(zdarzenia, wszystkie);
   const spor = sporZLogu(zdarzenia, wszystkie); if (spor.length) tablica.spor = spor;   // brak pola = brak sporu (kolumna Stan prac bez zmian)
   const karta = kartaSprawy(final, tablica); if (karta) tablica.karta = karta;
+  // ekran „Co było dalej” (ankieta innowacji 2.11.2026, pkt 9): zapisany wynik i rozpoznanie nr 1 każdego lekarza
+  const wyn = json(pliki, '11-wynik.json'); if (wyn) tablica.wynik = wyn;
+  if (agregat?.rozpoznanie_nr1_lekarzy) tablica.nr1Lekarzy = agregat.rozpoznanie_nr1_lekarzy;
   for (const sc of wszystkie) for (const w of sc.wypowiedzi || []) {
     const z = zrodlaWTekscie([w.pelny, w.tresc, w.info].filter(Boolean).join('\n'));
     if (z.length) w.zrodla = z;

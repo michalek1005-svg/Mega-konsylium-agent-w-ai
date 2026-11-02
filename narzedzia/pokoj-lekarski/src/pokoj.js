@@ -248,14 +248,60 @@ ${podpisy(wpisy)}`;
     el.innerHTML = `<div class="gora"><h2 id="wnioski-t">Wnioski konsylium · ${esc(s.sprawa || '')}</h2><button class="nk-button" type="button" id="wnioski-zamknij">Wróć do pokoju</button></div>` +
       (rek ? `<div class="rek">${esc(rek.tresc)}</div>` : '') +
       (reszta.length ? `<dl>${reszta.map((p) => `<dt>${esc(p.etykieta)}</dt><dd>${esc(p.tresc)}</dd>`).join('')}</dl>` : `<div style="white-space:pre-wrap">${esc(w.tekst)}</div>`) +
+      coDalejHtml(s) +
       `<p class="stopka-w">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
     $('wnioski-zamknij').addEventListener('click', () => { el.hidden = true; });
+    podepnijCoDalej(s);
     // na żywo: pierwsze pojawienie się 09-FINAL otwiera wnioski same
     // ...ale dopiero gdy odtwarzanie dojdzie do końca dyskusji (nie zasłania trwającej rozmowy)
     const klucz = (s.sprawa || '') + '|' + w.tekst.length;
     if (otworz && wnioskiPokazane !== klucz) wnioskiCzekaja = klucz;
   }
   $('wnioski-btn').addEventListener('click', () => { $('wnioski').hidden = !$('wnioski').hidden; });
+
+  // ---------- „Co było dalej” (ankieta innowacji 2.11.2026, pkt 9) ----------
+  // Po kilku dniach: trafne / częściowo / nietrafne + jedno zdanie (+ opcjonalnie, kto miał rację) → sprawy/<ID>/11-wynik.json.
+  // Zestawienie trafności ról: python skrypty/wynik.py --zestawienie
+  const OCENY = [['trafne', 'Trafne'], ['czesciowo', 'Częściowo'], ['nietrafne', 'Nietrafne']];
+  const sprawaDoZapisu = (s) => sprawaZywa || (window.MsMost && s && s.sprawa && !/^(demo|przyk)/i.test(s.sprawa) ? s.sprawa : null);
+  function coDalejHtml(s) {
+    const t = (s && s.tablica) || {}, w = t.wynik;
+    if (w && w.ocena) {
+      const o = (OCENY.find((x) => x[0] === w.ocena) || [w.ocena, w.ocena])[1];
+      return `<section class="co-dalej" id="co-dalej"><h3>Co było dalej</h3><p><b>${esc(o)}</b>${w.zdanie ? ' – ' + esc(w.zdanie) : ''}` +
+        `${(w.mieli_racje || []).length ? `<br><span class="mut">Rację mieli: ${esc(w.mieli_racje.map((r) => (ROLE[r] || {}).nazwa || r).join(', '))}</span>` : ''}` +
+        `<br><span class="mut">${esc(String(w.ts || '').slice(0, 10))}</span></p></section>`;
+    }
+    if (!sprawaDoZapisu(s)) return '';
+    const role = Object.keys(t.nr1Lekarzy || {}).filter((r) => ROLE[r]);
+    return `<section class="co-dalej" id="co-dalej"><h3>Co było dalej?</h3><p class="mut">Wróć tu po kilku dniach: jedno kliknięcie i jedno zdanie. Zasila zestawienie trafności ról.</p>` +
+      `<div class="co-dalej-oceny" role="group" aria-label="Ocena rekomendacji">${OCENY.map(([k, n]) => `<button class="nk-button" type="button" data-ocena="${k}" aria-pressed="false">${n}</button>`).join('')}</div>` +
+      `<input class="co-dalej-zdanie" id="co-dalej-zdanie" maxlength="240" placeholder="Jedno zdanie: co było naprawdę (np. potwierdzona kamica w USG)">` +
+      (role.length ? `<div class="co-dalej-role" role="group" aria-label="Kto miał rację"><span class="mut">Kto miał rację (opcjonalnie):</span>${role.map((r) => `<button class="nk-button" type="button" data-rola="${r}" aria-pressed="false" title="${esc(t.nr1Lekarzy[r])}">${esc(ROLE[r].nazwa)}</button>`).join('')}</div>` : '') +
+      `<div><button class="nk-button nk-on" type="button" id="co-dalej-zapisz" disabled>Zapisz</button> <span class="co-dalej-blad" role="alert"></span></div></section>`;
+  }
+  function podepnijCoDalej(s) {
+    const box = $('co-dalej'); if (!box || !$('co-dalej-zapisz')) return;
+    let ocena = null;
+    box.querySelectorAll('[data-ocena]').forEach((b) => b.addEventListener('click', () => {
+      ocena = b.dataset.ocena;
+      box.querySelectorAll('[data-ocena]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      $('co-dalej-zapisz').disabled = false;
+    }));
+    box.querySelectorAll('[data-rola]').forEach((b) => b.addEventListener('click', () => b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')));
+    $('co-dalej-zapisz').addEventListener('click', async () => {
+      const id = sprawaDoZapisu(s); if (!id || !ocena) return;
+      const t = (s && s.tablica) || {};
+      const wpis = { format: 'ms-wynik-1', ts: new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00'), ocena,
+        zdanie: $('co-dalej-zdanie').value.replace(/\s+/g, ' ').trim().slice(0, 240),
+        mieli_racje: [...box.querySelectorAll('[data-rola][aria-pressed="true"]')].map((b) => b.dataset.rola),
+        rekomendacja: (t.karta && t.karta.zalecenie) || t.werdykt || '', nr1_lekarzy: t.nr1Lekarzy || {} };
+      try {
+        await window.MsMost.zapisz('sprawy/' + id + '/11-wynik.json', JSON.stringify(wpis, null, 2) + '\n');
+        t.wynik = wpis; rysujWnioski(s, false); $('wnioski').hidden = false;
+      } catch (err) { box.querySelector('.co-dalej-blad').textContent = 'Nie udało się zapisać: ' + (err && err.message || err); }
+    });
+  }
 
   let wnioskiCzekaja = null;
   function otworzCzekajaceWnioski() {

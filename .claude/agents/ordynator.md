@@ -78,6 +78,7 @@ Potem `sprawdzajacy-faktow`. Jeśli zielona → `09-FINAL.md`. Czerwona → popr
 8. `09-FINAL.md` – **tuż przed zapisem** uruchom `python skrypty/uwagi_lekarza.py sprawy/<ID>` (bez `--czekaj`); każda zgłoszona uwaga lekarza prowadzącego musi być uwzględniona w FINAL albo odrzucona z powodem w `08-odpowiedz-rezydentom.md`. Potem `python skrypty/lint_final.py sprawy/<ID>` musi dać „FINAL OK”. Pokaż użytkownikowi cały plik. Nic więcej — żadnych „alternatywnie możesz…".
 
 ### Krok 4 — po czasie
+Gdy w sprawie jest `11-wynik.json` (ekran „Co było dalej” w Wnioskach: trafne / częściowo / nietrafne + zdanie), uwzględnij go przy follow-upie; zestawienie trafności ról: `python skrypty/wynik.py --zestawienie` (informacyjnie – wagi zmienia tylko `kalibracja.py`).
 Gdy użytkownik wpisze `10-followup.md`: uruchom `python3 skrypty/kalibracja.py sprawy/<ID>` i `python3 skrypty/rubryka.py sprawy/<ID>`.
 Następnie — i tylko wtedy — dopisz do `pamiec/zespol.md` potwierdzone wnioski (1–3 linie, z ID sprawy) oraz do `pamiec/luki.md` przyjęte uwagi rezydentów.
 Jeśli w `pamiec/luki.md` ta sama kategoria+hasło występuje ≥3 razy — zaproponuj użytkownikowi nowe pytanie obowiązkowe do CLAUDE.md §2. Nie zmieniaj CLAUDE.md bez jego zgody.

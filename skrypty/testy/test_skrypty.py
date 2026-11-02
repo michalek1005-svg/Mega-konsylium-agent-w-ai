@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import zrodla  # noqa: E402
 import agregacja  # noqa: E402
 import lint_final  # noqa: E402
+import wynik  # noqa: E402
 
 
 class TestChpl(unittest.TestCase):
@@ -116,6 +117,20 @@ class TestLintFinal(unittest.TestCase):
         self.assertTrue(any("WNIOSKI WG PROBLEMU" in b for b in lint_final.lint(FINAL.format(wnioski=""), ["P1", "P2"])))
         t = FINAL.format(wnioski="WNIOSKI WG PROBLEMU:\n- P1: otoczka tabletki – zmiana preparatu.\n- P2: barwa po burakach – obserwacja.\n")
         self.assertEqual(lint_final.lint(t, ["P1", "P2"]), [])
+
+
+class TestWynik(unittest.TestCase):
+    def test_zestawienie_trafnosci_rol(self):
+        kat = Path(tempfile.mkdtemp())
+        for n, (ocena, mieli) in enumerate([("trafne", []), ("nietrafne", ["hipotezujacy"])]):
+            s = kat / f"S{n}"; (s / "03-opinie").mkdir(parents=True)
+            (s / "03-opinie" / "_agregat.json").write_text(json.dumps({"ranking": [{"rozpoznanie": "kamica"}],
+                "rozpoznanie_nr1_lekarzy": {"bayes": "kamica", "hipotezujacy": "trzustka"}}), encoding="utf-8")
+            wynik.zapisz(s, ocena, "zdanie", mieli)
+        z = wynik.zestawienie(kat)
+        self.assertEqual(z["sprawy"], 2)
+        self.assertEqual(z["role"]["bayes"], {"n": 2, "trafnosc": 0.5})        # 1,0 + 0,0
+        self.assertEqual(z["role"]["hipotezujacy"], {"n": 2, "trafnosc": 0.5})  # 0,0 (inne nr 1 przy trafnym) + 1,0 (miał rację)
 
 
 if __name__ == "__main__":

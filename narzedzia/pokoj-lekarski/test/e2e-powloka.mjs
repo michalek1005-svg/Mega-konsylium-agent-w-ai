@@ -105,6 +105,25 @@ assert.equal(await r.locator('#pytanie').isVisible(), false, 'karta znika po odp
 await p.waitForTimeout(3600);
 assert.equal(await r.locator('#pytanie').isVisible(), false, 'karta nie wraca po odświeżeniu');
 await p.screenshot({ path: join(tu, '..', '_panele.png') });
+// „Co było dalej” w Wnioskach → 11-wynik.json (ankieta innowacji 2.11, pkt 9)
+await r.locator('#wnioski-btn').click();
+await p.waitForTimeout(300);
+assert.equal(await r.locator('#co-dalej').count(), 1, 'sekcja Co było dalej w Wnioskach');
+assert.equal(await r.locator('#co-dalej-zapisz').isDisabled(), true, 'Zapisz nieaktywne bez oceny');
+await r.locator('#co-dalej [data-ocena="czesciowo"]').click();
+await r.locator('#co-dalej-zdanie').fill('Kaszel minął, ale krztuśca nie potwierdzono.');
+const rola1 = r.locator('#co-dalej [data-rola]').first();
+const ileRol = await r.locator('#co-dalej [data-rola]').count();
+if (ileRol) await rola1.click();
+await r.locator('#co-dalej-zapisz').click();
+await p.waitForTimeout(400);
+{
+  const w = JSON.parse(await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/11-wynik.json']));
+  assert.equal(w.ocena, 'czesciowo'); assert.match(w.zdanie, /krztuśca/); assert.equal(w.format, 'ms-wynik-1');
+  if (ileRol) assert.equal(w.mieli_racje.length, 1, 'kto miał rację');
+  assert.match(await r.locator('#co-dalej').innerText(), /Częściowo – Kaszel minął/, 'zapisany wynik widoczny');
+}
+await r.locator('#wnioski-zamknij').click();
 assert.equal(await r.locator('#plakat').count(), 1, 'plakat z serduszkiem na ścianie');
 assert.equal(await r.locator('#dym').count(), 1, 'warstwa dymu');
 assert.deepEqual(siec, [], 'zero żądań sieciowych');

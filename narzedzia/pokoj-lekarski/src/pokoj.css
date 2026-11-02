@@ -473,3 +473,12 @@ html.osadzony .legenda { display: none; }
 /* pole „Powiedz”: przełącznik fakt / przypuszczenie (ankieta innowacji 2.11.2026) */
 .glos .glos-hipoteza { font-size: 12px; padding: 5px 10px; opacity: .75; }
 .glos .glos-hipoteza[aria-pressed="true"] { opacity: 1; background: var(--ostrzezenie); color: var(--ink); }
+
+/* „Co było dalej” w Wnioskach (ankieta innowacji 2.11.2026) */
+.wnioski .co-dalej { border-top: 1px solid color-mix(in srgb, var(--mut) 35%, transparent); padding-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.wnioski .co-dalej h3 { margin: 0; font-size: 14px; }
+.wnioski .co-dalej .mut { color: var(--mut); font-size: 12px; }
+.wnioski .co-dalej-oceny, .wnioski .co-dalej-role { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.wnioski .co-dalej [aria-pressed="true"] { background: var(--on); color: var(--on-txt); }
+.wnioski .co-dalej-zdanie { font: inherit; font-size: 13px; padding: 7px 10px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--mut) 45%, transparent); background: var(--panel); color: var(--ink); }
+.wnioski .co-dalej-blad { color: var(--alarm); font-size: 12px; }
