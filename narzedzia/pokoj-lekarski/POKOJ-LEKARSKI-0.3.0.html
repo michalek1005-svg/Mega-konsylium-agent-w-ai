@@ -502,6 +502,26 @@ html.osadzony .legenda { display: none; }
 .powiadomienie b { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
 .powiadomienie.widoczne { transform: translate(-50%, 0); }
 @media (prefers-reduced-motion: reduce) { .powiadomienie { transition: none; } }
+
+/* Graficzny 2.11: „Co było dalej” jako karta z kolorami ocen, powiadomienie pod paskiem (nie zasłania przycisków) */
+.wnioski .co-dalej { border-top: 0; margin-top: 6px; padding: 14px 16px; border-radius: 16px; gap: 10px;
+  background: color-mix(in srgb, var(--petrol) 7%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--petrol) 22%, transparent); }
+.wnioski .co-dalej h3 { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.wnioski .co-dalej h3::before { content: "↻"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--on); color: var(--on-txt); font-size: 13px; }
+.wnioski .co-dalej [data-ocena="trafne"][aria-pressed="true"] { background: var(--ok); color: #fff; }
+.wnioski .co-dalej [data-ocena="czesciowo"][aria-pressed="true"] { background: var(--ostrzezenie); color: #fff; }
+.wnioski .co-dalej [data-ocena="nietrafne"][aria-pressed="true"] { background: var(--alarm); color: #fff; }
+:root[data-motyw="ciemny"] .wnioski .co-dalej [data-ocena][aria-pressed="true"] { color: #0F1918; }
+.wnioski .co-dalej-zdanie:focus { outline: 0; border-color: var(--petrol); box-shadow: 0 0 0 3px color-mix(in srgb, var(--petrol) 25%, transparent); }
+.wnioski .co-dalej button:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.powiadomienie { top: 84px; flex-direction: row; align-items: flex-start; gap: 10px; padding: 11px 18px 11px 12px; border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 16px 36px -10px rgba(10,54,52,.55); transform: translate(-50%, -12px); opacity: 0; transition: transform .35s ease, opacity .35s ease; }
+.powiadomienie.widoczne { transform: translate(-50%, 0); opacity: 1; }
+.powiadomienie::before { content: "!"; flex-shrink: 0; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%; background: rgba(255,255,255,.2); font: 800 14px/1 var(--font); }
+.powiadomienie b { display: block; }
+.powiadomienie > span { display: block; }
+.powiadomienie { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 1px; }
+.powiadomienie::before { grid-row: span 2; }
 </style>
 </head>
 <body>
