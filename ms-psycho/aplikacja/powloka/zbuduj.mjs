@@ -10,8 +10,8 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, existsSync
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// Ekran „Dla Halusi ❤” – TYLKO w wersji 1 (Michał 1.11.2026). W wersji 2: false.
-const PREZENT = true;
+// Ekran „Dla Halusi ❤” – tylko w wersjach 0.1.x–0.2.x (Michał 1.11.2026). Od 0.3.0: false.
+const PREZENT = false;
 
 const tu = dirname(fileURLToPath(import.meta.url));
 const aplikacja = join(tu, '..');
@@ -53,7 +53,10 @@ const pomoc = readFileSync(join(psycho, 'config', 'pomoc-pl.json'), 'utf8');
 const frazy = readFileSync(join(psycho, 'config', 'frazy-ryzyka.json'), 'utf8');
 const rozmowa = readFileSync(join(aplikacja, 'rozmowa', 'rozmowa.html'), 'utf8')
   .replace('/*@@FONT@@*/', () => fontCss).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@MS-MOST@@*/', () => most)
-  .replace('/*@@POMOC@@*/null', () => JSON.stringify(JSON.parse(pomoc))).replace('/*@@FRAZY@@*/null', () => JSON.stringify(JSON.parse(frazy)));
+  .replace('/*@@POMOC@@*/null', () => JSON.stringify(JSON.parse(pomoc))).replace('/*@@FRAZY@@*/null', () => JSON.stringify(JSON.parse(frazy)))
+  // 0.3.0: ćwiczenia krok po kroku i karty stylu terapeuty – te same pliki czyta skrypty/rozmowa.py
+  .replace('/*@@CWICZENIA@@*/null', () => JSON.stringify(JSON.parse(readFileSync(join(psycho, 'config', 'cwiczenia.json'), 'utf8'))))
+  .replace('/*@@STYLE@@*/null', () => JSON.stringify(JSON.parse(readFileSync(join(psycho, 'config', 'style-terapeuty.json'), 'utf8'))));
 if (/https?:\/\//.test(rozmowa.replace(fontCss, ''))) throw new Error('Rozmowa: adres sieciowy w module (zasada offline).');
 writeFileSync(join(build, 'app', 'moduly', 'rozmowa.html'), rozmowa);
 
@@ -65,11 +68,25 @@ copyFileSync(join(katP, plikP), join(build, 'app', 'moduly', 'pokoj.html'));
 
 // 4. Powłoka
 const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ rozmowa: true, wywiad: true, pokoj: true })};</script>`;
-let prezentCss = '', prezentHtml = '';
+// Ekran „Narzędzie testowe” przy każdym starcie – zawsze (także bez prezentu, od 0.3.0)
+const zgoda = `<div id="zgoda" hidden role="dialog" aria-modal="true" aria-labelledby="zgoda-t"><div class="zgoda-karta">
+<h2 id="zgoda-t">Narzędzie testowe</h2>
+<p>MS Konsylium Psychologiczne – Psychoterapia AI i Pokój psychologiczny – to narzędzie testowe marki MS. Prowadzi rozmowę na wzór psychoterapii, ale nie zastępuje psychoterapeuty, psychologa ani lekarza, a hipotezy z Pokoju nie są diagnozą. Rozmowy zostają na tym komputerze, w wybranym folderze.</p>
+<p class="zgoda-nr">Jeśli ktoś jest w kryzysie: <b>112</b> · <b>800 70 2222</b> (całodobowo) · <b>116 123</b></p>
+<button type="button" id="zgoda-ok">Rozumiem</button></div></div>`;
+const zgodaCss = `
+#zgoda{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;background:rgba(40,30,60,.28);backdrop-filter:blur(6px)}
+#zgoda .zgoda-karta{max-width:520px;margin:20px;padding:28px 30px;border-radius:28px;background:var(--panel,#fff);background-color:#fbf9fe;color:#2D2A3A;box-shadow:0 40px 80px -30px rgba(60,40,90,.6);animation:zgodaW .5s cubic-bezier(.2,1.3,.4,1)}
+html[data-motyw="ciemny"] #zgoda .zgoda-karta{background-color:#231e33;color:#ECE8F4}
+@keyframes zgodaW{from{opacity:0;transform:translateY(16px) scale(.96)}}
+#zgoda h2{margin:0 0 10px;font-size:22px}#zgoda p{margin:0 0 12px;line-height:1.55}.zgoda-nr{font-size:13.5px}
+#zgoda button{border:0;border-radius:999px;padding:12px 24px;font:750 14px inherit;font-family:inherit;background:#5B4A8A;color:#fff;cursor:pointer}
+`;
+let prezentCss = zgodaCss, prezentHtml = '';
 if (PREZENT) {
   // .podpis koliduje z globalną etykietą paska w powłoce (blur, tło, top:50%) – w prezencie zawsze .prezent-podpis
   const p = readFileSync(join(aplikacja, 'prezent', 'prezent-start.html'), 'utf8').replace(/\bpodpis\b/g, 'prezent-podpis');
-  prezentCss = p.match(/<style>([\s\S]*?)<\/style>/)[1]
+  prezentCss = zgodaCss + p.match(/<style>([\s\S]*?)<\/style>/)[1]
     .replace(/^html,body\{[^}]*\}\s*$/m, '').replace(/^\.app\{[^}]*\}\s*$/m, '')
     // klasy prezentu (.podpis, .tafla…) nie mogą dotknąć powłoki: każda reguła tylko wewnątrz #prezent
     .replace(/^\.([a-z])/gm, '#prezent .$1');
@@ -87,18 +104,7 @@ if (PREZENT) {
     });
     if (!i) throw new Error('Prezent: nie znaleziono zrzutów do podmiany w prezent-start.html');
   }
-  const zgoda = `<div id="zgoda" hidden role="dialog" aria-modal="true" aria-labelledby="zgoda-t"><div class="zgoda-karta">
-<h2 id="zgoda-t">Narzędzie testowe</h2>
-<p>MS Konsylium Psychologiczne – Psychoterapia AI i Pokój psychologiczny – to narzędzie testowe marki MS. Prowadzi rozmowę na wzór psychoterapii, ale nie zastępuje psychoterapeuty, psychologa ani lekarza, a hipotezy z Pokoju nie są diagnozą. Rozmowy zostają na tym komputerze, w wybranym folderze.</p>
-<p class="zgoda-nr">Jeśli ktoś jest w kryzysie: <b>112</b> · <b>800 70 2222</b> (całodobowo) · <b>116 123</b></p>
-<button type="button" id="zgoda-ok">Rozumiem</button></div></div>`;
   prezentCss += `
-#zgoda{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;background:rgba(40,30,60,.28);backdrop-filter:blur(6px)}
-#zgoda .zgoda-karta{max-width:520px;margin:20px;padding:28px 30px;border-radius:28px;background:var(--panel,#fff);background-color:#fbf9fe;color:#2D2A3A;box-shadow:0 40px 80px -30px rgba(60,40,90,.6);animation:zgodaW .5s cubic-bezier(.2,1.3,.4,1)}
-html[data-motyw="ciemny"] #zgoda .zgoda-karta{background-color:#231e33;color:#ECE8F4}
-@keyframes zgodaW{from{opacity:0;transform:translateY(16px) scale(.96)}}
-#zgoda h2{margin:0 0 10px;font-size:22px}#zgoda p{margin:0 0 12px;line-height:1.55}.zgoda-nr{font-size:13.5px}
-#zgoda button{border:0;border-radius:999px;padding:12px 24px;font:750 14px inherit;font-family:inherit;background:#5B4A8A;color:#fff;cursor:pointer}
 #prezent .pomin{position:absolute;right:40px;bottom:36px;z-index:3;border:0;background:rgba(255,255,255,.55);color:#5b4a8a;border-radius:999px;padding:8px 14px;font:650 12px inherit;font-family:inherit;cursor:pointer;opacity:.7}
 `;
   scena = scena.replace('<div id="prezent">', '<div id="prezent"><button class="pomin" type="button" id="prezent-pomin" title="Pomiń animację">Pomiń ›</button>');
@@ -110,6 +116,7 @@ document.getElementById('prezent-pomin').addEventListener('click',function(e){e.
 new MutationObserver(function(){if(!document.getElementById('prezent')&&z.hidden&&!z.dataset.bylo){z.dataset.bylo=1;pokazZgode();}}).observe(document.body,{childList:true});
 })();</script>\n<script>${skrypt}</script>`;
 }
+if (!PREZENT) prezentHtml = zgoda + `<script>(function(){var z=document.getElementById('zgoda');document.getElementById('zgoda-ok').addEventListener('click',function(){z.hidden=true;});z.hidden=false;document.getElementById('zgoda-ok').focus();})();</script>`;
 const powloka = readFileSync(join(tu, 'app', 'index.html'), 'utf8')
   .replace('<!--KONFIGURACJA-->', () => konf).replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => fontCss)
   .replace('/*@@PREZENT-CSS@@*/', () => prezentCss).replace('<!--@@PREZENT@@-->', () => prezentHtml);

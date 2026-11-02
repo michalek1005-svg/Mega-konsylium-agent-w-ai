@@ -1,4 +1,6 @@
-# MS Konsylium Psychologiczne – start (wersja testowa 0.1.0)
+# MS Konsylium Psychologiczne – start (wersja testowa 0.3.0)
+
+> **Zespół asystentów projektu (2.11.2026):** role Nadzorca, Kodujący, Graficzny, Merytoryczny, Innowacyjny, Testowy, Operator – zasady i prompty startowe w `docs/ZESPOL/README.md`.
 
 „Brat bliźniak” MS Konsylium: Rozmowa z jednym terapeutą AI, za którym pracuje zespół agentów, i Pokój psychologiczny z konsylium terapeutów różnych podejść. **Narzędzie testowe – to nie jest terapia ani diagnoza.**
 
@@ -10,7 +12,9 @@
 | 👥 | **Pokój psychologiczny** | Krąg foteli: prowadzący z herbatą, 5 terapeutów różnych szkół, diagnosta, psychiatra; strażnik ryzyka i zastępcy przy ścianie, sprawdzający przy biurku, stażysta za szybą. Dymki, ściana z etapami, Wnioski. Pole „Terapeuta prowadzący” – Twój głos w dyskusji. |
 | 📁 | Folder | Wskaż folder `ms-psycho` (ten folder). |
 
-Ekran z prezentem „Dla Halusi ❤” pokazuje się przy każdym starcie **tylko w wersji 1** (0.1.x); „Pomiń ›” w prawym dolnym rogu.
+Ekran z prezentem „Dla Halusi ❤” był tylko w wersjach 0.1.x–0.2.x; od 0.3.0 na starcie jest sam ekran „Narzędzie testowe”.
+
+**Nowe w 0.3.0** (docs/ROZMOWA.md §0d): przy zakładaniu konta wybierasz styl terapeuty (Spokojnie i z pytaniami · Wprost i konkretnie · Ciepło i z humorem; zmiana w „Co pamiętam”); nad rozmową karta „Nad czym pracujemy” (cel słowami osoby, co 4 sesje krótka ocena 0–10); ćwiczenia prowadzone krok po kroku z kartą kroku, przyciskiem „Przerwij” i kartą wyniku; w oknie konta (👤) przycisk **Superwizja** – streszczenia sesji i miejsce na notatkę superwizora.
 
 ## 2. Bezpieczeństwo (zawsze włączone)
 - Filtr słownikowy w aplikacji (`config/frazy-ryzyka.json`) czyta każdą wiadomość **zanim** trafi do AI: słowa o odebraniu sobie życia → od razu czerwona karta z numerami; bierne myśli o śmierci → łagodna karta z numerami.
@@ -30,6 +34,8 @@ Sygnał „AI pracuje” (kropka w lewym dolnym rogu): jak w MS Konsylium – pl
 ## 4. Testowanie
 - Przypadki syntetyczne: `przypadki-testowe/PSY-01…10` (wiek i płeć, dorośli). Tury do Rozmowy: `przypadki-testowe/ROZMOWA-tury-uzytkownika.md`. Kryteria: `przypadki-testowe/KRYTERIA-OCENY.md`. Klucze oceny są poza aplikacją i nie mogą tu trafić.
 - Test automatyczny całej ścieżki (dla programisty): `cd aplikacja/powloka && npm ci && node zbuduj.mjs --bez-paczki && xvfb-run -a node test/e2e-psycho.mjs`.
+- Testy skryptów: `python3 skrypty/test_frazy.py` (filtr ryzyka) i `python3 skrypty/test_030.py` (ćwiczenia, cel, styl, superwizja, realizm).
+- Pomiar realizmu sesji: `python skrypty/realizm.py` (same liczby; `--zapisz` → `raporty/`).
 
-## 5. Wersja 2 (po pokazie)
-Usunąć ekran prezentu: `aplikacja/powloka/zbuduj.mjs` → `const PREZENT = false;`, podnieść wersję w `package.json`, zbudować.
+## 5. Ekran prezentu
+Od 0.3.0 wyłączony (`aplikacja/powloka/zbuduj.mjs` → `const PREZENT = false;`). Ekran „Narzędzie testowe” zostaje przy każdym starcie.

@@ -343,6 +343,44 @@ html[data-motyw="ciemny"] .suwaki-karta select option { background: #241f34; col
 /* przy otwartym panelu „Co pamiętam” pasek faz też robi mu miejsce (jak rozmowa w 0.1.9) */
 .okno:has(> .panel-boczny:not([hidden])) > .faza { margin-right: calc(min(360px, 34vw) + 18px); }
 @media (max-width: 900px) { .okno:has(> .panel-boczny:not([hidden])) > .faza { margin-right: 0; } }
+/* ---------- 0.3.0: cel pracy, ćwiczenie krok po kroku, karta wyniku, styl terapeuty, superwizja (docs/ROZMOWA.md §0d) ---------- */
+.okno > .nad-rozmowa { grid-row: 3; display: grid; gap: 8px; min-width: 0; }
+.nad-rozmowa:not(:has(> :not([hidden]))) { display: none; }
+.okno:has(> .panel-boczny:not([hidden])) > .nad-rozmowa { margin-right: calc(min(360px, 34vw) + 18px); }
+@media (max-width: 900px) { .okno:has(> .panel-boczny:not([hidden])) > .nad-rozmowa { margin-right: 0; } }
+.cel-karta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 9px 14px; border-radius: 16px; background: var(--karta); box-shadow: inset 4px 0 0 #c9a65c, 0 0 0 1px var(--karta-obrys); font-size: 13px; }
+.cel-karta .tresc { flex: 1 1 280px; min-width: 0; }
+.cel-karta .tresc b { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #8a6d2a; }
+html[data-motyw="ciemny"] .cel-karta .tresc b { color: #e5c98a; }
+.cel-karta .btn { padding: 6px 12px; white-space: nowrap; }
+.cel-karta .btn.on { background: linear-gradient(150deg, #8f7fd6, #5B4A8A); color: #fff; }
+.cel-karta input[type=text] { flex: 1 1 260px; height: 36px; border-radius: 12px; border: 1px solid var(--pole-obrys2); background: var(--pole-tlo); color: var(--ink); padding: 0 12px; font: inherit; }
+.cel-karta input[type=range] { flex: 1 1 160px; accent-color: #8f7fd6; }
+.cel-karta .ocena { font-weight: 800; min-width: 38px; text-align: center; }
+.karta-cwiczenia { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 0 0 10px; padding: 10px 14px 10px 52px; position: relative; border-radius: 18px; background: var(--karta); box-shadow: inset 4px 0 0 #6f96a9, 0 0 0 1px var(--karta-obrys), 0 14px 30px -24px rgba(60,40,90,.7); font-size: 13px; }
+.karta-cwiczenia::before { content: "✦"; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: linear-gradient(150deg, #8fb4c6, #4f7f8a); }
+.karta-cwiczenia .tresc { flex: 1 1 300px; min-width: 0; }
+.karta-cwiczenia .tresc b { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #4f7f8a; }
+html[data-motyw="ciemny"] .karta-cwiczenia .tresc b { color: #9cc7d6; }
+.karta-cwiczenia .kroki { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: 1px; }
+.karta-cwiczenia .kroki i { width: 8px; height: 8px; border-radius: 50%; background: var(--btn-h); }
+.karta-cwiczenia .kroki i.z { background: #6f96a9; } .karta-cwiczenia .kroki i.t { background: #8f7fd6; box-shadow: 0 0 0 3px rgba(143,127,214,.25); }
+.karta-cwiczenia .btn { padding: 7px 13px; white-space: nowrap; }
+.msg .wynik-cw { margin-top: 10px; padding: 10px 12px; border-radius: 14px; background: var(--btn); white-space: normal; box-shadow: inset 3px 0 0 #6f96a9; }
+.msg .wynik-cw > b { display: block; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: #4f7f8a; margin-bottom: 6px; }
+html[data-motyw="ciemny"] .msg .wynik-cw > b { color: #9cc7d6; }
+.msg .wynik-cw div { display: grid; grid-template-columns: minmax(110px, 38%) 1fr; gap: 8px; font-size: 12.5px; padding: 3px 0; border-top: 1px solid var(--karta-obrys); }
+.msg .wynik-cw div:first-of-type { border-top: 0; }
+.msg .wynik-cw span { color: var(--mut); }
+.style-wybor { display: grid; gap: 8px; margin-top: 4px; }
+.style-wybor label { display: flex; gap: 10px; align-items: flex-start; margin: 0; padding: 10px 12px; border-radius: 14px; background: var(--btn); cursor: pointer; font-weight: 500; box-shadow: inset 0 0 0 1px var(--karta-obrys); }
+.style-wybor label:has(input:checked) { box-shadow: inset 0 0 0 2px #8f7fd6; background: var(--karta); }
+.style-wybor input { width: auto; height: auto; margin-top: 3px; accent-color: #8f7fd6; }
+.style-wybor b { display: block; font-size: 13px; }
+.style-wybor small { color: var(--mut); line-height: 1.4; }
+.panel-boczny .styl-akt { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--karta-obrys); white-space: normal; }
+.panel-boczny textarea { width: 100%; min-height: 90px; border-radius: 12px; border: 1px solid var(--pole-obrys2); background: var(--pole-tlo); color: var(--ink); padding: 8px 10px; font: inherit; resize: vertical; }
+.panel-boczny .superwizja-tekst { white-space: pre-wrap; font-size: 12.5px; padding: 10px 12px; border-radius: 12px; background: var(--btn); max-height: 320px; overflow: auto; }
 </style>
 </head>
 <body>
@@ -367,9 +405,10 @@ html[data-motyw="ciemny"] .suwaki-karta select option { background: #241f34; col
     </div>
   </header>
   <div class="pracuje spi" id="pracuje" aria-live="polite"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span><span id="pracuje-tekst">Zespół czeka na Twoją wiadomość</span><div class="awatary" id="awatary"></div></div>
-  <div class="faza" id="faza" hidden></div>
+  <div class="nad-rozmowa"><div class="cel-karta" id="cel" hidden></div><div class="faza" id="faza" hidden></div></div>
   <div class="rozmowa" id="rozmowa" aria-live="polite"></div>
   <div>
+    <div class="karta-cwiczenia" id="karta-cwiczenia" hidden></div>
     <div class="karta-zadania" id="karta-zadania" hidden></div>
     <form class="wpis" id="wpis" autocomplete="off">
       <div class="pole">
@@ -390,6 +429,8 @@ html[data-motyw="ciemny"] .suwaki-karta select option { background: #241f34; col
 <script>
 var POMOC = /*@@POMOC@@*/null;
 var FRAZY = /*@@FRAZY@@*/null;
+var CWICZENIA = /*@@CWICZENIA@@*/null;
+var STYLE = /*@@STYLE@@*/null;
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -446,7 +487,7 @@ var FRAZY = /*@@FRAZY@@*/null;
     return most.zapisz(kat() + '/meta.json', JSON.stringify({ rozmowa: stan.id, konto: stan.konto ? stan.konto.konto : undefined, tryb: stan.tryb, utworzono: stan.utworzono, aplikacja: 'MS Konsylium Psychologiczne' }, null, 2));
   }
   function zaladuj(id) {
-    stan.id = id; stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
+    stan.id = id; stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null; stan.cw = null;
     try { localStorage.setItem(stan.konto ? 'ms-rozmowa-' + stan.konto.konto : 'ms-rozmowa', id); } catch (e) {}
     if (!pliki) { rysuj(); return Promise.resolve(); }
     return Promise.all([most.czytaj(kat() + '/meta.json'), most.czytaj(kat() + '/uzytkownik.json'), most.czytaj(kat() + '/zespol.json')]).then(function (r) {
@@ -457,7 +498,7 @@ var FRAZY = /*@@FRAZY@@*/null;
     });
   }
   function nowa() {
-    stan.id = nowyId(); stan.utworzono = new Date().toISOString(); stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null;
+    stan.id = nowyId(); stan.utworzono = new Date().toISOString(); stan.ja = []; stan.zespol = []; stan.reakcje = {}; stan.pracuje = null; stan.sprawa = null; stan.cw = null;
     try { localStorage.setItem(stan.konto ? 'ms-rozmowa-' + stan.konto.konto : 'ms-rozmowa', stan.id); } catch (e) {}
     rysuj(true);
     if (pliki) zapiszMeta().then(zapiszJa).then(odswiezListe);
@@ -495,13 +536,15 @@ var FRAZY = /*@@FRAZY@@*/null;
       h += '<form id="konto-nowe" novalidate' + (konta.length ? ' hidden' : '') + '><label for="k-ps">Pseudonim</label><input id="k-ps" maxlength="24" required placeholder="np. Hala, Leśny, M.">'
         + '<div class="rzad"><div><label for="k-wiek">Wiek</label><input id="k-wiek" type="number" min="18" max="110" required></div><div><label for="k-plec">Płeć</label><select id="k-plec"><option value="kobieta">kobieta</option><option value="mężczyzna">mężczyzna</option><option value="inna / wolę nie mówić">inna / wolę nie mówić</option></select></div></div>'
         + '<label for="k-pin">PIN (opcjonalnie, 4–8 cyfr)</label><input id="k-pin" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" placeholder="zostaw puste, jeśli komputer jest tylko Twój">'
+        + '<label>Jak ma ze mną rozmawiać psychoterapeuta?</label>' + styleHtml(STYL_DOMYSLNY)
         + '<p class="blad" id="k-blad"></p><div class="akcje"><button class="btn on" type="submit">Załóż konto</button>' + (konta.length ? '<button class="btn" type="button" id="k-wroc">Wróć</button>' : '') + '</div></form>';
-      if (konta.length) h += '<div class="akcje" id="k-dodaj-box"><button class="btn" type="button" id="k-dodaj">+ Nowe konto</button>' + (stan.konto ? '<button class="btn" type="button" id="k-zamknij">Zamknij</button>' : '') + '</div>';
+      if (konta.length) h += '<div class="akcje" id="k-dodaj-box"><button class="btn" type="button" id="k-dodaj">+ Nowe konto</button>' + (stan.konto ? '<button class="btn" type="button" id="k-superwizja" title="Streszczenia sesji i notatka superwizora (dla terapeuty prowadzącego)">Superwizja</button><button class="btn" type="button" id="k-zamknij">Zamknij</button>' : '') + '</div>';
       ok.innerHTML = h; $('konta').hidden = false;
       var f = $('konto-nowe');
       if ($('k-dodaj')) $('k-dodaj').onclick = function () { f.hidden = false; $('k-dodaj-box').hidden = true; $('k-ps').focus(); };
       if ($('k-wroc')) $('k-wroc').onclick = function () { f.hidden = true; $('k-dodaj-box').hidden = false; };
       if ($('k-zamknij')) $('k-zamknij').onclick = function () { $('konta').hidden = true; };
+      if ($('k-superwizja')) $('k-superwizja').onclick = function () { $('konta').hidden = true; pokazSuperwizje(); };
       f.onsubmit = function (e) {
         e.preventDefault();
         var ps = $('k-ps').value.trim(), wiek = parseInt($('k-wiek').value, 10), pin = $('k-pin').value.trim();
@@ -511,7 +554,10 @@ var FRAZY = /*@@FRAZY@@*/null;
         var id = 'k' + Math.random().toString(36).slice(2, 7).padEnd(5, '0');
         (pin ? skrot(pin) : Promise.resolve(null)).then(function (hash) {
           var p = { konto: id, pseudonim: ps.slice(0, 24), wiek: wiek, plec: $('k-plec').value, pin: hash || undefined, utworzono: new Date().toISOString(), ostatnio: new Date().toISOString() };
-          return most.zapisz('konta/' + id + '/profil.json', JSON.stringify(p, null, 2)).then(function () { wejdz(p, true); });
+          var styl = (ok.querySelector('input[name="styl"]:checked') || {}).value || STYL_DOMYSLNY;
+          return most.zapisz('konta/' + id + '/profil.json', JSON.stringify(p, null, 2))
+            .then(function () { return most.zapisz('konta/' + id + '/terapeuta.json', JSON.stringify({ styl: styl, wybrano: new Date().toISOString() }, null, 2)); })
+            .then(function () { wejdz(p, true); });
         }).catch(function (er) { $('k-blad').textContent = 'Nie udało się zapisać konta: ' + er.message; });
       };
       ok.querySelectorAll('[data-konto]').forEach(function (b) {
@@ -529,7 +575,8 @@ var FRAZY = /*@@FRAZY@@*/null;
     }).catch(function (e) { blad('Nie udało się odczytać kont: ' + e.message); });
   }
   function wejdz(p, nowe) {
-    stan.konto = p; stan.zadanie = null; $('konta').hidden = true; odczytajZadanie();
+    stan.konto = p; stan.zadanie = null; stan.cel = null; stan.styl = null; $('konta').hidden = true; odczytajZadanie();
+    most.czytaj('konta/' + p.konto + '/terapeuta.json').then(function (r) { var t = null; try { t = r && JSON.parse(r.tekst); } catch (e) {} stan.styl = t; pokazStyl(); }).catch(function () {});
     try { localStorage.setItem('ms-konto', p.konto); } catch (e) {}
     $('konto-btn').hidden = false; $('konto-nazwa').textContent = p.pseudonim;
     p.ostatnio = new Date().toISOString();
@@ -555,9 +602,19 @@ var FRAZY = /*@@FRAZY@@*/null;
       p.dataset.co = 'pamiec';
       p.innerHTML = '<h3>Co pamiętam z naszych rozmów</h3>' + (t ? md(t) : 'Na razie nic. Po rozmowie zapiszę tu krótko, co ważne – żeby następnym razem nie zaczynać od zera.') + '<div id="wykres-suwakow"></div>'
         + (stan.konto.nastepny_termin ? '<p><b>Następna rozmowa:</b> ' + esc(stan.konto.nastepny_termin) + '</p>' : '')
+        + '<div class="styl-akt"><b>Jak ze mną rozmawiasz:</b> ' + esc(stylAkt().nazwa) + ' <button class="btn" type="button" id="styl-zmien">Zmień styl</button><div id="styl-box" hidden>' + styleHtml(stylAkt().id) + '<div class="akcje"><button class="btn on" type="button" id="styl-zapisz">Zapisz styl</button></div></div></div>'
         + '<div class="akcje" style="margin-top:12px;white-space:normal"><button class="btn" type="button" id="pamiec-czysc">Wyczyść pamięć</button> <button class="btn" type="button" id="pamiec-zamknij">Zamknij</button></div>';
       p.hidden = false;
       $('pamiec-zamknij').onclick = function () { p.hidden = true; };
+      $('styl-zmien').onclick = function () { $('styl-box').hidden = !$('styl-box').hidden; };
+      $('styl-zapisz').onclick = function () {
+        var nowy = (p.querySelector('input[name="styl"]:checked') || {}).value, stary = stylAkt().id;
+        if (!nowy || nowy === stary) { $('styl-box').hidden = true; return; }
+        stan.styl = { styl: nowy, wybrano: new Date().toISOString(), poprzedni: stary };
+        most.zapisz('konta/' + stan.konto.konto + '/terapeuta.json', JSON.stringify(stan.styl, null, 2)).catch(function () {});
+        pokazStyl(); p.hidden = true;
+        zdarzenie({ typ: 'styl', styl: nowy, tekst: '⚙ Zmieniam styl rozmowy na: „' + stylAkt().nazwa + '”' });
+      };
       most.czytaj('konta/' + stan.konto.konto + '/suwaki.json').then(function (r) {
         var l = []; try { l = (r && JSON.parse(r.tekst)) || []; } catch (e) {}
         if (!l.length || !$('wykres-suwakow')) return;
@@ -634,6 +691,92 @@ var FRAZY = /*@@FRAZY@@*/null;
       var z = null; try { z = r && JSON.parse(r.tekst); } catch (e) {}
       if (JSON.stringify(z) !== JSON.stringify(stan.zadanie)) { stan.zadanie = z; rysujZadanie(); }
     }).catch(function () {});
+    most.czytaj('konta/' + stan.konto.konto + '/cel.json').then(function (r) {
+      var c = null; try { c = r && JSON.parse(r.tekst); } catch (e) {}
+      if (JSON.stringify(c) !== JSON.stringify(stan.cel)) { stan.cel = c; rysujCel(); }
+    }).catch(function () {});
+  }
+
+  // ---------- 0.3.0: styl terapeuty, cel pracy, ćwiczenie krok po kroku, superwizja (docs/ROZMOWA.md §0d) ----------
+  var STYL_DOMYSLNY = (STYLE && STYLE.domyslny) || 'spokojnie';
+  function styl(id) { var l = (STYLE && STYLE.style) || []; return l.filter(function (x) { return x.id === id; })[0] || l[0] || { id: 'spokojnie', nazwa: 'Spokojnie i z pytaniami', dla_osoby: '' }; }
+  function stylAkt() { return styl((stan.styl && stan.styl.styl) || STYL_DOMYSLNY); }
+  function styleHtml(wybrany) {
+    return '<div class="style-wybor">' + ((STYLE && STYLE.style) || []).map(function (x) {
+      return '<label><input type="radio" name="styl" value="' + esc(x.id) + '"' + (x.id === wybrany ? ' checked' : '') + '><span><b>' + esc(x.nazwa) + '</b><small>' + esc(x.dla_osoby) + '</small></span></label>';
+    }).join('') + '</div>';
+  }
+  function pokazStyl() { $('sub').textContent = 'jeden głos · ' + stylAkt().nazwa.toLowerCase() + ' · w tle zespół terapeutów różnych podejść'; }
+
+  function zapiszCel(c) { stan.cel = c; rysujCel(); return most.zapisz('konta/' + stan.konto.konto + '/cel.json', JSON.stringify(c, null, 2)).catch(function () {}); }
+  function rysujCel() {
+    var el = $('cel'), c = stan.cel;
+    if (!c || !c.tekst || !stan.konto || stan.demo || stan.tryb === 'konsultacja') { el.hidden = true; el.dataset.h = ''; return; }
+    var h;
+    if (stan.celEdycja) h = '<span class="tresc"><b>Nad czym pracujemy – Twoimi słowami</b></span><input type="text" id="cel-pole" maxlength="200" value="' + esc(c.tekst) + '"><button class="btn on" type="button" data-cel="zapisz">Zapisz</button><button class="btn" type="button" data-cel="anuluj">Anuluj</button>';
+    else if (c.status !== 'uzgodniony') h = '<span class="tresc"><b>Propozycja celu naszej pracy</b>„' + esc(c.tekst) + '”</span><button class="btn on" type="button" data-cel="tak">To jest to</button><button class="btn" type="button" data-cel="edytuj">Zmień</button>';
+    else if (c.przeglad) h = '<span class="tresc"><b>Nad czym pracujemy · przegląd</b>„' + esc(c.tekst) + '” – na ile jesteśmy bliżej?</span><input type="range" min="0" max="10" value="' + (stan.celOcena == null ? 5 : stan.celOcena) + '" id="cel-ocena"><span class="ocena" id="cel-ocena-w">' + (stan.celOcena == null ? 5 : stan.celOcena) + '/10</span><button class="btn on" type="button" data-cel="ocena">Cel ten sam</button><button class="btn" type="button" data-cel="ocena-zmien">Zmień cel</button>';
+    else h = '<span class="tresc"><b>Nad czym pracujemy</b>„' + esc(c.tekst) + '”</span><button class="btn" type="button" data-cel="edytuj" title="Popraw cel swoimi słowami">✎</button>';
+    if (el.dataset.h !== h) { el.innerHTML = h; el.dataset.h = h; }
+    el.hidden = false;
+    if ($('cel-ocena')) $('cel-ocena').oninput = function () { stan.celOcena = +this.value; $('cel-ocena-w').textContent = this.value + '/10'; };
+  }
+  function klikCel(co) {
+    var c = stan.cel; if (!c) return;
+    if (co === 'edytuj') { stan.celEdycja = true; rysujCel(); $('cel-pole').focus(); return; }
+    if (co === 'anuluj') { stan.celEdycja = false; rysujCel(); return; }
+    if (co === 'zapisz') {
+      var t = $('cel-pole').value.trim(); stan.celEdycja = false;
+      if (!t || t === c.tekst) { rysujCel(); return; }
+      (c.historia = c.historia || []).push({ tekst: c.tekst, do: new Date().toISOString() });
+      c.tekst = t.slice(0, 200); c.status = 'uzgodniony'; c.uzgodniono = new Date().toISOString(); c.przeglad = false;
+      zapiszCel(c); zdarzenie({ typ: 'cel', akcja: 'zmiana', cel: c.tekst, tekst: '🎯 Mój cel brzmi teraz: „' + c.tekst + '”' }); return;
+    }
+    if (co === 'tak') { c.status = 'uzgodniony'; c.uzgodniono = new Date().toISOString(); zapiszCel(c); zdarzenie({ typ: 'cel', akcja: 'akceptuje', tekst: '🎯 Tak, nad tym chcę pracować: „' + c.tekst + '”' }); return; }
+    if (co === 'ocena' || co === 'ocena-zmien') {
+      var w = stan.celOcena == null ? 5 : stan.celOcena, ten = co === 'ocena';
+      (c.oceny = c.oceny || []).push({ data: new Date().toISOString(), wartosc: w, ten_sam: ten }); c.przeglad = false; stan.celOcena = null;
+      if (!ten) stan.celEdycja = true;
+      zapiszCel(c); zdarzenie({ typ: 'cel', akcja: 'ocena', wartosc: w, ten_sam: ten, tekst: '🎯 Na ile jesteśmy bliżej celu: ' + w + '/10' + (ten ? ' · cel ten sam' : ' · chcę go zmienić') });
+    }
+  }
+
+  function rysujCwiczenie() {
+    var el = $('karta-cwiczenia'), c = stan.cw, def = c && ((CWICZENIA && CWICZENIA.cwiczenia) || []).filter(function (x) { return x.id === c.id; })[0];
+    if (!c || c.status !== 'trwa' || !def || stan.tryb === 'konsultacja' || stan.cwPrzerwane === c.start_ts) { el.hidden = true; el.dataset.h = ''; return; }
+    var k = Math.min(c.krok || 0, def.kroki.length - 1);
+    var h = '<span class="tresc"><b>Ćwiczenie · ' + esc(def.nazwa) + ' · krok ' + (k + 1) + ' z ' + def.kroki.length
+      + '<span class="kroki" aria-hidden="true">' + def.kroki.map(function (x, i) { return '<i class="' + (i < k ? 'z' : i === k ? 't' : '') + '"></i>'; }).join('') + '</span></b>'
+      + esc(def.kroki[k].etykieta) + ' – odpowiedz w polu poniżej, swoimi słowami.</span><button class="btn" type="button" id="cw-przerwij" title="Możesz przerwać w każdej chwili">Przerwij</button>';
+    if (el.dataset.h !== h) { el.innerHTML = h; el.dataset.h = h; }
+    el.hidden = false;
+  }
+  function wynikHtml(w) {
+    return '<div class="wynik-cw"><b>✦ ' + esc(w.nazwa) + ' – Twój zapis</b>' + (w.pola || []).map(function (p) { return '<div><span>' + esc(p[0]) + '</span>' + esc(p[1] || '—') + '</div>'; }).join('') + '</div>';
+  }
+
+  function pokazSuperwizje() {
+    var p = $('formulacja'), k = 'superwizja/' + stan.konto.konto;
+    p.dataset.co = 'superwizja';
+    Promise.all([most.lista(k), most.czytaj(k + '/notatka.json')]).then(function (r) {
+      var md_ = (r[0] || []).filter(function (x) { return !x.katalog && /\.md$/.test(x.nazwa); }).sort(function (a, b) { return b.nazwa.localeCompare(a.nazwa, 'pl', { numeric: true }); });
+      var n = null; try { n = r[1] && JSON.parse(r[1].tekst); } catch (e) {}
+      return (md_[0] ? most.czytaj(k + '/' + md_[0].nazwa) : Promise.resolve(null)).then(function (t) {
+        p.innerHTML = '<h3>Superwizja · ' + esc(stan.konto.pseudonim) + '</h3>'
+          + '<p style="white-space:normal;color:var(--mut);margin:0 0 10px">Dla terapeuty prowadzącego (Michała). Po każdej sesji psychoterapeuta AI zapisuje tu streszczenie i liczby. Notatka superwizora (2–3 zdania) trafi do niego przed następną sesją.</p>'
+          + (t ? '<div class="superwizja-tekst">' + md(t.tekst.replace(/^## Notatka superwizora[\s\S]*$/m, '').replace(/^#+ (.*)$/gm, '**$1**').replace(/`/g, '').replace(/\n{3,}/g, '\n\n').trim()) + '</div>' + (md_.length > 1 ? '<p style="white-space:normal"><small>Wcześniejszych streszczeń: ' + (md_.length - 1) + ' (folder ' + esc(k) + ')</small></p>' : '') : '<p style="white-space:normal">Jeszcze nie ma streszczenia sesji – pojawi się po pierwszej sesji zakończonej przyciskiem „Zakończ sesję”.</p>')
+          + '<label for="sw-notatka" style="display:block;margin:12px 0 4px;font-weight:700">Notatka superwizora</label><textarea id="sw-notatka" maxlength="600" placeholder="np. Za szybko do rad – w następnej sesji więcej słuchania; wróć do tematu siostry.">' + esc(n ? n.tekst : '') + '</textarea>'
+          + (n ? '<p style="white-space:normal"><small>Zapisana ' + esc(String(n.ts).slice(0, 16).replace('T', ' ')) + '</small></p>' : '')
+          + '<div class="akcje"><button class="btn on" type="button" id="sw-zapisz">Zapisz notatkę</button><button class="btn" type="button" id="sw-zamknij">Zamknij</button></div>';
+        p.hidden = false;
+        $('sw-zamknij').onclick = function () { p.hidden = true; };
+        $('sw-zapisz').onclick = function () {
+          var t2 = $('sw-notatka').value.trim(); if (!t2) return;
+          most.zapisz(k + '/notatka.json', JSON.stringify({ tekst: t2.slice(0, 600), ts: new Date().toISOString(), autor: 'superwizor' }, null, 2))
+            .then(function () { $('sw-zapisz').textContent = 'Zapisano ✓'; }).catch(function (e) { blad('Nie udało się zapisać notatki: ' + e.message); });
+        };
+      });
+    }).catch(function (e) { blad('Nie udało się odczytać superwizji: ' + e.message); });
   }
 
   // ---------- rysowanie ----------
@@ -663,6 +806,7 @@ var FRAZY = /*@@FRAZY@@*/null;
       var m = x.m;
       if (x.typ === 'ja') {
         if (m.typ === 'sesja') { h += '<div class="dzien">' + (m.akcja === 'start' ? 'Sesja · początek ' + godz(m.ts) : 'Koniec sesji ' + godz(m.ts) + (m.suwaki ? ' · samopoczucie ' + m.suwaki.samopoczucie + '/10 · o tym, o czym chciałem/am ' + m.suwaki.trafnosc + '/10' : '') + (m.termin ? ' · następnie: ' + esc(m.termin) : '')) + '</div>'; return; }
+        if (m.typ === 'cwiczenie' || m.typ === 'styl' || m.typ === 'cel') { h += '<div class="dzien">' + esc(m.tekst) + '</div>'; return; }
         if (m.typ === 'zwolaj') { h += '<div class="dzien">Zwołano konsylium' + (m.sprawa ? ' · sprawa ' + esc(m.sprawa) : '') + '</div>'; return; }
         var odp = stan.zespol.some(function (z) { return z.odpowiedz_na >= m.n; });
         h += '<div class="msg ja"><span class="kto">Ty</span>' + md(m.tekst) + '<span class="czas">' + godz(m.ts) + '<span class="stan-wys" title="' + (odp ? 'Zespół odpowiedział' : 'Zapisane w folderze') + '">' + (odp ? ' ✓✓' : ' ✓') + '</span></span>' + (emoZespolu(m.n) ? '<span class="emo" title="Reakcja terapeuty">' + esc(emoZespolu(m.n)) + '</span>' : '') + '</div>';
@@ -676,6 +820,7 @@ var FRAZY = /*@@FRAZY@@*/null;
       if (czekaWKolejce(m)) { if (!pisanie || pisanie.pauza) { if (!stan._kropki) { stan._kropki = 1; h += '<div class="msg zespol pisze"><span class="kropki" aria-hidden="true"><i></i><i></i><i></i></span>Psychoterapeuta pisze…</div>'; } } return; }
       if (piszeTeraz(m)) { h += '<div class="msg zespol na-zywo" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(pisanie.czesci.slice(0, pisanie.ile).join('')) + '<span class="kursor" aria-hidden="true"></span></div>'; return; }
       h += '<div class="msg zespol' + (m.wstepna ? ' wstepna' : '') + '" data-n="' + m.n + '"><span class="kto">Psychoterapeuta AI</span>' + md(m.tekst);
+      if (m.wynik_cwiczenia) h += wynikHtml(m.wynik_cwiczenia);
       if (m.zrodla && m.zrodla.length) h += '<div class="zrodla">' + m.zrodla.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join('') + '</div>';
       if (m.glosy && m.glosy.length) {
         var otw = pokazaneGlosy[m.n];
@@ -699,7 +844,7 @@ var FRAZY = /*@@FRAZY@@*/null;
     if (stan.potwZwolaj) h += '<div class="potw">Zwołać konsylium nad tą rozmową? Cały zespół omówi ją w Pokoju psychologicznym (ok. 10–15 min) i napisze Wnioski. <button class="btn on" type="button" id="zwolaj-tak">Tak, zwołaj</button><button class="btn" type="button" id="zwolaj-nie">Nie teraz</button></div>';
     el.innerHTML = h;
     if (naDol || byl) el.scrollTop = el.scrollHeight;
-    rysujSesje(); rysujZadanie();
+    rysujSesje(); rysujZadanie(); rysujCel(); rysujCwiczenie();
     if ($('su-s')) {
       $('su-s').oninput = function () { stan.su.s = +this.value; $('su-s-w').textContent = this.value; };
       $('su-t').oninput = function () { stan.su.t = +this.value; $('su-t-w').textContent = this.value; };
@@ -791,8 +936,9 @@ var FRAZY = /*@@FRAZY@@*/null;
   // ---------- odpytywanie folderu ----------
   function odpytaj() {
     if (!pliki || stan.demo || !stan.id) return;
-    Promise.all([most.czytaj(kat() + '/zespol.json'), most.czytaj(kat() + '/pracuje.json')]).then(function (r) {
+    Promise.all([most.czytaj(kat() + '/zespol.json'), most.czytaj(kat() + '/pracuje.json'), most.czytaj(kat() + '/cwiczenie.json')]).then(function (r) {
       var zm = false;
+      try { var cw = r[2] && JSON.parse(r[2].tekst); if (JSON.stringify(cw || null) !== JSON.stringify(stan.cw || null)) { stan.cw = cw; rysujCwiczenie(); } } catch (e) {}
       try { var z = r[0] && JSON.parse(r[0].tekst); var w = (z && z.wiadomosci) || []; if (JSON.stringify(w) !== JSON.stringify(stan.zespol)) { var bylo = stan.zespol.reduce(function (a, x) { return Math.max(a, x.n || 0); }, 0); stan.zespol = w; zm = true; dzwiek(); var nowe = w.filter(function (x) { return x.n > bylo && !x.kryzys; }); if (nowe.length) zacznijPisanie(nowe); } } catch (e) {}
       try { var p = r[1] && JSON.parse(r[1].tekst); if (JSON.stringify(p) !== JSON.stringify(stan.pracuje)) { stan.pracuje = p; zm = true; } } catch (e) {}
       if (zm) rysuj(); else if (czekaNaOdpowiedz()) rysuj();
@@ -867,6 +1013,13 @@ var FRAZY = /*@@FRAZY@@*/null;
     zdarzenie({ typ: 'sesja', akcja: 'start', tekst: '▶ Zaczynam sesję' });
   });
   $('karta-zadania').addEventListener('click', function (e) { var b = e.target.closest('[data-zadanie]'); if (b) klikZadanie(b.dataset.zadanie); });
+  $('cel').addEventListener('click', function (e) { var b = e.target.closest('[data-cel]'); if (b && pliki && stan.konto) klikCel(b.dataset.cel); });
+  $('cel').addEventListener('keydown', function (e) { if (e.target.id === 'cel-pole' && e.key === 'Enter') { e.preventDefault(); klikCel('zapisz'); } });
+  $('karta-cwiczenia').addEventListener('click', function (e) {
+    if (e.target.id !== 'cw-przerwij' || !stan.cw) return;
+    stan.cwPrzerwane = stan.cw.start_ts; rysujCwiczenie();
+    zdarzenie({ typ: 'cwiczenie', akcja: 'przerwij', tekst: '⏸ Przerywam ćwiczenie „' + (stan.cw.nazwa || '') + '”' });
+  });
   $('pamiec-btn').addEventListener('click', function () { if (pliki && stan.konto) pokazPamiec(); });
   $('lista').addEventListener('change', function (e) { zaladuj(e.target.value); });
   $('rozmowa').addEventListener('click', function (e) {

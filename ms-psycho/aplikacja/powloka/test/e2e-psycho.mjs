@@ -40,13 +40,15 @@ const zrzut = async (n) => { if (zrzuty) await okno.screenshot({ path: join(zrzu
 const ramka = (m) => czekaj(async () => okno.frames().find((f) => f.url().includes('moduly/' + m + '.html')), 15000, 'ramka ' + m);
 
 try {
-  // 1. Prezent na całym ekranie → klik → kolaż, napis, serca → „To nie jest terapia”
-  await okno.waitForSelector('#prezent .pud', { state: 'visible' });
-  await okno.waitForTimeout(1200); await zrzut('1-prezent');
-  await okno.click('#prezent .pud', { force: true });
-  await okno.waitForTimeout(2600); await zrzut('2-kolaz');
-  await okno.waitForTimeout(6200); await zrzut('3-dla-halusi');
-  assert.match(await okno.textContent('#prezent .napis'), /Dla Halusi/);
+  // 1. Prezent (tylko 0.1.x–0.2.x) → „To nie jest terapia” (zawsze)
+  if (await okno.$('#prezent')) {
+    await okno.waitForSelector('#prezent .pud', { state: 'visible' });
+    await okno.waitForTimeout(1200); await zrzut('1-prezent');
+    await okno.click('#prezent .pud', { force: true });
+    await okno.waitForTimeout(2600); await zrzut('2-kolaz');
+    await okno.waitForTimeout(6200); await zrzut('3-dla-halusi');
+    assert.match(await okno.textContent('#prezent .napis'), /Dla Halusi/);
+  } else assert.ok(!/^0\.[12]\./.test(JSON.parse(readFileSync(join(tu, '..', 'package.json'), 'utf8')).version), 'w 0.1.x–0.2.x prezent musi być');
   await okno.waitForSelector('#zgoda:not([hidden])', { timeout: 12000 });
   await zrzut('4-to-nie-jest-terapia');
   await okno.click('#zgoda-ok');
@@ -59,12 +61,16 @@ try {
   await zrzut('4a-konto-nowe');
   await r.fill('#k-ps', 'Leśny'); await r.fill('#k-wiek', '16'); await r.click('#konto-nowe button[type=submit]');
   assert.match(await r.textContent('#k-blad'), /18\+/);
-  await r.fill('#k-wiek', '41'); await r.selectOption('#k-plec', 'mężczyzna'); await r.click('#konto-nowe button[type=submit]');
+  await r.fill('#k-wiek', '41'); await r.selectOption('#k-plec', 'mężczyzna');
+  await r.check('#konto-nowe input[name="styl"][value="cieplo"]');  // 0.3.0: karta terapeuty przy koncie
+  await r.click('#konto-nowe button[type=submit]');
   await r.waitForSelector('#konta', { state: 'hidden' });
   const konto = readdirSync(join(folder, 'konta'))[0];
   assert.match(konto, /^k[a-z0-9]{5}$/);
   assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'profil.json'), 'utf8')).pseudonim, 'Leśny');
   assert.match(await r.textContent('#konto-nazwa'), /Leśny/);
+  assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'terapeuta.json'), 'utf8')).styl, 'cieplo');
+  await czekaj(async () => /ciepło i z humorem/.test(await r.textContent('#sub')), 6000, 'styl w nagłówku');
   await r.waitForSelector('.msg.zespol');
   await czekaj(async () => readdirSync(join(folder, 'rozmowy')).length === 1, 8000, 'katalog rozmowy');
   const id = readdirSync(join(folder, 'rozmowy'))[0];
@@ -119,6 +125,52 @@ try {
   await czekaj(async () => JSON.parse(readFileSync(join(folder, 'konta', konto, 'zadanie.json'), 'utf8')).status === 'biore', 6000, 'zadanie biorę');
   await r.waitForSelector('#karta-zadania >> text=Zrobione');
   assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ZADANIE – osoba kliknęła: biore/);
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Super, to konkret – trzymam kciuki za ten wieczór 🙂', '--ryzyko', '0');
+
+  // 3b. 0.3.0: cel pracy → karta „Nad czym pracujemy” → „To jest to”
+  await r.fill('#tekst', 'Chcę, żeby takie uwagi szefowej nie zabierały mi całego wieczoru.'); await r.press('#tekst', 'Enter');
+  await czekaj(async () => /zabierały/.test(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')), 6000, 'wiadomość o celu');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /STYL TERAPEUTY[^\n]*Ciepło i z humorem/);
+  writeFileSync(join(folder, 'cel.json'), JSON.stringify({ tekst: 'Zapiszmy to jako cel naszej pracy – możesz go poprawić na karcie u góry. Co zwykle dzieje się wieczorem po takiej uwadze?', ryzyko: 0, cel: 'Żeby uwagi szefowej nie zabierały mi całego wieczoru.' }));
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'cel.json'));
+  await r.waitForSelector('#cel:not([hidden]) >> text=To jest to', { timeout: 8000 });
+  await zrzut('6c-cel-propozycja');
+  await r.click('#cel [data-cel="tak"]');
+  await czekaj(async () => JSON.parse(readFileSync(join(folder, 'konta', konto, 'cel.json'), 'utf8')).status === 'uzgodniony', 6000, 'cel uzgodniony');
+  await r.waitForSelector('#cel >> text=Nad czym pracujemy');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /CEL PRZYJĘTY/);
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dobrze, to nasz kierunek 🌱 Wracając do wieczoru – mam pomysł na krótkie ćwiczenie, kilka minut. Spróbujemy?', '--ryzyko', '0');
+
+  // 3c. 0.3.0: ćwiczenie krok po kroku za zgodą → karta kroku → karta wyniku; drugie przerwane przyciskiem
+  await r.fill('#tekst', 'tak, spróbujmy'); await r.press('#tekst', 'Enter');
+  await czekaj(async () => /spróbujmy/.test(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')), 6000, 'zgoda na ćwiczenie');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ĆWICZENIA \(za zgodą/);
+  const krok = (o) => { writeFileSync(join(folder, 'cw.json'), JSON.stringify({ ryzyko: 0, ...o })); return py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'cw.json')); };
+  krok({ tekst: 'Zróbmy mały eksperyment 🙂 Co Twoim zdaniem się stanie, jeśli jutro zapytasz szefową, czego brakowało w raporcie – i na ile w to wierzysz, od 0 do 100?', cwiczenie: { start: 'eksperyment', zgoda: 'tak, spróbujmy' } });
+  await r.waitForSelector('#karta-cwiczenia:not([hidden]) >> text=krok 1 z 4', { timeout: 8000 });
+  await zrzut('6d-cwiczenie-krok');
+  const odpOsoby = ['Że mnie zbędzie albo zrobi mi wykład, 80', 'Jutro po stand-upie, w jej pokoju', 'Że stchórzę – wtedy wyślę jej maila', 'Jeśli powie jedną konkretną rzecz do poprawy'];
+  for (let i = 0; i < odpOsoby.length; i++) {
+    await r.fill('#tekst', odpOsoby[i]); await r.press('#tekst', 'Enter');
+    await czekaj(async () => readFileSync(join(kat, 'uzytkownik.json'), 'utf8').includes(odpOsoby[i]), 6000, 'krok ' + i);
+    if (i === 0) assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ĆWICZENIE „Eksperyment behawioralny” · krok 1\/4/);
+    krok(i < 3 ? { tekst: ['Zapisane. Co dokładnie zrobisz, kiedy i gdzie?', 'Dobrze. Co może przeszkodzić i co wtedy zrobisz?', 'Mądry plan B. Po czym poznasz, czy przewidywanie się sprawdziło?'][i], cwiczenie: { krok: odpOsoby[i] } }
+      : { tekst: 'Masz gotowy eksperyment – zapis jest pod tą wiadomością. Ciekawie będzie zobaczyć, co naprawdę się wydarzy 🌱', cwiczenie: { krok: odpOsoby[i] } });
+  }
+  await r.waitForSelector('.msg.zespol .wynik-cw >> text=Eksperyment behawioralny', { timeout: 8000 });
+  await r.waitForSelector('#karta-cwiczenia', { state: 'hidden' });
+  await zrzut('6e-cwiczenie-wynik');
+  assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'cwiczenia.json'), 'utf8'))[0].id, 'eksperyment');
+  await r.fill('#tekst', 'a może jeszcze uziemienie, trochę mnie nosi'); await r.press('#tekst', 'Enter');
+  await czekaj(async () => /uziemienie/.test(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')), 6000, 'prośba o uziemienie');
+  krok({ tekst: 'Jasne. Jak silne jest napięcie w tej chwili, od 0 do 10?', cwiczenie: { start: 'uziemienie', zgoda: 'może jeszcze uziemienie' } });
+  await r.waitForSelector('#karta-cwiczenia:not([hidden]) >> text=Uziemienie', { timeout: 8000 });
+  await r.click('#cw-przerwij');
+  await r.waitForSelector('#karta-cwiczenia', { state: 'hidden' });
+  await czekaj(async () => /"akcja": "przerwij"/.test(readFileSync(join(kat, 'uzytkownik.json'), 'utf8')), 6000, 'przerwanie ćwiczenia');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /ĆWICZENIE PRZERWANE przyciskiem/);
+  krok({ tekst: 'Jasne, zostawiamy to – możemy wrócić, kiedy zechcesz 🙂', tempo: 'krotko', cwiczenie: { przerwij: true } });
+  assert.equal(JSON.parse(readFileSync(join(kat, 'cwiczenie.json'), 'utf8')).status, 'przerwane');
   let drugie = false;
   try { py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'zad.json')); } catch { drugie = true; }
   assert.ok(drugie, 'drugie zadanie w tej samej sesji musi być odrzucone');
@@ -132,6 +184,29 @@ try {
   assert.equal(su[0].trafnosc, 8);
   assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /SESJA ZAKOŃCZONA/);
   py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dziękuję za dziś 🙂 Trzymam kciuki za te 10 minut wieczorem – do zobaczenia za tydzień, a gdyby coś się działo wcześniej, pisz śmiało.', '--ryzyko', '0');
+
+  // 3d. 0.3.0: superwizja po sesji → panel „Superwizja” w oknie konta → notatka superwizora; raport realizmu
+  writeFileSync(join(folder, 'str.md'), 'Osoba przyszła z upokorzeniem po krytyce szefowej. Uzgodniliśmy cel i zrobiliśmy eksperyment behawioralny. Klient-sędzia: zielona kartka.');
+  assert.match(py('rozmowa.py', 'superwizja', '--rozmowa', id, '--plik', join(folder, 'str.md')), /OK: superwizja zapisana/);
+  await r.click('#konto-btn');
+  await r.click('#k-superwizja');
+  await r.waitForSelector('#formulacja:not([hidden]) >> text=Superwizja');
+  assert.match(await r.textContent('#formulacja'), /eksperyment behawioralny/);
+  await r.fill('#sw-notatka', 'Za szybko do techniki – w następnej sesji więcej słuchania.');
+  await r.click('#sw-zapisz');
+  await czekaj(async () => { try { return /więcej słuchania/.test(readFileSync(join(folder, 'superwizja', konto, 'notatka.json'), 'utf8')); } catch { return false; } }, 6000, 'notatka superwizora');
+  await zrzut('6f-superwizja');
+  await r.click('#sw-zamknij');
+  assert.match(py('realizm.py'), /Ćwiczenia ukończone \/ rozpoczęte \| 1\/2/);
+
+  // 3e. 0.3.0: zmiana stylu w „Co pamiętam” → zdarzenie dla terapeuty
+  await r.click('#pamiec-btn');
+  await r.click('#styl-zmien');
+  await r.check('#formulacja input[name="styl"][value="wprost"]');
+  await r.click('#styl-zapisz');
+  await czekaj(async () => JSON.parse(readFileSync(join(folder, 'konta', konto, 'terapeuta.json'), 'utf8')).styl === 'wprost', 6000, 'zmiana stylu');
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /STYL ZMIENIONY przez osobę na „Wprost i konkretnie”/);
+  py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dobrze – od teraz będę mówić bardziej wprost i konkretnie.', '--ryzyko', '0');
 
   // 4. Filtr ryzyka w aplikacji: karta kryzysowa od razu, bez modelu
   await r.fill('#tekst', 'Czasem myślę, żeby skończyć ze sobą.');
@@ -181,7 +256,7 @@ try {
   await zrzut('8-pokoj-psychologiczny');
 
   assert.deepEqual(sieci, [], 'aplikacja nie może łączyć się z siecią');
-  console.log('OK: prezent, zgoda, konto, Rozmowa (szybka odpowiedź, sesja z zadaniem i suwakami, pamięć, odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
+  console.log('OK: (prezent tylko 0.1.x–0.2.x), zgoda, konto, Rozmowa (szybka odpowiedź, sesja z zadaniem i suwakami, cel pracy, ćwiczenie krok po kroku i przerwanie, superwizja, zmiana stylu, pamięć, odpowiedź, głosy, reakcja, filtr ryzyka, kryzys), Zwołaj konsylium, Pokój z dymkami; zero żądań sieciowych.');
 } finally {
   await app.close();
 }

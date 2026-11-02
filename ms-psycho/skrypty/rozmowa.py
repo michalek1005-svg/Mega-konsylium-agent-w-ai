@@ -18,6 +18,10 @@ Protokół i zasady: docs/ROZMOWA.md. Na Windows: python skrypty/rozmowa.py …
         "obserwacja": "…" (jeden wzorzec na sesję, od 3. sesji, tentatywnie)
   python skrypty/rozmowa.py formulacja --rozmowa ID --plik formulacja.md    robocza formulacja (przycisk „Jak to rozumiemy”)
   python skrypty/rozmowa.py historia --rozmowa ID                           cała rozmowa
+        0.3.0 (docs/ROZMOWA.md §0d): "cwiczenie": {"start": "zapis_mysli", "zgoda": "<słowa osoby>"} | {"krok": "<odpowiedź osoby>"} | {"przerwij": true},
+        "cel": "<cel pracy słowami osoby>", "cel_przeglad": true; styl terapeuty z konta (konta/<konto>/terapeuta.json)
+  python skrypty/rozmowa.py superwizja --rozmowa ID --plik streszczenie.md  po sesji: superwizja/<konto>/<data>-sN.md (liczby + streszczenie)
+  python skrypty/rozmowa.py notatka --konto K --tekst "…"                    notatka superwizora (Michał) – czekaj pokaże ją w następnej sesji
 """
 from __future__ import annotations
 
@@ -36,6 +40,7 @@ KORZEN = Path(__file__).resolve().parent.parent
 ROZMOWY = KORZEN / "rozmowy"
 KONTA = KORZEN / "konta"
 WYWIADY = KORZEN / "wywiad-na-zywo"
+SUPERWIZJA = KORZEN / "superwizja"
 
 
 def bez_cytatow(t: str) -> str:
@@ -61,6 +66,11 @@ def wywiady_flagi(dni: int = 7) -> list[str]:
     return lin
 FRAZY = json.loads((KORZEN / "config" / "frazy-ryzyka.json").read_text(encoding="utf-8"))
 POMOC = json.loads((KORZEN / "config" / "pomoc-pl.json").read_text(encoding="utf-8"))
+# 0.3.0: ćwiczenia prowadzone krok po kroku i karty stylu terapeuty (docs/ROZMOWA.md §0d)
+CWICZENIA = {c["id"]: c for c in json.loads((KORZEN / "config" / "cwiczenia.json").read_text(encoding="utf-8"))["cwiczenia"]}
+_STYLE = json.loads((KORZEN / "config" / "style-terapeuty.json").read_text(encoding="utf-8"))
+STYLE = {x["id"]: x for x in _STYLE["style"]}
+STYL_DOMYSLNY = _STYLE.get("domyslny", "spokojnie")
 ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_systemowy", "terapeuta_act", "terapeuta_humanistyczny",
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
@@ -208,6 +218,76 @@ def ostatni_r(s: dict) -> int:
     return int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
 
 
+def faza_sesji(se: dict, maks: int, ost_r: int) -> str:
+    if not se.get("aktywna"):
+        return ""
+    if se["tury"] <= 1:
+        return "OTWARCIE"
+    return "ZAMKNIĘCIE" if (se["tury"] >= 12 or se["minuty"] >= 35) and maks < 2 and ost_r < 2 else "PRACA"
+
+
+# ---------- 0.3.0: styl terapeuty, cel pracy, ćwiczenia, superwizja (docs/ROZMOWA.md §0d) ----------
+def styl_konta(konto: str) -> dict:
+    t = (czytaj(KONTA / konto / "terapeuta.json", {}) or {}) if konto else {}
+    sid = t.get("styl") if t.get("styl") in STYLE else STYL_DOMYSLNY
+    return {**STYLE[sid], "wybrany": t.get("styl") in STYLE, "poprzedni": t.get("poprzedni")}
+
+
+def starty_sesji(konto: str, s: dict | None = None) -> list[str]:
+    """Czasy startów sesji na całym koncie (ze zdarzeń typ "sesja" w uzytkownik.json)."""
+    ts = []
+    for r in rozmowy_konta(konto):
+        u = s["ja"] if s and r == s["id"] else (czytaj(ROZMOWY / r / "uzytkownik.json", {}) or {}).get("wiadomosci", [])
+        ts += [str(w.get("ts")) for w in u if isinstance(w, dict) and w.get("typ") == "sesja" and w.get("akcja") == "start"]
+    return sorted(ts)
+
+
+def konce_sesji(konto: str) -> list[str]:
+    ts = []
+    for r in rozmowy_konta(konto):
+        u = (czytaj(ROZMOWY / r / "uzytkownik.json", {}) or {}).get("wiadomosci", [])
+        ts += [str(w.get("ts")) for w in u if isinstance(w, dict) and w.get("typ") == "sesja" and w.get("akcja") == "koniec"]
+    return sorted(ts)
+
+
+def cel_konta(konto: str) -> dict:
+    return (czytaj(KONTA / konto / "cel.json", {}) or {}) if konto else {}
+
+
+def przeglad_celu_potrzebny(konto: str, s: dict) -> int:
+    """Liczba sesji od uzgodnienia celu albo od ostatniej oceny; ≥4 → przegląd celu (koncepcje §3.2)."""
+    cel = cel_konta(konto)
+    if cel.get("status") != "uzgodniony" or cel.get("przeglad"):
+        return 0
+    oceny = [str(o.get("data")) for o in cel.get("oceny") or [] if isinstance(o, dict)]
+    ref = max([str(cel.get("uzgodniono") or cel.get("ts") or "")] + oceny)
+    return len([t for t in starty_sesji(konto, s) if ts_sek(t) > ts_sek(ref)])
+
+
+def cwiczenie_stan(s: dict) -> dict | None:
+    """Stan ćwiczenia w rozmowy/<ID>/cwiczenie.json; przycisk „Przerwij” w aplikacji = zdarzenie typ "cwiczenie"."""
+    c = czytaj(kat(s["id"]) / "cwiczenie.json", None)
+    if not isinstance(c, dict):
+        return None
+    if c.get("status") == "trwa" and any(w.get("typ") == "cwiczenie" and w.get("akcja") == "przerwij" and w.get("n", 0) > int(c.get("start_na") or 0) for w in s["ja"]):
+        c = {**c, "status": "przerwane", "przerwal": "osoba (przycisk)", "_z_przycisku": True}
+    return c
+
+
+def notatka_superwizora(konto: str) -> dict | None:
+    """Notatka superwizora obowiązuje do końca pierwszej sesji zakończonej po jej zapisaniu."""
+    n = czytaj(SUPERWIZJA / konto / "notatka.json", None) if konto else None
+    if not isinstance(n, dict) or not str(n.get("tekst") or "").strip():
+        return None
+    n = dict(n)
+    n["aktywna"] = not any(ts_sek(t) > ts_sek(n.get("ts")) for t in konce_sesji(konto))
+    return n
+
+
+NIE_TERAZ = r"\b(nie teraz|przerwijmy|przerwij|dosc tego|wystarczy|nie chce (juz )?(tego|dalej)|zostawmy to|innym razem|nie mam (na to )?sily)\b"
+EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
+
+
 def historia_txt(s: dict, ile: int = 30) -> str:
     w = [("Użytkownik", x) for x in s["ja"]] + [("Psychoterapeuta AI", x) for x in s["zespol"]]
     w.sort(key=lambda p: str(p[1].get("ts", "")))
@@ -248,6 +328,19 @@ def podsumuj(s: dict) -> None:
             print("--- suwaki po sesjach (jak się czuje / czy rozmowa była o tym, o czym chciał(a)), 0–10: " + "; ".join(f"{x.get('data', '')[:10]}: {x.get('samopoczucie')}/{x.get('trafnosc')}" for x in su[-5:]) + " ---")
         if prof.get("nastepny_termin"):
             print(f"--- umówiony następny termin: {prof['nastepny_termin']} ---")
+        st = styl_konta(s["konto"])
+        print(f"--- STYL TERAPEUTY (karta, docs/ROZMOWA.md §0d): „{st['nazwa']}”{'' if st['wybrany'] else ' (domyślny – osoba nie wybrała)'} · {'; '.join(st['cechy'])} · zwroty: {' / '.join(st['zwroty'])} · nie: {'; '.join(st['nie_robi'])} · emotikony: {st['emotikony']}. To styl, nie osoba: bez imienia, biografii i udawanych uczuć ---")
+        cel = cel_konta(s["konto"])
+        if cel.get("tekst"):
+            oc = [o for o in cel.get("oceny") or [] if isinstance(o, dict)]
+            print(f"--- CEL PRACY ({'uzgodniony' if cel.get('status') == 'uzgodniony' else 'propozycja – osoba jeszcze nie potwierdziła'}): „{cel['tekst']}”"
+                  + (f" · oceny „na ile bliżej” 0–10: {', '.join(str(o.get('wartosc')) + ' (' + str(o.get('data', ''))[:10] + ')' for o in oc[-4:])}" if oc else "") + " ---")
+        ns = notatka_superwizora(s["konto"])
+        if ns and ns["aktywna"]:
+            print(f"--- NOTATKA SUPERWIZORA ({str(ns.get('ts', ''))[:16].replace('T', ' ')}): „{ns['tekst']}” – uwzględnij w sposobie prowadzenia tej sesji; nie cytuj jej osobie ---")
+        wyn = czytaj(kk / "cwiczenia.json", []) or []
+        if wyn:
+            print("--- ostatnie ćwiczenia: " + "; ".join(f"{x.get('nazwa')} ({str(x.get('ts', ''))[:10]})" for x in wyn[-3:] if isinstance(x, dict)) + " (konta/" + s["konto"] + "/cwiczenia.json) ---")
     print("--- historia (najstarsze u góry) ---")
     print(historia_txt(s) or "(pusta)")
     if s["reakcje"]:
@@ -271,10 +364,24 @@ def podsumuj(s: dict) -> None:
         print(f"*** Użytkownik ZWOŁAŁ KONSYLIUM: sprawa sprawy/{z.get('sprawa')}/ (aplikacja już ją założyła, Pokój ją pokazuje). Poprowadź konsylium wg CLAUDE.md §4.")
     print("--- co teraz ---")
     se = sesja_info(s)
-    zdarzenia = [w for w in s["nowe"] if w.get("typ") in ("sesja", "zadanie")]
+    cw = cwiczenie_stan(s)
+    cw_akt = cw if cw and cw.get("status") == "trwa" else None
+    zdarzenia = [w for w in s["nowe"] if w.get("typ") in ("sesja", "zadanie", "cel", "styl", "cwiczenie")]
     if zdarzenia and len(zdarzenia) == len(s["nowe"]) and maks < 2:
         ost = zdarzenia[-1]
-        if ost.get("typ") == "sesja" and ost.get("akcja") == "start":
+        if ost.get("typ") == "cwiczenie":
+            print(f"ĆWICZENIE PRZERWANE przyciskiem przez osobę ({(cw or {}).get('nazwa', '')}): jedno ciepłe zdanie bez nacisku („Jasne, zostawiamy to – możemy wrócić, kiedy zechcesz.”) i \"cwiczenie\": {{\"przerwij\": true}}. Bez pytania o powód.")
+        elif ost.get("typ") == "styl":
+            st = styl_konta(s.get("konto", ""))
+            print(f"STYL ZMIENIONY przez osobę na „{st['nazwa']}”: jedno zdanie, które to nazywa i przyjmuje (np. „Dobrze – od teraz będę mówić {'bardziej wprost i konkretnie' if st['id'] == 'wprost' else 'spokojniej i więcej dopytywać' if st['id'] == 'spokojnie' else 'trochę lżej'}.”), od razu w nowym stylu; bez pytania o powód.")
+        elif ost.get("typ") == "cel":
+            if ost.get("akcja") == "ocena":
+                print(f"PRZEGLĄD CELU – osoba oceniła „na ile bliżej” na {ost.get('wartosc')}/10, cel {'ten sam' if ost.get('ten_sam', True) else 'do zmiany'}: 1–2 zdania – co ta liczba mówi (bez oceniania), a przy zmianie celu zapytaj, jak brzmi teraz (potem pole \"cel\").")
+            elif ost.get("akcja") == "zmiana":
+                print(f"CEL ZMIENIONY przez osobę: „{ost.get('cel')}”. Krótko przyjmij jej słowa (1–2 zdania), bez poprawiania.")
+            else:
+                print("CEL PRZYJĘTY przez osobę: jedno zdanie potwierdzenia i powrót do rozmowy.")
+        elif ost.get("typ") == "sesja" and ost.get("akcja") == "start":
             su = czytaj(KONTA / s["konto"] / "suwaki.json", []) if s.get("konto") else []
             naprawa = ""
             if su:
@@ -283,8 +390,14 @@ def podsumuj(s: dict) -> None:
                 if t1 <= 6 or t0 - t1 >= 3:
                     naprawa = f" NAPRAWA NAJPIERW: ostatnio „czy rozmowa była o tym, o czym chciał(a)” = {t1}/10 – zacznij od tego: nazwij, weź na siebie, zapytaj, co zrobić inaczej (SZTUKA-ROZMOWY §4 pkt 11)."
             print(f"SESJA {se['nr']} – OTWARCIE (docs/ROZMOWA.md §0c): jedna krótka wiadomość: most do poprzedniej sesji (zadanie z karty, jeśli jest – „jak poszło?”; bez oceny, gdy nie wyszło) albo do pamięci, i agenda: „O czym dziś najważniejsze?”. Bez panelu, bez \"wstepna\".{naprawa}")
+            if s.get("konto"):
+                cel = cel_konta(s["konto"])
+                if not cel.get("tekst") and se["nr"] <= 3:
+                    print("   CEL PRACY (docs/ROZMOWA.md §0d): jeszcze go nie ma – w tej sesji uzgodnij jedno zdanie słowami osoby („Nad czym chcesz ze mną pracować?”), potem pole \"cel\" (aplikacja pokaże kartę „Nad czym pracujemy” do potwierdzenia albo poprawy).")
+                elif przeglad_celu_potrzebny(s["konto"], s) >= 4:
+                    print(f"   PRZEGLĄD CELU (co 4 sesje): w tej odpowiedzi dodaj \"cel_przeglad\": true – aplikacja zapyta „Na ile jesteśmy bliżej (0–10)? Czy cel nadal ten sam?” przy celu „{cel.get('tekst')}”.")
         elif ost.get("typ") == "sesja" and ost.get("akcja") == "koniec":
-            print(f"SESJA ZAKOŃCZONA przez osobę (suwaki: {ost.get('suwaki')}, termin: {ost.get('termin') or '—'}): 1–2 zdania pożegnania (podziękuj, nawiąż do zadania i terminu, „otwarte drzwi”), bez pytania. Potem OBOWIĄZKOWO przepisz pamięć `rozmowa.py pamiec` wg szablonu §0b (z sekcją Suwaki).")
+            print(f"SESJA ZAKOŃCZONA przez osobę (suwaki: {ost.get('suwaki')}, termin: {ost.get('termin') or '—'}): 1–2 zdania pożegnania (podziękuj, nawiąż do zadania i terminu, „otwarte drzwi”), bez pytania. Potem OBOWIĄZKOWO przepisz pamięć `rozmowa.py pamiec` wg szablonu §0b (z sekcją Suwaki). Na koniec SUPERWIZJA: streszczenie sesji w ≤10 zdaniach + „co dobrze / co źle” od klienta‑sędziego → `rozmowa.py superwizja --rozmowa {s['id']} --plik streszczenie.md` (docs/ROZMOWA.md §0d).")
         else:
             print(f"ZADANIE – osoba kliknęła: {ost.get('status')}. Krótko (1–2 zdania): „Biorę” → konkret, kiedy i gdzie; „Zmieńmy” → zapytaj, co byłoby łatwiejsze, i zaproponuj mniejsze (pole \"zadanie\"); „Nie teraz” → bez nacisku; „zrobione/nie wyszło” → wzmocnienie albo „co stanęło na drodze?”. Bez panelu.")
         print(f"rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json  (\"tempo\": \"krotko\")")
@@ -292,7 +405,7 @@ def podsumuj(s: dict) -> None:
     if se["aktywna"]:
         ja_sl, ty_sl = udzial_slow(s, se["start_n"])
         udz = round(100 * ty_sl / max(1, ja_sl + ty_sl))
-        faza = "OTWARCIE" if se["tury"] <= 1 else ("ZAMKNIĘCIE" if (se["tury"] >= 12 or se["minuty"] >= 35) and maks < 2 and ostatni_r(s) < 2 else "PRACA")
+        faza = faza_sesji(se, maks, ostatni_r(s))
         print(f"SESJA {se['nr']} · tura {se['tury'] + 1} · {se['minuty']} min · faza: {faza} · udział słów terapeuty {udz}% (cel ≤40%) (docs/ROZMOWA.md §0c)")
         if faza == "ZAMKNIĘCIE":
             print("   ZAMKNIĘCIE: podsumowanie w 2–3 zdaniach własnymi słowami osoby + JEDNO małe zadanie w polu \"zadanie\" (aplikacja pokaże kartę Biorę / Zmieńmy / Nie teraz) + zaproszenie, by zakończyć sesję przyciskiem.")
@@ -300,6 +413,23 @@ def podsumuj(s: dict) -> None:
             print(f"   ZA DUŻO MÓWISZ: {udz}% słów w sesji to terapeuta – skróć, zostaw miejsce (tempo „słucham” albo jedno zdanie + pytanie).")
         if se["nr"] >= 3 and not any(z.get("obserwacja") for z in s["zespol"] if z.get("odpowiedz_na", 0) >= max(1, se["start_n"])) and faza == "PRACA" and se["tury"] >= 3:
             print("   OBSERWACJA (raz na sesję, od 3. sesji): zapytaj panel „jaki wzorzec widać w tej i poprzednich rozmowach, którego osoba sama nie nazwała?”; jeśli jest trafny – powiedz go tentatywnie, ze zdaniem własnym, bez etykiet, i wpisz w pole \"obserwacja\".")
+    if cw_akt:
+        c = CWICZENIA.get(cw_akt.get("id"), {})
+        kroki = c.get("kroki", [])
+        k = int(cw_akt.get("krok") or 0)
+        tekst_n = bez_ogonkow(" ".join(str(w.get("tekst", "")) for w in s["nowe"] if w.get("typ", "wiadomosc") == "wiadomosc"))
+        if maks >= 2 or (s["zespol"] and max(maks, ostatni_r(s)) > int(c.get("ryzyko_max", 1))):
+            print(f"ĆWICZENIE „{cw_akt.get('nazwa')}” WSTRZYMAJ: sygnał ryzyka – najpierw bezpieczeństwo; w odp.json \"cwiczenie\": {{\"przerwij\": true}} (przy ≥3 skrypt przerwie je sam).")
+        elif re.search(NIE_TERAZ, tekst_n):
+            print(f"ĆWICZENIE „{cw_akt.get('nazwa')}”: osoba chyba chce przerwać („nie teraz”) – przyjmij to bez nacisku i \"cwiczenie\": {{\"przerwij\": true}}.")
+        elif k < len(kroki):
+            nast = kroki[k + 1] if k + 1 < len(kroki) else None
+            print(f"ĆWICZENIE „{cw_akt.get('nazwa')}” · krok {k + 1}/{len(kroki)} (docs/ROZMOWA.md §0d): osoba odpowiedziała na „{kroki[k]['etykieta']}”. W odp.json \"cwiczenie\": {{\"krok\": \"<jej odpowiedź jej słowami, krótko>\"}}"
+                  + (f"; w tekście krótko odbij to, co powiedziała, i zadaj JEDNO pytanie następnego kroku – „{nast['etykieta']}” (propozycja: „{nast['pytanie']}”)." if nast else "; to OSTATNI krok – skrypt zamknie ćwiczenie i aplikacja pokaże kartę wyniku; w tekście 2–3 zdania podsumowania słowami osoby i co z tym dalej (zwykle zadanie przy zamknięciu sesji)."))
+            print(f"   Ćwiczenie idzie bez odpowiedzi wstępnej i bez pełnego panelu: strażnik + prowadzący, 1 krok = 1 pytanie, 20–80 słów → rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
+    elif s["nowe"] and maks < 2 and ostatni_r(s) < 2 and (not se["aktywna"] or faza_sesji(se, maks, ostatni_r(s)) == "PRACA"):
+        print("ĆWICZENIA (za zgodą, docs/ROZMOWA.md §0d): " + ", ".join(f"{c['id']} – {c['nazwa']}" for c in CWICZENIA.values())
+              + ". Najpierw zapytaj i zaproponuj; start dopiero po zgodzie osoby: \"cwiczenie\": {\"start\": \"<id>\", \"zgoda\": \"<jej słowa zgody>\"} + pytanie 1. kroku.")
     pk = pekniecie(s)
     if pk and maks < 3:
         print(f"PĘKNIĘCIE? ({pk}) – najpierw naprawa: nazwij, co mogło nie zagrać, weź to na siebie, zapytaj, co zmienić (SZTUKA-ROZMOWY §4 pkt 11). Bez techniki w tej turze.")
@@ -312,6 +442,8 @@ def podsumuj(s: dict) -> None:
         print(f"INFORMACJA ZWROTNA (docs/SZTUKA-ROZMOWY.md §3): to {odp_zesp + 1}. tura – jeśli pasuje, na końcu krótko: „W skali 0–10: jak minął tydzień?” albo „Na ile te rozmowy pomagają?” (zamiast innego pytania).")
     if maks < 2 and s["zespol"] and int(s["zespol"][-1].get("ryzyko") or 0) >= 2:
         print(f"PAMIĘTAJ: poziom ryzyka z poprzedniej tury = {s['zespol'][-1].get('ryzyko')} – to dolna granica tej tury (obniża tylko nowy fakt). Jeśli osoba nie odpowiedziała na pytanie o plan i środki – wróć do niego łagodnie; jeśli odpowiedziała (także „nie mam”) – NIE pytaj ponownie, prowadź rozmowę dalej (decyzja Michała 1.11.2026).")
+    if cw_akt and maks < 2:
+        return  # w ćwiczeniu: krok po kroku, bez odpowiedzi wstępnej i bez wyboru tempa
     # krótka ścieżka (decyzja Michała 1.11.2026 07:45): krótka wiadomość bez treści do pracy przy ryzyku 0 → strażnik + prowadzący, bez panelu i sędziego
     ostatni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
     tekst_nowych = " ".join(w.get("tekst", "") for w in s["nowe"])
@@ -479,6 +611,84 @@ def cmd_odpowiedz(a) -> None:
             sys.exit("Tempo „słucham” najwyżej 2 razy z rzędu – teraz pełniejsza odpowiedź.")
         if dolna >= 2:
             sys.exit("Przy poziomie ≥2 nie ma tempa „słucham”.")
+    # ---------- 0.3.0 (docs/ROZMOWA.md §0d): ćwiczenie krok po kroku, cel pracy, styl ----------
+    cw = cwiczenie_stan(s)
+    cw_akt = cw if cw and cw.get("status") == "trwa" else None
+    cw_zapis, wynik, cw_slad = None, None, None
+    dc = d.get("cwiczenie")
+    if dc is not None and not isinstance(dc, dict):
+        sys.exit("Pole cwiczenie: obiekt {\"start\": \"<id>\", \"zgoda\": \"…\"} | {\"krok\": \"…\"} | {\"przerwij\": true}.")
+    if dc and d.get("wstepna"):
+        sys.exit("Ćwiczenie nie idzie odpowiedzią wstępną – jeden krok = jedna pełna odpowiedź.")
+    if cw and cw.get("_z_przycisku"):
+        cw_zapis = {k: v for k, v in cw.items() if not k.startswith("_")}
+        cw_zapis["koniec_ts"] = teraz()
+        cw_slad = {"przerwij": True}
+    if dc and dc.get("start"):
+        if cw_akt:
+            sys.exit(f"Trwa ćwiczenie „{cw_akt.get('nazwa')}” – najpierw je dokończ albo przerwij (\"przerwij\": true).")
+        c = CWICZENIA.get(str(dc["start"]))
+        if not c:
+            sys.exit(f"Nieznane ćwiczenie {dc['start']!r}. Dostępne: {', '.join(CWICZENIA)} (config/cwiczenia.json).")
+        if d.get("kryzys") or max(ryz, dolna) > int(c.get("ryzyko_max", 1)):
+            sys.exit(f"„{c['nazwa']}” tylko przy ryzyku ≤{c.get('ryzyko_max', 1)} – teraz najpierw bezpieczeństwo (docs/ROZMOWA.md §0d).")
+        zg = bez_ogonkow(str(dc.get("zgoda") or "")).strip(" .!,")
+        if len(zg) < 2 or zg not in bez_ogonkow(" ".join(str(w.get("tekst", "")) for w in s["nowe"])):
+            sys.exit("Ćwiczenie tylko za zgodą: w polu cwiczenie.zgoda zacytuj słowa osoby z NOWEJ wiadomości, którymi się zgodziła (np. „tak, spróbujmy”). Najpierw zapytaj – zaproponuj – zapytaj (docs/ROZMOWA.md §0d).")
+        if "?" not in bez_cytatow(tekst):
+            sys.exit(f"Start ćwiczenia: zakończ pytaniem 1. kroku – „{c['kroki'][0]['etykieta']}”.")
+        se_faza = faza_sesji(se, filtr, poprzedni)
+        if se_faza and se_faza != "PRACA":
+            ostrz.append(f"ćwiczenie w fazie {se_faza} – zwykle tylko w fazie pracy")
+        cw_zapis = {"id": c["id"], "nazwa": c["nazwa"], "rozmowa": s["id"], "start_ts": teraz(), "start_na": max([w.get("n", 0) for w in s["ja"]] or [0]),
+                    "krok": 0, "liczba_krokow": len(c["kroki"]), "odpowiedzi": {}, "status": "trwa"}
+        cw_slad = {"start": c["id"]}
+    elif dc and (dc.get("krok") is not None or dc.get("przerwij")):
+        if not cw_akt and not (dc.get("przerwij") and cw and cw.get("_z_przycisku")):
+            sys.exit("Nie ma trwającego ćwiczenia.")
+    if dc and cw_akt and (dc.get("krok") is not None or dc.get("przerwij")):
+        c = CWICZENIA.get(cw_akt.get("id"), {"kroki": [], "nazwa": cw_akt.get("nazwa")})
+        cw_zapis = {k: v for k, v in cw_akt.items() if not k.startswith("_")}
+        if dc.get("przerwij"):
+            cw_zapis.update(status="przerwane", przerwal="terapeuta (na prośbę osoby albo z powodu ryzyka)", koniec_ts=teraz())
+            cw_slad = {"przerwij": True}
+        else:
+            k = int(cw_akt.get("krok") or 0)
+            kroki = c["kroki"]
+            val = str(dc["krok"]).strip()[:300]
+            if not val or k >= len(kroki):
+                sys.exit("Pole cwiczenie.krok: odpowiedź osoby na bieżący krok (jej słowami, krótko).")
+            if kroki[k].get("typ") == "skala" and not re.search(r"\d", val):
+                ostrz.append(f"krok „{kroki[k]['etykieta']}” to skala – zapisz liczbę, którą podała osoba")
+            cw_zapis["odpowiedzi"] = {**(cw_akt.get("odpowiedzi") or {}), kroki[k]["klucz"]: val}
+            cw_zapis["krok"] = k + 1
+            cw_slad = {"krok": k + 1}
+            if k + 1 >= len(kroki):
+                cw_zapis.update(status="zakonczone", koniec_ts=teraz())
+                wynik = {"id": cw_zapis["id"], "nazwa": cw_zapis["nazwa"], "ts": teraz(),
+                         "pola": [[x["etykieta"], cw_zapis["odpowiedzi"].get(x["klucz"], "")] for x in kroki]}
+            elif "?" not in bez_cytatow(tekst):
+                sys.exit(f"Następny krok ćwiczenia: zadaj JEDNO pytanie – „{kroki[k + 1]['etykieta']}”.")
+    elif cw_akt and not d.get("wstepna"):
+        ostrz.append(f"trwa ćwiczenie „{cw_akt.get('nazwa')}” – brak pola cwiczenie (krok / przerwij)")
+    biez = cw_zapis or cw_akt
+    if biez and biez.get("status") == "trwa" and (ryz > int(CWICZENIA.get(biez.get("id"), {}).get("ryzyko_max", 1)) or d.get("kryzys")):
+        cw_zapis = {k: v for k, v in biez.items() if not k.startswith("_")}
+        cw_zapis.update(status="przerwane", przerwal="skrypt – ryzyko wyższe niż pozwala ćwiczenie", koniec_ts=teraz())
+        cw_slad, wynik = {"przerwij": True}, None
+        ostrz.append("ćwiczenie przerwane automatycznie – ryzyko wyższe, niż pozwala to ćwiczenie")
+    if d.get("cel") or d.get("cel_przeglad"):
+        if not s.get("konto"):
+            sys.exit("Cel pracy zapisuje się na koncie – ta rozmowa nie ma konta.")
+        if ryz >= 3 or d.get("kryzys"):
+            sys.exit("Przy poziomie ≥3 nie ustalamy celu – tylko tor bezpieczeństwa.")
+        if d.get("cel_przeglad") and not d.get("cel") and cel_konta(s["konto"]).get("status") != "uzgodniony":
+            sys.exit("Przegląd celu wymaga uzgodnionego celu (osoba kliknęła „To jest to”).")
+    st = styl_konta(s.get("konto", ""))
+    if st["emotikony"] == "nie" and not d.get("kryzys") and EMOJI.search(tekst):
+        ostrz.append(f"styl „{st['nazwa']}”: bez emotikonów w tekście (reakcja emotikonem jest wolna)")
+    if st["id"] == "cieplo" and ryz >= 1 and re.search(r"\b(haha|hehe|żart)", tekst, re.I):
+        ostrz.append("styl „Ciepło i z humorem”: bez humoru przy ryzyku ≥1")
     # nawiązania do pamięci: nie wolno wspominać niczego, czego nie ma w pamiec.md ani w historii (§0b)
     korpus = bez_ogonkow(" ".join(str(w.get("tekst", "")) for w in s["ja"]))
     if s.get("konto") and (KONTA / s["konto"] / "pamiec.md").is_file():
@@ -514,6 +724,14 @@ def cmd_odpowiedz(a) -> None:
     for pole in ("zadanie", "obserwacja"):
         if d.get(pole):
             w[pole] = str(d[pole]).strip()[:400]
+    if cw_slad:
+        w["cwiczenie"] = {**cw_slad, "id": (cw_zapis or {}).get("id")}
+    if wynik:
+        w["wynik_cwiczenia"] = wynik
+    if d.get("cel"):
+        w["cel"] = str(d["cel"]).strip()[:200]
+    if d.get("cel_przeglad"):
+        w["cel_przeglad"] = True
     seria = []
     for i, cz in enumerate(czesci):
         x = dict(w) if i == len(czesci) - 1 else {"n": n + i, "odpowiedz_na": na, "ts": w["ts"], "tekst": cz, "ryzyko": ryz, "kryzys": False, "glosy": [], "zrodla": []}
@@ -533,14 +751,34 @@ def cmd_odpowiedz(a) -> None:
         zapisz(k / "pracuje.json", {"stan": "czeka", "ts": teraz(), "panel": [], "etap": ""})
     if w.get("zadanie") and s.get("konto"):
         zapisz(KONTA / s["konto"] / "zadanie.json", {"tekst": w["zadanie"], "ts": w["ts"], "rozmowa": s["id"], "status": "zaproponowane"})
+    if cw_zapis:
+        zapisz(k / "cwiczenie.json", cw_zapis)
+    if wynik and s.get("konto"):
+        lw = czytaj(KONTA / s["konto"] / "cwiczenia.json", []) or []
+        zapisz(KONTA / s["konto"] / "cwiczenia.json", (lw + [{**wynik, "rozmowa": s["id"]}])[-30:])
+    if s.get("konto") and (w.get("cel") or w.get("cel_przeglad")):
+        cel = cel_konta(s["konto"])
+        if w.get("cel"):
+            if cel.get("tekst") and cel.get("tekst") != w["cel"]:
+                cel.setdefault("historia", []).append({"tekst": cel["tekst"], "do": w["ts"]})
+            cel.update(tekst=w["cel"], status="propozycja", ts=w["ts"], rozmowa=s["id"], przeglad=False)
+        if w.get("cel_przeglad"):
+            cel["przeglad"] = True
+        cel.setdefault("oceny", [])
+        zapisz(KONTA / s["konto"] / "cel.json", cel)
     with open(k / "_log.jsonl", "a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": w["ts"], "zdarzenie": "odpowiedz", "n": n, "na": na, "ryzyko": ryz, "filtr": filtr, "slow": slow,
                             "panel": [g["rola"] for g in glosy], "szwy": ostrz,
                             **{k: w[k] for k in ("wyzwalacze", "powod", "eksploracja", "flagi", "tempo") if k in w}}, ensure_ascii=False) + "\n")
     print(f"OK: odpowiedź #{n}{'–#' + str(w['n']) if len(seria) > 1 else ''} na wiadomość #{na} ({len(seria)} wiad., {slow} słów, ryzyko {ryz}).")
+    if cw_zapis:
+        print(f"ĆWICZENIE „{cw_zapis['nazwa']}”: {cw_zapis['status']}" + (f", krok {cw_zapis['krok']}/{cw_zapis.get('liczba_krokow')}" if cw_zapis["status"] == "trwa" else "") + (" – karta wyniku w rozmowie i w konta/…/cwiczenia.json" if wynik else ""))
     if ostrz:
         print(f"UWAGA (detektor szwów / granic): {ostrz} – sprawdź, czy jeden głos nie zdradza machinerii i nie łamie granic.")
     limit = {"slucham": 25, "krotko": 60, "szybko": 120, "namysl": 450}.get(str(d.get("tempo") or ""), 220)
+    if cw_slad and not wynik:
+        limit = 80
+    limit = round(limit * float(st.get("dlugosc") or 1)) if d.get("tempo") != "slucham" else limit
     if slow > limit and not d.get("kryzys"):
         print(f"UWAGA: {slow} słów przy tempie „{d.get('tempo') or 'normalnie'}” (limit ok. {limit}; docs/ROZMOWA.md §3a). Treść bezpieczeństwa się nie liczy.")
     if slow > 90 and ryz >= 4:
@@ -558,6 +796,56 @@ def cmd_pamiec(a) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(t + f"\n\n*Zaktualizowano: {teraz()[:16].replace('T', ' ')} · rozmowa {s['id']}*\n", encoding="utf-8")
     print(f"OK: pamięć konta {s['konto']} zapisana ({len(t)} znaków).")
+
+
+def cmd_superwizja(a) -> None:
+    """Po sesji: superwizja/<konto>/<data>-sN.md – liczby sesji (realizm.py) + streszczenie prowadzącego (≤10 zdań)."""
+    s = stan(a.rozmowa)
+    if not s.get("konto"):
+        sys.exit("Superwizja dotyczy sesji na koncie – ta rozmowa nie ma konta.")
+    t = Path(a.plik).read_text(encoding="utf-8").strip()
+    if not t:
+        sys.exit("Puste streszczenie.")
+    if len(t) > 4000:
+        sys.exit("Streszczenie ma być krótkie: ≤10 zdań (najwyżej ok. 4000 znaków).")
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import realizm  # noqa: E402 – te same liczby co w raporcie realizmu
+    sesje = [x for x in realizm.sesje_rozmowy(s["id"]) if x["rozmowa"] == s["id"]]
+    if not sesje:
+        sys.exit("W tej rozmowie nie było sesji („Zacznij sesję”).")
+    se = sesje[-1]
+    prof = czytaj(KONTA / s["konto"] / "profil.json", {}) or {}
+    zd = len(re.findall(r"[.!?…](\s|$)", re.sub(r"^\s*[#*-].*$", "", t, flags=re.M)))
+    zad = czytaj(KONTA / s["konto"] / "zadanie.json", {}) or {}
+    cel = cel_konta(s["konto"])
+    data = str(se.get("start") or teraz())[:10]
+    lin = [f"# Superwizja · {prof.get('pseudonim') or s['konto']} ({prof.get('wiek') or '?'} l., {prof.get('plec') or '?'}) · sesja {se['nr_konta']} · {data}", "",
+           f"Rozmowa `{s['id']}` · konto `{s['konto']}` · styl terapeuty: {styl_konta(s['konto'])['nazwa']}" + ("" if se.get("zakonczona") else " · **sesja jeszcze trwa**"), "",
+           "## Liczby sesji (skrypty/realizm.py)", ""]
+    lin += [f"- {x}" for x in realizm.opis_sesji(se)]
+    lin += [f"- zadanie na koncie: „{zad.get('tekst')}” – {zad.get('status', '?')}" if zad.get("tekst") else "- zadanie: brak",
+            f"- cel pracy: „{cel.get('tekst')}” ({cel.get('status')})" if cel.get("tekst") else "- cel pracy: jeszcze nie ustalony", "",
+            "## Streszczenie sesji (psychoterapeuta AI) i ocena klienta‑sędziego", "", t, "",
+            "## Notatka superwizora", "",
+            "_Dopisuje Michał: w aplikacji 👤 konto → „Superwizja”, albo `python skrypty/rozmowa.py notatka --konto " + s["konto"] + " --tekst \"…\"`. Psychoterapeuta AI dostanie ją przed następną sesją._", ""]
+    nr = se["nr_konta"]
+    p = SUPERWIZJA / s["konto"] / f"{data}-s{nr}.md"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("\n".join(lin), encoding="utf-8")
+    print(f"OK: superwizja zapisana: {p.relative_to(KORZEN)}")
+    if zd > 12:
+        print(f"UWAGA: streszczenie ma ok. {zd} zdań – cel ≤10.")
+
+
+def cmd_notatka(a) -> None:
+    """Notatka superwizora (Michał): 2–3 zdania, które psychoterapeuta AI uwzględni w następnej sesji."""
+    if not re.fullmatch(r"k[a-z0-9]{5}", a.konto or "") or not (KONTA / a.konto / "profil.json").is_file():
+        sys.exit(f"Nie ma konta {a.konto!r} (konta/<konto>/profil.json).")
+    t = (a.tekst or "").strip()
+    if not t or len(t) > 600:
+        sys.exit("Notatka: 1–3 zdania, najwyżej 600 znaków.")
+    zapisz(SUPERWIZJA / a.konto / "notatka.json", {"tekst": t, "ts": teraz(), "autor": "superwizor"})
+    print(f"OK: notatka superwizora dla konta {a.konto} – psychoterapeuta AI zobaczy ją w `czekaj` do końca następnej sesji.")
 
 
 def cmd_formulacja(a) -> None:
@@ -581,6 +869,8 @@ def main() -> None:
     c = sub.add_parser("pamiec"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_pamiec)
     c = sub.add_parser("formulacja"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_formulacja)
     c = sub.add_parser("historia"); c.add_argument("--rozmowa", required=True); c.set_defaults(f=cmd_historia)
+    c = sub.add_parser("superwizja"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_superwizja)
+    c = sub.add_parser("notatka"); c.add_argument("--konto", required=True); c.add_argument("--tekst", required=True); c.set_defaults(f=cmd_notatka)
     a = ap.parse_args()
     a.f(a)
 
