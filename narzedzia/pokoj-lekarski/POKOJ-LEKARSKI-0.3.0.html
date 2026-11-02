@@ -428,6 +428,55 @@ html.osadzony .legenda { display: none; }
 .pokoj .led-poswiata { pointer-events: none; } .pokoj.pisza .led-poswiata, .pokoj.przerwa .led-poswiata { animation: led-puls 1.4s ease-in-out infinite; }
 .pokoj .swiatlo-stol { pointer-events: none; mix-blend-mode: screen; }
 @media (prefers-reduced-motion: reduce) { .pokoj .led-poswiata { animation: none !important; } }
+
+/* ---------- innowacje Pokoju (Michał, ankieta 2.11 – wątek Graficzny): Mapa sporu, odznaka źródła, Karta sprawy ---------- */
+.tablica .spor { display: flex; flex-direction: column; gap: .35cqw; min-height: 0; overflow: hidden; }
+.tablica .punkt { background: rgba(255,255,255,.05); border-radius: .5cqw; padding: .4cqw .55cqw; }
+.tablica .punkt b { display: block; font: 700 max(8.5px, .95cqw)/1.2 var(--font); color: #e4eeeb; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.tablica .strony { display: flex; align-items: center; flex-wrap: wrap; gap: .2cqw; margin-top: .3cqw; }
+.tablica .strony i { font: 700 max(7px, .7cqw)/1 var(--font); color: #93A9A4; margin: 0 .25cqw; font-style: normal; }
+.tablica .aw, .karta-sprawy .aw { display: inline-grid; place-items: center; width: max(12px, 1.15cqw); height: max(12px, 1.15cqw); border-radius: 50%; background: var(--g, #3e8f9e); color: #fff; font: 800 max(6px, .55cqw)/1 var(--font); letter-spacing: 0; box-shadow: 0 0 0 1px rgba(255,255,255,.25); }
+.tablica .przes { display: flex; align-items: center; gap: .3cqw; margin-top: .25cqw; font: 600 max(7.5px, .78cqw)/1.2 var(--font); color: #c9d6d3; }
+.tablica .przes span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #ffd166; }
+.tablica .otw { margin-top: .25cqw; font: 700 max(7px, .72cqw)/1 var(--font); color: #9fd9b4; letter-spacing: .04em; }
+.tablica .kolumny:has(.kol-spor) { grid-template-columns: 34fr 36fr 30fr; }
+
+.dymek .odznaki { display: flex; flex-wrap: wrap; gap: .3cqw; margin-top: .5cqw; }
+.dymek .odz { display: inline-flex; align-items: center; gap: .3cqw; border: 0; cursor: pointer; padding: .12cqw .55cqw .12cqw .2cqw; border-radius: 999px; font: 750 max(8px, .8cqw)/1.4 var(--font);
+  background: rgba(15,94,88,.08); color: #0F5E58; box-shadow: inset 0 0 0 1px rgba(15,94,88,.2); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.dymek .odz i { flex-shrink: 0; width: max(11px, 1.05cqw); height: max(11px, 1.05cqw); border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: .72em; color: #fff; background: #0F5E58; }
+.dymek .odz.rpl { color: #8a4a1f; background: rgba(184,98,46,.1); box-shadow: inset 0 0 0 1px rgba(184,98,46,.25); } .dymek .odz.rpl i { background: #b8622e; }
+.dymek .odz.pl { color: #4b6e3c; background: rgba(106,143,90,.12); box-shadow: inset 0 0 0 1px rgba(106,143,90,.3); } .dymek .odz.pl i { background: #6a8f5a; }
+.dymek .odz.doi { color: #5a5890; background: rgba(124,122,168,.12); box-shadow: inset 0 0 0 1px rgba(124,122,168,.3); } .dymek .odz.doi i { background: #7c7aa8; }
+.dymek .odz:hover, .dymek .odz.on { filter: brightness(.92); box-shadow: inset 0 0 0 1.5px currentColor; }
+.dymek .cytat { flex-basis: 100%; margin-top: .35cqw; padding: .5cqw .7cqw; border-radius: .6cqw; background: #14302D; color: #e8efed; font: 500 max(8.5px, .85cqw)/1.35 var(--font); }
+.dymek .cytat b { display: block; font-size: .85em; letter-spacing: .08em; text-transform: uppercase; color: #5CC8BB; margin-bottom: .15cqw; }
+.wpis.blysk { animation: wpis-blysk 1.6s ease; }
+@keyframes wpis-blysk { 0%, 60% { box-shadow: inset 0 0 0 2px var(--petrol); } 100% { box-shadow: none; } }
+
+.karta-sprawy { position: absolute; left: 50%; top: 20%; transform: translateX(-50%); z-index: 8; width: min(44cqw, 540px); max-height: 74cqh; overflow: auto; padding: 1.1cqw 1.4cqw 1cqw; border-radius: 1.2cqw;
+  background: color-mix(in srgb, var(--bg-viewport) 92%, transparent); color: var(--ink); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2.4cqw 4.4cqw -2cqw rgba(10,54,52,.6), inset 0 0 0 1px rgba(15,94,88,.18); font: 500 max(10px, 1cqw)/1.4 var(--font); animation: karta-wejscie .6s ease both; }
+.karta-sprawy[hidden] { display: none; }
+@keyframes karta-wejscie { from { opacity: 0; transform: translate(-50%, 1.5cqw) scale(.98); } }
+.karta-sprawy .nag { display: flex; align-items: center; gap: .8cqw; margin-bottom: .6cqw; }
+.karta-sprawy .nag b { font-size: 1.3em; font-weight: 800; }
+.karta-sprawy .nag .k { flex-shrink: 0; width: 2.2cqw; height: 2.2cqw; min-width: 24px; min-height: 24px; border-radius: .6cqw; display: grid; place-items: center; color: #fff; font-weight: 800; background: linear-gradient(150deg, #157268, #0F5E58); box-shadow: 0 0 .9cqw rgba(92,200,187,.8); }
+.karta-sprawy .nag .pil { margin-left: auto; padding: .2cqw .7cqw; border-radius: 999px; background: var(--btn); color: var(--petrol); font-weight: 800; font-size: .85em; white-space: nowrap; }
+.karta-sprawy .nag .pil.wysoka { background: #A83A38; color: #fff; }
+.karta-sprawy .w { display: grid; grid-template-columns: 9.5cqw 1fr; gap: .4cqw .9cqw; padding: .55cqw 0; border-top: 1px solid rgba(15,94,88,.12); }
+.karta-sprawy .w span { font: 800 max(7.5px, .75cqw)/1.3 var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--mut); padding-top: .15cqw; }
+.karta-sprawy .w p { margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.karta-sprawy .w:first-of-type p { -webkit-line-clamp: 4; font-weight: 650; }
+.karta-sprawy .stop { display: flex; align-items: center; justify-content: space-between; gap: .8cqw; margin-top: .5cqw; padding-top: .6cqw; border-top: 1px solid rgba(15,94,88,.12); font-size: .85em; color: var(--mut); }
+.karta-sprawy .stop .zr { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .karta-sprawy .stop .zr b { color: var(--petrol); }
+.karta-sprawy .akcje { display: flex; gap: .4cqw; flex-shrink: 0; } .karta-sprawy .akcje .nk-button { min-height: 0; padding: .35cqw .9cqw; font-size: .9em; }
+.karta-sprawy .stopka-k { margin: .5cqw 0 0; font-size: .72em; color: var(--mut); }
+.pokoj.karta-na-ekranie .dymki { opacity: .25; }
+.pokoj.karta-na-ekranie .rys::after { content: ""; }
+.postac.czyta-karte .ciało { animation: czyta 3s ease-in-out 8s infinite; }
+@keyframes czyta { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(2deg) translateY(1px); } }
+@media (prefers-reduced-motion: reduce) { .karta-sprawy { animation: none; } .postac.czyta-karte .ciało { animation: none; } }
 </style>
 </head>
 <body>
@@ -1698,8 +1747,45 @@ ${podpisy(wpisy)}`;
     zaplanuj();
   }
 
+  // ---------- odznaka źródła przy dymku (Michał, ankieta 2.11): Rejestr leków / PubMed / Wytyczne PL; klik = cytat ----------
+  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], inne: ['Ź', 'Źródło'] };
+  function zrodlaWypowiedzi(w) {
+    if (Array.isArray(w.zrodla) && w.zrodla.length) return w.zrodla.map((z) => ({ typ: z.typ || 'inne', etykieta: z.etykieta || '', cytat: z.cytat || '' }));
+    const t = String(w.pelny || w.tresc || ''), out = [], seen = new Set();
+    const zdanie = (idx) => { const a = t.lastIndexOf('.', idx) + 1, b = t.indexOf('.', idx); return t.slice(a, b === -1 ? t.length : b + 1).trim(); };
+    const dodaj = (typ, etykieta, idx) => { etykieta = etykieta.replace(/[\s\]\)\.,;:]+$/, ''); const k = typ + etykieta; if (seen.has(k) || out.length >= 4) return; seen.add(k); out.push({ typ, etykieta, cytat: zdanie(idx) }); };
+    for (const m of t.matchAll(/PMID[:\s]*(\d{6,9})/gi)) dodaj('pubmed', 'PMID ' + m[1], m.index);
+    for (const m of t.matchAll(/\bDOI[:\s]*(10\.\d{4,9}\/[^\s,;)]+)/gi)) dodaj('doi', 'DOI ' + m[1], m.index);
+    for (const m of t.matchAll(/\b(RPL|Rejestr Produktów Leczniczych|ChPL)\b[^.]{0,40}/gi)) dodaj('rpl', m[0].slice(0, 36), m.index);
+    for (const m of t.matchAll(/\b(wytyczn\w*\s+(PT\w+|polsk\w+)|PTD|PTK|PTMR|PTG|PTN|AOTMiT|NFZ)\b[^.]{0,30}/gi)) dodaj('pl', m[0].slice(0, 36), m.index);
+    return out;
+  }
+  function odznakiZrodel(d, kto) {
+    if (d.querySelector('.odznaki') || d.classList.contains('pisze') || !kroki.length) return;
+    const k = kroki[i], w = k && scen.sceny[k.si].wypowiedzi[k.wi];
+    if (!w || w.kto !== kto) return;
+    const z = zrodlaWypowiedzi(w); if (!z.length) return;
+    const el = document.createElement('div'); el.className = 'odznaki';
+    el.innerHTML = z.map((x, n) => { const [lit, naz] = ZRODLA_TYP[x.typ] || ZRODLA_TYP.inne; return `<button type="button" class="odz ${esc(x.typ)}" data-n="${n}" title="${esc(naz)} – kliknij, żeby zobaczyć cytat"><i>${lit}</i>${esc(x.etykieta || naz)}</button>`; }).join('') +
+      `<div class="cytat" hidden></div>`;
+    el.addEventListener('click', (e) => {
+      const b = e.target.closest('.odz'); if (!b) return;
+      e.stopPropagation();
+      const c = el.querySelector('.cytat'), x = z[+b.dataset.n], juz = b.classList.contains('on');
+      el.querySelectorAll('.odz').forEach((o) => o.classList.remove('on'));
+      if (juz) { c.hidden = true; return; }
+      b.classList.add('on'); c.hidden = false;
+      c.innerHTML = `<b>${esc((ZRODLA_TYP[x.typ] || ZRODLA_TYP.inne)[1])} · ${esc(x.etykieta)}</b>${esc(x.cytat || 'Pełny tekst opinii w protokole.')}`;
+      const sc = scen.sceny[k.si]; pokazSzczegol(w, sc);
+      const wp = document.querySelector('.wpis.biezacy'); if (wp) { wp.classList.add('blysk'); setTimeout(() => wp.classList.remove('blysk'), 1600); }
+      ustawDymek(d, kto);
+    });
+    d.appendChild(el);
+  }
+
   function ustawDymek(d, kto) {
     const m = MIEJSCA_AKT[kto]; if (!m) return;
+    odznakiZrodel(d, kto);
     const pokoj = $('pokoj'), Wp = pokoj.clientWidth, Hp = pokoj.clientHeight;
     const ax = m.x / W * Wp, ay = (m.y - 152 * m.s - 6) / H * Hp;
     const bw = d.offsetWidth, bh = d.offsetHeight, marg = 8;
@@ -2075,11 +2161,78 @@ async function powiedzLekarz(tekst) {
       : `<p class="pusto">Jeszcze nic</p>`;
     const zrobione = scen.sceny.filter((_, n) => n < si).length;
     const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc >= 4 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
+    // Mapa sporu (Michał, ankieta 2.11): w rundach konsylium zamiast „Stan prac” – punkty sporne, kto po której stronie, który fakt kogo przesunął; bez procentów
+    const spor = rysujMapeSporu(si, sc);
+    const lewa = spor
+      ? `<div class="kol kol-spor"><h4>Mapa sporu</h4>${spor}</div>`
+      : `<div class="kol"><h4>Stan prac</h4>${rysujEtapy(si)}<div class="postep"><i style="width:${Math.round(100 * zrobione / scen.sceny.length)}%"></i></div></div>`;
     $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span>${pil}<span class="stan" title="Etapy zakończone">${zrobione}/${scen.sceny.length}</span><span class="czas">${hhmm(sc.czas)}</span></div>` +
       `<p class="temat">${esc(sc.temat)}</p>` +
-      `<div class="kolumny"><div class="kol"><h4>Stan prac</h4>${rysujEtapy(si)}<div class="postep"><i style="width:${Math.round(100 * zrobione / scen.sceny.length)}%"></i></div></div>` +
+      `<div class="kolumny">${lewa}` +
       `<div class="kol"><h4>Ustalenia</h4>${srodek}</div><div class="kol"><h4>Odrzucone</h4>${prawa}</div></div>`;
     $('tablica').querySelectorAll('.etap').forEach((b) => b.addEventListener('click', () => { ustawGre(false); pokaz(kroki.findIndex((k) => k.si === +b.dataset.si), false); }));
+    rysujKarteSprawy(final);
+  }
+  const awatar = (kto) => { const r = ROLE[kto] || { nazwa: kto, grupa: 'lekarz', inicjaly: String(kto).slice(0, 2).toUpperCase() }; return `<span class="aw" style="--g:${KOLOR[r.grupa] || KOLOR.lekarz}" title="${esc(r.nazwa)}">${esc(r.inicjaly || '?')}</span>`; };
+  function rysujMapeSporu(si, sc) {
+    const t = scen.tablica, lista = Array.isArray(t.spor) ? t.spor : [];
+    if (!/^runda/.test(sc.id) && !['projekt', 'final', 'followup'].includes(sc.id)) return '';
+    const biez = lista.filter((p) => (p.si ?? 0) <= si).slice(-3);
+    if (!biez.length) return '';
+    return `<div class="spor">${biez.map((p) => {
+      const za = (p.za || []).map(awatar).join(''), przeciw = (p.przeciw || []).map(awatar).join('');
+      const przes = (p.przesuniecia || []).filter((x) => (x.si ?? 0) <= si).map((x) => `<div class="przes">${awatar(x.kto)}<span>→ ${esc(x.fakt)}</span></div>`).join('');
+      const stan = p.otwarte === false || (p.rozstrzyga && !p.otwarte) ? '' : `<div class="otw">${p.rozstrzyga ? 'rozstrzyga: ' + esc(p.rozstrzyga) : 'otwarte'}</div>`;
+      return `<div class="punkt" title="${esc(p.pytanie)}"><b>${esc(p.pytanie)}</b><div class="strony">${za}<i>vs</i>${przeciw}</div>${przes}${stan}</div>`;
+    }).join('')}</div>`;
+  }
+
+  // ---------- Karta sprawy na koniec (Michał, ankieta 2.11): zalecenie, pilność, co by to obaliło, kiedy wrócić; zostaje na ekranie do zrzutu ----------
+  let kartaZamknieta = null, kartaAnim = null;
+  function daneKarty() {
+    const t = scen.tablica;
+    if (t.karta && t.karta.zalecenie) return t.karta;
+    const w = scen.wnioski; if (!w || !w.pola) return null;
+    const pole = (re) => { const p = w.pola.find((x) => re.test(x.etykieta)); return p ? p.tresc : ''; };
+    const zal = pole(/^REKOMENDACJA/i); if (!zal) return null;
+    const pil = pole(/^PILNO/i);
+    return { zalecenie: zal, pilnosc: pil || (t.pilnosc ? 'pilność ' + t.pilnosc : ''), dlaczego: pole(/^DLACZEGO/i), obalenie: pole(/^PLAN B/i), niewiemy: pole(/^CZEGO NIE/i), powrot: pole(/WRÓĆ|ESKALUJ/i), zrodla: pole(/^ŹRÓD/i) };
+  }
+  function rysujKarteSprawy(final) {
+    let el = $('karta-sprawy');
+    if (!el) { el = document.createElement('section'); el.id = 'karta-sprawy'; el.className = 'karta-sprawy'; el.hidden = true; el.setAttribute('aria-label', 'Karta sprawy'); $('pokoj').appendChild(el); }
+    const klucz = scen ? (scen.sprawa || '') + '|' + ((scen.wnioski && scen.wnioski.tekst.length) || 0) : '';
+    const k = final && daneKarty();
+    if (!k || kartaZamknieta === klucz) {
+      el.hidden = true;
+      if (kartaAnim) { kartaAnim.cancel(); kartaAnim = null; }
+      const ord = document.querySelector('.postac[data-kto="ordynator"]'); if (ord) ord.classList.remove('czyta-karte');
+      $('pokoj').classList.remove('karta-na-ekranie');
+      return;
+    }
+    if (el.hidden) {
+      const wiersz = (naz, tresc) => tresc ? `<div class="w"><span>${naz}</span><p>${esc(tresc)}</p></div>` : '';
+      const zr = String(k.zrodla || '').split(/\n+|;\s+/).map((x) => x.replace(/^[-•*]\s*/, '').trim()).filter(Boolean).slice(0, 4);
+      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/[45]/.test(k.pilnosc) ? ' wysoka' : ''}">${esc(k.pilnosc)}</span>` : ''}</div>` +
+        wiersz('Zalecenie', k.zalecenie) + wiersz('Dlaczego', k.dlaczego) + wiersz('Co by to obaliło', k.obalenie) + wiersz('Kiedy wrócić', k.powrot) +
+        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
+        `<p class="stopka-k">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
+      el.hidden = false;
+      $('pokoj').classList.add('karta-na-ekranie');
+      $('karta-zamknij').addEventListener('click', () => { kartaZamknieta = klucz; rysujKarteSprawy(false); });
+      $('karta-kopiuj').addEventListener('click', () => {
+        const txt = Array.from(el.querySelectorAll('.w')).map((w) => w.querySelector('span').textContent + ': ' + w.querySelector('p').textContent).join('\n');
+        if (navigator.clipboard) navigator.clipboard.writeText(`Karta sprawy ${scen.sprawa || ''}\n${txt}`).then(() => { $('karta-kopiuj').textContent = 'Skopiowano'; setTimeout(() => { const b = $('karta-kopiuj'); if (b) b.textContent = 'Kopiuj tekst'; }, 1600); }).catch(() => {});
+      });
+      // Ordynator idzie do biurka po prawej i „czyta” kartę (po cmoknięciu plakatu, gdy to konsylium się kończy)
+      const ord = document.querySelector('.postac[data-kto="ordynator"]'), m = MIEJSCA_AKT.ordynator;
+      if (ord && m && !bezRuchu()) {
+        const start = `translate(${m.x}px, ${m.y}px) scale(${m.s})`, cel = 'translate(1096px, 486px) scale(.86)';
+        kartaAnim = ord.animate([{ transform: start }, { transform: cel }], { duration: 2600, delay: 5200, easing: 'ease-in-out', fill: 'forwards' });
+        ord.classList.add('czyta-karte');
+        kartaAnim.onfinish = () => {};
+      }
+    }
   }
 
   // ---------- protokół, legenda ----------

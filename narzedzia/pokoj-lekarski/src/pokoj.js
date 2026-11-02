@@ -350,8 +350,45 @@ ${podpisy(wpisy)}`;
     zaplanuj();
   }
 
+  // ---------- odznaka źródła przy dymku (Michał, ankieta 2.11): Rejestr leków / PubMed / Wytyczne PL; klik = cytat ----------
+  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], inne: ['Ź', 'Źródło'] };
+  function zrodlaWypowiedzi(w) {
+    if (Array.isArray(w.zrodla) && w.zrodla.length) return w.zrodla.map((z) => ({ typ: z.typ || 'inne', etykieta: z.etykieta || '', cytat: z.cytat || '' }));
+    const t = String(w.pelny || w.tresc || ''), out = [], seen = new Set();
+    const zdanie = (idx) => { const a = t.lastIndexOf('.', idx) + 1, b = t.indexOf('.', idx); return t.slice(a, b === -1 ? t.length : b + 1).trim(); };
+    const dodaj = (typ, etykieta, idx) => { etykieta = etykieta.replace(/[\s\]\)\.,;:]+$/, ''); const k = typ + etykieta; if (seen.has(k) || out.length >= 4) return; seen.add(k); out.push({ typ, etykieta, cytat: zdanie(idx) }); };
+    for (const m of t.matchAll(/PMID[:\s]*(\d{6,9})/gi)) dodaj('pubmed', 'PMID ' + m[1], m.index);
+    for (const m of t.matchAll(/\bDOI[:\s]*(10\.\d{4,9}\/[^\s,;)]+)/gi)) dodaj('doi', 'DOI ' + m[1], m.index);
+    for (const m of t.matchAll(/\b(RPL|Rejestr Produktów Leczniczych|ChPL)\b[^.]{0,40}/gi)) dodaj('rpl', m[0].slice(0, 36), m.index);
+    for (const m of t.matchAll(/\b(wytyczn\w*\s+(PT\w+|polsk\w+)|PTD|PTK|PTMR|PTG|PTN|AOTMiT|NFZ)\b[^.]{0,30}/gi)) dodaj('pl', m[0].slice(0, 36), m.index);
+    return out;
+  }
+  function odznakiZrodel(d, kto) {
+    if (d.querySelector('.odznaki') || d.classList.contains('pisze') || !kroki.length) return;
+    const k = kroki[i], w = k && scen.sceny[k.si].wypowiedzi[k.wi];
+    if (!w || w.kto !== kto) return;
+    const z = zrodlaWypowiedzi(w); if (!z.length) return;
+    const el = document.createElement('div'); el.className = 'odznaki';
+    el.innerHTML = z.map((x, n) => { const [lit, naz] = ZRODLA_TYP[x.typ] || ZRODLA_TYP.inne; return `<button type="button" class="odz ${esc(x.typ)}" data-n="${n}" title="${esc(naz)} – kliknij, żeby zobaczyć cytat"><i>${lit}</i>${esc(x.etykieta || naz)}</button>`; }).join('') +
+      `<div class="cytat" hidden></div>`;
+    el.addEventListener('click', (e) => {
+      const b = e.target.closest('.odz'); if (!b) return;
+      e.stopPropagation();
+      const c = el.querySelector('.cytat'), x = z[+b.dataset.n], juz = b.classList.contains('on');
+      el.querySelectorAll('.odz').forEach((o) => o.classList.remove('on'));
+      if (juz) { c.hidden = true; return; }
+      b.classList.add('on'); c.hidden = false;
+      c.innerHTML = `<b>${esc((ZRODLA_TYP[x.typ] || ZRODLA_TYP.inne)[1])} · ${esc(x.etykieta)}</b>${esc(x.cytat || 'Pełny tekst opinii w protokole.')}`;
+      const sc = scen.sceny[k.si]; pokazSzczegol(w, sc);
+      const wp = document.querySelector('.wpis.biezacy'); if (wp) { wp.classList.add('blysk'); setTimeout(() => wp.classList.remove('blysk'), 1600); }
+      ustawDymek(d, kto);
+    });
+    d.appendChild(el);
+  }
+
   function ustawDymek(d, kto) {
     const m = MIEJSCA_AKT[kto]; if (!m) return;
+    odznakiZrodel(d, kto);
     const pokoj = $('pokoj'), Wp = pokoj.clientWidth, Hp = pokoj.clientHeight;
     const ax = m.x / W * Wp, ay = (m.y - 152 * m.s - 6) / H * Hp;
     const bw = d.offsetWidth, bh = d.offsetHeight, marg = 8;
@@ -727,11 +764,78 @@ async function powiedzLekarz(tekst) {
       : `<p class="pusto">Jeszcze nic</p>`;
     const zrobione = scen.sceny.filter((_, n) => n < si).length;
     const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc >= 4 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
+    // Mapa sporu (Michał, ankieta 2.11): w rundach konsylium zamiast „Stan prac” – punkty sporne, kto po której stronie, który fakt kogo przesunął; bez procentów
+    const spor = rysujMapeSporu(si, sc);
+    const lewa = spor
+      ? `<div class="kol kol-spor"><h4>Mapa sporu</h4>${spor}</div>`
+      : `<div class="kol"><h4>Stan prac</h4>${rysujEtapy(si)}<div class="postep"><i style="width:${Math.round(100 * zrobione / scen.sceny.length)}%"></i></div></div>`;
     $('tablica').innerHTML = `<div class="gora"><span class="faza">Teraz · ${esc(sc.tytul)}</span>${pil}<span class="stan" title="Etapy zakończone">${zrobione}/${scen.sceny.length}</span><span class="czas">${hhmm(sc.czas)}</span></div>` +
       `<p class="temat">${esc(sc.temat)}</p>` +
-      `<div class="kolumny"><div class="kol"><h4>Stan prac</h4>${rysujEtapy(si)}<div class="postep"><i style="width:${Math.round(100 * zrobione / scen.sceny.length)}%"></i></div></div>` +
+      `<div class="kolumny">${lewa}` +
       `<div class="kol"><h4>Ustalenia</h4>${srodek}</div><div class="kol"><h4>Odrzucone</h4>${prawa}</div></div>`;
     $('tablica').querySelectorAll('.etap').forEach((b) => b.addEventListener('click', () => { ustawGre(false); pokaz(kroki.findIndex((k) => k.si === +b.dataset.si), false); }));
+    rysujKarteSprawy(final);
+  }
+  const awatar = (kto) => { const r = ROLE[kto] || { nazwa: kto, grupa: 'lekarz', inicjaly: String(kto).slice(0, 2).toUpperCase() }; return `<span class="aw" style="--g:${KOLOR[r.grupa] || KOLOR.lekarz}" title="${esc(r.nazwa)}">${esc(r.inicjaly || '?')}</span>`; };
+  function rysujMapeSporu(si, sc) {
+    const t = scen.tablica, lista = Array.isArray(t.spor) ? t.spor : [];
+    if (!/^runda/.test(sc.id) && !['projekt', 'final', 'followup'].includes(sc.id)) return '';
+    const biez = lista.filter((p) => (p.si ?? 0) <= si).slice(-3);
+    if (!biez.length) return '';
+    return `<div class="spor">${biez.map((p) => {
+      const za = (p.za || []).map(awatar).join(''), przeciw = (p.przeciw || []).map(awatar).join('');
+      const przes = (p.przesuniecia || []).filter((x) => (x.si ?? 0) <= si).map((x) => `<div class="przes">${awatar(x.kto)}<span>→ ${esc(x.fakt)}</span></div>`).join('');
+      const stan = p.otwarte === false || (p.rozstrzyga && !p.otwarte) ? '' : `<div class="otw">${p.rozstrzyga ? 'rozstrzyga: ' + esc(p.rozstrzyga) : 'otwarte'}</div>`;
+      return `<div class="punkt" title="${esc(p.pytanie)}"><b>${esc(p.pytanie)}</b><div class="strony">${za}<i>vs</i>${przeciw}</div>${przes}${stan}</div>`;
+    }).join('')}</div>`;
+  }
+
+  // ---------- Karta sprawy na koniec (Michał, ankieta 2.11): zalecenie, pilność, co by to obaliło, kiedy wrócić; zostaje na ekranie do zrzutu ----------
+  let kartaZamknieta = null, kartaAnim = null;
+  function daneKarty() {
+    const t = scen.tablica;
+    if (t.karta && t.karta.zalecenie) return t.karta;
+    const w = scen.wnioski; if (!w || !w.pola) return null;
+    const pole = (re) => { const p = w.pola.find((x) => re.test(x.etykieta)); return p ? p.tresc : ''; };
+    const zal = pole(/^REKOMENDACJA/i); if (!zal) return null;
+    const pil = pole(/^PILNO/i);
+    return { zalecenie: zal, pilnosc: pil || (t.pilnosc ? 'pilność ' + t.pilnosc : ''), dlaczego: pole(/^DLACZEGO/i), obalenie: pole(/^PLAN B/i), niewiemy: pole(/^CZEGO NIE/i), powrot: pole(/WRÓĆ|ESKALUJ/i), zrodla: pole(/^ŹRÓD/i) };
+  }
+  function rysujKarteSprawy(final) {
+    let el = $('karta-sprawy');
+    if (!el) { el = document.createElement('section'); el.id = 'karta-sprawy'; el.className = 'karta-sprawy'; el.hidden = true; el.setAttribute('aria-label', 'Karta sprawy'); $('pokoj').appendChild(el); }
+    const klucz = scen ? (scen.sprawa || '') + '|' + ((scen.wnioski && scen.wnioski.tekst.length) || 0) : '';
+    const k = final && daneKarty();
+    if (!k || kartaZamknieta === klucz) {
+      el.hidden = true;
+      if (kartaAnim) { kartaAnim.cancel(); kartaAnim = null; }
+      const ord = document.querySelector('.postac[data-kto="ordynator"]'); if (ord) ord.classList.remove('czyta-karte');
+      $('pokoj').classList.remove('karta-na-ekranie');
+      return;
+    }
+    if (el.hidden) {
+      const wiersz = (naz, tresc) => tresc ? `<div class="w"><span>${naz}</span><p>${esc(tresc)}</p></div>` : '';
+      const zr = String(k.zrodla || '').split(/\n+|;\s+/).map((x) => x.replace(/^[-•*]\s*/, '').trim()).filter(Boolean).slice(0, 4);
+      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/[45]/.test(k.pilnosc) ? ' wysoka' : ''}">${esc(k.pilnosc)}</span>` : ''}</div>` +
+        wiersz('Zalecenie', k.zalecenie) + wiersz('Dlaczego', k.dlaczego) + wiersz('Co by to obaliło', k.obalenie) + wiersz('Kiedy wrócić', k.powrot) +
+        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
+        `<p class="stopka-k">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
+      el.hidden = false;
+      $('pokoj').classList.add('karta-na-ekranie');
+      $('karta-zamknij').addEventListener('click', () => { kartaZamknieta = klucz; rysujKarteSprawy(false); });
+      $('karta-kopiuj').addEventListener('click', () => {
+        const txt = Array.from(el.querySelectorAll('.w')).map((w) => w.querySelector('span').textContent + ': ' + w.querySelector('p').textContent).join('\n');
+        if (navigator.clipboard) navigator.clipboard.writeText(`Karta sprawy ${scen.sprawa || ''}\n${txt}`).then(() => { $('karta-kopiuj').textContent = 'Skopiowano'; setTimeout(() => { const b = $('karta-kopiuj'); if (b) b.textContent = 'Kopiuj tekst'; }, 1600); }).catch(() => {});
+      });
+      // Ordynator idzie do biurka po prawej i „czyta” kartę (po cmoknięciu plakatu, gdy to konsylium się kończy)
+      const ord = document.querySelector('.postac[data-kto="ordynator"]'), m = MIEJSCA_AKT.ordynator;
+      if (ord && m && !bezRuchu()) {
+        const start = `translate(${m.x}px, ${m.y}px) scale(${m.s})`, cel = 'translate(1096px, 486px) scale(.86)';
+        kartaAnim = ord.animate([{ transform: start }, { transform: cel }], { duration: 2600, delay: 5200, easing: 'ease-in-out', fill: 'forwards' });
+        ord.classList.add('czyta-karte');
+        kartaAnim.onfinish = () => {};
+      }
+    }
   }
 
   // ---------- protokół, legenda ----------
