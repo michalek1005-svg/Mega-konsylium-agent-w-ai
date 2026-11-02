@@ -487,3 +487,11 @@ html.osadzony .legenda { display: none; }
 :root[data-motyw="ciemny"] .karta-sprawy { box-shadow: 0 2.4cqw 4.4cqw -2cqw rgba(0,0,0,.8), inset 0 0 0 1px rgba(92,200,187,.22); }
 :root[data-motyw="ciemny"] .karta-sprawy .w, :root[data-motyw="ciemny"] .karta-sprawy .stop { border-top-color: rgba(92,200,187,.16); }
 :root[data-motyw="ciemny"] .karta-sprawy .stop .zr b { color: #5CC8BB; }
+
+/* powiadomienie na ekranie (ankieta innowacji 2.11.2026, pkt 10) */
+.powiadomienie { position: fixed; top: 14px; left: 50%; transform: translate(-50%, -140%); z-index: 50; max-width: min(92vw, 520px);
+  display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-radius: 16px; background: var(--on); color: var(--on-txt);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .22); font-size: 13.5px; line-height: 1.4; transition: transform .35s ease; pointer-events: none; }
+.powiadomienie b { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+.powiadomienie.widoczne { transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .powiadomienie { transition: none; } }

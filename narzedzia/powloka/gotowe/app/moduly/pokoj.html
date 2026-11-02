@@ -489,6 +489,19 @@ html.osadzony .legenda { display: none; }
 .wnioski .co-dalej [aria-pressed="true"] { background: var(--on); color: var(--on-txt); }
 .wnioski .co-dalej-zdanie { font: inherit; font-size: 13px; padding: 7px 10px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--mut) 45%, transparent); background: var(--panel); color: var(--ink); }
 .wnioski .co-dalej-blad { color: var(--alarm); font-size: 12px; }
+/* Graficzny 2.11: typ „badanie kliniczne” w odznace, wariant ciemny karty i odznak */
+.dymek .odz.trial { color: #6a4c9c; background: rgba(124,92,180,.1); box-shadow: inset 0 0 0 1px rgba(124,92,180,.28); } .dymek .odz.trial i { background: #7c5cb4; }
+:root[data-motyw="ciemny"] .karta-sprawy { box-shadow: 0 2.4cqw 4.4cqw -2cqw rgba(0,0,0,.8), inset 0 0 0 1px rgba(92,200,187,.22); }
+:root[data-motyw="ciemny"] .karta-sprawy .w, :root[data-motyw="ciemny"] .karta-sprawy .stop { border-top-color: rgba(92,200,187,.16); }
+:root[data-motyw="ciemny"] .karta-sprawy .stop .zr b { color: #5CC8BB; }
+
+/* powiadomienie na ekranie (ankieta innowacji 2.11.2026, pkt 10) */
+.powiadomienie { position: fixed; top: 14px; left: 50%; transform: translate(-50%, -140%); z-index: 50; max-width: min(92vw, 520px);
+  display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-radius: 16px; background: var(--on); color: var(--on-txt);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .22); font-size: 13.5px; line-height: 1.4; transition: transform .35s ease; pointer-events: none; }
+.powiadomienie b { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+.powiadomienie.widoczne { transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .powiadomienie { transition: none; } }
 </style>
 </head>
 <body>
@@ -506,6 +519,7 @@ html.osadzony .legenda { display: none; }
       <button class="nk-button" id="zywo" type="button" hidden title="Wybierz folder sprawy, która właśnie trwa. Pokój co 3 sekundy dociąga nowe dymki.">Na żywo…</button>
       <button class="nk-button" id="protokol-btn" type="button" hidden aria-pressed="false" title="Pokaż lub ukryj protokół dyskusji">Protokół</button>
       <button class="nk-button" id="prognoza-btn" type="button" hidden aria-pressed="false" title="Tylko dla Ciebie: bieżące prawdopodobieństwa rozpoznań w procentach (dymki ich nie mają)">Prognoza %</button>
+      <button class="nk-button" id="powiadom-btn" type="button" hidden aria-pressed="true" title="Sygnał i komunikat, gdy konsylium pyta Ciebie, przy alarmie 112 i gdy Wnioski są gotowe">Powiadomienia: wł.</button>
       <button class="nk-button" id="motyw" type="button" aria-label="Przełącz tryb jasny lub ciemny">Tryb jasny</button>
     </div>
     <input id="folder" type="file" webkitdirectory multiple hidden>
@@ -1154,7 +1168,7 @@ function kartaSprawy(final, tablica = {}) {
     pilnosc: tablica.pilnosc ?? null,
     termin: tablica.pilnosc ? TERMINY[tablica.pilnosc] : null,
     obalenie: p('CO BY TO OBALIŁO') || null,
-    powrot: p('WRÓĆ / ESKALUJ GDY') || null,
+    powrot: p('WRÓĆ / ESKALUJ GDY').split(/\n?\s*(?:ŹRÓDŁA|Źródła)\s*:/)[0].trim() || null,
     zrodla: zr,
   };
 }
@@ -1202,6 +1216,8 @@ const DEMO = {"sprawa":"2026-10-31-02","tryb":"PELNY","sceny":[{"id":"wywiad","t
     wybierzFolder: function () { return wywolaj('wybierzFolder', [], 600000); },
     czytaj: function (p) { return wywolaj('czytaj', [p]); },
     zapisz: function (p, t) { return wywolaj('zapisz', [p, t]); },
+    // zdjęcie (data:image/jpeg;base64,…) do sprawy/<ID>/zdjecia/ – tylko JPEG/PNG
+    zapiszObraz: function (p, dane) { return wywolaj('zapiszObraz', [p, dane], 30000); },
     lista: function (p) { return wywolaj('lista', [p || '']); },
     czytajFolder: function (p) { return wywolaj('czytajFolder', [p || '']); },
     // przełącza powłokę na inny moduł (np. anonimizator z ekranu wywiadu)
@@ -1756,6 +1772,7 @@ ${podpisy(wpisy)}`;
     // ...ale dopiero gdy odtwarzanie dojdzie do końca dyskusji (nie zasłania trwającej rozmowy)
     const klucz = (s.sprawa || '') + '|' + w.tekst.length;
     if (otworz && wnioskiPokazane !== klucz) wnioskiCzekaja = klucz;
+    if (otworz) powiadom('wnioski:' + klucz, 'Wnioski konsylium gotowe', (rek && rek.tresc) || 'Sprawa ' + (s.sprawa || ''));
   }
   $('wnioski-btn').addEventListener('click', () => { $('wnioski').hidden = !$('wnioski').hidden; });
 
@@ -1897,7 +1914,7 @@ ${podpisy(wpisy)}`;
   }
 
   // ---------- odznaka źródła przy dymku (Michał, ankieta 2.11): Rejestr leków / PubMed / Wytyczne PL; klik = cytat ----------
-  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], inne: ['Ź', 'Źródło'] };
+  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], trial: ['T', 'Badanie kliniczne'], inne: ['Ź', 'Źródło'] };
   function zrodlaWypowiedzi(w) {
     if (Array.isArray(w.zrodla) && w.zrodla.length) return w.zrodla.map((z) => ({ typ: z.typ || 'inne', etykieta: z.etykieta || '', cytat: z.cytat || '' }));
     const t = String(w.pelny || w.tresc || ''), out = [], seen = new Set();
@@ -2206,11 +2223,58 @@ async function powiedzLekarz(tekst, hipoteza = false) {
   })();
 
   // ---------- panele na żywo: alarm 112, pytanie konsylium do Ciebie, plakietka asystentów (ankieta zmian 1.11) ----------
+  // ---------- powiadomienia (ankieta innowacji 2.11.2026, pkt 10) ----------
+  // Pytanie konsylium do Ciebie, alarm 112 i gotowe Wnioski: komunikat na ekranie + krótki sygnał dźwiękowy,
+  // a gdy okno jest w tle i system pozwala (Windows; iPad tylko przez https) – powiadomienie systemowe.
+  // Na iPadzie przez http (sieć domowa) Safari nie daje powiadomień systemowych: działa komunikat i dźwięk przy otwartej aplikacji.
+  const POW = { wl: (() => { try { return localStorage.getItem('ms-powiadomienia') !== '0'; } catch { return true; } })(), ctx: null, byly: new Set() };
+  function sygnal() {
+    try {
+      POW.ctx = POW.ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const c = POW.ctx, t0 = c.currentTime;
+      [0, 0.22].forEach((d, n) => {
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = 'sine'; o.frequency.value = n ? 1175 : 880;
+        g.gain.setValueAtTime(0.0001, t0 + d); g.gain.exponentialRampToValueAtTime(0.18, t0 + d + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d + 0.18);
+        o.connect(g).connect(c.destination); o.start(t0 + d); o.stop(t0 + d + 0.2);
+      });
+    } catch { /* bez dźwięku */ }
+  }
+  function powiadom(klucz, tytul, tekst) {
+    try { if (!sprawaZywa && !zywoTimer) return; } catch { return; }   // tylko na żywo, nie przy przeglądaniu starej sprawy
+    if (POW.byly.has(klucz)) return;
+    POW.byly.add(klucz);
+    let el = document.getElementById('powiadomienie');
+    if (!el) { el = document.createElement('div'); el.id = 'powiadomienie'; el.className = 'powiadomienie'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+    el.innerHTML = `<b>${esc(tytul)}</b><span>${esc(utnijTekst(tekst, 140))}</span>`;
+    el.classList.add('widoczne');
+    clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('widoczne'), 9000);
+    if (!POW.wl) return;
+    sygnal();
+    try {
+      if ('Notification' in window && Notification.permission === 'granted' && (document.hidden || !document.hasFocus())) new Notification(tytul, { body: utnijTekst(tekst, 180), tag: klucz });
+    } catch { /* bez powiadomienia systemowego */ }
+  }
+  const utnijTekst = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; };
+  (function przyciskPowiadomien() {
+    const b = $('powiadom-btn'); if (!b) return;
+    const pokaz = () => { b.setAttribute('aria-pressed', String(POW.wl)); b.textContent = POW.wl ? 'Powiadomienia: wł.' : 'Powiadomienia: wył.'; };
+    pokaz();
+    b.addEventListener('click', () => {
+      POW.wl = !POW.wl; try { localStorage.setItem('ms-powiadomienia', POW.wl ? '1' : '0'); } catch { /* bez pamięci */ }
+      if (POW.wl) { sygnal(); try { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission(); } catch { /* brak */ } }
+      pokaz();
+    });
+    // pierwsze dotknięcie odblokowuje dźwięk (Safari i Chrome grają dopiero po geście użytkownika)
+    document.addEventListener('pointerdown', () => { try { POW.ctx = POW.ctx || new (window.AudioContext || window.webkitAudioContext)(); POW.ctx.resume(); } catch { /* brak */ } }, { once: true });
+  })();
+
   let pytanieWyslane = null;
   function rysujPanele(s) {
     const t = (s && s.tablica) || {};
     const a = $('alarm');
     if (a) { a.hidden = !t.alarm; if (t.alarm) $('alarm-tekst').textContent = t.alarm.tekst; }
+    if (t.alarm) powiadom('alarm:' + (s.sprawa || '') + t.alarm.tekst, 'Alarm 112', t.alarm.tekst);
     const pl = $('plakietka'), n = t.asystenciPracuje || 0;
     if (pl) { pl.hidden = !n || !!(s && s.wnioski); $('plakietka-t').textContent = `konsultuje się (${n})`; }
     const k = $('pytanie'), p = t.pytanie;
@@ -2231,6 +2295,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
       box.appendChild(b);
     }
     k.hidden = false;
+    powiadom('pytanie:' + (s.sprawa || '') + p.id, 'Konsylium pyta Ciebie', p.tekst);
   }
   async function odpowiedzNaPytanie(p, opcja, przycisk) {
     if (!sprawaZywa || !window.MsMost) return;
@@ -2312,7 +2377,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
       ? `<ul class="ustalenia odrzucone">${odrz.map((u) => `<li class="skreslone" title="${esc(u.tekst)}"><s>${esc(u.tekst)}</s>${powod(u)}</li>`).join('')}</ul>`
       : `<p class="pusto">Jeszcze nic</p>`;
     const zrobione = scen.sceny.filter((_, n) => n < si).length;
-    const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc >= 4 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
+    const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc <= 2 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
     // Mapa sporu (Michał, ankieta 2.11): w rundach konsylium zamiast „Stan prac” – punkty sporne, kto po której stronie, który fakt kogo przesunął; bez procentów
     const spor = rysujMapeSporu(si, sc);
     const lewa = spor
@@ -2365,13 +2430,14 @@ async function powiedzLekarz(tekst, hipoteza = false) {
     if (el.hidden) {
       const wiersz = (naz, tresc) => tresc ? `<div class="w"><span>${naz}</span><p>${esc(tresc)}</p></div>` : '';
       const zr = String(k.zrodla || '').split(/\n+|;\s+/).map((x) => x.replace(/^[-•*]\s*/, '').trim()).filter(Boolean).slice(0, 4);
-      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/[45]/.test(k.pilnosc) ? ' wysoka' : ''}">${esc(k.pilnosc)}</span>` : ''}</div>` +
+      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/^\D*[12](\D|$)/.test(String(k.pilnosc)) ? ' wysoka' : ''}">${esc((/^\d/.test(String(k.pilnosc)) ? 'pilność ' : '') + k.pilnosc + (k.termin ? ' · ' + k.termin : ''))}</span>` : ''}</div>` +
         wiersz('Zalecenie', k.zalecenie) + wiersz('Dlaczego', k.dlaczego) + wiersz('Co by to obaliło', k.obalenie) + wiersz('Kiedy wrócić', k.powrot) +
-        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
+        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-png">Zapisz PNG</button><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
         `<p class="stopka-k">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
       el.hidden = false;
       $('pokoj').classList.add('karta-na-ekranie');
       $('karta-zamknij').addEventListener('click', () => { kartaZamknieta = klucz; rysujKarteSprawy(false); });
+      $('karta-png').addEventListener('click', () => zapiszKartePng(el));
       $('karta-kopiuj').addEventListener('click', () => {
         const txt = Array.from(el.querySelectorAll('.w')).map((w) => w.querySelector('span').textContent + ': ' + w.querySelector('p').textContent).join('\n');
         if (navigator.clipboard) navigator.clipboard.writeText(`Karta sprawy ${scen.sprawa || ''}\n${txt}`).then(() => { $('karta-kopiuj').textContent = 'Skopiowano'; setTimeout(() => { const b = $('karta-kopiuj'); if (b) b.textContent = 'Kopiuj tekst'; }, 1600); }).catch(() => {});
@@ -2385,6 +2451,37 @@ async function powiedzLekarz(tekst, hipoteza = false) {
         kartaAnim.onfinish = () => {};
       }
     }
+  }
+
+  // „Zapisz PNG” (ankieta 2.11): karta rysowana na canvasie z tych samych pól co na ekranie – bez sieci, plik karta-sprawy-<sprawa>.png
+  function zapiszKartePng(el) {
+    const S = 2, Wc = 900, pad = 40, c = document.createElement('canvas'), g = c.getContext('2d');
+    const font = (w, px) => `${w} ${px}px 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif`;
+    const zawin = (t, max, f) => { g.font = f; const out = []; let l = ''; String(t || '').split(/\s+/).forEach((x) => { const p2 = l ? l + ' ' + x : x; if (g.measureText(p2).width > max && l) { out.push(l); l = x; } else l = p2; }); if (l) out.push(l); return out; };
+    const przytnij = (l, n) => l.length > n ? l.slice(0, n - 1).concat([l[n - 1].replace(/\s*\S*$/, '') + ' …']) : l;
+    const wiersze = Array.from(el.querySelectorAll('.w')).map((w, n) => [w.querySelector('span').textContent.toUpperCase(), przytnij(zawin(w.querySelector('p').textContent, Wc - pad * 2 - 200, font(500, 17)), n ? 5 : 6)]);
+    const zrT = (el.querySelector('.stop .zr') || {}).textContent || '';
+    const zrL = zrT ? zawin(zrT, Wc - pad * 2, font(600, 13)) : [];
+    const pilEl = el.querySelector('.nag .pil'), pil = pilEl ? pilEl.textContent : '', wys = pilEl && pilEl.classList.contains('wysoka');
+    const Hc = 110 + wiersze.reduce((a, [, l]) => a + Math.max(1, l.length) * 25 + 26, 0) + zrL.length * 19 + 70;
+    const prost = (x, y, w, h, r) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h); g.fill(); };
+    c.width = Wc * S; c.height = Hc * S; g.scale(S, S);
+    g.fillStyle = '#f4f8f7'; g.fillRect(0, 0, Wc, Hc);
+    g.fillStyle = '#0F5E58'; prost(pad, 34, 40, 40, 10);
+    g.fillStyle = '#fff'; g.font = font(800, 22); g.fillText('K', pad + 13, 62);
+    g.fillStyle = '#14302D'; g.font = font(750, 24); g.fillText('Karta sprawy ' + (scen.sprawa || ''), pad + 56, 62);
+    if (pil) { g.font = font(750, 14); const t = pil.length > 46 ? pil.slice(0, 45) + '…' : pil, pw = g.measureText(t).width + 24; g.fillStyle = wys ? '#A83A38' : '#0F5E58'; prost(Wc - pad - pw, 40, pw, 28, 14); g.fillStyle = '#fff'; g.fillText(t, Wc - pad - pw + 12, 59); }
+    let y = 100;
+    wiersze.forEach(([e, l]) => {
+      g.fillStyle = '#c9d6d3'; g.fillRect(pad, y, Wc - pad * 2, 1); y += 28;
+      g.fillStyle = '#5C7570'; g.font = font(800, 12); g.fillText(e, pad, y);
+      g.fillStyle = '#14302D'; g.font = font(500, 17); l.forEach((t, n) => g.fillText(t, pad + 200, y + n * 25));
+      y += Math.max(1, l.length) * 25 - 2;
+    });
+    g.fillStyle = '#c9d6d3'; g.fillRect(pad, y, Wc - pad * 2, 1); y += 26;
+    g.fillStyle = '#0F5E58'; g.font = font(600, 13); zrL.forEach((t) => { g.fillText(t, pad, y); y += 19; });
+    g.fillStyle = '#5C7570'; g.font = font(500, 11.5); g.fillText('Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.', pad, Hc - 24);
+    c.toBlob((b) => { if (!b) return; const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'karta-sprawy-' + (scen.sprawa || 'konsylium') + '.png'; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); }, 'image/png');
   }
 
   // ---------- protokół, legenda ----------
@@ -2441,7 +2538,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
 
   // ---------- na żywo: folder sprawy czytany co 3 s (File System Access API: Chrome, Edge, powłoka Windows) ----------
   let zywoTimer = null;
-  function zatrzymajZywo() { zakonczPrzerwe(); clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
+  function zatrzymajZywo() { zakonczPrzerwe(); clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('powiadom-btn').hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
   async function czytajUchwyt(uchwyt, sciezka, pliki) {
     for await (const [nazwa, el] of uchwyt.entries()) {
       if (el.kind === 'directory') await czytajUchwyt(el, sciezka + nazwa + '/', pliki);
@@ -2490,7 +2587,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
     if (tylkoSwieza && Date.now() - s.zmiana > 3 * 3600 * 1000) return false;
     zatrzymajZywo();
     let nazwa = s.nazwa, licz = 0;
-    sprawaZywa = nazwa; $('glos').hidden = false;
+    sprawaZywa = nazwa; $('glos').hidden = false; $('powiadom-btn').hidden = false;
     const odswiez = async () => {
       try {
         if (++licz % 5 === 0) { const n = await najnowszaSprawa(); if (n && n.nazwa !== nazwa) { nazwa = n.nazwa; sprawaZywa = nazwa; scen = null; kroki = []; i = 0; } }

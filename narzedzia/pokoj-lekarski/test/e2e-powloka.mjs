@@ -97,6 +97,8 @@ assert.equal(await r.locator('#alarm').isVisible(), true, 'pasek alarmu 112 wido
 assert.match(await r.locator('#alarm').innerText(), /zespołu wieńcowego/);
 assert.match(await r.locator('#plakietka').innerText(), /konsultuje się \(2\)/, 'plakietka asystentów na drzwiach');
 assert.equal(await r.locator('#pytanie').isVisible(), true, 'karta pytania widoczna');
+assert.equal(await r.locator('#powiadom-btn').isVisible(), true, 'przycisk powiadomień na żywo');
+assert.match(await r.locator('#powiadomienie').evaluate((e) => e.textContent), /Konsylium pyta Ciebie|Alarm 112/, 'powiadomienie na ekranie (pytanie / alarm)');
 await r.locator('#pytanie-opcje button', { hasText: 'nie wiem' }).click();
 await p.waitForTimeout(600);
 const odp = (await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').map((l) => JSON.parse(l)).pop();

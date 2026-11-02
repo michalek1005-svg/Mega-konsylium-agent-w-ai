@@ -256,6 +256,7 @@ ${podpisy(wpisy)}`;
     // ...ale dopiero gdy odtwarzanie dojdzie do końca dyskusji (nie zasłania trwającej rozmowy)
     const klucz = (s.sprawa || '') + '|' + w.tekst.length;
     if (otworz && wnioskiPokazane !== klucz) wnioskiCzekaja = klucz;
+    if (otworz) powiadom('wnioski:' + klucz, 'Wnioski konsylium gotowe', (rek && rek.tresc) || 'Sprawa ' + (s.sprawa || ''));
   }
   $('wnioski-btn').addEventListener('click', () => { $('wnioski').hidden = !$('wnioski').hidden; });
 
@@ -706,11 +707,58 @@ async function powiedzLekarz(tekst, hipoteza = false) {
   })();
 
   // ---------- panele na żywo: alarm 112, pytanie konsylium do Ciebie, plakietka asystentów (ankieta zmian 1.11) ----------
+  // ---------- powiadomienia (ankieta innowacji 2.11.2026, pkt 10) ----------
+  // Pytanie konsylium do Ciebie, alarm 112 i gotowe Wnioski: komunikat na ekranie + krótki sygnał dźwiękowy,
+  // a gdy okno jest w tle i system pozwala (Windows; iPad tylko przez https) – powiadomienie systemowe.
+  // Na iPadzie przez http (sieć domowa) Safari nie daje powiadomień systemowych: działa komunikat i dźwięk przy otwartej aplikacji.
+  const POW = { wl: (() => { try { return localStorage.getItem('ms-powiadomienia') !== '0'; } catch { return true; } })(), ctx: null, byly: new Set() };
+  function sygnal() {
+    try {
+      POW.ctx = POW.ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const c = POW.ctx, t0 = c.currentTime;
+      [0, 0.22].forEach((d, n) => {
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = 'sine'; o.frequency.value = n ? 1175 : 880;
+        g.gain.setValueAtTime(0.0001, t0 + d); g.gain.exponentialRampToValueAtTime(0.18, t0 + d + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + d + 0.18);
+        o.connect(g).connect(c.destination); o.start(t0 + d); o.stop(t0 + d + 0.2);
+      });
+    } catch { /* bez dźwięku */ }
+  }
+  function powiadom(klucz, tytul, tekst) {
+    try { if (!sprawaZywa && !zywoTimer) return; } catch { return; }   // tylko na żywo, nie przy przeglądaniu starej sprawy
+    if (POW.byly.has(klucz)) return;
+    POW.byly.add(klucz);
+    let el = document.getElementById('powiadomienie');
+    if (!el) { el = document.createElement('div'); el.id = 'powiadomienie'; el.className = 'powiadomienie'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+    el.innerHTML = `<b>${esc(tytul)}</b><span>${esc(utnijTekst(tekst, 140))}</span>`;
+    el.classList.add('widoczne');
+    clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('widoczne'), 9000);
+    if (!POW.wl) return;
+    sygnal();
+    try {
+      if ('Notification' in window && Notification.permission === 'granted' && (document.hidden || !document.hasFocus())) new Notification(tytul, { body: utnijTekst(tekst, 180), tag: klucz });
+    } catch { /* bez powiadomienia systemowego */ }
+  }
+  const utnijTekst = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; };
+  (function przyciskPowiadomien() {
+    const b = $('powiadom-btn'); if (!b) return;
+    const pokaz = () => { b.setAttribute('aria-pressed', String(POW.wl)); b.textContent = POW.wl ? 'Powiadomienia: wł.' : 'Powiadomienia: wył.'; };
+    pokaz();
+    b.addEventListener('click', () => {
+      POW.wl = !POW.wl; try { localStorage.setItem('ms-powiadomienia', POW.wl ? '1' : '0'); } catch { /* bez pamięci */ }
+      if (POW.wl) { sygnal(); try { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission(); } catch { /* brak */ } }
+      pokaz();
+    });
+    // pierwsze dotknięcie odblokowuje dźwięk (Safari i Chrome grają dopiero po geście użytkownika)
+    document.addEventListener('pointerdown', () => { try { POW.ctx = POW.ctx || new (window.AudioContext || window.webkitAudioContext)(); POW.ctx.resume(); } catch { /* brak */ } }, { once: true });
+  })();
+
   let pytanieWyslane = null;
   function rysujPanele(s) {
     const t = (s && s.tablica) || {};
     const a = $('alarm');
     if (a) { a.hidden = !t.alarm; if (t.alarm) $('alarm-tekst').textContent = t.alarm.tekst; }
+    if (t.alarm) powiadom('alarm:' + (s.sprawa || '') + t.alarm.tekst, 'Alarm 112', t.alarm.tekst);
     const pl = $('plakietka'), n = t.asystenciPracuje || 0;
     if (pl) { pl.hidden = !n || !!(s && s.wnioski); $('plakietka-t').textContent = `konsultuje się (${n})`; }
     const k = $('pytanie'), p = t.pytanie;
@@ -731,6 +779,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
       box.appendChild(b);
     }
     k.hidden = false;
+    powiadom('pytanie:' + (s.sprawa || '') + p.id, 'Konsylium pyta Ciebie', p.tekst);
   }
   async function odpowiedzNaPytanie(p, opcja, przycisk) {
     if (!sprawaZywa || !window.MsMost) return;
@@ -973,7 +1022,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
 
   // ---------- na żywo: folder sprawy czytany co 3 s (File System Access API: Chrome, Edge, powłoka Windows) ----------
   let zywoTimer = null;
-  function zatrzymajZywo() { zakonczPrzerwe(); clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
+  function zatrzymajZywo() { zakonczPrzerwe(); clearInterval(zywoTimer); zywoTimer = null; sprawaZywa = null; odswiezZywo = null; const g = $('glos'); if (g) g.hidden = true; $('powiadom-btn').hidden = true; $('zywo').classList.remove('nk-on'); $('zywo').textContent = 'Na żywo…'; }
   async function czytajUchwyt(uchwyt, sciezka, pliki) {
     for await (const [nazwa, el] of uchwyt.entries()) {
       if (el.kind === 'directory') await czytajUchwyt(el, sciezka + nazwa + '/', pliki);
@@ -1022,7 +1071,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
     if (tylkoSwieza && Date.now() - s.zmiana > 3 * 3600 * 1000) return false;
     zatrzymajZywo();
     let nazwa = s.nazwa, licz = 0;
-    sprawaZywa = nazwa; $('glos').hidden = false;
+    sprawaZywa = nazwa; $('glos').hidden = false; $('powiadom-btn').hidden = false;
     const odswiez = async () => {
       try {
         if (++licz % 5 === 0) { const n = await najnowszaSprawa(); if (n && n.nazwa !== nazwa) { nazwa = n.nazwa; sprawaZywa = nazwa; scen = null; kroki = []; i = 0; } }
