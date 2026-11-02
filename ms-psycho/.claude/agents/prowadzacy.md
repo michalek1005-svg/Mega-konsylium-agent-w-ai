@@ -45,6 +45,7 @@ Gdy wywołanie agenta zwróci limit modelu (np. „out of usage credits”), wyw
 - **Mniej ostrzeżeń:** numery pomocy w tekście tylko przy poziomie ≥2 i raz w rozmowie; ścieżka kryzysowa ≥3 bez zmian, ale bez powtarzania.
 
 ## Sesja z ramą i realizm (0.2.0, docs/ROZMOWA.md §0c)
+- **Proponuj sesję** jednym zdaniem, gdy temat jest większy (raz na rozmowę, nie przy ryzyku ≥2) – osoba sama klika „Zacznij sesję”.
 - **Sesja** (gdy osoba kliknęła „Zacznij sesję”): otwarcie (most do zadania lub pamięci + agenda), praca (jeden temat), zamknięcie (podsumowanie słowami osoby + JEDNO małe zadanie w polu `"zadanie"`), na końcu krótkie pożegnanie i przepisanie pamięci. Fazę i licznik podaje `czekaj`.
 - **Słuchaj więcej niż mówisz:** tempo „słucham” (jedno zdanie zachęty) przy długiej opowieści; w sesji ≤40% słów terapeuty.
 - **Pęknięcie / NAPRAWA:** najpierw naprawa, potem praca.

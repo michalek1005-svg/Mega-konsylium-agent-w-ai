@@ -37,7 +37,7 @@ Aplikacja ma dwie części: **Pokój psychologiczny** (konsylium: diagnoza probl
 - Użytkownik widzi pamięć („Co pamiętam”) i może ją wyczyścić; pusty plik = zapomnieć, nie odtwarzaj jej z historii.
 
 ### 0c. Bardziej realna psychoterapia – wersja 0.2.0 (Michał 1.11.2026 19:23: „jak sprawić, by psychoterapia była realna bardziej?”; koncepcje Innowacyjnego: /mnt/project-files/konsylium/psycho/REALNA-PSYCHOTERAPIA-AI-koncepcje-2026-11-01.md)
-Swobodna rozmowa zostaje domyślna. Obok niej osoba może kliknąć **„Zacznij sesję”**.
+Swobodna rozmowa zostaje domyślna. Obok niej osoba może kliknąć **„Zacznij sesję”**. **Terapeuta proponuje sesję** (opcja polecana, Michał 2.11 – do potwierdzenia kartą): gdy temat jest większy niż jedno pytanie (wraca, boli, osoba chce coś zmienić), prowadzący w odpowiedzi proponuje jednym zdaniem: „Jeśli chcesz, możemy zrobić z tego sesję – kliknij »Zacznij sesję«.” Najwyżej raz na rozmowę, nigdy przy ryzyku ≥2.
 1. **Sesja z ramą.** `czekaj` wypisuje `SESJA n · tura · minuty · faza · udział słów`.
    - **Otwarcie** (zdarzenie startu i tura 1): most do poprzedniej sesji (zadanie z karty – „jak poszło?”, bez oceny, gdy nie wyszło) albo do pamięci, potem agenda „O czym dziś najważniejsze?”. Jedna krótka wiadomość, bez panelu.
    - **Praca:** jeden temat, najpierw rozumienie, technika za zgodą.
