@@ -1,10 +1,10 @@
-# Instrukcja dla Operatora: MS Konsylium Psychologiczne 0.2.0 (commit f95ee72)
+# Instrukcja dla Operatora: MS Konsylium Psychologiczne 0.2.1 (commit c3c759f)
 
 Osobna aplikacja – **nie podmieniać** niczego w MS Konsylium (lekarskim). Ma własną nazwę, własne ustawienia i port iPada 8766, więc obie aplikacje mogą działać obok siebie.
 
 ## Pliki (ten katalog)
-- `MS-Konsylium-Psychologiczne-0.2.0-win-x64-f95ee72.zip` – aplikacja Windows (przenośna, ok. 127 MB).
-- `MS-Konsylium-Psychologiczne-folder-ms-psycho-f95ee72.zip` – folder pracy dla Claude (CLAUDE.md, agenci, skrypty, config z numerami pomocy, przypadki testowe PSY‑01…10). To samo co katalog `ms-psycho/` na gałęzi `claude/project-thread-ud83qw`.
+- `MS-Konsylium-Psychologiczne-0.2.1-win-x64-c3c759f.zip` – aplikacja Windows (przenośna, ok. 127 MB).
+- `MS-Konsylium-Psychologiczne-folder-ms-psycho-c3c759f.zip` – folder pracy dla Claude (CLAUDE.md, agenci, skrypty, config z numerami pomocy, przypadki testowe PSY‑01…10). To samo co katalog `ms-psycho/` na gałęzi `claude/project-thread-ud83qw`.
 - `zrzuty/` – jak wygląda (prezent, Rozmowa, kryzys, Pokój, Wnioski).
 
 ## Najprostsza droga na PC bez gita i node (z GitHuba)
@@ -33,3 +33,6 @@ Usuń oba foldery; ustawienia są w `%APPDATA%\MS Konsylium Psychologiczne`.
 
 ## Nowe w 0.2.0 (1.11.2026 wieczór)
 - Przycisk „Zacznij sesję” (sesja z ramą, karta zadania, suwaki na koniec). Nowe pliki w `konta/<konto>/`: `zadanie.json`, `suwaki.json` – zachować przy podmianie folderu.
+
+## Nowe w 0.2.1 (2.11.2026)
+- Styl terapeuty przy koncie; notatka superwizora po sesji. Nowy plik `konta/<konto>/superwizja.json` – zachować.
