@@ -473,3 +473,9 @@ html.osadzony .legenda { display: none; }
 /* pole „Powiedz”: przełącznik fakt / przypuszczenie (ankieta innowacji 2.11.2026) */
 .glos .glos-hipoteza { font-size: 12px; padding: 5px 10px; opacity: .75; }
 .glos .glos-hipoteza[aria-pressed="true"] { opacity: 1; background: var(--ostrzezenie); color: var(--ink); }
+
+/* Graficzny 2.11: typ „badanie kliniczne” w odznace, wariant ciemny karty i odznak */
+.dymek .odz.trial { color: #6a4c9c; background: rgba(124,92,180,.1); box-shadow: inset 0 0 0 1px rgba(124,92,180,.28); } .dymek .odz.trial i { background: #7c5cb4; }
+:root[data-motyw="ciemny"] .karta-sprawy { box-shadow: 0 2.4cqw 4.4cqw -2cqw rgba(0,0,0,.8), inset 0 0 0 1px rgba(92,200,187,.22); }
+:root[data-motyw="ciemny"] .karta-sprawy .w, :root[data-motyw="ciemny"] .karta-sprawy .stop { border-top-color: rgba(92,200,187,.16); }
+:root[data-motyw="ciemny"] .karta-sprawy .stop .zr b { color: #5CC8BB; }

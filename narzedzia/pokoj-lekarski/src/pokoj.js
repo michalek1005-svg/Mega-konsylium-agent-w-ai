@@ -351,7 +351,7 @@ ${podpisy(wpisy)}`;
   }
 
   // ---------- odznaka źródła przy dymku (Michał, ankieta 2.11): Rejestr leków / PubMed / Wytyczne PL; klik = cytat ----------
-  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], inne: ['Ź', 'Źródło'] };
+  const ZRODLA_TYP = { pubmed: ['P', 'PubMed'], doi: ['D', 'DOI'], rpl: ['R', 'Rejestr leków'], pl: ['W', 'Wytyczne PL'], trial: ['T', 'Badanie kliniczne'], inne: ['Ź', 'Źródło'] };
   function zrodlaWypowiedzi(w) {
     if (Array.isArray(w.zrodla) && w.zrodla.length) return w.zrodla.map((z) => ({ typ: z.typ || 'inne', etykieta: z.etykieta || '', cytat: z.cytat || '' }));
     const t = String(w.pelny || w.tresc || ''), out = [], seen = new Set();
@@ -766,7 +766,7 @@ async function powiedzLekarz(tekst, hipoteza = false) {
       ? `<ul class="ustalenia odrzucone">${odrz.map((u) => `<li class="skreslone" title="${esc(u.tekst)}"><s>${esc(u.tekst)}</s>${powod(u)}</li>`).join('')}</ul>`
       : `<p class="pusto">Jeszcze nic</p>`;
     const zrobione = scen.sceny.filter((_, n) => n < si).length;
-    const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc >= 4 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
+    const pil = t.pilnosc ? `<span class="pilnosc${t.pilnosc <= 2 ? ' wysoka' : ''}" title="Pilność wg triage">pilność ${t.pilnosc}</span>` : '';
     // Mapa sporu (Michał, ankieta 2.11): w rundach konsylium zamiast „Stan prac” – punkty sporne, kto po której stronie, który fakt kogo przesunął; bez procentów
     const spor = rysujMapeSporu(si, sc);
     const lewa = spor
@@ -819,13 +819,14 @@ async function powiedzLekarz(tekst, hipoteza = false) {
     if (el.hidden) {
       const wiersz = (naz, tresc) => tresc ? `<div class="w"><span>${naz}</span><p>${esc(tresc)}</p></div>` : '';
       const zr = String(k.zrodla || '').split(/\n+|;\s+/).map((x) => x.replace(/^[-•*]\s*/, '').trim()).filter(Boolean).slice(0, 4);
-      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/[45]/.test(k.pilnosc) ? ' wysoka' : ''}">${esc(k.pilnosc)}</span>` : ''}</div>` +
+      el.innerHTML = `<div class="nag"><span class="k">K</span><b>Karta sprawy ${esc(scen.sprawa || '')}</b>${k.pilnosc ? `<span class="pil${/^\D*[12](\D|$)/.test(String(k.pilnosc)) ? ' wysoka' : ''}">${esc((/^\d/.test(String(k.pilnosc)) ? 'pilność ' : '') + k.pilnosc + (k.termin ? ' · ' + k.termin : ''))}</span>` : ''}</div>` +
         wiersz('Zalecenie', k.zalecenie) + wiersz('Dlaczego', k.dlaczego) + wiersz('Co by to obaliło', k.obalenie) + wiersz('Kiedy wrócić', k.powrot) +
-        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
+        `<div class="stop"><span class="zr">${zr.length ? 'Źródła: ' + zr.map((x) => `<b>${esc(x.slice(0, 48))}</b>`).join(' · ') : ''}</span><span class="akcje"><button type="button" class="nk-button" id="karta-png">Zapisz PNG</button><button type="button" class="nk-button" id="karta-kopiuj">Kopiuj tekst</button><button type="button" class="nk-button" id="karta-zamknij">Zamknij</button></span></div>` +
         `<p class="stopka-k">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>`;
       el.hidden = false;
       $('pokoj').classList.add('karta-na-ekranie');
       $('karta-zamknij').addEventListener('click', () => { kartaZamknieta = klucz; rysujKarteSprawy(false); });
+      $('karta-png').addEventListener('click', () => zapiszKartePng(el));
       $('karta-kopiuj').addEventListener('click', () => {
         const txt = Array.from(el.querySelectorAll('.w')).map((w) => w.querySelector('span').textContent + ': ' + w.querySelector('p').textContent).join('\n');
         if (navigator.clipboard) navigator.clipboard.writeText(`Karta sprawy ${scen.sprawa || ''}\n${txt}`).then(() => { $('karta-kopiuj').textContent = 'Skopiowano'; setTimeout(() => { const b = $('karta-kopiuj'); if (b) b.textContent = 'Kopiuj tekst'; }, 1600); }).catch(() => {});
@@ -839,6 +840,37 @@ async function powiedzLekarz(tekst, hipoteza = false) {
         kartaAnim.onfinish = () => {};
       }
     }
+  }
+
+  // „Zapisz PNG” (ankieta 2.11): karta rysowana na canvasie z tych samych pól co na ekranie – bez sieci, plik karta-sprawy-<sprawa>.png
+  function zapiszKartePng(el) {
+    const S = 2, Wc = 900, pad = 40, c = document.createElement('canvas'), g = c.getContext('2d');
+    const font = (w, px) => `${w} ${px}px 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif`;
+    const zawin = (t, max, f) => { g.font = f; const out = []; let l = ''; String(t || '').split(/\s+/).forEach((x) => { const p2 = l ? l + ' ' + x : x; if (g.measureText(p2).width > max && l) { out.push(l); l = x; } else l = p2; }); if (l) out.push(l); return out; };
+    const przytnij = (l, n) => l.length > n ? l.slice(0, n - 1).concat([l[n - 1].replace(/\s*\S*$/, '') + ' …']) : l;
+    const wiersze = Array.from(el.querySelectorAll('.w')).map((w, n) => [w.querySelector('span').textContent.toUpperCase(), przytnij(zawin(w.querySelector('p').textContent, Wc - pad * 2 - 200, font(500, 17)), n ? 5 : 6)]);
+    const zrT = (el.querySelector('.stop .zr') || {}).textContent || '';
+    const zrL = zrT ? zawin(zrT, Wc - pad * 2, font(600, 13)) : [];
+    const pilEl = el.querySelector('.nag .pil'), pil = pilEl ? pilEl.textContent : '', wys = pilEl && pilEl.classList.contains('wysoka');
+    const Hc = 110 + wiersze.reduce((a, [, l]) => a + Math.max(1, l.length) * 25 + 26, 0) + zrL.length * 19 + 70;
+    const prost = (x, y, w, h, r) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h); g.fill(); };
+    c.width = Wc * S; c.height = Hc * S; g.scale(S, S);
+    g.fillStyle = '#f4f8f7'; g.fillRect(0, 0, Wc, Hc);
+    g.fillStyle = '#0F5E58'; prost(pad, 34, 40, 40, 10);
+    g.fillStyle = '#fff'; g.font = font(800, 22); g.fillText('K', pad + 13, 62);
+    g.fillStyle = '#14302D'; g.font = font(750, 24); g.fillText('Karta sprawy ' + (scen.sprawa || ''), pad + 56, 62);
+    if (pil) { g.font = font(750, 14); const t = pil.length > 46 ? pil.slice(0, 45) + '…' : pil, pw = g.measureText(t).width + 24; g.fillStyle = wys ? '#A83A38' : '#0F5E58'; prost(Wc - pad - pw, 40, pw, 28, 14); g.fillStyle = '#fff'; g.fillText(t, Wc - pad - pw + 12, 59); }
+    let y = 100;
+    wiersze.forEach(([e, l]) => {
+      g.fillStyle = '#c9d6d3'; g.fillRect(pad, y, Wc - pad * 2, 1); y += 28;
+      g.fillStyle = '#5C7570'; g.font = font(800, 12); g.fillText(e, pad, y);
+      g.fillStyle = '#14302D'; g.font = font(500, 17); l.forEach((t, n) => g.fillText(t, pad + 200, y + n * 25));
+      y += Math.max(1, l.length) * 25 - 2;
+    });
+    g.fillStyle = '#c9d6d3'; g.fillRect(pad, y, Wc - pad * 2, 1); y += 26;
+    g.fillStyle = '#0F5E58'; g.font = font(600, 13); zrL.forEach((t) => { g.fillText(t, pad, y); y += 19; });
+    g.fillStyle = '#5C7570'; g.font = font(500, 11.5); g.fillText('Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.', pad, Hc - 24);
+    c.toBlob((b) => { if (!b) return; const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'karta-sprawy-' + (scen.sprawa || 'konsylium') + '.png'; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); }, 'image/png');
   }
 
   // ---------- protokół, legenda ----------
