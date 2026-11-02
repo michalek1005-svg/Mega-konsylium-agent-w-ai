@@ -486,6 +486,8 @@ var FRAZY = /*@@FRAZY@@*/null;
       return Promise.all(k.map(function (x) { return most.czytaj('konta/' + x.nazwa + '/profil.json').then(function (r) { try { return r && JSON.parse(r.tekst); } catch (e) { return null; } }); }));
     }).then(function (p) { return (p || []).filter(Boolean).sort(function (a, b) { return String(b.ostatnio || '').localeCompare(String(a.ostatnio || '')); }); });
   }
+  var STYLE = [['spokojny', 'Spokojny i pytający'], ['konkretny', 'Bezpośredni i konkretny'], ['cieply', 'Ciepły, z humorem']];
+  function styleOpcje(w) { return STYLE.map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === (w || 'spokojny') ? ' selected' : '') + '>' + x[1] + '</option>'; }).join(''); }
   function pokazKonta(komunikat) {
     var ok = $('konta-okno');
     listaKont().then(function (konta) {
@@ -494,13 +496,16 @@ var FRAZY = /*@@FRAZY@@*/null;
       if (konta.length) h += '<div class="kto-lista">' + konta.map(function (k) { return '<button type="button" data-konto="' + esc(k.konto) + '"><span class="aw">' + esc((k.pseudonim || '?').slice(0, 2).toUpperCase()) + '</span><span><b>' + esc(k.pseudonim) + '</b><br><small>' + esc(k.wiek) + ' l. · ' + esc(k.plec) + (k.pin ? ' · 🔒 PIN' : '') + '</small></span></button>'; }).join('') + '</div>';
       h += '<form id="konto-nowe" novalidate' + (konta.length ? ' hidden' : '') + '><label for="k-ps">Pseudonim</label><input id="k-ps" maxlength="24" required placeholder="np. Hala, Leśny, M.">'
         + '<div class="rzad"><div><label for="k-wiek">Wiek</label><input id="k-wiek" type="number" min="18" max="110" required></div><div><label for="k-plec">Płeć</label><select id="k-plec"><option value="kobieta">kobieta</option><option value="mężczyzna">mężczyzna</option><option value="inna / wolę nie mówić">inna / wolę nie mówić</option></select></div></div>'
+        + '<label for="k-styl">Styl terapeuty (zmienisz później w tym oknie)</label><select id="k-styl">' + styleOpcje() + '</select>'
         + '<label for="k-pin">PIN (opcjonalnie, 4–8 cyfr)</label><input id="k-pin" inputmode="numeric" pattern="[0-9]{4,8}" maxlength="8" placeholder="zostaw puste, jeśli komputer jest tylko Twój">'
         + '<p class="blad" id="k-blad"></p><div class="akcje"><button class="btn on" type="submit">Załóż konto</button>' + (konta.length ? '<button class="btn" type="button" id="k-wroc">Wróć</button>' : '') + '</div></form>';
+      if (stan.konto) h += '<label for="k-styl-teraz">Styl terapeuty dla ' + esc(stan.konto.pseudonim) + '</label><select id="k-styl-teraz">' + styleOpcje(stan.konto.styl) + '</select>';
       if (konta.length) h += '<div class="akcje" id="k-dodaj-box"><button class="btn" type="button" id="k-dodaj">+ Nowe konto</button>' + (stan.konto ? '<button class="btn" type="button" id="k-zamknij">Zamknij</button>' : '') + '</div>';
       ok.innerHTML = h; $('konta').hidden = false;
       var f = $('konto-nowe');
       if ($('k-dodaj')) $('k-dodaj').onclick = function () { f.hidden = false; $('k-dodaj-box').hidden = true; $('k-ps').focus(); };
       if ($('k-wroc')) $('k-wroc').onclick = function () { f.hidden = true; $('k-dodaj-box').hidden = false; };
+      if ($('k-styl-teraz')) $('k-styl-teraz').onchange = function () { stan.konto.styl = this.value; most.zapisz('konta/' + stan.konto.konto + '/profil.json', JSON.stringify(stan.konto, null, 2)).catch(function () {}); };
       if ($('k-zamknij')) $('k-zamknij').onclick = function () { $('konta').hidden = true; };
       f.onsubmit = function (e) {
         e.preventDefault();
@@ -510,7 +515,7 @@ var FRAZY = /*@@FRAZY@@*/null;
         if (pin && !/^\d{4,8}$/.test(pin)) { $('k-blad').textContent = 'PIN: 4–8 cyfr albo puste.'; return; }
         var id = 'k' + Math.random().toString(36).slice(2, 7).padEnd(5, '0');
         (pin ? skrot(pin) : Promise.resolve(null)).then(function (hash) {
-          var p = { konto: id, pseudonim: ps.slice(0, 24), wiek: wiek, plec: $('k-plec').value, pin: hash || undefined, utworzono: new Date().toISOString(), ostatnio: new Date().toISOString() };
+          var p = { konto: id, pseudonim: ps.slice(0, 24), wiek: wiek, plec: $('k-plec').value, styl: $('k-styl').value, pin: hash || undefined, utworzono: new Date().toISOString(), ostatnio: new Date().toISOString() };
           return most.zapisz('konta/' + id + '/profil.json', JSON.stringify(p, null, 2)).then(function () { wejdz(p, true); });
         }).catch(function (er) { $('k-blad').textContent = 'Nie udało się zapisać konta: ' + er.message; });
       };
@@ -554,10 +559,22 @@ var FRAZY = /*@@FRAZY@@*/null;
       var t = r && r.tekst.trim();
       p.dataset.co = 'pamiec';
       p.innerHTML = '<h3>Co pamiętam z naszych rozmów</h3>' + (t ? md(t) : 'Na razie nic. Po rozmowie zapiszę tu krótko, co ważne – żeby następnym razem nie zaczynać od zera.') + '<div id="wykres-suwakow"></div>'
+        + '<div id="superwizja-box"></div>'
         + (stan.konto.nastepny_termin ? '<p><b>Następna rozmowa:</b> ' + esc(stan.konto.nastepny_termin) + '</p>' : '')
         + '<div class="akcje" style="margin-top:12px;white-space:normal"><button class="btn" type="button" id="pamiec-czysc">Wyczyść pamięć</button> <button class="btn" type="button" id="pamiec-zamknij">Zamknij</button></div>';
       p.hidden = false;
       $('pamiec-zamknij').onclick = function () { p.hidden = true; };
+      most.czytaj('konta/' + stan.konto.konto + '/superwizja.json').then(function (r) {
+        var l = []; try { l = (r && JSON.parse(r.tekst)) || []; } catch (e) {}
+        var o = l[l.length - 1]; if (!o || !$('superwizja-box')) return;
+        $('superwizja-box').innerHTML = '<div style="white-space:normal;margin-top:12px"><b>Superwizja – sesja ' + esc(o.nr) + '</b><details><summary>Streszczenie terapeuty</summary>' + md(o.streszczenie || '') + '</details>'
+          + '<label for="sw-notatka" style="display:block;margin-top:6px">Notatka superwizora (2–3 zdania – terapeuta uwzględni ją w następnej sesji)</label><textarea id="sw-notatka" rows="3" maxlength="800" style="width:100%;border-radius:12px;padding:8px;font:inherit">' + esc(o.notatka || '') + '</textarea>'
+          + '<button class="btn" type="button" id="sw-zapisz">Zapisz notatkę</button> <small id="sw-ok"></small></div>';
+        $('sw-zapisz').onclick = function () {
+          o.notatka = $('sw-notatka').value.trim(); o.notatka_ts = new Date().toISOString();
+          most.zapisz('konta/' + stan.konto.konto + '/superwizja.json', JSON.stringify(l, null, 2)).then(function () { $('sw-ok').textContent = 'Zapisano ✓'; }).catch(function (e) { $('sw-ok').textContent = 'Błąd: ' + e.message; });
+        };
+      }).catch(function () {});
       most.czytaj('konta/' + stan.konto.konto + '/suwaki.json').then(function (r) {
         var l = []; try { l = (r && JSON.parse(r.tekst)) || []; } catch (e) {}
         if (!l.length || !$('wykres-suwakow')) return;

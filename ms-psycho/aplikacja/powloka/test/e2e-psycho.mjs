@@ -59,11 +59,12 @@ try {
   await zrzut('4a-konto-nowe');
   await r.fill('#k-ps', 'Leśny'); await r.fill('#k-wiek', '16'); await r.click('#konto-nowe button[type=submit]');
   assert.match(await r.textContent('#k-blad'), /18\+/);
-  await r.fill('#k-wiek', '41'); await r.selectOption('#k-plec', 'mężczyzna'); await r.click('#konto-nowe button[type=submit]');
+  await r.fill('#k-wiek', '41'); await r.selectOption('#k-plec', 'mężczyzna'); await r.selectOption('#k-styl', 'konkretny'); await r.click('#konto-nowe button[type=submit]');
   await r.waitForSelector('#konta', { state: 'hidden' });
   const konto = readdirSync(join(folder, 'konta'))[0];
   assert.match(konto, /^k[a-z0-9]{5}$/);
   assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'profil.json'), 'utf8')).pseudonim, 'Leśny');
+  assert.equal(JSON.parse(readFileSync(join(folder, 'konta', konto, 'profil.json'), 'utf8')).styl, 'konkretny');
   assert.match(await r.textContent('#konto-nazwa'), /Leśny/);
   await r.waitForSelector('.msg.zespol');
   await czekaj(async () => readdirSync(join(folder, 'rozmowy')).length === 1, 8000, 'katalog rozmowy');
@@ -79,7 +80,7 @@ try {
   assert.equal(u.wiadomosci[0].ryzykoLokalne, undefined);
   assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /NOWE wiadomości[\s\S]*szefowa/);
 
-  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /KONTO: Leśny · 41 l\.[\s\S]*SZYBKO NAJPIERW/);
+  assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /KONTO: Leśny · 41 l\.[\s\S]*STYL TERAPEUTY \(wybór osoby\): bezpośredni[\s\S]*SZYBKO NAJPIERW/);
   // 2b. Szybka odpowiedź wstępna z pytaniem (Michał 15:43) → pasek „zbiera opinie zespołu”
   writeFileSync(join(folder, 'wst.json'), JSON.stringify({ tekst: 'Auć, to musiało zaboleć – zwłaszcza przy wszystkich. Co wtedy poczułeś najpierw: wstyd czy złość?', ryzyko: 0, wstepna: true }));
   assert.match(py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--plik', join(folder, 'wst.json')), /OK: odpowiedź #1/);
@@ -131,6 +132,8 @@ try {
   const su = await czekaj(async () => { try { return JSON.parse(readFileSync(join(folder, 'konta', konto, 'suwaki.json'), 'utf8')); } catch { return null; } }, 6000, 'suwaki.json');
   assert.equal(su[0].trafnosc, 8);
   assert.match(py('rozmowa.py', 'czekaj', '--limit', '3'), /SESJA ZAKOŃCZONA/);
+  writeFileSync(join(folder, 'sw.md'), 'Sesja 1: upokorzenie po krytyce szefowej przy zespole. Osoba przyjęła zadanie zapisania, co padło. Ryzyko 0. Suwaki 6/8. Klient-sędzia: 9/10.');
+  assert.match(py('rozmowa.py', 'superwizja', '--rozmowa', id, '--plik', join(folder, 'sw.md')), /OK: streszczenie sesji 1/);
   py('rozmowa.py', 'odpowiedz', '--rozmowa', id, '--tekst', 'Dziękuję za dziś 🙂 Trzymam kciuki za te 10 minut wieczorem – do zobaczenia za tydzień, a gdyby coś się działo wcześniej, pisz śmiało.', '--ryzyko', '0');
 
   // 4. Filtr ryzyka w aplikacji: karta kryzysowa od razu, bez modelu
@@ -163,6 +166,10 @@ try {
   await r.click('#pamiec-btn');
   await r.waitForSelector('#formulacja:not([hidden]) >> text=Co pamiętam');
   assert.match(await r.textContent('#formulacja'), /cztery oczy/);
+  await r.waitForSelector('#sw-notatka');
+  await r.fill('#sw-notatka', 'Mniej techniki, więcej uznania na początku.');
+  await r.click('#sw-zapisz');
+  await czekaj(async () => JSON.parse(readFileSync(join(folder, 'konta', konto, 'superwizja.json'), 'utf8'))[0].notatka.startsWith('Mniej techniki'), 6000, 'notatka superwizora');
   await zrzut('7a-co-pamietam');
   await r.click('#pamiec-zamknij');
 

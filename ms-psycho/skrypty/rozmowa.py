@@ -16,6 +16,7 @@ Protokół i zasady: docs/ROZMOWA.md. Na Windows: python skrypty/rozmowa.py …
   python skrypty/rozmowa.py pamiec --rozmowa ID --plik pamiec.md          pamięć konta (konta/<konto>/pamiec.md) – po każdej rozmowie
         0.2.0 (docs/ROZMOWA.md §0c): "tempo": "slucham" (jedno zdanie zachęty), "zadanie": "…" (jedno na sesję, w zamknięciu),
         "obserwacja": "…" (jeden wzorzec na sesję, od 3. sesji, tentatywnie)
+  python skrypty/rozmowa.py superwizja --rozmowa ID --plik streszczenie.md  po końcu sesji: streszczenie dla superwizora (ok. 10 zdań)
   python skrypty/rozmowa.py formulacja --rozmowa ID --plik formulacja.md    robocza formulacja (przycisk „Jak to rozumiemy”)
   python skrypty/rozmowa.py historia --rozmowa ID                           cała rozmowa
 """
@@ -143,6 +144,14 @@ def rozmowy() -> list[str]:
     return sorted([d.name for d in ROZMOWY.iterdir() if d.is_dir() and not d.name.startswith((".", "_"))])
 
 
+# Styl terapeuty wybrany przy koncie (Michał 2.11.2026 22:31): styl, nie biografia – zakaz udawania człowieka bez zmian
+STYLE = {
+    "spokojny": "spokojny i pytający – wolniej, więcej odzwierciedleń i pytań otwartych, rada dopiero gdy osoba o nią prosi albo po zrozumieniu",
+    "konkretny": "bezpośredni i konkretny – krócej, szybciej do sedna, wyraźne zdanie własne i jeden konkretny krok; nadal ciepło, bez oceniania",
+    "cieply": "ciepły, z humorem – serdecznie, lekko, z odrobiną łagodnego humoru tam, gdzie pasuje (nigdy przy smutku, wstydzie i ryzyku ≥1)",
+}
+
+
 def ts_sek(ts) -> float:
     try:
         return datetime.fromisoformat(str(ts).replace("Z", "+00:00")).timestamp()
@@ -230,6 +239,8 @@ def podsumuj(s: dict) -> None:
         kk = KONTA / s["konto"]
         prof = czytaj(kk / "profil.json", {}) or {}
         print(f"--- KONTO: {prof.get('pseudonim') or s['konto']} · {prof.get('wiek') or '?'} l. · {prof.get('plec') or '?'} (bez danych identyfikujących) ---")
+        styl = prof.get("styl") if prof.get("styl") in STYLE else "spokojny"
+        print(f"--- STYL TERAPEUTY (wybór osoby): {STYLE[styl]} ---")
         pm = kk / "pamiec.md"
         if pm.is_file():
             t = pm.read_text(encoding="utf-8").strip()
@@ -282,9 +293,15 @@ def podsumuj(s: dict) -> None:
                 t0 = int(su[-2].get("trafnosc") or t1) if len(su) > 1 else t1
                 if t1 <= 6 or t0 - t1 >= 3:
                     naprawa = f" NAPRAWA NAJPIERW: ostatnio „czy rozmowa była o tym, o czym chciał(a)” = {t1}/10 – zacznij od tego: nazwij, weź na siebie, zapytaj, co zrobić inaczej (SZTUKA-ROZMOWY §4 pkt 11)."
+            sw = czytaj(KONTA / s["konto"] / "superwizja.json", []) if s.get("konto") else []
+            if sw:
+                ost_sw = sw[-1]
+                print(f"--- STRESZCZENIE POPRZEDNIEJ SESJI (nr {ost_sw.get('nr')}): {ost_sw.get('streszczenie', '')[:1500]}")
+                if (ost_sw.get("notatka") or "").strip():
+                    print(f"--- NOTATKA SUPERWIZORA (Michał): {ost_sw['notatka'].strip()} – uwzględnij ją w tej sesji, nie cytuj jej osobie.")
             print(f"SESJA {se['nr']} – OTWARCIE (docs/ROZMOWA.md §0c): jedna krótka wiadomość: most do poprzedniej sesji (zadanie z karty, jeśli jest – „jak poszło?”; bez oceny, gdy nie wyszło) albo do pamięci, i agenda: „O czym dziś najważniejsze?”. Bez panelu, bez \"wstepna\".{naprawa}")
         elif ost.get("typ") == "sesja" and ost.get("akcja") == "koniec":
-            print(f"SESJA ZAKOŃCZONA przez osobę (suwaki: {ost.get('suwaki')}, termin: {ost.get('termin') or '—'}): 1–2 zdania pożegnania (podziękuj, nawiąż do zadania i terminu, „otwarte drzwi”), bez pytania. Potem OBOWIĄZKOWO przepisz pamięć `rozmowa.py pamiec` wg szablonu §0b (z sekcją Suwaki).")
+            print(f"SESJA ZAKOŃCZONA przez osobę (suwaki: {ost.get('suwaki')}, termin: {ost.get('termin') or '—'}): 1–2 zdania pożegnania (podziękuj, nawiąż do zadania i terminu, „otwarte drzwi”), bez pytania. Potem OBOWIĄZKOWO: (1) przepisz pamięć `rozmowa.py pamiec` wg szablonu §0b (z sekcją Suwaki); (2) streszczenie dla superwizora `rozmowa.py superwizja` – ok. 10 zdań: temat, co pomogło, co nie, ryzyko w sesji, zadanie, suwaki, ocena klienta‑sędziego (§0d).")
         else:
             print(f"ZADANIE – osoba kliknęła: {ost.get('status')}. Krótko (1–2 zdania): „Biorę” → konkret, kiedy i gdzie; „Zmieńmy” → zapytaj, co byłoby łatwiejsze, i zaproponuj mniejsze (pole \"zadanie\"); „Nie teraz” → bez nacisku; „zrobione/nie wyszło” → wzmocnienie albo „co stanęło na drodze?”. Bez panelu.")
         print(f"rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json  (\"tempo\": \"krotko\")")
@@ -560,6 +577,26 @@ def cmd_pamiec(a) -> None:
     print(f"OK: pamięć konta {s['konto']} zapisana ({len(t)} znaków).")
 
 
+def cmd_superwizja(a) -> None:
+    s = stan(a.rozmowa)
+    if not s.get("konto"):
+        sys.exit("Ta rozmowa nie ma konta – streszczenia superwizji nie zapisuję.")
+    t = Path(a.plik).read_text(encoding="utf-8").strip()
+    if not t or len(t) > 2500:
+        sys.exit("Streszczenie dla superwizora: ok. 10 zdań (najwyżej ok. 2500 znaków) – docs/ROZMOWA.md §0d.")
+    se = sesja_info(s)
+    kon = se.get("ostatni_koniec") or {}
+    od = se["start_n"]
+    ryz = max([int(z.get("ryzyko") or 0) for z in s["zespol"] if z.get("odpowiedz_na", 0) >= max(1, od)] or [0])
+    zad = czytaj(KONTA / s["konto"] / "zadanie.json", {}) or {}
+    p = KONTA / s["konto"] / "superwizja.json"
+    lst = czytaj(p, []) or []
+    lst.append({"nr": se["nr"], "ts": teraz(), "rozmowa": s["id"], "streszczenie": t, "suwaki": kon.get("suwaki"),
+                "termin": kon.get("termin"), "ryzyko_maks": ryz, "zadanie": zad.get("tekst"), "zadanie_status": zad.get("status"), "notatka": ""})
+    zapisz(p, lst[-50:])
+    print(f"OK: streszczenie sesji {se['nr']} zapisane – Michał może dopisać notatkę superwizora w „Co pamiętam”.")
+
+
 def cmd_formulacja(a) -> None:
     t = Path(a.plik).read_text(encoding="utf-8")
     p = kat(a.rozmowa) / "formulacja-robocza.md"
@@ -579,6 +616,7 @@ def main() -> None:
     c = sub.add_parser("odpowiedz"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik"); c.add_argument("--tekst"); c.add_argument("--ryzyko", type=int)
     c.add_argument("--reakcja"); c.add_argument("--kryzys", action="store_true"); c.set_defaults(f=cmd_odpowiedz)
     c = sub.add_parser("pamiec"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_pamiec)
+    c = sub.add_parser("superwizja"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_superwizja)
     c = sub.add_parser("formulacja"); c.add_argument("--rozmowa", required=True); c.add_argument("--plik", required=True); c.set_defaults(f=cmd_formulacja)
     c = sub.add_parser("historia"); c.add_argument("--rozmowa", required=True); c.set_defaults(f=cmd_historia)
     a = ap.parse_args()
