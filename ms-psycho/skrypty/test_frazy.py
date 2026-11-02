@@ -37,7 +37,11 @@ CZYSTE = ["Od tygodnia kłócę się z siostrą o opiekę nad mamą", "Jak powie
           "Śpię po 10 godzin i dalej jestem zmęczona", "zabiłam czas serialem", "Dziękuję 🙂", "pocięłam warzywa na sałatkę", "przecięłam wstążkę", "cieszę się, że się udało", "lepiej nie żartować z szefem", "spotkajmy się przy moście", "jutro idę na sznurowanie butów? nie", "chcę być z nim szczera", "Koleżanka dała mi Concertę, po niej skończyłam projekt", "plama zniknęła po praniu"]
 # poziom 0 wymagany (fałszywy alarm z PC 1.11.2026: „mam beznadziejnego chłopa” = o kimś innym, nie o sobie)
 BEZ_ALARMU = ["nie mam myśli samobójczych", "Nie, nie mam myśli samobójczych.", "Nie mam żadnych myśli samobójczych, po prostu jestem zmęczona", "nigdy nie miałam myśli samobójczych", "nie myślę o samobójstwie", "nie chcę się zabić, chcę tylko odpocząć", "bez myśli samobójczych", "Nie mam takich myśli", "mam beznadziejnego chłopa", "mam beznadziejnego chlopa", "beznadziejny film wczoraj", "mam beznadziejną szefową", "beznadziejna pogoda dziś"]
+# poziom dokładny (F1, recenzja Merytorycznego 2.11.2026: „nie mam planu” to nie „mam plan”)
+DOKLADNIE = [("Nie mam planu ani środków", 1), ("już nie mam planu", 1), ("Mam plan, jak to zrobić", 3), ("nie, mam plan", 3), ("mam już plan", 3)]
+PRZYPADKI += [("nie mam planu, ale w domu mam tabletki", 2)]
 bledy = ([(t, m, poziom(t)) for t, m in PRZYPADKI if poziom(t) < m] + [(t, 0, poziom(t)) for t in CZYSTE if poziom(t) >= 2]
-         + [(t, 0, poziom(t)) for t in BEZ_ALARMU if poziom(t) > 0])
+         + [(t, 0, poziom(t)) for t in BEZ_ALARMU if poziom(t) > 0] + [(t, m, poziom(t)) for t, m in DOKLADNIE if poziom(t) != m])
 for t, m, p in bledy: print(f"BŁĄD: oczekiwano ≥{m}, jest {p}: {t}")
-print(f"{len(PRZYPADKI) + len(CZYSTE) + len(BEZ_ALARMU) - len(bledy)}/{len(PRZYPADKI) + len(CZYSTE) + len(BEZ_ALARMU)} OK"); sys.exit(1 if bledy else 0)
+n_ = len(PRZYPADKI) + len(CZYSTE) + len(BEZ_ALARMU) + len(DOKLADNIE)
+print(f"{n_ - len(bledy)}/{n_} OK"); sys.exit(1 if bledy else 0)

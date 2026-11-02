@@ -18,7 +18,7 @@
     "wezme wszystkie (tabletki|leki)",
     "lyknac wszystkie",
     "przedawkowa",
-    "mam plan",
+    "(?<!nie )mam (juz )?plan",
     "rzuc(e|ic) sie (pod|z)",
     "skoczyc z (mostu|dachu|okna|balkonu)",
     "powiesic sie",
@@ -130,7 +130,8 @@
     "nie widze wyjscia",
     "nikomu nie zalezy",
     "jestem do niczego",
-    "nie mam sily zyc"
+    "nie mam sily zyc",
+    "nie mam (juz |zadnego )?planu"
   ],
   "przemoc": [
     "(mnie|cie) (zabije|zabic|znajdzie|dopadnie|zatlucze)",
