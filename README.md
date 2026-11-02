@@ -2,12 +2,20 @@
 
 **Narzędzie testowe i edukacyjne marki MS** (rodzeństwo Nawigatora Medycznego) — nie służy do decyzji u realnych pacjentów.
 
-Wieloagentowe konsylium lekarskie w Claude Code: ordynator, 3 zastępców (triage), 6 lekarzy o różnych podejściach,
-2 sprawdzających i rezydenci z zewnątrz, którzy celowo widzą tylko surowe dane.
+Wieloagentowe konsylium lekarskie: ordynator, 3 zastępców (triage), 6 lekarzy o różnych podejściach,
+asystenci dowodów, 2 sprawdzających i rezydenci z zewnątrz, którzy celowo widzą tylko surowe dane.
 
-**Zacznij od `START-TUTAJ.md`.** Wyjaśnienie bez żargonu: `docs/PO-LUDZKU.md`. Instrukcja rozbudowy dla Claude Code: `PROMPT-NADZORCA.md`.
+## Stan na 2.11.2026
+- **Aplikacja MS Konsylium 0.6.0** (Windows, Electron, styl Nawigatora Medycznego, tryb jasny domyślnie) prowadzi cały przebieg:
+  klikalny wywiad → pytania AI na żywo → konsylium w **Pokoju lekarskim** (dymki z opiniami lekarzy) → Wnioski z PMID/DOI.
+  Ta sama aplikacja działa na **iPadzie** w Safari przez domową sieć Wi‑Fi (`docs/IPAD.md`). Konsylium uruchamia sam Michał.
+- Kod aplikacji: `narzedzia/` (powłoka, Pokój lekarski, wywiad, anonimizator Synevo). Tryb na żywo: `docs/NA-ZYWO.md`.
+- **Zespół asystentów (wątki-role projektu)** i ich prompty startowe: [`docs/ZESPOL/`](docs/ZESPOL/README.md).
+- Aplikacja psychologiczna (`ms-psycho/`) to **osobny projekt** z własnym zespołem (osobna gałąź); tu nie wprowadzamy w niej zmian.
 
-## Szybki start
+Wyjaśnienie bez żargonu: `docs/PO-LUDZKU.md`. Pierwotna instrukcja budowy (historyczna): `PROMPT-NADZORCA.md`.
+
+## Szybki start z terminala (bez aplikacji)
 ```bash
 cd konsylium-ai
 claude                       # Claude Code w tym katalogu wczyta CLAUDE.md i .claude/agents/
@@ -33,15 +41,18 @@ Jeśli nie — dodaj serwer PubMed MCP przez `claude mcp add` i sprawdź, czy na
 ## Struktura
 ```
 CLAUDE.md                 konstytucja zespołu (czyta każdy agent stały)
-.claude/agents/           13 ról
+.claude/agents/           14 ról konsylium (w tym asystent-dowodow)
 .claude/settings.json     uprawnienia
 config/wagi.yaml          wagi ról per tor, progi triage
 schemas/                  JSON Schema opinii, triage, werdyktu, follow-upu
 skrypty/                  agregacja, kalibracja, pakiet rezydenta, rubryka
 pamiec/                   pamięć zespołu (pisze tylko ordynator)
-zrodla/                   Twoja biblioteka wytycznych
+zrodla/                   Twoja biblioteka wytycznych (karty źródłowe + MANIFEST.md)
+merytoryka/               recenzje spraw, propozycje definicji ról, katalog polskich wytycznych
 sprawy/                   jedna sprawa = jeden katalog (PRZYKLAD-001 w środku)
-docs/                     PO-LUDZKU, ARCHITEKTURA, FIREWALL-REZYDENTA, PUNKTACJA
+narzedzia/                aplikacja: powloka (Windows + iPad), pokoj-lekarski, wywiad, anonimizator, wspolne
+docs/                     PO-LUDZKU, ARCHITEKTURA, NA-ZYWO, IPAD, DYMKI, SPOR, FIREWALL-REZYDENTA, PUNKTACJA
+docs/ZESPOL/              instrukcje i prompty ról asystentów projektu
 ```
 
 ## Skąd to się wzięło

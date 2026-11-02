@@ -1,5 +1,9 @@
 # START TUTAJ
 
+> **Stan na 2.11.2026.** Konsylium działa w aplikacji Windows **MS Konsylium** (i na iPadzie). Projekt prowadzi zespół asystentów-ról
+> (Nadzorca, Kodujący, Graficzny, Merytoryczny, Innowacyjny, Testowy, Operator) – instrukcje i prompty startowe: `docs/ZESPOL/README.md`.
+> Kroki poniżej to pierwotny start z 31.10.2026 (budowa od zera z `PROMPT-NADZORCA.md`), zostawione dla historii.
+
 ## Jeśli jesteś Michałem
 1. Rozpakuj ten katalog gdzieś na dysku (np. `C:\konsylium-ai`).
 2. Otwórz terminal w tym katalogu i wpisz `claude`.
@@ -24,7 +28,9 @@ PROMPT-NADZORCA.md        instrukcja rozbudowy (adresat: Claude Code — nadzorc
 DLA-NADZORCY-NAWIGATORA.md  przekaz dla nadzorcy Nawigatora: marka MS, dwie aplikacje (Nawigator Medyczny + Konsylium agentów AI)
 CLAUDE.md                 konstytucja konsylium (czytają agenci kliniczni) — nie zmieniać znaczenia bez zgody Michała
 README.md                 szybki start konsylium z terminala
-.claude/agents/           13 agentów klinicznych
+.claude/agents/           14 agentów klinicznych (w tym asystent-dowodow)
+docs/ZESPOL/              role asystentów projektu: zakres i prompty startowe
+narzedzia/                aplikacja MS Konsylium (Windows + iPad), wywiad, Pokój lekarski, anonimizator
 .claude/settings.json     uprawnienia
 config/                   wagi ról, synonimy rozpoznań
 schemas/                  JSON Schema: opinia, triage, werdykt, follow-up
