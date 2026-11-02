@@ -50,6 +50,17 @@ Swobodna rozmowa zostaje domyślna. Obok niej osoba może kliknąć **„Zacznij
 6. **Obserwacja terapeuty:** raz na sesję, od 3. sesji, panel szuka wzorca, którego osoba sama nie nazwała. Prowadzący mówi go tentatywnie, ze zdaniem własnym i bez etykiet diagnostycznych, i wpisuje w pole `"obserwacja"`. Drugą obserwację w tej samej sesji `rozmowa.py` odrzuca.
 Ścieżka kryzysowa bez zmian: ryzyko ≥2 wyłącza „słucham” i zamknięcie z zegara, a przy ≥3 nie ma zadania.
 
+### 0d. Ćwiczenia, cel, styl, superwizja i pomiar – wersja 0.3.0 (plan Innowacyjnego §3, decyzja Michała 2.11.2026: „Tak, cały plan 0.3.0”)
+1. **Ćwiczenia prowadzone krok po kroku** (`config/cwiczenia.json`): zapis myśli, plan aktywności, eksperyment behawioralny, uziemienie 5‑4‑3‑2‑1, karta wartości, analiza łańcuchowa.
+   - **Tylko za zgodą** (zapytaj – zaproponuj – zapytaj) i zwykle w fazie pracy. Start: `"cwiczenie": {"start": "zapis_mysli", "zgoda": "<słowa zgody osoby z nowej wiadomości>"}` + pytanie 1. kroku. Skrypt odrzuca start bez cytatu zgody, przy trwającym ćwiczeniu i przy ryzyku wyższym niż `ryzyko_max` ćwiczenia (uziemienie ≤2, reszta ≤1).
+   - **Jeden krok = jedna tura = jedno pytanie.** `czekaj` wypisuje „ĆWICZENIE … · krok k/N” i propozycję pytania; odpowiedź osoby zapisujesz jej słowami: `"cwiczenie": {"krok": "…"}`, a w tekście krótko ją odbijasz i pytasz o następny krok (20–80 słów, bez odpowiedzi wstępnej i bez pełnego panelu: strażnik + prowadzący). Po ostatnim kroku skrypt zamyka ćwiczenie, a aplikacja pokazuje **kartę wyniku** pod odpowiedzią (też w `konta/<konto>/cwiczenia.json`).
+   - **Wyjście zawsze:** przycisk „Przerwij” na karcie ćwiczenia albo „nie teraz” w wiadomości → jedno ciepłe zdanie i `"cwiczenie": {"przerwij": true}`. Przy ryzyku ≥3 albo wyższym niż pozwala ćwiczenie skrypt przerywa je sam – najpierw bezpieczeństwo.
+2. **Cel pracy jako karta.** W 1.–3. sesji uzgodnij jedno zdanie słowami osoby i wpisz w pole `"cel"`; aplikacja pokazuje nad rozmową „Propozycja celu” z przyciskami **To jest to / Zmień** (osoba może go poprawić własnymi słowami). Co 4 sesje od uzgodnienia albo od ostatniej oceny `czekaj` wypisuje PRZEGLĄD CELU → `"cel_przeglad": true`, a karta pyta „na ile jesteśmy bliżej (0–10)” i czy cel jest ten sam. Plik: `konta/<konto>/cel.json` (z historią i ocenami).
+3. **Karta terapeuty – styl, nie osoba** (`config/style-terapeuty.json`): „Spokojnie i z pytaniami” (domyślny), „Wprost i konkretnie”, „Ciepło i z humorem”. Osoba wybiera przy zakładaniu konta, zmienia w „Co pamiętam” → `konta/<konto>/terapeuta.json`. `czekaj` wypisuje kartę (cechy, zwroty, czego nie robi); po zmianie terapeuta nazywa ją jednym zdaniem („Dobrze – od teraz będę mówić bardziej wprost.”). Bez imienia, biografii i udawanych uczuć; zespół w tle bez zmian. Skrypt: limit słów × `dlugosc` stylu, ostrzeżenie przy emotikonach w stylu „wprost” i humorze przy ryzyku ≥1.
+4. **Superwizja człowieka.** Po zakończonej sesji prowadzący pisze streszczenie (≤10 zdań, słowami osoby, bez diagnoz) z oceną klienta‑sędziego („co dobrze / co źle”) i uruchamia `python skrypty/rozmowa.py superwizja --rozmowa ID --plik streszczenie.md` → `superwizja/<konto>/<data>-sN.md` z liczbami sesji. Michał czyta je w aplikacji (👤 konto → **Superwizja**) i zapisuje **notatkę superwizora** (2–3 zdania) – albo `rozmowa.py notatka --konto K --tekst "…"`. `czekaj` wypisuje notatkę do końca następnej sesji; terapeuta uwzględnia ją w sposobie prowadzenia i jej nie cytuje.
+5. **Pomiar realizmu:** `python skrypty/realizm.py [--konto K] [--od RRRR-MM-DD] [--zapisz]` – udział słów, pytania na odpowiedź, nawiązania (i zmyślone), powroty do zadań, suwaki, pęknięcia i naprawy, tury „słucham”, długość sesji, ćwiczenia. Raport zawiera same liczby (bez treści rozmów); `--zapisz` → `raporty/REALIZM-<data>.md` (lokalnie, poza repo). Ślepa ocena par transkryptów przez sędziego na innym modelu – osobno, ręcznie.
+Bez zmian: swobodna rozmowa zostaje domyślna, a ścieżka kryzysowa ma pierwszeństwo przed ćwiczeniem, celem i stylem.
+
 ## 1. Pliki (aplikacja ↔ Claude)
 
 | Plik w `rozmowy/<ID>/` | Pisze | Treść |
@@ -61,6 +72,11 @@ Swobodna rozmowa zostaje domyślna. Obok niej osoba może kliknąć **„Zacznij
 | `formulacja-robocza.md` | `rozmowa.py formulacja` | „Jak to rozumiemy” – aktualizuj co 3–4 tury |
 | `konta/<konto>/profil.json` | aplikacja | pseudonim, wiek, płeć, opcjonalny skrót PIN-u (§0b) |
 | `konta/<konto>/pamiec.md` | `rozmowa.py pamiec` | pamięć psychoterapeuty między rozmowami (§0b) |
+| `cwiczenie.json` (w `rozmowy/<ID>/`) | `rozmowa.py odpowiedz` | trwające albo ostatnie ćwiczenie: krok, odpowiedzi, status (§0d) |
+| `konta/<konto>/cwiczenia.json` | `rozmowa.py odpowiedz` | karty wyników ukończonych ćwiczeń (ostatnie 30) |
+| `konta/<konto>/cel.json` | `rozmowa.py` (propozycja, przegląd) i aplikacja (zgoda, zmiana, ocena) | cel pracy (§0d) |
+| `konta/<konto>/terapeuta.json` | aplikacja | wybrany styl terapeuty (§0d) |
+| `superwizja/<konto>/*.md`, `notatka.json` | `rozmowa.py superwizja` / aplikacja albo `rozmowa.py notatka` | streszczenia sesji i notatka superwizora (§0d) |
 
 Aplikacja sprawdza pliki co 1,5 s. Filtr słownikowy ryzyka (`config/frazy-ryzyka.json`) działa **w aplikacji, zanim** wiadomość trafi do zespołu: poziom 3 → od razu karta kryzysowa z numerami; poziom 2 (bierne myśli o śmierci) → łagodna karta z numerami.
 

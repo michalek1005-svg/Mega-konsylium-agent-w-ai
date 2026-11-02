@@ -3,6 +3,8 @@ rozmowy/
 konta/
 wywiad-na-zywo/
 sprawy/*/
+superwizja/
+raporty/
 _ai-aktywnosc.json*
 aplikacja/*/node_modules/
 aplikacja/powloka/build/
