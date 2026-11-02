@@ -622,7 +622,7 @@ def cmd_odpowiedz(a) -> None:
     # B9 (raport Testowego): po zaprzeczeniu myśli samobójczych nie pytamy ponownie, chyba że jest nowy sygnał (zasada Michała)
     zaprzeczyla = any(x.get("obnizam_ryzyko") for x in s["zespol"]) or any(
         re.search(z, bez_ogonkow(str(w.get("tekst", "")))) for w in s["ja"] for z in FRAZY.get("zaprzeczenia", []))
-    if zaprzeczyla and filtr == 0 and re.search(r"(samoboj|odebra\w* sobie zyci|zabic sie|zniknac|lepiej bez (ciebie|was))[^.!]*\?", bez_ogonkow(bez_cytatow(tekst))):
+    if zaprzeczyla and filtr == 0 and re.search(r"(samoboj|odebra\w* sobie zyci|zabic sie|znikn|lepiej bez (ciebie|was)|mysl\w* o smierci)[^.!]*\?", bez_ogonkow(bez_cytatow(tekst))):
         ostrz.append("osoba już zaprzeczyła myślom samobójczym, a nowa wiadomość nie ma sygnału – nie pytaj ponownie (zasada Michała)")
     if filtr < 2 and dolna == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
         ostrz.append("poziom 2 z wcześniejszych tur: jeśli pytanie o plan i środki nie dostało odpowiedzi – wróć do niego; jeśli osoba zaprzeczyła – nie pytaj ponownie")
