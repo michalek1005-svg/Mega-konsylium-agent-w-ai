@@ -167,6 +167,14 @@
         "brak"
       ],
       "description": "ocena hipotezy rozpoznania, którą lekarz prowadzący podał w polu „Powiedz” (oznaczona HIPOTEZA w 01-wywiad.md); sprawdzana jak każda inna, bez premii za autorytet"
+    },
+    "polekowe_jako": {
+      "type": "string",
+      "enum": [
+        "przyczyna",
+        "czynnik_ryzyka"
+      ],
+      "description": "farmakolog przy przyczyna_polekowa=tak: czy lek WYWOŁUJE objawy (przyczyna – może otworzyć rundę), czy tylko zwiększa ryzyko rozpoznania stawianego przez innych (czynnik_ryzyka – bez rundy)"
     }
   }
 }

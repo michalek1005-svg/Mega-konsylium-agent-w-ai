@@ -36,7 +36,9 @@ def sekcje(txt: str) -> dict[str, str]:
 
 def zdania(t: str) -> int:
     t = re.sub(r"\[[^\]]*\]|\([^)]*\)", "", t)
-    t = re.sub(r"\b(np|m\.in|tj|tzn|ok|godz|mg|dr|r|l|pkt|ryc|tab|wg)\.", r"\1", t)
+    t = re.sub(r"\b(np|m\.in|tj|tzn|ok|godz|mg|dr|r|l|pkt|ryc|tab|wg|ż|ur|zał|tzw|itd|itp|ew|ang|łac|przyp|ml|kg|mmol|min|tyg|mies|wyd|red|s|t|nr|al|et)\.", r"\1", t)
+    t = re.sub(r"(\d)\.(?=\s*[a-ząćęłńóśźż0-9(])", r"\1", t)          # „70. r.ż.”, „1. dawka” – liczba z kropką nie kończy zdania
+    t = re.sub(r"(?<=\s)([A-ZĄĆĘŁŃÓŚŹŻa-ząćęłńóśźż])\.(?=\s*[a-ząćęłńóśźż])", r"\1", t)   # pojedyncza litera z kropką (inicjał, skrót)
     return len([z for z in re.split(r"[.!?]+(?:\s|$)", t) if len(z.split()) >= 3])
 
 
@@ -77,7 +79,8 @@ def lint(txt: str, problemy: list[str] | None = None) -> list[str]:
     if "PLAN B" in s and punkty(s["PLAN B"]) > 3:
         bledy.append(f"PLAN B ma {punkty(s['PLAN B'])} punktów (najwyżej 3)")
     if "ŹRÓDŁA" in s:
-        zr = s["ŹRÓDŁA"].split("—")[0] if "Narzędzie testowe" in s["ŹRÓDŁA"] else s["ŹRÓDŁA"]
+        # odcinamy tylko stopkę („— Narzędzie testowe…”), nie każdy myślnik w opisie źródła (pomiar 2.11: gubiło [4]–[5])
+        zr = re.split(r"[—–-]+\s*Narzędzie testowe", s["ŹRÓDŁA"], maxsplit=1)[0]
         poz = [l for l in zr.splitlines() if re.match(r"^\s*(?:\[\d+\]|[-•*]|\d+[.)])\s*\S", l)]
         if len(poz) > 5:
             bledy.append(f"ŹRÓDŁA mają {len(poz)} pozycji (najwyżej 5, jako [1]–[5]); resztę przenieś do 04-konsylium.md")
@@ -113,6 +116,17 @@ def main() -> None:
         except (ValueError, json.JSONDecodeError):
             pass
     bledy = lint(p.read_text(encoding="utf-8"), problemy)
+    # pomiar 2.11.2026: 07-sprawdzenie.json miał tylko „fakty” – Sprawdzający procesu jest obowiązkowy przed FINAL
+    spr = p.parent / "07-sprawdzenie.json"
+    if spr.exists():
+        import json
+        try:
+            d = json.loads(spr.read_text(encoding="utf-8"))
+            for czesc in ("fakty", "proces"):
+                if not d.get(czesc):
+                    bledy.append(f"07-sprawdzenie.json bez części „{czesc}” – uruchom {'sprawdzajacy-faktow' if czesc == 'fakty' else 'sprawdzajacy-procesu'}")
+        except (ValueError, json.JSONDecodeError):
+            bledy.append("07-sprawdzenie.json nie jest poprawnym JSON-em")
     if bledy:
         print(f"FINAL do poprawy ({len(bledy)}):")
         for b in bledy:

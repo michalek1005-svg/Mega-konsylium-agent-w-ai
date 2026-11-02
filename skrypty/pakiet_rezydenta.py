@@ -76,6 +76,7 @@ Pod punktami dopisz jedną linię: SKRÓT: <najważniejsza z Twoich uwag z uzasa
 Nie diagnozuj. Nie proponuj leczenia. Nie oceniaj, czy decyzja jest dobra. Jeśli pytania w [B] wyglądają na sugerujące — zgłoś to w pkt 3.
 Zanim napiszesz „brakuje X”, sprawdź [B] i [B2]: wyniki i parametry tam podane SĄ znane.
 Możesz sprawdzić jedną konkretną rzecz w PubMed narzędziem {pubmed}search_articles (i {pubmed}get_article_metadata dla streszczenia); podaj PMID przy uwadze.
+Jeśli tych narzędzi nie widzisz, najpierw je załaduj: ToolSearch z zapytaniem „select:{pubmed}search_articles,{pubmed}get_article_metadata”. Nie używaj wtyczki plugin:pubmed, gdy zwraca 403 – to inny serwer.
 Jeśli uczciwie nie widzisz braków — napisz to jednym zdaniem w każdym punkcie."""
 
 
@@ -114,6 +115,21 @@ def sekcja(wywiad: str, *naglowki: str) -> str:
         lo = linia.strip().lower()
         if lo.startswith("## "):
             w = any(lo.startswith("## " + n.lower()) for n in naglowki)
+            continue
+        if w:
+            out.append(linia.rstrip())
+    return "\n".join(out).strip()
+
+
+def podsekcje(wywiad: str, wzor: str) -> str:
+    """Treść podsekcji '### …' (np. „### Tura 2 (lekarz prowadzący, wizyta)”), gdy wywiad nie ma sekcji w formacie aplikacji (pomiar 2.11.2026)."""
+    out, w = [], False
+    for linia in wywiad.splitlines():
+        lo = linia.strip().lower()
+        if lo.startswith("#"):
+            w = lo.startswith("### ") and re.search(wzor, lo) is not None
+            if w:
+                out.append(linia.strip())
             continue
         if w:
             out.append(linia.rstrip())
@@ -169,7 +185,8 @@ def main() -> None:
     czesci.append("\n[A] SUROWE DANE — dosłownie to, co wpisał lekarz prowadzący, bez redakcji:\n" + surowe)
     qa = pytania_i_odpowiedzi(wywiad)
     czesci.append("\n[B] DOPYTANIA I ODPOWIEDZI (pytanie → odpowiedź):\n" + ("\n".join(f"- {o}" for o in qa) if qa else "- (brak)"))
-    wyniki = "\n\n".join(x for x in (sekcja(wywiad, "Wyniki badań", "Parametry", "Badanie fizykalne"), sekcja(wywiad, "Dopowiedzenie lekarza", "Dopisek lekarza")) if x)
+    wyniki = "\n\n".join(x for x in (sekcja(wywiad, "Wyniki badań", "Parametry", "Badanie fizykalne"), sekcja(wywiad, "Dopowiedzenie lekarza", "Dopisek lekarza"),
+                                     podsekcje(wywiad, r"lekarz prowadząc|wizyt|parametr|badanie fizykaln|wyniki")) if x)
     czesci.append("\n[B2] WYNIKI BADAŃ, PARAMETRY I DOPISKI LEKARZA PROWADZĄCEGO:\n" + (wyniki or "(brak – lekarz prowadzący zaznaczył, że wyników nie ma)"))
     czesci.append("\n[C] DECYZJA ZESPOŁU (bez uzasadnienia):\n" + decyzja(projekt))
     czesci.append("\n" + ZADANIE.replace("{pubmed}", a.pubmed))

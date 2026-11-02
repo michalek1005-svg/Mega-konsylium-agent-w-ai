@@ -25,3 +25,5 @@ python skrypty/dymek.py sprawy/<ID> --faza "Konsylium · runda 1" --zmiana-zdani
 python skrypty/dymek.py sprawy/<ID> --faza "Konsylium · runda 2" --spor "Pasożyt czy otoczka tabletki?" --rozstrzygniety
 ```
 `--zmiana-zdania` bez `--argument` jest odrzucana (pkt 4: zmiana zdania tylko z nowym argumentem).
+**Loguje wyłącznie ordynator** – po rundzie, na podstawie `rewizja`/`powod_rewizji` w plikach `03-opinie/<rola>-runda<N>.json`; role same nie wywołują `--spor` ani `--zmiana-zdania` (pomiar 2.11: duplikaty wpisów).
+Rewizję opinii rola zapisuje jako pełny JSON: `03-opinie/<rola>-runda<N>.json` (albo `04-runda<N>/<rola>.json`, albo blok ```json w `04-runda<N>/<rola>.md`) – inaczej agregacja jej nie widzi.

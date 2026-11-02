@@ -79,15 +79,31 @@ def wczytaj_opinie(sprawa: Path, do_rundy: int | None = None) -> dict[str, dict]
     """
     kat = sprawa / "03-opinie"
     najlepsze: dict[str, tuple] = {}
-    for p in kat.glob("*.json"):
+    # rewizje z rundy zapisane w 04-runda<N>/<rola>.json albo jako blok ```json w 04-runda<N>/<rola>.md
+    # (pomiar 2.11.2026: agregat po rundzie nie widział zmian p zapisanych tylko w plikach rundy)
+    pliki = [(p, None) for p in kat.glob("*.json")]
+    for d in sorted(sprawa.glob("04-runda*")):
+        m = re.fullmatch(r"04-runda[_-]?(\d+)", d.name)
+        if d.is_dir() and m:
+            pliki += [(p, int(m.group(1))) for p in sorted(d.glob("*.json")) + sorted(d.glob("*.md"))]
+    for p, runda_kat in pliki:
         if p.name.startswith("_agregat"):     # pliki techniczne; inne „_<rola>.json” (np. _alergolog.json) to opinie
             continue
-        op = wczytaj_json(p)
+        if p.suffix == ".md":
+            mj = re.search(r"```json\s*\n(.*?)\n```", p.read_text(encoding="utf-8", errors="replace"), re.S)
+            try:
+                op = json.loads(mj.group(1)) if mj else None
+            except ValueError:
+                op = None
+            if not op or "rola" not in op or "rozpoznania" not in op:
+                continue                      # sama dyskusja bez pełnej opinii – nie zmienia agregatu
+        else:
+            op = wczytaj_json(p)
         if not op or "rola" not in op:
             print(f"UWAGA: {p.name} pominięty – brak pola \"rola\".", file=sys.stderr)
             continue
         m = re.search(r"-runda[_-]?(\d+)\.json$", p.name)
-        runda = int(op.get("runda", m.group(1) if m else 0) or 0)
+        runda = int(op.get("runda", m.group(1) if m else (runda_kat or 0)) or 0)
         if do_rundy is not None and runda > do_rundy:
             continue
         klucz = (runda, p.stat().st_mtime)

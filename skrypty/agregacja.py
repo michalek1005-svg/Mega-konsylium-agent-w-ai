@@ -37,6 +37,34 @@ from _wspolne import (CONFIG, k_roli, kalibracja, kanon, log, normalizuj, wagi, 
                       wczytaj_yaml, zapisz_json)
 
 
+# Bloki ICD-10 (WHO) częste w POZ: rozpoznania nr 1 z tego samego bloku to zgoda co do kierunku (pomiar 2.11.2026:
+# „wirusowe zakażenie górnych dróg oddechowych” J06 vs „wirusowe zapalenie nosa i gardła” J00 wymuszało rundę).
+# Ranking dalej liczy się po kategorii 3-znakowej; blok decyduje tylko o zgodzie i o potrzebie rundy.
+BLOKI_ICD = [("A", 0, 9), ("B", 15, 19), ("B", 65, 83), ("D", 50, 53), ("D", 55, 59), ("E", 0, 7), ("E", 10, 14), ("E", 50, 64), ("E", 86, 87),
+             ("F", 30, 39), ("F", 40, 48), ("G", 43, 44), ("I", 10, 15), ("I", 20, 25), ("I", 26, 28), ("I", 30, 52), ("I", 60, 69),
+             ("J", 0, 6), ("J", 9, 18), ("J", 20, 22), ("J", 30, 39), ("J", 40, 47), ("K", 20, 31), ("K", 35, 38), ("K", 50, 52),
+             ("K", 55, 64), ("K", 70, 77), ("K", 80, 87), ("L", 20, 30), ("M", 5, 14), ("M", 15, 19), ("M", 45, 49), ("M", 50, 54),
+             ("M", 60, 79), ("N", 10, 16), ("N", 17, 19), ("N", 20, 23), ("N", 30, 39), ("R", 50, 69), ("T", 36, 50), ("T", 51, 65)]
+
+
+def blok_icd(k: str) -> str:
+    """'icd:J06' → 'blok:J00-J06'; inne klucze bez zmian."""
+    m = re.fullmatch(r"icd:([A-Z])(\d{2})", k)
+    if not m:
+        return k
+    lit, nr = m.group(1), int(m.group(2))
+    for l, od, do in BLOKI_ICD:
+        if l == lit and od <= nr <= do:
+            return f"blok:{l}{od:02d}-{l}{do:02d}"
+    return k
+
+
+# Rozpoznanie nr 1, które już JEST przyczyną polekową (zatrucie, działanie niepożądane, artefakt tabletki):
+# wtedy „farmakolog: przyczyna polekowa TAK” nie otwiera rundy (pomiar 2.11.2026, P30-01: zatrucie digoksyną u 5/5).
+POLEKOWE_ICD = re.compile(r"^icd:(T3[6-9]|T4\d|T50|Y4\d|Y5[0-7]|L27|K71|D61|D59|I95)")
+POLEKOWE_NAZWA = re.compile(r"polek|zatruci|przedawkowan|niepożąd|toksyczn|wywołan\w* lek|po lek|działani\w* niepożąd", re.I)
+
+
 def logit(p: float) -> float:
     p = min(max(p, 1e-4), 1 - 1e-4)
     return math.log(p / (1 - p))
@@ -114,6 +142,7 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
         nazwy_wyswietlane: dict[str, str] = {}
         kanon_do_wyswietlenia = {kanon(k, syn): k for k in syn}   # forma kanoniczna z synonimy.yaml
         p_lekarza: dict[str, dict[str, float]] = {}
+        licz_nazw: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
         for rola, op in opinie.items():
             p_lekarza[rola] = {}
             if rola == "farmakolog":          # bez rankingu (testy seria 2 pkt 4)
@@ -121,8 +150,13 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
             for r in [x for x in op.get("rozpoznania", []) if nalezy(x)]:
                 k = scal(klucz(r), r["nazwa"])
                 nazwy_wyswietlane.setdefault(k, kanon_do_wyswietlenia.get(k, r["nazwa"]))
+                licz_nazw[k][r["nazwa"]] += 1
                 p_lekarza[rola][k] = max(p_lekarza[rola].get(k, 0.0), float(r["p"]))
 
+        # nazwa wyświetlana = najczęstsza wśród połączonych (pomiar 2.11: POZ dostawał nazwę z cudzej opinii)
+        for k, nz in licz_nazw.items():
+            if k not in kanon_do_wyswietlenia:
+                nazwy_wyswietlane[k] = max(nz.items(), key=lambda x: (x[1], -list(nz).index(x[0])))[0]
         wszystkie = set().union(*p_lekarza.values()) if p_lekarza else set()
         suma_logit: dict[str, float] = defaultdict(float)
         suma_wag: dict[str, float] = defaultdict(float)
@@ -166,12 +200,14 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
         for rola, d in p_lekarza.items():
             if d and waga_w_torze(rola, "rozpoznanie", cfg, kal) > 0:
                 top1[rola] = max(d.items(), key=lambda x: x[1])[0]
-        rozne_top1 = sorted({nazwy_wyswietlane[k] for k in top1.values()})
         lider = ranking[0][0] if ranking else None
+        # ten sam blok ICD-10 co lider = ten sam kierunek (do zgody i do decyzji o rundzie)
+        top1_blok = {r: (lider if lider and blok_icd(k) == blok_icd(lider) else k) for r, k in top1.items()}
+        rozne_top1 = sorted({nazwy_wyswietlane[k] for k in top1_blok.values()})
         # zgoda (od 1.11.2026) = ważony udział lekarzy, których rozpoznanie nr 1 to lider rankingu;
         # entropia top_n zostaje informacyjnie (zgoda_entropia) – przy synonimach dawała fałszywe 0,03–0,11
         w_all = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r in top1)
-        w_lid = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r, k in top1.items() if k == lider)
+        w_lid = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r, k in top1_blok.items() if k == lider)
         zgoda_entropia = zgoda
         zgoda = (w_lid / w_all) if w_all > 0 else 0.0
 
@@ -190,7 +226,9 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
         chronione.sort(key=lambda x: (not x["czerwona_flaga"], -x["p_max"], x["rozpoznanie"]))
         chronione = chronione[:5]
 
-        return {"ranking": ranking, "zgoda": zgoda, "zgoda_entropia": zgoda_entropia, "top1": top1, "rozne_top1": rozne_top1,
+        polekowe_nr1 = bool(top1) and all(POLEKOWE_ICD.match(k) or k == "kod:ARTEFAKTLEK" or POLEKOWE_NAZWA.search(nazwy_wyswietlane[k])
+                                          for k in set(top1.values()))
+        return {"polekowe_nr1": polekowe_nr1, "ranking": ranking, "zgoda": zgoda, "zgoda_entropia": zgoda_entropia, "top1": top1, "rozne_top1": rozne_top1,
                 "chronione": chronione, "nazwy": nazwy_wyswietlane, "p_lekarza": p_lekarza, "kto_wymienil": kto_wymienil, "lider": lider}
 
     # osobny ranking dla każdej dolegliwości (pole "problem" w rozpoznaniu: P1, P2… z 01-wywiad.md ## PROBLEMY)
@@ -227,7 +265,10 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
             powody.append(f"{pid}: różne rozpoznanie nr 1: " + " / ".join(Q["rozne_top1"]))
     if sporne:
         powody.append("spór o czerwoną flagę: " + "; ".join(sporne))
-    if any(v == "tak" for v in polekowe.values()) and not any("polek" in n.lower() for n in rozne_top1):
+    # TAK otwiera rundę tylko, gdy lek ma być PRZYCZYNĄ objawów, a nikt nie ma przyczyny polekowej na 1. miejscu.
+    # Lek jako czynnik ryzyka (np. estrogeny przy zatorowości) – farmakolog wpisuje polekowe_jako: "czynnik_ryzyka" (pomiar P30-29).
+    tak = [r for r, op in opinie.items() if op.get("przyczyna_polekowa") == "tak" and op.get("polekowe_jako") != "czynnik_ryzyka"]
+    if tak and not R["polekowe_nr1"]:
         powody.append("farmakolog: przyczyna polekowa TAK")
     r_op = max((op.get("_runda", 0) for op in opinie.values()), default=0)
     runda = {"potrzebna": bool(powody), "powody": powody, "po_rundzie": r_op,

@@ -119,6 +119,13 @@ class TestLintFinal(unittest.TestCase):
         self.assertEqual(lint_final.lint(t, ["P1", "P2"]), [])
 
 
+    def test_myslnik_w_zrodlach_i_skroty(self):
+        t = FINAL.format(wnioski="").replace("[1] RPL: Metformax SR, ChPL pkt 4.8\n",
+            "[1] RPL: Metformax SR — ChPL pkt 4.8\n[2] PTD 2026 — cukrzyca\n").replace("DLACZEGO: Kulka pojawia się raz na dobę po dawce leku [1].",
+            "DLACZEGO: Pacjentka po 70. r.ż. ma kulkę po dawce leku [1]. Wg PTD 2026 metformina XR ma matrycę [2]. To tłumaczy obraz.")
+        self.assertEqual(lint_final.lint(t), [])
+
+
 class TestWynik(unittest.TestCase):
     def test_zestawienie_trafnosci_rol(self):
         kat = Path(tempfile.mkdtemp())
@@ -131,6 +138,55 @@ class TestWynik(unittest.TestCase):
         self.assertEqual(z["sprawy"], 2)
         self.assertEqual(z["role"]["bayes"], {"n": 2, "trafnosc": 0.5})        # 1,0 + 0,0
         self.assertEqual(z["role"]["hipotezujacy"], {"n": 2, "trafnosc": 0.5})  # 0,0 (inne nr 1 przy trafnym) + 1,0 (miał rację)
+
+
+class TestPomiar30(unittest.TestCase):
+    """Błędy zgłoszone po pomiarze K0–K3 (2.11.2026, pomiar-30/UWAGI-DO-KODU.md)."""
+
+    def _sprawa(self, opinie):
+        sprawa = Path(tempfile.mkdtemp()); (sprawa / "03-opinie").mkdir()
+        for o in opinie:
+            (sprawa / "03-opinie" / f"{o['rola']}.json").write_text(json.dumps(o), encoding="utf-8")
+        return sprawa
+
+    def test_polekowa_tak_bez_rundy_gdy_wszyscy_maja_zatrucie(self):
+        roz = [{"nazwa": "zatrucie digoksyną", "icd10": "T46.0", "p": 0.8}]
+        s = self._sprawa([_opinia(r, roz) for r in ("bayes", "hipotezujacy", "poz_pragmatyk")]
+                         + [{"rola": "farmakolog", "pilnosc": 2, "rozpoznania": [], "przyczyna_polekowa": "tak"}])
+        self.assertFalse(agregacja.agreguj(s)["runda"]["potrzebna"])
+
+    def test_lek_jako_czynnik_ryzyka_bez_rundy(self):
+        roz = [{"nazwa": "zatorowość płucna", "icd10": "I26.9", "p": 0.8}]
+        s = self._sprawa([_opinia(r, roz) for r in ("bayes", "hipotezujacy")]
+                         + [{"rola": "farmakolog", "pilnosc": 2, "rozpoznania": [], "przyczyna_polekowa": "tak", "polekowe_jako": "czynnik_ryzyka"}])
+        self.assertFalse(agregacja.agreguj(s)["runda"]["potrzebna"])
+        (s / "03-opinie" / "farmakolog.json").write_text(json.dumps({"rola": "farmakolog", "pilnosc": 2, "rozpoznania": [], "przyczyna_polekowa": "tak"}), encoding="utf-8")
+        self.assertIn("farmakolog: przyczyna polekowa TAK", agregacja.agreguj(s)["runda"]["powody"])
+
+    def test_ten_sam_blok_icd_to_zgoda(self):
+        s = self._sprawa([_opinia("bayes", [{"nazwa": "wirusowe zakażenie górnych dróg oddechowych", "icd10": "J06.9", "p": 0.7}]),
+                          _opinia("hipotezujacy", [{"nazwa": "wirusowe zapalenie nosa i gardła", "icd10": "J00", "p": 0.7}])])
+        w = agregacja.agreguj(s)
+        self.assertEqual(w["zgoda"], 1.0)
+        self.assertFalse(w["runda"]["potrzebna"])
+
+    def test_rewizja_z_pliku_rundy_md(self):
+        s = self._sprawa([_opinia("bayes", [{"nazwa": "kamica", "icd10": "K80", "p": 0.68}])])
+        (s / "04-runda1").mkdir()
+        rew = _opinia("bayes", [{"nazwa": "kamica", "icd10": "K80", "p": 0.65}]); rew["rewizja"] = True
+        (s / "04-runda1" / "bayes.md").write_text("Przekonuje mnie…\n```json\n" + json.dumps(rew) + "\n```\n", encoding="utf-8")
+        w = agregacja.agreguj(s)
+        self.assertEqual(w["runda_opinii"], 1)
+        self.assertEqual(w["pliki_opinii"]["bayes"], "bayes.md")
+
+    def test_lokalne_bez_kart_niezwiazanych(self):
+        sprawa = Path(tempfile.mkdtemp())
+        out = io.StringIO()
+        with redirect_stdout(out):
+            zrodla.lokalne(sprawa, "dna moczanowa", "test")
+        self.assertIn("dna.md", out.getvalue())
+        self.assertNotIn("covid", out.getvalue().lower())
+        self.assertNotIn("ibs", out.getvalue().lower())
 
 
 if __name__ == "__main__":

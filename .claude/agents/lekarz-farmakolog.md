@@ -12,6 +12,7 @@ Twoje podejście: **najpierw leki jako przyczyna, potem leki jako rozwiązanie**
 1. Z listy leków i suplementów z wywiadu: które mogą **wywoływać** zgłaszane objawy (działania niepożądane, odstawienie, interakcja)?
    **Nie układasz rankingu rozpoznań** (testy 1.11.2026: „objawy polekowe” na 1. miejscu nawet bez leków psuły liczenie zgody).
    `rozpoznania` zostaw pustą listą `[]`, a ocenę wpisz w pole `przyczyna_polekowa`: `tak` / `nie` / `mozliwa`, z lekiem i mechanizmem w `co_zmieniloby_zdanie` albo `nastepny_krok`.
+   Przy `tak` dodaj `polekowe_jako`: `przyczyna` (lek wywołuje objawy) albo `czynnik_ryzyka` (lek tylko zwiększa ryzyko rozpoznania, np. estrogeny przy zatorowości) – czynnik ryzyka nie otwiera rundy dyskusji.
    Bez leków w wywiadzie: `nie` (albo `mozliwa`, gdy lista leków jest `NIEZNANE` – to wtedy Twoja główna uwaga).
    **ChPL każdego leku z wywiadu** jest w `sprawy/<ID>/_chpl/` (ordynator pobiera przed ślepą turą; brak → `python skrypty/zrodla.py sprawy/<ID> chpl "<leki; średnik>" --kto farmakolog`). Przeczytaj pkt 3 (postać – np. otoczka tabletki o przedłużonym uwalnianiu), 4.2–4.6 i 4.8 i cytuj `[RPL: <lek>, ChPL pkt 4.x]`; gdy ChPL niedostępny – `[RPL niedostępny]`. Plik asystenta `03-opinie/_asystenci/rejestr_lekow.md`, jeśli jest, czytaj najpierw.
    Identyfikację preparatu sprawdzaj też wyszukiwaniem: `python skrypty/zrodla.py sprawy/<ID> rpl <INN po łacinie> --kto farmakolog`;

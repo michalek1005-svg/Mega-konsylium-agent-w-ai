@@ -129,19 +129,45 @@ def zapisz(sprawa: Path, wpis: dict) -> None:
         f.write(json.dumps(wpis, ensure_ascii=False) + "\n")
 
 
+STOP_LOKALNE = {"leczenie", "leczenia", "rozpoznanie", "diagnostyka", "wytyczne", "wytyczna", "zalecenia", "postępowanie", "pacjent",
+                "pacjenta", "dorosłych", "dorosły", "przewlekła", "przewlekły", "ostra", "ostry", "choroba", "choroby", "zespół", "objawy",
+                "polska", "polskie", "poz", "and", "the", "oraz", "przy", "dla", "bez", "lub", "albo", "jak"}
+
+
 def lokalne(sprawa: Path, q: str, kto: str) -> None:
-    slowa = [w for w in re.findall(r"\w+", q.lower()) if len(w) >= 3]
+    # pomiar 2.11.2026: dawne liczenie każdego rdzenia w całym tekście dopisywało do biblioteki 11 kart niezwiązanych ze sprawą
+    slowa = sorted({w[:6] for w in re.findall(r"\w+", q.lower()) if len(w) >= 3 and w not in STOP_LOKALNE})
+    # wiersze MANIFEST.md (po polsku: „co to”, zakres) – karty bywają po angielsku
+    opisy = {}
+    man = ROOT / "zrodla" / "MANIFEST.md"
+    if man.exists():
+        for l in man.read_text(encoding="utf-8", errors="replace").splitlines():
+            m = re.match(r"^\|\s*([\w.\-/]+\.md)\s*\|(.*)$", l)
+            if m:
+                opisy[m.group(1)] = m.group(2).lower()
+    jest = lambda w, t: re.search(r"(?<!\w)" + re.escape(w), t) is not None  # noqa: E731 – początek słowa, nie środek („dna” ≠ „jednak”)
+    if not slowa:
+        print(f"zrodla/: zapytanie „{q}” bez słów kluczowych (podaj nazwę problemu, np. „dna moczanowa”).")
+        return
     wyniki = []
     for p in sorted((ROOT / "zrodla").rglob("*.md")):
         if p.name.upper().startswith("MANIFEST"):
             continue
         t = p.read_text(encoding="utf-8", errors="replace")
         lo = t.lower()
-        traf = sum(lo.count(w[:6]) for w in slowa)
-        if traf:
-            tytul = next((l.lstrip("# ").strip() for l in t.splitlines() if l.startswith("#")), p.stem)
-            wyniki.append((traf, p, tytul))
+        tytul = next((l.lstrip("# ").strip() for l in t.splitlines() if l.startswith("#")), p.stem)
+        glowa = (tytul + " " + p.stem.replace("-", " ") + " " + opisy.get(p.name, "") + " " + lo[:800]).lower()
+        w_glowie = [w for w in slowa if jest(w, glowa)]             # problem w tytule / nazwie pliku / manifeście / wstępie karty
+        rozne = [w for w in slowa if jest(w, lo) or jest(w, glowa)]
+        # karta pasuje, gdy problem jest w jej nagłówku albo w tekście jest większość słów zapytania
+        if not w_glowie and len(rozne) < max(2, -(-len(slowa) * 2 // 3)):
+            continue
+        traf = 10 * len(w_glowie) + 3 * len(rozne) + min(20, sum(len(re.findall(r"(?<!\w)" + re.escape(w), lo)) for w in rozne))
+        wyniki.append((traf, p, tytul))
     wyniki.sort(key=lambda x: -x[0])
+    if wyniki:
+        prog = wyniki[0][0] * 0.5
+        wyniki = [x for x in wyniki if x[0] >= prog]
     if not wyniki:
         print(f"zrodla/: brak karty dla „{q}”. Zapisz w opinii: BRAK_PL: {q}")
         return
