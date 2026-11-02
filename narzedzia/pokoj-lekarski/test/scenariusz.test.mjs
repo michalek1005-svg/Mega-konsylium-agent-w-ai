@@ -145,3 +145,35 @@ test('panele: alarm 112, pytanie do lekarza prowadzącego, asystenci', () => {
   assert.equal(t.alarm, null);
   assert.equal(t.asystenciPracuje, 1);
 });
+
+test('innowacje 2.11: mapa sporu, odznaki źródeł, karta sprawy', () => {
+  const L = (...z) => z.map((x) => JSON.stringify(x)).join('\n');
+  const pliki = {
+    '_log.jsonl': L(
+      { ts: '2026-11-02T10:00:00+00:00', zdarzenie: 'wypowiedz', rola: 'farmakolog', faza: 'Konsylium · runda 1',
+        skrot: 'To otoczka tabletki o przedłużonym uwalnianiu.', tresc: 'Metformax SR ma matrycę, która wydala się w stolcu [RPL: Metformax SR, ChPL pkt 4.8]. Opis kulki: PMID 31749148.' },
+      { ts: '2026-11-02T10:00:10+00:00', zdarzenie: 'spor', faza: 'Konsylium · runda 1', pytanie: 'Pasożyt czy otoczka tabletki?', za: ['hipotezujacy'], przeciw: ['bayes', 'farmakolog'], otwarte: true },
+      { ts: '2026-11-02T10:01:00+00:00', zdarzenie: 'zmiana_zdania', faza: 'Konsylium · runda 1', rola: 'hipotezujacy', z: 'pasożyt', na: 'otoczka', nowy_argument_id: 'RPL: Metformax SR, ChPL pkt 3' },
+      { ts: '2026-11-02T10:02:00+00:00', zdarzenie: 'spor', faza: 'Konsylium · runda 1', pytanie: 'Pasożyt czy otoczka tabletki?', otwarte: false }),
+    '09-FINAL.md': 'REKOMENDACJA: Zmień preparat na metforminę o natychmiastowym uwalnianiu.\nCO BY TO OBALIŁO: kulka po odstawieniu leku.\nPILNOŚĆ: 4 planowo — PEWNOŚĆ: średnia\nDLACZEGO: x.\nPLAN B: y.\nCZEGO NIE WIEMY: z.\nWRÓĆ / ESKALUJ GDY: krew w stolcu.\nŹRÓDŁA:\n[1] RPL: Metformax SR\n— Narzędzie testowe i edukacyjne marki MS.',
+  };
+  const s = zbudujScenariusz(pliki, 'x');
+  const sp = s.tablica.spor;
+  assert.equal(sp.length, 1);
+  assert.equal(sp[0].otwarte, false);
+  assert.deepEqual(sp[0].za, []);
+  assert.deepEqual(sp[0].przeciw.sort(), ['bayes', 'farmakolog', 'hipotezujacy']);
+  assert.equal(sp[0].przesuniecia[0].kto, 'hipotezujacy');
+  assert.match(sp[0].przesuniecia[0].fakt, /ChPL pkt 3/);
+  const w = s.sceny.flatMap((x) => x.wypowiedzi).find((x) => x.kto === 'farmakolog');
+  assert.deepEqual(w.zrodla.map((z) => z.typ).sort(), ['pubmed', 'rpl']);
+  assert.ok(w.zrodla.find((z) => z.etykieta === 'PMID 31749148'));
+  assert.ok(w.zrodla.find((z) => z.etykieta === 'RPL: Metformax SR, ChPL pkt 4.8').cytat.includes('matrycę'));
+  const k = s.tablica.karta;
+  assert.equal(k.zalecenie, 'Zmień preparat na metforminę o natychmiastowym uwalnianiu.');
+  assert.equal(k.obalenie, 'kulka po odstawieniu leku.');
+  assert.equal(k.pilnosc, 4); assert.equal(k.termin, 'planowo');
+  assert.equal(k.powrot, 'krew w stolcu.');
+  assert.deepEqual(k.zrodla, ['[1] RPL: Metformax SR']);
+  assert.ok(s.wnioski.pola.find((p) => p.etykieta === 'CO BY TO OBALIŁO'));
+});

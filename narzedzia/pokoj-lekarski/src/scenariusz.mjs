@@ -108,7 +108,7 @@ function log(pliki) {
 
 // pole „ETYKIETA: treść” z plików 05/09 (format FINAL)
 // Wnioski końcowe z 09-FINAL.md (format CLAUDE.md §6) → [{ etykieta, tresc }] dla ekranu „Wnioski”
-const POLA_FINAL = ['REKOMENDACJA', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B', 'CZEGO NIE WIEMY', 'WRÓĆ / ESKALUJ GDY', 'ŹRÓDŁA'];
+const POLA_FINAL = ['REKOMENDACJA', 'CO BY TO OBALIŁO', 'PILNOŚĆ', 'DLACZEGO', 'PLAN B', 'CZEGO NIE WIEMY', 'WRÓĆ / ESKALUJ GDY', 'WNIOSKI WG PROBLEMU', 'ŹRÓDŁA'];
 export function wnioskiZFinal(md) {
   if (!md || !md.trim()) return null;
   const linie = md.replace(/\r/g, '').split('\n');
@@ -416,6 +416,12 @@ export function zbudujScenariusz(pliki, nazwaSprawy = '') {
   const wnioski = wnioskiZFinal(pliki['09-FINAL.md']);
   const wszystkie = zywe.length ? polacz(zywe, sceny) : sceny;
   tablica.ustalenia = ustaleniaZLogu(zdarzenia, wszystkie);
+  const spor = sporZLogu(zdarzenia, wszystkie); if (spor.length) tablica.spor = spor;   // brak pola = brak sporu (kolumna Stan prac bez zmian)
+  const karta = kartaSprawy(final, tablica); if (karta) tablica.karta = karta;
+  for (const sc of wszystkie) for (const w of sc.wypowiedzi || []) {
+    const z = zrodlaWTekscie([w.pelny, w.tresc, w.info].filter(Boolean).join('\n'));
+    if (z.length) w.zrodla = z;
+  }
   tablica.prognozy = prognozy(pliki, zdarzenia, wszystkie, tablica);
   Object.assign(tablica, panele(zdarzenia));
   if (!zywe.length) return { sprawa: nazwaSprawy, tryb: tablica.tryb, sceny, tablica, zrodlo: 'pliki', wnioski };
@@ -511,5 +517,86 @@ export function panele(zdarzenia) {
     pytanie: lista.filter((p) => !p.odpowiedz).pop() || null,
     pytania: lista,
     asystenciPracuje: Object.values(asystenci).reduce((a, b) => a + b, 0),
+  };
+}
+
+// --- ankieta innowacji 2.11.2026: dane dla Graficznego (kontrakt uzgodniony 2.11) ---------------
+
+// numer sceny (si), od której zdarzenie z fazą jest widoczne
+function siFazy(z, sceny) {
+  const f = z.faza ? fazaNaId(z.faza) : null;
+  let si = f ? sceny.findIndex((s) => s.id === f.id) : -1;
+  if (si < 0) si = f ? Math.max(0, sceny.findIndex((s) => fazaNaId(s.tytul).rz > f.rz) - 1) : sceny.length - 1;
+  return si < 0 ? Math.max(0, sceny.length - 1) : si;
+}
+
+// Mapa sporu: {"zdarzenie":"spor","pytanie","za":[],"przeciw":[],"otwarte"} i {"zdarzenie":"zmiana_zdania","rola","z","na","nowy_argument_id","spor"?}
+// (skrypty/dymek.py --spor / --zmiana-zdania). Ten sam tekst pytania aktualizuje punkt; zmiana zdania trafia do sporu o tym
+// pytaniu, a bez niego do ostatniego otwartego. Najwyżej 3 punkty (najnowsze). Bez procentów.
+export function sporZLogu(zdarzenia, sceny) {
+  const norm = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const out = [];
+  for (const z of zdarzenia) {
+    if (z.zdarzenie === 'spor' && z.pytanie) {
+      const pyt = utnij(bezMarkdown(String(z.pytanie)), 120);
+      const za = (z.za || []).map((r) => rola(r) || r), przeciw = (z.przeciw || []).map((r) => rola(r) || r);
+      const st = out.find((x) => norm(x.pytanie) === norm(pyt));
+      if (st) Object.assign(st, { za: za.length ? za : st.za, przeciw: przeciw.length ? przeciw : st.przeciw, otwarte: z.otwarte !== false });
+      else out.push({ si: siFazy(z, sceny), pytanie: pyt, za, przeciw, przesuniecia: [], otwarte: z.otwarte !== false });
+    } else if (z.zdarzenie === 'zmiana_zdania' && z.rola) {
+      const cel = (z.spor && out.find((x) => norm(x.pytanie) === norm(z.spor))) || [...out].reverse().find((x) => x.otwarte) || out[out.length - 1];
+      if (!cel) continue;
+      const kto = rola(z.rola) || z.rola;
+      cel.przesuniecia.push({ kto, fakt: utnij(bezMarkdown(String(z.nowy_argument_id || z.na || '')), 140), si: siFazy(z, sceny) });
+      // kto zmienił zdanie, przechodzi na drugą stronę
+      const zByl = cel.za.includes(kto) ? 'za' : cel.przeciw.includes(kto) ? 'przeciw' : null;
+      if (zByl) { cel[zByl] = cel[zByl].filter((r) => r !== kto); cel[zByl === 'za' ? 'przeciw' : 'za'].push(kto); }
+    }
+  }
+  return out.slice(-3);
+}
+
+// Odznaki źródeł przy dymku: [{ typ: 'pubmed'|'rpl'|'pl'|'trial', etykieta, cytat }]
+const WZORCE_ZRODEL = [
+  ['pubmed', /PMID[:\s]*(\d{6,9})/gi, (m) => 'PMID ' + m[1]],
+  ['pubmed', /\bDOI[:\s]*(10\.\d{4,9}\/[^\s\]),;]+)/gi, (m) => 'DOI ' + m[1]],
+  ['rpl', /\[?RPL:\s*([^\]\n]{2,60})\]?/g, (m) => 'RPL: ' + m[1].trim()],
+  ['trial', /\b(NCT\d{8})\b/g, (m) => m[1]],
+  ['pl', /\[?(zrodla\/[\w\-./]+)\]?/g, (m) => m[1]],
+  ['pl', /\b(PTD|PTNT|PTK|PTMR|PTChP|KLRwP|PTG|PTR|PTL|PTH|PTO)\s*(\d{4})?\b/g, (m) => 'Wytyczne ' + m[1] + (m[2] ? ' ' + m[2] : '')],
+];
+export function zrodlaWTekscie(t) {
+  const tekst = String(t || '');
+  if (!tekst) return [];
+  const zdania = tekst.split(/(?<=[.!?])\s+|\n+/);
+  const out = []; const byly = new Set();
+  for (const [typ, re, etyk] of WZORCE_ZRODEL) {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(tekst))) {
+      const etykieta = etyk(m).replace(/[\].,;:]+$/, '');
+      if (byly.has(etykieta)) continue;
+      byly.add(etykieta);
+      const cytat = zdania.find((z) => z.includes(m[0].replace(/^\[/, '').slice(0, 12))) || '';
+      out.push({ typ, etykieta, cytat: utnij(bezMarkdown(cytat).replace(/\s+/g, ' ').trim(), 200) });
+    }
+  }
+  return out.slice(0, 4);
+}
+
+// Karta sprawy na koniec: z 09-FINAL.md
+const TERMINY = { 1: 'natychmiast', 2: 'dziś', 3: 'w tym tygodniu', 4: 'planowo', 5: 'obserwacja' };
+export function kartaSprawy(final, tablica = {}) {
+  if (!final || !final.trim()) return null;
+  const w = wnioskiZFinal(final);
+  const p = (e) => (w?.pola.find((x) => x.etykieta.toUpperCase().startsWith(e))?.tresc || '').trim();
+  const zr = p('ŹRÓDŁA').split('\n').map((l) => l.trim()).filter((l) => /^(\[\d+\]|[-•*]|\d+[.)])\s*\S/.test(l)).slice(0, 5);
+  return {
+    zalecenie: p('REKOMENDACJA') || null,
+    pilnosc: tablica.pilnosc ?? null,
+    termin: tablica.pilnosc ? TERMINY[tablica.pilnosc] : null,
+    obalenie: p('CO BY TO OBALIŁO') || null,
+    powrot: p('WRÓĆ / ESKALUJ GDY') || null,
+    zrodla: zr,
   };
 }

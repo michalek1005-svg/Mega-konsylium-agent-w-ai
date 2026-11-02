@@ -71,6 +71,18 @@ await p.waitForTimeout(500);
 assert.equal((await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').length, 2, 'dwa wpisy w pliku');
 assert.doesNotMatch(await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl']), /object Object/, 'plik uwag bez „[object Object]” (czytaj zwraca obiekt)');
 assert.ok((await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').every((l) => JSON.parse(l).pelny), 'każdy wiersz to poprawny wpis');
+// trzeci wpis jako przypuszczenie (przycisk „Moje przypuszczenie”), wcześniejsze zostają
+await p.waitForTimeout(6500);
+await r.locator('#glos-hipoteza').click();
+await r.locator('#glos-tekst').fill('Myślę, że to krztusiec.');
+await r.locator('#glos-wyslij').click();
+await p.waitForTimeout(500);
+{
+  const w = (await p.evaluate(() => window.__pliki['sprawy/2026-10-31-02/uwagi-lekarza.jsonl'])).trim().split('\n').map((l) => JSON.parse(l));
+  assert.equal(w.length, 3, 'trzy wpisy pod rząd w pliku');
+  assert.deepEqual(w.map((x) => x.typ), ['fakt', 'fakt', 'hipoteza'], 'fakt / przypuszczenie oznaczone');
+  assert.equal(await r.locator('#glos-hipoteza').getAttribute('aria-pressed'), 'false', 'przełącznik wraca do „fakt”');
+}
 // panele na żywo: alarm 112, plakietka asystentów, pytanie konsylium z przyciskami → odpowiedź w uwagi-lekarza.jsonl
 await p.evaluate(() => {
   const k = 'sprawy/2026-10-31-02/_log.jsonl', t = new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00');

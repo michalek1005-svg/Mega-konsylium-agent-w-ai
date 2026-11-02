@@ -8,11 +8,13 @@
    (2) jedno zapytanie PubMed o polską wytyczną/konsensus dla problemu (np. `<problem> AND (Poland OR Polish) AND (guideline OR recommendations OR consensus)`, hasła towarzystw z `merytoryka/PL-WYTYCZNE-PUBMED.md`).
    Wynik zapisz w polu `polskie_wytyczne` (karta albo PMID/DOI) albo `BRAK_PL: <zapytanie>`. W testach polskie wytyczne znajdował dopiero Sprawdzający (sprawa 09: za niska dawka amitryptyliny).
 2d. **Biblioteka sprawy.** Każde źródło, na które się powołujesz, dopisz: `python skrypty/zrodla.py sprawy/<ID> dodaj --typ pubmed --id <PMID> --tytul "…" --rok … --cytat "<zdanie ze streszczenia>" --kto <rola>`.
-   Przed szukaniem sprawdź `… lista` – nie szukaj drugi raz tego, co już jest. Źródła poza PubMed: RPL i openFDA (`zrodla.py rpl|fda`), ClinicalTrials.gov (konektor `Clinical_Trials`, `location="Poland"`) – tylko przy obrazie rzadkim albo braku opcji refundowanych.
+   Przed szukaniem sprawdź `… lista` – nie szukaj drugi raz tego, co już jest. **ChPL leków z wywiadu** ordynator pobiera przed ślepą turą (`zrodla.py chpl`) do `sprawy/<ID>/_chpl/` – dawki, przeciwwskazania, interakcje i działania niepożądane cytuj z tych plików jako `[RPL: <lek>, ChPL pkt 4.x]`; gdy pliku brak – `[RPL niedostępny]` i etykieta poziomu 4. Źródła poza PubMed: RPL i openFDA (`zrodla.py rpl|fda`), ClinicalTrials.gov (konektor `Clinical_Trials`, `location="Poland"`) – tylko przy obrazie rzadkim albo braku opcji refundowanych.
 2b. **Jeden objaw nie liczy się dwa razy.** Jeśli ten sam objaw wspiera dwie hipotezy z różnych torów (np. infekcja i reakcja polekowa), przypisz go tej, którą lepiej tłumaczy oś czasu, a przy drugiej zapisz go w `przeciw` lub jako niepewny. W `za` podawaj tylko informacje, które odróżniają hipotezę od konkurencyjnej.
 3. **Format opinii** — zapisz do `sprawy/<ID>/03-opinie/<twoja-rola>.json` zgodnie z `schemas/opinia.schema.json`:
    - `rozpoznania`: lista `{nazwa, icd10, p, za[], przeciw[]}`, suma `p` ≤ 1,0; max 5 pozycji; nazwy w mianowniku, po polsku, bez skrótów.
      **`icd10` obowiązkowo** (np. `M10.0`): agregacja łączy rozpoznania po kategorii ICD-10, więc ta sama choroba opisana innymi słowami liczy się jako zgoda.
+     **Kody „nie‑chorób”** zamiast ICD-10, gdy objaw nie jest chorobą: `ARTEFAKT-LEK` (np. otoczka tabletki o przedłużonym uwalnianiu w stolcu, barwienie moczu lekiem), `FIZJOLOGIA`, `DIETA` (np. buraki, barwniki), `NORMA` (wynik w granicach normy dla wieku). Bez kodu zgoda ich nie widzi.
+   - **Kilka dolegliwości** (ankieta innowacji 2.11.2026): gdy `01-wywiad.md` ma `## PROBLEMY` z P1, P2…, każde rozpoznanie dostaje pole `problem` (`"P1"`), suma `p` ≤ 1,0 i max 5 pozycji **na problem**. Agregacja liczy osobny ranking dla każdego problemu; FINAL ma osobny wniosek na każdy.
    - `pilnosc`: 1 natychmiast / 2 dziś / 3 ten tydzień / 4 planowo / 5 obserwacja.
    - `pewnosc`: niska / srednia / wysoka — **Twoja własna**, nie zespołu.
    - `red_flags_wykluczone`, `red_flags_otwarte`.
@@ -20,6 +22,8 @@
    - `co_zmieniloby_zdanie`: jedno zdanie.
    - `zrodla`: lista.
 4. **NIEZNANE z wywiadu** traktuj jako nieznane, nie jako „pewnie w normie”.
+4a. **Lekarz prowadzący (pole „Powiedz”).** Jego **obserwacje** (objaw, wynik, lek, fakt z gabinetu) mają rangę faktu z wywiadu. Jego **przypuszczenie rozpoznania** jest oznaczone w `01-wywiad.md` jako `HIPOTEZA LEKARZA PROWADZĄCEGO` i sprawdzasz je jak każdą inną hipotezę – bez premii za autorytet (wskazówka autorytatywna obniża trafność modeli z 53–65% do 28–44%, Diagnostics 2026, PMID 42938136). W opinii pole `hipoteza_lekarza_prowadzacego`: potwierdzam / obalam / nierozstrzygniete / brak.
+4b. **Badania: co zrobiłby lekarz POZ bez konsylium?** Każde badanie w `badania` / `nastepny_krok` musi zmieniać decyzję (napisz, jaki wynik zmieni co). Zanim je zalecisz, porównaj z tym, co zrobiłby rozsądny lekarz POZ bez konsylium; badanie ponad to wymaga jednego zdania uzasadnienia. Hamulec **nie działa** przy otwartych czerwonych flagach i pilności 1–2 – wtedy nie oszczędzaj.
 5. **Runda dyskusji** (gdy ordynator Cię wezwie do `04-konsylium.md`; tylko przy różnicy rozpoznania nr 1 – `_agregat.json` → `runda`): ≤120 słów, dwie części: „co mnie przekonuje w cudzych opiniach” i „co by zmieniło moje zdanie”.
    **Spór z regułami (docs/SPOR.md):** najpierw streść najmocniej stanowisko przeciwne (steelman), potem odpowiedz.
    **Zmiana zdania tylko z nowym argumentem**: nowy fakt z wywiadu, wynik, wpis Lekarza prowadzącego albo źródło z biblioteki sprawy (`id`). Samo „większość uważa inaczej” albo „czy jesteś pewien?” nie jest argumentem – zostań przy swoim.

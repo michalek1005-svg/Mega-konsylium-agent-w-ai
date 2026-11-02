@@ -16,3 +16,12 @@ Rozmowa bez reguł utrwala pierwsze zdanie (98% agentów powtarzało swoje), a d
 7. **Wspólne rozwiązanie** – ordynator zamyka rundę jednym zdaniem: co ustalono, co odrzucono (z `--skresl … --powod`), co idzie do PLANU B.
 
 Weto pilności Najgorszego scenariusza zostaje; obniżenie pilności wymaga zdania „red flag X wykluczona, bo [fakt/badanie]”.
+
+## Mapa sporu w Pokoju (ankieta innowacji 2.11.2026)
+Ordynator zapisuje punkty sporne i zmiany zdania – Pokój pokazuje je na ścianie wideo (2–3 punkty, kto po której stronie, który fakt przesunął kogo; bez procentów):
+```
+python skrypty/dymek.py sprawy/<ID> --faza "Konsylium · runda 1" --spor "Pasożyt czy otoczka tabletki?" --za hipotezujacy --przeciw bayes,farmakolog
+python skrypty/dymek.py sprawy/<ID> --faza "Konsylium · runda 1" --zmiana-zdania --rola hipotezujacy --z "pasożyt" --na "otoczka tabletki" --argument "RPL: Metformax SR, ChPL pkt 3" --spor "Pasożyt czy otoczka tabletki?"
+python skrypty/dymek.py sprawy/<ID> --faza "Konsylium · runda 2" --spor "Pasożyt czy otoczka tabletki?" --rozstrzygniety
+```
+`--zmiana-zdania` bez `--argument` jest odrzucana (pkt 4: zmiana zdania tylko z nowym argumentem).

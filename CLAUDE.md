@@ -23,11 +23,14 @@ sprawy/<ID>/            jedna sprawa = jeden katalog
   08-odpowiedz-rezydentom.md   ordynator: przyjmuję/odrzucam + powód, każda uwaga
   09-FINAL.md           komunikat dla lekarza (format §6)
   10-followup.md        wpisuje użytkownik po czasie: co było naprawdę → zasila kalibrację
+  11-wynik.json         ekran „Co było dalej” w aplikacji: trafne / częściowo / nietrafne + zdanie (skrypty/wynik.py)
+  _chpl/                ChPL leków z wywiadu pobrane z RPL (zrodla.py chpl)
 pamiec/                 pamięć zespołu stałego (zespol.md, kalibracja.json, luki.md)
 zrodla/                 biblioteka źródeł kuratorowana przez użytkownika (patrz §5)
 config/wagi.yaml        wagi ról per tor + progi triage
 skrypty/                agregacja.py, kalibracja.py, pakiet_rezydenta.py, rubryka.py, dymek.py, alarm.py,
-                        pytanie_lekarza.py, zrodla.py (RPL, openFDA, biblioteka sprawy), lint_final.py
+                        pytanie_lekarza.py, zrodla.py (RPL + ChPL, openFDA, biblioteka sprawy), lint_final.py, wynik.py
+config/siec.yaml        tryb asystentów (na_prosbe / stali), ChPL zawsze, ClinicalTrials
 ```
 
 ## 2. Intake jest obowiązkowy i proaktywny
@@ -58,15 +61,18 @@ Każda liczba kliniczna w `09-FINAL.md` (dawka, próg, kryterium) musi mieć źr
 ## 6. Format komunikatu końcowego (`09-FINAL.md`)
 ```
 REKOMENDACJA: <jedno zdanie, co zrobić teraz>
+CO BY TO OBALIŁO: <jeden fakt / objaw / wynik, który przekreśla rekomendację>
 PILNOŚĆ: <1 natychmiast / 2 dziś / 3 w tym tygodniu / 4 planowo / 5 obserwacja>  — PEWNOŚĆ: <niska/średnia/wysoka>
 DLACZEGO: <≤3 zdania>
 PLAN B: <jeśli pierwsza linia nie da efektu / wynik badania wyjdzie X>
+WNIOSKI WG PROBLEMU: <tylko gdy ≥2 dolegliwości (P1, P2…): jedno zdanie na problem>
 CZEGO NIE WIEMY: <lista NIEZNANE i co by zmieniło decyzję>
 WRÓĆ / ESKALUJ GDY: <konkretne objawy alarmowe>
 ŹRÓDŁA: <lista>
 — Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.
 ```
 Żadnych alternatyw równorzędnych. Żadnego „rozważ A lub B".
+Linia CO BY TO OBALIŁO – zatwierdzona przez Michała w ankiecie innowacji 2.11.2026.
 
 ## 7. Firewall rezydenta (szczegóły: docs/FIREWALL-REZYDENTA.md)
 Rezydent otrzymuje **wyłącznie** pakiet wygenerowany przez `skrypty/pakiet_rezydenta.py` w treści promptu.

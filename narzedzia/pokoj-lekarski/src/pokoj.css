@@ -193,7 +193,7 @@ body {
 .papieros .zar.zar-on { fill: #ffb24a; filter: drop-shadow(0 0 3px #ff9a3d); }
 
 /* głos lekarza prowadzącego (tylko w aplikacji, na żywo) */
-.glos { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; margin: 8px 6px 2px; padding: 8px 8px 8px 14px;
+.glos { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 10px; margin: 8px 6px 2px; padding: 8px 8px 8px 14px;
   border-radius: 22px; background: var(--panel); box-shadow: var(--panel-cien); }
 .glos textarea { border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 13.5px; line-height: 1.4; resize: none; min-height: 24px; max-height: 120px; padding: 4px 0; outline: none; }
 .glos textarea::placeholder { color: var(--mut); }
@@ -470,3 +470,6 @@ html.osadzony .legenda { display: none; }
 .postac.czyta-karte .ciało { animation: czyta 3s ease-in-out 8s infinite; }
 @keyframes czyta { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(2deg) translateY(1px); } }
 @media (prefers-reduced-motion: reduce) { .karta-sprawy { animation: none; } .postac.czyta-karte .ciało { animation: none; } }
+/* pole „Powiedz”: przełącznik fakt / przypuszczenie (ankieta innowacji 2.11.2026) */
+.glos .glos-hipoteza { font-size: 12px; padding: 5px 10px; opacity: .75; }
+.glos .glos-hipoteza[aria-pressed="true"] { opacity: 1; background: var(--ostrzezenie); color: var(--ink); }

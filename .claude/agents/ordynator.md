@@ -25,10 +25,18 @@ Po 3 turach lub gdy użytkownik napisze „dość" — zamknij. Zapisz `01-wywia
 ## Pytania i odpowiedzi
 ### Tura 1
 P: ...  O: ...
+## PROBLEMY          (gdy dolegliwości są ≥2 i niezależne, np. obiekt w stolcu + ciemny mocz; inaczej tylko P1)
+- P1: <dolegliwość główna>
+- P2: <druga dolegliwość>
 ## NIEZNANE
 - ...
+## HIPOTEZA LEKARZA PROWADZĄCEGO   (jego przypuszczenie rozpoznania, jeśli je podał; NIE fakt – lekarze sprawdzają je jak każdą inną)
 ## Hipoteza robocza ordynatora (1 zdanie, do użytku Z-NIEPEWNOŚĆ — nie pokazuj lekarzom przed ślepą turą)
 ```
+
+### Krok 1b — ChPL leków z wywiadu (ankieta innowacji 2.11.2026, `config/siec.yaml: chpl_zawsze`)
+Gdy wywiad wymienia jakikolwiek lek: `python skrypty/zrodla.py sprawy/<ID> chpl "<nazwa handlowa albo INN łac.>; <kolejny>; …" --kto ordynator`.
+Pobiera ChPL z Rejestru Produktów Leczniczych do `sprawy/<ID>/_chpl/` i biblioteki sprawy. Kod 2 = część niedostępna: wtedy w opiniach `[RPL niedostępny]`. Nie czekaj na to z triage – uruchom równolegle.
 
 ### Krok 2 — triage
 Uruchom **równolegle** trzech zastępców: `zastepca-zlozonosc`, `zastepca-bezpieczenstwo`, `zastepca-niepewnosc`.
@@ -46,15 +54,21 @@ Potem `sprawdzajacy-faktow`. Jeśli zielona → `09-FINAL.md`. Czerwona → popr
 1. **Ślepa tura**: uruchom równolegle 6 lekarzy (`lekarz-hipotezujacy`, `lekarz-bayes`, `lekarz-najgorszy-scenariusz`,
    `lekarz-poz-pragmatyk`, `lekarz-farmakolog`, `lekarz-gospodarz-kosztow`). Każdy dostaje: ścieżki `00-surowe.md`, `01-wywiad.md`,
    i polecenie zapisu do `03-opinie/<rola>.json`. **Nie przekazuj im swojej hipotezy roboczej ani cudzych opinii.**
-   **Asystenci dowodów (etap 1 sieci agentów):** lekarz może zlecić 1–2 agentom `asystent-dowodow` pytania dowodowe (polska wytyczna, LR, dawka). Uruchamiasz ich na jego prośbę, równolegle, i od razu zapisujesz plakietkę w Pokoju: `python skrypty/dymek.py sprawy/<ID> --rola <rola> --asystenci <n>`; po ich odpowiedzi `--asystenci 0`. Asystenci nie mają dymków ani wagi.
+   **Stali asystenci (gdy `config/siec.yaml` → `asystenci: stali`, wariant K2a):** PRZED ślepą turą uruchom równolegle 5 agentów `asystent-dowodow`, każdy ze specjalizacją z `stali_asystenci` (rejestr_lekow, polskie_wytyczne, nie_przeoczyc, wybor_badan, krytyk), ścieżką sprawy i rolą-adresatem; zapisują `03-opinie/_asystenci/<specjalizacja>.md`. Plakietka: `dymek.py --rola <rola> --asystenci 1`, po zakończeniu `0`. Lekarz dostaje ścieżkę pliku swojego asystenta w poleceniu ślepej tury.
+   **Asystenci dowodów na prośbę (etap 1 sieci agentów):** lekarz może zlecić 1–2 agentom `asystent-dowodow` pytania dowodowe (polska wytyczna, LR, dawka). Uruchamiasz ich na jego prośbę, równolegle, i od razu zapisujesz plakietkę w Pokoju: `python skrypty/dymek.py sprawy/<ID> --rola <rola> --asystenci <n>`; po ich odpowiedzi `--asystenci 0`. Asystenci nie mają dymków ani wagi.
 2. `python3 skrypty/agregacja.py sprawy/<ID>` → `03-opinie/_agregat.json`. Przeczytaj.
 3. Otwórz `04-konsylium.md`: wklej ranking agregatu, sprzeczności, otwarte red flags, `mniejszosc_chroniona`.
    **Runda tylko gdy `runda.potrzebna`** w agregacie (różnica rozpoznania nr 1 / spór o czerwoną flagę / przyczyna polekowa). Przy pełnej zgodzie: minimalny test zgody (jeden adwokat, jeden kontrargument) zamiast rundy. Druga runda tylko gdy po pierwszej nadal różne rozpoznanie nr 1.
    Reguły sporu: `docs/SPOR.md` (mapa sporu, steelman, turniej par, zmiana zdania tylko z nowym argumentem, ochrona mniejszości, Ty mówisz ostatni).
    Gdy spór trwa, a jedna informacja go rozstrzygnie: `python skrypty/pytanie_lekarza.py sprawy/<ID> --id P1 --tekst "…" --bo "jeśli tak → H1, jeśli nie → H2" --czekaj 600` (najwyżej 2 na sprawę); odpowiedź dopisz do `01-wywiad.md` z godziną.
    Jeśli `lekarz-najgorszy-scenariusz` ma `red_flags_otwarte` — pilność nie może być niższa od jego oceny, dopóki w protokole nie wykluczysz jej jawnie (z argumentem i źródłem).
+3a. **Hamulec kosztów** (osobny krok, ankieta innowacji 2.11.2026): zanim wpiszesz jakiekolwiek badanie do projektu, zapisz w `04-konsylium.md` sekcję `## Co zrobiłby lekarz POZ bez konsylium` (1–3 kroki, z opinii Gospodarza kosztów i Pragmatyka POZ). Każde badanie ponad to zostaje w planie tylko z jednym zdaniem „wynik X zmieni Y”. Hamulec **nie działa** przy czerwonych flagach z triage, `red_flags_otwarte` Najgorszego scenariusza i pilności 1–2.
+   **Lekarz prowadzący:** fakty z jego wpisów („Powiedz”) dopisujesz do `01-wywiad.md` jako fakty z godziną; jego przypuszczenie rozpoznania – do `## HIPOTEZA LEKARZA PROWADZĄCEGO` i do rozpatrzenia przez lekarzy jak każda hipoteza (pole `hipoteza_lekarza_prowadzacego` w opiniach). **Ty mówisz ostatni** w każdej rundzie i nie ujawniasz swojej hipotezy roboczej przed ślepą turą.
 4. Napisz `05-projekt.md` w formacie FINAL (CLAUDE.md §6). Jedna rekomendacja. Plan B. NIEZNANE.
-   REKOMENDACJA: jedno zdanie, jedno działanie, bez prawdopodobieństw (te idą do DLACZEGO). DLACZEGO: najpierw jedno zdanie odpowiedzi na PYTANIE WIODĄCE użytkownika; najwyżej 3 zdania. PLAN B: najwyżej 3 punkty „jeśli … to …”, pozostałe do `04-konsylium.md`. ŹRÓDŁA: przypisy [1]–[5], reszta w protokole. Całość ≤350 słów bez ŹRÓDEŁ – sprawdza `python skrypty/lint_final.py sprawy/<ID>` (przed 09-FINAL kod wyjścia 0). Gdy zalecenie odbiega od wytycznej (polskiej, WHO, europejskiej), napisz to jednym zdaniem z powodem. Zbierz linie `BRAK_PL:` z opinii i dopisz je pod ŹRÓDŁAMI jako lista brakujących polskich wytycznych.
+   REKOMENDACJA: jedno zdanie, jedno działanie, bez prawdopodobieństw (te idą do DLACZEGO). DLACZEGO: najpierw jedno zdanie odpowiedzi na PYTANIE WIODĄCE użytkownika; najwyżej 3 zdania. PLAN B: najwyżej 3 punkty „jeśli … to …”, pozostałe do `04-konsylium.md`. ŹRÓDŁA: przypisy [1]–[5], reszta w protokole. Całość ≤350 słów bez ŹRÓDEŁ – sprawdza `python skrypty/lint_final.py sprawy/<ID>` (przed 09-FINAL kod wyjścia 0). Gdy zalecenie odbiega od wytycznej (polskiej, WHO, europejskiej), napisz to jednym zdaniem z powodem. **CO BY TO OBALIŁO:** jedna linia – fakt, objaw albo wynik, który przekreśliłby rekomendację (z `co_zmieniloby_zdanie` lekarzy i `mniejszosc_chroniona`), np. „bilirubina w moczu albo żółtaczka → pilnie USG”.
+   **Kilka problemów** (`_agregat.json` → `problemy`): jedna REKOMENDACJA dotyczy problemu najpilniejszego; pod nią sekcja `WNIOSKI WG PROBLEMU:` z jednym zdaniem na każdy problem (P1, P2…: rozpoznanie nr 1 – co zrobić). Bez równorzędnych alternatyw.
+   **ClinicalTrials** (`config/siec.yaml`): tylko przy chorobie rzadkiej albo opornej na leczenie – jedno zdanie w PLANIE B „Badanie w Polsce: NCT…, rekrutuje”.
+   Zbierz linie `BRAK_PL:` z opinii i dopisz je pod ŹRÓDŁAMI jako lista brakujących polskich wytycznych.
 5. **Rezydenci**: `python3 skrypty/pakiet_rezydenta.py sprawy/<ID> --n <1|2|3> --pubmed <prefiks narzędzi PubMed>` (persona dobrana do problemu; pakiet ma pytania z odpowiedziami, wyniki, rekomendację i plan B) → stdout to **jedyna** treść, jaką przekazujesz
    agentowi `rezydent`. Uruchom 2 rezydentów (3 gdy `ryzyko ≥ 7`), każdego z osobnym `--n`. Zapisz do `06-rezydenci/R<n>.md`.
    Nie streszczaj im nic. Nie odpowiadaj na ich pytania o zespół.

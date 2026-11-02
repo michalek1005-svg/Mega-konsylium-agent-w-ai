@@ -621,13 +621,14 @@ function dopiszJsonl(stare, wpis) {
   wiersze.push(JSON.stringify(wpis));
   return wiersze.join('\n') + '\n';
 }
-async function powiedzLekarz(tekst) {
+async function powiedzLekarz(tekst, hipoteza = false) {
     tekst = String(tekst || '').replace(/\s+/g, ' ').trim();
     if (!tekst || !sprawaZywa || !window.MsMost) return false;
     const sc = scen && kroki.length ? scen.sceny[kroki[kroki.length - 1].si] : null;
     const faza = sc && !TECHNICZNE.has(sc.id) ? sc.tytul : 'Konsylium · runda 1';
     const skrot = tekst.length > 400 ? tekst.slice(0, 399).replace(/\s+\S*$/, '') + '…' : tekst;
-    const wpis = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00'), zdarzenie: 'wypowiedz', rola: 'lekarz_prowadzacy', faza, skrot, pelny: tekst };
+    const wpis = { ts: new Date().toISOString().replace(/\.\d{3}Z$/, '+00:00'), zdarzenie: 'wypowiedz', rola: 'lekarz_prowadzacy', faza, skrot, pelny: tekst,
+      typ: hipoteza ? 'hipoteza' : 'fakt' };
     if (tekst.length > 400) wpis.tresc = tekst.length > 600 ? tekst.slice(0, 599).replace(/\s+\S*$/, '') + '…' : tekst;
     const plik = 'sprawy/' + sprawaZywa + '/uwagi-lekarza.jsonl';
     let stare = '';
@@ -636,13 +637,14 @@ async function powiedzLekarz(tekst) {
     // głos lekarza zatrzymuje odtwarzanie na kilka sekund, żeby jego dymek był widoczny; potem dyskusja idzie dalej
     const bylaGra = gra; if (gra) ustawGre(false);
     cichoDo = Date.now() + 6000;
-    dymekTymczasowy('lekarz_prowadzacy', tekst, 'Lekarz prowadzący');
+    dymekTymczasowy('lekarz_prowadzacy', hipoteza ? 'Przypuszczam: ' + tekst : tekst, 'Lekarz prowadzący');
     setTimeout(() => { cichoDo = 0; if (!gra && (bylaGra || zywoTimer) && i < kroki.length - 1) ustawGre(true); }, 6000);
     if (odswiezZywo) setTimeout(odswiezZywo, 300);
     return true;
   }
   (function glos() {
-    const f = $('glos'), t = $('glos-tekst'), b = $('glos-wyslij'); if (!f) return;
+    const f = $('glos'), t = $('glos-tekst'), b = $('glos-wyslij'), h = $('glos-hipoteza'); if (!f) return;
+    if (h) h.addEventListener('click', () => h.setAttribute('aria-pressed', h.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'));
     const dopasuj = () => { t.style.height = 'auto'; t.style.height = Math.min(120, t.scrollHeight) + 'px'; };
     t.addEventListener('input', dopasuj);
     t.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); f.requestSubmit(); } e.stopPropagation(); });
@@ -650,7 +652,8 @@ async function powiedzLekarz(tekst) {
       e.preventDefault();
       const tekst = t.value.trim(); if (!tekst) return;
       b.disabled = true;
-      try { if (await powiedzLekarz(tekst)) { t.value = ''; dopasuj(); f.classList.remove('blad'); } }
+      const hip = !!h && h.getAttribute('aria-pressed') === 'true';
+      try { if (await powiedzLekarz(tekst, hip)) { t.value = ''; dopasuj(); f.classList.remove('blad'); if (h) h.setAttribute('aria-pressed', 'false'); } }
       catch (err) { f.classList.add('blad'); f.querySelector('.glos-blad').textContent = 'Nie udało się zapisać: ' + (err && err.message || err); }
       finally { b.disabled = false; t.focus(); }
     });

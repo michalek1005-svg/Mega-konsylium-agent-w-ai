@@ -119,7 +119,34 @@ def main() -> None:
     ap.add_argument("--powod", help="dlaczego odrzucono (≤120 znaków) – pokazuje się pod skreślonym wpisem")
     ap.add_argument("--prognoza", help='bieżące prawdopodobieństwa rozpoznań dla wykresu Lekarza prowadzącego: "Rozpoznanie=0,40;Inne=0,25" (do 5 pozycji)')
     ap.add_argument("--asystenci", type=int, help="ilu niewidocznych asystentów tej roli pracuje teraz (0 = skończyli) – plakietka na drzwiach Pokoju")
+    # mapa sporu na ścianie wideo (ankieta innowacji 2.11.2026, docs/SPOR.md pkt 1 i 4)
+    ap.add_argument("--spor", help="punkt sporny (≤120 znaków), np. „Pasożyt czy otoczka tabletki?” – z --za/--przeciw; ten sam tekst ponownie aktualizuje punkt")
+    ap.add_argument("--za", help="role po stronie tezy, po przecinku"); ap.add_argument("--przeciw", help="role przeciw, po przecinku")
+    ap.add_argument("--rozstrzygniety", action="store_true", help="punkt sporny zamknięty")
+    ap.add_argument("--zmiana-zdania", action="store_true", help="z --rola, --z, --na, --argument (id z biblioteki / fakt) i opcjonalnie --spor")
+    ap.add_argument("--z", dest="z_"); ap.add_argument("--na"); ap.add_argument("--argument")
     a = ap.parse_args()
+    if a.spor or a.zmiana_zdania:
+        if not a.sprawa.is_dir():
+            sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")
+        lista = lambda t: [rola(x.strip()) for x in (t or "").split(",") if x.strip()]  # noqa: E731
+        ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        if a.zmiana_zdania:
+            if not (a.rola and a.argument):
+                sys.exit("--zmiana-zdania wymaga --rola i --argument (nowy fakt albo id źródła; bez nowego argumentu zmiana zdania się nie liczy).")
+            w = {"ts": ts, "zdarzenie": "zmiana_zdania", "rola": rola(a.rola), "z": skroc(a.z_ or "", 120), "na": skroc(a.na or "", 120),
+                 "nowy_argument_id": skroc(a.argument, 140)}
+            if a.spor:
+                w["spor"] = skroc(a.spor, 120)
+        else:
+            w = {"ts": ts, "zdarzenie": "spor", "pytanie": skroc(a.spor, 120), "za": lista(a.za), "przeciw": lista(a.przeciw),
+                 "otwarte": not a.rozstrzygniety}
+        if a.faza:
+            w["faza"] = faza(a.faza)
+        with open(a.sprawa / "_log.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps(w, ensure_ascii=False) + "\n")
+        sygnal_ai(a.sprawa, "pracuje")
+        return
     if not a.sprawa.is_dir():
         sys.exit(f"Nie ma katalogu sprawy: {a.sprawa}")
     if a.asystenci is not None:

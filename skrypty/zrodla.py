@@ -5,6 +5,7 @@ Ustalenia Innowacyjnego i Merytorycznego 1.11.2026 (konsylium/ZRODLA-POZA-PUBMED
 
   python skrypty/zrodla.py sprawy/<ID> lokalne "dna moczanowa"          # najpierw: zrodla/ (polskie wytyczne, karty z MANIFEST)
   python skrypty/zrodla.py sprawy/<ID> rpl Metforminum                   # Rejestr Produktów Leczniczych (INN po łacinie albo --nazwa Metformax)
+  python skrypty/zrodla.py sprawy/<ID> chpl "Metformax; Mounjaro; Bisocard"   # ChPL z RPL dla KAŻDEGO leku z wywiadu → sprawy/<ID>/_chpl/
   python skrypty/zrodla.py sprawy/<ID> fda metformin [--sekcje drug_interactions,contraindications]   # openFDA drug label (poziom 3: „wg FDA; sprawdzić z ChPL”)
   python skrypty/zrodla.py sprawy/<ID> dodaj --typ pubmed --id 31749148 --tytul "…" --rok 2020 --cytat "…" --kto farmakolog
   python skrypty/zrodla.py sprawy/<ID> lista                             # co już jest w bibliotece sprawy (żeby nie szukać dwa razy)
@@ -65,7 +66,33 @@ def _przez_powershell(url: str) -> dict | None:
     return None
 
 
-def pobierz(url: str) -> dict:
+def _plik_przez_powershell(url: str, cel: Path) -> bool:
+    import os
+    import subprocess
+    if os.name != "nt":
+        return False
+    cmd = f"Invoke-WebRequest -UseBasicParsing -TimeoutSec 40 -Uri '{url}' -OutFile '{cel}'"
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, timeout=60)
+        return r.returncode == 0 and cel.exists() and cel.stat().st_size > 0
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def pobierz_plik(url: str, cel: Path) -> bool:
+    """Plik binarny (ChPL to zwykle PDF). True, gdy zapisano."""
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40, context=_kontekst_ssl()) as r:
+            dane = r.read()
+        if dane:
+            cel.write_bytes(dane)
+            return True
+    except Exception:  # noqa: BLE001
+        pass
+    return _plik_przez_powershell(url, cel)
+
+
+def pobierz(url: str, wymagane: bool = True) -> dict | None:
     blad = None
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=20, context=_kontekst_ssl()) as r:
@@ -75,6 +102,8 @@ def pobierz(url: str) -> dict:
     d = _przez_powershell(url)
     if d is not None:
         return d
+    if not wymagane:
+        return None
     print(f"Źródło niedostępne ({blad.__class__.__name__}: {blad}). Użyj etykiety [wiedza modelu, niezweryfikowane].", file=sys.stderr)
     sys.exit(2)
 
@@ -160,6 +189,95 @@ def rpl(sprawa: Path, inn: str | None, nazwa: str | None, kto: str) -> None:
         zapisz(sprawa, {"typ": "rpl", "id": str(x.get("id") or x.get("medicinalProductName")), "tytul": opis, "kto_pobral": kto})
 
 
+RPL = "https://rejestrymedyczne.ezdrowie.gov.pl/api/rpl/medicinal-products"
+SEKCJE_CHPL = ("3.", "4.2", "4.3", "4.4", "4.5", "4.6", "4.8")
+
+
+def _tekst_pdf(pdf: Path) -> str | None:
+    try:
+        import pypdf  # type: ignore
+    except Exception:  # noqa: BLE001
+        return None
+    try:
+        return "\n".join((s.extract_text() or "") for s in pypdf.PdfReader(str(pdf)).pages)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _wytnij_sekcje(t: str) -> str:
+    """Z pełnego tekstu ChPL zostawia punkty 3, 4.2–4.6, 4.8 (nagłówki „4.2 Dawkowanie…”)."""
+    linie = t.splitlines()
+    out, bierz = [], False
+    for l in linie:
+        m = re.match(r"\s*(\d{1,2}\.\d?)\s+\S", l)
+        if m:
+            nr = m.group(1)
+            bierz = any(nr == x or nr.startswith(x) and x.endswith(".") and len(nr) <= 2 for x in SEKCJE_CHPL) or nr in SEKCJE_CHPL
+        if bierz:
+            out.append(l)
+    return "\n".join(out).strip()
+
+
+def _szukaj_rpl(nazwa: str) -> list[dict] | None:
+    """None = Rejestr nie odpowiada; [] = brak takiego leku."""
+    wyn: list[dict] = []
+    for klucz in ("name", "commonName"):
+        d = pobierz(f"{RPL}/search/public?" + urllib.parse.urlencode({klucz: nazwa, "size": "50"}), wymagane=False)
+        if d is None:
+            return None
+        wyn = d.get("content") or d.get("items") or (d if isinstance(d, list) else [])
+        if wyn:
+            break
+    return wyn
+
+
+def chpl(sprawa: Path, leki: list[str], kto: str) -> int:
+    """Dla każdego leku: RPL → id produktu → ChPL (characteristic) do sprawy/<ID>/_chpl/. Kod 0 gdy wszystko, 2 gdy coś niedostępne."""
+    kat = sprawa / "_chpl"
+    kat.mkdir(exist_ok=True)
+    brak = 0
+    for lek in leki:
+        lista = _szukaj_rpl(lek)
+        if lista is None:
+            print(f"[RPL niedostępny] {lek}: Rejestr nie odpowiada. Etykieta [wiedza modelu, niezweryfikowane].")
+            brak += 1
+            continue
+        if not lista:
+            print(f"RPL: brak „{lek}” w Rejestrze (spróbuj nazwy handlowej albo INN po łacinie, np. Tirzepatidum). Lek spoza RPL (np. import docelowy, suplement) – zaznacz to w opinii.")
+            continue
+        rdzen = normuj(lek)[:6]
+        lista.sort(key=lambda x: (rdzen not in normuj(str(x.get("medicinalProductName") or "")),
+                                  not x.get("hasDownloadableMaterials", True)))
+        x = lista[0]
+        pid = str(x.get("id"))
+        nazwa = str(x.get("medicinalProductName") or lek)
+        opis = f"{nazwa} · {x.get('commonName')} · {x.get('pharmaceuticalFormName') or ''} · {x.get('medicinalProductPower') or ''}"
+        pdf = kat / f"{normuj(nazwa)[:30] or pid}-{pid}.pdf"
+        ok = pdf.exists() or pobierz_plik(f"{RPL}/{pid}/characteristic", pdf)
+        if ok and not pdf.read_bytes()[:5].startswith(b"%PDF"):
+            # serwer bywa zwraca JSON/HTML zamiast PDF – zostawiamy pod właściwym rozszerzeniem do wglądu
+            inny = pdf.with_suffix(".txt")
+            pdf.replace(inny)
+            pdf, ok = inny, False
+        if not ok:
+            print(f"[RPL: {nazwa}] {opis}\n  [RPL niedostępny] ChPL nie pobrał się ({RPL}/{pid}/characteristic).")
+            zapisz(sprawa, {"typ": "rpl", "id": pid, "tytul": opis, "kto_pobral": kto, "cytat": "ChPL niepobrany"})
+            brak += 1
+            continue
+        rel = pdf.relative_to(sprawa).as_posix()
+        tekst = _tekst_pdf(pdf)
+        if tekst:
+            wyc = _wytnij_sekcje(tekst) or tekst[:20000]
+            txt = pdf.with_suffix(".sekcje.txt")
+            txt.write_text(wyc, encoding="utf-8")
+            print(f"[RPL: {nazwa}, ChPL] {opis}\n  sekcje 3, 4.2–4.6, 4.8: {txt.relative_to(sprawa).as_posix()} ({len(wyc)} znaków)")
+        else:
+            print(f"[RPL: {nazwa}, ChPL] {opis}\n  PDF: {rel} – przeczytaj narzędziem Read (pkt 3, 4.2–4.6, 4.8).")
+        zapisz(sprawa, {"typ": "chpl", "id": pid, "tytul": f"ChPL {opis}", "kto_pobral": kto, "plik": rel,
+                        "cytat": "cytuj [RPL: " + nazwa + ", ChPL pkt …]"})
+    return 2 if brak else 0
+
+
 def fda(sprawa: Path, generic: str, sekcje: list[str], kto: str) -> None:
     d = pobierz("https://api.fda.gov/drug/label.json?" + urllib.parse.urlencode({"search": f"openfda.generic_name:{generic}", "limit": "1"}))
     wyn = (d.get("results") or [None])[0]
@@ -178,7 +296,7 @@ def fda(sprawa: Path, generic: str, sekcje: list[str], kto: str) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sprawa", type=Path)
-    ap.add_argument("tryb", choices=["lokalne", "rpl", "fda", "dodaj", "lista"])
+    ap.add_argument("tryb", choices=["lokalne", "rpl", "chpl", "fda", "dodaj", "lista"])
     ap.add_argument("zapytanie", nargs="?")
     ap.add_argument("--nazwa"); ap.add_argument("--kto", default="")
     ap.add_argument("--sekcje", default="boxed_warning,contraindications,drug_interactions,use_in_specific_populations")
@@ -195,6 +313,11 @@ def main() -> None:
         if not (a.zapytanie or a.nazwa):
             sys.exit("Podaj INN po łacinie albo --nazwa")
         rpl(a.sprawa, a.zapytanie, a.nazwa, a.kto)
+    elif a.tryb == "chpl":
+        leki = [x.strip() for x in re.split(r"[;\n]", a.zapytanie or "") if x.strip()]
+        if not leki:
+            sys.exit("Podaj leki rozdzielone średnikiem, np. \"Metformax; Mounjaro\"")
+        sys.exit(chpl(a.sprawa, leki, a.kto))
     elif a.tryb == "fda":
         fda(a.sprawa, a.zapytanie or "", [s.strip() for s in a.sekcje.split(",") if s.strip()], a.kto)
     elif a.tryb == "dodaj":

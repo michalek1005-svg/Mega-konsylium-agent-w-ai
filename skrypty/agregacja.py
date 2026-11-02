@@ -10,6 +10,11 @@ Pilność:     ważona mediana (tor pilnosc) + WETO lekarza 'najgorszy_scenarius
 Zgoda:       ważony udział lekarzy z tym samym rozpoznaniem nr 1 co lider → flaga NISKA_ZGODA (< próg).
              (dawna miara 1 − entropia top_n zostaje jako zgoda_entropia)
 
+Ankieta innowacji 2.11.2026:
+- Osobny ranking dla każdej dolegliwości: rozpoznanie ma pole "problem" (P1, P2… z ## PROBLEMY w 01-wywiad.md).
+  Główny ranking = P1; pozostałe w "problemy". Bez pola "problem" – jak dawniej (jeden ranking).
+- Kody „nie-chorób” w polu icd10: ARTEFAKT-LEK, FIZJOLOGIA, DIETA, NORMA – łączą się jak kod ICD-10.
+
 Zmiany po testach 1.11.2026 (ankieta zmian, opcje polecane):
 - ICD-10: rozpoznania z tym samym kodem (pole "icd10", liczy się kategoria 3-znakowa, np. "M10") łączą się w jedno,
   zanim zadziała słownik synonimów. Ta sama choroba zapisana na 4 sposoby nie daje już fałszywej NISKIEJ_ZGODY.
@@ -72,81 +77,129 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
     if not opinie:
         sys.exit(f"Brak opinii w {sprawa/'03-opinie'}")
 
-    # --- rozpoznania -------------------------------------------------------
-    def klucz(r: dict) -> str:
-        icd = re.sub(r"[^A-Z0-9]", "", str(r.get("icd10") or "").upper())
-        if re.fullmatch(r"[A-Z]\d{2}[0-9A-Z]*", icd):
-            return "icd:" + icd[:3]
-        return kanon(r["nazwa"], syn)
+    NIE_CHOROBY = {"ARTEFAKTLEK", "FIZJOLOGIA", "DIETA", "NORMA"}
 
-    STOP = {"lub", "oraz", "albo", "przebiegu", "bez", "przy", "pod", "nad", "jako", "typu", "postac", "postaci"}
+    def rozpoznania_problemu(problem: str | None) -> dict:
+        """Ranking, zgoda, nr 1 lekarzy i mniejszość chroniona dla jednego problemu (None = wszystkie rozpoznania)."""
+        def nalezy(r: dict) -> bool:
+            return problem is None or str(r.get("problem") or glowny) == problem
+        # --- rozpoznania -------------------------------------------------------
+        def klucz(r: dict) -> str:
+            icd = re.sub(r"[^A-Z0-9]", "", str(r.get("icd10") or "").upper())
+            if icd in NIE_CHOROBY:               # „nie-choroby” (ankieta innowacji 2.11.2026): artefakt polekowy, fizjologia, dieta, norma
+                return "kod:" + icd
+            if re.fullmatch(r"[A-Z]\d{2}[0-9A-Z]*", icd):
+                return "icd:" + icd[:3]
+            return kanon(r["nazwa"], syn)
 
-    def rdzenie(n: str) -> frozenset:
-        return frozenset(w[:5] for w in normalizuj(n).split() if len(w) >= 3 and w not in STOP)
+        STOP = {"lub", "oraz", "albo", "przebiegu", "bez", "przy", "pod", "nad", "jako", "typu", "postac", "postaci"}
 
-    # ta sama choroba opisana innymi słowami (bez kodu ICD-10): łączymy, gdy rdzenie słów pokrywają się ≥ 0,75 (Jaccard)
-    reprezentanci: list[tuple[str, frozenset]] = []
+        def rdzenie(n: str) -> frozenset:
+            return frozenset(w[:5] for w in normalizuj(n).split() if len(w) >= 3 and w not in STOP)
 
-    def scal(k: str, nazwa: str) -> str:
-        if k.startswith("icd:"):
+        # ta sama choroba opisana innymi słowami (bez kodu ICD-10): łączymy, gdy rdzenie słów pokrywają się ≥ 0,75 (Jaccard)
+        reprezentanci: list[tuple[str, frozenset]] = []
+
+        def scal(k: str, nazwa: str) -> str:
+            if k.startswith(("icd:", "kod:")):
+                return k
+            r = rdzenie(nazwa)
+            if len(r) >= 2:
+                for k2, r2 in reprezentanci:
+                    if len(r & r2) / len(r | r2) >= 0.75:
+                        return k2
+            reprezentanci.append((k, r))
             return k
-        r = rdzenie(nazwa)
-        if len(r) >= 2:
-            for k2, r2 in reprezentanci:
-                if len(r & r2) / len(r | r2) >= 0.75:
-                    return k2
-        reprezentanci.append((k, r))
-        return k
 
-    nazwy_wyswietlane: dict[str, str] = {}
-    kanon_do_wyswietlenia = {kanon(k, syn): k for k in syn}   # forma kanoniczna z synonimy.yaml
-    p_lekarza: dict[str, dict[str, float]] = {}
-    for rola, op in opinie.items():
-        p_lekarza[rola] = {}
-        if rola == "farmakolog":          # bez rankingu (testy seria 2 pkt 4)
-            continue
-        for r in op.get("rozpoznania", []):
-            k = scal(klucz(r), r["nazwa"])
-            nazwy_wyswietlane.setdefault(k, kanon_do_wyswietlenia.get(k, r["nazwa"]))
-            p_lekarza[rola][k] = max(p_lekarza[rola].get(k, 0.0), float(r["p"]))
-
-    wszystkie = set().union(*p_lekarza.values()) if p_lekarza else set()
-    suma_logit: dict[str, float] = defaultdict(float)
-    suma_wag: dict[str, float] = defaultdict(float)
-    kto_wymienil: dict[str, list[str]] = defaultdict(list)
-    for d in wszystkie:
-        for rola in opinie:
-            w = waga_w_torze(rola, "rozpoznanie", cfg, kal, nazwy_wyswietlane[d])
-            if w <= 0:
+        nazwy_wyswietlane: dict[str, str] = {}
+        kanon_do_wyswietlenia = {kanon(k, syn): k for k in syn}   # forma kanoniczna z synonimy.yaml
+        p_lekarza: dict[str, dict[str, float]] = {}
+        for rola, op in opinie.items():
+            p_lekarza[rola] = {}
+            if rola == "farmakolog":          # bez rankingu (testy seria 2 pkt 4)
                 continue
-            p = p_lekarza[rola].get(d)
-            if p is None:
-                p = eps
-            else:
-                kto_wymienil[d].append(rola)
-            suma_logit[d] += w * logit(p)
-            suma_wag[d] += w
+            for r in [x for x in op.get("rozpoznania", []) if nalezy(x)]:
+                k = scal(klucz(r), r["nazwa"])
+                nazwy_wyswietlane.setdefault(k, kanon_do_wyswietlenia.get(k, r["nazwa"]))
+                p_lekarza[rola][k] = max(p_lekarza[rola].get(k, 0.0), float(r["p"]))
 
-    # pula logarytmiczna: p = sigmoid(ważona średnia logitów) dla każdego rozpoznania osobno.
-    # Bez softmaxu (1.11.2026: softmax zawyżał lidera, np. oceny 0,50–0,55 → 0,64). Skalujemy w dół tylko,
-    # gdy suma > 1; wtedy żadne p nie wychodzi ponad oceny lekarzy.
-    p_agr = {}
-    for d in wszystkie:
-        if suma_wag[d] > 0:
-            p_agr[d] = 1 / (1 + math.exp(-suma_logit[d] / suma_wag[d]))
-    suma_p = sum(p_agr.values())
-    if suma_p > 1:
-        p_agr = {d: v / suma_p for d, v in p_agr.items()}
-    wszystkie = set(p_agr)
-    ranking = sorted(p_agr.items(), key=lambda x: -x[1])[:top_n]
+        wszystkie = set().union(*p_lekarza.values()) if p_lekarza else set()
+        suma_logit: dict[str, float] = defaultdict(float)
+        suma_wag: dict[str, float] = defaultdict(float)
+        kto_wymienil: dict[str, list[str]] = defaultdict(list)
+        for d in wszystkie:
+            for rola in opinie:
+                w = waga_w_torze(rola, "rozpoznanie", cfg, kal, nazwy_wyswietlane[d])
+                if w <= 0:
+                    continue
+                p = p_lekarza[rola].get(d)
+                if p is None:
+                    p = eps
+                else:
+                    kto_wymienil[d].append(rola)
+                suma_logit[d] += w * logit(p)
+                suma_wag[d] += w
 
-    # zgoda = 1 - entropia znormalizowana top_n
-    ps = [p for _, p in ranking]
-    zs = sum(ps) or 1.0
-    ps = [p / zs for p in ps]
-    H = -sum(p * math.log(p) for p in ps if p > 0)
-    Hmax = math.log(len(ps)) if len(ps) > 1 else 1.0
-    zgoda = 1.0 - (H / Hmax if Hmax > 0 else 0.0)
+        # pula logarytmiczna: p = sigmoid(ważona średnia logitów) dla każdego rozpoznania osobno.
+        # Bez softmaxu (1.11.2026: softmax zawyżał lidera, np. oceny 0,50–0,55 → 0,64). Skalujemy w dół tylko,
+        # gdy suma > 1; wtedy żadne p nie wychodzi ponad oceny lekarzy.
+        p_agr = {}
+        for d in wszystkie:
+            if suma_wag[d] > 0:
+                p_agr[d] = 1 / (1 + math.exp(-suma_logit[d] / suma_wag[d]))
+        suma_p = sum(p_agr.values())
+        if suma_p > 1:
+            p_agr = {d: v / suma_p for d, v in p_agr.items()}
+        wszystkie = set(p_agr)
+        ranking = sorted(p_agr.items(), key=lambda x: -x[1])[:top_n]
+
+        # zgoda = 1 - entropia znormalizowana top_n
+        ps = [p for _, p in ranking]
+        zs = sum(ps) or 1.0
+        ps = [p / zs for p in ps]
+        H = -sum(p * math.log(p) for p in ps if p > 0)
+        Hmax = math.log(len(ps)) if len(ps) > 1 else 1.0
+        zgoda = 1.0 - (H / Hmax if Hmax > 0 else 0.0)
+
+        # --- runda dyskusji tylko przy różnicy rozpoznania nr 1 ------------------
+        top1 = {}
+        for rola, d in p_lekarza.items():
+            if d and waga_w_torze(rola, "rozpoznanie", cfg, kal) > 0:
+                top1[rola] = max(d.items(), key=lambda x: x[1])[0]
+        rozne_top1 = sorted({nazwy_wyswietlane[k] for k in top1.values()})
+        lider = ranking[0][0] if ranking else None
+        # zgoda (od 1.11.2026) = ważony udział lekarzy, których rozpoznanie nr 1 to lider rankingu;
+        # entropia top_n zostaje informacyjnie (zgoda_entropia) – przy synonimach dawała fałszywe 0,03–0,11
+        w_all = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r in top1)
+        w_lid = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r, k in top1.items() if k == lider)
+        zgoda_entropia = zgoda
+        zgoda = (w_lid / w_all) if w_all > 0 else 0.0
+
+        # --- ochrona mniejszości --------------------------------------------------
+        chronione = []
+        for d in wszystkie:
+            if d == lider:
+                continue
+            kto = [r for r in p_lekarza if p_lekarza[r].get(d, 0) >= 0.15]
+            # czerwona flaga = rozpoznanie zagrażające, które wniósł lekarz z wetem pilności (Najgorszy scenariusz), p ≥ 0,05
+            z_flaga = [r for r in p_lekarza if p_lekarza[r].get(d, 0) >= 0.05 and cfg["role"].get(r, {}).get("weto_pilnosci")
+                       and opinie[r].get("red_flags_otwarte")]
+            if kto or z_flaga:
+                chronione.append({"rozpoznanie": nazwy_wyswietlane[d], "p_max": round(max(p_lekarza[r].get(d, 0) for r in p_lekarza), 3),
+                                  "kto": sorted(set(kto) | set(z_flaga)), "czerwona_flaga": bool(z_flaga)})
+        chronione.sort(key=lambda x: (not x["czerwona_flaga"], -x["p_max"], x["rozpoznanie"]))
+        chronione = chronione[:5]
+
+        return {"ranking": ranking, "zgoda": zgoda, "zgoda_entropia": zgoda_entropia, "top1": top1, "rozne_top1": rozne_top1,
+                "chronione": chronione, "nazwy": nazwy_wyswietlane, "p_lekarza": p_lekarza, "kto_wymienil": kto_wymienil, "lider": lider}
+
+    # osobny ranking dla każdej dolegliwości (pole "problem" w rozpoznaniu: P1, P2… z 01-wywiad.md ## PROBLEMY)
+    problemy_id = sorted({str(r.get("problem")) for op in opinie.values() for r in op.get("rozpoznania", []) if r.get("problem")})
+    glowny = problemy_id[0] if problemy_id else "P1"
+    R = rozpoznania_problemu(glowny if len(problemy_id) > 1 else None)
+    ranking, zgoda, zgoda_entropia, top1, rozne_top1 = R["ranking"], R["zgoda"], R["zgoda_entropia"], R["top1"], R["rozne_top1"]
+    chronione, nazwy_wyswietlane, p_lekarza, kto_wymienil = R["chronione"], R["nazwy"], R["p_lekarza"], R["kto_wymienil"]
+    inne_problemy = {pid: rozpoznania_problemu(pid) for pid in problemy_id[1:]} if len(problemy_id) > 1 else {}
 
     # --- pilność -------------------------------------------------------------
     pary = [(float(op["pilnosc"]), waga_w_torze(rola, "pilnosc", cfg, kal)) for rola, op in opinie.items() if "pilnosc" in op]
@@ -165,39 +218,13 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
     wykluczone = sorted({f for op in opinie.values() for f in op.get("red_flags_wykluczone", [])})
     sporne = sorted(set(otwarte) & set(wykluczone))   # jeden mówi wykluczone, drugi otwarte → do dyskusji
 
-    # --- runda dyskusji tylko przy różnicy rozpoznania nr 1 ------------------
-    top1 = {}
-    for rola, d in p_lekarza.items():
-        if d and waga_w_torze(rola, "rozpoznanie", cfg, kal) > 0:
-            top1[rola] = max(d.items(), key=lambda x: x[1])[0]
-    rozne_top1 = sorted({nazwy_wyswietlane[k] for k in top1.values()})
-    lider = ranking[0][0] if ranking else None
-    # zgoda (od 1.11.2026) = ważony udział lekarzy, których rozpoznanie nr 1 to lider rankingu;
-    # entropia top_n zostaje informacyjnie (zgoda_entropia) – przy synonimach dawała fałszywe 0,03–0,11
-    w_all = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r in top1)
-    w_lid = sum(waga_w_torze(r, "rozpoznanie", cfg, kal) for r, k in top1.items() if k == lider)
-    zgoda_entropia = zgoda
-    zgoda = (w_lid / w_all) if w_all > 0 else 0.0
-
-    # --- ochrona mniejszości --------------------------------------------------
-    chronione = []
-    for d in wszystkie:
-        if d == lider:
-            continue
-        kto = [r for r in p_lekarza if p_lekarza[r].get(d, 0) >= 0.15]
-        # czerwona flaga = rozpoznanie zagrażające, które wniósł lekarz z wetem pilności (Najgorszy scenariusz), p ≥ 0,05
-        z_flaga = [r for r in p_lekarza if p_lekarza[r].get(d, 0) >= 0.05 and cfg["role"].get(r, {}).get("weto_pilnosci")
-                   and opinie[r].get("red_flags_otwarte")]
-        if kto or z_flaga:
-            chronione.append({"rozpoznanie": nazwy_wyswietlane[d], "p_max": round(max(p_lekarza[r].get(d, 0) for r in p_lekarza), 3),
-                              "kto": sorted(set(kto) | set(z_flaga)), "czerwona_flaga": bool(z_flaga)})
-    chronione.sort(key=lambda x: (not x["czerwona_flaga"], -x["p_max"]))
-    chronione = chronione[:5]
-
     polekowe = {r: op.get("przyczyna_polekowa") for r, op in opinie.items() if op.get("przyczyna_polekowa")}
     powody = []
     if len(rozne_top1) > 1:
         powody.append("różne rozpoznanie nr 1: " + " / ".join(rozne_top1))
+    for pid, Q in inne_problemy.items():
+        if len(Q["rozne_top1"]) > 1:
+            powody.append(f"{pid}: różne rozpoznanie nr 1: " + " / ".join(Q["rozne_top1"]))
     if sporne:
         powody.append("spór o czerwoną flagę: " + "; ".join(sporne))
     if any(v == "tak" for v in polekowe.values()) and not any("polek" in n.lower() for n in rozne_top1):
@@ -226,6 +253,11 @@ def agreguj(sprawa: Path, do_rundy: int | None = None) -> dict:
         "runda": runda,
         "mniejszosc_chroniona": chronione,
         "przyczyna_polekowa": polekowe,
+        "problem_glowny": glowny if len(problemy_id) > 1 else None,
+        "problemy": {pid: {"ranking": [{"rozpoznanie": Q["nazwy"][d], "p": round(p, 3), "wymienili": Q["kto_wymienil"][d]} for d, p in Q["ranking"]],
+                           "zgoda": round(Q["zgoda"], 3),
+                           "rozpoznanie_nr1_lekarzy": {r: Q["nazwy"][k] for r, k in Q["top1"].items()},
+                           "mniejszosc_chroniona": Q["chronione"]} for pid, Q in inne_problemy.items()},
     }
     if sporne:
         wynik["flagi"].append("SPORNE_RED_FLAGS")
@@ -247,7 +279,12 @@ def main() -> None:
     print("Ranking:")
     for r in wynik["ranking"]:
         print(f"  {r['p']:.3f}  {r['rozpoznanie']}   ({', '.join(r['wymienili']) or 'nikt — tylko ε'})")
-    print(f"Zgoda: {wynik['zgoda']}  Flagi: {wynik['flagi'] or '-'}")
+    print(f"Zgoda: {wynik['zgoda']}  Flagi: {wynik['flagi'] or '-'}" + (f"  (problem {wynik['problem_glowny']})" if wynik["problem_glowny"] else ""))
+    for pid, q in wynik["problemy"].items():
+        print(f"Problem {pid} – osobny ranking (osobny wniosek w FINAL):")
+        for r in q["ranking"]:
+            print(f"  {r['p']:.3f}  {r['rozpoznanie']}   ({', '.join(r['wymienili']) or 'nikt — tylko ε'})")
+        print(f"  Zgoda {pid}: {q['zgoda']}")
     r = wynik["runda"]
     print(("Kolejna runda: " if r.get("po_rundzie") else "Runda dyskusji: ") + ("TAK – " + "; ".join(r["powody"]) if r["potrzebna"] else "NIE – " + r["test_zgody"]))
     spoza = [x for x in wynik["pliki_opinii"] if x not in wagi()["role"]]

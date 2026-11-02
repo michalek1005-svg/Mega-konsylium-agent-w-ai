@@ -14,6 +14,9 @@ Znacznik pamięta KLUCZE przeczytanych uwag (czas + skrót treści), nie ich lic
 lub skrócony plik nie ukrywa nowych wpisów. Wiersze, które nie są JSON-em (np. „[object Object]”), są pomijane
 z ostrzeżeniem na stderr.
 
+Wpis z typ = "hipoteza" (przycisk „Moje przypuszczenie” w Pokoju) to przypuszczenie rozpoznania – do ## HIPOTEZA LEKARZA
+PROWADZĄCEGO w 01-wywiad.md, nie fakt. Wpis bez typu albo typ = "fakt" – fakt z godziną (ankieta innowacji 2.11.2026).
+
 Wyjście: linie „#<nr> <HH:MM> [<faza>] <tekst>” albo „Brak nowych uwag.” Kod wyjścia 0.
 Każdą nową uwagę ordynator przekazuje właściwym rolom w następnej wypowiedzi i potwierdza dymkiem
 (docs/NA-ZYWO.md, sekcja „Lekarz prowadzący w dyskusji”). Na Windows: python skrypty/uwagi_lekarza.py …
@@ -110,7 +113,8 @@ def main() -> None:
     for n, u in nowe:
         ts = str(u.get("ts", ""))
         hhmm = ts[11:16] if len(ts) >= 16 else ""
-        print(f"#{n} {hhmm} [{u.get('faza', '')}] {tekst(u)}")
+        znak = "HIPOTEZA LEKARZA PROWADZĄCEGO (sprawdzić jak każdą inną): " if u.get("typ") == "hipoteza" else ""
+        print(f"#{n} {hhmm} [{u.get('faza', '')}] {znak}{tekst(u)}")
     wszystkie = {klucz(u) for u in uwagi} | (set() if a.wszystkie else widziane)
     zn.write_text(json.dumps({"przeczytane": len(uwagi), "widziane": sorted(wszystkie)}, ensure_ascii=False), encoding="utf-8")
 
