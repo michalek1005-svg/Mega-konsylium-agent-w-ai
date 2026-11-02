@@ -54,6 +54,7 @@ Szczegóły: `ROLA-*.md` w tym katalogu. Tytuł wątku zawsze zaczyna się od �
 cd ms-psycho/aplikacja/powloka && node zbuduj.mjs && xvfb-run -a node test/e2e-psycho.mjs
 python3 ms-psycho/skrypty/test_frazy.py        # 80/80
 python3 ms-psycho/skrypty/test_030.py           # OK
+python3 ms-psycho/skrypty/test_sondy.py         # sondy bezpieczeństwa, OK
 cd ms-psycho/aplikacja/pokoj-psychologiczny && npm test   # 12/12
 ```
 Potem: `build/` → `aplikacja/gotowe/` (README z wersją), cofnij zmiany `package-lock.json` po `npm install`, commit + push, paczka zip w `/mnt/project-files/psycho-<wersja>/`.

@@ -76,9 +76,11 @@ ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
 SZWY = [r"\bm[oó]j koleg", r"\bterapeut(a|ka) (cbt|act|systemow|psychodynam|humanist)", r"\bzesp[oó]ł uwa[zż]a", r"\bz jednej strony\b(?=.{0,60}(terapeut|podej[sś]|zesp[oó][lł]|szko[lł]|cbt|act))",
-        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b", r"\b\w+[aeiuyę]ł(e|a)m\b", r"\b\w*(szed|sz|mog|jad|nios|wiod)ł(e|a)m\b",
+        r"\bjako model\b", r"\bjestem tu zawsze\b", r"\bzawsze (tu )?b[eę]d[eę]\b", r"\bdawk", r"\bodstaw", r"\bwierz[eę],? [zż]e nie\b", r"\bpo prostu\b", r"\bpowinie(ne)?(ś|s|nes|naś|nas)\b", r"\bnie martw si", r"\bto normalne\b", r"\bna pewno si[eę] uda", r"\b\w+(ł|l)(a)?bym\b", r"\b(?!(sygna|dzia|kana|materia|upa|zapa|idea|potencja|kapita|rytua|sza|fina|interwa|szpita|udzia|poda|przedzia|rozdzia|wymia|zapa)łem\b)\w+[aeiuyę]ł(e|a)m\b", r"\b\w*(szed|sz|mog|jad|nios|wiod)ł(e|a)m\b",
         r"\bz (mojego |w[łl]asnego )?do[sś]wiadczenia\b", r"\bw mojej praktyce\b", r"\bmoi (pacjenci|klienci)\b",
-        r"\brozumiem dok[lł]adnie", r"\bwszystko (b[eę]dzie dobrze|si[eę] u[lł]o[zż]y)", r"\bka[zż]dy tak ma\b", r"\bmusisz\b", r"\bg[lł]owa do g[oó]ry", r"\bmnie te[zż] (si[eę] )?(to|tak)", r"\bdlaczego (jeszcze )?nie\b", r"\bmiałe?m (kiedy[sś] )?(pacjent|klient)"]
+        r"\brozumiem dok[lł]adnie", r"\bwszystko (b[eę]dzie dobrze|si[eę] u[lł]o[zż]y)", r"\bka[zż]dy tak ma\b", r"(?<!nie )\bmusisz\b",
+        r"\bmasz (depresj|nerwic|adhd|chad|zaburzeni|borderline|osobowo)", r"\bto (na pewno|jest|jasne,? [zż]e to) (depresja|adhd|nerwica|chad|borderline)",
+        r"\d+\s?(mg|mcg|µg|tabl)", r"\bgabine(t|c)", r"\bg[lł]owa do g[oó]ry", r"\bmnie te[zż] (si[eę] )?(to|tak)", r"\bdlaczego (jeszcze )?nie\b", r"\bmiałe?m (kiedy[sś] )?(pacjent|klient)"]
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -91,6 +93,27 @@ def teraz() -> str:
 def bez_ogonkow(t: str) -> str:
     t = unicodedata.normalize("NFD", t.lower())
     return "".join(c for c in t if unicodedata.category(c) != "Mn").replace("ł", "l")
+
+
+def pytanie_o_bezpieczenstwo(t: str) -> bool:
+    """B4: czy w tekście jest pytanie wprost o plan, zamiar albo środki (nie dowolne pytanie)."""
+    zd = re.findall(r"[^.!?]*\?", bez_ogonkow(bez_cytatow(t)))
+    return any(re.search(r"plan|zamiar|krzywd|zyci|srodk|\bleki?\b|lekow|tabletk|samoboj|zabic|odebra", z) for z in zd)
+
+
+def kontakt_dzis(t: str) -> bool:
+    """B3: „dziś/teraz” w zdaniu z działaniem (zadzwoń, napisz, jedź, porozmawiaj, CZP, izba…) albo z numerem pomocy – nie samo „teraz rozumiem”."""
+    numery = [n["numer"].replace(" ", "") for n in POMOC["numery"]]
+    for z in re.split(r"(?<=[.!?\n])\s+", t):
+        zb = bez_ogonkow(z)
+        if re.search(r"\b112\b|\b999\b|pogotowi", zb):  # numer alarmowy = działanie natychmiast
+            return True
+        if not re.search(r"\b(dzis|dzisiaj|teraz|od razu|natychmiast)\b", zb):
+            continue
+        if re.search(r"zadzwo|dzwon|napisz|jedz|jedzie|idz|pojdz|porozmawia|skontaktuj|kontakt|czp|izb|sor\b|pogotowi|112|lekarz|psychiatr|powiedz|popros|zostan z|bliski", zb) \
+                or any(n in z.replace(" ", "") for n in numery):
+            return True
+    return False
 
 
 def ryzyko_slownik(t: str) -> tuple[int, list[str]]:
@@ -464,7 +487,10 @@ def podsumuj(s: dict) -> None:
     slowa = re.findall(r"[a-z]+", bez_ogonkow(tekst_nowych))
     krotka = (bool(s["nowe"]) and maks == 0 and ostatni == 0 and "?" not in tekst_nowych and len(slowa) <= 8
               and len([x for x in slowa if x not in GRZECZNOSCI]) <= 1)
-    if not krotka and s["nowe"]:
+    tor_bezp = bool(s["nowe"]) and (ostatni >= 3 or bool(s["zespol"] and s["zespol"][-1].get("kryzys")))
+    if tor_bezp:
+        print("TOR BEZPIECZEŃSTWA (poprzednia tura miała poziom ≥3 / kryzys; docs/ROZMOWA.md §5): bez szybkiej odpowiedzi wstępnej, strażnik ryzyka najpierw, odpowiedź ≤80–120 słów, kontakt z człowiekiem dziś. Poziom obniża tylko nowy fakt (obnizam_ryzyko).")
+    if not krotka and s["nowe"] and not tor_bezp:
         slow_n = len(tekst_nowych.split())
         pytan = tekst_nowych.count("?")
         namysl = (slow_n > 120 or pytan >= 2 or s["tryb"] == "konsultacja"
@@ -484,7 +510,7 @@ def podsumuj(s: dict) -> None:
     wstepne = [x for x in s["zespol"] if x.get("wstepna") and x.get("odpowiedz_na", 0) > s["odp"]]
     if s["nowe"] and not krotka and maks < 3 and not wstepne and locals().get("slucham_mozna"):
         print("(Jeśli wybierasz SŁUCHAM – to jest cała odpowiedź tej tury; bez \"wstepna\" i bez panelu.)")
-    if s["nowe"] and not krotka and maks < 3 and not wstepne:
+    if s["nowe"] and not krotka and maks < 3 and not wstepne and not tor_bezp:
         print(f"SZYBKO NAJPIERW (decyzja Michała 1.11.2026 15:43; docs/ROZMOWA.md §0a): zanim ruszy panel – prowadzący SAM, w kilka sekund, pisze 1–3 zdania: krótkie uznanie + jedno zagadujące/dopytujące pytanie; odp.json z \"wstepna\": true. Potem panel w tle, a pełna odpowiedź (bez \"wstepna\") uwzględnia też to, co osoba dopisze w międzyczasie.")
     elif wstepne:
         print("SZYBKA ODPOWIEDŹ JUŻ POSZŁA – teraz pełna opinia zespołu (bez \"wstepna\"); nie powtarzaj pytania z szybkiej odpowiedzi.")
@@ -549,7 +575,8 @@ def cmd_odpowiedz(a) -> None:
     tekst = "\n\n".join(czesci).strip()
     if d.get("wstepna"):
         nowe_f = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["nowe"]] or [0])
-        if nowe_f >= 3 or d.get("kryzys"):
+        pop_z = s["zespol"][-1] if s["zespol"] else {}
+        if nowe_f >= 3 or d.get("kryzys") or int(pop_z.get("ryzyko") or 0) >= 3 or pop_z.get("kryzys"):
             sys.exit("Przy poziomie ≥3 / kryzysie nie ma szybkiej odpowiedzi wstępnej – od razu pełna odpowiedź bezpieczeństwa.")
         if len(tekst.split()) > 60 or len(czesci) > 1:
             sys.exit("Szybka odpowiedź wstępna: jedna wiadomość, najwyżej ok. 60 słów (docs/ROZMOWA.md §0a).")
@@ -565,27 +592,38 @@ def cmd_odpowiedz(a) -> None:
     # dolna granica = filtr nowych wiadomości ORAZ poziom z poprzedniej odpowiedzi zespołu i filtr całej historii
     # (próba 1.11.2026: „nie mam takich myśli” bez nowego faktu nie może zejść z 2 do 0)
     poprzedni = int((s["zespol"][-1].get("ryzyko") if s["zespol"] else 0) or 0)
+    if poprzedni < 2:  # poziom 1 (sam znacznik, bez wątku samobójczego) może wrócić do 0 bez pola obnizam_ryzyko (raport Testowego 2.11.2026, F1)
+        poprzedni = 0
     # po udokumentowanym obniżeniu (obnizam_ryzyko) historia liczy się dopiero od wiadomości po nim –
     # inaczej to samo dawne zdanie wymuszało obnizam_ryzyko w każdej kolejnej turze (uwaga z PC 1.11.2026)
     od = max([x.get("odpowiedz_na", 0) for x in s["zespol"] if x.get("obnizam_ryzyko")] or [0])
     historia = max([max(int(w.get("ryzykoLokalne") or 0), ryzyko_slownik(w.get("tekst", ""))[0]) for w in s["ja"] if w.get("n", 0) > od] or [0])
+    if historia < 2:  # jak wyżej: sam poziom 1 z dawnych wiadomości nie trzyma dolnej granicy (F1 Testowego)
+        historia = 0
     dolna = max(filtr, poprzedni, historia)
     if ryz < dolna and not d.get("obnizam_ryzyko"):
         zrodlo = "filtr słownikowy" if dolna == filtr else ("poprzednia ocena strażnika" if dolna == poprzedni else "filtr wcześniejszych wiadomości")
         sys.exit(f"Dolna granica ryzyka w tej rozmowie to {dolna} ({zrodlo}), a odpowiedź ma {ryz}. Poziom obniża tylko strażnik z faktem: dodaj pole obnizam_ryzyko (wyraźne zaprzeczenie myśli samobójczych wystarcza, jeśli w rozmowie nie padły metoda, środki, plan ani samookaleczenie – docs/ROZMOWA.md §5).")
+    if max(ryz, dolna) >= 4 and not d.get("kryzys"):
+        sys.exit("Poziom 4: każda odpowiedź to tor bezpieczeństwa – ustaw kryzys: true (docs/ROZMOWA.md §5).")
     if (ryz >= 3 or filtr >= 3) and not d.get("kryzys"):
         numery = [n["numer"] for n in POMOC["numery"]]
         if not any(n.replace(" ", "") in tekst.replace(" ", "") for n in numery):
             sys.exit("Poziom ≥3: odpowiedź musi zawierać numery pomocy z config/pomoc-pl.json (albo ustaw kryzys: true – aplikacja pokaże je sama).")
-    if filtr == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
-        sys.exit("Poziom 2 (bierne myśli): odpowiedź musi zawierać pytanie wprost o plan/zamiar i dostęp do środków.")
+    if filtr == 2 and ryz <= 2 and not pytanie_o_bezpieczenstwo(tekst):
+        sys.exit("Poziom 2 (bierne myśli): odpowiedź musi zawierać pytanie wprost o plan/zamiar i dostęp do środków (pytanie ze słowem: plan, zamiar, krzywda, życie, środki, leki, tabletki, samobójstwo).")
     flagi = d.get("flagi") or {}
     aktywne = [k for k, v in flagi.items() if v] if isinstance(flagi, dict) else []
     if aktywne and not d.get("kryzys"):
         sys.exit(f"Flagi strażnika {aktywne}: ustaw kryzys: true i kierunek (przemoc / mania / somatyczny / inni) – także przy ryzyku samobójczym 0 (docs/ROZMOWA.md §5).")
-    if (ryz >= 3 or aktywne) and not re.search(r"\bdzi[sś]\b|\bteraz\b", tekst, re.I):
+    if (ryz >= 3 or aktywne) and not kontakt_dzis(tekst):
         sys.exit("Poziom ≥3: każda tura musi mieć kontakt z człowiekiem lub specjalistą DZIŚ (telefon teraz, CZP / izba przyjęć dziś) – docs/ROZMOWA.md §5.")
     ostrz = [w for w in SZWY if re.search(w, bez_cytatow(tekst), re.I)]  # cytaty słów użytkownika i gotowe zdania – bez detektora
+    # B9 (raport Testowego): po zaprzeczeniu myśli samobójczych nie pytamy ponownie, chyba że jest nowy sygnał (zasada Michała)
+    zaprzeczyla = any(x.get("obnizam_ryzyko") for x in s["zespol"]) or any(
+        re.search(z, bez_ogonkow(str(w.get("tekst", "")))) for w in s["ja"] for z in FRAZY.get("zaprzeczenia", []))
+    if zaprzeczyla and filtr == 0 and re.search(r"(samoboj|odebra\w* sobie zyci|zabic sie|zniknac|lepiej bez (ciebie|was))[^.!]*\?", bez_ogonkow(bez_cytatow(tekst))):
+        ostrz.append("osoba już zaprzeczyła myślom samobójczym, a nowa wiadomość nie ma sygnału – nie pytaj ponownie (zasada Michała)")
     if filtr < 2 and dolna == 2 and ryz <= 2 and "?" not in bez_cytatow(tekst):
         ostrz.append("poziom 2 z wcześniejszych tur: jeśli pytanie o plan i środki nie dostało odpowiedzi – wróć do niego; jeśli osoba zaprzeczyła – nie pytaj ponownie")
     if bez_cytatow(tekst).count("?") > 1:

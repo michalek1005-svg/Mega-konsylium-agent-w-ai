@@ -34,7 +34,7 @@ Sygnał „AI pracuje” (kropka w lewym dolnym rogu): jak w MS Konsylium – pl
 ## 4. Testowanie
 - Przypadki syntetyczne: `przypadki-testowe/PSY-01…10` (wiek i płeć, dorośli). Tury do Rozmowy: `przypadki-testowe/ROZMOWA-tury-uzytkownika.md`. Kryteria: `przypadki-testowe/KRYTERIA-OCENY.md`. Klucze oceny są poza aplikacją i nie mogą tu trafić.
 - Test automatyczny całej ścieżki (dla programisty): `cd aplikacja/powloka && npm ci && node zbuduj.mjs --bez-paczki && xvfb-run -a node test/e2e-psycho.mjs`.
-- Testy skryptów: `python3 skrypty/test_frazy.py` (filtr ryzyka) i `python3 skrypty/test_030.py` (ćwiczenia, cel, styl, superwizja, realizm).
+- Testy skryptów: `python3 skrypty/test_frazy.py` (filtr ryzyka) i `python3 skrypty/test_030.py` (ćwiczenia, cel, styl, superwizja, realizm) i `python3 skrypty/test_sondy.py` (sondy bezpieczeństwa ścieżki kryzysowej).
 - Pomiar realizmu sesji: `python skrypty/realizm.py` (same liczby; `--zapisz` → `raporty/`).
 
 ## 5. Ekran prezentu
