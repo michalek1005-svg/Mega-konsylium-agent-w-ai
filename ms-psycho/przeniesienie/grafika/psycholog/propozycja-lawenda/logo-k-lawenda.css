@@ -1,0 +1,4 @@
+/* Litera K w lawendzie – zamiennik reguły w aplikacja/powloka/app/index.html (ok. wiersz 118).
+   Obecnie: hue-rotate(80deg) – z beżowego źródła logo-k-7b-jasny wychodzi miętowa zieleń (resztka palety „Laguna”).
+   Propozycja: hue-rotate(220deg) – beż przechodzi w lawendę (ok. #8A7FB5). Tryb ciemny (biały neon) bez zmian. */
+.logo-k img { filter: hue-rotate(220deg) saturate(2.4) brightness(.82) contrast(1.15) drop-shadow(0 1px 2px rgba(60,40,90,.45)); }
