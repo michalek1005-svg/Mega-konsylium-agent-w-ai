@@ -141,6 +141,48 @@ sprawdz(j[0]["cwiczenia_koniec"] == 1 and j[0]["cwiczenia_start"] == 2 and j[0][
 _, out = py("realizm.py", "--zapisz")
 sprawdz((TMP / "raporty").is_dir() and any((TMP / "raporty").glob("REALIZM-*.md")), "realizm.py --zapisz → raporty/REALIZM-<data>.md")
 
+# poprawki merytoryczne M3–M6 (2.11.2026): drugie konto, styl „Ciepło”, osobna rozmowa
+KONTO, RID = "ktest2", "ktest2-2026-11-02-1100-def"
+K, R = TMP / "konta" / KONTO, TMP / "rozmowy" / RID
+K.mkdir(parents=True)
+R.mkdir(parents=True)
+(K / "profil.json").write_text(json.dumps({"konto": KONTO, "pseudonim": "Test2", "wiek": 41, "plec": "mężczyzna"}), encoding="utf-8")
+(K / "terapeuta.json").write_text(json.dumps({"styl": "cieplo"}), encoding="utf-8")
+(R / "meta.json").write_text(json.dumps({"rozmowa": RID, "konto": KONTO, "tryb": "rozmowa"}), encoding="utf-8")
+ja = []
+osoba("Boję się, że jak odezwę się na zebraniu, wszyscy uznają mnie za głupka.")
+_, out = py("rozmowa.py", "czekaj", "--rozmowa", RID, "--limit", "2")
+sprawdz("ZAWSZE, w każdym stylu" in out, "M5: karta stylu niesie zasadę wspólną (_zawsze)")
+sprawdz("eksperyment – " in out and "NIE przy:" in out and "konfrontacja ze sprawcą przemocy" in out, "M3: lista ćwiczeń z „kiedy” i „nie przy”")
+odp({"tekst": "To brzmi jak mocne przewidywanie. Możemy je sprawdzić małym eksperymentem – chcesz?", "ryzyko": 0})
+osoba("dobra, sprawdźmy")
+odp({"tekst": "Super 🙂 Co dokładnie przewidujesz i na ile w to wierzysz, 0–100?", "ryzyko": 0, "cwiczenie": {"start": "eksperyment", "zgoda": "dobra, sprawdźmy"}})
+for i, a_ in enumerate(["Wyśmieją mnie, 80", "Na czwartkowym zebraniu powiem jedno zdanie o harmonogramie", "Stres – przygotuję zdanie wcześniej", "Czy ktoś się zaśmieje"]):
+    osoba(a_)
+    _, out = py("rozmowa.py", "czekaj", "--rozmowa", RID, "--limit", "2")
+    if i == 0:
+        sprawdz("NIE PRZY (wtedy przerwij" in out, "M3: w trakcie ćwiczenia czekaj pokazuje „nie przy”")
+    if i == 3:
+        sprawdz("Zakończenie (informacja zwrotna)" in out and "sprawdzić przewidywanie" in out, "M3/M6: ostatni krok – pytanie zakończenia i zapowiedź zadania")
+    odp({"tekst": "Brzmi jak plan. Sprawdzisz i pogadamy, co się stało." if i == 3 else "Zapisuję. Następne pytanie?", "ryzyko": 0, "cwiczenie": {"krok": a_}})
+z = json.loads((R / "zespol.json").read_text(encoding="utf-8"))["wiadomosci"]
+sprawdz("Sprawdzić przewidywanie: Na czwartkowym" in (z[-1].get("zadanie") or ""), "M6: po eksperymencie skrypt sam wpisał zadanie")
+sprawdz(json.loads((K / "zadanie.json").read_text(encoding="utf-8"))["tekst"].startswith("Sprawdzić przewidywanie"), "M6: zadanie zapisane na koncie")
+# M5: emotikony i humor
+osoba("Haha, no dobra.")
+_, out = odp({"tekst": "No to mamy plan 🙂😂 Jak się z tym czujesz?", "ryzyko": 0})
+sprawdz("najwyżej jeden emotikon" in out, "M5: styl „Ciepło” – najwyżej jeden emotikon")
+osoba("Czasem chciałbym umrzeć.", ryzykoLokalne=2)
+_, out = odp({"tekst": "Dziękuję, że to mówisz 🤍 Czy masz myśli, żeby odebrać sobie życie?", "ryzyko": 2}, ok=False)
+sprawdz("bez emotikonów w każdym stylu" in out, "M5: ryzyko ≥2 – ostrzeżenie o emotikonach w każdym stylu")
+# M4: uziemienie przy filtrze 2 trwa, z pytaniem o bezpieczeństwo
+odp({"tekst": "Dziękuję, że to mówisz. Czy masz teraz myśli, żeby odebrać sobie życie, albo plan?", "ryzyko": 2})
+osoba("Nie, nic sobie nie zrobię. Ale jestem strasznie napięty, możemy coś na to?")
+odp({"tekst": "Możemy spróbować uziemienia, kilka minut. Jak silne jest napięcie, 0–10?", "ryzyko": 2, "cwiczenie": {"start": "uziemienie", "zgoda": "możemy coś na to"}})
+osoba("8, i znowu chciałbym umrzeć", ryzykoLokalne=2)
+_, out = py("rozmowa.py", "czekaj", "--rozmowa", RID, "--limit", "2")
+sprawdz("MOŻE TRWAĆ" in out and "WSTRZYMAJ" not in out, "M4: uziemienie przy filtrze 2 nie jest wstrzymane, ale wymaga pytania o bezpieczeństwo")
+
 shutil.rmtree(TMP, ignore_errors=True)
 print(f"\n{'WSZYSTKO OK' if not bledy else f'{len(bledy)} BŁĘDÓW'} (test 0.3.0)")
 sys.exit(1 if bledy else 0)

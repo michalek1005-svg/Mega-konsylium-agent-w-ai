@@ -1,5 +1,5 @@
 {
-  "_opis": "Ćwiczenia prowadzone krok po kroku w Psychoterapii AI (0.3.0, docs/ROZMOWA.md §0d; koncepcje Innowacyjnego §3.1). Każdy krok = jedno pytanie w jednej turze. Prowadzący proponuje ćwiczenie tylko za zgodą osoby (zapytaj – zaproponuj – zapytaj) i tylko w fazie pracy; osoba może przerwać w każdej chwili. Pytania są propozycją brzmienia – prowadzący mówi je swoim stylem. Zmienia tylko Michał.",
+  "_opis": "Ćwiczenia prowadzone krok po kroku w Psychoterapii AI (0.3.0, docs/ROZMOWA.md §0d; koncepcje Innowacyjnego §3.1). Każdy krok = jedno pytanie w jednej turze. Prowadzący proponuje ćwiczenie tylko za zgodą osoby (zapytaj – zaproponuj – zapytaj) i tylko w fazie pracy; osoba może przerwać w każdej chwili. Pytania są propozycją brzmienia – prowadzący mówi je swoim stylem. Zmienia tylko Michał. Pola nie_przy (kiedy NIE proponować) i zakonczenie (pytanie po ostatnim kroku) – propozycja Merytorycznego 2.11.2026. Wspólne dla wszystkich ćwiczeń: nie na wspomnieniu traumy lub przemocy, nie przy objawach psychotycznych, manii ani intoksykacji, nie do oceniania osób trzecich. Niski wynik na skali przyjmujemy bez oceniania.",
   "cwiczenia": [
     {
       "id": "zapis_mysli",
@@ -9,29 +9,95 @@
       "kiedy": "jedna konkretna sytuacja z silną emocją i wyraźną myślą („zawodzę wszystkich”, „wyrzucą mnie”)",
       "ryzyko_max": 1,
       "kroki": [
-        {"klucz": "sytuacja", "etykieta": "Sytuacja", "pytanie": "Gdzie to było i co się wtedy działo – w jednym, dwóch zdaniach?"},
-        {"klucz": "mysl", "etykieta": "Myśl", "pytanie": "Jaka myśl przemknęła Ci wtedy przez głowę – dosłownie, tak jak brzmiała?"},
-        {"klucz": "emocja", "etykieta": "Uczucie i jego siła (0–100)", "pytanie": "Jakie uczucie temu towarzyszyło i jak silne było, w skali od 0 do 100?", "typ": "skala"},
-        {"klucz": "za", "etykieta": "Co przemawia za tą myślą", "pytanie": "Co przemawia za tym, że ta myśl jest prawdziwa – same fakty, bez interpretacji?"},
-        {"klucz": "przeciw", "etykieta": "Co jej nie pasuje", "pytanie": "A co do niej nie pasuje – co mówi coś innego, nawet drobnego?"},
-        {"klucz": "alternatywa", "etykieta": "Myśl bardziej wyważona", "pytanie": "Jak brzmiałaby myśl, która uwzględnia jedno i drugie?"},
-        {"klucz": "emocja_po", "etykieta": "Uczucie teraz (0–100)", "pytanie": "Jak silne jest to uczucie teraz, gdy patrzysz na tę nową myśl – od 0 do 100?", "typ": "skala"}
-      ]
+        {
+          "klucz": "sytuacja",
+          "etykieta": "Sytuacja",
+          "pytanie": "Gdzie to było i co się wtedy działo – w jednym, dwóch zdaniach?"
+        },
+        {
+          "klucz": "mysl",
+          "etykieta": "Myśl",
+          "pytanie": "Jaka myśl przemknęła Ci wtedy przez głowę – dosłownie, tak jak brzmiała?"
+        },
+        {
+          "klucz": "emocja",
+          "etykieta": "Uczucie i jego siła (0–100)",
+          "pytanie": "Jakie uczucie temu towarzyszyło i jak silne było, w skali od 0 do 100?",
+          "typ": "skala"
+        },
+        {
+          "klucz": "za",
+          "etykieta": "Co przemawia za tą myślą",
+          "pytanie": "Co przemawia za tym, że ta myśl jest prawdziwa – same fakty, bez interpretacji?"
+        },
+        {
+          "klucz": "przeciw",
+          "etykieta": "Co jej nie pasuje",
+          "pytanie": "A co do niej nie pasuje – co mówi coś innego, nawet drobnego?"
+        },
+        {
+          "klucz": "alternatywa",
+          "etykieta": "Myśl bardziej wyważona",
+          "pytanie": "Jak brzmiałaby myśl, która uwzględnia jedno i drugie? Nie musi być optymistyczna – ma być uczciwa."
+        },
+        {
+          "klucz": "emocja_po",
+          "etykieta": "Uczucie teraz (0–100)",
+          "pytanie": "Jak silne jest to uczucie teraz, gdy patrzysz na tę nową myśl – od 0 do 100?",
+          "typ": "skala"
+        }
+      ],
+      "nie_przy": [
+        "myśl o śmierci, beznadziei życia albo byciu ciężarem („lepiej beze mnie”, „jestem ciężarem”) – najpierw pytanie wprost o myśli samobójcze, takiej myśli nie ważymy dowodami",
+        "wspomnienie traumy lub przemocy"
+      ],
+      "zakonczenie": "Co z tego chcesz zabrać na najbliższe dni?"
     },
     {
       "id": "plan_aktywnosci",
       "nazwa": "Plan aktywności",
       "podejscie": "aktywizacja behawioralna",
-      "dla_osoby": "Wybieramy trzy małe rzeczy na ten tydzień, które dają choć trochę przyjemności albo poczucia sensu – każdą z dniem i godziną.",
-      "kiedy": "spadek energii, wycofanie, „nic mi się nie chce”, dni bez struktury",
+      "dla_osoby": "Wybieramy jedną do trzech małych rzeczy na ten tydzień, które dają choć trochę przyjemności albo poczucia sensu – każdą z dniem i godziną.",
+      "kiedy": "spadek energii, wycofanie, „nic mi się nie chce”, dni bez struktury; gdy realność pierwszej rzeczy <7 – zmniejszamy ją, zanim pójdziemy dalej",
       "ryzyko_max": 1,
       "kroki": [
-        {"klucz": "zrodla", "etykieta": "Co daje choć trochę dobrego", "pytanie": "Co w ostatnim czasie dało Ci choć odrobinę przyjemności albo poczucia, że coś ma sens – nawet coś bardzo małego?"},
-        {"klucz": "pierwsza", "etykieta": "Pierwsza rzecz (co, kiedy)", "pytanie": "Wybierz jedną rzecz na ten tydzień: co dokładnie, w który dzień i o której?"},
-        {"klucz": "druga", "etykieta": "Druga rzecz (co, kiedy)", "pytanie": "A druga – co, kiedy i gdzie?"},
-        {"klucz": "trzecia", "etykieta": "Trzecia rzecz (co, kiedy)", "pytanie": "I trzecia, może całkiem mała – co i kiedy?"},
-        {"klucz": "przeszkoda", "etykieta": "Co może przeszkodzić i co wtedy", "pytanie": "Co najpewniej stanie na drodze i co zrobisz, kiedy się pojawi?"}
-      ]
+        {
+          "klucz": "zrodla",
+          "etykieta": "Co daje choć trochę dobrego",
+          "pytanie": "Co w ostatnim czasie dało Ci choć odrobinę przyjemności albo poczucia, że coś ma sens – nawet coś bardzo małego?"
+        },
+        {
+          "klucz": "pierwsza",
+          "etykieta": "Pierwsza rzecz (co, kiedy)",
+          "pytanie": "Wybierz jedną rzecz na ten tydzień: co dokładnie, w który dzień i o której?"
+        },
+        {
+          "klucz": "druga",
+          "etykieta": "Druga rzecz (co, kiedy)",
+          "pytanie": "A druga – co, kiedy i gdzie?"
+        },
+        {
+          "klucz": "trzecia",
+          "etykieta": "Trzecia rzecz (albo „dwie wystarczą”)",
+          "pytanie": "Dodajemy trzecią, całkiem małą – czy dwie na ten tydzień wystarczą?"
+        },
+        {
+          "klucz": "realnosc",
+          "etykieta": "Na ile to realne (0–10)",
+          "pytanie": "Na ile realne jest, że zrobisz pierwszą z nich – od 0 do 10?",
+          "typ": "skala"
+        },
+        {
+          "klucz": "przeszkoda",
+          "etykieta": "Co może przeszkodzić i co wtedy",
+          "pytanie": "Co najpewniej stanie na drodze i co zrobisz, kiedy się pojawi?"
+        }
+      ],
+      "nie_przy": [
+        "plan oparty na alkoholu lub innych substancjach",
+        "same obowiązki bez niczego przyjemnego – wtedy dopytać o przyjemność"
+      ],
+      "zakonczenie": "Która z tych rzeczy będzie pierwsza?"
     },
     {
       "id": "eksperyment",
@@ -41,59 +107,176 @@
       "kiedy": "obawa, która blokuje działanie („jak się odezwę, wyśmieją mnie”), unikanie",
       "ryzyko_max": 1,
       "kroki": [
-        {"klucz": "przewidywanie", "etykieta": "Przewidywanie (na ile wierzę, 0–100)", "pytanie": "Co Twoim zdaniem się stanie, jeśli to zrobisz – i na ile w to wierzysz, od 0 do 100?", "typ": "skala"},
-        {"klucz": "plan", "etykieta": "Plan: co, kiedy, gdzie", "pytanie": "Co dokładnie zrobisz, kiedy i gdzie, żeby to sprawdzić?"},
-        {"klucz": "przeszkody", "etykieta": "Co może przeszkodzić", "pytanie": "Co może przeszkodzić i co wtedy zrobisz?"},
-        {"klucz": "miara", "etykieta": "Po czym poznam wynik", "pytanie": "Po czym poznasz, czy przewidywanie się sprawdziło – co dokładnie zobaczysz albo usłyszysz?"}
-      ]
+        {
+          "klucz": "przewidywanie",
+          "etykieta": "Przewidywanie (na ile wierzę, 0–100)",
+          "pytanie": "Co Twoim zdaniem się stanie, jeśli to zrobisz – i na ile w to wierzysz, od 0 do 100?",
+          "typ": "skala"
+        },
+        {
+          "klucz": "plan",
+          "etykieta": "Plan: co, kiedy, gdzie",
+          "pytanie": "Jaki mały i bezpieczny krok zrobisz, żeby to sprawdzić – co dokładnie, kiedy i gdzie?"
+        },
+        {
+          "klucz": "przeszkody",
+          "etykieta": "Co może przeszkodzić",
+          "pytanie": "Co może przeszkodzić i co wtedy zrobisz?"
+        },
+        {
+          "klucz": "miara",
+          "etykieta": "Po czym poznam wynik",
+          "pytanie": "Po czym poznasz, czy przewidywanie się sprawdziło – co dokładnie zobaczysz albo usłyszysz?"
+        }
+      ],
+      "nie_przy": [
+        "konfrontacja ze sprawcą przemocy",
+        "zachowania niebezpieczne: alkohol, substancje, jazda, ryzykowny seks",
+        "pomijanie posiłków, przeczyszczanie, nadmierny wysiłek",
+        "„sprawdzanie” objawów zdrowia albo szukanie zapewnień",
+        "zbliżanie się do wspomnień traumy",
+        "zmiany w lekach"
+      ],
+      "zakonczenie": "Na następnej rozmowie zaczniemy od tego, co się naprawdę stało – zgoda?"
     },
     {
       "id": "uziemienie",
       "nazwa": "Uziemienie 5‑4‑3‑2‑1",
       "podejscie": "regulacja napięcia",
       "dla_osoby": "Kilka minut powrotu do „tu i teraz” przez zmysły, gdy napięcie jest bardzo wysokie.",
-      "kiedy": "silne napięcie, lęk, gonitwa myśli teraz, w trakcie rozmowy; dozwolone także przy ryzyku 2 (obok pytania o bezpieczeństwo), nigdy zamiast toru kryzysowego",
+      "kiedy": "silne napięcie, lęk, gonitwa myśli teraz, w trakcie rozmowy; przy ryzyku 2 tylko wtedy, gdy w tej albo poprzedniej turze padło pytanie wprost o myśli, plan i środki; nigdy zamiast toru kryzysowego",
       "ryzyko_max": 2,
       "kroki": [
-        {"klucz": "napiecie_przed", "etykieta": "Napięcie na początku (0–10)", "pytanie": "Jak silne jest napięcie w tej chwili, od 0 do 10?", "typ": "skala"},
-        {"klucz": "widze", "etykieta": "5 rzeczy, które widzę", "pytanie": "Rozejrzyj się i wypisz pięć rzeczy, które widzisz."},
-        {"klucz": "slysze", "etykieta": "4 rzeczy, które słyszę", "pytanie": "Teraz cztery dźwięki, które słyszysz – nawet bardzo ciche."},
-        {"klucz": "czuje", "etykieta": "3 rzeczy, które czuję dotykiem", "pytanie": "Trzy rzeczy, które czujesz dotykiem – podłoga pod stopami, ubranie, coś w dłoni?"},
-        {"klucz": "zapach", "etykieta": "2 zapachy", "pytanie": "Dwa zapachy, które teraz czujesz – albo dwa, które lubisz?"},
-        {"klucz": "smak", "etykieta": "1 smak", "pytanie": "I jeden smak – co czujesz teraz w ustach?"},
-        {"klucz": "napiecie_po", "etykieta": "Napięcie teraz (0–10)", "pytanie": "Jak silne jest napięcie teraz, od 0 do 10?", "typ": "skala"}
-      ]
+        {
+          "klucz": "napiecie_przed",
+          "etykieta": "Napięcie na początku (0–10)",
+          "pytanie": "Jak silne jest napięcie w tej chwili, od 0 do 10?",
+          "typ": "skala"
+        },
+        {
+          "klucz": "widze",
+          "etykieta": "5 rzeczy, które widzę",
+          "pytanie": "Rozejrzyj się i wypisz pięć rzeczy, które widzisz."
+        },
+        {
+          "klucz": "slysze",
+          "etykieta": "4 rzeczy, które słyszę",
+          "pytanie": "Teraz cztery dźwięki, które słyszysz – nawet bardzo ciche."
+        },
+        {
+          "klucz": "czuje",
+          "etykieta": "3 rzeczy, które czuję dotykiem",
+          "pytanie": "Trzy rzeczy, które czujesz dotykiem – podłoga pod stopami, ubranie, coś w dłoni?"
+        },
+        {
+          "klucz": "zapach",
+          "etykieta": "2 zapachy",
+          "pytanie": "Dwa zapachy, które teraz czujesz – albo dwa, które lubisz?"
+        },
+        {
+          "klucz": "smak",
+          "etykieta": "1 smak",
+          "pytanie": "I jeden smak – co czujesz teraz w ustach?"
+        },
+        {
+          "klucz": "napiecie_po",
+          "etykieta": "Napięcie teraz (0–10)",
+          "pytanie": "Jak silne jest napięcie teraz, od 0 do 10?",
+          "typ": "skala"
+        }
+      ],
+      "nie_przy": [
+        "intoksykacja lub objawy odstawienia – to sprawa medyczna",
+        "ryzyko ≥3 – tylko tor kryzysowy"
+      ],
+      "zakonczenie": "Jeśli napięcie nie spadło albo wzrosło: bez „powinno pomóc” – uznanie i pytanie, czego teraz potrzeba; przy napięciu ≥8 jedno zdanie z numerem z config/pomoc-pl.json."
     },
     {
       "id": "wartosci",
       "nazwa": "Karta wartości",
       "podejscie": "ACT",
       "dla_osoby": "Szukamy, co jest dla Ciebie naprawdę ważne, i jednego małego kroku w tę stronę.",
-      "kiedy": "pogubienie, „nie wiem, po co”, decyzje, utknięcie mimo zrozumienia",
+      "kiedy": "pogubienie, „nie wiem, czego chcę”, „nie wiem, w którą stronę”, decyzje, utknięcie mimo zrozumienia",
       "ryzyko_max": 1,
       "kroki": [
-        {"klucz": "obszar", "etykieta": "Obszar życia", "pytanie": "Który obszar życia jest dla Ciebie teraz najważniejszy – relacje, praca, zdrowie, coś innego?"},
-        {"klucz": "wartosc", "etykieta": "Jaką osobą chcę tu być", "pytanie": "Jaką osobą chcesz być w tym obszarze – jednym, dwoma słowami?"},
-        {"klucz": "zgodnosc", "etykieta": "Na ile teraz tak żyję (0–10)", "pytanie": "Na ile teraz żyjesz zgodnie z tym, od 0 do 10?", "typ": "skala"},
-        {"klucz": "przeszkoda", "etykieta": "Co mnie odciąga", "pytanie": "Co najczęściej Cię od tego odciąga – jaka myśl albo jakie uczucie?"},
-        {"klucz": "krok", "etykieta": "Jeden krok w tym tygodniu", "pytanie": "Jaki jeden mały krok w tę stronę możesz zrobić w tym tygodniu?"}
-      ]
+        {
+          "klucz": "obszar",
+          "etykieta": "Obszar życia",
+          "pytanie": "Który obszar życia jest dla Ciebie teraz najważniejszy – relacje, praca, zdrowie, coś innego?"
+        },
+        {
+          "klucz": "wartosc",
+          "etykieta": "Jaką osobą chcę tu być",
+          "pytanie": "Jaką osobą chcesz być w tym obszarze – jednym, dwoma słowami?"
+        },
+        {
+          "klucz": "zgodnosc",
+          "etykieta": "Na ile teraz tak żyję (0–10)",
+          "pytanie": "Na ile teraz żyjesz zgodnie z tym, od 0 do 10?",
+          "typ": "skala"
+        },
+        {
+          "klucz": "przeszkoda",
+          "etykieta": "Co mnie odciąga",
+          "pytanie": "Co najczęściej Cię od tego odciąga – jaka myśl albo jakie uczucie?"
+        },
+        {
+          "klucz": "krok",
+          "etykieta": "Jeden krok w tym tygodniu",
+          "pytanie": "Jaki jeden mały krok w tę stronę możesz zrobić w tym tygodniu?"
+        }
+      ],
+      "nie_przy": [
+        "„po co” dotyczy życia („nie wiem, po co żyć”) – to sygnał ryzyka, najpierw pytanie wprost"
+      ],
+      "zakonczenie": "Kiedy dokładnie zrobisz ten krok?"
     },
     {
       "id": "analiza_lancuchowa",
       "nazwa": "Analiza łańcuchowa",
       "podejscie": "DBT",
-      "dla_osoby": "Rozkładamy jedno zachowanie na ogniwa – co było przed, co po – i szukamy miejsca, w którym da się przerwać łańcuch.",
+      "dla_osoby": "Rozkładamy jedno zachowanie na ogniwa – co było przed, co po – i szukamy miejsca, w którym da się przerwać łańcuch. Z ciekawością, bez szukania winnych.",
       "kiedy": "powtarzające się zachowanie, którego osoba chce mniej (wybuch złości, objadanie, odkładanie, kłótnia); NIE przy samookaleczeniu ani ryzyku ≥2",
       "ryzyko_max": 1,
       "kroki": [
-        {"klucz": "zachowanie", "etykieta": "Zachowanie", "pytanie": "Jakie zachowanie chcesz zrozumieć – co dokładnie się stało?"},
-        {"klucz": "wyzwalacz", "etykieta": "Co było tuż przed", "pytanie": "Co było tuż przed – wydarzenie, rozmowa, myśl?"},
-        {"klucz": "podatnosc", "etykieta": "Co tego dnia utrudniało", "pytanie": "Co sprawiło, że tego dnia było trudniej – sen, zmęczenie, głód, stres?"},
-        {"klucz": "ogniwa", "etykieta": "Ogniwa: myśli, uczucia, impulsy", "pytanie": "Co działo się po kolei między tym a zachowaniem – jakie myśli, uczucia, impulsy?"},
-        {"klucz": "skutki", "etykieta": "Skutki", "pytanie": "Co stało się potem – od razu i trochę później?"},
-        {"klucz": "przerwanie", "etykieta": "Gdzie można przerwać i czym", "pytanie": "W którym miejscu łańcucha dałoby się go przerwać – i czym?"}
-      ]
+        {
+          "klucz": "zachowanie",
+          "etykieta": "Zachowanie",
+          "pytanie": "Jakie zachowanie chcesz zrozumieć – co dokładnie się stało?"
+        },
+        {
+          "klucz": "wyzwalacz",
+          "etykieta": "Co było tuż przed",
+          "pytanie": "Co było tuż przed – wydarzenie, rozmowa, myśl?"
+        },
+        {
+          "klucz": "podatnosc",
+          "etykieta": "Co tego dnia utrudniało",
+          "pytanie": "Co sprawiło, że tego dnia było trudniej – sen, zmęczenie, głód, stres?"
+        },
+        {
+          "klucz": "ogniwa",
+          "etykieta": "Ogniwa: myśli, uczucia, impulsy",
+          "pytanie": "Co działo się po kolei między tym a zachowaniem – jakie myśli, uczucia, impulsy?"
+        },
+        {
+          "klucz": "skutki",
+          "etykieta": "Skutki",
+          "pytanie": "Co stało się potem – od razu i trochę później?"
+        },
+        {
+          "klucz": "przerwanie",
+          "etykieta": "Gdzie można przerwać i czym",
+          "pytanie": "W którym miejscu łańcucha dałoby się go przerwać – i czym?"
+        }
+      ],
+      "nie_przy": [
+        "samookaleczenie albo ryzyko ≥2",
+        "przemoc wobec innych",
+        "przeczyszczanie lub głodzenie",
+        "zachowanie pod wpływem substancji z objawami odstawienia"
+      ],
+      "zakonczenie": "Czym spróbujesz przerwać łańcuch następnym razem?"
     }
   ]
 }

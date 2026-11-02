@@ -71,6 +71,7 @@ CWICZENIA = {c["id"]: c for c in json.loads((KORZEN / "config" / "cwiczenia.json
 _STYLE = json.loads((KORZEN / "config" / "style-terapeuty.json").read_text(encoding="utf-8"))
 STYLE = {x["id"]: x for x in _STYLE["style"]}
 STYL_DOMYSLNY = _STYLE.get("domyslny", "spokojnie")
+STYLE_ZAWSZE = str(_STYLE.get("_zawsze") or "")
 ROLE = {"prowadzacy", "terapeuta_cbt", "terapeuta_psychodynamiczny", "terapeuta_systemowy", "terapeuta_act", "terapeuta_humanistyczny",
         "diagnosta", "psychiatra", "straznik_ryzyka", "klient_sedzia", "sprawdzajacy_etyki", "sprawdzajacy_zrodel", "rzecznik_normalnosci"}
 # zwroty zdradzające „machinerię” w jednym głosie (docs/ROZMOWA.md §4) i granice (docs/BEZPIECZENSTWO.md)
@@ -330,6 +331,8 @@ def podsumuj(s: dict) -> None:
             print(f"--- umówiony następny termin: {prof['nastepny_termin']} ---")
         st = styl_konta(s["konto"])
         print(f"--- STYL TERAPEUTY (karta, docs/ROZMOWA.md §0d): „{st['nazwa']}”{'' if st['wybrany'] else ' (domyślny – osoba nie wybrała)'} · {'; '.join(st['cechy'])} · zwroty: {' / '.join(st['zwroty'])} · nie: {'; '.join(st['nie_robi'])} · emotikony: {st['emotikony']}. To styl, nie osoba: bez imienia, biografii i udawanych uczuć ---")
+        if STYLE_ZAWSZE:
+            print(f"--- ZAWSZE, w każdym stylu: {STYLE_ZAWSZE} ---")
         cel = cel_konta(s["konto"])
         if cel.get("tekst"):
             oc = [o for o in cel.get("oceny") or [] if isinstance(o, dict)]
@@ -418,18 +421,27 @@ def podsumuj(s: dict) -> None:
         kroki = c.get("kroki", [])
         k = int(cw_akt.get("krok") or 0)
         tekst_n = bez_ogonkow(" ".join(str(w.get("tekst", "")) for w in s["nowe"] if w.get("typ", "wiadomosc") == "wiadomosc"))
-        if maks >= 2 or (s["zespol"] and max(maks, ostatni_r(s)) > int(c.get("ryzyko_max", 1))):
+        rmax = int(c.get("ryzyko_max", 1))
+        if maks > rmax or maks >= 3 or (s["zespol"] and max(maks, ostatni_r(s)) > rmax):
             print(f"ĆWICZENIE „{cw_akt.get('nazwa')}” WSTRZYMAJ: sygnał ryzyka – najpierw bezpieczeństwo; w odp.json \"cwiczenie\": {{\"przerwij\": true}} (przy ≥3 skrypt przerwie je sam).")
+        elif maks >= 2 and not re.search(NIE_TERAZ, tekst_n):
+            print(f"ĆWICZENIE „{cw_akt.get('nazwa')}” MOŻE TRWAĆ (dozwolone przy ryzyku {rmax}), ale w tej odpowiedzi NAJPIERW łagodne pytanie wprost o myśli samobójcze, plan i środki (docs/BEZPIECZENSTWO.md §2); krok ćwiczenia dopiero po odpowiedzi.")
         elif re.search(NIE_TERAZ, tekst_n):
             print(f"ĆWICZENIE „{cw_akt.get('nazwa')}”: osoba chyba chce przerwać („nie teraz”) – przyjmij to bez nacisku i \"cwiczenie\": {{\"przerwij\": true}}.")
         elif k < len(kroki):
             nast = kroki[k + 1] if k + 1 < len(kroki) else None
             print(f"ĆWICZENIE „{cw_akt.get('nazwa')}” · krok {k + 1}/{len(kroki)} (docs/ROZMOWA.md §0d): osoba odpowiedziała na „{kroki[k]['etykieta']}”. W odp.json \"cwiczenie\": {{\"krok\": \"<jej odpowiedź jej słowami, krótko>\"}}"
-                  + (f"; w tekście krótko odbij to, co powiedziała, i zadaj JEDNO pytanie następnego kroku – „{nast['etykieta']}” (propozycja: „{nast['pytanie']}”)." if nast else "; to OSTATNI krok – skrypt zamknie ćwiczenie i aplikacja pokaże kartę wyniku; w tekście 2–3 zdania podsumowania słowami osoby i co z tym dalej (zwykle zadanie przy zamknięciu sesji)."))
+                  + (f"; w tekście krótko odbij to, co powiedziała, i zadaj JEDNO pytanie następnego kroku – „{nast['etykieta']}” (propozycja: „{nast['pytanie']}”)." if nast else "; to OSTATNI krok – skrypt zamknie ćwiczenie i aplikacja pokaże kartę wyniku; w tekście 2–3 zdania podsumowania słowami osoby i co z tym dalej (zwykle zadanie przy zamknięciu sesji)."
+                     + (f" Zakończenie (informacja zwrotna): „{c['zakonczenie']}”" if c.get("zakonczenie") else "")
+                     + (" Eksperyment: jeśli w tej sesji nie ma jeszcze zadania, skrypt sam wpisze zadanie „sprawdzić przewidywanie”, a następna rozmowa zaczyna się od „Co się stało?”." if c.get("id") == "eksperyment" else "")))
+            if c.get("nie_przy"):
+                print(f"   NIE PRZY (wtedy przerwij ćwiczenie i wróć do rozmowy): {'; '.join(c['nie_przy'])}.")
             print(f"   Ćwiczenie idzie bez odpowiedzi wstępnej i bez pełnego panelu: strażnik + prowadzący, 1 krok = 1 pytanie, 20–80 słów → rozmowa.py odpowiedz --rozmowa {s['id']} --plik odp.json")
     elif s["nowe"] and maks < 2 and ostatni_r(s) < 2 and (not se["aktywna"] or faza_sesji(se, maks, ostatni_r(s)) == "PRACA"):
-        print("ĆWICZENIA (za zgodą, docs/ROZMOWA.md §0d): " + ", ".join(f"{c['id']} – {c['nazwa']}" for c in CWICZENIA.values())
-              + ". Najpierw zapytaj i zaproponuj; start dopiero po zgodzie osoby: \"cwiczenie\": {\"start\": \"<id>\", \"zgoda\": \"<jej słowa zgody>\"} + pytanie 1. kroku.")
+        print("ĆWICZENIA (za zgodą, docs/ROZMOWA.md §0d). Najpierw zapytaj i zaproponuj; start dopiero po zgodzie osoby: \"cwiczenie\": {\"start\": \"<id>\", \"zgoda\": \"<jej słowa zgody>\"} + pytanie 1. kroku.")
+        for c in CWICZENIA.values():
+            print(f"   {c['id']} – {c['nazwa']}: kiedy: {c.get('kiedy', '—')}" + (f" · NIE przy: {'; '.join(c['nie_przy'])}" if c.get("nie_przy") else ""))
+        print("   Żadnego ćwiczenia: na wspomnieniu traumy lub przemocy, przy objawach psychotycznych, manii, intoksykacji, do oceniania osób trzecich.")
     pk = pekniecie(s)
     if pk and maks < 3:
         print(f"PĘKNIĘCIE? ({pk}) – najpierw naprawa: nazwij, co mogło nie zagrać, weź to na siebie, zapytaj, co zmienić (SZTUKA-ROZMOWY §4 pkt 11). Bez techniki w tej turze.")
@@ -685,10 +697,14 @@ def cmd_odpowiedz(a) -> None:
         if d.get("cel_przeglad") and not d.get("cel") and cel_konta(s["konto"]).get("status") != "uzgodniony":
             sys.exit("Przegląd celu wymaga uzgodnionego celu (osoba kliknęła „To jest to”).")
     st = styl_konta(s.get("konto", ""))
-    if st["emotikony"] == "nie" and not d.get("kryzys") and EMOJI.search(tekst):
+    if (ryz >= 2 or d.get("kryzys")) and EMOJI.search(tekst):
+        ostrz.append("ryzyko ≥2 / kryzys: bez emotikonów w każdym stylu – styl znika, mówimy spokojnie, krótko, wprost")
+    elif st["emotikony"] == "nie" and EMOJI.search(tekst):
         ostrz.append(f"styl „{st['nazwa']}”: bez emotikonów w tekście (reakcja emotikonem jest wolna)")
-    if st["id"] == "cieplo" and ryz >= 1 and re.search(r"\b(haha|hehe|żart)", tekst, re.I):
-        ostrz.append("styl „Ciepło i z humorem”: bez humoru przy ryzyku ≥1")
+    elif st["id"] == "cieplo" and len(EMOJI.findall(tekst)) > 1:
+        ostrz.append("styl „Ciepło i z humorem”: najwyżej jeden emotikon w wiadomości")
+    if ryz >= 1 and re.search(r"(\b(haha|hehe|żart\w*|xd+)\b|😂|😄|😆|🤣)", tekst, re.I):
+        ostrz.append(f"styl „{st['nazwa']}”: bez humoru przy ryzyku ≥1")
     # nawiązania do pamięci: nie wolno wspominać niczego, czego nie ma w pamiec.md ani w historii (§0b)
     korpus = bez_ogonkow(" ".join(str(w.get("tekst", "")) for w in s["ja"]))
     if s.get("konto") and (KONTA / s["konto"] / "pamiec.md").is_file():
@@ -724,6 +740,10 @@ def cmd_odpowiedz(a) -> None:
     for pole in ("zadanie", "obserwacja"):
         if d.get(pole):
             w[pole] = str(d[pole]).strip()[:400]
+    if wynik and wynik.get("id") == "eksperyment" and not w.get("zadanie") and ryz < 3 \
+            and not any(z.get("zadanie") for z in s["zespol"] if z.get("odpowiedz_na", 0) >= max(1, od_n)):
+        odp_e = (cw_zapis or {}).get("odpowiedzi") or {}
+        w["zadanie"] = (f"Sprawdzić przewidywanie: {odp_e.get('plan', 'mały krok z eksperymentu')}"[:300] + " – i zapisać, co się naprawdę stało.")
     if cw_slad:
         w["cwiczenie"] = {**cw_slad, "id": (cw_zapis or {}).get("id")}
     if wynik:
