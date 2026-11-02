@@ -161,6 +161,11 @@ textarea.pole { min-height: 120px; resize: vertical; font-size: 14px; line-heigh
 .pw-rzad { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .pw-et { font-weight: 700; color: var(--ink); min-width: 9.5em; }
 .pw-ok { font-weight: 700; color: var(--petrol); }
+.pw-uwaga { color: var(--mut); font-size: 12px; }
+.pw-uwaga.zly { color: #B3261E; }
+.pw-zdjecia { display: flex; flex-wrap: wrap; gap: 8px; }
+.pw-zdjecia figure { margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 11.5px; color: var(--mut); }
+.pw-zdjecia img { width: 96px; height: 72px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--petrol) 30%, transparent); }
 .pw-check { display: inline-flex; align-items: center; gap: 6px; color: var(--mut); cursor: pointer; }
 .pw-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
 .pw-pole { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--mut); }
@@ -606,6 +611,17 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       (n ? '<span class="pw-ok">Dołączono: ' + n + '</span>' : '') +
       '<button class="przycisk" type="button" data-akcja="pw-wyniki">Dołącz wyniki</button>' +
       '<label class="pw-check"><input type="checkbox" data-par="brakWynikow"' + (p.brakWynikow ? ' checked' : '') + (n ? ' disabled' : '') + '> brak wyników</label></div>';
+    // zdjęcia (ankieta innowacji 2.11.2026, pkt 8): zmiana skórna albo inne – bez twarzy; wydruk z nazwiskiem idzie przez anonimizator
+    h += '<div class="pw-rzad"><span class="pw-et">Zdjęcie (opcjonalnie)</span><div class="pw-wybor" role="radiogroup">' +
+      ZDJ_RODZAJE.map(function (o) { return '<button type="button" class="opcja-mala' + (ZDJ.rodzaj === o[0] ? ' wybrana' : '') + '" role="radio" aria-checked="' + (ZDJ.rodzaj === o[0]) + '" data-akcja="pw-zrodzaj" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') +
+      '</div>' + (ZDJ.rodzaj === 'wydruk'
+        ? '<button class="przycisk" type="button" data-akcja="pw-wyniki">Zdjęcie wydruku → anonimizator</button><small class="pw-uwaga">Anonimizator odczyta tekst i zamaże nazwisko, PESEL i adres.</small>'
+        : '<label class="pw-check"><input type="checkbox" data-par="bezTwarzy"' + (p.bezTwarzy ? ' checked' : '') + '> na zdjęciu nie ma twarzy ani danych osobowych</label>' +
+          '<button class="przycisk" type="button" data-akcja="pw-zdjecie"' + (p.bezTwarzy ? '' : ' disabled') + '>Dodaj zdjęcie</button>') + '</div>';
+    if (ZDJ.lista.length) h += '<div class="pw-zdjecia">' + ZDJ.lista.map(function (z, i) {
+      return '<figure><img src="' + z.dane + '" alt="Zdjęcie ' + (i + 1) + '"><figcaption>Z' + (i + 1) + ' · ' + esc(z.opis) + ' <button type="button" class="opcja-mala" data-akcja="pw-zusun" data-i="' + i + '">usuń</button></figcaption></figure>';
+    }).join('') + '</div>';
+    if (ZDJ.blad) h += '<small class="pw-uwaga zly">' + esc(ZDJ.blad) + '</small>';
     h += '<div class="pw-siatka">' + PARAMY.map(function (x) {
       var v = w[x.k] || '', zly = v && !x.wz.test(String(v).trim());
       return '<label class="pw-pole' + (zly ? ' zly' : '') + '"><span>' + x.et + '</span><span class="pw-in"><input type="text" inputmode="decimal" autocomplete="off" data-par="w.' + x.k + '" placeholder="' + x.ph + '" value="' + esc(v) + '"' + (p.brakParametrow ? ' disabled' : '') + '><i>' + x.jedn + '</i></span></label>';
@@ -618,6 +634,39 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       (p.fizykalne === 'odchylenia' ? '<input type="text" class="pw-opis" data-par="fizykalneOpis" placeholder="Krótko: np. Murphy dodatni, trzeszczenia u podstawy prawego płuca" value="' + esc(p.fizykalneOpis || '') + '" maxlength="400">' : '');
     h += '<small class="pw-stan" id="pw-stan">' + (gotoweDoWyslania() ? 'Gotowe – możesz wysłać.' : 'Wysyłanie odblokuje się po uzupełnieniu wyników (albo „brak wyników”), parametrów (albo „nie zmierzono”) i badania fizykalnego.') + '</small></div>';
     return h;
+  }
+  // zdjęcia trzymamy tylko w pamięci (nie w localStorage – limit miejsca); po wysłaniu trafiają do sprawy/<ID>/zdjecia/
+  var ZDJ_RODZAJE = [['skora', 'zmiana skórna'], ['wydruk', 'wynik na papierze'], ['inne', 'inne']];
+  var ZDJ = { rodzaj: 'skora', lista: [], blad: '' };
+  var $zplik = document.createElement('input');
+  $zplik.type = 'file'; $zplik.accept = 'image/jpeg,image/png,image/webp,image/heic,image/*'; $zplik.hidden = true; $zplik.id = 'zdjecie-plik';
+  document.body.appendChild($zplik);
+  $zplik.addEventListener('change', function () {
+    var f = $zplik.files && $zplik.files[0]; $zplik.value = '';
+    if (!f) return;
+    zmniejsz(f).then(function (dane) {
+      if (ZDJ.lista.length >= 6) { ZDJ.blad = 'Najwyżej 6 zdjęć.'; rysuj(); return; }
+      var opis = (ZDJ_RODZAJE.filter(function (o) { return o[0] === ZDJ.rodzaj; })[0] || ['', 'zdjęcie'])[1];
+      ZDJ.lista.push({ dane: dane, opis: opis }); ZDJ.blad = ''; rysuj();
+    }, function () { ZDJ.blad = 'Nie udało się odczytać zdjęcia (JPEG, PNG albo z aparatu).'; rysuj(); });
+  });
+  // ponowne zakodowanie przez canvas: usuwa EXIF (GPS, data, aparat) i zmniejsza do 1600 px
+  function zmniejsz(plik) {
+    return new Promise(function (ok, zle) {
+      var url = URL.createObjectURL(plik), img = new Image();
+      img.onload = function () {
+        var k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+        var c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url); ok(c.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); zle(new Error('obraz')); };
+      img.src = url;
+    });
+  }
+  function zdjeciaMd() {
+    if (!ZDJ.lista.length) return '';
+    return '\n## Zdjęcia (lekarz)\n' + ZDJ.lista.map(function (z, i) { return '- zdjecia/Z' + (i + 1) + '.jpg – ' + z.opis + ' (bez twarzy; obejrzyj narzędziem Read)'; }).join('\n') + '\n';
   }
   function parametryMd() {
     var p = par(), w = p.wartosci, l = ['', '## Parametry i badanie fizykalne (lekarz)'];
@@ -657,6 +706,7 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       stan.wyniki.forEach(function (w, i) { md += '\n### Wynik ' + (i + 1) + (w.nazwa ? ' · ' + w.nazwa : '') + '\n' + w.tekst.trim() + '\n'; });
     }
     if (stan.tryb === 'zywo' && stan.parametry) md += parametryMd();
+    if (stan.tryb === 'zywo') md += zdjeciaMd();
     var W = window.WykrywanieDanych;
     if (!W) return { tekst: md, opis: '<p class="anonim brak-modulu"><b>Anonimizator niedostępny.</b> Przejrzyj tekst i usuń dane osobowe ręcznie przed wklejeniem.</p>' };
     var zakresy = [];
@@ -822,6 +872,9 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
     if (a === 'zywo-koniec') { stan.koniecAI = true; stan.koniecRecznie = true; zapisz(); synchronizuj(); rysuj(); return; }
     if (a === 'zywo-wyslij') { if (gotoweDoWyslania()) wyslijDoKonsylium(); return; }
     if (a === 'pw-wyniki') { var dw = document.getElementById('dolacz-wyniki'); if (dw && !dw.hidden) dw.click(); return; }
+    if (a === 'pw-zrodzaj') { ZDJ.rodzaj = b.dataset.v; ZDJ.blad = ''; rysuj(); return; }
+    if (a === 'pw-zdjecie') { if (par().bezTwarzy) $zplik.click(); return; }
+    if (a === 'pw-zusun') { ZDJ.lista.splice(+b.dataset.i, 1); rysuj(); return; }
     if (a === 'pw-fiz') { par().fizykalne = b.dataset.v; zapisz(); rysuj(); return; }
     if (a === 'pokoj') { if (window.MsMost) { MsMost.wyslij('pokoj', { zywo: true }).catch(function () {}); MsMost.otworzModul('pokoj').catch(function () {}); } return; }
     if (a === 'start') { bledyAnkiety = []; startuj(null); return; }
@@ -1040,6 +1093,9 @@ html[data-motyw="ciemny"] .flaga.fpilne .poziom { color: #1f1606; }
       return MsMost.zapisz(Z.katalog() + '/01-wywiad.md', md)
         .then(function () { return MsMost.zapisz('sprawy/' + id + '/00-surowe.md', naglowek + md); })
         .then(function () { return MsMost.zapisz('sprawy/' + id + '/01-wywiad.md', naglowek + md); })
+        .then(function () {
+          return ZDJ.lista.reduce(function (pr, z, i) { return pr.then(function () { return MsMost.zapiszObraz('sprawy/' + id + '/zdjecia/Z' + (i + 1) + '.jpg', z.dane); }); }, Promise.resolve());
+        })
         .then(function () {
           if (stan.sprawa) return;
           var z = { ts: new Date().toISOString(), zdarzenie: 'wywiad', kod: stan.kod, zrodlo: 'aplikacja', skrot: 'Wywiad ' + stan.kod + ' wysłany z aplikacji. Sprawa założona, czekam na konsylium.' };

@@ -40,6 +40,8 @@
     wybierzFolder: function () { return wywolaj('wybierzFolder', [], 600000); },
     czytaj: function (p) { return wywolaj('czytaj', [p]); },
     zapisz: function (p, t) { return wywolaj('zapisz', [p, t]); },
+    // zdjęcie (data:image/jpeg;base64,…) do sprawy/<ID>/zdjecia/ – tylko JPEG/PNG
+    zapiszObraz: function (p, dane) { return wywolaj('zapiszObraz', [p, dane], 30000); },
     lista: function (p) { return wywolaj('lista', [p || '']); },
     czytajFolder: function (p) { return wywolaj('czytajFolder', [p || '']); },
     // przełącza powłokę na inny moduł (np. anonimizator z ekranu wywiadu)

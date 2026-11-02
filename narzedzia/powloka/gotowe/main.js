@@ -115,6 +115,23 @@ const PLIKI = {
     }
     return true;
   },
+  // zdjęcie do wywiadu (ankieta innowacji 2.11.2026, pkt 8): tylko sprawy/<ID>/zdjecia/*.jpg|png, JPEG/PNG z sygnaturą,
+  // po ponownym zakodowaniu w przeglądarce (bez EXIF/GPS); najwyżej 3 MB. Inne pliki binarne nie przechodzą przez most.
+  zapiszObraz(wzgl, dataUrl) {
+    if (!/^sprawy\/[^/\\]+\/zdjecia\/[\w.-]+\.(jpe?g|png)$/i.test(String(wzgl))) throw new Error('Zdjęcie tylko do sprawy/<ID>/zdjecia/.');
+    const abs = wFolderze(wzgl);
+    const m = String(dataUrl).match(/^data:image\/(jpeg|png);base64,([A-Za-z0-9+/=]+)$/);
+    if (!m) throw new Error('Tylko JPEG albo PNG.');
+    const buf = Buffer.from(m[2], 'base64');
+    if (buf.length > 3 * 1024 * 1024) throw new Error('Za duże zdjęcie.');
+    const jpeg = buf[0] === 0xff && buf[1] === 0xd8, png = buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47;
+    if (!(m[1] === 'jpeg' ? jpeg : png)) throw new Error('Plik nie jest obrazem.');
+    fs.mkdirSync(path.dirname(abs), { recursive: true });
+    const tmp = abs + '.' + process.pid + '.' + crypto.randomBytes(3).toString('hex') + '.tmp';
+    fs.writeFileSync(tmp, buf);
+    fs.renameSync(tmp, abs);
+    return true;
+  },
   lista(wzgl) {
     const abs = wFolderze(wzgl);
     let wpisy; try { wpisy = fs.readdirSync(abs, { withFileTypes: true }); } catch { return []; }
@@ -216,6 +233,7 @@ function podepnijPliki(okno) {
   });
   ipcMain.handle('ms:czytaj', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytaj(wzgl); });
   ipcMain.handle('ms:zapisz', (e, wzgl, tekst) => { tylkoNasze(e); return PLIKI.zapisz(wzgl, tekst); });
+  ipcMain.handle('ms:zapisz-obraz', (e, wzgl, dane) => { tylkoNasze(e); return PLIKI.zapiszObraz(wzgl, dane); });
   ipcMain.handle('ms:lista', (e, wzgl) => { tylkoNasze(e); return PLIKI.lista(wzgl); });
   ipcMain.handle('ms:czytaj-folder', (e, wzgl) => { tylkoNasze(e); return PLIKI.czytajFolder(wzgl); });
   ipcMain.handle('ms:otworz-folder', (e) => { tylkoNasze(e); const k = korzen(); if (k) shell.openPath(k); return !!k; });

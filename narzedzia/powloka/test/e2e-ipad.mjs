@@ -75,6 +75,12 @@ try {
   assert.equal(rZly.status, 403);
   const rPoza = await fetch(baza + 'api/czytaj', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-MS-Klucz': klucz }, body: JSON.stringify({ args: ['../../etc/passwd.txt'] }) });
   assert.match((await rPoza.json()).blad, /poza folderem/);
+  // zdjęcie: tylko sprawy/<ID>/zdjecia/*.jpg|png i prawdziwy JPEG/PNG (ankieta innowacji 2.11, pkt 8)
+  const obraz = (sc, d) => fetch(baza + 'api/zapiszObraz', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-MS-Klucz': klucz }, body: JSON.stringify({ args: [sc, d] }) }).then((r) => r.json());
+  assert.match((await obraz('CLAUDE.md', 'data:image/png;base64,AAAA')).blad, /zdjecia/);
+  assert.match((await obraz('sprawy/X/zdjecia/../../../a.jpg', 'data:image/jpeg;base64,/9j/')).blad, /zdjecia|poza/);
+  assert.match((await obraz('sprawy/X/zdjecia/Z1.jpg', 'data:image/jpeg;base64,' + Buffer.from('nie obraz').toString('base64'))).blad, /nie jest obrazem/);
+  assert.equal((await obraz('sprawy/X/zdjecia/Z1.jpg', 'data:image/jpeg;base64,' + Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0, 0x10]).toString('base64'))).wynik, true);
   const man = await (await fetch(baza + 'manifest.webmanifest?k=' + klucz)).json();
   assert.equal(man.start_url, './?k=' + klucz);
   assert.equal(man.display, 'standalone');

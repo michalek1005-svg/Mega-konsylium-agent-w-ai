@@ -227,6 +227,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
     wybierzFolder: function () { return P && P.wybierzFolder ? P.wybierzFolder().then(function (f) { pokazFolder(f); return f; }) : (P ? P.folder() : null); },
     czytaj: function (a) { return P.czytaj(a[0]); },
     zapisz: function (a) { return P.zapisz(a[0], a[1]); },
+    zapiszObraz: function (a) { return P.zapiszObraz(a[0], a[1]); },
     lista: function (a) { return P.lista(a[0]); },
     czytajFolder: function (a) { return P.czytajFolder(a[0]); },
     otworzModul: function (a) { pokaz(a[0]); return true; },
@@ -238,7 +239,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
     var odp = function (wynik, blad) { e.source.postMessage({ typ: 'ms-most-odp', id: d.id, wynik: wynik, blad: blad }, '*'); };
     var op = OPERACJE[d.op];
     if (!op) { odp(null, 'Nieznana operacja.'); return; }
-    if (!P && ['czytaj', 'zapisz', 'lista', 'czytajFolder'].indexOf(d.op) !== -1) { odp(null, 'Pliki działają tylko w aplikacji Windows.'); return; }
+    if (!P && ['czytaj', 'zapisz', 'zapiszObraz', 'lista', 'czytajFolder'].indexOf(d.op) !== -1) { odp(null, 'Pliki działają tylko w aplikacji Windows.'); return; }
     Promise.resolve().then(function () { return op(d.args || [], od); }).then(function (w) { odp(w === undefined ? null : w); }, function (err) {
       odp(null, String(err && err.message || err).replace(/^Error invoking remote method '[^']+': (Error: )?/, ''));
     });

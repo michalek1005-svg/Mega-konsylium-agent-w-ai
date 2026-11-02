@@ -22,6 +22,7 @@
    - `co_zmieniloby_zdanie`: jedno zdanie.
    - `zrodla`: lista.
 4. **NIEZNANE z wywiadu** traktuj jako nieznane, nie jako „pewnie w normie”.
+4c. **Zdjęcia.** Gdy `01-wywiad.md` ma `## Zdjęcia (lekarz)`, obejrzyj każde (`Read sprawy/<ID>/zdjecia/Z1.jpg`) i opisz w `za`/`przeciw`, co na nim widać (np. „Z1: zmiana 8 mm, asymetryczna, dwa kolory”). Zdjęcie nie zastępuje badania – przy wątpliwości zaznacz to w NIEZNANE.
 4a. **Lekarz prowadzący (pole „Powiedz”).** Jego **obserwacje** (objaw, wynik, lek, fakt z gabinetu) mają rangę faktu z wywiadu. Jego **przypuszczenie rozpoznania** jest oznaczone w `01-wywiad.md` jako `HIPOTEZA LEKARZA PROWADZĄCEGO` i sprawdzasz je jak każdą inną hipotezę – bez premii za autorytet (wskazówka autorytatywna obniża trafność modeli z 53–65% do 28–44%, Diagnostics 2026, PMID 42938136). W opinii pole `hipoteza_lekarza_prowadzacego`: potwierdzam / obalam / nierozstrzygniete / brak.
 4b. **Badania: co zrobiłby lekarz POZ bez konsylium?** Każde badanie w `badania` / `nastepny_krok` musi zmieniać decyzję (napisz, jaki wynik zmieni co). Zanim je zalecisz, porównaj z tym, co zrobiłby rozsądny lekarz POZ bez konsylium; badanie ponad to wymaga jednego zdania uzasadnienia. Hamulec **nie działa** przy otwartych czerwonych flagach i pilności 1–2 – wtedy nie oszczędzaj.
 5. **Runda dyskusji** (gdy ordynator Cię wezwie do `04-konsylium.md`; tylko przy różnicy rozpoznania nr 1 – `_agregat.json` → `runda`): ≤120 słów, dwie części: „co mnie przekonuje w cudzych opiniach” i „co by zmieniło moje zdanie”.

@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('msPowloka', {
   wybierzFolder: () => ipcRenderer.invoke('ms:wybierz-folder'),
   czytaj: (sciezka) => ipcRenderer.invoke('ms:czytaj', String(sciezka)),
   zapisz: (sciezka, tekst) => ipcRenderer.invoke('ms:zapisz', String(sciezka), String(tekst)),
+  zapiszObraz: (sciezka, dane) => ipcRenderer.invoke('ms:zapisz-obraz', String(sciezka), String(dane)),
   lista: (sciezka) => ipcRenderer.invoke('ms:lista', String(sciezka || '')),
   czytajFolder: (sciezka) => ipcRenderer.invoke('ms:czytaj-folder', String(sciezka || '')),
   otworzFolder: () => ipcRenderer.invoke('ms:otworz-folder'),

@@ -43,6 +43,7 @@
     folder: function () { return api('folder'); },
     czytaj: function (p) { return api('czytaj', [String(p)]); },
     zapisz: function (p, t) { return api('zapisz', [String(p), String(t)]); },
+    zapiszObraz: function (p, d) { return api('zapiszObraz', [String(p), String(d)]); },
     lista: function (p) { return api('lista', [String(p || '')]); },
     czytajFolder: function (p) { return api('czytajFolder', [String(p || '')]); }
   };

@@ -102,6 +102,16 @@ try {
   await w.click('[data-akcja="pw-fiz"][data-v="odchylenia"]');
   await w.fill('[data-par="fizykalneOpis"]', 'Murphy dodatni');
   assert.equal(await w.isDisabled('[data-akcja="zywo-wyslij"]'), false, 'Wyślij odblokowane');
+  // zdjęcie zmiany skórnej (ankieta innowacji 2.11, pkt 8): najpierw potwierdzenie „bez twarzy”, potem plik → JPEG bez EXIF
+  assert.equal(await w.isDisabled('[data-akcja="pw-zdjecie"]'), true, 'Dodaj zdjęcie zablokowane bez potwierdzenia');
+  await w.check('[data-par="bezTwarzy"]');
+  const png = join(tmpdir(), 'ms-zdjecie-test.png');
+  writeFileSync(png, Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFklEQVR4nGP8z8DAwMDAxMDAwMDAAAANHQEDasKb6QAAAABJRU5ErkJggg==', 'base64'));
+  await w.setInputFiles('#zdjecie-plik', png);
+  await w.waitForSelector('.pw-zdjecia img', { timeout: 5000 });
+  await w.click('[data-akcja="pw-zrodzaj"][data-v="wydruk"]');
+  assert.equal(await w.locator('[data-akcja="pw-zdjecie"]').count(), 0, 'wydruk nie idzie jako zdjęcie, tylko przez anonimizator');
+  await w.click('[data-akcja="pw-zrodzaj"][data-v="skora"]');
   await okno.screenshot({ path: join(tmpdir(), 'ms-przed-wyslaniem.png') });
   await w.click('[data-akcja="zywo-wyslij"]');
   const md = await czekaj(() => existsSync(join(kat, '01-wywiad.md')) && readFileSync(join(kat, '01-wywiad.md'), 'utf8'), 5000, '01-wywiad.md');
@@ -119,6 +129,9 @@ try {
   const sprawa = join(folder, 'sprawy', idSprawy);
   assert.ok(existsSync(join(sprawa, '00-surowe.md')) && existsSync(join(sprawa, '01-wywiad.md')) && existsSync(join(sprawa, '_log.jsonl')), 'sprawa z wywiadem i logiem');
   assert.match(readFileSync(join(sprawa, '01-wywiad.md'), 'utf8'), /\*\*Pacjent:\*\*/, 'wiek i płeć w nagłówku wywiadu');
+  assert.match(readFileSync(join(sprawa, '01-wywiad.md'), 'utf8'), /## Zdjęcia \(lekarz\)\n- zdjecia\/Z1\.jpg – zmiana skórna/, 'zdjęcie opisane w wywiadzie');
+  const jpg = await czekaj(() => existsSync(join(sprawa, 'zdjecia', 'Z1.jpg')) && readFileSync(join(sprawa, 'zdjecia', 'Z1.jpg')), 5000, 'zdjecia/Z1.jpg');
+  assert.ok(jpg[0] === 0xff && jpg[1] === 0xd8, 'zdjęcie zapisane jako JPEG (ponownie zakodowane, bez EXIF)');
   assert.match(py('wywiad_na_zywo.py', 'pokaz', '--kod', kod), new RegExp('ZAŁOŻYŁA JUŻ sprawę sprawy/' + idSprawy));
   py('dymek.py', sprawa, '--rola', 'ordynator', '--faza', 'Wywiad', '--temat', 'Ból w prawym podżebrzu po tłustym posiłku', '--skrot', 'Zaczynamy.',
     '--tresc', 'Pacjent z bólem w prawym podżebrzu nasilającym się po posiłku tłustym, bez żółtaczki i gorączki. Zaczynamy od triage.');

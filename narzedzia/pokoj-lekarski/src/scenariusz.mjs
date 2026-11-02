@@ -599,7 +599,7 @@ export function kartaSprawy(final, tablica = {}) {
     pilnosc: tablica.pilnosc ?? null,
     termin: tablica.pilnosc ? TERMINY[tablica.pilnosc] : null,
     obalenie: p('CO BY TO OBALIŁO') || null,
-    powrot: p('WRÓĆ / ESKALUJ GDY') || null,
+    powrot: p('WRÓĆ / ESKALUJ GDY').split(/\n?\s*(?:ŹRÓDŁA|Źródła)\s*:/)[0].trim() || null,
     zrodla: zr,
   };
 }

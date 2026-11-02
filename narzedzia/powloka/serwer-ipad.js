@@ -11,7 +11,7 @@ const zlib = require('node:zlib');
 const crypto = require('node:crypto');
 const os = require('node:os');
 
-const OPERACJE = ['folder', 'czytaj', 'zapisz', 'lista', 'czytajFolder'];
+const OPERACJE = ['folder', 'czytaj', 'zapisz', 'zapiszObraz', 'lista', 'czytajFolder'];
 const MAX_ZADANIE = 5 * 1024 * 1024;
 
 // 127/8, ::1, 10/8, 172.16/12, 192.168/16, 169.254/16, fc00::/7, fe80::/10 (także jako ::ffff:a.b.c.d)
