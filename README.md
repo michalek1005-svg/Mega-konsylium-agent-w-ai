@@ -5,6 +5,10 @@
 Wieloagentowe konsylium lekarskie w Claude Code: ordynator, 3 zastępców (triage), 6 lekarzy o różnych podejściach,
 2 sprawdzających i rezydenci z zewnątrz, którzy celowo widzą tylko surowe dane.
 
+> **Podział repozytorium (2.11.2026):** w tym repo są **dwie osobne aplikacje**.
+> - **MS Konsylium (lekarskie)** – wszystko poza `ms-psycho/` (ten README, `CLAUDE.md`, `narzedzia/`, `skrypty/`, `config/`, `docs/`, …).
+> - **MS Konsylium Psychologiczne** – wyłącznie katalog [`ms-psycho/`](ms-psycho/README.md), bez zależności od reszty repo (ma własną kopię Wywiadu i wspólnych plików). Rozwijana dalej w osobnym projekcie.
+
 **Zacznij od `START-TUTAJ.md`.** Wyjaśnienie bez żargonu: `docs/PO-LUDZKU.md`. Instrukcja rozbudowy dla Claude Code: `PROMPT-NADZORCA.md`.
 
 ## Szybki start

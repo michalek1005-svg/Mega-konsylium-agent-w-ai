@@ -1,0 +1,81 @@
+<!doctype html><html lang="pl" data-motyw="jasny"><head><meta charset="utf-8"><title>Rozmowa – makieta</title>
+<link rel="stylesheet" href="node_modules/@fontsource-variable/plus-jakarta-sans/index.css">
+<style>
+:root{--petrol:#5B4A8A;--ink:#2D2A3A;--mut:#6B6480;--bg:#F1EEF5;--tafla:rgba(255,255,255,.44);--panel:rgba(255,255,255,.7);--font:'Plus Jakarta Sans Variable','Segoe UI',system-ui,sans-serif}
+body{margin:0;font-family:var(--font);color:var(--ink);background:radial-gradient(46vw 42vh at 100% -4%,rgba(150,130,200,.5),transparent 70%),radial-gradient(50vw 46vh at -4% 104%,rgba(170,190,140,.45),transparent 70%),linear-gradient(160deg,#F1EEF5,#DDD6E6);min-height:100vh}
+.app{display:grid;grid-template-columns:72px 1fr;gap:18px;padding:18px;height:100vh;box-sizing:border-box}
+.pasek{display:flex;flex-direction:column;align-items:center;gap:14px;padding:12px 0;border-radius:36px;background:var(--tafla);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.5),0 30px 60px -34px rgba(60,40,90,.5)}
+.logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-size:24px;color:#fff;background:linear-gradient(150deg,#7b6cc4,#5B4A8A);box-shadow:0 0 18px rgba(195,180,230,.9),0 0 36px rgba(138,127,181,.5)}
+.ik{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(91,74,138,.08);color:var(--petrol)}
+.ik.on{background:var(--petrol);color:#fff}
+.ik svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tafla{border-radius:30px;background:var(--tafla);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.5),0 40px 74px -34px rgba(60,40,90,.5);display:grid;grid-template-rows:auto auto 1fr auto;overflow:hidden}
+.naglowek{display:flex;align-items:center;gap:14px;padding:16px 24px 10px}
+.naglowek h1{margin:0;font-size:20px;font-weight:750}
+.naglowek .sub{font-size:12px;color:var(--mut)}
+.naglowek .prawy{margin-left:auto;display:flex;gap:8px}
+.btn{border:0;border-radius:999px;padding:9px 16px;font:650 13px var(--font);background:rgba(91,74,138,.08);color:var(--petrol);cursor:pointer}
+.btn.on{background:var(--petrol);color:#fff}
+.pracuje{display:flex;align-items:center;gap:10px;margin:0 24px;padding:8px 14px;border-radius:14px;background:rgba(255,255,255,.65);box-shadow:inset 0 0 0 1px rgba(91,74,138,.13);font-size:12.5px;color:var(--mut)}
+.pracuje b{color:var(--ink);font-weight:700}
+.pracuje .kropki i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#CDB9E6;margin-right:3px;animation:kr 1.3s ease-in-out infinite}
+.pracuje .kropki i:nth-child(2){animation-delay:.25s}.pracuje .kropki i:nth-child(3){animation-delay:.5s}
+@keyframes kr{50%{opacity:.25;transform:translateY(-2px)}}
+.awatary{display:flex;margin-left:auto}
+.aw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;margin-left:-8px;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff}
+.aw.p{background:#6b5f96}.aw.c{background:#7b6cc4}.aw.d{background:#4f7f8a}.aw.s{background:#a0741f}
+.rozmowa{overflow:auto;padding:14px 24px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:62%;padding:12px 16px;border-radius:18px;font-size:14px;line-height:1.45;position:relative}
+.msg .kto{display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.msg.zespol{align-self:flex-start;background:#fff;border-bottom-left-radius:6px;box-shadow:0 10px 24px -18px rgba(60,40,90,.5),inset 0 0 0 1px rgba(91,74,138,.1)}
+.msg.zespol .kto{color:var(--petrol)}
+.msg.ja{align-self:flex-end;background:linear-gradient(150deg,#7b6cc4,#5B4A8A);color:#fff;border-bottom-right-radius:6px}
+.msg.ja .kto{color:#e3d6ff}
+.msg .czas{position:absolute;bottom:-16px;font-size:10px;color:var(--mut)}
+.msg.ja .czas{right:6px}.msg.zespol .czas{left:6px}
+.msg .emo{position:absolute;bottom:-10px;right:10px;background:#fff;border-radius:999px;padding:1px 6px;font-size:12px;box-shadow:0 2px 8px rgba(60,40,90,.2)}
+.msg.zespol .emo{right:auto;left:10px}
+.msg.pisze{background:#fff;color:var(--mut);font-style:italic}
+.msg .zrodla{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.msg .zrodla span{font-size:10.5px;font-weight:650;padding:2px 8px;border-radius:999px;background:rgba(91,74,138,.08);color:var(--petrol)}
+.wpis{display:flex;gap:10px;align-items:center;padding:14px 24px 18px;border-top:1px solid rgba(91,74,138,.1)}
+.pole{flex:1;display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px rgba(91,74,138,.15);font-size:14px;color:var(--mut)}
+.emoji{display:flex;gap:4px;font-size:16px}
+.emoji span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(91,74,138,.06)}
+.zwolaj{border:0;border-radius:999px;padding:12px 18px;font:750 13px var(--font);background:var(--petrol);color:#fff;display:flex;gap:8px;align-items:center;box-shadow:0 10px 24px -12px rgba(91,74,138,.7)}
+.wyslij{width:42px;height:42px;border-radius:50%;border:0;background:#7b6cc4;color:#fff;display:grid;place-items:center}
+.wyslij svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.makieta{position:fixed;left:18px;bottom:6px;font-size:11px;color:var(--mut)}
+</style></head><body>
+<div class="app">
+ <div class="pasek">
+  <div class="logo">K</div>
+  <div class="ik"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+  <div class="ik on"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+  <div class="ik"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-4 3-6 6-6s6 2 6 6M12 20c0-4 2-6 4-6s6 2 6 6"/></svg></div>
+  <div class="ik"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4zM8 20h8"/></svg></div>
+  <div class="ik"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+ </div>
+ <div class="tafla">
+  <div class="naglowek"><div><h1>Rozmowa</h1><div class="sub">Sprawa 2026-11-01-01 · zespół odpowiada jednym głosem</div></div>
+   <div class="prawy"><button class="btn">Wywiad</button><button class="btn on">Rozmowa</button><button class="btn">Pokój psychologiczny</button><button class="btn">Wnioski</button></div></div>
+  <div class="pracuje"><span class="kropki"><i></i><i></i><i></i></span><span><b>zespół pracuje: 3</b> · Terapeutka CBT, Diagnosta kliniczny, Psychiatra konsultant czytają wywiad</span>
+   <div class="awatary"><span class="aw c">CBT</span><span class="aw d">DK</span><span class="aw s">PK</span><span class="aw p">+1</span></div></div>
+  <div class="rozmowa">
+   <div class="msg zespol"><span class="kto">Zespół</span>Dzień dobry. Przeczytaliśmy wywiad: obniżony nastrój i bezsenność od około sześciu tygodni, spadek apetytu, wycofanie z kontaktów. Zanim zaproponujemy kierunek, chcemy dopytać o dwie rzeczy.<span class="czas">13:02</span></div>
+   <div class="msg zespol"><span class="kto">Zespół</span>Czy w ostatnich dwóch tygodniach pojawiały się myśli, że lepiej byłoby nie żyć, albo myśli o zrobieniu sobie krzywdy? To pytanie zadajemy każdemu i można odpowiedzieć szczerze.<span class="emo">🤍</span><span class="czas">13:02</span></div>
+   <div class="msg ja"><span class="kto">Terapeuta prowadzący</span>Pacjent zaprzecza myślom samobójczym, ale mówi o „zmęczeniu wszystkim”. Nie ma planu ani wcześniejszych prób. Wsparcie: żona i brat.<span class="czas">13:05</span></div>
+   <div class="msg zespol"><span class="kto">Zespół</span>Dziękujemy. Ryzyko oceniamy jako niskie do umiarkowanego, do monitorowania na każdej sesji. Wstępnie bierzemy pod uwagę epizod depresyjny o nasileniu umiarkowanym; różnicujemy z zaburzeniem adaptacyjnym (zmiana pracy 3 miesiące temu).
+    <div class="zrodla"><span>ICD-11 6A70</span><span>PHQ-9: 14</span><span>C-SSRS</span></div><span class="emo">👍 2</span><span class="czas">13:07</span></div>
+   <div class="msg ja"><span class="kto">Terapeuta prowadzący</span>Zgoda. Czy przed zwołaniem konsylium potrzebujecie jeszcze czegoś z wywiadu?<span class="czas">13:08</span></div>
+   <div class="msg zespol pisze">Zespół pisze…</div>
+  </div>
+  <div class="wpis">
+   <div class="pole">Napisz do zespołu… <span class="emoji" style="margin-left:auto"><span>😊</span><span>🤔</span><span>👍</span><span>❤️</span></span></div>
+   <button class="wyslij"><svg viewBox="0 0 24 24"><path d="M4 12h14M13 6l6 6-6 6"/></svg></button>
+   <button class="zwolaj">Zwołaj konsylium <span>→</span></button>
+  </div>
+ </div>
+</div>
+<div class="makieta">Makieta okna Rozmowy · pokój psychologiczny · tryb jasny · wątek Graficzny 1.11.2026</div>
+</body></html>

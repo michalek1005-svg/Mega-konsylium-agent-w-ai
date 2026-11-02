@@ -1,0 +1,117 @@
+/* Okno Rozmowy – brat psychologiczny MS Konsylium (wątek Graficzny, 1.11.2026).
+   Jeden terapeuta AI odpowiada jednym głosem, za nim w tle pracuje zespół agentów.
+   Wszystko pod .rz (żeby nie kolidowało z resztą aplikacji). Tryb jasny domyślny; ciemny: data-motyw="ciemny" na <html>. */
+.rz {
+  --rz-akcent: #5B4A8A; --rz-akcent-2: #7b6cc4; --rz-lawenda: #CDB9E6;
+  --rz-ink: #2D2A3A; --rz-mut: #6B6480; --rz-tlo: rgba(255,255,255,.44);
+  --rz-dymek: #ffffff; --rz-obrys: rgba(91,74,138,.13); --rz-pole: #ffffff;
+  --rz-cien: 0 10px 24px -18px rgba(60,40,90,.5);
+  --rz-kryzys: #A83A38; --rz-kryzys-tlo: #fbecea; --rz-uwaga: #8a6400; --rz-uwaga-tlo: #fbf3df;
+  --rz-font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  font-family: var(--rz-font); color: var(--rz-ink);
+  display: grid; grid-template-rows: auto auto 1fr auto auto; height: 100%; min-height: 0;
+  border-radius: 30px; background: var(--rz-tlo); overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(60,40,90,.5);
+}
+:root[data-motyw="ciemny"] .rz, :root[data-theme="dark"] .rz {
+  --rz-akcent: #b9a6f0; --rz-akcent-2: #8a7bd6; --rz-ink: #ece8f5; --rz-mut: #a49cba; --rz-tlo: rgba(255,255,255,.05);
+  --rz-dymek: #2b2540; --rz-obrys: rgba(205,185,230,.16); --rz-pole: #231e35; --rz-cien: 0 10px 24px -18px rgba(0,0,0,.8);
+  --rz-kryzys: #ff9a8c; --rz-kryzys-tlo: #3a2026; --rz-uwaga: #e9c46a; --rz-uwaga-tlo: #352c17;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.07), 0 40px 74px -34px rgba(0,0,0,.85);
+}
+
+/* nagłówek: terapeuta jako osoba, nie „system” */
+.rz-glowa { display: flex; align-items: center; gap: 12px; padding: 16px 22px 10px; }
+.rz-awatar { width: 46px; height: 46px; border-radius: 50%; flex: none; background: linear-gradient(150deg, #efe8f8, #d9cdee); box-shadow: 0 0 0 3px rgba(255,255,255,.8), 0 8px 18px -10px rgba(60,40,90,.7); position: relative; }
+.rz-awatar svg { width: 100%; height: 100%; display: block; border-radius: 50%; }
+.rz-awatar::after { content: ''; position: absolute; right: 0; bottom: 1px; width: 11px; height: 11px; border-radius: 50%; background: #3fbf8a; box-shadow: 0 0 0 2px #fff; }
+.rz-glowa h2 { margin: 0; font-size: 17px; font-weight: 750; letter-spacing: -.01em; }
+.rz-glowa .rz-sub { font-size: 12px; color: var(--rz-mut); }
+.rz-glowa .rz-prawy { margin-left: auto; display: flex; gap: 8px; }
+.rz-btn { border: 0; border-radius: 999px; padding: 9px 16px; font: 650 13px var(--rz-font); background: rgba(91,74,138,.09); color: var(--rz-akcent); cursor: pointer; }
+.rz-btn:hover { background: rgba(91,74,138,.16); }
+.rz-btn:focus-visible, .rz-emo-pasek button:focus-visible, .rz-wyslij:focus-visible, .rz-reakcje button:focus-visible { outline: 2px solid var(--rz-akcent-2); outline-offset: 2px; }
+
+/* pasek „zespół pracuje” – widać, że AI myśli i kto w tle */
+.rz-pracuje { display: flex; align-items: center; gap: 10px; margin: 0 22px; padding: 8px 14px; border-radius: 14px; background: rgba(255,255,255,.65); box-shadow: inset 0 0 0 1px var(--rz-obrys); font-size: 12.5px; color: var(--rz-mut); transition: opacity .4s, max-height .4s, margin .4s, padding .4s; max-height: 60px; overflow: hidden; }
+:root[data-motyw="ciemny"] .rz-pracuje, :root[data-theme="dark"] .rz-pracuje { background: rgba(255,255,255,.04); }
+.rz-pracuje[hidden] { display: flex; opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; }
+.rz-pracuje b { color: var(--rz-ink); font-weight: 700; }
+.rz-kropki i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--rz-lawenda); margin-right: 3px; animation: rz-kr 1.3s ease-in-out infinite; }
+.rz-kropki i:nth-child(2) { animation-delay: .25s; } .rz-kropki i:nth-child(3) { animation-delay: .5s; }
+@keyframes rz-kr { 50% { opacity: .25; transform: translateY(-2px); } }
+.rz-awatary { display: flex; margin-left: auto; }
+.rz-aw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; display: grid; place-items: center; font-size: 9.5px; font-weight: 800; color: #fff; background: var(--rz-akcent-2); }
+.rz-aw:nth-child(4n+2) { background: #4f7f8a; } .rz-aw:nth-child(4n+3) { background: #a0741f; } .rz-aw:nth-child(4n) { background: #6b5f96; }
+
+/* wiadomości */
+.rz-lista { overflow: auto; padding: 16px 22px 22px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; min-height: 0; }
+.rz-dzien { align-self: center; font-size: 11px; font-weight: 700; color: var(--rz-mut); background: rgba(91,74,138,.07); padding: 3px 12px; border-radius: 999px; }
+.rz-wiersz { display: flex; gap: 10px; align-items: flex-end; animation: rz-wej .35s ease-out; }
+.rz-wiersz.ja { flex-direction: row-reverse; }
+.rz-wiersz .rz-mini { width: 28px; height: 28px; border-radius: 50%; flex: none; overflow: hidden; background: #e6dcf3; }
+.rz-wiersz.ja .rz-mini { display: none; }
+.rz-wiersz.ciag .rz-mini { visibility: hidden; }
+@keyframes rz-wej { from { opacity: 0; transform: translateY(8px); } }
+.rz-msg { max-width: min(62%, 560px); padding: 11px 15px; border-radius: 18px; font-size: 14.5px; line-height: 1.5; position: relative; white-space: pre-wrap; overflow-wrap: anywhere; }
+.rz-wiersz.terapeuta .rz-msg { background: var(--rz-dymek); border-bottom-left-radius: 6px; box-shadow: var(--rz-cien), inset 0 0 0 1px var(--rz-obrys); }
+.rz-wiersz.ja .rz-msg { background: linear-gradient(150deg, var(--rz-akcent-2), #5B4A8A); color: #fff; border-bottom-right-radius: 6px; }
+.rz-czas { display: block; margin-top: 4px; font-size: 10px; color: var(--rz-mut); }
+.rz-wiersz.ja .rz-czas { color: #e3d6ff; text-align: right; }
+.rz-zrodla { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; white-space: normal; }
+.rz-zrodla span { font-size: 10.5px; font-weight: 650; padding: 2px 8px; border-radius: 999px; background: rgba(91,74,138,.09); color: var(--rz-akcent); }
+
+/* reakcje emotikonami (komunikator) */
+.rz-reakcje { position: absolute; bottom: -12px; display: flex; gap: 3px; white-space: normal; }
+.rz-wiersz.terapeuta .rz-reakcje { left: 12px; } .rz-wiersz.ja .rz-reakcje { right: 12px; }
+.rz-reakcje span { background: var(--rz-dymek); border-radius: 999px; padding: 1px 7px; font-size: 12px; box-shadow: 0 2px 8px rgba(60,40,90,.22); }
+.rz-reaguj { position: absolute; top: -14px; right: -6px; display: none; gap: 2px; background: var(--rz-dymek); border-radius: 999px; padding: 3px; box-shadow: 0 6px 16px -6px rgba(60,40,90,.5); white-space: normal; }
+.rz-wiersz.terapeuta .rz-msg:hover .rz-reaguj, .rz-wiersz.terapeuta .rz-msg:focus-within .rz-reaguj { display: flex; }
+.rz-reaguj button { border: 0; background: none; font-size: 15px; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; }
+.rz-reaguj button:hover { background: rgba(91,74,138,.1); transform: scale(1.15); }
+
+/* „kto co myślał” – zwijane, domyślnie zamknięte (jeden głos na wierzchu) */
+.rz-kulisy { margin-top: 8px; font-size: 12.5px; white-space: normal; }
+.rz-kulisy summary { cursor: pointer; color: var(--rz-akcent); font-weight: 650; list-style: none; display: inline-flex; gap: 6px; align-items: center; }
+.rz-kulisy summary::-webkit-details-marker { display: none; }
+.rz-kulisy summary::before { content: '▸'; transition: transform .2s; }
+.rz-kulisy[open] summary::before { transform: rotate(90deg); }
+.rz-kulisy ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.rz-kulisy li { padding: 6px 10px; border-radius: 10px; background: rgba(91,74,138,.06); color: var(--rz-mut); }
+.rz-kulisy li b { color: var(--rz-ink); font-weight: 700; }
+.rz-kulisy li.spor { background: var(--rz-uwaga-tlo); }
+
+/* pisze… */
+.rz-pisze .rz-msg { color: var(--rz-mut); font-style: italic; display: inline-flex; gap: 8px; align-items: center; }
+.rz-pisze .rz-kropki i { background: var(--rz-akcent-2); }
+
+/* komunikat systemowy i kryzysowy */
+.rz-system { align-self: center; max-width: 80%; text-align: center; font-size: 12px; color: var(--rz-mut); }
+.rz-kryzys { margin: 0 22px 10px; padding: 12px 16px; border-radius: 16px; background: var(--rz-kryzys-tlo); color: var(--rz-ink); box-shadow: inset 0 0 0 1.5px var(--rz-kryzys); font-size: 13px; line-height: 1.45; }
+.rz-kryzys[hidden] { display: none; }
+.rz-kryzys strong { color: var(--rz-kryzys); display: block; margin-bottom: 4px; font-size: 13.5px; }
+.rz-kryzys .rz-numery { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.rz-kryzys .rz-numery span { background: var(--rz-dymek); padding: 4px 10px; border-radius: 999px; font-weight: 700; box-shadow: inset 0 0 0 1px var(--rz-obrys); }
+.rz-kryzys .rz-numery b { color: var(--rz-kryzys); font-variant-numeric: tabular-nums; }
+
+/* pole pisania */
+.rz-wpis { display: flex; gap: 10px; align-items: flex-end; padding: 12px 22px 8px; border-top: 1px solid var(--rz-obrys); }
+.rz-pole { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 16px; border-radius: 24px; background: var(--rz-pole); box-shadow: inset 0 0 0 1px var(--rz-obrys); }
+.rz-pole textarea { flex: 1; border: 0; outline: 0; resize: none; background: none; font: 14.5px/1.45 var(--rz-font); color: var(--rz-ink); padding: 6px 0; max-height: 140px; min-height: 22px; }
+.rz-pole textarea::placeholder { color: var(--rz-mut); }
+.rz-emo-pasek { display: flex; gap: 2px; }
+.rz-emo-pasek button { border: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(91,74,138,.06); font-size: 16px; cursor: pointer; }
+.rz-emo-pasek button:hover { background: rgba(91,74,138,.14); }
+.rz-wyslij { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--rz-akcent-2); color: #fff; display: grid; place-items: center; cursor: pointer; flex: none; box-shadow: 0 10px 24px -12px rgba(91,74,138,.8); }
+.rz-wyslij svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rz-wyslij:disabled, .rz-pole textarea:disabled { opacity: .45; cursor: not-allowed; }
+.rz-zwolaj { border: 0; border-radius: 999px; padding: 12px 18px; font: 750 13px var(--rz-font); background: #5B4A8A; color: #fff; display: flex; gap: 8px; align-items: center; cursor: pointer; flex: none; box-shadow: 0 10px 24px -12px rgba(91,74,138,.7); }
+.rz-stopka { padding: 0 22px 12px; font-size: 11px; color: var(--rz-mut); }
+
+@media (max-width: 720px) {
+  .rz-msg { max-width: 82%; }
+  .rz-emo-pasek { display: none; }
+  .rz-zwolaj span.rz-dl { display: none; }
+  .rz-glowa .rz-prawy { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .rz-wiersz, .rz-kropki i { animation: none; } .rz-lista { scroll-behavior: auto; } }

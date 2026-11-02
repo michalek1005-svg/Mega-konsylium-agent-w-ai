@@ -1,0 +1,76 @@
+{
+  "kod": "PSY-02",
+  "plec": "mężczyzna",
+  "wiek": 41,
+  "tytul": "Ciągłe zamartwianie się",
+  "opis": "Ciągle się martwię — o pracę, o zdrowie dzieci, o pieniądze, choć obiektywnie wszystko jest w porządku. Jestem spięty, bolą mnie plecy i szczęka. Wieczorem piwo pomaga mi się wyłączyć.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy tak jest?",
+      "odpowiedz": "Od ponad roku, ostatnie pół roku gorzej"
+    },
+    {
+      "pytanie": "Czy trudno Ci przerwać zamartwianie się?",
+      "odpowiedz": "Tak, prawie zawsze"
+    },
+    {
+      "pytanie": "Które z tych objawów masz?",
+      "odpowiedz": "Napięcie mięśni; Drażliwość; Problemy z zasypianiem; Szybkie męczenie się"
+    },
+    {
+      "pytanie": "Czy miewasz nagłe ataki silnego lęku z kołataniem serca, dusznością, strachem przed śmiercią?",
+      "odpowiedz": "Nie, raczej stałe napięcie"
+    },
+    {
+      "pytanie": "Ile alkoholu pijesz w typowym tygodniu?",
+      "odpowiedz": "2–3 piwa prawie codziennie, w weekend więcej"
+    },
+    {
+      "pytanie": "Czy próbowałeś ograniczyć picie albo ktoś zwracał Ci uwagę?",
+      "odpowiedz": "Żona zwracała uwagę"
+    },
+    {
+      "pytanie": "Czy pijesz rano, żeby uspokoić nerwy?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Kawa, napoje energetyczne?",
+      "odpowiedz": "4–5 kaw dziennie"
+    },
+    {
+      "pytanie": "Leki uspokajające lub nasenne?",
+      "odpowiedz": "Czasem biorę hydroksyzynę od kolegi"
+    },
+    {
+      "pytanie": "Nastrój i przyjemność z rzeczy?",
+      "odpowiedz": "Nastrój raczej w porządku, cieszą mnie dzieci"
+    },
+    {
+      "pytanie": "Myśli o śmierci lub zrobieniu sobie krzywdy?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Choroby i leki stałe?",
+      "odpowiedz": "Nadciśnienie, biorę amlodypinę"
+    },
+    {
+      "pytanie": "Ostatnie badania (tarczyca, wątroba)?",
+      "odpowiedz": "nie wiem"
+    },
+    {
+      "pytanie": "Jak to wpływa na pracę i rodzinę?",
+      "odpowiedz": "Kłócę się z żoną, w pracy odkładam rzeczy"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Chcę przestać się tak nakręcać"
+    }
+  ],
+  "flagi": [],
+  "nieznane": [
+    "badania tarczycy i prób wątrobowych",
+    "dokładna ilość alkoholu w weekend (AUDIT)"
+  ],
+  "wyniki": "Skale: GAD-7 = 15 pkt, PHQ-9 = 7 pkt, AUDIT-C = 7 pkt.",
+  "pytanie": "Jak przestać się ciągle zamartwiać?"
+}

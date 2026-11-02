@@ -1,0 +1,77 @@
+{
+  "kod": "PSY-03",
+  "plec": "kobieta",
+  "wiek": 29,
+  "tytul": "Wypalenie w pracy",
+  "opis": "Pracuję jako pielęgniarka na oddziale, od pół roku czuję się wypalona. Mam dość pacjentów, jestem cyniczna, po dyżurze leżę i nic nie robię. Chyba muszę zmienić pracę.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy?",
+      "odpowiedz": "Ok. 6 miesięcy"
+    },
+    {
+      "pytanie": "Czy w urlopie lub wolne dni czujesz się lepiej?",
+      "odpowiedz": "Nie, na urlopie też nic mi się nie chciało"
+    },
+    {
+      "pytanie": "Czy hobby i spotkania ze znajomymi nadal cieszą?",
+      "odpowiedz": "Przestałam chodzić na jogę i spotykać się z przyjaciółkami, nie mam ochoty"
+    },
+    {
+      "pytanie": "Jak śpisz?",
+      "odpowiedz": "Śpię po 10–11 godzin i dalej jestem zmęczona"
+    },
+    {
+      "pytanie": "Apetyt i waga?",
+      "odpowiedz": "Jem więcej słodyczy, przytyłam 5 kg"
+    },
+    {
+      "pytanie": "Koncentracja?",
+      "odpowiedz": "Słaba, boję się pomyłki przy lekach"
+    },
+    {
+      "pytanie": "Poczucie winy lub bezwartościowości?",
+      "odpowiedz": "Czuję się beznadziejna, że inni dają radę, a ja nie"
+    },
+    {
+      "pytanie": "Myśli o śmierci lub zrobieniu sobie krzywdy?",
+      "odpowiedz": "Czasem myślę, że gdybym się nie obudziła, to byłoby OK. Nie planuję nic"
+    },
+    {
+      "pytanie": "Dostęp do leków w pracy?",
+      "odpowiedz": "Tak, jak każda pielęgniarka"
+    },
+    {
+      "pytanie": "Dyżury nocne?",
+      "odpowiedz": "Tak, 6–8 nocy w miesiącu"
+    },
+    {
+      "pytanie": "Alkohol, substancje?",
+      "odpowiedz": "Rzadko"
+    },
+    {
+      "pytanie": "Choroby, leki?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Badania (tarczyca, morfologia, ferrytyna)?",
+      "odpowiedz": "nie wiem"
+    },
+    {
+      "pytanie": "Wsparcie?",
+      "odpowiedz": "Partner, ale nie chcę go obciążać"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Rady, czy zmienić pracę"
+    }
+  ],
+  "flagi": [
+    "[PILNE] Odpowiedź o myślach „gdybym się nie obudziła”."
+  ],
+  "nieznane": [
+    "badania tarczycy, morfologia, ferrytyna"
+  ],
+  "wyniki": "Skale: PHQ-9 = 17 pkt (pytanie 9: „kilka dni”), Maslach Burnout Inventory — nie wypełniono.",
+  "pytanie": "Czy powinnam zmienić pracę?"
+}

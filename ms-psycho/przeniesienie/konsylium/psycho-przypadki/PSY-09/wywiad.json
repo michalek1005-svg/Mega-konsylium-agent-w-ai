@@ -1,0 +1,74 @@
+{
+  "kod": "PSY-09",
+  "plec": "mężczyzna",
+  "wiek": 31,
+  "tytul": "Partnerka się martwi",
+  "opis": "Partnerka namówiła mnie, żebym to wypełnił, bo twierdzi, że się zmieniłem. Ja czuję się świetnie, mam mnóstwo pomysłów, zakładam firmę. Ona mówi, że za mało śpię i za dużo wydaję. Może to ona ma problem z lękiem?",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy czujesz tę zmianę?",
+      "odpowiedz": "Ok. 10 dni"
+    },
+    {
+      "pytanie": "Ile śpisz?",
+      "odpowiedz": "3–4 godziny i nie jestem zmęczony"
+    },
+    {
+      "pytanie": "Czy myśli przyspieszyły, trudno się skupić na jednej sprawie?",
+      "odpowiedz": "Mam tyle pomysłów, że nie nadążam ich zapisywać"
+    },
+    {
+      "pytanie": "Czy mówisz szybciej lub więcej niż zwykle?",
+      "odpowiedz": "Partnerka mówi, że tak"
+    },
+    {
+      "pytanie": "Wydatki w ostatnich tygodniach?",
+      "odpowiedz": "Wziąłem kredyt 40 tys. zł na firmę i kupiłem nowy samochód"
+    },
+    {
+      "pytanie": "Czy masz poczucie wyjątkowych zdolności lub misji?",
+      "odpowiedz": "Wiem, że ta firma zmieni rynek"
+    },
+    {
+      "pytanie": "Czy wcześniej był okres głębokiego przygnębienia?",
+      "odpowiedz": "Tak, rok temu przez 3 miesiące nie wstawałem z łóżka"
+    },
+    {
+      "pytanie": "Czy brałeś wtedy leki?",
+      "odpowiedz": "Lekarz rodzinny przepisał sertralinę, odstawiłem po 2 mies."
+    },
+    {
+      "pytanie": "Czy ktoś w rodzinie miał podobne wahania?",
+      "odpowiedz": "Wujek „miał dwubiegunówkę”"
+    },
+    {
+      "pytanie": "Alkohol, substancje (amfetamina, kokaina, sterydy)?",
+      "odpowiedz": "Więcej alkoholu na imprezach, nic innego"
+    },
+    {
+      "pytanie": "Myśli o śmierci?",
+      "odpowiedz": "Nie, nigdy nie czułem się lepiej"
+    },
+    {
+      "pytanie": "Czy słyszysz lub widzisz coś, czego inni nie widzą?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Choroby, leki?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Żeby partnerka się uspokoiła"
+    }
+  ],
+  "flagi": [
+    "[PILNE] Sen 3–4 h bez zmęczenia od 10 dni i duży kredyt w tym czasie."
+  ],
+  "nieznane": [
+    "ocena psychiatryczna",
+    "badania przesiewowe w kierunku substancji"
+  ],
+  "wyniki": "",
+  "pytanie": "Jak pomóc partnerce z jej lękiem?"
+}

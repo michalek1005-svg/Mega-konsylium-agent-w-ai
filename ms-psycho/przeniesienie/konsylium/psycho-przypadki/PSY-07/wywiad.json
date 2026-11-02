@@ -1,0 +1,73 @@
+{
+  "kod": "PSY-07",
+  "plec": "mężczyzna",
+  "wiek": 23,
+  "tytul": "Nie widzę sensu",
+  "opis": "Po rozstaniu i wyrzuceniu ze studiów nie widzę sensu. Od dwóch tygodni prawie nie wychodzę z pokoju. Napisałem do kilku osób, że przepraszam za wszystko. Nie wiem, po co to wypełniam.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy tak się czujesz?",
+      "odpowiedz": "Ok. 3 tygodni, od rozstania; dwa tygodnie temu skreślili mnie z listy studentów"
+    },
+    {
+      "pytanie": "Czy myślisz o tym, żeby odebrać sobie życie?",
+      "odpowiedz": "Tak, codziennie"
+    },
+    {
+      "pytanie": "Czy myślałeś, w jaki sposób?",
+      "odpowiedz": "Tak"
+    },
+    {
+      "pytanie": "Czy masz dostęp do tego, czym mógłbyś to zrobić?",
+      "odpowiedz": "Ojciec ma w szafce dużo swoich leków nasercowych"
+    },
+    {
+      "pytanie": "Czy zrobiłeś jakieś przygotowania (pożegnania, list, rozdawanie rzeczy)?",
+      "odpowiedz": "Napisałem do kilku osób, że przepraszam"
+    },
+    {
+      "pytanie": "Czy kiedyś próbowałeś odebrać sobie życie?",
+      "odpowiedz": "Raz w liceum połknąłem tabletki, nikt nie wie"
+    },
+    {
+      "pytanie": "Jak silne są te myśli teraz (0–10)?",
+      "odpowiedz": "8/10"
+    },
+    {
+      "pytanie": "Co Cię powstrzymuje?",
+      "odpowiedz": "Mama"
+    },
+    {
+      "pytanie": "Alkohol lub substancje w ostatnich dniach?",
+      "odpowiedz": "Piję więcej, wczoraj pół litra wódki"
+    },
+    {
+      "pytanie": "Sen?",
+      "odpowiedz": "Prawie nie śpię"
+    },
+    {
+      "pytanie": "Czy jesteś teraz sam?",
+      "odpowiedz": "Rodzice są w pracy do 18:00"
+    },
+    {
+      "pytanie": "Choroby, leki?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Czy ktoś wie, jak się czujesz?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Nie wiem"
+    }
+  ],
+  "flagi": [
+    "[NATYCHMIAST 112] Codzienne myśli samobójcze z planem i dostępem do środków."
+  ],
+  "nieznane": [
+    "dokładna godzina pożegnalnych wiadomości"
+  ],
+  "wyniki": "Skale: PHQ-9 = 24 pkt (pytanie 9: „prawie codziennie”).",
+  "pytanie": "Nie wiem."
+}

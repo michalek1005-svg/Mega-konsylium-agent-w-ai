@@ -1,0 +1,86 @@
+{
+  "kod": "PSY-01",
+  "plec": "kobieta",
+  "wiek": 34,
+  "tytul": "Brak sił i radości od 2 miesięcy",
+  "opis": "Od jakichś dwóch miesięcy nic mnie nie cieszy, nawet córka. Rano nie mogę wstać, w pracy robię błędy, bo nie mogę się skupić. Płaczę w samochodzie. Mąż mówi, żebym się wzięła w garść.",
+  "odpowiedzi": [
+    {
+      "pytanie": "Od kiedy tak się czujesz?",
+      "odpowiedz": "6–8 tygodni"
+    },
+    {
+      "pytanie": "Jak przez ostatnie 2 tygodnie było z nastrojem?",
+      "odpowiedz": "Przygnębiona prawie codziennie, większość dnia"
+    },
+    {
+      "pytanie": "Czy rzeczy, które zwykle sprawiały Ci przyjemność, nadal ją sprawiają?",
+      "odpowiedz": "Prawie wcale"
+    },
+    {
+      "pytanie": "Jak śpisz?",
+      "odpowiedz": "Budzę się ok. 4:00 i już nie zasypiam"
+    },
+    {
+      "pytanie": "Czy zmienił się apetyt lub waga?",
+      "odpowiedz": "Mniejszy apetyt, schudłam ok. 4 kg"
+    },
+    {
+      "pytanie": "Jak oceniasz swoją energię (0–10)?",
+      "odpowiedz": "2/10"
+    },
+    {
+      "pytanie": "Czy masz poczucie winy lub bezwartościowości?",
+      "odpowiedz": "Tak, często — że jestem złą matką"
+    },
+    {
+      "pytanie": "Czy zdarza Ci się myśleć, że lepiej byłoby nie żyć, albo myśleć o zrobieniu sobie krzywdy?",
+      "odpowiedz": "Czasem myślę, że wszystkim byłoby łatwiej beze mnie, ale nic bym sobie nie zrobiła — mam córkę"
+    },
+    {
+      "pytanie": "Czy masz plan lub przygotowania?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Czy kiedyś wcześniej było podobnie?",
+      "odpowiedz": "Tak, po porodzie 5 lat temu, przeszło samo po kilku miesiącach"
+    },
+    {
+      "pytanie": "Czy miałaś okresy, gdy przez kilka dni byłaś niezwykle pobudzona, mało spałaś i nie czułaś zmęczenia?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Alkohol, leki uspokajające, inne substancje?",
+      "odpowiedz": "Lampka wina 2–3 razy w tygodniu, ostatnio częściej"
+    },
+    {
+      "pytanie": "Czy bierzesz jakieś leki lub masz choroby przewlekłe?",
+      "odpowiedz": "Nie"
+    },
+    {
+      "pytanie": "Kiedy ostatnio badałaś tarczycę i morfologię?",
+      "odpowiedz": "nie wiem"
+    },
+    {
+      "pytanie": "Czy w rodzinie ktoś chorował na depresję lub inne choroby psychiczne?",
+      "odpowiedz": "Mama — depresja"
+    },
+    {
+      "pytanie": "Kto Cię wspiera?",
+      "odpowiedz": "Siostra; z mężem trudno rozmawiać"
+    },
+    {
+      "pytanie": "Czego oczekujesz?",
+      "odpowiedz": "Chcę zrozumieć, co się ze mną dzieje i jak z tego wyjść"
+    }
+  ],
+  "flagi": [
+    "[PILNE] Odpowiedź „wszystkim byłoby łatwiej beze mnie”."
+  ],
+  "nieznane": [
+    "funkcja tarczycy, morfologia",
+    "częstotliwość myśli rezygnacyjnych"
+  ],
+  "wyniki": "Skale samooceny (wypełnione w aplikacji): PHQ-9 = 19 pkt (pytanie 9: „kilka dni”), GAD-7 = 9 pkt.",
+  "pytanie": "Co się ze mną dzieje i czy to minie samo?"
+}

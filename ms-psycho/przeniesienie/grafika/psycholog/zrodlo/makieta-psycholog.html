@@ -1,0 +1,87 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="node_modules/@fontsource-variable/plus-jakarta-sans/index.css">
+<style>
+body{margin:0;font-family:'Plus Jakarta Sans Variable',sans-serif;color:#2d2a3a;background:#F1EEF5}
+.plansza{width:1400px;height:900px;position:relative;overflow:hidden;background:radial-gradient(700px 400px at 100% -4%,rgba(150,130,200,.45),transparent 70%),radial-gradient(600px 380px at 0% 104%,rgba(170,190,140,.45),transparent 70%),linear-gradient(#F1EEF5,#DDD6E6)}
+.tafla{position:absolute;inset:22px;border-radius:34px;background:rgba(255,255,255,.46);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 0 0 1px rgba(255,255,255,.5),0 40px 74px -34px rgba(60,40,90,.5)}
+.tyt{position:absolute;left:58px;top:44px;font-size:13px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#5b4a8a}
+.h{position:absolute;left:58px;top:64px;font-size:28px;font-weight:750}
+.opis{position:absolute;left:58px;top:104px;width:1280px;font-size:14px;color:#6b6480;line-height:1.45}
+svg.scena{position:absolute;left:58px;top:160px;width:1284px;height:720px;border-radius:22px}
+.ui{font-family:'Plus Jakarta Sans Variable',sans-serif}
+</style></head><body>
+<div class="plansza"><div class="tafla"></div>
+<div class="tyt">Makieta · pokój psychologiczny (druga aplikacja), tryb jasny</div>
+<div class="h">Pokój konsylium psychologicznego</div>
+<div class="opis">Ta sama scena i logika co w Pokoju lekarskim, inny nastrój: ciepłe światło, ściany w kolorze piasku, lawenda i szałwia zamiast petrolu. Zamiast stołu konferencyjnego krąg miękkich foteli z niskim stolikiem (chusteczki, woda, notatniki), lampa, regał z książkami, okno z ogrodem. Ściana wideo zostaje jako „ustalenia”, ale w miękkiej ramie. Terapeuci bez fartuchów, w swetrach i marynarkach; prowadzący stoi z prawej jak dziś. Zero elementów szpitalnych.</div>
+<svg class="scena" viewBox="0 0 1200 672" id="s"></svg>
+</div>
+<script type="module">
+import {lekarz, dym} from '/mnt/project-files/grafika/postacie/postacie.mjs';
+const S=document.getElementById('s');
+const osoba=(o)=>{let h=lekarz(o);h=h.replace(/<path d="M-8 -126 Q-16 -96 -2 -88 Q12 -96 8 -126"[^>]*>/,'').replace(/<circle cx="-2" cy="-86" r="4"[^>]*>/,'');h=h.split('#fbfdfc').join(o.ubranie||'#cdb9e6').split('#c9d6d3').join(o.cien||'#a894c9');return h;};
+let h=`<defs>
+<filter id="rozmycie"><feGaussianBlur stdDeviation="6"/></filter>
+<linearGradient id="sciana" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f2ea"/><stop offset="1" stop-color="#ebe2d6"/></linearGradient>
+<linearGradient id="podl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c7b2"/><stop offset="1" stop-color="#c4ad93"/></linearGradient>
+<linearGradient id="ogrod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6ef"/><stop offset=".55" stop-color="#e9f1e4"/><stop offset=".56" stop-color="#a9c48f"/><stop offset="1" stop-color="#7fa36a"/></linearGradient>
+<linearGradient id="ekran" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2540"/><stop offset="1" stop-color="#1e1a2e"/></linearGradient>
+<radialGradient id="lampa" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9b8" stop-opacity=".8"/><stop offset="1" stop-color="#ffe9b8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="340" fill="url(#sciana)"/>
+<rect y="340" width="1200" height="332" fill="url(#podl)"/>
+${[-10,-6,-2,2,6,10].map(k=>`<line x1="${600+k*30}" y1="340" x2="${600+k*150}" y2="672" stroke="#fff" stroke-width="1" opacity=".35"/>`).join('')}
+<!-- dywan -->
+<ellipse cx="600" cy="560" rx="360" ry="104" fill="#e8dcd0" opacity=".9"/><ellipse cx="600" cy="560" rx="360" ry="104" fill="none" stroke="#cdb9a3" stroke-width="3"/>
+<!-- listwa -->
+<rect y="332" width="1200" height="8" fill="#d9cbb8"/>
+<!-- okno z ogrodem -->
+<rect x="876" y="40" width="300" height="270" rx="8" fill="#e8dfd2"/>
+<rect x="886" y="50" width="280" height="250" rx="4" fill="url(#ogrod)"/>
+<g fill="#6f9a5a"><ellipse cx="930" cy="200" rx="34" ry="46"/><ellipse cx="1120" cy="190" rx="40" ry="52"/><ellipse cx="1030" cy="215" rx="26" ry="34"/></g>
+<rect x="920" y="236" width="20" height="40" fill="#8a6a4a"/><rect x="1110" y="236" width="20" height="44" fill="#8a6a4a"/>
+<rect x="1023" y="50" width="6" height="250" fill="#e8dfd2"/><rect x="886" y="170" width="280" height="6" fill="#e8dfd2"/>
+<rect x="880" y="40" width="24" height="270" fill="#cdb9e6" opacity=".75"/><rect x="1148" y="40" width="24" height="270" fill="#cdb9e6" opacity=".75"/>
+<!-- regał -->
+<rect x="30" y="70" width="170" height="268" rx="4" fill="#c9b08f"/><rect x="38" y="78" width="154" height="252" fill="#e8dcc8"/>
+${[0,1,2,3].map(r=>`<rect x="38" y="${138+r*62}" width="154" height="6" fill="#c9b08f"/>`+[0,1,2,3,4,5,6].map(k=>`<rect x="${44+k*21}" y="${88+r*62+(k%3)*4}" width="${12+(k%2)*5}" height="${48-(k%3)*4}" rx="1.5" fill="${['#b7a0d9','#9fbf9a','#e6c384','#d99a8c','#8fb6c9','#cdb9e6','#a894c9'][k]}"/>`).join('')).join('')}
+<!-- ściana wideo „ustalenia” w miękkiej ramie -->
+<rect x="246" y="38" width="616" height="230" rx="18" fill="#f1e9df" stroke="#d9cbb8" stroke-width="3"/>
+<rect x="262" y="54" width="584" height="198" rx="10" fill="url(#ekran)"/>
+<text x="282" y="80" font-size="9.5" font-weight="800" letter-spacing="1.5" fill="#cdb9e6" class="ui">STAN PRAC</text>
+<text x="440" y="80" font-size="9.5" font-weight="800" letter-spacing="1.5" fill="#cdb9e6" class="ui">USTALENIA</text>
+<text x="700" y="80" font-size="9.5" font-weight="800" letter-spacing="1.5" fill="#f0a9a0" class="ui">ODRZUCONE</text>
+<line x1="422" y1="70" x2="422" y2="240" stroke="#3d3556"/><line x1="682" y1="70" x2="682" y2="240" stroke="#3d3556"/>
+${[['✓','Wywiad','#9fd9b4'],['✓','Triage · pilność 2','#9fd9b4'],['●','Konsylium – runda 1','#ffd9a0'],['○','Plan wsparcia','#6f6888'],['○','Wnioski','#6f6888']].map((e,i)=>`<text x="282" y="${104+i*24}" font-size="11.5" font-weight="650" fill="${e[2]}" class="ui">${e[0]}  ${e[1]}</text>`).join('')}
+${[['1. Epizod depresyjny umiarkowany','lider · 4 z 6'],['2. Zaburzenie adaptacyjne','do różnicowania'],['3. Zalecenie: ocena ryzyka, CBT','zgoda wszystkich']].map((u,i)=>`<text x="440" y="${104+i*40}" font-size="12" font-weight="700" fill="#f3eefb" class="ui">${u[0]}</text><text x="440" y="${118+i*40}" font-size="9" fill="#a89fc4" class="ui">${u[1]}</text>`).join('')}
+${[['Choroba afektywna dwubiegunowa','brak epizodów wzmożonego nastroju'],['Uzależnienie','negatywny wywiad']].map((o,i)=>`<text x="700" y="${104+i*44}" font-size="12" font-weight="700" fill="#f0a9a0" text-decoration="line-through" class="ui">${o[0]}</text><text x="700" y="${118+i*44}" font-size="9" fill="#a89fc4" class="ui">dlaczego: ${o[1]}</text>`).join('')}
+<!-- lampa podłogowa -->
+<g transform="translate(236,330)"><rect x="-3" y="-200" width="6" height="200" fill="#8a6a4a"/><ellipse cx="0" cy="0" rx="16" ry="4" fill="#8a6a4a"/><path d="M-34,-200 L34,-200 L24,-240 L-24,-240 Z" fill="#f3e3c3" stroke="#d9c4a0"/><circle cx="0" cy="-150" r="120" fill="url(#lampa)"/></g>
+<!-- niski stolik: chusteczki, woda, notatniki -->
+<ellipse cx="600" cy="560" rx="96" ry="30" fill="#b89a7a"/><ellipse cx="600" cy="552" rx="96" ry="30" fill="#d9c0a2"/>
+<g transform="translate(560,540)"><rect x="-14" y="-12" width="28" height="14" rx="3" fill="#fff" stroke="#d9cbb8"/><path d="M-4,-12 q4,-8 8,0" fill="none" stroke="#cdb9e6" stroke-width="2"/></g>
+<g transform="translate(606,536)"><rect x="-6" y="-22" width="12" height="24" rx="3" fill="#cfe6ef" stroke="#9fc4d6"/><rect x="-5" y="-26" width="10" height="5" rx="1" fill="#6f9ab0"/></g>
+<g transform="translate(640,548)"><rect x="-16" y="-9" width="32" height="18" rx="2" fill="#f7f2ea" stroke="#d9cbb8"/><rect x="-12" y="-4" width="20" height="1.4" fill="#a894c9"/><rect x="-12" y="0" width="16" height="1.4" fill="#a894c9"/></g>
+`;
+// fotele
+const fotel=(x,y,k)=>`<g transform="translate(${x},${y})"><rect x="-34" y="-74" width="68" height="60" rx="16" fill="${k}"/><rect x="-40" y="-40" width="80" height="34" rx="12" fill="${k}"/><rect x="-44" y="-46" width="14" height="40" rx="7" fill="${k}" opacity=".85"/><rect x="30" y="-46" width="14" height="40" rx="7" fill="${k}" opacity=".85"/><rect x="-36" y="-8" width="72" height="6" rx="3" fill="rgba(0,0,0,.12)"/></g>`;
+const KOL=['#cdb9e6','#b8d1b0','#f0cfa6','#cdb9e6','#b8d1b0','#f0cfa6'];
+const M={prow:[600,470],a:[440,452],b:[760,452],c:[262,566],d:[938,566],e:[470,668],f:[730,668],ty:[1040,672]};
+const ROLE=[['prow',{gruby:1,fryzura:'siwe',wlosy:'#b9b4ad',broda:'#cfcac3',okulary:1,ubranie:'#8a7fb5',cien:'#6b5f96',kolor:'#5b4a8a'},'Prowadzący konsylium'],
+['a',{fryzura:'krotkie',wlosy:'#5b3a24',ubranie:'#9fbf9a',cien:'#7fa07a',kolor:'#4f7f5a',mowi:1},'Diagnosta'],
+['b',{fryzura:'bob',wlosy:'#2f2a26',okulary:1,ubranie:'#cdb9e6',cien:'#a894c9',kolor:'#7b6cc4',skora:'#F6DDCB'},'Terapeutka CBT'],
+['c',{fryzura:'siwe',wlosy:'#8f8a84',broda:'#8f8a84',ubranie:'#e6c384',cien:'#c9a65c',kolor:'#a0741f',skora:'#EAC3A6'},'Psychiatra'],
+['d',{fryzura:'loki',wlosy:'#9b3e22',ubranie:'#d99a8c',cien:'#b97a6c',kolor:'#b05a4a',skora:'#F6DDCB'},'Terapeutka rodzinna'],
+['e',{fryzura:'kucyk',wlosy:'#c08a4a',ubranie:'#8fb6c9',cien:'#6f96a9',kolor:'#3c7f9c',skora:'#EFCBB2'},'Psycholożka kliniczna'],
+['f',{fryzura:'przedzial',wlosy:'#d8b46a',okulary:1,ubranie:'#b7a0d9',cien:'#9780bb',kolor:'#6b4fa8'},'Interwent kryzysowy'],
+['ty',{fryzura:'przedzial',wlosy:'#3a2a20',broda:'#3a2a20',teczka:1,ubranie:'#8a7fb5',cien:'#6b5f96',kolor:'#e07b39',skora:'#EFCBB2'},'Psycholog prowadzący (Ty)']];
+// fotele za postaciami (tył) i przed (przód)
+for(const [k,,] of ROLE){ if(k==='ty')continue; const [x,y]=M[k]; h+=fotel(x,y+4,KOL[ROLE.findIndex(r=>r[0]===k)%6]); }
+for(const [k,o,n] of ROLE){const [x,y]=M[k];h+=osoba({x,y,s:.76,...o});h+=`<text x="${x}" y="${y+16}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2d2a3a" class="ui" paint-order="stroke" stroke="#efe4d6" stroke-width="3">${n}</text>`;}
+// dymek
+h+=`<g transform="translate(260,292)"><rect width="300" height="64" rx="14" fill="#fff" stroke="rgba(91,74,138,.2)"/><path d="M130 64 L140 78 L150 64Z" fill="#fff"/><text x="14" y="20" font-size="9" font-weight="800" letter-spacing="1" fill="#4f7f5a" class="ui">DIAGNOSTA</text><foreignObject x="12" y="26" width="276" height="36"><div xmlns="http://www.w3.org/1999/xhtml" style="font:500 11px/1.3 'Plus Jakarta Sans Variable';color:#2d2a3a">Obniżony nastrój, anhedonia i bezsenność od 6 tygodni spełniają kryteria epizodu depresyjnego; proszę o ocenę ryzyka.</div></foreignObject></g>`;
+// rośliny
+h+=`<g transform="translate(1150,676)"><rect x="-18" y="-40" width="36" height="40" rx="6" fill="#e8dcc8" stroke="#cdb9a3"/><g fill="#6f9a5a"><ellipse cx="-12" cy="-64" rx="8" ry="26" transform="rotate(-20 -12 -64)"/><ellipse cx="10" cy="-68" rx="8" ry="28" transform="rotate(18 10 -68)"/><ellipse cx="0" cy="-76" rx="7" ry="30"/></g></g>`;
+h+=`<g transform="translate(60,660)"><rect x="-14" y="-30" width="28" height="30" rx="5" fill="#e8dcc8" stroke="#cdb9a3"/><g fill="#8fb37a"><ellipse cx="-8" cy="-50" rx="7" ry="22" transform="rotate(-25 -8 -50)"/><ellipse cx="8" cy="-52" rx="7" ry="24" transform="rotate(22 8 -52)"/></g></g>`;
+S.innerHTML=h;
+</script></body></html>

@@ -1,0 +1,595 @@
+--- /home/claude/wt/narzedzia/pokoj-lekarski/src/pokoj.css	2026-11-01 04:25:26.585113377 +0000
++++ src/pokoj.css	2026-11-01 04:41:20.469341666 +0000
+@@ -1,77 +1,78 @@
+-/* Pokój lekarski Konsylium — wygląd marki MS (paleta „Laguna” z Nawigatora, tryb ciemny jako domyślny).
++/* Pokój psychologiczny — wygląd marki MS (paleta „Lawenda” – spokojniejsza odmiana Laguny z Nawigatora; tryb JASNY domyślny).
++   Wątek Graficzny 1.11.2026: zamiennik pokoj.css z Pokoju lekarskiego – te same klasy i id, inne tokeny.
+    Układ: nagłówek z logo K → scena pokoju (SVG + dymki HTML) obok protokołu → pasek odtwarzania.
+    Tokeny pokoju są dopisane do kopii tokenów MS; zmiany palety marki idą przez Michała. */
+ /*@@FONT@@*/
+ :root {
+   color-scheme: dark;
+-  --petrol: #5CC8BB; --ink: #E4EEEB; --mut: #93A9A4; --bg-viewport: #0F1918;
+-  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.22) 0%, rgba(64,168,158,0) 70%),
+-           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.16) 0%, rgba(132,176,108,0) 70%),
+-           linear-gradient(160deg, #121d1c 0%, #0b1413 100%);
+-  --tafla: rgba(20,32,31,.78);
++  --petrol: #C3B4E6; --ink: #ECE8F3; --mut: #A79FBF; --bg-viewport: #17141F;
++  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(138,127,181,.26) 0%, rgba(138,127,181,0) 70%),
++           radial-gradient(50vw 46vh at -4% 104%, rgba(176,196,160,.16) 0%, rgba(176,196,160,0) 70%),
++           linear-gradient(160deg, #1d1928 0%, #131020 100%);
++  --tafla: rgba(30,26,42,.78);
+   --tafla-cien: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.07), 0 40px 74px -34px rgba(0,0,0,.85);
+   --panel: rgba(255,255,255,.05);
+   --panel-cien: 0 14px 32px -25px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.08);
+-  --btn: rgba(92,200,187,.12); --btn-h: rgba(92,200,187,.2); --btn-txt: #8fdcd2;
+-  --on: #1b7a70; --on-txt: #fff;
++  --btn: rgba(195,180,230,.12); --btn-h: rgba(195,180,230,.2); --btn-txt: #d6cbf0;
++  --on: #6b5f96; --on-txt: #fff;
+   --alarm: #ff9a8c; --ostrzezenie: #e9c46a; --ok: #6fd3a0;
+   /* pokój */
+-  --sciana: #1a2a29; --sciana-2: #152322; --podloga: #101b1a; --podloga-linia: rgba(92,200,187,.06);
+-  --listwa: #24403c; --stol: #2b3d3a; --stol-blat: #34504b; --stol-krawedz: #1f302e;
+-  --szyba: rgba(140,210,220,.10); --szyba-obrys: rgba(160,220,225,.35);
+-  --okno-niebo: #0d2230; --okno-gwiazda: rgba(255,255,255,.55);
+-  --tablica: #e8efed; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #46625d;
++  --sciana: #2a2433; --sciana-2: #231e2c; --podloga: #2b2220; --podloga-linia: rgba(195,180,230,.06);
++  --listwa: #4a3b33; --stol: #5a4538; --stol-blat: #6e5546; --stol-krawedz: #3f3028;
++  --szyba: rgba(200,190,230,.10); --szyba-obrys: rgba(210,200,240,.35);
++  --okno-niebo: #1b2a3a; --okno-gwiazda: rgba(255,255,255,.55);
++  --tablica: #efeaf5; --tablica-txt: #2d2a3a; --tablica-mut: #6b6480; --tablica-rama: #5a4a6e;
+   --cien-postaci: rgba(0,0,0,.45);
+-  --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
+-  --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a; --g-prowadzacy: #b8622e;
++  --fartuch: #e7eeec; --fartuch-cien: #b8c7c3; /* fartuchy nieużywane – terapeuci w ubraniach (postacie.js) */
++  --g-ordynator: #6b5f96; --g-lekarz: #4f7f8a; --g-zastepca: #6f9a5a; --g-sprawdzajacy: #a0741f; --g-rezydent: #b05a4a; --g-prowadzacy: #c7703a;
+   --dym: rgba(250,252,252,.72);
+-  --dymek: #f4f8f7; --dymek-txt: #14302D; --dymek-mut: #4d6762;
++  --dymek: #f8f5fc; --dymek-txt: #2d2a3a; --dymek-mut: #5e5676;
+   --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+   --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace;
+ }
+ @media (prefers-color-scheme: light) {
+   :root:not([data-theme="dark"]):not([data-motyw="ciemny"]) {
+     color-scheme: light;
+-    --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
+-    --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
+-             radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
+-             linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
++    --petrol: #5B4A8A; --ink: #2D2A3A; --mut: #6B6480; --bg-viewport: #F1EEF5;
++    --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(150,130,200,.5) 0%, rgba(138,127,181,0) 70%),
++             radial-gradient(50vw 46vh at -4% 104%, rgba(170,190,140,.45) 0%, rgba(176,196,160,0) 70%),
++             linear-gradient(160deg, #F1EEF5 0%, #DDD6E6 100%);
+     --tafla: rgba(255,255,255,.44);
+-    --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
++    --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(60,40,90,.5);
+     --panel: rgba(255,255,255,.7);
+-    --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
+-    --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
+-    --on: #0F5E58; --on-txt: #fff;
+-    --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
+-    --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
+-    --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
+-    --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
+-    --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+-    --tablica: #ffffff; --tablica-rama: #8fa9a2;
+-    --cien-postaci: rgba(10,54,52,.22);
+-    --dymek: #ffffff; --dym: rgba(238,243,242,.4);
++    --panel-cien: 0 14px 32px -25px rgba(60,40,90,.45), inset 0 0 0 1px rgba(91,74,138,.13);
++    --btn: rgba(91,74,138,.08); --btn-h: rgba(91,74,138,.15); --btn-txt: #5B4A8A;
++    --on: #5B4A8A; --on-txt: #fff;
++    --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #3f7a55;
++    --sciana: #f7f2ea; --sciana-2: #ebe2d6; --podloga: #d4bfa6; --podloga-linia: rgba(255,255,255,.35);
++    --listwa: #d9cbb8; --stol: #b89a7a; --stol-blat: #d9c0a2; --stol-krawedz: #9c7f62;
++    --szyba: rgba(200,190,230,.16); --szyba-obrys: rgba(91,74,138,.3);
++    --okno-niebo: #cfe6ef; --okno-gwiazda: rgba(255,255,255,0);
++    --tablica: #ffffff; --tablica-rama: #d9cbb8;
++    --cien-postaci: rgba(60,40,90,.2);
++    --dymek: #ffffff; --dym: rgba(240,236,246,.4);
+   }
+ }
+ :root[data-theme="light"], :root[data-motyw="jasny"] {
+   color-scheme: light;
+-  --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
+-  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
+-           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
+-           linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
++  --petrol: #5B4A8A; --ink: #2D2A3A; --mut: #6B6480; --bg-viewport: #F1EEF5;
++  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(150,130,200,.5) 0%, rgba(138,127,181,0) 70%),
++           radial-gradient(50vw 46vh at -4% 104%, rgba(170,190,140,.45) 0%, rgba(176,196,160,0) 70%),
++           linear-gradient(160deg, #F1EEF5 0%, #DDD6E6 100%);
+   --tafla: rgba(255,255,255,.44);
+-  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
++  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(60,40,90,.5);
+   --panel: rgba(255,255,255,.7);
+-  --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
+-  --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
+-  --on: #0F5E58; --on-txt: #fff;
+-  --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
+-  --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
+-  --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
+-  --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
+-  --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0);
+-  --tablica: #ffffff; --tablica-rama: #8fa9a2;
+-  --cien-postaci: rgba(10,54,52,.22);
+-  --dymek: #ffffff; --dym: rgba(238,243,242,.4);
++  --panel-cien: 0 14px 32px -25px rgba(60,40,90,.45), inset 0 0 0 1px rgba(91,74,138,.13);
++  --btn: rgba(91,74,138,.08); --btn-h: rgba(91,74,138,.15); --btn-txt: #5B4A8A;
++  --on: #5B4A8A; --on-txt: #fff;
++  --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #3f7a55;
++  --sciana: #f7f2ea; --sciana-2: #ebe2d6; --podloga: #d4bfa6; --podloga-linia: rgba(255,255,255,.35);
++  --listwa: #d9cbb8; --stol: #b89a7a; --stol-blat: #d9c0a2; --stol-krawedz: #9c7f62;
++  --szyba: rgba(200,190,230,.16); --szyba-obrys: rgba(91,74,138,.3);
++  --okno-niebo: #cfe6ef; --okno-gwiazda: rgba(255,255,255,0);
++  --tablica: #ffffff; --tablica-rama: #d9cbb8;
++  --cien-postaci: rgba(60,40,90,.2);
++  --dymek: #ffffff; --dym: rgba(240,236,246,.4);
+ }
+ 
+ * { box-sizing: border-box; }
+@@ -88,7 +89,7 @@
+ .naglowek { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+ .logo { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; flex: none;
+   font-weight: 800; font-size: 26px; letter-spacing: -1px; color: #F7FBFA;
+-  background: linear-gradient(150deg, #157268, #0F5E58);
++  background: linear-gradient(150deg, #7b6cc4, #5B4A8A);
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+ .tytul { flex: 1; min-width: 200px; }
+ .tytul h1 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.4px; text-wrap: balance; }
+@@ -129,16 +130,16 @@
+   position: absolute; left: 27.2%; top: 5.2%; width: 44.1%; height: 33.6%; padding: .9cqw 1.4cqw 1cqw; color: #e4eeeb;
+   display: flex; flex-direction: column; gap: .3cqw; overflow: hidden; }
+ .tablica .gora { flex-shrink: 0; display: flex; align-items: baseline; gap: .9cqw; }
+-.tablica .faza { font-size: max(8.5px, .9cqw); font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #5CC8BB; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
++.tablica .faza { font-size: max(8.5px, .9cqw); font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: #CDB9E6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ .tablica .stan { margin-left: auto; font-family: var(--font-mono); font-size: max(8.5px, .9cqw); color: #93A9A4; font-variant-numeric: tabular-nums; }
+ .tablica .czas { font-family: var(--font-mono); font-size: max(8.5px, .9cqw); color: #93A9A4; font-variant-numeric: tabular-nums; }
+-.tablica .pilnosc { font-size: max(8px, .8cqw); font-weight: 750; padding: .1cqw .6cqw; border-radius: 9px; background: rgba(92,200,187,.15); color: #5CC8BB; white-space: nowrap; }
++.tablica .pilnosc { font-size: max(8px, .8cqw); font-weight: 750; padding: .1cqw .6cqw; border-radius: 9px; background: rgba(205,185,230,.15); color: #CDB9E6; white-space: nowrap; }
+ .tablica .pilnosc.wysoka { background: #3a2d0e; color: #ffd166; box-shadow: inset 0 0 0 1px #8a6a1a; }
+ .tablica .temat { flex-shrink: 0; font-size: max(10px, 1.25cqw); font-weight: 700; line-height: 1.25; margin: 0; color: #ffffff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+ .tablica .kolumny { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 26fr 42fr 32fr; margin-top: .2cqw; }
+ .tablica .kol { min-width: 0; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+ .tablica .kol + .kol { border-left: 1px solid #1f3a37; padding-left: 1.1cqw; margin-left: 1.1cqw; }
+-.tablica h4 { margin: 0 0 .45cqw; font: 800 max(8px, .8cqw)/1 var(--font); color: #5CC8BB; text-transform: uppercase; letter-spacing: .12em; }
++.tablica h4 { margin: 0 0 .45cqw; font: 800 max(8px, .8cqw)/1 var(--font); color: #CDB9E6; text-transform: uppercase; letter-spacing: .12em; }
+ .tablica .kol:last-child h4 { color: #ff9a8c; }
+ /* Stan prac */
+ .tablica .etapy { display: flex; flex-direction: column; gap: 0; }
+@@ -163,13 +164,13 @@
+ .tablica .ranking { display: flex; flex-direction: column; gap: .1cqw; }
+ .tablica .wiersz { display: flex; gap: .8cqw; align-items: baseline; font: 700 max(10px, 1.2cqw)/1.2 var(--font); color: #e4eeeb; }
+ .tablica .wiersz span:first-child { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+-.tablica .wiersz .p { color: #5CC8BB; font-variant-numeric: tabular-nums; }
++.tablica .wiersz .p { color: #CDB9E6; font-variant-numeric: tabular-nums; }
+ .tablica .werdykt { font: 600 max(8.5px, .95cqw)/1.35 var(--font); padding: .5cqw .8cqw; border-radius: .6cqw; background: rgba(63,191,138,.12); box-shadow: inset 0 0 0 1px #3fbf8a; overflow: hidden; }
+ .tablica .werdykt b { display: block; font-size: .85em; letter-spacing: .08em; text-transform: uppercase; color: #3fbf8a; }
+ .tablica .pusto { margin: 0; font: 600 max(9px, 1cqw)/1.3 var(--font); color: #4f6b67; }
+ /* przerwa: narada */
+ .tablica .narada { margin: auto 0; text-align: center; }
+-.tablica .narada b { display: block; font: 800 max(16px, 2.2cqw)/1.1 var(--font); color: #5CC8BB; }
++.tablica .narada b { display: block; font: 800 max(16px, 2.2cqw)/1.1 var(--font); color: #CDB9E6; }
+ .tablica .narada span { display: block; margin-top: .4cqw; font: 600 max(9px, 1cqw)/1.3 var(--font); color: #93A9A4; }
+ 
+ /* postacie */
+@@ -202,16 +203,16 @@
+ /* dymki */
+ .dymki { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+ .dymek { position: absolute; width: max-content; max-width: 34cqw; min-width: 13cqw; max-height: 27cqw; overflow-y: auto; overscroll-behavior: contain; padding: .85cqw 1.15cqw; border-radius: 1.2cqw; background: var(--dymek); color: var(--dymek-txt);
+-  font-size: max(10px, 1.1cqw); line-height: 1.42; text-wrap: pretty; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(15,94,88,.12);
++  font-size: max(10px, 1.1cqw); line-height: 1.42; text-wrap: pretty; box-shadow: 0 10px 26px -12px rgba(0,0,0,.55), 0 0 0 1px rgba(91,74,138,.12);
+   transform: translate(-50%, -100%); transition: opacity .35s, transform .35s; pointer-events: auto; cursor: pointer; }
+ .dymek::after { content: ""; position: absolute; left: var(--ogon, 50%); bottom: -.7cqw; width: 1.4cqw; height: 1.4cqw; background: var(--dymek);
+   transform: translateX(-50%) rotate(45deg); box-shadow: 4px 4px 6px -4px rgba(0,0,0,.25); }
+-.dymek .kto { display: block; font-size: max(8.5px, .85cqw); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--g, #0F5E58); margin-bottom: .2cqw; }
++.dymek .kto { display: block; font-size: max(8.5px, .85cqw); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--g, #5B4A8A); margin-bottom: .2cqw; }
+ .dymek.stary { opacity: .0; transform: translate(-50%, -100%) scale(.96); pointer-events: none; }
+ .dymek.wejscie { animation: wejscie .35s ease both; }
+ @keyframes wejscie { from { opacity: 0; transform: translate(-50%, -88%) scale(.94); } }
+ .dymek.pelny { max-width: 38cqw; min-width: 22cqw; font-size: max(10px, 1.08cqw); line-height: 1.42; }
+-.dymek .info { display: block; margin-top: .45cqw; padding-top: .4cqw; border-top: 1px solid rgba(15,94,88,.18); font-size: max(8.5px, .9cqw);
++.dymek .info { display: block; margin-top: .45cqw; padding-top: .4cqw; border-top: 1px solid rgba(91,74,138,.18); font-size: max(8.5px, .9cqw);
+   font-variant-numeric: tabular-nums; color: var(--dymek-mut); }
+ .dymek.pisze { min-width: 0; padding: .9cqw 1.3cqw; }
+ .kropki { display: inline-flex; gap: .45cqw; }
+@@ -305,7 +306,7 @@
+ /* przerwa: AI pracuje, lekarze poza pokojem */
+ .pokoj.przerwa .postac { opacity: 1; }
+ .tablica .ai-kropki { display: flex; gap: .7cqw; margin-top: auto; }
+-.tablica .ai-kropki i { width: .9cqw; height: .9cqw; min-width: 6px; min-height: 6px; border-radius: 50%; background: #5CC8BB; opacity: .35; animation: ai-kr 1.3s ease-in-out infinite; }
++.tablica .ai-kropki i { width: .9cqw; height: .9cqw; min-width: 6px; min-height: 6px; border-radius: 50%; background: #CDB9E6; opacity: .35; animation: ai-kr 1.3s ease-in-out infinite; }
+ .tablica .ai-kropki i:nth-child(2) { animation-delay: .22s; } .tablica .ai-kropki i:nth-child(3) { animation-delay: .44s; }
+ @keyframes ai-kr { 50% { opacity: 1; transform: translateY(-2px); } }
+ .chip-ai { background: var(--petrol); color: #fff; display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+@@ -335,7 +336,7 @@
+ 
+ /* prognoza rozpoznań – mały wykres dla Lekarza prowadzącego (Michał 1.11); dane: scenariusz.tablica.prognozy */
+ /* wykres prognoz = inteligentne szkło na przeszklonej ścianie (Michał 1.11 04:09), prostokąt 884–1168 × 44–300 sceny 1200×700 */
+-.prognoza { position: absolute; left: 73.7%; top: 4.5%; width: 23.6%; height: 27.5%; padding: .7cqw .9cqw; border-radius: .4cqw; background: rgba(11,21,20,.92); color: #e4eeeb; box-shadow: inset 0 0 0 1px rgba(92,200,187,.25), 0 0 1.2cqw rgba(92,200,187,.25); font-size: max(8px, .85cqw); line-height: 1.25; z-index: 2; overflow: hidden; cursor: pointer; }
++.prognoza { position: absolute; left: 73.7%; top: 4.5%; width: 23.6%; height: 27.5%; padding: .7cqw .9cqw; border-radius: .4cqw; background: rgba(11,21,20,.92); color: #e4eeeb; box-shadow: inset 0 0 0 1px rgba(205,185,230,.25), 0 0 1.2cqw rgba(205,185,230,.25); font-size: max(8px, .85cqw); line-height: 1.25; z-index: 2; overflow: hidden; cursor: pointer; }
+ #ekran-sciana { cursor: pointer; }
+ /* pasek LED: zielony gdy wszystko działa, pulsuje gdy AI pracuje; hologram na stole oddycha */
+ .pokoj.pisza .led, .pokoj.przerwa .led { animation: led-puls 1.4s ease-in-out infinite; }
+@@ -344,14 +345,14 @@
+ @keyframes holo { 50% { transform: translateY(-2px) scale(1.06); opacity: .5; } }
+ @media (prefers-reduced-motion: reduce) { .led, .holo { animation: none; } }
+ .prognoza .pr-gora { display: flex; flex-direction: column; gap: .1cqw; margin-bottom: .5cqw; }
+-.prognoza .pr-gora b { font-size: max(8.5px, .9cqw); letter-spacing: .06em; text-transform: uppercase; color: #5CC8BB; }
++.prognoza .pr-gora b { font-size: max(8.5px, .9cqw); letter-spacing: .06em; text-transform: uppercase; color: #CDB9E6; }
+ .prognoza .pr-gora span { color: #93A9A4; font-size: max(7.5px, .75cqw); }
+ .prognoza .pr-wiersz { display: grid; grid-template-columns: minmax(0, 1fr) 6cqw 3cqw; gap: .6cqw; align-items: center; margin-top: .25cqw; }
+ .prognoza .pr-nazwa { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+-.prognoza .pr-belka { height: .55cqw; min-height: 4px; border-radius: 9px; background: rgba(92,200,187,.15); overflow: hidden; }
+-.prognoza .pr-belka i { display: block; height: 100%; background: linear-gradient(90deg, #1b7a70, #5CC8BB); border-radius: 9px; transition: width .6s ease; }
++.prognoza .pr-belka { height: .55cqw; min-height: 4px; border-radius: 9px; background: rgba(205,185,230,.15); overflow: hidden; }
++.prognoza .pr-belka i { display: block; height: 100%; background: linear-gradient(90deg, #6b5f96, #CDB9E6); border-radius: 9px; transition: width .6s ease; }
+ .prognoza .pr-p { font-family: var(--font-mono); font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; color: #e4eeeb; }
+-.prognoza .pr-wiersz:first-of-type .pr-p { color: #5CC8BB; }
++.prognoza .pr-wiersz:first-of-type .pr-p { color: #CDB9E6; }
+ .pokoj.przerwa .prognoza { opacity: .85; }
+ @container (max-width: 620px) { .prognoza { display: none; } }
+ /* laptopy przed lekarzami (Michał 1.11 04:05): gdy AI pracuje krócej niż 1,5 min, lekarze zostają i piszą opinie */
+--- /home/claude/wt/narzedzia/pokoj-lekarski/src/postacie.js	2026-11-01 04:11:13.669234264 +0000
++++ src/postacie.js	2026-11-01 04:41:20.471110277 +0000
+@@ -1,26 +1,31 @@
+-// Pokój lekarski — postacie lekarzy (wątek Graficzny, 1.11.2026, makieta grafika/makiety-2026-11-01/makieta-1.png).
+-// Michał: postacie białej rasy, kobiety i mężczyźni; ordynator gruby, pali widoczną fajkę; większe twarze, ruch ust przy dymku.
++// Pokój psychologiczny — postacie terapeutów (wątek Graficzny, 1.11.2026). Ta sama funkcja co w Pokoju lekarskim,
++// ale: bez fartuchów (ubranie: sweter/marynarka w kolorze `ubranie`), bez stetoskopów, prowadzący bez fajki.
++// Klucze = id ról z scenariusz.mjs (ROLE). Role wg wątku Psychologa (04:36): patrz komentarze przy wpisach.
+ // postacSVG(id, grupa, kolor) zwraca wnętrze <g class="ciało"> w układzie figury: stopy w (0,0), głowa ok. -150.
+ // Stałe klasy, na których opiera się logika pokoju: .papieros.fajka i .zar (dym ordynatora wychodzi z (28.5,-104)).
+ const POSTACIE_SKORA = ['#F3D5C0', '#EFCBB2', '#F6DDCB', '#EAC3A6'];
+ // fryzura: lysy | krotkie | siwe | przedzial | bob | kucyk | loki | kok
+ const POSTACIE_WYGLAD = {
+-  ordynator:            { gruby: 1, fryzura: 'lysy', wlosy: '#b9b4ad', broda: '#cfcac3', okulary: 1, fajka: 1 },
+-  hipotezujacy:         { fryzura: 'krotkie', wlosy: '#5b3a24' },
+-  bayes:                { fryzura: 'bob', wlosy: '#2f2a26', okulary: 1, skora: 2 },
+-  farmakolog:           { fryzura: 'kucyk', wlosy: '#c08a4a', skora: 1 },
+-  najgorszy_scenariusz: { fryzura: 'siwe', wlosy: '#8f8a84', broda: '#8f8a84', skora: 3 },
+-  poz_pragmatyk:        { fryzura: 'loki', wlosy: '#9b3e22', skora: 2 },
+-  gospodarz_kosztow:    { fryzura: 'przedzial', wlosy: '#d8b46a', okulary: 1 },
+-  lekarz_prowadzacy:    { fryzura: 'przedzial', wlosy: '#3a2a20', broda: '#3a2a20', teczka: 1, skora: 1 },
+-  z_zlozonosc:          { fryzura: 'krotkie', wlosy: '#3a2a20', broda: '#3a2a20' },
+-  z_bezpieczenstwo:     { fryzura: 'kucyk', wlosy: '#2f2a26', skora: 1 },
+-  z_niepewnosc:         { fryzura: 'siwe', wlosy: '#a9a39b', okulary: 1, skora: 3 },
+-  s_fakty:              { fryzura: 'przedzial', wlosy: '#6b4a33', okulary: 1 },
+-  s_proces:             { fryzura: 'bob', wlosy: '#d8b46a', skora: 2 },
+-  R1:                   { fryzura: 'krotkie', wlosy: '#c08a4a' },
+-  R2:                   { fryzura: 'kok', wlosy: '#5b3a24', skora: 2 },
+-  R3:                   { fryzura: 'krotkie', wlosy: '#2f2a26', okulary: 1, skora: 1 },
++  // ubranie = kolor swetra/marynarki, ubranieCien = kontur; skora: indeks POSTACIE_SKORA; fryzury 'bob','kucyk','loki','kok' = kobiece
++  ordynator:            { gruby: 1, fryzura: 'siwe', wlosy: '#b9b4ad', broda: '#cfcac3', okulary: 1, ubranie: '#8a7fb5', ubranieCien: '#6b5f96', herbata: 1 },          // Prowadzący / superwizor (M, sweter, bez fajki – kubek herbaty)
++  hipotezujacy:         { fryzura: 'bob', wlosy: '#2f2a26', okulary: 1, skora: 2, ubranie: '#cdb9e6', ubranieCien: '#a894c9', tablet: 1 },                                // Terapeutka CBT (K ~40, tablet)
++  bayes:                { fryzura: 'przedzial', wlosy: '#8f8a84', broda: '#8f8a84', okulary: 1, skora: 3, ubranie: '#9fbf9a', ubranieCien: '#7fa07a' },                   // Terapeuta psychodynamiczny (M ~55, okulary)
++  najgorszy_scenariusz: { fryzura: 'kok', wlosy: '#5b3a24', skora: 1, ubranie: '#e6c384', ubranieCien: '#c9a65c' },                                                      // Terapeutka systemowa (K ~45)
++  poz_pragmatyk:        { fryzura: 'krotkie', wlosy: '#c08a4a', skora: 1, ubranie: '#8fb6c9', ubranieCien: '#6f96a9', swobodny: 1 },                                     // Terapeuta trzeciej fali ACT (M ~35, swobodnie – koszulka)
++  farmakolog:           { fryzura: 'loki', wlosy: '#9b3e22', skora: 2, ubranie: '#d99a8c', ubranieCien: '#b97a6c' },                                                     // Terapeutka humanistyczna (K ~50)
++  gospodarz_kosztow:    { fryzura: 'krotkie', wlosy: '#3a2a20', broda: '#3a2a20', ubranie: '#b7a0d9', ubranieCien: '#9780bb', laptop: 1 },                                // Diagnosta kliniczny (M ~40, laptop)
++  psychiatra:           { fryzura: 'bob', wlosy: '#d8b46a', okulary: 1, skora: 2, ubranie: '#f0cfa6', ubranieCien: '#cfa97c', identyfikator: 1 },                        // Psychiatra konsultant (K ~50, identyfikator, bez stetoskopu)
++  lekarz_prowadzacy:    { fryzura: 'przedzial', wlosy: '#3a2a20', broda: '#3a2a20', teczka: 1, skora: 1, ubranie: '#6b5f96', ubranieCien: '#4e4473' },                    // Terapeuta prowadzący (Ty – użytkownik)
++  // role pomocnicze (jeśli zostają w scenariuszu): zastępcy/triage ryzyka, sprawdzający
++  z_zlozonosc:          { fryzura: 'krotkie', wlosy: '#5b3a24', ubranie: '#9fbf9a', ubranieCien: '#7fa07a' },
++  z_bezpieczenstwo:     { fryzura: 'kucyk', wlosy: '#2f2a26', skora: 1, ubranie: '#b8d1b0', ubranieCien: '#92ad8a' },
++  z_niepewnosc:         { fryzura: 'siwe', wlosy: '#a9a39b', okulary: 1, skora: 3, ubranie: '#cdb9e6', ubranieCien: '#a894c9' },
++  s_fakty:              { fryzura: 'przedzial', wlosy: '#6b4a33', okulary: 1, ubranie: '#e6c384', ubranieCien: '#c9a65c' },
++  s_proces:             { fryzura: 'bob', wlosy: '#d8b46a', skora: 2, ubranie: '#f0cfa6', ubranieCien: '#cfa97c' },
++  // Stażysta za szybą (mały, jak rezydent w Konsylium)
++  R1:                   { fryzura: 'krotkie', wlosy: '#c08a4a', ubranie: '#dcd4ea', ubranieCien: '#b7a9d3' },
++  R2:                   { fryzura: 'kok', wlosy: '#5b3a24', skora: 2, ubranie: '#dcd4ea', ubranieCien: '#b7a9d3' },
++  R3:                   { fryzura: 'krotkie', wlosy: '#2f2a26', okulary: 1, skora: 1, ubranie: '#dcd4ea', ubranieCien: '#b7a9d3' },
+ };
+ const POSTACIE_SKALA = 0.76; // rysunek w jednostkach makiety (≈196 wysokości) → skala sceny (≈150)
+ 
+@@ -28,7 +33,7 @@
+   const o = POSTACIE_WYGLAD[id] || { fryzura: 'krotkie', wlosy: '#5b3a24' };
+   const sk = POSTACIE_SKORA[o.skora || 0], w = o.wlosy, g = o.gruby ? 1.45 : 1;
+   const rezydent = grupa === 'rezydent';
+-  const fartuch = rezydent ? kolor : 'var(--fartuch)', obrys = 'var(--fartuch-cien)';
++  const fartuch = o.ubranie || (rezydent ? kolor : 'var(--fartuch)'), obrys = o.ubranieCien || 'var(--fartuch-cien)';
+   const bw = 30 * g, hy = -166;
+   let h = `<g transform="scale(${POSTACIE_SKALA})">`;
+   // nogi i buty
+@@ -38,8 +43,8 @@
+   h += `<path d="M${-bw} -50 Q${-bw - 4} -110 ${-bw * 0.62} -128 L${bw * 0.62} -128 Q${bw + 4} -110 ${bw} -50 Q0 -42 ${-bw} -50Z" fill="${fartuch}" stroke="${obrys}" stroke-width="1.5"/>`;
+   if (o.gruby) h += `<path d="M${-bw + 6} -66 Q0 -40 ${bw - 6} -66" fill="none" stroke="${obrys}" stroke-width="1.4"/>`;
+   // koszula w kolorze roli i klapy
+-  h += `<path d="M-10 -128 L0 -100 L10 -128Z" fill="${rezydent ? '#e8e2d6' : kolor}"/>`;
+-  h += `<path d="M-11 -128 L-2 -96 L-14 -80 M11 -128 L2 -96 L14 -80" stroke="${obrys}" stroke-width="1.6" fill="none"/>`;
++  if (o.swobodny) h += `<path d="M-12 -128 Q0 -116 12 -128" fill="none" stroke="${obrys}" stroke-width="1.6"/>`;
++  else { h += `<path d="M-10 -128 L0 -100 L10 -128Z" fill="${rezydent ? '#e8e2d6' : '#f6f2ea'}"/>`; h += `<path d="M-11 -128 L-2 -96 L-14 -80 M11 -128 L2 -96 L14 -80" stroke="${obrys}" stroke-width="1.6" fill="none"/>`; }
+   // lewa ręka
+   h += `<path d="M${-bw * 0.75} -122 Q${-bw - 14} -95 ${-bw - 6} -66" stroke="${fartuch}" stroke-width="13" stroke-linecap="round" fill="none"/>`;
+   h += `<circle cx="${-bw - 6}" cy="-62" r="6.5" fill="${sk}"/>`;
+@@ -51,10 +56,12 @@
+     if (o.teczka) h += `<rect x="${bw - 6}" y="-74" width="30" height="38" rx="3" fill="#d9a84e" stroke="#a87b2c" stroke-width="1.5"/><rect x="${bw + 1}" y="-80" width="16" height="7" rx="2" fill="#a87b2c"/>`;
+   }
+   // stetoskop (lekarze i ordynator), identyfikator w kolorze roli
+-  if (grupa === 'lekarz' || grupa === 'ordynator' || grupa === 'prowadzacy') h += `<path d="M-8 -126 Q-16 -96 -2 -88 Q12 -96 8 -126" stroke="#3b5552" stroke-width="2.4" fill="none"/><circle cx="-2" cy="-86" r="4" fill="#9fb2af" stroke="#3b5552" stroke-width="1.6"/>`;
+-  h += rezydent
+-    ? `<rect x="${bw * 0.22}" y="-116" width="13" height="16" rx="2" fill="#fff"/><rect x="${bw * 0.22}" y="-116" width="13" height="5" rx="1" fill="${kolor}"/>`
+-    : `<rect x="${bw * 0.25}" y="-112" width="13" height="9" rx="2" fill="${kolor}"/>`;
++  // bez stetoskopu (pokój psychologiczny)
++  if (rezydent || o.identyfikator) h += `<rect x="${bw * 0.22}" y="-116" width="13" height="16" rx="2" fill="#fff"/><rect x="${bw * 0.22}" y="-116" width="13" height="5" rx="1" fill="${kolor}"/>`;
++  else h += `<circle cx="${bw * 0.3}" cy="-108" r="4" fill="${kolor}"/>`; // mała plakietka w kolorze roli
++  if (o.tablet) h += `<g transform="translate(${-bw - 14},-82) rotate(-12)"><rect x="-9" y="-13" width="18" height="26" rx="2.5" fill="#2b2540"/><rect x="-7" y="-11" width="14" height="22" rx="1.5" fill="#cdb9e6" opacity=".8"/></g>`;
++  if (o.laptop) h += `<g transform="translate(${-bw - 16},-78)"><rect x="-12" y="-9" width="24" height="16" rx="2" fill="#2b2540"/><rect x="-10" y="-7" width="20" height="12" rx="1" fill="#8fb6c9" opacity=".8"/></g>`;
++  if (o.herbata) h += `<g class="herbata" transform="translate(${-bw - 10},-74)"><rect x="-7" y="-10" width="14" height="13" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M7,-7 q6,0 6,4 q0,4 -6,4" fill="none" stroke="#b8c7c3" stroke-width="2"/><path class="para" d="M-3,-14 q-3,-5 1,-9 M3,-14 q3,-5 -1,-9" fill="none" stroke="#c9c2d6" stroke-width="1.5" stroke-linecap="round"/></g>`;
+   // szyja
+   h += `<rect x="-6" y="-140" width="12" height="14" fill="${sk}"/>`;
+   // włosy z tyłu
+--- /home/claude/wt/narzedzia/pokoj-lekarski/src/pokoj.js	2026-11-01 04:25:41.970711257 +0000
++++ src/pokoj.js	2026-11-01 04:48:28.017835984 +0000
+@@ -1,4 +1,5 @@
+-// Pokój lekarski — rysuje pokój (SVG), sadza członków konsylium i odtwarza scenariusz w dymkach.
++// Pokój psychologiczny — rysuje pokój (SVG), sadza zespół terapeutów i odtwarza scenariusz w dymkach.
++// Wątek Graficzny 1.11.2026: zmienione tylko MIEJSCA i rysujPokoj() (scena); logika bez zmian.
+ // Wymaga: zbudujScenariusz, ROLE (z scenariusz.mjs, wklejone przez build) i DEMO (scenariusz osadzony przy budowie).
+ (function () {
+   'use strict';
+@@ -18,8 +19,9 @@
+     bayes:                { x: 760, y: 452, s: .95, w: 0, f: 0, o: true },
+     najgorszy_scenariusz: { x: 262, y: 566, s: 1.02, w: 1, f: 3 },
+     poz_pragmatyk:        { x: 938, y: 566, s: 1.02, w: 1, f: 4 },
+-    farmakolog:           { x: 470, y: 668, s: 1.05, w: 1, f: 5 },
+-    gospodarz_kosztow:    { x: 730, y: 668, s: 1.05, w: 1, f: 2 },
++    farmakolog:           { x: 430, y: 668, s: 1.05, w: 1, f: 5 },
++    gospodarz_kosztow:    { x: 770, y: 668, s: 1.05, w: 1, f: 2 },
++    psychiatra:           { x: 318, y: 470, s: .95, w: 0, f: 1, o: true }, // 8. fotel: Psychiatra konsultant (jeśli rola istnieje w ROLE)
+     z_zlozonosc:          { x: 214, y: 392, s: .78, w: 0, f: 3 },
+     z_bezpieczenstwo:     { x: 274, y: 388, s: .78, w: 0, f: 0 },
+     z_niepewnosc:         { x: 334, y: 392, s: .78, w: 0, f: 1, o: true },
+@@ -72,115 +74,114 @@
+     const rezydenci = wpisy.filter(([, m]) => m.w === -1).map(([id, m]) => figura(id, m, ROLE[id])).join('');
+ 
+     $('rys').innerHTML = `
+-<!-- supernowoczesny szpital (Michał 1.11 04:09, makieta-6): szkło, światło, ekrany zamiast tablic -->
++<!-- pokój psychologiczny (makieta grafika/psycholog/makieta-psycholog-1.png): ciepłe światło, fotele, lampa, regał, okno z ogrodem; zero elementów szpitalnych -->
+ <defs><linearGradient id="sc-sciana" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sciana)"/><stop offset="1" stop-color="var(--sciana-2)"/></linearGradient>
+-<linearGradient id="sc-szklo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".75"/><stop offset="1" stop-color="#cfe3df" stop-opacity=".5"/></linearGradient>
+-<linearGradient id="sc-led" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3fbf8a" stop-opacity="0"/><stop offset=".5" stop-color="#3fbf8a"/><stop offset="1" stop-color="#3fbf8a" stop-opacity="0"/></linearGradient>
++<linearGradient id="sc-szklo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".75"/><stop offset="1" stop-color="#e3dced" stop-opacity=".5"/></linearGradient>
++<linearGradient id="sc-led" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/><stop offset=".5" stop-color="#ffd9a0"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></linearGradient>
++<linearGradient id="sc-ogrod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--okno-niebo)"/><stop offset=".55" stop-color="#e9f1e4"/><stop offset=".56" stop-color="#a9c48f"/><stop offset="1" stop-color="#7fa36a"/></linearGradient>
+ <linearGradient id="sc-miasto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--okno-niebo)"/><stop offset="1" stop-color="var(--sciana)"/></linearGradient>
++<linearGradient id="sc-podloga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--podloga)"/><stop offset="1" stop-color="var(--stol)"/></linearGradient>
++<radialGradient id="sc-lampa" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9b8" stop-opacity=".75"/><stop offset="1" stop-color="#ffe9b8" stop-opacity="0"/></radialGradient>
+ <filter id="sc-glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+ <rect x="0" y="0" width="${W}" height="338" fill="url(#sc-sciana)"/>
+-<polygon points="0,338 1200,338 1200,700 0,700" fill="var(--podloga)"/>
++<polygon points="0,338 1200,338 1200,700 0,700" fill="url(#sc-podloga)"/>
+ ${podloga}
+-<rect x="0" y="330" width="${W}" height="8" fill="var(--listwa)" opacity=".6"/>
+-<!-- pasek LED pod sufitem: zielony = wszystko działa, pulsuje gdy AI pracuje -->
++<ellipse cx="600" cy="572" rx="370" ry="108" fill="#e8dcd0" opacity=".75"/><ellipse cx="600" cy="572" rx="370" ry="108" fill="none" stroke="#cdb9a3" stroke-width="3" opacity=".8"/>
++<rect x="0" y="330" width="${W}" height="8" fill="var(--listwa)" opacity=".8"/>
++<!-- ciepły pasek LED pod sufitem: świeci = wszystko działa, pulsuje gdy AI pracuje -->
+ <rect x="0" y="0" width="${W}" height="10" fill="var(--sciana)"/>
+ <rect class="led" x="60" y="9" width="1080" height="4" rx="2" fill="url(#sc-led)" filter="url(#sc-glow)"/>
+ 
+-<!-- ekran na ścianie (Michał 1.11 04:09: zamiast okna): wykres prognoz po kliknięciu „Prognozy”; wygaszony pokazuje logo K -->
+-<g id="ekran-sciana" role="button" aria-label="Ekran prognoz rozpoznań">
+-<rect x="876" y="30" width="300" height="196" rx="6" fill="url(#sc-miasto)"/>
+-<g fill="var(--listwa)" opacity=".6">${[[886, 200, 40, 130], [934, 160, 30, 170], [971, 220, 36, 110], [1014, 120, 44, 210], [1066, 190, 28, 140], [1101, 150, 52, 180], [1161, 230, 14, 100]].map(([x, y, w, h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2"/>`).join('')}</g>
+-<g fill="#ffffff" opacity=".8">${[[1026, 140], [1036, 170], [1116, 170], [1126, 200], [946, 190], [996, 250]].map(([x, y]) => `<rect x="${x}" y="${y}" width="5" height="5"/>`).join('')}</g>
+-<rect x="876" y="30" width="300" height="196" fill="url(#sc-szklo)" opacity=".3"/>
+-${[0, 1, 2].map((k) => `<rect x="${876 + k * 100}" y="30" width="3" height="196" fill="var(--sciana)"/>`).join('')}
+-<rect x="872" y="224" width="308" height="6" rx="3" fill="var(--listwa)"/>
++<!-- okno z ogrodem = inteligentne szkło: po kliknięciu „Prognozy” (zgodność kierunku pracy w %) pokazuje #prognoza -->
++<g id="ekran-sciana" role="button" aria-label="Ekran prognoz – zgodność kierunku pracy">
++<rect x="870" y="30" width="312" height="210" rx="8" fill="var(--listwa)"/>
++<rect x="880" y="40" width="292" height="190" rx="4" fill="url(#sc-ogrod)"/>
++<g fill="#6f9a5a"><ellipse cx="926" cy="150" rx="30" ry="42"/><ellipse cx="1120" cy="142" rx="36" ry="48"/><ellipse cx="1030" cy="164" rx="22" ry="30"/></g>
++<rect x="918" y="186" width="16" height="36" fill="#8a6a4a"/><rect x="1112" y="184" width="16" height="40" fill="#8a6a4a"/>
++<rect x="1023" y="40" width="6" height="190" fill="var(--listwa)"/><rect x="880" y="132" width="292" height="6" fill="var(--listwa)"/>
++<rect x="880" y="40" width="292" height="190" fill="url(#sc-szklo)" opacity=".18"/>
++<rect x="872" y="36" width="26" height="200" fill="#cdb9e6" opacity=".7"/><rect x="1154" y="36" width="26" height="200" fill="#cdb9e6" opacity=".7"/>
+ </g>
+-<!-- realny pokój lekarski (Michał 1.11 04:18): komoda z ekspresem do kawy, kubkami, drukarką i papierami -->
++<!-- kącik herbaciany (zamiast ekspresu i drukarki): czajnik z parą, filiżanki, chusteczki, roślina -->
+ <g class="komoda">
+-<rect x="884" y="262" width="290" height="74" rx="4" fill="var(--stol-blat)"/><rect x="884" y="262" width="290" height="6" rx="2" fill="#ffffff" opacity=".5"/>
+-${[0, 1, 2, 3].map((k) => `<rect x="${892 + k * 72}" y="274" width="64" height="56" rx="3" fill="var(--stol)" stroke="var(--stol-krawedz)" stroke-opacity=".5"/><rect x="${916 + k * 72}" y="300" width="16" height="3" rx="1.5" fill="#ffffff" opacity=".6"/>`).join('')}
+-<!-- ekspres do kawy -->
+-<g transform="translate(904,262)"><rect x="0" y="-52" width="46" height="52" rx="5" fill="#2a2f31"/><rect x="4" y="-48" width="38" height="14" rx="2" fill="#3c4346"/><rect x="8" y="-30" width="30" height="4" rx="2" fill="#1a1d1e"/><rect x="18" y="-26" width="10" height="8" fill="#1a1d1e"/><rect x="12" y="-16" width="22" height="14" rx="2" fill="#f4f7f6"/><path d="M34,-12 q6,0 6,5 q0,5 -6,5" fill="none" stroke="#f4f7f6" stroke-width="2"/><circle cx="38" cy="-40" r="3" fill="#3fbf8a"/><path class="para" d="M20,-20 q-3,-6 1,-11 M28,-20 q3,-6 -1,-11" fill="none" stroke="#c9d6d3" stroke-width="1.6" stroke-linecap="round"/></g>
+-<!-- kubki -->
+-${[962, 978, 994].map((x) => `<g transform="translate(${x},262)"><rect x="-6" y="-12" width="12" height="12" rx="2" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M6,-9 q5,0 5,4 q0,4 -5,4" fill="none" stroke="#b8c7c3" stroke-width="1.8"/></g>`).join('')}
+-<!-- drukarka i papiery -->
+-<g transform="translate(1016,262)"><rect x="0" y="-26" width="58" height="26" rx="4" fill="#e9eeec" stroke="#b8c7c3"/><rect x="8" y="-34" width="42" height="10" rx="2" fill="#d6dedb"/><rect x="12" y="-14" width="34" height="3" fill="#1b2826" opacity=".6"/><rect x="2" y="-40" width="54" height="2" fill="#fbfdfc"/></g>
+-<g transform="translate(1094,262)"><rect x="0" y="-10" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3"/><rect x="3" y="-14" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3" transform="rotate(-3 3 -14)"/><rect x="1" y="-18" width="38" height="10" fill="#fbfdfc" stroke="#c9d6d3" transform="rotate(2 1 -18)"/><rect x="48" y="-8" width="22" height="8" rx="2" fill="#d9a84e"/></g>
++<rect x="884" y="266" width="290" height="70" rx="6" fill="var(--stol-blat)"/><rect x="884" y="266" width="290" height="6" rx="2" fill="#ffffff" opacity=".45"/>
++${[0, 1, 2, 3].map((k) => `<rect x="${892 + k * 72}" y="278" width="64" height="52" rx="4" fill="var(--stol)" stroke="var(--stol-krawedz)" stroke-opacity=".4"/><circle cx="${924 + k * 72}" cy="304" r="3" fill="#ffffff" opacity=".6"/>`).join('')}
++<g transform="translate(910,266)"><path d="M4,-4 L4,-30 Q4,-40 20,-40 Q36,-40 36,-30 L36,-4 Z" fill="#e9e2ea" stroke="#b7a9d3" stroke-width="1.5"/><rect x="2" y="-4" width="36" height="4" rx="2" fill="#8a7fb5"/><path d="M36,-30 q12,2 10,14" fill="none" stroke="#b7a9d3" stroke-width="2.5"/><rect x="14" y="-46" width="12" height="6" rx="2" fill="#8a7fb5"/><path class="para" d="M16,-50 q-3,-7 1,-12 M24,-50 q3,-7 -1,-12" fill="none" stroke="#c9c2d6" stroke-width="1.6" stroke-linecap="round"/></g>
++${[966, 984, 1002].map((x) => `<g transform="translate(${x},266)"><rect x="-6" y="-11" width="12" height="11" rx="3" fill="#fbfdfc" stroke="#c9c2d6"/><path d="M6,-8 q5,0 5,3.5 q0,3.5 -5,3.5" fill="none" stroke="#c9c2d6" stroke-width="1.8"/></g>`).join('')}
++<g transform="translate(1030,266)"><rect x="0" y="-16" width="40" height="16" rx="3" fill="#ffffff" stroke="#d9cbb8"/><path d="M14,-16 q6,-9 12,0" fill="none" stroke="#cdb9e6" stroke-width="2.5"/></g>
++<g transform="translate(1084,266)">${[0, 1, 2, 3, 4].map((k) => `<rect x="${k * 12}" y="${-30 + (k % 2) * 4}" width="10" height="${30 - (k % 2) * 4}" rx="1.5" fill="${['#b7a0d9', '#9fbf9a', '#e6c384', '#d99a8c', '#8fb6c9'][k]}"/>`).join('')}</g>
++<g transform="translate(1160,266)"><rect x="-10" y="-22" width="20" height="22" rx="4" fill="#e8dcc8" stroke="#cdb9a3"/><g fill="#8fb37a"><ellipse cx="-6" cy="-36" rx="5" ry="16" transform="rotate(-25 -6 -36)"/><ellipse cx="6" cy="-38" rx="5" ry="17" transform="rotate(22 6 -38)"/><ellipse cx="0" cy="-42" rx="4.5" ry="19"/></g></g>
+ </g>
+ 
+-<!-- plakat z serduszkiem: realistyczny rysunek pastelowy (src/plakat.js); kliknięcie pokazuje go w powiększeniu -->
+-${PLAKAT_DEFS}
+-<g id="plakat" transform="translate(236,70) scale(.44)" role="button" aria-label="Plakat: rysunek pastelowy, powiększ">
+-  <rect x="-7" y="-7" width="${PLAKAT_W + 14}" height="${PLAKAT_H + 14}" rx="6" fill="var(--listwa)"/>
+-  <rect x="-2" y="-2" width="${PLAKAT_W + 4}" height="${PLAKAT_H + 4}" fill="#efe9dd"/>
+-  <use href="#pl-rys"/>
++<!-- obraz na ścianie (zamiast plakatu lekarskiego): spokojny pastelowy pejzaż; id #plakat zachowane dla logiki -->
++<g id="plakat" transform="translate(212,70)" role="button" aria-label="Obraz: pastelowy pejzaż">
++  <rect x="-7" y="-7" width="92" height="118" rx="4" fill="var(--listwa)"/>
++  <rect x="-2" y="-2" width="82" height="108" fill="#efe9dd"/>
++  <rect x="4" y="4" width="70" height="96" fill="#cfe6ef"/><ellipse cx="39" cy="70" rx="48" ry="26" fill="#a9c48f"/><ellipse cx="39" cy="84" rx="48" ry="22" fill="#7fa36a"/><circle cx="56" cy="26" r="9" fill="#ffe9b8"/><ellipse cx="22" cy="54" rx="9" ry="14" fill="#6f9a5a"/><rect x="20" y="62" width="4" height="12" fill="#8a6a4a"/>
+ </g>
+ 
+-<!-- ściana wideo (zamiast białej tablicy): treść w HTML #tablica -->
+-<rect x="316" y="26" width="550" height="256" rx="12" fill="#0e1b1a"/>
+-<rect x="324" y="34" width="534" height="240" rx="6" fill="#0b1514"/>
+-<rect x="324" y="34" width="534" height="240" rx="6" fill="none" stroke="#3fbf8a" stroke-opacity=".35"/>
+-<rect x="560" y="282" width="62" height="6" rx="3" fill="var(--listwa)"/>
++<!-- lampa podłogowa z ciepłym światłem -->
++<g class="lampa" transform="translate(150,336)"><circle cx="0" cy="-150" r="120" fill="url(#sc-lampa)"/><rect x="-3" y="-206" width="6" height="206" fill="#8a6a4a"/><ellipse cx="0" cy="0" rx="18" ry="5" fill="#8a6a4a"/><path d="M-36,-206 L36,-206 L26,-246 L-26,-246 Z" fill="#f3e3c3" stroke="#d9c4a0"/></g>
++
++<!-- ściana wideo w miękkiej ramie (zamiast tablicy): treść w HTML #tablica -->
++<rect x="306" y="20" width="570" height="270" rx="18" fill="var(--listwa)"/>
++<rect x="316" y="26" width="550" height="256" rx="12" fill="#2b2540"/>
++<rect x="324" y="34" width="534" height="240" rx="6" fill="#1e1a2e"/>
++<rect x="324" y="34" width="534" height="240" rx="6" fill="none" stroke="#cdb9e6" stroke-opacity=".35"/>
+ 
+ <!-- zegar: czas bieżącej fazy -->
+-<g transform="translate(206,96)"><circle r="22" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
++<g transform="translate(206,236)"><circle r="22" fill="var(--tablica)" stroke="var(--tablica-rama)" stroke-width="4"/>
+ ${Array.from({ length: 12 }, (_, k) => `<rect x="-1" y="-20" width="2" height="${k % 3 ? 3 : 5}" fill="var(--tablica-mut)" transform="rotate(${k * 30})"/>`).join('')}
+ <line id="wsk-h" x1="0" y1="0" x2="0" y2="-10" stroke="var(--tablica-txt)" stroke-width="3" stroke-linecap="round"/>
+ <line id="wsk-m" x1="0" y1="0" x2="0" y2="-16" stroke="var(--tablica-txt)" stroke-width="2" stroke-linecap="round"/>
+ <circle r="2.6" fill="#A83A38"/></g>
+ 
+-<!-- drzwi: korytarz rezydentów za szybą -->
+-<rect x="22" y="78" width="164" height="260" rx="4" fill="var(--listwa)" opacity=".7"/>
++<!-- drzwi: stażysta za szybą (jak rezydent w Konsylium) -->
++<rect x="22" y="78" width="164" height="260" rx="4" fill="var(--listwa)" opacity=".9"/>
+ <rect x="30" y="86" width="148" height="244" fill="var(--sciana-2)"/>
+ <rect x="30" y="300" width="148" height="30" fill="var(--podloga)"/>
+ ${rezydenci}
+ <rect x="30" y="86" width="70" height="244" fill="url(#sc-szklo)" opacity=".7" stroke="var(--szyba-obrys)" stroke-width="1.5"/>
+ <rect x="108" y="86" width="70" height="244" fill="url(#sc-szklo)" opacity=".7" stroke="var(--szyba-obrys)" stroke-width="1.5"/>
+-<rect x="100" y="86" width="8" height="244" fill="#3fbf8a" opacity=".55"/>
+-<rect x="44" y="52" width="120" height="20" rx="5" fill="var(--g-rezydent)"/>
+-<text x="104" y="66" text-anchor="middle" font-family="var(--font)" font-size="10.5" font-weight="800" letter-spacing=".8" fill="#fff">STAŻ ZEWNĘTRZNY</text>
++<rect x="100" y="86" width="8" height="244" fill="#cdb9e6" opacity=".6"/>
++<rect x="54" y="52" width="100" height="20" rx="5" fill="var(--g-rezydent)"/>
++<text x="104" y="66" text-anchor="middle" font-family="var(--font)" font-size="10.5" font-weight="800" letter-spacing=".8" fill="#fff">STAŻYSTA</text>
++
+ 
+-<!-- biurko sprawdzających -->
++<!-- biurko sprawdzających / konsultantów (prawa strona) -->
+ ${zaStolem}
+-<rect x="1002" y="420" width="186" height="12" rx="4" fill="url(#sc-szklo)" stroke="#fff" stroke-opacity=".8"/>
++<rect x="1002" y="420" width="186" height="12" rx="4" fill="var(--stol-blat)"/>
+ <rect x="1010" y="432" width="6" height="42" fill="var(--stol)"/><rect x="1174" y="432" width="6" height="42" fill="var(--stol)"/>
+-<rect x="1030" y="384" width="54" height="36" rx="4" fill="#1b2826" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1052" y="418" width="10" height="4" fill="#1b2826"/>
+-<rect x="1110" y="384" width="54" height="36" rx="4" fill="#1b2826" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1132" y="418" width="10" height="4" fill="#1b2826"/>
++<rect x="1030" y="384" width="54" height="36" rx="4" fill="#2b2540" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1052" y="418" width="10" height="4" fill="#2b2540"/>
++<rect x="1110" y="384" width="54" height="36" rx="4" fill="#2b2540" stroke="var(--szyba-obrys)" stroke-width="1.5"/><rect x="1132" y="418" width="10" height="4" fill="#2b2540"/>
+ 
+-<!-- stół konsylium -->
+-<!-- stół w proporcji do postaci (Michał 1.11 04:18): widoczna gruba krawędź, nogi, krzesła -->
+-<ellipse cx="600" cy="640" rx="300" ry="40" fill="var(--cien-postaci)" opacity=".35"/>
+-${[[380, 560], [820, 560], [470, 600], [730, 600]].map(([x, y]) => `<rect x="${x - 5}" y="${y}" width="10" height="${640 - y}" rx="3" fill="var(--stol)"/>`).join('')}
+-<path d="M294,538 A306,86 0 0 0 906,538 L906,576 A306,86 0 0 1 294,576 Z" fill="var(--stol-krawedz)"/>
+-<path d="M294,538 A306,86 0 0 0 906,538 L906,576 A306,86 0 0 1 294,576 Z" fill="url(#sc-szklo)" opacity=".25"/>
+-<ellipse cx="600" cy="538" rx="306" ry="86" fill="url(#sc-szklo)" stroke="#ffffff" stroke-opacity=".8" stroke-width="2"/>
+-<ellipse cx="600" cy="538" rx="306" ry="86" fill="none" stroke="#3fbf8a" stroke-opacity=".45" stroke-width="1.5"/>
+-<ellipse cx="600" cy="538" rx="250" ry="62" fill="none" stroke="#ffffff" stroke-opacity=".6"/>
++<!-- niski stolik w kręgu foteli: chusteczki, woda, notatniki -->
++<ellipse cx="600" cy="620" rx="150" ry="34" fill="var(--cien-postaci)" opacity=".35"/>
++<path d="M470,572 A130,38 0 0 0 730,572 L730,596 A130,38 0 0 1 470,596 Z" fill="var(--stol-krawedz)"/>
++<ellipse cx="600" cy="572" rx="130" ry="38" fill="var(--stol-blat)" stroke="#ffffff" stroke-opacity=".5" stroke-width="2"/>
++<ellipse cx="600" cy="572" rx="100" ry="26" fill="none" stroke="#ffffff" stroke-opacity=".35"/>
+ <g opacity=".95">
+-  <!-- papiery i długopisy przy ekranach -->
+-  ${[[412, 492, -6], [788, 492, 8], [330, 548, -12], [872, 548, 14], [548, 586, 3], [652, 586, -4]].map(([x, y, r]) => `<g transform="translate(${x},${y}) rotate(${r})"><rect x="-16" y="-11" width="32" height="22" rx="1.5" fill="#fbfdfc" stroke="#c9d6d3"/><rect x="-12" y="-6" width="20" height="1.4" fill="#9fb2af"/><rect x="-12" y="-2" width="24" height="1.4" fill="#9fb2af"/><rect x="-12" y="2" width="14" height="1.4" fill="#9fb2af"/><rect x="12" y="-14" width="3" height="20" rx="1.5" fill="#0F5E58" transform="rotate(30 13 -4)"/></g>`).join('')}
+-  <ellipse cx="600" cy="538" rx="60" ry="18" fill="#0f1918"/><ellipse cx="600" cy="538" rx="60" ry="18" fill="none" stroke="#5CC8BB" stroke-opacity=".7"/><ellipse class="holo" cx="600" cy="534" rx="40" ry="11" fill="none" stroke="#5CC8BB" stroke-opacity=".8" filter="url(#sc-glow)"/><ellipse class="holo" cx="600" cy="530" rx="22" ry="6" fill="none" stroke="#5CC8BB" stroke-opacity=".6"/>
+-  <g class="laptop" transform="translate(469,512) rotate(-8)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+-  <g class="laptop" transform="translate(729,512) rotate(7)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+-  <g class="laptop" transform="translate(368,543) rotate(-14)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+-  <g class="laptop" transform="translate(834,543) rotate(12)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+-  <g class="laptop" transform="translate(505,580) rotate(4)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
+-  <g class="laptop" transform="translate(697,580) rotate(-5)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/><rect x="-13" y="1" width="10" height="1.6" fill="#fff" opacity=".6"/></g></g>
++  <g transform="translate(548,566)"><rect x="-16" y="-12" width="32" height="14" rx="3" fill="#ffffff" stroke="#d9cbb8"/><path d="M-4,-12 q4,-9 8,0" fill="none" stroke="#cdb9e6" stroke-width="2.4"/></g>
++  <g transform="translate(606,560)"><rect x="-6" y="-24" width="12" height="26" rx="3" fill="#cfe6ef" stroke="#9fc4d6"/><rect x="-5" y="-28" width="10" height="5" rx="1" fill="#6f9ab0"/></g>
++  ${[[520, 592, -8], [680, 590, 6], [640, 572, -3]].map(([x, y, r]) => `<g transform="translate(${x},${y}) rotate(${r})"><rect x="-16" y="-10" width="32" height="20" rx="1.5" fill="#fbfdfc" stroke="#d9cbb8"/><rect x="-12" y="-5" width="20" height="1.4" fill="#a894c9"/><rect x="-12" y="-1" width="24" height="1.4" fill="#a894c9"/><rect x="-12" y="3" width="14" height="1.4" fill="#a894c9"/></g>`).join('')}
++  <!-- notatniki terapeutów (klasa .laptop zachowana: animacja pisania w etapie „piszą”) -->
++  ${[[442, 520, -8], [758, 520, 7], [300, 556, -10], [900, 556, 10], [500, 612, 4], [700, 612, -5]].map(([x, y, r]) => `<g class="laptop" transform="translate(${x},${y}) rotate(${r})"><rect x="-18" y="-13" width="36" height="24" rx="2.5" fill="#f6f2ea" stroke="#cdb9a3"/><rect class="ekran" x="-15" y="-10" width="30" height="18" rx="1.5" fill="#ffffff" opacity=".9"/><g class="kursor"><rect x="-11" y="-6" width="14" height="1.5" fill="#8a7fb5" opacity=".8"/><rect x="-11" y="-2" width="20" height="1.5" fill="#8a7fb5" opacity=".6"/><rect x="-11" y="2" width="9" height="1.5" fill="#8a7fb5" opacity=".7"/></g><rect x="-18" y="-13" width="4" height="24" fill="#8a7fb5" opacity=".5"/></g>`).join('')}
+ </g>
+-<!-- krzesła (oparcia widoczne za lekarzami z przodu) -->
+-<g class="krzesla">${[[262, 566], [938, 566], [470, 668], [730, 668]].map(([x, y]) => `<g transform="translate(${x},${y})"><rect x="-22" y="-96" width="44" height="40" rx="9" fill="var(--stol)" stroke="var(--stol-krawedz)" stroke-opacity=".5"/><rect x="-24" y="-58" width="48" height="12" rx="4" fill="var(--stol-blat)"/><rect x="-4" y="-46" width="8" height="28" fill="var(--stol-krawedz)"/><path d="M-20,-16 L20,-16 M0,-16 L0,-6 M-16,-6 L16,-6" stroke="var(--stol-krawedz)" stroke-width="3" stroke-linecap="round" fill="none"/></g>`).join('')}</g>
++<!-- fotele (klasa .krzesla zachowana) -->
++<g class="krzesla">${[[600, 440, '#cdb9e6'], [440, 452, '#b8d1b0'], [760, 452, '#f0cfa6'], [318, 470, '#cdb9e6'], [262, 566, '#b8d1b0'], [938, 566, '#f0cfa6'], [430, 668, '#cdb9e6'], [770, 668, '#b8d1b0']].map(([x, y, k]) => `<g transform="translate(${x},${y})"><rect x="-34" y="-78" width="68" height="60" rx="16" fill="${k}"/><rect x="-40" y="-42" width="80" height="34" rx="12" fill="${k}"/><rect x="-44" y="-48" width="14" height="40" rx="7" fill="${k}" opacity=".85"/><rect x="30" y="-48" width="14" height="40" rx="7" fill="${k}" opacity=".85"/><rect x="-36" y="-10" width="72" height="6" rx="3" fill="rgba(0,0,0,.12)"/></g>`).join('')}</g>
+ ${przedStolem}
+-<!-- przerwa (AI pracuje): parujące kubki na stole i tabliczka „Narada” nad drzwiami – widoczne tylko w .pokoj.przerwa -->
+-<g class="kubki" aria-hidden="true"><g transform="translate(430,520)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(530,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(668,506)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(772,522)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g><g transform="translate(600,578)"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#b8c7c3"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#b8c7c3" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#7a4a2a" opacity=".7"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#9fb2af" stroke-width="1.8" stroke-linecap="round"/></g></g>
+-<g class="narada-znak" transform="translate(10,14)" aria-hidden="true"><rect width="196" height="30" rx="15" fill="#0F5E58"/><circle class="narada-kropka" cx="16" cy="15" r="5" fill="#7ff0d9"/><text id="narada-czas" x="27" y="19.5" font-family="var(--font)" font-size="10.5" font-weight="800" fill="#fff">NARADA · AI pracuje</text></g>
++<!-- przerwa (AI pracuje): parujące kubki herbaty i tabliczka „Narada” – widoczne tylko w .pokoj.przerwa -->
++<g class="kubki" aria-hidden="true">${[[520, 556], [600, 548], [680, 556], [560, 590], [640, 590]].map(([x, y]) => `<g transform="translate(${x},${y})"><rect x="-8" y="-16" width="16" height="16" rx="3" fill="#fbfdfc" stroke="#c9c2d6"/><path d="M8,-12 q7,0 7,5 q0,5 -7,5" fill="none" stroke="#c9c2d6" stroke-width="2.2"/><rect x="-6" y="-14" width="12" height="3" rx="1" fill="#b98a3a" opacity=".6"/><path class="para" d="M-3,-20 q-4,-7 1,-13 q4,-6 0,-12 M3,-20 q4,-7 -1,-13 q-4,-6 0,-12" fill="none" stroke="#c9c2d6" stroke-width="1.8" stroke-linecap="round"/></g>`).join('')}</g>
++<g class="narada-znak" transform="translate(10,14)" aria-hidden="true"><rect width="196" height="30" rx="15" fill="#5B4A8A"/><circle class="narada-kropka" cx="16" cy="15" r="5" fill="#e3d6ff"/><text id="narada-czas" x="27" y="19.5" font-family="var(--font)" font-size="10.5" font-weight="800" fill="#fff">NARADA · AI pracuje</text></g>
+ <g id="dym" aria-hidden="true"></g>
+ 
+-<!-- biurko lekarza prowadzącego z laptopem (Michał 1.11 04:09) -->
+-<g class="biurko-prowadzacego"><rect x="948" y="618" width="76" height="10" rx="3" fill="url(#sc-szklo)" stroke="#fff" stroke-opacity=".8"/><rect x="954" y="628" width="6" height="48" fill="var(--stol)"/><rect x="1012" y="628" width="6" height="48" fill="var(--stol)"/>
+-  <g class="laptop" transform="translate(986,618) rotate(-6)"><rect x="-20" y="-14" width="40" height="26" rx="3" fill="#0f1918"/><rect class="ekran" x="-17" y="-11" width="34" height="20" rx="2" fill="var(--petrol)" opacity=".3"/><g class="kursor"><rect x="-13" y="-7" width="16" height="1.6" fill="#fff" opacity=".7"/><rect x="-13" y="-3" width="24" height="1.6" fill="#fff" opacity=".5"/></g></g></g>
+-<!-- roślina -->
++<!-- biurko terapeuty prowadzącego z notatnikiem -->
++<g class="biurko-prowadzacego"><rect x="948" y="618" width="76" height="10" rx="3" fill="var(--stol-blat)"/><rect x="954" y="628" width="6" height="48" fill="var(--stol)"/><rect x="1012" y="628" width="6" height="48" fill="var(--stol)"/>
++  <g class="laptop" transform="translate(986,618) rotate(-6)"><rect x="-18" y="-13" width="36" height="24" rx="2.5" fill="#f6f2ea" stroke="#cdb9a3"/><rect class="ekran" x="-15" y="-10" width="30" height="18" rx="1.5" fill="#ffffff" opacity=".9"/><g class="kursor"><rect x="-11" y="-6" width="14" height="1.5" fill="#8a7fb5" opacity=".8"/><rect x="-11" y="-2" width="20" height="1.5" fill="#8a7fb5" opacity=".6"/></g></g></g>
++<!-- rośliny -->
+ <g transform="translate(1150,676)"><path d="M-22,0 L-18,-34 L18,-34 L22,0 Z" fill="var(--listwa)"/>
+-<g fill="var(--g-zastepca)"><ellipse cx="-14" cy="-58" rx="10" ry="24" transform="rotate(-24 -14 -58)"/><ellipse cx="12" cy="-62" rx="10" ry="26" transform="rotate(20 12 -62)"/><ellipse cx="0" cy="-70" rx="9" ry="28"/></g></g>
++<g fill="#6f9a5a"><ellipse cx="-14" cy="-58" rx="10" ry="24" transform="rotate(-24 -14 -58)"/><ellipse cx="12" cy="-62" rx="10" ry="26" transform="rotate(20 12 -62)"/><ellipse cx="0" cy="-70" rx="9" ry="28"/></g></g>
++<g transform="translate(60,672)"><rect x="-16" y="-32" width="32" height="32" rx="6" fill="#e8dcc8" stroke="#cdb9a3"/><g fill="#8fb37a"><ellipse cx="-9" cy="-54" rx="7" ry="24" transform="rotate(-25 -9 -54)"/><ellipse cx="9" cy="-56" rx="7" ry="26" transform="rotate(22 9 -56)"/><ellipse cx="0" cy="-62" rx="6" ry="28"/></g></g>
+ ${podpisy(wpisy)}`;
+     MIEJSCA_AKT = miejsca;
+     startDymu();
+@@ -312,7 +313,7 @@
+     const d = document.createElement('div');
+     const r = ROLE[w.kto] || { nazwa: w.kto, grupa: 'lekarz' };
+     d.className = 'dymek wejscie' + (w.tresc ? ' pelny' : '');
+-    d.style.setProperty('--g', r.grupa === 'rezydent' ? '#8a5f34' : r.grupa === 'zastepca' ? '#4b6e3c' : r.grupa === 'sprawdzajacy' ? '#5a5890' : r.grupa === 'prowadzacy' ? '#8a4a1f' : '#0F5E58');
++    d.style.setProperty('--g', r.grupa === 'rezydent' ? '#8a5f34' : r.grupa === 'zastepca' ? '#4b6e3c' : r.grupa === 'sprawdzajacy' ? '#5a5890' : r.grupa === 'prowadzacy' ? '#8a4a1f' : '#5B4A8A');
+     const tresc = `<span class="kto">${esc(r.nazwa)}${w.persona ? ' · ' + esc(w.persona) : ''}</span>${esc(w.tresc || w.skrot)}${w.info ? `<span class="info">${esc(w.info)}</span>` : ''}`;
+     const ruch = !bezPisania && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+     d.innerHTML = ruch ? '<span class="kropki" aria-label="mówi"><i></i><i></i><i></i></span>' : tresc;
+@@ -475,6 +476,7 @@
+   function klebDymu() {
+     const g = $('dym'), m = MIEJSCA_AKT.ordynator; if (!g || !m || bezRuchu() || document.hidden) return;
+     const zar = document.querySelector('.postac[data-kto="ordynator"] .zar');
++    if (!zar) return; // pokój psychologiczny: prowadzący nie pali – dym wyłączony (para z herbaty idzie z CSS .para)
+     if (zar) { zar.classList.add('zar-on'); setTimeout(() => zar.classList.remove('zar-on'), 1400); }
+     // Michał 1.11 04:11: ruch „pykania” fajką tylko wtedy, gdy idzie dym
+     const ord = document.querySelector('.postac[data-kto="ordynator"]');
+@@ -567,7 +569,7 @@
+     // głos lekarza zatrzymuje odtwarzanie na kilka sekund, żeby jego dymek był widoczny; potem dyskusja idzie dalej
+     const bylaGra = gra; if (gra) ustawGre(false);
+     cichoDo = Date.now() + 6000;
+-    dymekTymczasowy('lekarz_prowadzacy', tekst, 'Lekarz prowadzący');
++    dymekTymczasowy('lekarz_prowadzacy', tekst, 'Terapeuta prowadzący');
+     setTimeout(() => { cichoDo = 0; if (!gra && (bylaGra || zywoTimer) && i < kroki.length - 1) ustawGre(true); }, 6000);
+     if (odswiezZywo) setTimeout(odswiezZywo, 300);
+     return true;
+@@ -668,7 +670,7 @@
+     }));
+   }
+   function rysujLegende() {
+-    const g = [['ordynator', 'Ordynator'], ['lekarz', 'Lekarze stali (6)'], ['zastepca', 'Zastępcy (triage)'], ['sprawdzajacy', 'Sprawdzający'], ['rezydent', 'Rezydenci za szybą'], ['prowadzacy', 'Lekarz prowadzący (Ty)']];
++    const g = [['ordynator', 'Prowadzący / superwizor'], ['lekarz', 'Zespół terapeutów'], ['zastepca', 'Ocena ryzyka'], ['sprawdzajacy', 'Sprawdzający'], ['rezydent', 'Stażysta za szybą'], ['prowadzacy', 'Terapeuta prowadzący (Ty)']];
+     $('legenda').innerHTML = g.map(([k, t]) => `<span style="--g:${KOLOR[k]}"><i></i>${t}</span>`).join('');
+   }
+   function pokazSzczegol(w, sc) {
+--- /home/claude/wt/narzedzia/pokoj-lekarski/test/e2e-powloka.mjs	2026-11-01 03:10:26.733666093 +0000
++++ test/e2e-powloka.mjs	2026-11-01 04:46:26.814709073 +0000
+@@ -49,7 +49,7 @@
+ assert.equal(await r.locator('html.osadzony').count(), 1, 'tryb osadzony');
+ assert.equal(await r.locator('#glos').isVisible(), true, 'pole lekarza prowadzącego widoczne na żywo');
+ assert.equal(await r.locator('.postac[data-kto="lekarz_prowadzacy"]').count(), 1, 'lekarz prowadzący stoi w pokoju');
+-assert.equal(await r.locator('.postac[data-kto="ordynator"] .papieros').count(), 1, 'ordynator ma fajkę');
++assert.equal(await r.locator('.postac[data-kto="ordynator"] .herbata').count(), 1, 'prowadzący ma kubek herbaty');
+ const wpisow = await r.locator('.wpis').count();
+ await r.locator('#glos-tekst').fill('Proszę rozważyć krztusiec: pacjentka pracuje na oddziale, kaszel napadowy od 10 dni.');
+ await r.locator('#glos-tekst').press('Enter');
+@@ -58,7 +58,7 @@
+ assert.ok(zapis, 'wpis zapisany do uwagi-lekarza.jsonl');
+ const u = JSON.parse(zapis.trim().split('\n').pop());
+ assert.equal(u.rola, 'lekarz_prowadzacy'); assert.match(u.pelny, /krztusiec/); assert.ok(u.faza, 'faza wpisu');
+-assert.match(await r.locator('.dymek:not(.stary)').innerText(), /Lekarz prowadzący[\s\S]*krztusiec/i, 'dymek lekarza od razu na scenie');
++assert.match(await r.locator('.dymek:not(.stary)').innerText(), /Terapeuta prowadzący[\s\S]*krztusiec/i, 'dymek lekarza od razu na scenie');
+ assert.equal(await r.locator('#glos-tekst').inputValue(), '', 'pole wyczyszczone');
+ await p.waitForTimeout(3600);
+ assert.equal(await r.locator('.wpis').count(), wpisow + 1, 'wpis lekarza dociągnięty do protokołu');
+--- /home/claude/wt/narzedzia/pokoj-lekarski/test/e2e-przerwa.mjs	2026-11-01 04:13:03.311138135 +0000
++++ test/e2e-przerwa.mjs	2026-11-01 04:45:53.074029785 +0000
+@@ -51,7 +51,7 @@
+ const r = p.frameLocator('#ramka');
+ await p.waitForTimeout(1500);
+ assert.match(await r.locator('#opis-sprawy').innerText(), /na żywo/);
+-assert.equal(await r.locator('.postac[data-kto="ordynator"] .fajka').count(), 1, 'ordynator ma widoczną fajkę');
++assert.equal(await r.locator('.postac[data-kto="ordynator"] .herbata').count(), 1, 'prowadzący ma kubek herbaty (bez fajki)');
+ // skok na koniec dyskusji (jak kliknięcie ostatniego wpisu w protokole)
+ await r.locator('#protokol-btn').click();
+ await r.locator('.wpis').last().click();

@@ -1,6 +1,6 @@
 // Buduje aplikację Windows „MS Konsylium Psychologiczne” (przenośna, bez instalatora).
 // Użycie (w ms-psycho/aplikacja/powloka):  npm ci && node zbuduj.mjs [--bez-paczki]
-//  1. wywiad: moduł z MS Konsylium (narzedzia/wywiad), z napisami dla psychologii,
+//  1. wywiad: moduł z MS Konsylium (kopia w aplikacja/wywiad), z napisami dla psychologii,
 //  2. Rozmowa: ../rozmowa/rozmowa.html (komunikator z jednym terapeutą AI),
 //  3. Pokój psychologiczny: ../pokoj-psychologiczny (zbudowany POKOJ-PSYCHOLOGICZNY-*.html),
 //  4. powłoka (index.html, ipad.html) z paletą „Lawenda” i ekranem prezentu (tylko wersja 1),
@@ -16,7 +16,6 @@ const PREZENT = true;
 const tu = dirname(fileURLToPath(import.meta.url));
 const aplikacja = join(tu, '..');
 const psycho = join(aplikacja, '..');
-const repo = join(psycho, '..');
 const pkg = JSON.parse(readFileSync(join(tu, 'package.json'), 'utf8'));
 const build = join(tu, 'build');
 rmSync(build, { recursive: true, force: true });
@@ -25,14 +24,10 @@ mkdirSync(join(build, 'app', 'moduly'), { recursive: true });
 const tokeny = readFileSync(join(aplikacja, 'wspolne', 'ms-tokeny.css'), 'utf8') + '\n' + readFileSync(join(aplikacja, 'wspolne', 'ms-tokeny-psycho.css'), 'utf8');
 const most = readFileSync(join(aplikacja, 'wspolne', 'ms-most.js'), 'utf8');
 
-// 1. Wywiad (wspólny z MS Konsylium; budowany w swoim katalogu, napisy podmieniane tu)
-// krój Plus Jakarta Sans: zbuduj.mjs wywiadu szuka go w narzedzia/powloka/node_modules – na czas budowy wskazujemy nasz
-const nmMed = join(repo, 'narzedzia', 'powloka', 'node_modules');
-const tymczasowy = !existsSync(nmMed) && existsSync(join(tu, 'node_modules'));
-if (tymczasowy) symlinkSync(join(tu, 'node_modules'), nmMed, 'junction');
-try { execFileSync(process.execPath, [join(repo, 'narzedzia', 'wywiad', 'zbuduj.mjs')], { stdio: 'inherit' }); }
-finally { if (tymczasowy) unlinkSync(nmMed); }
-const distW = join(repo, 'narzedzia', 'wywiad', 'dist');
+// 1. Wywiad – kopia modułu z MS Konsylium w ms-psycho/aplikacja/wywiad (od 2.11.2026 aplikacja psychologiczna
+//    nie korzysta z katalogów konsylium lekarskiego; krój z powloka/node_modules, wykrywanie z anonimizator/src)
+execFileSync(process.execPath, [join(aplikacja, 'wywiad', 'zbuduj.mjs')], { stdio: 'inherit' });
+const distW = join(aplikacja, 'wywiad', 'dist');
 const plikW = readdirSync(distW).filter((f) => /^WYWIAD-PACJENTA-.*\.html$/.test(f))
   .sort((a, b) => a.localeCompare(b, 'en', { numeric: true })).pop();
 let wywiad = readFileSync(join(distW, plikW), 'utf8');
