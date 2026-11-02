@@ -16,7 +16,7 @@ Stan na 2.11.2026. Przygotował wątek Psychologa w projekcie MS Konsylium.
 > - jeśli osoba zaprzeczy myślom samobójczym („nie mam”), nie pytaj o nie ponownie;
 > - **nie wyciągaj ani nie przenoś treści moich rozmów** z laptopa;
 > - zasada „mało pisania” obowiązuje tylko konsylium lekarskie.
-> Pełne przekazanie znajdziesz w pliku `PRZEKAZANIE-DO-NOWEGO-PROJEKTU.md` (załączam go).
+> Pełne przekazanie: `ms-psycho/PRZEKAZANIE.md`. Struktura wątków-ról (koordynator, Kodujący, Merytoryczny, Graficzny, Innowacyjny, Testowy, Operator) i jak ją tu odwzorować: `ms-psycho/STRUKTURA-AGENTOW.md` – załóż wątki wg §2 tego pliku.
 
 ## 2. Stan aplikacji (0.2.0, commit f95ee72)
 

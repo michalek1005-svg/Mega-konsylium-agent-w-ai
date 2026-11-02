@@ -15,6 +15,7 @@ Wszystko, co dotyczy aplikacji psychologicznej, jest w tym katalogu i nie zależ
 | `zrodla-psycho/` | manifest źródeł |
 | `przeniesienie/` | pliki z projektu MS Konsylium (merytoryka, przypadki, grafika, koncepcje rozwoju, zrzuty) – do przeniesienia do nowego projektu |
 | `PRZEKAZANIE.md` | stan, zasady Michała, otwarte sprawy i tekst startowy dla nowego projektu |
+| `STRUKTURA-AGENTOW.md` | wątki-role projektu (koordynator, Kodujący, Graficzny, Merytoryczny, Innowacyjny, Testowy, Operator) i propozycja dla projektu psychologicznego |
 
 Testy: `cd aplikacja/powloka && node zbuduj.mjs && xvfb-run -a node test/e2e-psycho.mjs` · `python3 skrypty/test_frazy.py` · `cd aplikacja/pokoj-psychologiczny && npm test`.
 Dane rozmów (`konta/`, `rozmowy/`, `sprawy/`, `wywiad-na-zywo/`) zostają na komputerze użytkownika i nie trafiają do repo.
