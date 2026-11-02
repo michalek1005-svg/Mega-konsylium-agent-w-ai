@@ -45,6 +45,8 @@ assert.equal(await p.locator('#szczegol').isVisible(), true, 'pełny wpis w prot
 await wpisy[wpisy.length - 1].click(); await p.waitForTimeout(1200);
 assert.equal(await p.locator('#karta-sprawy').isVisible(), true, 'Karta sprawy na ekranie po werdykcie');
 assert.match(await p.locator('#karta-sprawy').innerText(), /Zalecenie[\s\S]*Kiedy wrócić/i, 'pola karty');
+const [pobr] = await Promise.all([p.waitForEvent('download'), p.locator('#karta-png').click()]);
+assert.match(pobr.suggestedFilename(), /^karta-sprawy-.*\.png$/, 'Zapisz PNG: ' + pobr.suggestedFilename());
 await p.locator('#karta-zamknij').click(); await p.waitForTimeout(200);
 assert.equal(await p.locator('#karta-sprawy').isVisible(), false, 'karta znika po Zamknij');
 await wpisy[runda].click(); await p.waitForTimeout(500);
