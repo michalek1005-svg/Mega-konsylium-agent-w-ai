@@ -1,0 +1,153 @@
+{
+  "ranking": [
+    {
+      "rozpoznanie": "objawy polekowe — cefuroksym",
+      "p": 0.62,
+      "wymienili": [
+        "bayes",
+        "farmakolog",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — erdosteina",
+      "p": 0.074,
+      "wymienili": [
+        "bayes",
+        "farmakolog",
+        "hipotezujacy",
+        "najgorszy_scenariusz",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "ostra pokrzywka z obrzękiem naczynioruchowym w przebiegu zakażenia wirusowego",
+      "p": 0.051,
+      "wymienili": [
+        "bayes",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "objawy polekowe — bromfenak",
+      "p": 0.034,
+      "wymienili": [
+        "farmakolog",
+        "hipotezujacy",
+        "poz_pragmatyk"
+      ]
+    },
+    {
+      "rozpoznanie": "pokrzywka ostra z obrzękiem naczynioruchowym w przebiegu infekcji wirusowej",
+      "p": 0.032,
+      "wymienili": [
+        "hipotezujacy"
+      ]
+    }
+  ],
+  "zgoda": 0.468,
+  "flagi": [
+    "NISKA_ZGODA"
+  ],
+  "pilnosc": {
+    "wynik": 2,
+    "mediana_wazona": 2.0,
+    "weto": null
+  },
+  "red_flags": {
+    "otwarte": [
+      "ANAFILAKSJA / obrzęk krtani: chrypka i zapalenie krtani istniały przed reakcją, więc maskują wczesny obrzęk krtani; NIEZNANE: duszność, świsty, stridor, obrzęk warg/języka, dysfagia, spadek ciśnienia, omdlenie, objawy z przewodu pokarmowego. Wykluczy: badanie fizykalne z RR, tętnem, SpO2, osłuchiwaniem i oceną głosu/połykania + wywiad, czy chrypka nasiliła się po dawce. Kryteria anafilaksji (zajęcie skóry/błon śluzowych + układu oddechowego lub krążenia lub przewodu pokarmowego) [wiedza modelu, niezweryfikowane — kryteria World Allergy Organization/EAACI, brak pliku w zrodla/]",
+      "AZYTROMYCYNA a odstęp QT: pacjentka z zaburzeniami rytmu, na beta-blokerze (bradykardia zwiększa ryzyko torsade de pointes); EKG z QTc NIEZNANE, elektrolity NIEZNANE. Próg ostrożności QTc >470 ms u kobiet, przeciwwskazanie praktyczne >500 ms [wiedza modelu, niezweryfikowane]. Wykluczy: EKG z pomiarem QTc przed kolejnymi dawkami",
+      "Anafilaksja (lub jej wczesna faza) — objawy z układu oddechowego, krążenia i przewodu pokarmowego NIEZNANE; zmiany dłoniowo-podeszwowe + obrzęk naczynioruchowy to wzorzec układowy.",
+      "BETA-BLOKER (bisoprolol): anafilaksja u osób przyjmujących beta-blokery bywa cięższa i oporna na adrenalinę; w razie oporności glukagon 1–5 mg dożylnie [wiedza modelu, niezweryfikowane]. Bradykardia może maskować tachykardię jako wczesny objaw wstrząsu",
+      "Beta-adrenolityk (bisoprolol): ryzyko cięższej anafilaksji i słabszej odpowiedzi na adrenalinę.",
+      "Chrypka obecna już wcześniej z powodu zapalenia krtani — maskuje ewentualny obrzęk krtani; potrzebna ocena stridoru, dysfagii, obrzęku języka i warg.",
+      "Ciężka skórna reakcja polekowa (zespół Stevensa-Johnsona, rumień wielopostaciowy) — morfologia zmian dłoniowo-podeszwowych i błony śluzowe NIEZNANE.",
+      "NEBULIZACJA BUDEZONIDU Z WODĄ DO WSTRZYKIWAŃ: roztwór hipotoniczny podany wziewnie może wywołać skurcz oskrzeli, zwłaszcza w drogach oddechowych w stanie zapalnym i po świeżej reakcji alergicznej; do rozcieńczania używa się 0,9% NaCl [wiedza modelu, niezweryfikowane — ChPL zawiesiny budezonidu do nebulizacji brak w zrodla/]. Wskazanie do nebulizacji NIEZNANE",
+      "Nebulizacja roztworem hipotonicznym (budezonid z wodą do wstrzykiwań) może prowokować skurcz oskrzeli.",
+      "OKO LECZONE: wskazanie do kropli NIEZNANE; kortykosteroid miejscowy przy nierozpoznanym opryszczkowym zapaleniu rogówki grozi trwałą utratą wzroku; po zabiegu zaćmy — ryzyko zapalenia wnętrza gałki. Wykluczy: dokumentacja z konsultacji okulistycznej lub ponowna ocena okulistyczna przy bólu, światłowstręcie, pogorszeniu ostrości wzroku",
+      "PRZYSZŁA EKSPOZYCJA: bez oznaczenia alergii na cefuroksym w dokumentacji ryzyko ponownego podania (także w jej szpitalu) i cięższej reakcji; reaktywność krzyżowa z cefalosporynami o podobnym łańcuchu bocznym R1 (ceftriakson, cefotaksym, cefepim) [wiedza modelu, niezweryfikowane]",
+      "REAKCJA DWUFAZOWA: nawrót objawów bez ponownej ekspozycji, opisywany u kilku procent reakcji anafilaktycznych, najczęściej w ciągu 12 godzin, sporadycznie do 72 godzin [wiedza modelu, niezweryfikowane]. Wieczór i noc po reakcji = okno ryzyka; pacjentka powinna nie być sama i mieć plan wezwania 112",
+      "Wydłużenie odstępu QT po azytromycynie u kobiety 64 lat z zaburzeniami rytmu, bez EKG i elektrolitów.",
+      "ZAKAŹNOŚĆ DLA OTOCZENIA: pracownica szpitala z ostrym zakażeniem dróg oddechowych (grypa, COVID-19, zakażenie RSV) i możliwym adenowirusowym zapaleniem spojówek — ryzyko dla pacjentów szpitala. Wykluczy: szybki test antygenowy grypa/SARS-CoV-2; do czasu ustąpienia objawów — niepodejmowanie pracy z pacjentami",
+      "ZESPÓŁ STEVENSA-JOHNSONA / toksyczna nekroliza naskórka: mało prawdopodobny przy latencji 15 minut (typowo 4–28 dni od rozpoczęcia leku [wiedza modelu, niezweryfikowane]), ale lewofloksacyna (krople od 3–4 dni) i infekcja należą do wyzwalaczy, a zajęcie oka + zmiany akralne to wzorzec, którego nie wolno przegapić. Wykluczy: brak pęcherzy, nadżerek w jamie ustnej/narządach płciowych, bólu skóry, objawu Nikolskiego; zmiany typu pokrzywki ustępujące <24 h",
+      "ZMIANY NA DŁONIACH I STOPACH o innym tle: wybroczyny (posocznica meningokokowa — zagrożenie życia i zakaźność), enterowirusowa choroba dłoni, stóp i jamy ustnej. Wykluczy: oględziny — czy zmiany bledną pod uciskiem, gorączka, stan ogólny, zmiany w jamie ustnej",
+      "anafilaksja (zajęcie drugiego układu: duszność, świsty, spadek ciśnienia, objawy żołądkowo-jelitowe) — NIEZNANE",
+      "anafilaksja w toku lub dwufazowa: brak danych o duszności, świstach, obrzęku warg/języka, dysfagii, hipotensji, omdleniu, objawach z przewodu pokarmowego",
+      "anafilaksja: zajęcie skóry i tkanki podskórnej + ewentualne objawy oddechowe/krążeniowe/żołądkowo-jelitowe — wszystkie NIEZNANE",
+      "anafilaksja: świąd lub rumień dłoni i stóp oraz obrzęk okołooczodołowy to typowe wczesne objawy; NIEZNANE są duszność, świsty, stridor, obrzęk języka lub warg, spadek ciśnienia, omdlenie i objawy brzuszne",
+      "azytromycyna u pacjentki z zaburzeniami rytmu bez EKG (wydłużenie QT) [wiedza modelu, niezweryfikowane]",
+      "azytromycyna u pacjentki z zaburzeniami rytmu przyjmującej beta-adrenolityk — ryzyko wydłużenia QT; EKG NIEZNANE",
+      "azytromycyna u pacjentki z zaburzeniami rytmu — ryzyko wydłużenia QT, EKG nieznane",
+      "azytromycyna u pacjentki z zaburzeniami rytmu: brak EKG (QTc)",
+      "beta-adrenolityk (bisoprolol) może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]; dawka 1,25 mg jest mała, ale ryzyko trzeba wziąć pod uwagę",
+      "beta-bloker (bisoprolol) — możliwy cięższy przebieg anafilaksji i słabsza odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]",
+      "bisoprolol (beta-adrenolityk) może nasilać przebieg anafilaksji i osłabiać odpowiedź na adrenalinę (przy dawce 1,25 mg kardioselektywnego leku efekt prawdopodobnie mały) [wiedza modelu, niezweryfikowane]",
+      "brak oceny osłuchowej: nie wiadomo, czy azytromycyna i budezonid mają wskazanie (zapalenie płuc? obturacja?)",
+      "brak potwierdzenia odstawienia cefuroksymu — dalsze dawki zwiększają ryzyko cięższej reakcji",
+      "ciężka reakcja skórna (zespół Stevensa-Johnsona lub toksyczna nekroliza naskórka) jest mało prawdopodobna przy początku po 15 minutach, ale nie można jej wykluczyć bez oceny śluzówek i morfologii zmian (pęcherze, zmiany tarczowate, ból skóry)",
+      "ciężka reakcja skórna (zespół Stevensa-Johnsona, rumień wielopostaciowy) niewykluczona bez opisu morfologii wysypki, pęcherzy i zmian na śluzówkach — choć początek po 15 min czyni ją mało prawdopodobną",
+      "ciężka skórna reakcja polekowa (zmiany na śluzówkach, pęcherze, ból skóry) — morfologia wysypki NIEZNANA",
+      "ciężka skórna reakcja polekowa (zmiany tarczowate atypowe, pęcherze, nadżerki śluzówek, ból skóry, gorączka) — morfologia wysypki NIEZNANA",
+      "nebulizacja budezonidu rozcieńczonego wodą do wstrzykiwań (roztwór hipotoniczny) może prowokować skurcz oskrzeli — zwykle rozcieńcza się 0,9% NaCl [wiedza modelu, niezweryfikowane]",
+      "obrzęk krtani maskowany przez chrypkę z zapalenia krtani: nasilenie chrypki, dysfagia lub stridor wymagają karetki (999)",
+      "obrzęk krtani maskowany przez istniejącą chrypkę z zapalenia krtani — nasilenie chrypki, stridor, dysfagia, ślinienie się wymagają natychmiastowej oceny",
+      "obrzęk krtani maskowany przez wcześniejsze zapalenie krtani i chrypkę — narastanie chrypki lub stridor nie mogą być przypisywane infekcji bez oceny",
+      "obrzęk naczynioruchowy krtani — nakłada się na już istniejącą chrypkę z zapalenia krtani, więc chrypka nie odróżnia infekcji od obrzęku bez badania",
+      "przyjmowanie beta-adrenolityku (bisoprolol): może nasilać przebieg anafilaksji i zmniejszać odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]",
+      "reakcja dwufazowa w ciągu kolejnych godzin [wiedza modelu, niezweryfikowane]",
+      "zapalenie płuc jako przyczyna kaszlu produktywnego — osłuchiwanie i parametry życiowe NIEZNANE"
+    ],
+    "wykluczone": [
+      "brak — z dostępnych danych nie da się jawnie wykluczyć żadnej czerwonej flagi; żaden objaw układowy nie został potwierdzony ani zaprzeczony",
+      "choroba posurowicza (reakcja podobna do choroby posurowiczej) jako przyczyna OBECNEGO epizodu — wykluczona czasowo (rozwija się po dniach) [wiedza modelu, niezweryfikowane]",
+      "wrodzony lub polekowy (inhibitory konwertazy angiotensyny) obrzęk naczynioruchowy bradykininowy — mało prawdopodobny: brak inhibitorów konwertazy na liście leków, obrzęk współistnieje z wysypką (w obrzęku bradykininowym pokrzywki zwykle brak) [wiedza modelu, niezweryfikowane]; NIE wykluczony formalnie, bo pełna lista leków NIEZNANA",
+      "zapalenie wnętrza gałki ocznej po zabiegu — dotyczyłoby oka leczonego, a obrzęk dotyczy oka nieleczonego (ale patrz flaga oka leczonego w otwartych)",
+      "zespół nadwrażliwości polekowej z eozynofilią i objawami układowymi (DRESS) — wykluczony czasowo: wymaga zwykle 2–8 tygodni ekspozycji, tu minuty [wiedza modelu, niezweryfikowane]"
+    ],
+    "sporne_do_dyskusji": []
+  },
+  "pewnosc_lekarzy": {
+    "bayes": "srednia",
+    "farmakolog": "srednia",
+    "gospodarz_kosztow": "srednia",
+    "hipotezujacy": "srednia",
+    "najgorszy_scenariusz": "srednia",
+    "poz_pragmatyk": "srednia"
+  },
+  "wagi_uzyte": {
+    "bayes": {
+      "rozpoznanie": 1.017,
+      "pilnosc": 0.61,
+      "k": 1.0168
+    },
+    "farmakolog": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "gospodarz_kosztow": {
+      "rozpoznanie": 0.0,
+      "pilnosc": 0.3,
+      "k": 1.0
+    },
+    "hipotezujacy": {
+      "rozpoznanie": 0.988,
+      "pilnosc": 0.593,
+      "k": 0.9881
+    },
+    "najgorszy_scenariusz": {
+      "rozpoznanie": 0.494,
+      "pilnosc": 0.988,
+      "k": 0.9883
+    },
+    "poz_pragmatyk": {
+      "rozpoznanie": 0.503,
+      "pilnosc": 0.604,
+      "k": 1.0067
+    }
+  },
+  "liczba_opinii": 6
+}

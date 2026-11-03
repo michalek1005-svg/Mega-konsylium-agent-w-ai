@@ -1,0 +1,105 @@
+{
+  "rola": "gospodarz_kosztow",
+  "skrot": "Reakcja natychmiastowa (obrzęk powieki oka nieleczonego i osutka dłoni i stóp 15 minut po cefuroksymie i erdosteinie) u chorej na beta-blokerze z zapaleniem krtani wymaga dziś badania przedmiotowego z parametrami życiowymi, nie badań laboratoryjnych; najtańszą bezpieczną decyzją jest odstawienie obu leków, wpis alergii, ocena wskazań do azytromycyny i odroczona diagnostyka alergologiczna.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0,
+      "za": ["początek 15 minut po dawce — typowy czas reakcji natychmiastowej IgE-zależnej", "wielokrotne wcześniejsze kursy cefuroksymu — możliwość nabytego uczulenia (wcześniejsza tolerancja nie wyklucza)", "obrzęk w miejscu niezwiązanym z kroplami (oko nieleczone) przemawia za mechanizmem układowym"],
+      "przeciw": ["wieloletnia dobra tolerancja", "NIEZNANE: czy dawka(i) w tym epizodzie przed dzisiejszą były tolerowane", "jednoczesne przyjęcie erdosteiny uniemożliwia przypisanie leku bez testów"]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0,
+      "za": ["przyjęta jednocześnie, 15 minut przed objawami"],
+      "przeciw": ["reakcje nadwrażliwości na erdosteinę rzadkie [wiedza modelu, niezweryfikowane]", "wcześniejsza tolerancja"]
+    },
+    {
+      "nazwa": "ostra pokrzywka z obrzękiem naczynioruchowym w przebiegu infekcji wirusowej",
+      "p": 0,
+      "za": ["trwająca infekcja górnych dróg oddechowych o obrazie wirusowym (katar, chrypka, kaszel, gardło)", "infekcja wirusowa jest częstym wyzwalaczem lub kofaktorem ostrej pokrzywki u dorosłych [wiedza modelu, niezweryfikowane]"],
+      "przeciw": ["ścisły związek czasowy (15 minut) z przyjęciem leków"]
+    },
+    {
+      "nazwa": "objawy polekowe — bromfenak",
+      "p": 0,
+      "za": ["niesteroidowy lek przeciwzapalny — możliwa reakcja krzyżowa z obrzękiem naczynioruchowym indukowanym niesteroidowymi lekami przeciwzapalnymi", "NIEZNANE: czy pacjentka przyjmowała też doustne niesteroidowe leki przeciwzapalne z powodu infekcji (kofaktor)"],
+      "przeciw": ["ekspozycja miejscowa, małe stężenie układowe", "brak związku czasowego z dzisiejszym zakropleniem (NIEZNANE godziny)"]
+    },
+    {
+      "nazwa": "objawy polekowe — lewofloksacyna",
+      "p": 0,
+      "za": ["fluorochinolony mogą wywołać reakcję natychmiastową; przeniesienie kropli rękami na drugie oko możliwe"],
+      "przeciw": ["obrzęk oka nieleczonego bez zajęcia oka leczonego (NIEZNANE)", "wysypka dłoni i stóp słabo pasuje do kontaktowego zapalenia powieki"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [],
+  "red_flags_otwarte": [
+    "obrzęk naczynioruchowy krtani — nakłada się na już istniejącą chrypkę z zapalenia krtani, więc chrypka nie odróżnia infekcji od obrzęku bez badania",
+    "anafilaksja (zajęcie drugiego układu: duszność, świsty, spadek ciśnienia, objawy żołądkowo-jelitowe) — NIEZNANE",
+    "beta-bloker (bisoprolol) — możliwy cięższy przebieg anafilaksji i słabsza odpowiedź na adrenalinę [wiedza modelu, niezweryfikowane]",
+    "azytromycyna u pacjentki z zaburzeniami rytmu — ryzyko wydłużenia QT, EKG nieznane",
+    "ciężka skórna reakcja polekowa (zmiany na śluzówkach, pęcherze, ból skóry) — morfologia wysypki NIEZNANA"
+  ],
+  "nastepny_krok": "Dziś osobiste badanie przedmiotowe w gabinecie POZ (ciśnienie, tętno, saturacja, częstość oddechów, ocena warg, języka, gardła i głosu, osłuchiwanie płuc, morfologia wysypki) z natychmiastowym kierowaniem na SOR przy jakimkolwiek objawie zajęcia dróg oddechowych lub krążenia; badania laboratoryjne dopiero, jeśli wynik badania przedmiotowego tego wymaga.",
+  "co_zmieniloby_zdanie": "Każdy objaw poza skórą (duszność, świsty, stridor, obrzęk języka lub warg, omdlenie, wymioty) zmienia pilność na 1 i przenosi diagnostykę na SOR z oznaczeniem tryptazy, a stabilna pacjentka z samą zanikającą osutką po lekach przeciwhistaminowych pozwala zakończyć postępowanie bez żadnych badań dodatkowych.",
+  "badania": [
+    {
+      "nazwa": "badanie przedmiotowe z parametrami życiowymi (ciśnienie, tętno, saturacja, częstość oddechów) i oceną jamy ustnej, gardła, głosu",
+      "cel": "rozstrzygnąć: izolowana reakcja skórna vs anafilaksja lub obrzęk górnych dróg oddechowych",
+      "zmienia_decyzje": true,
+      "kolejnosc": 1,
+      "uwagi": "Najtańsze i jedyne naprawdę rozstrzygające dziś. Dodatnie → adrenalina domięśniowo i SOR (przy beta-blokerze dłuższa obserwacja); ujemne → lek przeciwhistaminowy II generacji, obserwacja w domu. Badanie wykluczające otwarte red flagi jest zawsze uzasadnione."
+    },
+    {
+      "nazwa": "tryptaza w surowicy",
+      "cel": "obiektywne potwierdzenie anafilaksji dla późniejszej diagnostyki alergologicznej",
+      "zmienia_decyzje": false,
+      "kolejnosc": 2,
+      "uwagi": "Warunkowo: tylko gdy były objawy układowe, i tylko w oknie ok. 1–4 godzin od reakcji [wiedza modelu, niezweryfikowane]. Nie zmienia leczenia ostrego; po upływie okna bezwartościowa. Przy izolowanej osutce nie zlecać."
+    },
+    {
+      "nazwa": "białko C-reaktywne (CRP, najlepiej test przyłóżkowy)",
+      "cel": "uzasadnienie lub odstawienie azytromycyny",
+      "zmienia_decyzje": true,
+      "kolejnosc": 3,
+      "uwagi": "Obraz kliniczny (katar, chrypka, kaszel, gardło, nagły początek) wskazuje na infekcję wirusową; antybiotyk prawdopodobnie zbędny. Niskie CRP i prawidłowe osłuchiwanie → odstawić azytromycynę (mniej leków-zakłócaczy w ocenie alergii, brak ryzyka QT, brak potrzeby EKG). Jeśli lekarz i tak odstawia antybiotyk na podstawie samej kliniki — CRP zbędne."
+    },
+    {
+      "nazwa": "elektrokardiogram (EKG) z pomiarem QTc",
+      "cel": "bezpieczeństwo azytromycyny u pacjentki z zaburzeniami rytmu",
+      "zmienia_decyzje": true,
+      "kolejnosc": 4,
+      "uwagi": "Warunkowo: tylko jeśli azytromycyna jest kontynuowana. Wydłużony QTc → odstawić. Jeśli antybiotyk odstawiony — EKG nie zmienia decyzji. Tanie i dostępne w POZ, więc przy wątpliwości wykonać."
+    },
+    {
+      "nazwa": "konsultacja alergologiczna z testami skórnymi lub prowokacją (beta-laktamy, erdosteina)",
+      "cel": "ustalenie sprawcy, żeby nie oznaczać pacjentki dożywotnio jako uczulonej na całą grupę cefalosporyn",
+      "zmienia_decyzje": true,
+      "kolejnosc": 5,
+      "uwagi": "Planowo, testy zwykle 4–6 tygodni po reakcji [wiedza modelu, niezweryfikowane]. Nie rozstrzyga nic dziś, ale ma wysoki zwrot długoterminowy: pracownica szpitala, częste kursy beta-laktamów; błędna etykieta alergii prowadzi do droższych antybiotyków drugiego rzutu. Kolejka nie ma znaczenia dla decyzji ostrej."
+    }
+  ],
+  "nie_zlecac": [
+    {"nazwa": "swoiste IgE na cefuroksym i całkowite IgE teraz", "powod": "nie zmieniają postępowania ostrego; całkowite IgE nie ma wartości, swoiste IgE dla cefalosporyn o niskiej czułości — decyzję podejmie alergolog testami [wiedza modelu, niezweryfikowane]"},
+    {"nazwa": "morfologia z rozmazem, próby wątrobowe, kreatynina rutynowo", "powod": "reakcja natychmiastowa; zespół DRESS rozwija się po tygodniach, nie w 15 minut — wynik nie zmieni dzisiejszej decyzji, a nieswoiste odchylenia w infekcji mogą uruchomić kaskadę"},
+    {"nazwa": "RTG klatki piersiowej rutynowo", "powod": "tylko przy zmianach osłuchowych lub gorączce i duszności sugerujących zapalenie płuc; w innym razie promieniowanie i czas bez wpływu na decyzję"},
+    {"nazwa": "wymaz z gardła lub szybki test na paciorkowca", "powod": "kaszel i katar obniżają skalę Centora/McIsaaca; wynik nie zmieni decyzji przy obrazie wirusowym [wiedza modelu, niezweryfikowane]"},
+    {"nazwa": "oznaczenie inhibitora C1-esterazy i składowych dopełniacza", "powod": "wyraźny wyzwalacz polekowy i współistniejąca osutka przemawiają przeciw obrzękowi naczynioruchowemu zależnemu od bradykininy"},
+    {"nazwa": "konsultacja okulistyczna z powodu obrzęku powieki", "powod": "obrzęk dotyczy oka nieleczonego i jest częścią reakcji układowej; zasadna tylko przy pogorszeniu widzenia, bólu oka lub zaostrzeniu w oku leczonym"},
+    {"nazwa": "próba prowokacji lub ponowna 'próbna' dawka cefuroksymu lub erdosteiny w domu", "powod": "niebezpieczne poza warunkami alergologicznymi; obydwa leki odstawić i wpisać jako podejrzane do dokumentacji"},
+    {"nazwa": "laryngoskopia rutynowo", "powod": "tylko przy narastającej chrypce, stridorze lub dysfagii — wtedy pilnie w SOR lub laryngologii, nie planowo"}
+  ],
+  "uwagi_dodatkowe": [
+    "Nebulizacja budezonidu rozcieńczonego wodą do wstrzykiwań: roztwór hipotoniczny może prowokować skurcz oskrzeli; do rozcieńczania używa się 0,9% NaCl [wiedza modelu, niezweryfikowane]. Zmiana bezkosztowa.",
+    "Azytromycyna nie reaguje krzyżowo z beta-laktamami, ale jej wskazanie w infekcji o obrazie wirusowym jest wątpliwe — odstawienie jest jednocześnie najtańsze i najbezpieczniejsze (QT, brak nowego leku zakłócającego ocenę reakcji).",
+    "Przy reakcji natychmiastowej u pacjentki na beta-blokerze rozważyć przepisanie adrenaliny w autostrzykawce do czasu diagnostyki alergologicznej, jeśli potwierdzone zostaną objawy układowe."
+  ],
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskich wytycznych dla tej sytuacji w bibliotece",
+    "PubMed niedostępny w tej sesji (błąd połączenia)",
+    "[wiedza modelu, niezweryfikowane] — standardy postępowania w anafilaksji i reakcjach nadwrażliwości na leki (EAACI/WAO), okno pobrania tryptazy, czas testów alergologicznych, interakcja beta-bloker–adrenalina, ryzyko QT azytromycyny"
+  ]
+}

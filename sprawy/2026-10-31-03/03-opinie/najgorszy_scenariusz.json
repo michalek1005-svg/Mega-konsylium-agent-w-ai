@@ -1,0 +1,97 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "skrot": "Reakcja nadwrażliwości typu natychmiastowego (obrzęk powieki i osutka dłoni i stóp 15 minut po cefuroksymie) u pacjentki z zapaleniem krtani przyjmującej bisoprolol: nie da się zdalnie wykluczyć zajęcia krtani ani reakcji dwufazowej, a beta-bloker osłabia odpowiedź na adrenalinę. Wymagana ocena fizykalna dziś; przy objawach oddechowych lub krążeniowych – tryb natychmiastowy.",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — cefuroksym",
+      "p": 0.45,
+      "za": [
+        "początek ok. 15 minut po dawce — typowe okno dla reakcji natychmiastowej (zależnej od immunoglobuliny E lub bezpośredniej degranulacji komórek tucznych) [wiedza modelu, niezweryfikowane]",
+        "obrzęk naczynioruchowy powieki oka NIELECZONEGO kroplami — przemawia za mechanizmem układowym, nie miejscowym działaniem kropli",
+        "wysypka w odległej lokalizacji (dłonie, stopy) równocześnie z obrzękiem — zajęcie skóry i błony śluzowej/tkanki podskórnej",
+        "wielokrotna wcześniejsza ekspozycja jest warunkiem uczulenia, nie dowodem tolerancji; uczulenie może pojawić się po latach bezobjawowego stosowania [wiedza modelu, niezweryfikowane]",
+        "beta-laktamy należą do najczęstszych przyczyn polekowych reakcji natychmiastowych [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "wieloletnia dobra tolerancja tego samego preparatu",
+        "jednoczesne przyjęcie erdosteiny — brak rozdzielenia czasowego sprawców",
+        "NIEZNANE: czy dawka sprzed doby (jeśli była) przebiegła bez reakcji; morfologia wysypki niepotwierdzona (pokrzywka vs inna)"
+      ]
+    },
+    {
+      "nazwa": "pokrzywka ostra z obrzękiem naczynioruchowym wywołana zakażeniem",
+      "p": 0.10,
+      "za": [
+        "ostre zakażenie górnych dróg oddechowych jest częstą przyczyną ostrej pokrzywki u dorosłych [wiedza modelu, niezweryfikowane]",
+        "zakażenie może działać jako kofaktor obniżający próg reakcji na lek tolerowany wcześniej"
+      ],
+      "przeciw": [
+        "ścisły związek czasowy (15 minut) z przyjęciem leków"
+      ]
+    },
+    {
+      "nazwa": "adenowirusowe zapalenie spojówek i gardła",
+      "p": 0.10,
+      "za": [
+        "sekwencja: najpierw jedno oko (leczone jak zakażenie bakteryjne), potem zapalenie gardła i krtani z katarem, następnie zajęcie DRUGIEGO oka — typowy przebieg zakażenia adenowirusowego, w którym drugie oko zajmowane jest po kilku dniach [wiedza modelu, niezweryfikowane]",
+        "praca w szpitalu — ekspozycja i ryzyko szerzenia się wśród pacjentów i personelu",
+        "kortykosteroid miejscowy może przedłużać wydalanie wirusa [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "nie tłumaczy wysypki na dłoniach i stopach ani nagłego początku po leku",
+        "NIEZNANE: zaczerwienienie spojówki, wydzielina, gorączka, powiększone węzły przeduszne, pierwotne wskazanie do kropli"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — erdosteina",
+      "p": 0.07,
+      "za": [
+        "przyjęta jednocześnie z cefuroksymem, w tym samym oknie czasowym"
+      ],
+      "przeciw": [
+        "reakcje nadwrażliwości na erdosteinę opisywane rzadko [wiedza modelu, niezweryfikowane]",
+        "wcześniejsza tolerancja"
+      ]
+    },
+    {
+      "nazwa": "rumień wielopostaciowy związany z zakażeniem Mycoplasma pneumoniae",
+      "p": 0.05,
+      "za": [
+        "zakażenie dróg oddechowych z kaszlem i zapaleniem krtani + zmiany akralne (dłonie, stopy) + możliwe zajęcie błony śluzowej/spojówki — wzorzec wysypki i zapalenia błon śluzowych wywołanych Mycoplasma pneumoniae [wiedza modelu, niezweryfikowane]",
+        "przy tym rozpoznaniu zajęcie oka jest stanem zagrażającym wzrokowi"
+      ],
+      "przeciw": [
+        "początek 15 minut po leku — rumień wielopostaciowy rozwija się w ciągu dni, nie minut",
+        "brak opisu zmian tarczowatych, nadżerek w jamie ustnej, bólu skóry (NIEZNANE)"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "zespół nadwrażliwości polekowej z eozynofilią i objawami układowymi (DRESS) — wykluczony czasowo: wymaga zwykle 2–8 tygodni ekspozycji, tu minuty [wiedza modelu, niezweryfikowane]",
+    "choroba posurowicza (reakcja podobna do choroby posurowiczej) jako przyczyna OBECNEGO epizodu — wykluczona czasowo (rozwija się po dniach) [wiedza modelu, niezweryfikowane]",
+    "wrodzony lub polekowy (inhibitory konwertazy angiotensyny) obrzęk naczynioruchowy bradykininowy — mało prawdopodobny: brak inhibitorów konwertazy na liście leków, obrzęk współistnieje z wysypką (w obrzęku bradykininowym pokrzywki zwykle brak) [wiedza modelu, niezweryfikowane]; NIE wykluczony formalnie, bo pełna lista leków NIEZNANA",
+    "zapalenie wnętrza gałki ocznej po zabiegu — dotyczyłoby oka leczonego, a obrzęk dotyczy oka nieleczonego (ale patrz flaga oka leczonego w otwartych)"
+  ],
+  "red_flags_otwarte": [
+    "ANAFILAKSJA / obrzęk krtani: chrypka i zapalenie krtani istniały przed reakcją, więc maskują wczesny obrzęk krtani; NIEZNANE: duszność, świsty, stridor, obrzęk warg/języka, dysfagia, spadek ciśnienia, omdlenie, objawy z przewodu pokarmowego. Wykluczy: badanie fizykalne z RR, tętnem, SpO2, osłuchiwaniem i oceną głosu/połykania + wywiad, czy chrypka nasiliła się po dawce. Kryteria anafilaksji (zajęcie skóry/błon śluzowych + układu oddechowego lub krążenia lub przewodu pokarmowego) [wiedza modelu, niezweryfikowane — kryteria World Allergy Organization/EAACI, brak pliku w zrodla/]",
+    "BETA-BLOKER (bisoprolol): anafilaksja u osób przyjmujących beta-blokery bywa cięższa i oporna na adrenalinę; w razie oporności glukagon 1–5 mg dożylnie [wiedza modelu, niezweryfikowane]. Bradykardia może maskować tachykardię jako wczesny objaw wstrząsu",
+    "REAKCJA DWUFAZOWA: nawrót objawów bez ponownej ekspozycji, opisywany u kilku procent reakcji anafilaktycznych, najczęściej w ciągu 12 godzin, sporadycznie do 72 godzin [wiedza modelu, niezweryfikowane]. Wieczór i noc po reakcji = okno ryzyka; pacjentka powinna nie być sama i mieć plan wezwania 112",
+    "AZYTROMYCYNA a odstęp QT: pacjentka z zaburzeniami rytmu, na beta-blokerze (bradykardia zwiększa ryzyko torsade de pointes); EKG z QTc NIEZNANE, elektrolity NIEZNANE. Próg ostrożności QTc >470 ms u kobiet, przeciwwskazanie praktyczne >500 ms [wiedza modelu, niezweryfikowane]. Wykluczy: EKG z pomiarem QTc przed kolejnymi dawkami",
+    "NEBULIZACJA BUDEZONIDU Z WODĄ DO WSTRZYKIWAŃ: roztwór hipotoniczny podany wziewnie może wywołać skurcz oskrzeli, zwłaszcza w drogach oddechowych w stanie zapalnym i po świeżej reakcji alergicznej; do rozcieńczania używa się 0,9% NaCl [wiedza modelu, niezweryfikowane — ChPL zawiesiny budezonidu do nebulizacji brak w zrodla/]. Wskazanie do nebulizacji NIEZNANE",
+    "ZESPÓŁ STEVENSA-JOHNSONA / toksyczna nekroliza naskórka: mało prawdopodobny przy latencji 15 minut (typowo 4–28 dni od rozpoczęcia leku [wiedza modelu, niezweryfikowane]), ale lewofloksacyna (krople od 3–4 dni) i infekcja należą do wyzwalaczy, a zajęcie oka + zmiany akralne to wzorzec, którego nie wolno przegapić. Wykluczy: brak pęcherzy, nadżerek w jamie ustnej/narządach płciowych, bólu skóry, objawu Nikolskiego; zmiany typu pokrzywki ustępujące <24 h",
+    "ZMIANY NA DŁONIACH I STOPACH o innym tle: wybroczyny (posocznica meningokokowa — zagrożenie życia i zakaźność), enterowirusowa choroba dłoni, stóp i jamy ustnej. Wykluczy: oględziny — czy zmiany bledną pod uciskiem, gorączka, stan ogólny, zmiany w jamie ustnej",
+    "OKO LECZONE: wskazanie do kropli NIEZNANE; kortykosteroid miejscowy przy nierozpoznanym opryszczkowym zapaleniu rogówki grozi trwałą utratą wzroku; po zabiegu zaćmy — ryzyko zapalenia wnętrza gałki. Wykluczy: dokumentacja z konsultacji okulistycznej lub ponowna ocena okulistyczna przy bólu, światłowstręcie, pogorszeniu ostrości wzroku",
+    "ZAKAŹNOŚĆ DLA OTOCZENIA: pracownica szpitala z ostrym zakażeniem dróg oddechowych (grypa, COVID-19, zakażenie RSV) i możliwym adenowirusowym zapaleniem spojówek — ryzyko dla pacjentów szpitala. Wykluczy: szybki test antygenowy grypa/SARS-CoV-2; do czasu ustąpienia objawów — niepodejmowanie pracy z pacjentami",
+    "PRZYSZŁA EKSPOZYCJA: bez oznaczenia alergii na cefuroksym w dokumentacji ryzyko ponownego podania (także w jej szpitalu) i cięższej reakcji; reaktywność krzyżowa z cefalosporynami o podobnym łańcuchu bocznym R1 (ceftriakson, cefotaksym, cefepim) [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Dziś (nie odkładać do jutra) zbadać pacjentkę osobiście — parametry życiowe z SpO2, osłuchiwanie, ocena głosu, połykania, jamy ustnej i spojówek, morfologia wysypki (bladnięcie pod uciskiem, pęcherze), EKG z QTc przed kolejną dawką azytromycyny — z adrenaliną 0,5 mg domięśniowo w zasięgu ręki [wiedza modelu, niezweryfikowane], a przy jakimkolwiek objawie oddechowym, krążeniowym lub narastaniu obrzęku — wezwanie 112 i adrenalina domięśniowo.",
+  "co_zmieniloby_zdanie": "Potwierdzenie w badaniu fizykalnym prawidłowych parametrów życiowych i SpO2, braku duszności, świstów, stridoru, obrzęku warg/języka i zmian śluzówkowych, przy ustępowaniu wysypki i obrzęku po leku przeciwhistaminowym, obniżyłoby moją pilność do 3 (kontrola w tym tygodniu, oznaczenie alergii, diagnostyka alergologiczna za 4–6 tygodni).",
+  "zrodla": [
+    "zrodla/ — brak plików merytorycznych (MANIFEST zawiera tylko przykłady); brak polskich wytycznych w bibliotece dla anafilaksji, alergii na beta-laktamy i działań niepożądanych azytromycyny",
+    "PubMed — niedostępny w tej sesji (błąd połączenia, proxy 403); żadna liczba nie została zweryfikowana w źródle pierwotnym",
+    "Wszystkie progi i dawki (adrenalina 0,5 mg domięśniowo, glukagon 1–5 mg dożylnie, okno reakcji dwufazowej, latencja zespołu Stevensa-Johnsona i DRESS, progi QTc, rozcieńczanie budezonidu 0,9% NaCl, reaktywność krzyżowa cefalosporyn wg łańcucha R1) — [wiedza modelu, niezweryfikowane]; do weryfikacji przez Sprawdzającego faktów (proponowane: wytyczne EAACI dot. anafilaksji, World Allergy Organization Anaphylaxis Guidance, ChPL Zinnat, ChPL azytromycyny, ChPL zawiesiny budezonidu do nebulizacji)",
+    "pamiec/zespol.md — brak wpisów dotyczących tej prezentacji"
+  ]
+}
