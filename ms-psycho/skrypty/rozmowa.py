@@ -110,7 +110,7 @@ def kontakt_dzis(t: str) -> bool:
             return True
         if not re.search(r"\b(dzis|dzisiaj|teraz|od razu|natychmiast)\b", zb):
             continue
-        if re.search(r"zadzwo|dzwon|napisz|jedz|jedzie|idz|pojdz|porozmawia|skontaktuj|kontakt|czp|izb|sor\b|pogotowi|112|lekarz|psychiatr|powiedz|popros|zostan z|bliski", zb) \
+        if re.search(r"zadzwo|dzwon|napisz|napisa|jedz|jedzie|idz|pojdz|porozmawia|rozmow|skontaktuj|kontakt|czp|centrum|czat|zdrowia psych|izb|sor\b|pogotowi|112|lekarz|psychiatr|powiedz|popros|zostan z|bliski", zb) \
                 or any(n in z.replace(" ", "") for n in numery):
             return True
     return False
