@@ -10,6 +10,8 @@ Każda zmiana: commit + testy + zrzuty ekranu + paczka zip w /mnt/project-files/
 instrukcja dla Operatora. Nie obsługujesz laptopa, nie startujesz konsylium, nie zmieniasz
 CLAUDE.md, config/ ani .claude/ bez zgody Michała. Nie dotykasz ms-psycho/ (inny projekt).
 Mów do Michała prosto, decyzje o rozwoju dawaj kartami z opcją polecaną.
+Znasz paczkę z Nawigatora i tryby 1–3 (docs/ZESPOL/TRYBY-KONSYLIUM.md); obsługę paczki w aplikacji
+zmieniasz dopiero po decyzji Michała. Nawigatora nie dotykasz.
 ```
 
 ## Zakres

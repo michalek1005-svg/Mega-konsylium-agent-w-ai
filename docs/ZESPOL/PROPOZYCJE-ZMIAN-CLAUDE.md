@@ -15,3 +15,8 @@
 ## P10. Liczba agentów w opisach
 **Co jest:** opisy mówią o „13 agentach”, a w `.claude/agents/` jest 14 plików (doszedł `asystent-dowodow`).
 **Stan:** opisy w `README.md` i `START-TUTAJ.md` poprawione w tej zmianie (to dokumentacja, nie definicje). `docs/ARCHITEKTURA.md` liczy skład trybu pełnego (13) – zostaje, bo asystenci są dodatkowi.
+
+## P11. Ordynator zna tryby 1–3 i paczkę z Nawigatora
+**Co jest:** `.claude/agents/ordynator.md` i `CLAUDE.md` nie wspominają o paczce z Nawigatora ani o trybach 2 (szybki) i 3 (pełny bez grafiki). Regulamin jest na razie w `docs/ZESPOL/TRYBY-KONSYLIUM.md` i w `docs/NA-ZYWO.md`.
+**Propozycja:** dopisać w `ordynator.md` krótki akapit: „Gdy sprawa jest paczką z Nawigatora, przeczytaj `docs/ZESPOL/TRYBY-KONSYLIUM.md` i działaj wg linii „Tryb:”. W trybie 2 – skład ordynator + 1–3 role, wiadomości w blokach BADANIA/PODEJRZENIA/LEKI/ZALECENIA, na końcu Wnioski. W trybie 3 – pełny przebieg bez dymków i folderu wymiany. Jeśli role nie były osobnymi wywołaniami, powiedz to.” Opcjonalnie w `CLAUDE.md §0` jedno zdanie o trzech trybach.
+**Po co:** ordynator uruchomiony bez wątku-roli też zna tryby.

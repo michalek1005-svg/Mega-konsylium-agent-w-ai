@@ -5,6 +5,8 @@ Stan: 2.11.2026. Dotyczy **wątków projektu** (kto co robi w rozmowach z Micha�
 ## Co budujemy
 **MS Konsylium** – konsylium lekarskie agentów AI w aplikacji Windows w stylu Nawigatora Medycznego (marka MS), z wersją na iPad przez sieć domową. Cały przebieg dzieje się w aplikacji: wywiad (klikalna ankieta) → pytania AI na żywo → konsylium w Pokoju lekarskim (dymki z opiniami lekarzy) → Wnioski z PMID/DOI.
 
+**Sprawa przychodzi zwykle jako paczka z Nawigatora Medycznego** (przycisk „Do Konsylium”), z linią „Tryb: 1|2|3”: 1 = pełny z aplikacją, 2 = szybki w rozmowie (bloki BADANIA / PODEJRZENIA / LEKI / ZALECENIA na bieżąco), 3 = pełny bez grafiki, w rozmowie. Regulamin paczki, trybów i układu Wniosków: **[TRYBY-KONSYLIUM.md](TRYBY-KONSYLIUM.md)** – obowiązuje każdą rolę.
+
 Narzędzie testowe i edukacyjne. Nie służy do decyzji u realnych pacjentów. Przypadki to pole testów: tylko wiek i płeć, **tylko dorośli**.
 
 **Aplikacja psychologiczna (katalog `ms-psycho/`) NIE należy do tego projektu.** Ma osobny projekt i własny zespół. Nie zmieniaj jej plików i nie przyjmuj zadań do niej – przekaż je Nadzorcy.
@@ -33,7 +35,8 @@ Szczegóły każdej roli: `ROLA-*.md` w tym katalogu. Tytuł wątku zawsze zaczy
 8. **Słowa „Gabinet” nie używamy** jako nazwy czegokolwiek w aplikacji (Nawigator Medyczny zostaje Nawigatorem). Wolno jako zwykły rzeczownik w treści medycznej („pomiar gabinetowy”), lepiej „poradnia”.
 9. **Tryb jasny domyślnie.** Styl ściśle wg Nawigatora (szklana tafla, pionowy pasek okrągłych ikon, neonowe K w stylu logo Nawigatora).
 10. **Modele:** wątki ról na Opus 5.5. Agenci konsylium na Fable/Opus (wysiłek high/medium), najwyżej jeden Sonnet. Nie tnij kosztów tańszym modelem bez zgody Michała.
-11. **Dane spraw i rozmów zostają na laptopie.** Nie wyciągaj historii rozmów. W projekcie tylko wiek i płeć.
+11. **Nawigatora nie dotykamy.** Nie otwieramy jego plików ani okna. Wnioski do niego nie wracają, bo Michał przepisuje je sam.
+12. **Dane spraw i rozmów zostają na laptopie.** Nie wyciągaj historii rozmów. W projekcie tylko wiek i płeć.
 
 ## Źródła medyczne
 - **PubMed przez konektor `mcp__PubMed__*`** (`search_articles`, `get_article_metadata`, `find_related_articles`, `lookup_article_by_citation`, `get_full_text_article`). Subagent ładuje go sam: `ToolSearch "select:mcp__PubMed__search_articles,mcp__PubMed__get_article_metadata"`.

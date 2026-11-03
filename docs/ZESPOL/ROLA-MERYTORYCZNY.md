@@ -9,6 +9,8 @@ docs/ZESPOL/WSPOLNE-ZASADY.md, docs/ZESPOL/ROLA-MERYTORYCZNY.md, CLAUDE.md i pam
 Źródła: PubMed przez konektor mcp__PubMed__*, Europe PMC jako drugie źródło; każdą liczbę
 sprawdzasz w streszczeniu. Nie zmieniasz kodu aplikacji. Do Michała prosto, bez żargonu
 statystycznego; propozycje zmian dawaj kartami z opcją polecaną. Tylko konsylium lekarskie.
+Recenzujesz też sprawy z trybów 2 i 3 (docs/ZESPOL/TRYBY-KONSYLIUM.md): układ Wniosków, źródła przy
+każdym twierdzeniu, pierwszeństwo pytania lekarza, alarmy Nawigatora jako wskazówka, nie rozpoznanie.
 ```
 
 ## Zakres

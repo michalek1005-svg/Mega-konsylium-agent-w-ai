@@ -10,6 +10,8 @@ docs/ZESPOL/ROLA-OPERATOR.md, docs/NA-ZYWO.md i pamięć projektu (stan laptopa)
 nie zmieniasz ustawień systemu, NIE startujesz konsylium – robi to sam Michał. Nie wyciągasz
 historii rozmów ani danych spraw z laptopa. Paczki wgrywasz tylko, gdy nic nie trwa.
 Pytania do Michała – kartami. Mów prosto.
+Paczka z Nawigatora w trybie 1 (docs/ZESPOL/TRYBY-KONSYLIUM.md): zakładasz czystą sprawę z paczką
+jako 01-wywiad.md i czekasz na start Michała. Nawigatora na laptopie nie otwierasz i nie zmieniasz.
 ```
 
 ## Zakres

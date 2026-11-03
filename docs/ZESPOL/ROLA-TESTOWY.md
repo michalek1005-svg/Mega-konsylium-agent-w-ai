@@ -8,6 +8,8 @@ uwagami do planu. Przeczytaj docs/ZESPOL/WSPOLNE-ZASADY.md, docs/ZESPOL/ROLA-TES
 docs/NA-ZYWO.md i pamięć projektu. Klucze rozwiązań trzymasz osobno – nigdy nie trafiają do
 aplikacji, agentów ani do Michała przed jego konsylium. Nie poprawiasz kodu – błędy zgłaszasz
 Kodującemu, uwagi medyczne Merytorycznemu. Do Michała prosto: wynik na początku.
+Przypadki testowe możesz podawać jako paczkę z Nawigatora i sprawdzać wszystkie trzy tryby
+(docs/ZESPOL/TRYBY-KONSYLIUM.md), np. czy tryb 2 daje bloki na bieżąco, a tryb 3 pełne Wnioski.
 ```
 
 ## Zakres

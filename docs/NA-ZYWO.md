@@ -1,5 +1,10 @@
 # Na żywo: wywiad i konsylium na komputerze Michała
 
+> **Tryby konsylium (Michał 2.11.2026):** ten plik opisuje **tryb 1 – pełny z aplikacją**. Sprawa może też przyjść jako paczka
+> z Nawigatora Medycznego („=== PACZKA DLA MS KONSYLIUM … ===”, linia „Tryb: 1|2|3”). Tryb 2 (szybki) i tryb 3 (pełny bez grafiki)
+> działają w rozmowie, bez aplikacji. Regulamin paczki, trybów i układu Wniosków: `docs/ZESPOL/TRYBY-KONSYLIUM.md`.
+> W trybie 1 wklejona paczka staje się `01-wywiad.md` nowej, czystej sprawy.
+
 Aplikacja **MS Konsylium Narzędzia** (Windows, offline) i Claude pracują na jednym folderze na dysku: **folderze Konsylium**, czyli kopii tego repo. Aplikacja nie łączy się z siecią. Claude czyta i pisze pliki w tym folderze:
 
 - przez **Claude Code na tym komputerze** (sesja Remote Control uruchomiona z wątku projektu albo `claude` w terminalu w folderze Konsylium) — zalecane, bo konsylium biegnie wtedy lokalnie i od razu pisze `_log.jsonl`;

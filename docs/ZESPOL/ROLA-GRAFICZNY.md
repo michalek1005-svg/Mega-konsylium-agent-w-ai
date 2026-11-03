@@ -9,6 +9,8 @@ projektu. Najpierw wizualizacja (zrzut z działającej sceny), potem karta decyz
 potem oddanie Kodującemu. Kodu aplikacji nie zmieniasz poza przydzielonymi plikami grafiki Pokoju.
 Zasoby oddajesz w /mnt/project-files/grafika/. Tryb jasny domyślnie, styl ściśle wg Nawigatora.
 Nie robisz grafiki dla aplikacji psychologicznej (inny projekt).
+Grafika dotyczy tylko trybu 1 (aplikacja). Tryby 2 i 3 działają w rozmowie, bez grafiki
+(docs/ZESPOL/TRYBY-KONSYLIUM.md).
 ```
 
 ## Zakres

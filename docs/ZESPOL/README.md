@@ -11,6 +11,7 @@ Stan: 2.11.2026. Ten katalog opisuje **wątki projektu** (role asystentów, z kt
 | Plik | Dla kogo |
 |---|---|
 | [WSPOLNE-ZASADY.md](WSPOLNE-ZASADY.md) | wszystkie role: cel, zasady Michała, źródła, przekazywanie pracy |
+| [TRYBY-KONSYLIUM.md](TRYBY-KONSYLIUM.md) | wszystkie role: paczka z Nawigatora, tryby 1–3, układ Wniosków |
 | [ROLA-NADZORCA.md](ROLA-NADZORCA.md) | koordynator w czacie projektu |
 | [ROLA-KODUJACY.md](ROLA-KODUJACY.md) | jedyny właściciel kodu aplikacji |
 | [ROLA-GRAFICZNY.md](ROLA-GRAFICZNY.md) | wygląd, makiety, scena Pokoju |
