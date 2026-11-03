@@ -1,0 +1,110 @@
+{
+  "rola": "farmakolog",
+  "rozpoznania": [
+    {
+      "nazwa": "objawy polekowe — metformina",
+      "p": 0.75,
+      "za": [
+        "Siofor XR (metformina o przedłużonym uwalnianiu, tabletka matrycowa) włączony kilka miesięcy temu; kuleczki pojawiły się 'od niedawna'",
+        "pojedyncza kulka, wg pacjentki powiązana czasowo z przyjęciem leku",
+        "opis 'żółtawa, okrągła struktura w stolcu' u kobiety na metforminie XR opisany jako tabletka-widmo naśladująca pasożyta (PMID 40209786)",
+        "nierozpuszczalna matryca tabletek o przedłużonym uwalnianiu bywa wydalana w kale w stanie nienaruszonym mimo pełnego uwolnienia substancji czynnej (PMID 27048352, 29264103, 30117332)",
+        "stolec prawidłowej barwy, brak objawów brzusznych, badanie przedmiotowe i laboratoryjne bez odchyleń"
+      ],
+      "przeciw": [
+        "kuleczki nie były oglądane ani zachowane — rozmiar, twardość i podobieństwo do tabletki NIEZNANE",
+        "nie wiadomo, czy tabletka jest połykana w całości (rozkruszanie/dzielenie zmienia uwalnianie i zwykle niszczy matrycę)",
+        "ezetymib/rozuwastatyna i peryndopryl/amlodypina to tabletki o natychmiastowym uwalnianiu — nie tłumaczą widma"
+      ]
+    },
+    {
+      "nazwa": "objawy polekowe — rozuwastatyna",
+      "p": 0.03,
+      "za": [
+        "rozuwastatyna 20 mg może dawać miopatię z mioglobinurią (ciemny mocz) lub uszkodzenie wątroby (PMID 34987920)"
+      ],
+      "przeciw": [
+        "brak bólów, osłabienia, skurczów mięśni",
+        "CK, ALT, bilirubina i badanie ogólne moczu (w tym krew/barwnik) prawidłowe wg użytkownika",
+        "brak leków hamujących eliminację rozuwastatyny i brak zmian w leczeniu",
+        "stolec prawidłowej barwy, brak żółtaczki i świądu"
+      ]
+    },
+    {
+      "nazwa": "zagęszczony mocz",
+      "p": 0,
+      "za": [
+        "pacjentka mało pije; ciemny mocz rzadki, z izolowanym odchyleniem barwy w badaniu ogólnym"
+      ],
+      "przeciw": [
+        "ciężar właściwy moczu NIEZNANY co do wartości"
+      ]
+    }
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "rabdomioliza statynowa — brak objawów mięśniowych, CK i badanie moczu prawidłowe (z zastrzeżeniem nieznanej daty badań)",
+    "polekowe uszkodzenie wątroby z cholestazą — ALT, bilirubina prawidłowe, brak żółtaczki, świądu, odbarwienia stolca",
+    "kwasica mleczanowa w przebiegu metforminy — brak objawów ogólnych, nudności, bólu brzucha, osłabienia; kreatynina prawidłowa"
+  ],
+  "red_flags_otwarte": [
+    "data badań laboratoryjnych NIEZNANA — nie wiadomo, czy CK, ALT, bilirubina i kreatynina pochodzą z okresu ciemnego moczu",
+    "małe spożycie płynów u pacjentki na inhibitorze konwertazy angiotensyny i metforminie — ryzyko ostrego uszkodzenia nerek przy odwodnieniu (biegunka, wymioty, gorączka) [wiedza modelu, niezweryfikowane]",
+    "antykoncepcja NIEZNANA u 40-latki na rozuwastatynie, ezetymibie i peryndoprylu — leki przeciwwskazane w ciąży [wiedza modelu, niezweryfikowane]"
+  ],
+  "nastepny_krok": "Poprosić pacjentkę, by przy kolejnym epizodzie wypłukała i obejrzała (lub zachowała/sfotografowała) kulkę i porównała z tabletką Siofor XR, a do tego czasu przyjmowała ją w całości, bez dzielenia i rozkruszania, z wieczornym posiłkiem — bez zmiany leczenia.",
+  "co_zmieniloby_zdanie": "Gdyby kulka nie przypominała matrycy tabletki (np. była miękka, rozpuszczalna w wodzie, z segmentacją lub ruchoma), albo pojawiały się w dni bez metforminy, albo ciemny mocz utrzymywał się po nawodnieniu z dodatnią bilirubiną/krwią w moczu lub podwyższonym CK — przestałbym traktować to jako zjawisko polekowe.",
+  "zrodla": [
+    "PubMed: K-Sarı I i wsp. Presence of Ghost Capsules in Stool Mimicking Parasites due to Extended Release Metformin. Clin Lab 2025;71(4). PMID 40209786, DOI 10.7754/Clin.Lab.2024.241019",
+    "PubMed: Sun D i wsp. Ghost-Pill-Buster: intact levetiracetam ER tablets after dissolution testing. CNS Drugs 2016;30(5):455-60. PMID 27048352, DOI 10.1007/s40263-016-0332-9",
+    "PubMed: Iwamuro M i wsp. Ghost tablet in feces. J Gen Fam Med 2017;18(6):483-4. PMID 29264103, DOI 10.1002/jgf2.134",
+    "PubMed: Overberg A i wsp. 'Ghost tablet' husks excreted in feces in large bupropion XL overdose. Clin Toxicol 2019;57(2):141-2. PMID 30117332, DOI 10.1080/15563650.2018.1494276",
+    "PubMed: Osborn H i wsp. Delayed onset multi-drug interaction resulting in rhabdomyolysis (ticagrelor, rozuwastatyna, amiodaron). Cureus 2021;13(11):e20035. PMID 34987920, DOI 10.7759/cureus.20035",
+    "zrodla/ — brak ChPL Siofor XR, Ezehron Duo, Co-Prestarium oraz wytycznych PTD w bibliotece (MANIFEST zawiera tylko przykłady); dawkowanie oznaczone jako wiedza modelu"
+  ],
+  "plan_farmakologiczny": [
+    {
+      "lek": "metformina o przedłużonym uwalnianiu (Siofor XR)",
+      "dawka": "1000 mg raz na dobę, bez zmian",
+      "droga": "doustnie, połykać w całości, z wieczornym posiłkiem",
+      "czas": "przewlekle",
+      "uwagi": "Edukacja: widoczna matryca w kale nie oznacza braku wchłonięcia leku (PMID 27048352, 40209786). Nie dzielić i nie rozkruszać. Przy długotrwałym leczeniu okresowo witamina B12 i eGFR [wiedza modelu, niezweryfikowane]. Przy odwodnieniu, biegunce, wymiotach — czasowo wstrzymać metforminę i skontaktować się z lekarzem [wiedza modelu, niezweryfikowane]. Jeśli pacjentka mimo edukacji nie akceptuje zjawiska: zamiana na metforminę o natychmiastowym uwalnianiu w dawce podzielonej [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "PMID 40209786; PMID 27048352; dawkowanie [wiedza modelu, niezweryfikowane — brak ChPL w zrodla/]"
+    },
+    {
+      "lek": "rozuwastatyna + ezetymib (Ezehron Duo 20 mg + 10 mg)",
+      "dawka": "1 tabletka raz na dobę, bez zmian",
+      "droga": "doustnie",
+      "czas": "przewlekle",
+      "uwagi": "Brak istotnych interakcji z amlodypiną i peryndoprylem (rozuwastatyna w niewielkim stopniu metabolizowana przez CYP3A4) [wiedza modelu, niezweryfikowane]. Pouczyć o zgłaszaniu bólów/osłabienia mięśni z ciemnym moczem — wtedy pilnie CK. Przeciwwskazana w ciąży — ustalić antykoncepcję.",
+      "zrodlo": "PMID 34987920; [wiedza modelu, niezweryfikowane]"
+    },
+    {
+      "lek": "peryndopryl z argininą + amlodypina (Co-Prestarium 10 mg + 10 mg)",
+      "dawka": "1 tabletka raz na dobę, bez zmian",
+      "droga": "doustnie",
+      "czas": "przewlekle",
+      "uwagi": "Przy małej podaży płynów zalecić nawodnienie; przy odwodnieniu ryzyko spadku eGFR i hiperkaliemii. Inhibitor konwertazy angiotensyny przeciwwskazany w II i III trymestrze ciąży [wiedza modelu, niezweryfikowane].",
+      "zrodlo": "[wiedza modelu, niezweryfikowane]"
+    }
+  ],
+  "nie_podawac": [
+    {
+      "co": "leki przeciwpasożytnicze (np. albendazol, mebendazol) empirycznie",
+      "powod": "brak przesłanek do parazytozy; obraz najpewniej tabletki-widmo (PMID 40209786) — niepotrzebna ekspozycja i utrwalenie fałszywego rozpoznania"
+    },
+    {
+      "co": "odstawienie lub samodzielne dzielenie/rozkruszanie Siofor XR",
+      "powod": "zjawisko nie oznacza braku działania leku; rozkruszenie zmienia profil uwalniania i nasila działania niepożądane żołądkowo-jelitowe (PMID 27048352)"
+    },
+    {
+      "co": "odstawienie rozuwastatyny z powodu ciemnego moczu",
+      "powod": "brak objawów mięśniowych i prawidłowe CK/ALT — brak wskazań; odstawienie zwiększa ryzyko sercowo-naczyniowe"
+    },
+    {
+      "co": "niesteroidowe leki przeciwzapalne doraźnie przy małej podaży płynów",
+      "powod": "połączenie z inhibitorem konwertazy angiotensyny i metforminą zwiększa ryzyko ostrego uszkodzenia nerek [wiedza modelu, niezweryfikowane]"
+    }
+  ]
+}

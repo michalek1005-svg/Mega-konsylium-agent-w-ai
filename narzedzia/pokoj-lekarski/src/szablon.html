@@ -1,0 +1,49 @@
+<!--@@HEAD@@-->
+<div class="scena">
+  <header class="naglowek">
+    <div class="logo" aria-hidden="true">K</div>
+    <div class="tytul">
+      <h1>Pokój lekarski</h1>
+      <p><span class="kropka" aria-hidden="true"></span><span id="opis-sprawy">Konsylium AI · marka MS</span><span class="chip" id="chip-tryb" hidden></span></p>
+    </div>
+    <div class="pasek" role="toolbar" aria-label="Sprawa i wygląd">
+      <button class="nk-button" id="wczytaj" type="button" title="Wybierz folder sprawy, np. sprawy/2026-10-31-02">Wczytaj sprawę…</button>
+      <button class="nk-button" id="zywo" type="button" hidden title="Wybierz folder sprawy, która właśnie trwa. Pokój co 3 sekundy dociąga nowe dymki.">Na żywo…</button>
+      <button class="nk-button" id="motyw" type="button" aria-label="Przełącz tryb jasny lub ciemny">Tryb jasny</button>
+    </div>
+    <input id="folder" type="file" webkitdirectory multiple hidden>
+  </header>
+
+  <div class="uklad">
+    <section class="tafla pokoj-ramka" aria-label="Pokój lekarski">
+      <div class="pokoj" id="pokoj">
+        <svg class="rys" id="rys" viewBox="0 0 1200 700" role="img" aria-label="Pokój lekarski z ordynatorem, sześcioma lekarzami, trzema zastępcami, dwoma sprawdzającymi i rezydentami za szybą"></svg>
+        <div class="tablica" id="tablica" aria-live="polite"></div>
+        <div class="dymki" id="dymki"></div>
+      </div>
+      <div class="napisy" id="napisy" aria-live="polite"></div>
+      <div class="sterowanie">
+        <button class="nk-button" id="wstecz" type="button" aria-label="Poprzednia wypowiedź">◀</button>
+        <button class="nk-button nk-on" id="graj" type="button" aria-label="Odtwarzaj lub zatrzymaj">❚❚</button>
+        <button class="nk-button" id="dalej" type="button" aria-label="Następna wypowiedź">▶</button>
+        <div class="os" id="os" aria-label="Fazy konsylium"></div>
+        <label class="nk-label" for="tempo">Tempo</label>
+        <select class="tempo" id="tempo">
+          <option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
+        </select>
+      </div>
+      <div class="legenda" id="legenda"></div>
+    </section>
+
+    <aside class="tafla protokol" aria-label="Protokół konsylium">
+      <h2>Protokół</h2>
+      <p class="nk-label">Kliknij wpis albo postać, żeby przeczytać całość</p>
+      <div class="lista" id="lista"></div>
+      <div class="szczegol" id="szczegol" hidden></div>
+    </aside>
+  </div>
+  <p class="stopka">Narzędzie testowe i edukacyjne marki MS. Działa offline, niczego nie wysyła. Dymki to skróty wypowiedzi z plików sprawy; pełny tekst jest w protokole.</p>
+</div>
+<script>
+/*@@JS@@*/
+</script>

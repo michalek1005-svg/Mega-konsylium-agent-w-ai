@@ -1,0 +1,92 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Objawowa kamica pęcherzyka żółciowego (kolka żółciowa)",
+      "p": 0.45,
+      "za": [
+        "Ból poposiłkowy, nasilany tłustymi posiłkami, promieniujący pod prawą łopatkę, falujący w epizodach 30–90 min",
+        "Nawracające, samoustępujące podobne epizody 2–3 razy w ostatnim roku",
+        "Profil ryzyka: kobieta, 54 lata, otyłość (BMI ok. 31)",
+        "Bolesność prawego podżebrza, brak obrony mięśniowej, temperatura 36,9 °C"
+      ],
+      "przeciw": [
+        "Objaw Murphy'ego dodatni i dolegliwości utrzymujące się od 3 dni z bólem resztkowym między epizodami — bardziej pasuje do zapalenia pęcherzyka niż do niepowikłanej kolki (kolka typowo <6 h)",
+        "Brak badań obrazowych i laboratoryjnych — rozpoznanie wyłącznie kliniczne"
+      ]
+    },
+    {
+      "nazwa": "Ostre zapalenie pęcherzyka żółciowego",
+      "p": 0.25,
+      "za": [
+        "Objaw Murphy'ego dodatni przy bolesności prawego podżebrza",
+        "Czas trwania dolegliwości 3 dni z tępym bólem resztkowym między atakami",
+        "Ibuprofen przyjęty wczoraj 2 × 400 mg mógł maskować gorączkę i stan zapalny; pacjentka nie mierzyła temperatury w domu"
+      ],
+      "przeciw": [
+        "Temperatura 36,9 °C, tętno 84/min, brak dreszczy",
+        "Brak obrony mięśniowej; brak markerów zapalnych (C-reaktywne białko, leukocytoza — NIEZNANE)"
+      ]
+    },
+    {
+      "nazwa": "Kamica przewodowa (choledocholitiaza) lub ostre zapalenie trzustki żółciopochodne",
+      "p": 0.08,
+      "za": [
+        "Domniemana kamica pęcherzyka i nawracające epizody zwiększają ryzyko migracji złogu",
+        "Nudności i wymioty; lipaza, bilirubina i próby wątrobowe NIEZNANE — nie można wykluczyć"
+      ],
+      "przeciw": [
+        "Brak żółtaczki, ciemnego moczu i odbarwionych stolców w ocenie pacjentki",
+        "Ból zlokalizowany w prawym podżebrzu, bez opisu promieniowania opasującego do pleców"
+      ]
+    },
+    {
+      "nazwa": "Choroba wrzodowa żołądka lub dwunastnicy, w tym uszkodzenie polekowe przez niesteroidowe leki przeciwzapalne",
+      "p": 0.07,
+      "za": [
+        "Ból w nadbrzuszu związany z posiłkami, nudności, wymioty",
+        "Przyjmowanie ibuprofenu (przyczyna polekowa — obecnie może nasilać ryzyko krwawienia i maskować objawy)"
+      ],
+      "przeciw": [
+        "Ibuprofen przyjęty dopiero po początku dolegliwości (wczoraj, dzień 2–3) — nie tłumaczy początku",
+        "Promieniowanie pod prawą łopatkę i dodatni objaw Murphy'ego wskazują na drogi żółciowe; brak smolistych stolców"
+      ]
+    },
+    {
+      "nazwa": "Ostry zespół wieńcowy z niedokrwieniem ściany dolnej o nietypowym obrazie",
+      "p": 0.04,
+      "za": [
+        "Kobieta 54 lata z nadciśnieniem tętniczym, hipercholesterolemią i otyłością — u kobiet częsta prezentacja z bólem w nadbrzuszu i nudnościami",
+        "Elektrokardiogram NIEZNANY; status menopauzalny NIEZNANY"
+      ],
+      "przeciw": [
+        "Ból wyraźnie wywoływany jedzeniem, bez związku z wysiłkiem, bez duszności, potów i bólu w klatce piersiowej",
+        "Miejscowa bolesność uciskowa z dodatnim objawem Murphy'ego — rzadka w niedokrwieniu mięśnia sercowego"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Żółtaczka, ciemny mocz, odbarwione stolce — nie stwierdzono (w ocenie pacjentki, bez bilirubiny)",
+    "Krwawienie z przewodu pokarmowego — brak smolistych stolców i krwi w stolcu",
+    "Otrzewnowa obrona mięśniowa — nieobecna w badaniu",
+    "Niestabilność hemodynamiczna — RR 138/86 mmHg, HR 84/min"
+  ],
+  "red_flags_otwarte": [
+    "Ostre zapalenie pęcherzyka żółciowego — dodatni objaw Murphy'ego przy 3 dniach dolegliwości; gorączka mogła być maskowana ibuprofenem",
+    "Ostre zapalenie trzustki / kamica przewodowa — brak lipazy, bilirubiny, prób wątrobowych",
+    "Niedokrwienie mięśnia sercowego o nietypowym obrazie — brak elektrokardiogramu przy profilu ryzyka sercowo-naczyniowego"
+  ],
+  "nastepny_krok": "Dziś: elektrokardiogram w gabinecie oraz pilne badania krwi (morfologia, C-reaktywne białko, lipaza, bilirubina, aminotransferazy, fosfataza zasadowa, gamma-glutamylotranspeptydaza) z jak najszybszym USG jamy brzusznej — przy wzroście markerów zapalnych, lipazy lub bilirubiny albo nieustępowaniu bólu skierowanie na SOR/oddział chirurgiczny.",
+  "co_zmieniloby_zdanie": "USG z pogrubiałą ścianą pęcherzyka (>3 mm) lub płynem okołopęcherzykowym albo podwyższone CRP/leukocytoza przesunęłyby p na ostre zapalenie pęcherzyka powyżej kolki, a podwyższona lipaza (≥3 × górna granica normy) lub bilirubina — na powikłanie przewodowe/trzustkowe; prawidłowe markery i USG z samymi złogami bez cech zapalenia potwierdziłyby kolkę żółciową.",
+  "zrodla": [
+    "zrodla/MANIFEST.md — brak polskiej wytycznej dla kamicy żółciowej/bólu w nadbrzuszu w bibliotece (sprawdzono 2026-10-31)",
+    "pamiec/zespol.md — wniosek 2026-10-31 PRZYKLAD-001: elektrokardiogram w gabinecie u kobiety 50+ z czynnikami ryzyka sercowego przed planem planowym",
+    "PubMed — niedostępny w tej sesji (błąd połączenia serwera MCP); brak cytowań z DOI",
+    "Tokyo Guidelines 2018 (TG18) — kryteria rozpoznania ostrego zapalenia pęcherzyka żółciowego (miejscowe: objaw Murphy'ego/bolesność prawego podżebrza; ogólne: gorączka, CRP, leukocytoza; obrazowe) [wiedza modelu, niezweryfikowane]",
+    "Próg grubości ściany pęcherzyka >3 mm w USG oraz kolka żółciowa typowo <6 h [wiedza modelu, niezweryfikowane]",
+    "Kryterium lipazy ≥3 × górna granica normy w ostrym zapaleniu trzustki (kryteria Atlanta 2012) [wiedza modelu, niezweryfikowane]",
+    "Nietypowa prezentacja ostrego zespołu wieńcowego u kobiet (ból w nadbrzuszu, nudności) [wiedza modelu, niezweryfikowane]"
+  ]
+}

@@ -1,0 +1,30 @@
+{"ts":"2026-10-31T01:47:16Z","rola":"ordynator","zdarzenie":"start","plik":"00-surowe.md","uwaga":"test pod nadzorem; wywiad przejety z PRZYKLAD-001 (symulowane odpowiedzi)"}
+{"ts":"2026-10-31T01:48:05Z","rola":"ordynator","zdarzenie":"triage","plik":"02-triage.json","tryb":"PELNY"}
+{"ts":"2026-10-31T01:49:19+00:00","agent":"bayes","zdarzenie":"start"}
+{"ts":"2026-10-31T01:49:20+00:00","agent":"bayes","zdarzenie":"stop","plik":"03-opinie/bayes.json"}
+{"ts":"2026-10-31T01:49:21Z","rola":"hipotezujacy","zdarzenie":"start","plik":"01-wywiad.md"}
+{"ts":"2026-10-31T01:49:21Z","rola":"hipotezujacy","zdarzenie":"stop","plik":"03-opinie/hipotezujacy.json","uwaga":"PubMed niedostepny"}
+{"ts":"2026-10-31T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"start"}
+{"ts":"2026-10-31T01:49:25Z","agent":"najgorszy_scenariusz","zdarzenie":"start","etap":"03-opinie"}
+{"ts":"2026-10-31T01:49:25Z","agent":"najgorszy_scenariusz","zdarzenie":"stop","plik":"03-opinie/najgorszy_scenariusz.json"}
+{"ts":"2026-10-31T00:00:00Z","agent":"gospodarz_kosztow","zdarzenie":"stop"}
+{"ts":"2026-10-31T00:00:00Z","agent":"farmakolog","zdarzenie":"start","etap":"03-opinie"}
+{"ts":"2026-10-31T00:00:01Z","agent":"farmakolog","zdarzenie":"stop","etap":"03-opinie","plik":"03-opinie/farmakolog.json"}
+{"ts":"2026-10-31T01:49:39+00:00","agent":"poz_pragmatyk","zdarzenie":"start","etap":"03-slepa-tura"}
+{"ts":"2026-10-31T01:49:39+00:00","agent":"poz_pragmatyk","zdarzenie":"stop","plik":"03-opinie/poz_pragmatyk.json"}
+{"ts": "2026-10-31T01:50:02+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts":"2026-10-31T01:50:43Z","rola":"ordynator","zdarzenie":"agregacja","plik":"03-opinie/_agregat.json","uwaga":"przeliczone z synonimami: _agregat-synonimy.json"}
+{"ts":"2026-10-31T01:52:38Z","rola":"ordynator","zdarzenie":"projekt","plik":"05-projekt.md"}
+{"ts": "2026-10-31T01:52:43+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=psychiatra konsultujący na oddziale internistycznym seed=11"}
+{"ts": "2026-10-31T01:52:43+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz SOR z dużego miasta seed=22"}
+{"ts": "2026-10-31T01:52:43+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz SOR z dużego miasta seed=33"}
+{"ts": "2026-10-31T01:52:49+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz chorób zakaźnych seed=44"}
+{"ts": "2026-10-31T01:52:49+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=pediatra (patrzysz na dorosłych oczami kogoś, kto zwykle leczy dzieci i pyta rodziców) seed=55"}
+{"ts": "2026-10-31T01:52:49+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=pediatra (patrzysz na dorosłych oczami kogoś, kto zwykle leczy dzieci i pyta rodziców) seed=66"}
+{"ts": "2026-10-31T01:52:49+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=internista z USA (inne progi, inne odruchy diagnostyczne) seed=77"}
+{"ts":"2026-10-31T01:55:36Z","rola":"ordynator","zdarzenie":"rezydenci","plik":"06-rezydenci/","uwaga":"uzyte pakiety: seed 11, 22, 77; seedy 33, 44, 55, 66 niewykorzystane (powtorzone persony)"}
+{"ts":"2026-10-31T01:55:36Z","rola":"ordynator","zdarzenie":"sprawdzenie","plik":"07-sprawdzenie.json","uwaga":"petla 1: fakty CZERWONA, proces CZERWONA"}
+{"ts":"2026-10-31T01:55:36Z","rola":"ordynator","zdarzenie":"odpowiedz_rezydentom","plik":"08-odpowiedz-rezydentom.md"}
+{"ts":"2026-10-31T01:55:36Z","rola":"ordynator","zdarzenie":"rewizja_projektu","plik":"05-projekt.md","uwaga":"troponina hs dodana, USG dzis/jutro, poprawki po sprawdzajacych"}
+{"ts":"2026-10-31T01:56:47Z","rola":"ordynator","zdarzenie":"final","plik":"09-FINAL.md"}
+{"ts":"2026-10-31T12:08:17Z","rola":"sprawdzajacy_faktow","zdarzenie":"weryfikacja_pubmed","plik":"09-FINAL.md","uwaga":"5 zrodel zweryfikowanych w PubMed (PMID/DOI)"}
