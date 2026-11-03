@@ -125,6 +125,13 @@ class TestLintFinal(unittest.TestCase):
             "DLACZEGO: Pacjentka po 70. r.ż. ma kulkę po dawce leku [1]. Wg PTD 2026 metformina XR ma matrycę [2]. To tłumaczy obraz.")
         self.assertEqual(lint_final.lint(t), [])
 
+    def test_zrodla_bez_limitu(self):
+        zr = "".join(f"[{n}] PMID {10000000 + n}\n" for n in range(1, 9))
+        t = FINAL.format(wnioski="").replace("[1] RPL: Metformax SR, ChPL pkt 4.8\n", zr).replace(
+            "po dawce leku [1].", "po dawce leku [1][8].")
+        self.assertEqual(lint_final.lint(t), [])
+        self.assertTrue(any("[9]" in b for b in lint_final.lint(t.replace("[1][8]", "[1][9]"))))
+
 
 class TestWynik(unittest.TestCase):
     def test_zestawienie_trafnosci_rol(self):

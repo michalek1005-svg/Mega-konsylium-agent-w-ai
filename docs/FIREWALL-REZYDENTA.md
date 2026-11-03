@@ -49,7 +49,7 @@ uzasadnienie z `05-projekt.md`, `pamiec/`, `zrodla/`, `CLAUDE.md`, nazwy i liczb
 ## 4. Inny model (zalecane, opcjonalne)
 Prawdziwa zewnętrzność = inne uprzedzenia treningowe. Ordynator może uruchomić rezydenta przez zewnętrzny CLI:
 ```
-python3 skrypty/pakiet_rezydenta.py sprawy/<ID> --persona losowa \
+python skrypty/pakiet_rezydenta.py sprawy/<ID> --persona losowa \
   | <cli-innego-modelu> --temperature 0.9 > sprawy/<ID>/06-rezydenci/R1.md
 ```
 (np. `codex exec`, `gemini -p`, `ollama run <model>` — każdy, który czyta stdin). Wymaga wpisu w `.claude/settings.json` zezwalającego na tę komendę.

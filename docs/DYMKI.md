@@ -9,8 +9,8 @@ Pokój lekarski (`narzedzia/pokoj-lekarski/`) pokazuje konsylium jako szpitalny 
    - zastępcy złożoności i bezpieczeństwa (odpowiadają wyłącznie JSON-em): pole `"skrot"` w tym JSON-ie.
 2. **Ordynator** po każdym kroku zapisuje dymki skryptem, bo tylko on ma Bash i zna czas:
    ```
-   python3 skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "…" [--plik 03-opinie/bayes.json]
-   python3 skrypty/dymek.py sprawy/<ID> --wiele /tmp/dymki.jsonl   # cały krok naraz
+   python skrypty/dymek.py sprawy/<ID> --rola bayes --faza "Ślepa tura" --skrot "…" [--plik 03-opinie/bayes.json]
+   python skrypty/dymek.py sprawy/<ID> --wiele /tmp/dymki.jsonl   # cały krok naraz
    ```
    Na początku każdej fazy ordynator zapisuje też **swój** dymek z `--temat`: jedno zdanie o tym, o czym teraz jest dyskusja. Ten temat trafia na tablicę.
 3. Gdy agent nie podał skrótu, ordynator go nie wymyśla. Pokój sam wyliczy skrót z plików sprawy.
@@ -49,7 +49,7 @@ Pod treścią dymku może stać krótka linia z liczbami: skale, kryteria, warto
 Lekarze zapisują na tablicy w Pokoju najważniejsze ustalenia, a odrzucone hipotezy skreślają. Tablica pokazuje też stan prac (etapy: zrobione, bieżący, przed nami) — zastąpiła pasek etapów pod sceną.
 
 ```
-python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
+python skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --tablica "Lider: tabletka widmo (0,70)" --skresl "OZW — troponina ujemna ×2"
 ```
 
 Zdarzenie w `_log.jsonl`: `{"ts":"…","zdarzenie":"tablica","rola":"ordynator","faza":"Konsylium runda 1","tekst":"…","skreslone":false}`.
@@ -62,7 +62,7 @@ Ordynator zapisuje na tablicę co najmniej: lidera rankingu po agregacji, każd�
 Michał chce widzieć na żywo prawdopodobieństwa rozpoznań w procentach – ale tylko na małym wykresie w rogu Pokoju, nigdy w dymkach. Wykres bierze: średnią opinii ślepej tury (wstępnie), ranking z agregacji, a potem każde zdarzenie `prognoza`:
 
 ```
-python3 skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --prognoza "Kolka żółciowa=0,55;Zapalenie dróg żółciowych=0,20;Wrzód=0,10"
+python skrypty/dymek.py sprawy/<ID> --rola ordynator --faza "Konsylium runda 1" --prognoza "Kolka żółciowa=0,55;Zapalenie dróg żółciowych=0,20;Wrzód=0,10"
 ```
 
 Ordynator zapisuje prognozę po każdej rundzie konsylium i po projekcie rekomendacji (do 5 rozpoznań, liczby 0–1 albo procenty). Można łączyć z dymkiem i `--tablica`.

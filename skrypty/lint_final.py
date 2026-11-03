@@ -6,9 +6,9 @@ Lint krótszego FINAL (ankieta zmian 1.11.2026: „Tak”): sprawdza sprawy/<ID>
 
 Zasady (CLAUDE.md §6 + testy serii 1 i 2: konsylium pisało 445–528 słów, pojedynczy agent 317–352):
 - wszystkie etykiety: REKOMENDACJA, PILNOŚĆ (+ PEWNOŚĆ), DLACZEGO, PLAN B, CZEGO NIE WIEMY, WRÓĆ / ESKALUJ GDY, ŹRÓDŁA;
-- najwyżej 350 słów bez sekcji ŹRÓDŁA;
+- najwyżej 500 słów bez sekcji ŹRÓDŁA (ankieta 3.11.2026, wcześniej 350);
 - REKOMENDACJA = jedno zdanie; DLACZEGO ≤ 3 zdania; PLAN B najwyżej 3 punkty;
-- ŹRÓDŁA: przypisy [1]–[5] (najwyżej 5 pozycji); każdy przypis [n] w tekście ma pozycję w ŹRÓDŁACH; reszta źródeł zostaje w protokole (04-konsylium.md);
+- ŹRÓDŁA: bez limitu liczby pozycji (ankieta 3.11.2026); każdy przypis [n] w tekście ma pozycję w ŹRÓDŁACH; każdy PMID sprawdza Sprawdzający faktów;
 - bez równorzędnych alternatyw („rozważ A lub B”);
 - CO BY TO OBALIŁO: jedna linia (ankieta innowacji 2.11.2026, zmiana CLAUDE.md §6);
 - WNIOSKI WG PROBLEMU: obowiązkowe, gdy _agregat.json ma osobne problemy; jedno zdanie na problem (+40 słów limitu na problem);
@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 ETYKIETY = ["REKOMENDACJA", "CO BY TO OBALIŁO", "PILNOŚĆ", "DLACZEGO", "PLAN B", "CZEGO NIE WIEMY", "WRÓĆ / ESKALUJ GDY", "ŹRÓDŁA"]
-MAX_SLOW = 350
+MAX_SLOW = 500
 OPCJONALNE = ["WNIOSKI WG PROBLEMU"]
 
 
@@ -82,14 +82,12 @@ def lint(txt: str, problemy: list[str] | None = None) -> list[str]:
         # odcinamy tylko stopkę („— Narzędzie testowe…”), nie każdy myślnik w opisie źródła (pomiar 2.11: gubiło [4]–[5])
         zr = re.split(r"[—–-]+\s*Narzędzie testowe", s["ŹRÓDŁA"], maxsplit=1)[0]
         poz = [l for l in zr.splitlines() if re.match(r"^\s*(?:\[\d+\]|[-•*]|\d+[.)])\s*\S", l)]
-        if len(poz) > 5:
-            bledy.append(f"ŹRÓDŁA mają {len(poz)} pozycji (najwyżej 5, jako [1]–[5]); resztę przenieś do 04-konsylium.md")
+        if not poz:
+            bledy.append("ŹRÓDŁA są puste")
         numery = {int(x) for x in re.findall(r"^\s*\[(\d+)\]", zr, re.M)}
         uzyte = {int(x) for x in re.findall(r"\[(\d+)\]", bez_zrodel)}
         for n in sorted(uzyte - numery):
             bledy.append(f"przypis [{n}] w tekście nie ma pozycji w ŹRÓDŁACH")
-        if any(n > 5 for n in numery | uzyte):
-            bledy.append("przypisy tylko [1]–[5]")
     if re.search(r"\brozważ\w*\s+[^.]{0,60}\s+lub\s+", txt, re.I):
         bledy.append("równorzędne alternatywy („rozważ A lub B”) – jedna rekomendacja + plan B")
     if "Narzędzie testowe i edukacyjne marki MS" not in txt:

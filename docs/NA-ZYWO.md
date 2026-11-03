@@ -111,6 +111,6 @@ W pierwszym przebiegu na żywo lekarze mieli PubMed, ale korzystali z niego sła
 | Jedno pytanie rozstrzygające spór | `python skrypty/pytanie_lekarza.py sprawy/<ID> --id P1 --tekst "…" --bo "…" --czekaj 600` | karta z przyciskami tak / nie / nie wiem; kliknięcie zapisuje odpowiedź do `uwagi-lekarza.jsonl` |
 | Asystenci dowodów pracują | `python skrypty/dymek.py sprawy/<ID> --rola bayes --asystenci 2` (0 = koniec) | plakietka „konsultuje się (n)” na drzwiach |
 | Źródła poza PubMed + biblioteka sprawy | `python skrypty/zrodla.py sprawy/<ID> lokalne|rpl|fda|dodaj|lista` | `_biblioteka.jsonl` w sprawie |
-| Krótszy FINAL | `python skrypty/lint_final.py sprawy/<ID>` | Wnioski: ≤350 słów, przypisy [1]–[5], plan B ≤3 punkty |
+| Krótszy FINAL | `python skrypty/lint_final.py sprawy/<ID>` | Wnioski: ≤500 słów, przypisy bez limitu (każdy PMID sprawdzony), plan B ≤3 punkty |
 
 Agregacja: zgoda liczona po rozpoznaniu nr 1 (z kodem ICD-10 i łączeniem opisów tej samej choroby), runda tylko przy różnicy rozpoznania nr 1, farmakolog bez rankingu (`przyczyna_polekowa`), `mniejszosc_chroniona`. Reguły sporu: `docs/SPOR.md`. Wszyscy lekarze i ordynator na Fable z długim myśleniem; Sprawdzający faktów i asystent dowodów na Opusie (inny model niż ordynator), zastępca złożoności na Sonnecie (jedyny).
