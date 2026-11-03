@@ -1,0 +1,17 @@
+/* === Do aplikacja/powloka/app/index.html (w <style>, na końcu) – propozycja Graficzny 3.11.2026 === */
+
+/* [2] Pomoc w kryzysie – stały, spokojny przycisk w pasku ikon (koło ratunkowe w kolorze róży z palety Lawenda) */
+nav.pasek button.pomoc { color: #b0675a; }
+nav.pasek button.pomoc::after { content: ""; position: absolute; right: 7px; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: #D99A8C; box-shadow: 0 0 0 2px var(--wcisk-tlo); }
+html[data-motyw="ciemny"] nav.pasek button.pomoc { color: #f0b3a6; }
+.pomoc-panel { top: auto; bottom: 16px; transform: none; width: 360px; gap: 12px; padding: 16px 18px;
+  background: color-mix(in srgb, var(--bg-viewport) 97%, transparent); } /* nieprzezroczysty: numery muszą być czytelne na każdym tle */
+.pomoc-panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.pomoc-panel li { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: baseline; font-size: 12px; line-height: 1.35; color: var(--mut); }
+.pomoc-panel li .nr { grid-row: span 2; font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: .01em; min-width: 104px; font-variant-numeric: tabular-nums; }
+.pomoc-panel li .nazwa { color: var(--ink); font-weight: 650; }
+.pomoc-panel .uwaga { font-size: 11.5px; color: var(--mut); }
+
+/* [3] Łagodniejszy stan: czerwona kropka zostaje (prawdziwy błąd), ale bez pulsowania i bez czerwonego napisu */
+.stan .dziala.blad { color: var(--ink); }
+.stan .dziala.blad::before { animation: none; }

@@ -1,0 +1,14 @@
+/* === Do aplikacja/pokoj-psychologiczny/src/pokoj.css – propozycja Graficzny 3.11.2026 === */
+/* [4] Pusty Pokój: zamiast beżowej plamy szkic kręgu foteli i jedno zdanie (gdy nie ma wczytanej sprawy) */
+.pusty-pokoj { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; text-align: center; padding: 30px;
+  background: radial-gradient(60% 55% at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0)); color: var(--mut); }
+.pusty-pokoj svg { width: min(340px, 60%); height: auto; }
+.pusty-pokoj svg .f { fill: #E8DCD0; stroke: #C4AD93; stroke-width: 2; }
+.pusty-pokoj svg .s { fill: #F7F2EA; stroke: #C4AD93; stroke-width: 2; }
+.pusty-pokoj svg .d { fill: none; stroke: #8A7FB5; stroke-width: 1.6; stroke-dasharray: 4 6; opacity: .7; }
+.pusty-pokoj b { font-size: 17px; color: var(--ink); font-weight: 750; }
+.pusty-pokoj span { font-size: 13px; max-width: 420px; line-height: 1.5; }
+html[data-motyw="ciemny"] .pusty-pokoj { background: radial-gradient(60% 55% at 50% 45%, rgba(255,255,255,.06), rgba(255,255,255,0)); }
+html[data-motyw="ciemny"] .pusty-pokoj svg .f { fill: #3a3350; stroke: #6b5f96; }
+html[data-motyw="ciemny"] .pusty-pokoj svg .s { fill: #2B2540; stroke: #6b5f96; }
+html[data-motyw="ciemny"] .pusty-pokoj svg .d { stroke: #c3b4f0; }

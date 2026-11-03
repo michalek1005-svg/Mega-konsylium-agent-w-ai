@@ -1,0 +1,4 @@
+/* === Do aplikacja/wywiad/index.html (zamiast reguły html.osadzony .pasek, ok. wiersz 63) – propozycja Graficzny 3.11.2026 === */
+/* [5] Nagłówek Wywiadu jak w Psychoterapii AI: szklany, w marginesie tafli, lawendowy cień zamiast morskiego pasa */
+html.osadzony .pasek { background: color-mix(in srgb, var(--panel) 60%, transparent); box-shadow: var(--panel-cien);
+  backdrop-filter: blur(18px) saturate(140%); border-radius: 22px; padding: 10px 14px; margin: 0 0 6px; top: 8px; }

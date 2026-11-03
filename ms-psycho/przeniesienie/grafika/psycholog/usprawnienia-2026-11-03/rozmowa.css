@@ -1,0 +1,17 @@
+/* === Do aplikacja/rozmowa/rozmowa.html (w <style>) – propozycja Graficzny 3.11.2026 === */
+
+/* [6] Twarze zespołu przy „Pokaż, kto co myślał” – kółka z inicjałami w kolorach ról (ROLE[r][1], ROLE[r][2]) */
+/*      kółka stoją PRZED przyciskiem (nie w nim), żeby podkreślenie przycisku ich nie przecinało */
+.msg .glosy-btn { vertical-align: middle; }
+.twarze { display: inline-flex; vertical-align: middle; margin: 8px 8px 0 0; }
+.twarze i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-family: inherit; font-size: 7.5px; font-weight: 800; line-height: 1; font-style: normal; letter-spacing: -.03em; text-decoration: none;
+  color: #fff; background: var(--k); box-shadow: 0 0 0 2px var(--karta, #fff); margin-left: -5px; }
+.twarze i:first-child { margin-left: 0; }
+
+/* [7] Ikony ćwiczeń – kreskowa ikona zamiast gwiazdki ✦ (ten sam styl co pasek ikon) */
+.karta-cwiczenia::before { content: none; }
+.karta-cwiczenia .ikona-cw { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  color: #fff; background: linear-gradient(150deg, #8fb4c6, #4f7f8a); }
+.karta-cwiczenia .ikona-cw svg, .wynik-cw .ikona-cw svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wynik-cw .ikona-cw { display: inline-grid; vertical-align: -4px; margin-right: 6px; color: #4f7f8a; }
+html[data-motyw="ciemny"] .wynik-cw .ikona-cw { color: #9cc7d6; }
