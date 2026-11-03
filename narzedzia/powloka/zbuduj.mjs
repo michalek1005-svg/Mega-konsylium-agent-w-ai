@@ -8,6 +8,7 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, existsSync, copyFileSync, cpSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { msUiCss } from '../../packages/ms-ui/ms-ui.mjs';
 
 const tu = dirname(fileURLToPath(import.meta.url));
 const narzedzia = join(tu, '..');
@@ -42,7 +43,7 @@ if (plikP) copyFileSync(join(katP, plikP), join(build, 'app', 'moduly', 'pokoj.h
 else console.warn('Pokój lekarski nie jest zbudowany (cd narzedzia/pokoj-lekarski && npm ci && node build.mjs).');
 
 // 3. Powłoka z konfiguracją wklejoną do HTML
-const tokeny = readFileSync(join(narzedzia, 'wspolne', 'ms-tokeny.css'), 'utf8');
+const tokeny = msUiCss(); // packages/ms-ui (tokeny + komponenty)
 const wywiadHtml = readFileSync(join(build, 'app', 'moduly', 'wywiad.html'), 'utf8');
 const fontCss = (wywiadHtml.match(/@font-face\{[^}]+\}/g) || []).join('');
 const konf = `<script>window.MS_WERSJA = ${JSON.stringify(pkg.version)}; window.MS_MODULY = ${JSON.stringify({ wywiad: true, anonimizator: !!plikA, pokoj: !!plikP })};</script>`;

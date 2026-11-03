@@ -8,7 +8,7 @@ Graficzny pokój lekarski, w którym widać przebieg konsylium. Przy stole siedz
 - **Protokół** po prawej to cała rozmowa jak w czacie. Kliknięcie wpisu albo postaci pokazuje pełny tekst i plik źródłowy.
 - Na dole jest oś faz (wywiad → triage → ślepa tura → agregacja → rundy → projekt → rezydenci → sprawdzenie → odpowiedź → werdykt → follow-up) z odtwarzaniem, krokami i tempem.
 
-Wygląd: marka MS, paleta „Laguna” z Nawigatora Medycznego, domyślnie tryb ciemny, logo z literą K. Tokeny są kopią `narzedzia/wspolne/ms-tokeny.css` (PR #3) z dopisanymi kolorami pokoju.
+Wygląd: marka MS, paleta „Laguna” z Nawigatora Medycznego, domyślnie tryb ciemny, logo z literą K. Tokeny są kopią `packages/ms-ui/tokeny.css` z dopisanymi kolorami pokoju (przejście pokoju na pakiet: krok 2, ze sprawdzeniem zrzutów przez Graficznego).
 
 ## Uruchomienie
 

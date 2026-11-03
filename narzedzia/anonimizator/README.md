@@ -65,7 +65,7 @@ Zrzuty ekranu trafiają do `test/wyniki/`.
 
 ## Wygląd
 
-Wspólne tokeny marki MS (paleta „Laguna”, tryb ciemny, przyciski) są w `../wspolne/ms-tokeny.css`. To kopia z Nawigatora Medycznego i z tego pliku korzysta też moduł Wywiad. Domyślny jest motyw ciemny, a przycisk „Motyw” przełącza na jasny.
+Wspólne tokeny marki MS (paleta „Laguna”, tryb ciemny, przyciski) są we wspólnym pakiecie `packages/ms-ui/` (`tokeny.css`, `komponenty.css`). To kopia z Nawigatora Medycznego i z tego pliku korzysta też moduł Wywiad. Domyślny jest motyw ciemny, a przycisk „Motyw” przełącza na jasny.
 Logo „K” jest na razie zastępcze (litera na płytce w kolorze petrol). Właściwe `MsLogo` czeka na decyzję Michała.
 
 ## Co dalej

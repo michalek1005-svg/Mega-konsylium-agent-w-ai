@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { msUiCss } from '../../packages/ms-ui/ms-ui.mjs';
 
 const WERSJA = '0.5.1';
 const tu = dirname(fileURLToPath(import.meta.url));
@@ -34,10 +35,10 @@ for (const nm of ['../powloka/node_modules', '../anonimizator/node_modules']) {
 if (!fontCss) console.warn('Brak kroju Plus Jakarta Sans w node_modules: aplikacja użyje Segoe UI.');
 
 // 3. Wspólne składanie
-const tokeny = readFileSync(join(tu, '../wspolne/ms-tokeny.css'), 'utf8');
+const tokeny = msUiCss(); // packages/ms-ui (tokeny + komponenty)
 function zloz({ font, fontLink, naPoczatku }) {
   let html = readFileSync(join(tu, 'index.html'), 'utf8');
-  html = html.replace(/<link rel="stylesheet" href="\.\.\/wspolne\/ms-tokeny\.css">\n?/, '');
+  html = html.replace(/<link rel="stylesheet" href="\.\.\/\.\.\/packages\/ms-ui\/[\w-]+\.css">\n?/g, '');
   html = html.replace('/*@@MS-TOKENY@@*/', () => tokeny).replace('/*@@FONT@@*/', () => font).replace('<!--@@FONT-LINK@@-->', () => fontLink);
   html = html.replace(/<script src="((?:\.\.\/wspolne\/)?[\w.-]+\.js)"><\/script>/g, (_, plik) => {
     const src = plik === 'wykrywanie.js' ? wykrywanie : readFileSync(join(tu, plik), 'utf8');
