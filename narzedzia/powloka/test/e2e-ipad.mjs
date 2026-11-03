@@ -209,6 +209,44 @@ try {
   // 7. Na komputerze widać połączonego iPada
   await czekaj(async () => /iPad połączony/.test(await pc.textContent('#ipad-info')), 5000, 'informacja o iPadzie');
 
+  // 7b. Powiadomienia w tle: https z lokalnym certyfikatem, service worker, subskrypcja tylko do znanej usługi
+  {
+    const https = req('node:https');
+    const ca = JSON.parse(readFileSync(join(dane, 'ipad-tls', 'urzad.json'), 'utf8')).certPem;
+    const PH = PORT + 1;
+    const zapytaj = (sciezka, opcje = {}, cialo) => new Promise((ok, zle) => {
+      const r = https.request({ host: '127.0.0.1', port: PH, path: sciezka, ca, ...opcje }, (res) => { const k = []; res.on('data', (d) => k.push(d)); res.on('end', () => ok({ status: res.statusCode, typ: res.headers['content-type'], tekst: Buffer.concat(k).toString('utf8') })); });
+      r.on('error', zle); r.end(cialo);
+    });
+    const api = (op, args) => zapytaj('/api/' + op, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-MS-Klucz': klucz } }, JSON.stringify({ args })).then((w) => JSON.parse(w.tekst));
+    await pc.click('#ipad-przycisk'); await pc.click('#ipad-przycisk');
+    await pc.waitForSelector('#ipad-tlo:not([hidden])');
+    assert.match(await pc.textContent('#ipad-tlo-adres'), new RegExp(`^http://127\\.0\\.0\\.1:${PORT}/tls\\?k=`));
+    const sw = await zapytaj('/sw.js');
+    assert.equal(sw.status, 200); assert.match(sw.typ, /javascript/); assert.match(sw.tekst, /showNotification/);
+    const crt = await fetch(`http://127.0.0.1:${PORT}/certyfikat.crt`).then((r) => r.text());
+    assert.equal(crt.trim(), ca.trim(), 'iPad pobiera certyfikat urzędu po http');
+    assert.match(await fetch(`http://127.0.0.1:${PORT}/tls?k=${klucz}`).then((r) => r.text()), new RegExp(`https://127\\.0\\.0\\.1:${PH}/\\?k=`));
+    const kl = await api('pushKlucz', []);
+    assert.equal(Buffer.from(kl.wynik, 'base64url').length, 65);
+    assert.equal((await zapytaj('/api/pushKlucz', { method: 'POST', headers: { 'X-MS-Klucz': 'zly' } }, '{}')).status, 403);
+    assert.match((await api('pushZapisz', [JSON.stringify({ endpoint: 'https://zly.example/x', keys: { p256dh: 'a', auth: 'b' } }), 'iPad'])).blad, /Nieznana usługa/);
+    const sub = { endpoint: 'https://web.push.apple.com/QGtest', keys: { p256dh: Buffer.alloc(65, 4).toString('base64url'), auth: Buffer.alloc(16, 1).toString('base64url') } };
+    assert.equal((await api('pushZapisz', [JSON.stringify(sub), 'iPad'])).wynik.liczba, 1);
+    await czekaj(async () => /Włączone na 1 iPadzie/.test(await pc.textContent('#ipad-tlo-info')), 5000, 'licznik iPadów z powiadomieniami');
+    assert.equal(await pc.isVisible('#ipad-tlo-test') || !(await pc.$eval('#ipad-tlo-test', (b) => b.hidden)), true);
+    // wersja https w Chromium: CSP pozwala zarejestrować service worker
+    const pr2 = await chromium.launch({ args: ['--ignore-certificate-errors'] });
+    try {
+      const s2 = await (await pr2.newContext({ ignoreHTTPSErrors: true, viewport: { width: 820, height: 1180 } })).newPage();
+      await s2.goto(`https://127.0.0.1:${PH}/?k=${klucz}`);
+      await s2.waitForFunction(() => window.msIpad && window.msIpad.push);
+      assert.equal(await s2.evaluate(() => navigator.serviceWorker.register('sw.js').then((r) => !!r.scope, (e) => String(e))), true);
+      assert.equal(await s2.evaluate(() => window.msIpad.push.mozliwy()), false, 'poza ekranem początkowym nie proponujemy push');
+      assert.equal(await s2.isHidden('#push-pasek'), true);
+    } finally { await pr2.close(); }
+  }
+
   // 8. Wyłączenie: iPad pokazuje brak połączenia
   await pc.click('#ipad-wylacz');
   await pc.waitForSelector('#ipad-wlacz:not([hidden])');

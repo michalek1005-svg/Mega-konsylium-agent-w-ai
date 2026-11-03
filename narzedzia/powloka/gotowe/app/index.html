@@ -27,7 +27,8 @@
   --on: var(--petrol); --on-txt: #fff;
   --pole: rgba(255,255,255,.9); --pole-obrys: rgba(15,94,88,.25);
   --strona-cien: 0 16px 30px -14px rgba(10,54,52,.34);
-  --alarm: #A83A38;
+  --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
+  --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
   /* wypukłe/wklęsłe przyciski paska bocznego (Nawigator: --wcisk-*, components/left-nav-bar.tsx) */
   --wcisk-cien: rgba(163,177,198,.5); --wcisk-swiatlo: rgba(255,255,255,.85); --wcisk-tlo: rgba(224,229,236,.7); --nav-obrys: rgba(255,255,255,.3);
   --wcisk-on-tlo: #d6dbe2; --wcisk-on-cien: inset 5px 5px 10px #a3b1c6e6, inset -5px -5px 10px #ffffff;
@@ -48,7 +49,7 @@ html[data-motyw="ciemny"] {
   --on: #1b7a70; --on-txt: #fff;
   --pole: rgba(255,255,255,.06); --pole-obrys: rgba(255,255,255,.12);
   --strona-cien: 0 16px 30px -14px rgba(0,0,0,.7);
-  --alarm: #ff9a8c;
+  --alarm: #ff9a8c; --ostrzezenie: #e9c46a; --ok: #6fd3a0;
   --wcisk-cien: rgba(0,0,0,.55); --wcisk-swiatlo: rgba(255,255,255,.07); --wcisk-tlo: rgba(32,46,45,.85); --nav-obrys: rgba(255,255,255,.08);
   --wcisk-on-tlo: #070e0d; --wcisk-on-cien: inset 6px 6px 12px rgba(0,0,0,1), inset -5px -5px 10px rgba(255,255,255,.22), inset 0 -1px 0 rgba(255,255,255,.18);
 }
@@ -182,6 +183,11 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
 .rozlaczony { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); z-index: 130; max-width: min(560px, calc(100% - 140px)); padding: 12px 16px; border-radius: 18px;
   background: var(--tafla); box-shadow: var(--tafla-cien); backdrop-filter: blur(26px) saturate(140%); font-size: 13px; color: var(--ink); display: flex; gap: 12px; align-items: center; }
 .rozlaczony b { color: var(--alarm); }
+.rozlaczony.push-pasek { top: auto; bottom: 18px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rozlaczony.push-pasek b { color: var(--petrol); }
+.ipad-panel details { border-top: 1px solid var(--pole-obrys); padding-top: 8px; }
+.ipad-panel details summary { cursor: pointer; font-weight: 700; color: var(--petrol); font-size: 12.5px; }
+.ipad-panel details[open] { display: flex; flex-direction: column; gap: 8px; }
 @media (orientation: portrait) { html.ipad body.pelny .tafla-glowna { height: calc(100dvh - 12px); } }
 </style>
 </head>
@@ -209,7 +215,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
   </div>
   <div class="folder ipad-panel" id="ipad-panel" hidden>
     <b>MS Konsylium na iPadzie</b>
-    <span class="uwaga">iPad otwiera tę samą aplikację w Safari przez Twoją sieć Wi‑Fi. Dane zostają na tym komputerze, nic nie idzie do internetu.</span>
+    <span class="uwaga">iPad otwiera tę samą aplikację w Safari przez Twoją sieć Wi‑Fi. Dane zostają na tym komputerze, nic nie idzie do internetu (poza powiadomieniami w tle, jeśli je włączysz).</span>
     <div class="rzad"><button class="nk-button nk-on" type="button" id="ipad-wlacz">Udostępnij na iPadzie</button>
     <button class="nk-button" type="button" id="ipad-wylacz" hidden>Wyłącz</button></div>
     <div id="ipad-wlaczony" hidden>
@@ -221,9 +227,19 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       <li>W Safari stuknij Udostępnij → „Do ekranu początkowego”. Ikona Konsylium otwiera się potem jak aplikacja, pod stałym adresem (nazwa komputera), także po zmianie adresu IP przez router.</li>
       <li>Przy pierwszym włączeniu Windows zapyta o zaporę: zezwól dla sieci prywatnych.</li>
     </ol>
+    <details id="ipad-tlo" hidden>
+      <summary>Powiadomienia w tle na iPadzie (jednorazowo)</summary>
+      <span class="uwaga">iPad pokaże powiadomienie, gdy konsylium zapyta Ciebie, przy alarmie 112 i gdy Wnioski są gotowe, także przy zamkniętej aplikacji. Komputer wysyła wtedy przez internet krótką, zaszyfrowaną wiadomość do usługi powiadomień Apple.</span>
+      <div class="qr"><img id="ipad-tlo-qr" alt="Kod QR: instrukcja powiadomień w tle dla iPada"></div>
+      <ol><li>Zeskanuj ten kod iPadem: otworzy się instrukcja.</li><li>Zainstaluj certyfikat komputera i włącz zaufanie (raz).</li><li>Otwórz bezpieczną wersję, dodaj ją do ekranu początkowego i włącz powiadomienia.</li></ol>
+      <span class="adres" id="ipad-tlo-adres"></span>
+      <span class="uwaga" id="ipad-tlo-info"></span>
+      <div class="rzad"><button class="nk-button" type="button" id="ipad-tlo-test" hidden>Wyślij próbne powiadomienie</button></div>
+    </details>
     <span class="uwaga" id="ipad-info"></span>
     <div class="rzad"><button class="nk-button" type="button" id="ipad-nowy" hidden title="Stary kod przestanie działać na wszystkich iPadach">Nowy kod</button></div>
   </div>
+  <div class="rozlaczony push-pasek" id="push-pasek" hidden><span id="push-tekst"><b>Powiadomienia w tle.</b> iPad da znać, gdy konsylium zapyta Ciebie, przy alarmie i gdy Wnioski są gotowe.</span><button class="nk-button nk-on" type="button" id="push-wlacz">Włącz powiadomienia w tle</button><button class="nk-button" type="button" id="push-pozniej">Nie teraz</button></div>
   <div class="rozlaczony" id="rozlaczony" hidden role="alert"><span id="rozlaczony-tekst"></span><button class="nk-button" type="button" id="rozlaczony-odswiez">Odśwież</button></div>
   <main>
     <div class="brak" id="brak" hidden>Ten moduł nie jest jeszcze dołączony do tej wersji aplikacji.</div>
@@ -349,6 +365,17 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
       var wl = !!(s && s.wlaczony);
       $wl.hidden = wl; $wy.hidden = !wl; $nw.hidden = !wl; $kr.hidden = !wl || !s.url; $on.hidden = !wl || !s.qr; $ad.hidden = !wl || !s.url;
       if (s && s.qr) $qr.src = s.qr;
+      var T = s && s.tlo, $tl = document.getElementById('ipad-tlo');
+      $tl.hidden = !wl || !T;
+      if (T) {
+        document.getElementById('ipad-tlo-qr').src = T.qr;
+        document.getElementById('ipad-tlo-adres').textContent = T.urlInstrukcja;
+        var n = (T.subskrypcje || []).length;
+        document.getElementById('ipad-tlo-info').textContent = T.blad ? T.blad : !T.wlaczone ? 'Bezpieczna wersja (https) jeszcze się nie włączyła.' :
+          (n ? 'Włączone na ' + n + (n === 1 ? ' iPadzie' : ' iPadach') + '.' : 'Jeszcze żaden iPad nie włączył powiadomień w tle.') +
+          (T.ostatni ? ' Ostatnie: ' + new Date(T.ostatni.czas).toLocaleTimeString('pl-PL') + (T.ostatni.ok ? ', dostarczone.' : ', nie dotarło' + (T.ostatni.blad ? ' (' + T.ostatni.blad + ')' : '') + '.') : '');
+        document.getElementById('ipad-tlo-test').hidden = !n;
+      }
       $ad.innerHTML = '';
       if (s && s.url) {
         if (s.urlStaly) { var a1 = document.createElement('span'); a1.textContent = s.urlStaly; a1.title = 'Stały adres: nazwa komputera w sieci lokalnej (nie zmienia się, gdy router przydzieli inny numer IP). Ten adres jest w kodzie QR.'; $ad.appendChild(a1); }
@@ -377,6 +404,7 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
     $wl.addEventListener('click', function () { $wl.disabled = true; I.ustaw(true).then(function (s) { $wl.disabled = false; pokazStan(s); }); });
     $wy.addEventListener('click', function () { I.ustaw(false).then(pokazStan); });
     $nw.addEventListener('click', function () { I.nowyKod().then(pokazStan); });
+    document.getElementById('ipad-tlo-test').addEventListener('click', function () { if (I.pushTest) I.pushTest().then(function () { I.stan().then(pokazStan); }); });
     I.naZmiane(function () { I.stan().then(pokazStan); });
     I.stan().then(pokazStan);
   })();
@@ -398,6 +426,22 @@ html.ipad .stan .offline.brak-pc::before { background: var(--alarm); box-shadow:
     }
     window.addEventListener('ms-ipad-stan', function (e) { pokaz(e.detail); window.msStanIpad = { polaczony: e.detail === 'ok', stan: e.detail }; if (window.msOdswiezDziala) window.msOdswiezDziala(); });
     if (window.msIpad && !window.msIpad.maKlucz()) pokaz('klucz');
+  })();
+  // ── iPad: powiadomienia w tle (tylko wersja https z ekranu początkowego) ──
+  (function () {
+    var Pu = window.msIpad && window.msIpad.push, $pp = document.getElementById('push-pasek');
+    if (!window.MS_IPAD || !Pu || !Pu.mozliwy()) return;
+    var pozniej = false; try { pozniej = sessionStorage.getItem('ms-push-pozniej') === '1'; } catch (e) {}
+    var $t = document.getElementById('push-tekst'), $w = document.getElementById('push-wlacz');
+    Pu.stan().then(function (st) { if (st === 'mozna' && !pozniej) $pp.hidden = false; });
+    document.getElementById('push-pozniej').addEventListener('click', function () { $pp.hidden = true; try { sessionStorage.setItem('ms-push-pozniej', '1'); } catch (e) {} });
+    $w.addEventListener('click', function () {
+      $w.disabled = true;
+      Pu.wlacz().then(function () {
+        $t.innerHTML = '<b>Gotowe.</b> Za chwilę przyjdzie próbne powiadomienie.'; $w.hidden = true;
+        setTimeout(function () { $pp.hidden = true; }, 6000);
+      }, function (e) { $w.disabled = false; $t.textContent = (e && e.message) || 'Nie udało się włączyć powiadomień.'; });
+    });
   })();
 
   var start = 'wywiad';

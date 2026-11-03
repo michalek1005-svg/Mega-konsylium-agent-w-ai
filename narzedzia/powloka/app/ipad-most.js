@@ -65,6 +65,45 @@
   document.addEventListener('visibilitychange', function () { if (!document.hidden && zrodlo && zrodlo.readyState === 2) polacz(); });
   window.msIpad = { maKlucz: function () { return !!klucz; }, stan: function () { return stan; }, polaczony: function () { return !!zrodlo && zrodlo.readyState === 1; } };
 
+  // Powiadomienia w tle (decyzja Michała 3.11.2026): tylko wersja https otwarta z ikony na ekranie początkowym
+  // (tak działa Web Push na iPadOS 16.4+). Komputer sam pilnuje sprawy i wysyła powiadomienie (straznik-sprawy.js).
+  var push = { klucz: null, reg: null };
+  function b64uNaBajty(s) {
+    var b = atob(String(s).replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((String(s).length + 3) % 4)), out = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) out[i] = b.charCodeAt(i);
+    return out;
+  }
+  function pushMozliwy() {
+    var samodzielna = navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+    return !!(window.isSecureContext && samodzielna && 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window && klucz);
+  }
+  function pushStan() {
+    if (!pushMozliwy()) return Promise.resolve(window.isSecureContext ? 'ikona' : 'http');
+    if (Notification.permission === 'denied') return Promise.resolve('odmowa');
+    return navigator.serviceWorker.register('sw.js').then(function (reg) {
+      push.reg = reg;
+      return reg.pushManager.getSubscription().then(function (sub) {
+        if (sub) { api('pushZapisz', [JSON.stringify(sub), 'iPad']).catch(function () {}); return 'wlaczone'; }
+        return 'mozna';
+      });
+    }).catch(function () { return 'blad'; });
+  }
+  function pushWlacz() {
+    // zgoda musi paść w tym samym dotknięciu (Safari), więc pytamy od razu, a klucz pobieramy równolegle
+    var zgoda = Notification.requestPermission();
+    var kl = push.klucz ? Promise.resolve(push.klucz) : api('pushKlucz').then(function (k) { push.klucz = k; return k; });
+    return Promise.all([zgoda, kl, push.reg ? Promise.resolve(push.reg) : navigator.serviceWorker.register('sw.js')]).then(function (w) {
+      if (w[0] !== 'granted') throw new Error('Bez zgody na powiadomienia. Zmienisz to w Ustawieniach → Powiadomienia → Konsylium.');
+      push.reg = w[2];
+      return (navigator.serviceWorker.ready || Promise.resolve(w[2])).then(function (reg) {
+        return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64uNaBajty(w[1]) });
+      });
+    }).then(function (sub) { return api('pushZapisz', [JSON.stringify(sub), 'iPad']); })
+      .then(function () { return api('pushTest'); });
+  }
+  if (pushMozliwy()) api('pushKlucz').then(function (k) { push.klucz = k; }, function () {});
+  window.msIpad.push = { mozliwy: pushMozliwy, stan: pushStan, wlacz: pushWlacz };
+
   // Schowek: Safari daje navigator.clipboard tylko na https, a iPad łączy się po http w sieci domowej.
   // Moduły (ta sama domena) dostają zastępstwo przez execCommand('copy') w swoim dokumencie.
   window.msIpadSchowek = function (okno) {

@@ -2,9 +2,11 @@
 // iPad otwiera w Safari te same ekrany (app/ipad.html + moduły), a wszystkie operacje na plikach
 // idą przez /api do tych samych funkcji, z których korzysta okno Windows (folder Konsylium).
 // Zasady: domyślnie wyłączony; odpowiada tylko adresom z sieci lokalnej; dane tylko z kluczem
-// parowania (kod QR); nic nie wychodzi do internetu (serwer niczego sam nie pobiera).
+// parowania (kod QR); serwer niczego sam nie pobiera. Drugi serwer (https, lokalny certyfikat z tls-lokalny.js)
+// daje iPadowi powiadomienia w tle (web-push.js); certyfikat urzędu do zainstalowania: /certyfikat.crt.
 'use strict';
 const http = require('node:http');
+const https = require('node:https');
 const fs = require('node:fs');
 const path = require('node:path');
 const zlib = require('node:zlib');
@@ -54,6 +56,10 @@ function rowneKlucze(a, b) {
  * @param {object} o.pliki       { folder, czytaj, zapisz, lista, czytajFolder } (jak w oknie Windows)
  * @param {() => string} o.klucz aktualny klucz parowania
  * @param {(zd: object) => void} [o.naZdarzenie] np. { typ: 'polaczenie', adres }
+ * @param {{key, cert}} [o.tls]  https zamiast http (powiadomienia w tle)
+ * @param {() => string|null} [o.certyfikatUrzedu]  PEM do pobrania przez iPada (/certyfikat.crt)
+ * @param {(k: string) => string|null} [o.adresHttps]  pełny adres wersji https (strona /tls)
+ * @param {object} [o.dodatkowe]  operacje /api poza plikami, np. { pushKlucz, pushZapisz, pushTest }
  */
 function utworzSerwer(o) {
   const pamiecGzip = new Map();
@@ -121,7 +127,8 @@ function utworzSerwer(o) {
   async function api(req, res, op) {
     if (req.method !== 'POST') return json(req, res, 405, { blad: 'Tylko POST.' });
     if (!rowneKlucze(req.headers['x-ms-klucz'], o.klucz())) return json(req, res, 403, { blad: 'Ten iPad nie jest sparowany z komputerem.' });
-    if (!OPERACJE.includes(op)) return json(req, res, 404, { blad: 'Nieznana operacja.' });
+    const dod = o.dodatkowe && Object.prototype.hasOwnProperty.call(o.dodatkowe, op) ? o.dodatkowe[op] : null;
+    if (!OPERACJE.includes(op) && !dod) return json(req, res, 404, { blad: 'Nieznana operacja.' });
     const kawalki = []; let dl = 0;
     for await (const k of req) { dl += k.length; if (dl > MAX_ZADANIE) return json(req, res, 413, { blad: 'Za duże żądanie.' }); kawalki.push(k); }
     let args = [];
@@ -131,14 +138,14 @@ function utworzSerwer(o) {
     if (!widziane.has(zdalny)) { widziane.add(zdalny); if (o.naZdarzenie) o.naZdarzenie({ typ: 'polaczenie', adres: zdalny }); }
     try {
       const a = args.map((x) => (x == null ? '' : String(x)));
-      const wynik = await o.pliki[op](...a);
+      const wynik = await (dod || o.pliki[op])(...a);
       json(req, res, 200, { wynik: wynik === undefined ? null : wynik });
     } catch (err) {
       json(req, res, 200, { blad: String((err && err.message) || err) });
     }
   }
 
-  const serwer = http.createServer((req, res) => {
+  const obsluga = (req, res) => {
     if (!adresLokalny(req.socket.remoteAddress)) { res.writeHead(403); res.end(); req.destroy(); return; }
     let u;
     try { u = new URL(req.url, 'http://ipad.local'); } catch { res.writeHead(400); res.end(); return; }
@@ -151,6 +158,21 @@ function utworzSerwer(o) {
     const k = u.searchParams.get('k');
     const kluczOk = rowneKlucze(k, o.klucz());
     if (p === '/zdarzenia') return strumien(req, res, kluczOk);
+    if (p === '/certyfikat.crt' && o.certyfikatUrzedu) {
+      // publiczny certyfikat urzędu „MS Konsylium (lokalny)”: Safari proponuje instalację profilu
+      const pem = o.certyfikatUrzedu();
+      if (!pem) { naglowki(res, 'text/plain; charset=utf-8'); return wyslij(req, res, 404, 'text/plain', 'Brak certyfikatu.'); }
+      naglowki(res, 'application/x-x509-ca-cert', { 'Content-Disposition': 'attachment; filename="MS-Konsylium-lokalny.crt"', 'Cache-Control': 'no-store' });
+      return wyslij(req, res, 200, 'application/x-x509-ca-cert', pem);
+    }
+    if (p === '/tls') {
+      naglowki(res, 'text/html; charset=utf-8', { 'Cache-Control': 'no-store', 'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; img-src data:" });
+      return wyslij(req, res, 200, 'text/html', stronaTls(kluczOk && o.adresHttps ? o.adresHttps(k) : null, !!o.certyfikatUrzedu));
+    }
+    if (p === '/sw.js') {
+      naglowki(res, 'text/javascript; charset=utf-8', { 'Cache-Control': 'no-store', 'Service-Worker-Allowed': '/' });
+      return wyslij(req, res, 200, 'text/javascript', SW);
+    }
     if (p === '/manifest.webmanifest') {
       // start_url z kluczem: ikona na ekranie głównym iPada ma osobne ciasteczka i pamięć niż Safari
       const m = {
@@ -174,7 +196,8 @@ function utworzSerwer(o) {
     }
     let st = 0; try { st = fs.statSync(plik[0]).mtimeMs; } catch {}
     wyslij(req, res, 200, plik[1], dane, p + ':' + st);
-  });
+  };
+  const serwer = o.tls ? https.createServer({ key: o.tls.key, cert: o.tls.cert }, obsluga) : http.createServer(obsluga);
   serwer.keepAliveTimeout = 5000;
   serwer.headersTimeout = 15000;
   serwer.requestTimeout = 60000;
@@ -183,6 +206,49 @@ function utworzSerwer(o) {
   serwer.rozglos = (nazwa, dane) => { const s = 'event: ' + String(nazwa).replace(/[^\w-]/g, '') + '\ndata: ' + JSON.stringify(dane == null ? null : dane) + '\n\n'; for (const k of strumienie) { try { k.res.write(s); } catch {} } };
   serwer.on('close', () => { for (const k of strumienie) { try { k.res.end(); } catch {} } strumienie.clear(); });
   return serwer;
+}
+
+// Service worker iPada: tylko powiadomienia (bez pamięci podręcznej stron – dane zawsze z komputera).
+const SW = `'use strict';
+self.addEventListener('install', function () { self.skipWaiting(); });
+self.addEventListener('activate', function (e) { e.waitUntil(self.clients.claim()); });
+self.addEventListener('push', function (e) {
+  var d = {}; try { d = e.data ? e.data.json() : {}; } catch (x) { d = { tekst: e.data ? e.data.text() : '' }; }
+  e.waitUntil(self.registration.showNotification(d.tytul || 'MS Konsylium', { body: d.tekst || '', tag: d.tag || 'ms-konsylium', data: { modul: d.modul || 'pokoj' } }));
+});
+self.addEventListener('notificationclick', function (e) {
+  e.notification.close();
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (l) {
+    for (var i = 0; i < l.length; i++) { if ('focus' in l[i]) { l[i].postMessage({ typ: 'ms-push-klik', modul: e.notification.data && e.notification.data.modul }); return l[i].focus(); } }
+    return self.clients.openWindow('./');
+  }));
+});
+`;
+
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// Strona z instrukcją dla iPada (otwierana z drugiego kodu QR): certyfikat raz, potem wersja https na ekran początkowy.
+function stronaTls(adresHttps, jestCert) {
+  return `<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MS Konsylium – powiadomienia w tle</title><style>
+:root{--petrol:#0F5E58;--ink:#14302D;--mut:#5C7570}
+body{margin:0;font:16px/1.55 -apple-system,'Segoe UI',system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,#E9EFEC,#CFDCD8);min-height:100vh}
+main{max-width:560px;margin:0 auto;padding:28px 18px 40px}
+h1{font-size:21px;margin:0 0 6px}p{margin:6px 0;color:var(--mut)}ol{padding-left:22px}li{margin:12px 0}
+a.btn{display:inline-block;margin-top:6px;padding:11px 16px;border-radius:22px;background:var(--petrol);color:#fff;text-decoration:none;font-weight:650}
+.box{background:rgba(255,255,255,.7);border-radius:18px;padding:14px 18px;margin-top:14px}
+b{color:var(--ink)}</style></head><body><main>
+<h1>Powiadomienia w tle na iPadzie</h1>
+<p>Jednorazowo. Potem iPad pokaże powiadomienie, gdy konsylium zapyta Ciebie, przy alarmie 112 i gdy Wnioski są gotowe, nawet gdy aplikacja jest zamknięta.</p>
+<div class="box"><ol>
+<li><b>Pobierz certyfikat komputera.</b>${jestCert ? '<br><a class="btn" href="certyfikat.crt">Pobierz certyfikat</a>' : ' (niedostępny – włącz udostępnianie na komputerze)'}<br>Safari zapyta o pobranie profilu konfiguracji: stuknij <b>Zezwól</b>.</li>
+<li>Otwórz <b>Ustawienia → Pobrany profil</b> (na górze listy) → <b>Instaluj</b>. Profil nazywa się „MS Konsylium (lokalny)”.</li>
+<li><b>Ustawienia → Ogólne → To urządzenie → Ustawienia zaufania certyfikatów</b> → włącz „MS Konsylium (lokalny)”.</li>
+<li>${adresHttps ? `<a class="btn" href="${esc(adresHttps)}">Otwórz bezpieczną wersję</a><br>` : 'Zeskanuj ten kod QR jeszcze raz z aplikacji na komputerze. '}W Safari stuknij <b>Udostępnij → Do ekranu początkowego</b>. Starą ikonę Konsylium możesz usunąć.</li>
+<li>Otwórz Konsylium <b>z nowej ikony</b> i stuknij <b>Włącz powiadomienia w tle</b> → <b>Pozwól</b>.</li>
+</ol></div>
+<p>Certyfikat działa tylko w Twojej sieci domowej, dla tego komputera. Treść powiadomień jest zaszyfrowana; usługa powiadomień Apple widzi tylko, że coś wysłano.</p>
+<p style="font-size:13px">Narzędzie testowe i edukacyjne marki MS. Nie służy do podejmowania decyzji u realnych pacjentów.</p>
+</main></body></html>`;
 }
 
 module.exports = { utworzSerwer, adresySieci, adresLokalny };

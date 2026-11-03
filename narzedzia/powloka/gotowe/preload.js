@@ -18,6 +18,7 @@ contextBridge.exposeInMainWorld('msPowloka', {
     stan: () => ipcRenderer.invoke('ms:ipad-stan'),
     ustaw: (wl) => ipcRenderer.invoke('ms:ipad-ustaw', !!wl),
     nowyKod: () => ipcRenderer.invoke('ms:ipad-nowy-kod'),
+    pushTest: () => ipcRenderer.invoke('ms:ipad-push-test'),
     naZmiane: (f) => { ipcRenderer.on('ms:ipad-zmiana', () => f()); }
   }
 });

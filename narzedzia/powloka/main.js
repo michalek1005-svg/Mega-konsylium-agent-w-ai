@@ -8,6 +8,9 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const os = require('node:os');
 const { utworzSerwer, adresySieci } = require('./serwer-ipad.js');
+const { zapewnijCertyfikaty } = require('./tls-lokalny.js');
+const webPush = require('./web-push.js');
+const { utworzStraznika } = require('./straznik-sprawy.js');
 
 app.setName('MS Konsylium Narzędzia');
 // testy automatyczne: osobny katalog danych aplikacji (localStorage, ustawienia)
@@ -160,7 +163,41 @@ const PLIKI = {
 
 // ── iPad: udostępnienie w sieci lokalnej (domyślnie wyłączone) ──
 const IPAD_PORT = Number(process.env.MS_IPAD_PORT) || 8765;
-let ipad = { serwer: null, blad: null, polaczone: [] };
+const IPAD_PORT_HTTPS = Number(process.env.MS_IPAD_PORT_HTTPS) || IPAD_PORT + 1;
+let ipad = { serwer: null, serwerTls: null, tls: null, bladTls: null, straznik: null, blad: null, polaczone: [] };
+
+// ── Powiadomienia w tle (Web Push, decyzja Michała 3.11.2026) ──
+const MAX_SUBSKRYPCJI = 5;
+function ustawieniaPush() {
+  const u = ustawienia();
+  if (!u.push || !u.push.vapid) { u.push = { vapid: webPush.noweKluczeVapid(), subskrypcje: [] }; zapiszUstawienia(u); }
+  return u.push;
+}
+function zapiszPush(push) { zapiszUstawienia({ ...ustawienia(), push }); }
+function pushZapisz(json, nazwa) {
+  let s; try { s = JSON.parse(String(json || '')); } catch { throw new Error('Zła subskrypcja.'); }
+  if (!s || typeof s.endpoint !== 'string' || !s.keys || typeof s.keys.p256dh !== 'string' || typeof s.keys.auth !== 'string') throw new Error('Zła subskrypcja.');
+  if (!webPush.dozwolonyAdres(s.endpoint)) throw new Error('Nieznana usługa powiadomień.');
+  const push = ustawieniaPush();
+  push.subskrypcje = [{ endpoint: s.endpoint, keys: { p256dh: s.keys.p256dh, auth: s.keys.auth }, nazwa: String(nazwa || 'iPad').slice(0, 40), od: Date.now() },
+    ...push.subskrypcje.filter((x) => x.endpoint !== s.endpoint)].slice(0, MAX_SUBSKRYPCJI);
+  zapiszPush(push);
+  return { ok: true, liczba: push.subskrypcje.length };
+}
+async function wyslijPush(dane) {
+  const push = ustawieniaPush();
+  if (!push.subskrypcje.length) return { wyslane: 0 };
+  const wyniki = await Promise.all(push.subskrypcje.map((s) => webPush.wyslij(s, dane, push.vapid, { kontakt: push.kontakt })));
+  const zostaja = push.subskrypcje.filter((s, i) => !wyniki[i].wygasla);
+  if (zostaja.length !== push.subskrypcje.length) zapiszPush({ ...ustawieniaPush(), subskrypcje: zostaja });
+  ipad.ostatniPush = { czas: Date.now(), ok: wyniki.filter((w) => w.ok).length, z: wyniki.length, blad: (wyniki.find((w) => !w.ok) || {}).blad || null };
+  return { wyslane: ipad.ostatniPush.ok, z: wyniki.length };
+}
+function hostyTls() {
+  const adresy = process.env.MS_IPAD_ADRES ? [{ adres: process.env.MS_IPAD_ADRES }] : adresySieci();
+  const host = process.env.MS_IPAD_ADRES ? null : String(os.hostname() || '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
+  return [...adresy.map((x) => x.adres), ...(host ? [host + '.local'] : [])];
+}
 function kluczIpad(nowy) {
   const u = ustawienia();
   if (nowy || !u.ipadKlucz) { u.ipadKlucz = crypto.randomBytes(18).toString('base64url'); zapiszUstawienia(u); }
@@ -180,11 +217,21 @@ function stanIpad() {
   // gdy router przydzieli inny adres IP; Windows 10/11 i iPadOS rozumieją .local bez instalowania czegokolwiek.
   const host = process.env.MS_IPAD_ADRES ? null : String(os.hostname() || '').toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
   const staly = host && adresy.length ? host + '.local' : null;
+  const urlTls = (a) => 'https://' + a + ':' + IPAD_PORT_HTTPS + '/?k=' + klucz;
   const s = { wlaczony: !!ipad.serwer, blad: ipad.blad, port: IPAD_PORT, polaczone: ipad.polaczone.slice(-5), aktywne: ipad.serwer && ipad.serwer.polaczeni ? ipad.serwer.polaczeni() : [], adresy: adresy.map((x) => ({ ...x, url: url(x.adres) })) };
   if (s.wlaczony && adresy[0]) {
     s.url = url(adresy[0].adres);
     if (staly) s.urlStaly = url(staly);
     s.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.urlStaly || s.url)).toString('base64');
+    // powiadomienia w tle: strona z instrukcją (http) → certyfikat → wersja https
+    const baza = staly || adresy[0].adres;
+    s.tlo = {
+      wlaczone: !!ipad.serwerTls, blad: ipad.bladTls, port: IPAD_PORT_HTTPS, odcisk: ipad.tls ? ipad.tls.odcisk : null,
+      urlTls: urlTls(baza), urlInstrukcja: 'http://' + baza + ':' + IPAD_PORT + '/tls?k=' + klucz,
+      subskrypcje: (ustawienia().push || {}).subskrypcje ? ustawienia().push.subskrypcje.map((x) => ({ nazwa: x.nazwa, od: x.od })) : [],
+      ostatni: ipad.ostatniPush || null
+    };
+    s.tlo.qr = 'data:image/svg+xml;base64,' + Buffer.from(qrSvg(s.tlo.urlInstrukcja)).toString('base64');
   }
   return s;
 }
@@ -192,14 +239,30 @@ function wlaczIpad(okno) {
   if (ipad.serwer) return Promise.resolve(stanIpad());
   kluczIpad(false);
   ipad.blad = null;
-  const serwer = utworzSerwer({
+  try { ipad.tls = zapewnijCertyfikaty(path.join(app.getPath('userData'), 'ipad-tls'), hostyTls()); ipad.bladTls = null; }
+  catch (e) { ipad.tls = null; ipad.bladTls = 'Certyfikat: ' + e.message; }
+  const opcje = {
     katalogApp: path.join(__dirname, 'app'), ikona: path.join(__dirname, 'ikona.png'), pliki: PLIKI,
     klucz: () => ustawienia().ipadKlucz,
+    certyfikatUrzedu: () => (ipad.tls ? ipad.tls.ca : null),
+    adresHttps: (k) => { const h = hostyTls(); const b = h.find((x) => x.endsWith('.local')) || h[0]; return b ? 'https://' + b + ':' + IPAD_PORT_HTTPS + '/?k=' + encodeURIComponent(k) : null; },
+    dodatkowe: {
+      pushKlucz: () => ustawieniaPush().vapid.publiczny,
+      pushZapisz: (json, nazwa) => { const w = pushZapisz(json, nazwa); if (okno && !okno.isDestroyed()) okno.webContents.send('ms:ipad-zmiana'); return w; },
+      pushTest: () => wyslijPush({ tytul: 'MS Konsylium', tekst: 'Powiadomienia w tle działają.', tag: 'test' })
+    },
     naZdarzenie: (z) => {
       if (z.typ === 'polaczenie' && !ipad.polaczone.some((x) => x.adres === z.adres)) ipad.polaczone.push({ adres: z.adres, czas: Date.now() });
       if (okno && !okno.isDestroyed()) okno.webContents.send('ms:ipad-zmiana');
     }
-  });
+  };
+  const serwer = utworzSerwer(opcje);
+  if (ipad.tls) {
+    const st = utworzSerwer({ ...opcje, tls: ipad.tls });
+    st.once('error', (err) => { ipad.serwerTls = null; ipad.bladTls = err.code === 'EADDRINUSE' ? 'Port ' + IPAD_PORT_HTTPS + ' jest zajęty przez inny program.' : 'https: ' + err.message; });
+    st.listen(IPAD_PORT_HTTPS, '0.0.0.0', () => { ipad.serwerTls = st; });
+  }
+  if (!ipad.straznik) ipad.straznik = utworzStraznika({ korzen: () => korzen(), zglos: (z) => { wyslijPush({ tytul: z.tytul, tekst: z.tekst, tag: z.tag }).catch(() => {}); } });
   return new Promise((ok) => {
     serwer.once('error', (err) => {
       ipad.serwer = null;
@@ -210,8 +273,9 @@ function wlaczIpad(okno) {
   });
 }
 function wylaczIpad() {
-  if (ipad.serwer) { ipad.serwer.close(); ipad.serwer.closeAllConnections && ipad.serwer.closeAllConnections(); }
-  ipad.serwer = null; ipad.polaczone = [];
+  for (const s of [ipad.serwer, ipad.serwerTls]) if (s) { s.close(); s.closeAllConnections && s.closeAllConnections(); }
+  if (ipad.straznik) ipad.straznik.stop();
+  ipad.serwer = null; ipad.serwerTls = null; ipad.straznik = null; ipad.polaczone = [];
   return stanIpad();
 }
 
@@ -244,7 +308,12 @@ function podepnijPliki(okno) {
     zapiszUstawienia({ ...ustawienia(), ipad: !!wl });
     return wl ? wlaczIpad(okno) : wylaczIpad();
   });
-  ipcMain.handle('ms:ipad-nowy-kod', (e) => { tylkoNasze(e); kluczIpad(true); ipad.polaczone = []; return stanIpad(); });
+  ipcMain.handle('ms:ipad-nowy-kod', (e) => {
+    tylkoNasze(e); kluczIpad(true); ipad.polaczone = [];
+    const u = ustawienia(); if (u.push) { u.push.subskrypcje = []; zapiszUstawienia(u); }   // stare iPady tracą też powiadomienia
+    return stanIpad();
+  });
+  ipcMain.handle('ms:ipad-push-test', async (e) => { tylkoNasze(e); return wyslijPush({ tytul: 'MS Konsylium', tekst: 'Powiadomienia w tle działają.', tag: 'test' }); });
 }
 
 app.whenReady().then(() => {

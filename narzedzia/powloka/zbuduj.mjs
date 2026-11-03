@@ -54,7 +54,7 @@ writeFileSync(join(build, 'app', 'index.html'), powloka.replace('<!--IPAD-GLOWA-
 // 3b. Ta sama powłoka dla iPada (Safari w sieci lokalnej, serwer-ipad.js): most przez HTTP zamiast preload.js,
 //     CSP pozwala tylko na własny adres (komputer), ekran główny i tryb pełnoekranowy iPadOS.
 const CSP_WIN = `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; frame-src file:`;
-const CSP_IPAD = `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; frame-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'`;
+const CSP_IPAD = `default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; frame-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'`;
 if (!powloka.includes(CSP_WIN)) throw new Error('Zmieniono CSP powłoki: popraw CSP_WIN w zbuduj.mjs.');
 const glowaIpad = [
   '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
@@ -70,6 +70,7 @@ const glowaIpad = [
 ].join('\n');
 writeFileSync(join(build, 'app', 'ipad.html'), powloka.replace(CSP_WIN, () => CSP_IPAD).replace('<!--IPAD-GLOWA-->', () => glowaIpad));
 copyFileSync(join(tu, 'serwer-ipad.js'), join(build, 'serwer-ipad.js'));
+for (const f of ['tls-lokalny.js', 'web-push.js', 'straznik-sprawy.js']) copyFileSync(join(tu, f), join(build, f));
 copyFileSync(join(tu, 'node_modules', 'qrcode-generator', 'dist', 'qrcode.js'), join(build, 'qrcode.js'));
 copyFileSync(join(tu, 'main.js'), join(build, 'main.js'));
 copyFileSync(join(tu, 'preload.js'), join(build, 'preload.js'));
