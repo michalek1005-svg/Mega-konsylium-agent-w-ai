@@ -1143,20 +1143,19 @@ async function powiedzLekarz(tekst, hipoteza = false) {
   });
   window.addEventListener('resize', () => { const d = document.querySelector('.dymek:not(.stary)'); if (d && kroki.length) ustawDymek(d, scen.sceny[kroki[i].si].wypowiedzi[kroki[i].wi].kto); });
 
-  // motyw: domyślnie ciemny (jak woli Michał); zapamiętany lokalnie, jeśli się da
-  function ustawMotyw(m) {
+  // motyw: domyślnie jasny (stała decyzja Michała, jak ms-ui); zapamiętany lokalnie, jeśli się da
+  function ustawMotyw(m, bezZapisu) {
     const root = document.documentElement;
     root.setAttribute('data-motyw', m === 'jasny' ? 'jasny' : 'ciemny');
-    root.setAttribute('data-theme', m === 'jasny' ? 'light' : 'dark');
     $('motyw').textContent = m === 'jasny' ? 'Tryb ciemny' : 'Tryb jasny';
-    try { localStorage.setItem('pokoj-motyw', m); } catch { /* brak pamięci przeglądarki */ }
+    if (!bezZapisu) try { localStorage.setItem('pokoj-motyw', m); } catch { /* brak pamięci przeglądarki */ }
   }
   let motyw = null;
   try { motyw = localStorage.getItem('pokoj-motyw'); } catch { /* jw. */ }
-  if (motyw && window.parent === window) ustawMotyw(motyw); // w aplikacji (iframe) motyw przychodzi z powłoki
-  else $('motyw').textContent = matchMedia('(prefers-color-scheme: light)').matches ? 'Tryb ciemny' : 'Tryb jasny';
+  if (window.parent === window) ustawMotyw(motyw || 'jasny', !motyw); // w aplikacji (iframe) motyw przychodzi z powłoki
+  else $('motyw').textContent = document.documentElement.getAttribute('data-motyw') === 'ciemny' ? 'Tryb jasny' : 'Tryb ciemny';
   $('motyw').addEventListener('click', () => {
-    const teraz = document.documentElement.getAttribute('data-motyw') || (matchMedia('(prefers-color-scheme: light)').matches ? 'jasny' : 'ciemny');
+    const teraz = document.documentElement.getAttribute('data-motyw') || 'jasny';
     ustawMotyw(teraz === 'jasny' ? 'ciemny' : 'jasny');
   });
 

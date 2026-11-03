@@ -9,6 +9,8 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { zbudujScenariusz } from './src/scenariusz.mjs';
 import { wczytajSprawe } from './test/pomoc.mjs';
+import { msUiCss } from '../../packages/ms-ui/ms-ui.mjs';
+import { logoDataUrl } from '../../packages/ms-ui/logo.js';
 
 const tu = dirname(fileURLToPath(import.meta.url));
 const arg = (n) => { const k = process.argv.indexOf(n); return k > 0 ? process.argv[k + 1] : null; };
@@ -33,7 +35,8 @@ const demo = zbudujScenariusz(wczytajSprawe(katalogSprawy), basename(katalogSpra
 
 const parser = czytaj('src/scenariusz.mjs').replace(/^export /gm, '');
 const js = `${parser}\nconst DEMO = ${JSON.stringify(demo).replace(/</g, '\\u003c')};\n${czytaj('../wspolne/ms-most.js')}\n${czytaj('src/postacie.js')}\n${czytaj('src/plakat.js').replace('/*@@PLAKAT@@*/', () => readFileSync(join(tu, 'zasoby/plakat.jpg')).toString('base64'))}\n${czytaj('src/pokoj.js')}`;
-const css = czytaj('src/pokoj.css').replace('/*@@FONT@@*/', () => fontCss);
+// ms-ui (tokeny + komponenty marki) przed stylami Pokoju; krój na samym początku
+const css = czytaj('src/pokoj.css').replace('/*@@FONT@@*/', () => fontCss + '\n' + msUiCss());
 
 // strażnik: żadnych adresów sieciowych w kodzie i stylach (poza krojem w data:)
 const adresy = (css.replace(fontCss, '') + js).match(/https?:\/\/[^\s'"`)]+/g) || [];
@@ -41,10 +44,11 @@ if (adresy.length) { console.error('Znaleziono adresy sieciowe:', adresy); proce
 
 const tytul = `<title>Pokój lekarski</title>`;
 const csp = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; font-src data:; img-src data:">`;
-const cialo = czytaj('src/szablon.html').replace('/*@@JS@@*/', () => js);
+const logo = `<img class="jasne" alt="" width="48" height="51" src="${logoDataUrl('K', 'jasny')}"><img class="ciemne" alt="" width="48" height="51" src="${logoDataUrl('K', 'ciemny')}">`;
+const cialo = czytaj('src/szablon.html').replace('/*@@JS@@*/', () => js).replace('<!--@@LOGO@@-->', () => logo);
 
 const pelny = `<!doctype html>
-<html lang="pl" data-motyw="ciemny" data-theme="dark">
+<html lang="pl" data-motyw="jasny">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

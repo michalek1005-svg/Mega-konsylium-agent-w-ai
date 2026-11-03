@@ -1,78 +1,25 @@
-/* Pokój lekarski Konsylium — wygląd marki MS (paleta „Laguna” z Nawigatora, tryb ciemny jako domyślny).
+/* Pokój lekarski Konsylium — wygląd marki MS (paleta „Laguna” z Nawigatora, tryb jasny jako domyślny).
    Układ: nagłówek z logo K → scena pokoju (SVG + dymki HTML) obok protokołu → pasek odtwarzania.
-   Tokeny pokoju są dopisane do kopii tokenów MS; zmiany palety marki idą przez Michała. */
+   Tokeny marki z packages/ms-ui (wklejane przy budowaniu przed tym plikiem); zmiany palety marki idą przez Michała. */
 /*@@FONT@@*/
 :root {
-  color-scheme: dark;
-  --petrol: #5CC8BB; --ink: #E4EEEB; --mut: #93A9A4; --bg-viewport: #0F1918;
-  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.22) 0%, rgba(64,168,158,0) 70%),
-           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.16) 0%, rgba(132,176,108,0) 70%),
-           linear-gradient(160deg, #121d1c 0%, #0b1413 100%);
-  --tafla: rgba(20,32,31,.78);
-  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.07), 0 40px 74px -34px rgba(0,0,0,.85);
-  --panel: rgba(255,255,255,.05);
-  --panel-cien: 0 14px 32px -25px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.08);
-  --btn: rgba(92,200,187,.12); --btn-h: rgba(92,200,187,.2); --btn-txt: #8fdcd2;
-  --on: #1b7a70; --on-txt: #fff;
-  --alarm: #ff9a8c; --ostrzezenie: #e9c46a; --ok: #6fd3a0;
-  /* pokój */
-  --sciana: #1a2a29; --sciana-2: #152322; --podloga: #101b1a; --podloga-linia: rgba(92,200,187,.06);
-  --listwa: #24403c; --stol: #2b3d3a; --stol-blat: #34504b; --stol-krawedz: #1f302e;
-  --szyba: rgba(140,210,220,.10); --szyba-obrys: rgba(160,220,225,.35);
-  --okno-niebo: #0d2230; --okno-gwiazda: rgba(255,255,255,.55);
-  --niebo-gora: #06111c; --slonce: #e6edf0; --chmura: rgba(190,215,225,.10); --miasto-dal: #142a3a; --miasto-blizej: #0c1c29; --okno-swiatlo: #f2d48a; --drzewa: #0b2420; --tabliczka: #e8efed; --swiatlo: #bff3e6; --poswiata: .22;
-  --tablica: #e8efed; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #46625d;
-  --cien-postaci: rgba(0,0,0,.45);
-  --fartuch: #e7eeec; --fartuch-cien: #b8c7c3;
-  --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8; --g-rezydent: #b4875a; --g-prowadzacy: #b8622e;
-  --dym: rgba(250,252,252,.72);
-  --dymek: #f4f8f7; --dymek-txt: #14302D; --dymek-mut: #4d6762;
-  --font: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  /* tokeny marki (kolory, tafle, przyciski, --scene, --font, --ok, --ostrzezenie) przychodzą z packages/ms-ui/tokeny.css;
+     tu tylko kolory samej sceny pokoju. Motyw jasny domyślnie, ciemny przez html[data-motyw="ciemny"] (jak ms-ui). */
+  --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08); --listwa: #9fb9b3; --stol: #8fa9a2;
+  --stol-blat: #b4cac4; --stol-krawedz: #7d968f; --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35); --okno-niebo: #9fd0dc;
+  --okno-gwiazda: rgba(255,255,255,0); --niebo-gora: #5fa9d2; --slonce: #ffe39a; --chmura: rgba(255,255,255,.9); --miasto-dal: #b2c9d1;
+  --miasto-blizej: #8eabb5; --okno-swiatlo: rgba(255,255,255,.6); --drzewa: #7ea779; --tabliczka: #ffffff; --swiatlo: #ffffff; --poswiata: .12;
+  --tablica: #ffffff; --tablica-txt: #14302D; --tablica-mut: #5C7570; --tablica-rama: #8fa9a2; --cien-postaci: rgba(10,54,52,.22);
+  --fartuch: #e7eeec; --fartuch-cien: #b8c7c3; --g-ordynator: #1b7a70; --g-lekarz: #3e8f9e; --g-zastepca: #6a8f5a; --g-sprawdzajacy: #7c7aa8;
+  --g-rezydent: #b4875a; --g-prowadzacy: #b8622e; --dym: rgba(238,243,242,.4); --dymek: #ffffff; --dymek-txt: #14302D; --dymek-mut: #4d6762;
   --font-mono: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', Consolas, monospace;
 }
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]):not([data-motyw="ciemny"]) {
-    color-scheme: light;
-    --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
-    --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
-             radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
-             linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
-    --tafla: rgba(255,255,255,.44);
-    --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
-    --panel: rgba(255,255,255,.7);
-    --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
-    --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
-    --on: #0F5E58; --on-txt: #fff;
-    --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
-    --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
-    --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
-    --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
-    --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0); --niebo-gora: #5fa9d2; --slonce: #ffe39a; --chmura: rgba(255,255,255,.9); --miasto-dal: #b2c9d1; --miasto-blizej: #8eabb5; --okno-swiatlo: rgba(255,255,255,.6); --drzewa: #7ea779; --tabliczka: #ffffff; --swiatlo: #ffffff; --poswiata: .12;
-    --tablica: #ffffff; --tablica-rama: #8fa9a2;
-    --cien-postaci: rgba(10,54,52,.22);
-    --dymek: #ffffff; --dym: rgba(238,243,242,.4);
-  }
-}
-:root[data-theme="light"], :root[data-motyw="jasny"] {
-  color-scheme: light;
-  --petrol: #0F5E58; --ink: #14302D; --mut: #5C7570; --bg-viewport: #E9EFEC;
-  --scene: radial-gradient(46vw 42vh at 100% -4%, rgba(64,168,158,.62) 0%, rgba(64,168,158,0) 70%),
-           radial-gradient(50vw 46vh at -4% 104%, rgba(132,176,108,.56) 0%, rgba(132,176,108,0) 70%),
-           linear-gradient(160deg, #E9EFEC 0%, #CFDCD8 100%);
-  --tafla: rgba(255,255,255,.44);
-  --tafla-cien: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5), 0 40px 74px -34px rgba(10,54,52,.62);
-  --panel: rgba(255,255,255,.7);
-  --panel-cien: 0 14px 32px -25px rgba(10,54,52,.55), inset 0 0 0 1px rgba(15,94,88,.13);
-  --btn: rgba(15,94,88,.08); --btn-h: rgba(15,94,88,.15); --btn-txt: #0F5E58;
-  --on: #0F5E58; --on-txt: #fff;
-  --alarm: #A83A38; --ostrzezenie: #9a6b00; --ok: #1e7a4c;
-  --sciana: #dfe9e6; --sciana-2: #d3e0dc; --podloga: #c3d3ce; --podloga-linia: rgba(15,94,88,.08);
-  --listwa: #9fb9b3; --stol: #8fa9a2; --stol-blat: #b4cac4; --stol-krawedz: #7d968f;
-  --szyba: rgba(120,190,200,.16); --szyba-obrys: rgba(15,94,88,.35);
-  --okno-niebo: #9fd0dc; --okno-gwiazda: rgba(255,255,255,0); --niebo-gora: #5fa9d2; --slonce: #ffe39a; --chmura: rgba(255,255,255,.9); --miasto-dal: #b2c9d1; --miasto-blizej: #8eabb5; --okno-swiatlo: rgba(255,255,255,.6); --drzewa: #7ea779; --tabliczka: #ffffff; --swiatlo: #ffffff; --poswiata: .12;
-  --tablica: #ffffff; --tablica-rama: #8fa9a2;
-  --cien-postaci: rgba(10,54,52,.22);
-  --dymek: #ffffff; --dym: rgba(238,243,242,.4);
+html[data-motyw="ciemny"] {
+  --sciana: #1a2a29; --sciana-2: #152322; --podloga: #101b1a; --podloga-linia: rgba(92,200,187,.06); --listwa: #24403c; --stol: #2b3d3a;
+  --stol-blat: #34504b; --stol-krawedz: #1f302e; --szyba: rgba(140,210,220,.10); --szyba-obrys: rgba(160,220,225,.35); --okno-niebo: #0d2230;
+  --okno-gwiazda: rgba(255,255,255,.55); --niebo-gora: #06111c; --slonce: #e6edf0; --chmura: rgba(190,215,225,.10); --miasto-dal: #142a3a;
+  --miasto-blizej: #0c1c29; --okno-swiatlo: #f2d48a; --drzewa: #0b2420; --tabliczka: #e8efed; --swiatlo: #bff3e6; --poswiata: .22;
+  --tablica: #e8efed; --tablica-rama: #46625d; --cien-postaci: rgba(0,0,0,.45); --dym: rgba(250,252,252,.72); --dymek: #f4f8f7;
 }
 
 * { box-sizing: border-box; }
@@ -87,10 +34,10 @@ body {
 
 /* nagłówek: logo K jak N w Nawigatorze */
 .naglowek { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.logo { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; flex: none;
-  font-weight: 800; font-size: 26px; letter-spacing: -1px; color: #F7FBFA;
-  background: linear-gradient(150deg, #157268, #0F5E58);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.25), 0 12px 24px -12px rgba(10,54,52,.7); }
+.logo { width: 48px; height: 48px; flex: none; position: relative; }   /* logo K z packages/ms-ui/logo.js, jak w powłoce; ramka 48 px jak dawny kafelek, żeby nagłówek nie urósł */
+.logo img { display: block; position: absolute; left: 0; top: -1.5px; width: 48px; height: 51px; filter: contrast(1.2) drop-shadow(0 1px 2px rgba(10,54,52,.4)); -webkit-user-drag: none; }
+.logo .ciemne, html[data-motyw="ciemny"] .logo .jasne { display: none; }
+html[data-motyw="ciemny"] .logo .ciemne { display: block; }
 .tytul { flex: 1; min-width: 200px; }
 .tytul h1 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.4px; text-wrap: balance; }
 .tytul p { margin: 3px 0 0; font-size: 12px; color: var(--mut); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
@@ -99,6 +46,7 @@ body {
   background: var(--btn); color: var(--btn-txt); }
 .pasek { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px; border-radius: 999px; background: var(--tafla); box-shadow: var(--tafla-cien);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+/* nadpisanie ms-ui: niższe przyciski i etykiety w gęstym pasku Pokoju (Graficzny 3.11) */
 .nk-button { border: 0; border-radius: 22px; padding: 8px 14px; min-height: 38px; background: var(--btn); color: var(--btn-txt);
   font: inherit; font-size: 12.5px; font-weight: 650; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
   cursor: pointer; line-height: 1.3; transition: background .15s; user-select: none; }
@@ -287,10 +235,6 @@ html.osadzony .uklad.z-protokolem { grid-template-columns: minmax(0, 1fr) 340px;
 html.osadzony .uklad:not(.z-protokolem) .protokol { display: none; }
 html.osadzony .protokol { max-height: calc(100vh - 110px); }
 
-/* Przewijanie wpasowane w szklaną taflę */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
-::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--mut) 35%, transparent); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
 /* w aplikacji scena mieści się w oknie razem z paskiem sterowania */
 html.osadzony .pokoj { width: min(100%, calc((100vh - 236px) * 1200 / 700)); margin: 0 auto; }
 /* pole lekarza prowadzącego ma się mieścić w oknie razem ze sceną (1920×1008 i mniejsze) */
@@ -414,7 +358,7 @@ html.osadzony .legenda { display: none; }
 #ekran-sciana .chmury g { animation: chmura 60s linear infinite alternate; }
 #ekran-sciana .chmury g:nth-child(2) { animation-duration: 85s; } #ekran-sciana .chmury g:nth-child(3) { animation-duration: 70s; animation-direction: alternate-reverse; }
 @keyframes chmura { to { translate: 36px 0; } }
-:root[data-motyw="ciemny"] #ekran-sciana .okna-miasta rect, :root[data-theme="dark"] #ekran-sciana .okna-miasta rect { animation: okno-swieci 9s steps(1) infinite; }
+:root[data-motyw="ciemny"] #ekran-sciana .okna-miasta rect { animation: okno-swieci 9s steps(1) infinite; }
 @keyframes okno-swieci { 0%, 70% { opacity: 1; } 71%, 86% { opacity: .25; } 87% { opacity: 1; } }
 .tabliczka .podpis { font-size: 10px; fill: #14302D; stroke: none; }
 @media (prefers-reduced-motion: reduce) { #ekran-sciana .chmury g, #ekran-sciana .okna-miasta rect { animation: none !important; } }
