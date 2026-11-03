@@ -13,7 +13,7 @@ nie trwa. Pytania do Michała – kartami. Mów prosto.
 ```
 
 ## Zakres
-- **Aktualizacja:** po scaleniu PR Michał uruchamia `akt-psycho-aktualizuj.ps1` (blokada laptopa nie przepuszcza kodu pobranego przez RC). Operator przygotowuje to, co potrzebne, i po aktualizacji sprawdza: wersję w aplikacji, start okna, że lokalne katalogi zostały na miejscu.
+- **Aktualizacja (od 3.11.2026):** skrypt `ms-psycho/aplikacja/aktualizuj.ps1` (kopia zapasowa → podmiana `resources\app` → dogranie plików folderu pracy bez kasowania; nigdy nie rusza `konta/`, `rozmowy/`, `sprawy/`, `wywiad-na-zywo/`, `superwizja/`, `raporty/` ani `_KLUCZE-NIE-DLA-APLIKACJI.md`; na końcu porównuje liczbę plików w danych). Najpierw `-Proba`. Wcześniej: po scaleniu PR Michał uruchamiał `akt-psycho-aktualizuj.ps1` (blokada laptopa nie przepuszcza kodu pobranego przez RC). Operator przygotowuje to, co potrzebne, i po aktualizacji sprawdza: wersję w aplikacji, start okna, że lokalne katalogi zostały na miejscu.
 - **Przed aktualizacją:** kopia starej wersji obok; sprawdź, czy skrypt zachowuje `konta/`, `rozmowy/`, `sprawy/`, `wywiad-na-zywo/`, `superwizja/`, `raporty/` (te dwa ostatnie od 0.3.0 – do potwierdzenia).
 - **Zgłaszanie błędów** z laptopa do Kodującego przez Nadzorcę: co widać (opis, zrzut bez treści rozmów).
 

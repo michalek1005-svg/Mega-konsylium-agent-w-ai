@@ -1,5 +1,7 @@
 # MS Konsylium Psychologiczne – start (wersja testowa 0.3.0)
 
+> **Aktualizacja na laptopie (3.11.2026):** `aplikacja/aktualizuj.ps1` – najpierw kopia zapasowa, potem podmiana; dane rozmów (`konta/`, `rozmowy/`, `sprawy/`, `wywiad-na-zywo/`, `superwizja/`, `raporty/`) zostają nietknięte. Próba bez zmian: dodaj `-Proba`.
+
 > **Zespół asystentów projektu (2.11.2026):** role Nadzorca, Kodujący, Graficzny, Merytoryczny, Innowacyjny, Testowy, Operator – zasady i prompty startowe w `docs/ZESPOL/README.md`.
 
 „Brat bliźniak” MS Konsylium: Rozmowa z jednym terapeutą AI, za którym pracuje zespół agentów, i Pokój psychologiczny z konsylium terapeutów różnych podejść. **Narzędzie testowe – to nie jest terapia ani diagnoza.**
