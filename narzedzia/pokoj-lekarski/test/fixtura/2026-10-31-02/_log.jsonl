@@ -1,0 +1,22 @@
+{"ts":"2026-10-31T12:17:30Z","rola":"ordynator","zdarzenie":"start","plik":"00-surowe.md"}
+{"ts":"2026-10-31T12:26:56Z","rola":"ordynator","zdarzenie":"wywiad_tura1","plik":"01-wywiad.md"}
+{"ts":"2026-10-31T12:30:22Z","rola":"ordynator","zdarzenie":"wywiad_zamkniety","plik":"01-wywiad.md","uwaga":"2 tury; hipoteza w osobnym pliku _hipoteza-ordynatora.md"}
+{"ts":"2026-10-31T12:31:12Z","rola":"ordynator","zdarzenie":"triage","plik":"02-triage.json","tryb":"PELNY","rezydenci":2}
+{"ts": "2026-10-31T12:35:08+00:00", "rola": "skrypt", "zdarzenie": "agregacja", "plik": "03-opinie/_agregat.json"}
+{"ts":"2026-10-31T12:35:36Z","rola":"ordynator","zdarzenie":"agregacja","plik":"03-opinie/_agregat.json","uwaga":"z synonimami: _agregat-synonimy.json, zgoda 0.63"}
+{"ts":"2026-10-31T12:36:50Z","rola":"ordynator","zdarzenie":"projekt","plik":"05-projekt.md"}
+{"ts": "2026-10-31T12:36:50+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz rodzinny z Wielkiej Brytanii pracujący wg NICE seed=101"}
+{"ts": "2026-10-31T12:36:50+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz chorób zakaźnych seed=202"}
+{"ts": "2026-10-31T12:36:50+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=geriatra z małego szpitala powiatowego seed=303"}
+{"ts": "2026-10-31T12:36:50+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=pediatra (patrzysz na dorosłych oczami kogoś, kto zwykle leczy dzieci i pyta rodziców) seed=404"}
+{"ts": "2026-10-31T12:36:50+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz SOR z dużego miasta seed=505"}
+{"ts": "2026-10-31T12:36:56+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz rodzinny z Wielkiej Brytanii pracujący wg NICE seed=101"}
+{"ts": "2026-10-31T12:36:56+00:00", "rola": "skrypt", "zdarzenie": "pakiet_rezydenta", "plik": "persona=lekarz chorób zakaźnych seed=202"}
+{"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"konsylium_runda1","plik":"04-konsylium.md"}
+{"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"rezydenci","plik":"06-rezydenci/","uwaga":"uzyte seedy 101 i 202; 303, 404, 505 niewykorzystane"}
+{"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"sprawdzenie","plik":"07-sprawdzenie.json","uwaga":"fakty ZOLTA, proces CZERWONA; PMID zweryfikowane przez ordynatora w PubMed"}
+{"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"odpowiedz_rezydentom","plik":"08-odpowiedz-rezydentom.md"}
+{"ts":"2026-10-31T12:39:26Z","rola":"ordynator","zdarzenie":"final","plik":"09-FINAL.md","uwaga":"poprawki po sprawdzajacych: jedna czynnosc w REKOMENDACJI, porfiria, NIEZNANE, etykiety"}
+{"ts": "2026-10-31T12:41:00+00:00", "rola": "skrypt", "zdarzenie": "kalibracja", "plik": "pamiec/kalibracja.json"}
+{"ts": "2026-10-31T12:41:00+00:00", "rola": "skrypt", "zdarzenie": "rubryka", "plik": "_rubryka.json"}
+{"ts":"2026-10-31T12:41:10Z","rola":"ordynator","zdarzenie":"followup","plik":"10-followup.md","uwaga":"kalibracja i rubryka liczone na kopii z synonimami (config bez zmian); rubryka 92/100"}

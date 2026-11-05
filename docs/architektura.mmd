@@ -1,0 +1,54 @@
+flowchart TB
+    U([Lekarz POZ wpisuje przypadek]) --> O
+
+    subgraph KIER[" KIEROWNICTWO "]
+        direction TB
+        O[ORDYNATOR<br/>wywiad ≤3 tury · synteza · 1 decyzja<br/>jedyny zapis pamięci]
+        O --> Z1[Zastępca<br/>ZŁOŻONOŚĆ] & Z2[Zastępca<br/>BEZPIECZEŃSTWO<br/>eskalacja nieodwołalna] & Z3[Zastępca<br/>NIEPEWNOŚĆ<br/>+ sukcesja]
+    end
+
+    Z1 & Z2 & Z3 --> T{tryb?<br/>reguła OR}
+    T -->|SZYBKI| S[ordynator + farmakolog<br/>+ sprawdzający faktów]
+    T -->|PEŁNY| B
+
+    subgraph B[" ŚLEPA TURA → DYSKUSJA · 6 lekarzy stałych · czytają pamiec/ i zrodla/ "]
+        direction LR
+        L1[Hipotezujący<br/>szerokość] ~~~ L2[Bayesowski<br/>pretest] ~~~ L3[Najgorszy<br/>scenariusz<br/>WETO pilności] ~~~ L4[Pragmatyk<br/>POZ] ~~~ L5[Farmakolog] ~~~ L6[Gospodarz<br/>kosztów]
+    end
+
+    B -->|03-opinie/*.json| AG[[agregacja.py<br/>ważona pula log-odds · waga = rola × kalibracja · weto]]
+    AG --> O2[ORDYNATOR<br/>04-konsylium · 05-projekt]
+
+    O2 -->|"pakiet_rezydenta.py<br/>TYLKO surowe dane + 1 zdanie decyzji<br/>✕ bez pamiec/ ✕ bez zrodla/ ✕ bez dyskusji"| R
+    subgraph R[" REZYDENCI Z ZEWNĄTRZ · inny model · bez pamięci · persona losowa "]
+        direction LR
+        R1[R1] ~~~ R2[R2] ~~~ R3[R3<br/>gdy ryzyko ≥7]
+    end
+
+    O2 --> KJ
+    subgraph KJ[" KONTROLA JAKOŚCI · bez prawa głosu · tylko kartki "]
+        direction LR
+        SF[Sprawdzający FAKTÓW<br/>zrodla/ › PubMed › wytyczne › model] ~~~ SP[Sprawdzający PROCESU<br/>checklista CLAUDE.md]
+    end
+
+    R -->|06-rezydenci: 3 punkty ≤150 słów| O3
+    KJ -->|zielona / żółta / czerwona| O3
+    S --> O3
+    O3[ORDYNATOR<br/>08-odpowiedz-rezydentom: PRZYJMUJĘ / ODRZUCAM + powód<br/>czerwona kartka → poprawka, max 2 pętle]
+    O3 --> F[/09-FINAL.md<br/>REKOMENDACJA · PILNOŚĆ · DLACZEGO · PLAN B<br/>CZEGO NIE WIEMY · WRÓĆ GDY · ŹRÓDŁA/]
+    F --> U2([Lekarz POZ decyduje])
+    U2 -.->|po dniach: 10-followup.md| K[[kalibracja.py · rubryka.py]]
+    K -.-> PAM[(pamiec/ zespol.md · kalibracja.json · luki.md<br/>zrodla/ polskie wytyczne · ChPL — kuratoruje użytkownik)]
+
+    classDef kier fill:#1f3a5f,stroke:#0f1f33,color:#fff
+    classDef lek fill:#2d6a4f,stroke:#1b4332,color:#fff
+    classDef rez fill:#9c6644,stroke:#6f4518,color:#fff
+    classDef kj fill:#6c757d,stroke:#495057,color:#fff
+    classDef skr fill:#f4a261,stroke:#e76f51,color:#000
+    classDef dane fill:#e9ecef,stroke:#adb5bd,color:#000
+    class O,O2,O3,Z1,Z2,Z3 kier
+    class L1,L2,L3,L4,L5,L6,S lek
+    class R1,R2,R3 rez
+    class SF,SP kj
+    class AG,K skr
+    class PAM,F dane

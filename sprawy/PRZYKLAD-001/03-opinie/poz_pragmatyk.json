@@ -1,0 +1,5 @@
+{"rola":"poz_pragmatyk","rozpoznania":[{"nazwa":"kamica pęcherzyka żółciowego","p":0.6},{"nazwa":"choroba wrzodowa","p":0.1}],
+ "pilnosc":3,"pewnosc":"srednia","red_flags_wykluczone":[],"red_flags_otwarte":["brak EKG w gabinecie — do zrobienia na miejscu"],
+ "nastepny_krok":"Dziś: EKG w gabinecie, skierowanie na USG jamy brzusznej (pilne), badania: lipaza, ALT, AST, bilirubina całkowita, CRP, morfologia. Kontrola z wynikami za 2–3 dni.",
+ "plan_poz":{"teraz":"EKG; ocena temperatury; zalecenia dietetyczne (dieta lekkostrawna, bez tłuszczu); odstawić ibuprofen","zlecic":"USG jamy brzusznej, lipaza, ALT, AST, bilirubina, CRP, morfologia (koszyk POZ)","skierowac":"chirurg ogólny — tryb stabilny po potwierdzeniu kamicy w USG; SOR natychmiast przy gorączce, bólu >6 h, żółtaczce","kontrola":"2–3 dni z wynikami","dla_pacjenta":"To najpewniej kamienie w pęcherzyku; dziś badania, a jeśli pojawi się gorączka, ból nie puści przez kilka godzin albo zżółkniesz — jedź na SOR."},
+ "co_zmieniloby_zdanie":"brak dostępu do USG w ciągu tygodnia → skierowanie do szpitala w trybie pilnym","zrodla":["[wiedza modelu, niezweryfikowane] — sprawdzić w zrodla/ aktualny wykaz badań POZ"]}

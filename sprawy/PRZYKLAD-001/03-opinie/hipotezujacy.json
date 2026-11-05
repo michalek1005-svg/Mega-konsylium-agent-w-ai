@@ -1,0 +1,8 @@
+{"rola":"hipotezujacy","rozpoznania":[
+ {"nazwa":"kamica żółciowa","p":0.55,"za":["ból po tłustych posiłkach","promieniowanie pod prawą łopatkę","Murphy dodatni","kobieta, 54 l., BMI 31"],"przeciw":["brak badań obrazowych"]},
+ {"nazwa":"ostre zapalenie pęcherzyka żółciowego","p":0.15,"za":["Murphy dodatni","3 dni"],"przeciw":["bez gorączki","HR 84","ból falujący, nie ciągły"]},
+ {"nazwa":"choroba wrzodowa","p":0.12,"za":["ibuprofen","ból po posiłkach"],"przeciw":["promieniowanie pod łopatkę","Murphy"]},
+ {"nazwa":"ostre zapalenie trzustki","p":0.08,"za":["nudności, wymioty"],"przeciw":["ból nie opasujący","stan ogólny dobry"]},
+ {"nazwa":"zawał serca","p":0.05,"za":["kobieta 54 l., nadciśnienie, hipercholesterolemia"],"przeciw":["ból związany z jedzeniem, Murphy dodatni"]}],
+ "pilnosc":3,"pewnosc":"srednia","red_flags_wykluczone":["krwawienie z przewodu pokarmowego"],"red_flags_otwarte":["zapalenie trzustki (brak lipazy)"],
+ "nastepny_krok":"USG jamy brzusznej + lipaza, ALT, AST, bilirubina, CRP, morfologia","co_zmieniloby_zdanie":"gorączka lub ból ciągły >6 h → zapalenie pęcherzyka","zrodla":["[wiedza modelu, niezweryfikowane]"]}

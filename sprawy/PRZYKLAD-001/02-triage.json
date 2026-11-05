@@ -1,0 +1,5 @@
+{"zastepcy":[
+ {"zastepca":"zlozonosc","wynik":3,"eskaluj":false,"uzasadnienie":"Jeden układ, 2 choroby przewlekłe, 2 leki stałe, 4 NIEZNANE.","czynniki":["4 pozycje NIEZNANE"]},
+ {"zastepca":"bezpieczenstwo","wynik":4,"eskaluj":true,"pilnosc_wstepna":3,"flagi":[{"flaga":"ból >6h ciągły (zapalenie pęcherzyka)","status":"NIEZBADANA"},{"flaga":"żółtaczka","status":"NIEOBECNA"},{"flaga":"gorączka","status":"NIEZBADANA"},{"flaga":"ekwiwalent wieńcowy u kobiety 54 l.","status":"NIEZBADANA"}],"uzasadnienie":"3 flagi niezbadane, w tym OZW u kobiety po 50 i brak lipazy."},
+ {"zastepca":"niepewnosc","wynik":2,"eskaluj":false,"hipoteza_wlasna":"kolka żółciowa, pilność 3","hipoteza_ordynatora":"kamica pęcherzyka żółciowego, pilność 3","zgodne":true,"co_by_zmienilo_zdanie":"gorączka lub ból ciągły >6h","uzasadnienie":"Zgodne rozpoznanie i pilność."}
+],"tryb":"PELNY","liczba_rezydentow":2}

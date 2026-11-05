@@ -1,0 +1,7 @@
+{"rola":"bayes","rozpoznania":[
+ {"nazwa":"kolka żółciowa","p":0.60,"za":["pretest: kobieta 50+, otyłość → kamica ~20% populacji","ból poposiłkowy po tłuszczach → silnie podnosi","promieniowanie pod łopatkę → umiarkowanie podnosi"],"przeciw":[]},
+ {"nazwa":"dyspepsja czynnościowa","p":0.15,"za":["częsta w POZ"],"przeciw":["Murphy dodatni silnie obniża"]},
+ {"nazwa":"choroba wrzodowa","p":0.10,"za":["NLPZ"],"przeciw":["NLPZ dopiero wczoraj, objawy od 3 dni"]},
+ {"nazwa":"ostry zespół wieńcowy","p":0.05,"za":["pretest u kobiety 54 l. z HA i hiperlipidemią nie jest zerowy"],"przeciw":["związek z jedzeniem, Murphy — silnie obniża"]}],
+ "pilnosc":3,"pewnosc":"srednia","red_flags_wykluczone":["krwawienie"],"red_flags_otwarte":[],
+ "nastepny_krok":"USG jamy brzusznej","co_zmieniloby_zdanie":"EKG z zmianami lub ból niezwiązany z posiłkiem","zrodla":["[wiedza modelu, niezweryfikowane]"]}

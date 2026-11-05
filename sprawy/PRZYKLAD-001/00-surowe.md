@@ -1,0 +1,1 @@
+Kobieta 54 l., od 3 dni ból w nadbrzuszu, głównie po posiłkach, zwłaszcza tłustych, promieniuje pod prawą łopatkę. Nudności, raz wymiotowała. Bez gorączki. BMI ok. 31. Bierze coś na nadciśnienie i "coś na cholesterol". Wczoraj wzięła 2 razy ibuprofen, pomogło na chwilę.

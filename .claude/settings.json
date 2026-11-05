@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(./sprawy/**)",
+      "Write(./pamiec/**)",
+      "Edit(./sprawy/**)",
+      "Edit(./pamiec/**)",
+      "Bash(python3 skrypty/*)",
+      "Bash(mkdir -p sprawy/*)",
+      "Bash(ls *)",
+      "Bash(date *)",
+      "mcp__PubMed__*",
+      "WebSearch",
+      "WebFetch"
+    ],
+    "deny": [
+      "Edit(./00-surowe.md)",
+      "Write(./sprawy/*/00-surowe.md)",
+      "Edit(./sprawy/*/00-surowe.md)",
+      "Edit(./CLAUDE.md)",
+      "Write(./CLAUDE.md)",
+      "Edit(./config/**)",
+      "Write(./config/**)",
+      "Edit(./.claude/**)",
+      "Write(./.claude/**)",
+      "Bash(rm *)",
+      "Bash(git push*)"
+    ]
+  },
+  "_komentarz": [
+    "00-surowe.md: zapis tylko przy tworzeniu sprawy (ordynator robi to przez Bash cat > w kroku 0; po utworzeniu — nietykalny).",
+    "CLAUDE.md, config/, .claude/: zmienia tylko użytkownik ręcznie. Ordynator może PROPONOWAĆ zmianę, nie wykonywać.",
+    "Rezydent nie ma narzędzi plikowych w ogóle (patrz .claude/agents/rezydent.md) — ta lista go nie dotyczy.",
+    "Jeśli uruchamiasz rezydenta zewnętrznym CLI (docs/FIREWALL-REZYDENTA.md §4), dodaj do allow np. Bash(codex exec*) albo Bash(ollama run*)."
+  ]
+}

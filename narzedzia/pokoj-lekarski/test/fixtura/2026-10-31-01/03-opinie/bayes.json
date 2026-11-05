@@ -1,0 +1,104 @@
+{
+  "rola": "bayes",
+  "rozpoznania": [
+    {
+      "nazwa": "kolka żółciowa w przebiegu kamicy pęcherzyka żółciowego",
+      "p": 0.48,
+      "za": [
+        "pretest: kobieta 54 l., BMI ok. 31 → kamica pęcherzyka częsta w tej grupie (ok. 15–20% kobiet po 50. r.ż. [wiedza modelu, niezweryfikowane]); w POZ ból w nadbrzuszu po posiłku: dyspepsja czynnościowa/wrzodowa i kamica to dwie dominujące przyczyny → pretest kamicy objawowej ok. 0,15–0,20",
+        "ból falujący, epizody 30–90 min, potem ból resztkowy → podnosi kolkę żółciową → umiarkowanie",
+        "wyzwalanie tłustym posiłkiem → podnosi → słabo (LR+ ok. 1,5 [wiedza modelu, niezweryfikowane])",
+        "promieniowanie pod prawą łopatkę → podnosi → umiarkowanie",
+        "2–3 podobne, słabsze, samoistnie ustępujące epizody w ostatnim roku → podnosi nawracającą kolkę → umiarkowanie",
+        "bolesność w prawym podżebrzu → podnosi pochodzenie żółciowe → umiarkowanie",
+        "nudności, jednorazowe wymioty → podnosi → słabo (niespecyficzne)",
+        "brak gorączki (36,9), brak obrony mięśniowej → przesuwa masę z zapalenia pęcherzyka w stronę niepowikłanej kolki → słabo-umiarkowanie"
+      ],
+      "przeciw": [
+        "ból trwa od 3 dni (nie tylko epizody <6 h) → obniża czystą kolkę na rzecz zapalenia pęcherzyka → umiarkowanie",
+        "objaw Murphy'ego dodatni → obniża czystą kolkę na rzecz zapalenia (LR+ ok. 2,8 dla ostrego zapalenia pęcherzyka [wiedza modelu, niezweryfikowane])",
+        "brak USG — rozpoznanie kamicy niepotwierdzone obrazowo"
+      ]
+    },
+    {
+      "nazwa": "ostre zapalenie pęcherzyka żółciowego",
+      "p": 0.27,
+      "za": [
+        "objaw Murphy'ego dodatni → podnosi → umiarkowanie (LR+ ok. 2,8, czułość ok. 65% [wiedza modelu, niezweryfikowane])",
+        "ból utrzymujący się 3 dni z bólem resztkowym między falami → podnosi → umiarkowanie",
+        "wywiad nawracających kolek → podnosi (zapalenie zwykle poprzedzone kolkami) → słabo",
+        "ibuprofen 2×400 mg wczoraj mógł maskować gorączkę i bolesność → osłabia wartość prawidłowej temperatury"
+      ],
+      "przeciw": [
+        "temperatura 36,9, HR 84 → obniża → słabo (gorączka ma niską czułość, LR− bliski 1 [wiedza modelu, niezweryfikowane])",
+        "brak obrony mięśniowej → obniża → słabo",
+        "ból wyraźnie falujący i związany z posiłkiem, a nie stały → obniża → słabo",
+        "brak CRP i leukocytozy — NIEZNANE, nie zakładam normy"
+      ]
+    },
+    {
+      "nazwa": "dyspepsja lub choroba wrzodowa żołądka i dwunastnicy",
+      "p": 0.09,
+      "za": [
+        "pretest: w POZ najczęstsza przyczyna bólu w nadbrzuszu po posiłku → wysoki punkt wyjścia",
+        "ból w nadbrzuszu, poposiłkowy → podnosi → słabo",
+        "ibuprofen (NLPZ) → czynnik ryzyka, ale przyjęty dopiero wczoraj, po początku bólu → nie jest przyczyną, może pogorszyć"
+      ],
+      "przeciw": [
+        "promieniowanie pod prawą łopatkę, kolkowy charakter, Murphy dodatni → silnie obniża",
+        "brak smolistych stolców, brak krwi → obniża powikłany wrzód → słabo"
+      ]
+    },
+    {
+      "nazwa": "kamica przewodowa żółciowa",
+      "p": 0.06,
+      "za": [
+        "prawdopodobna kamica pęcherzyka → kamica przewodowa współistnieje u ok. 10–15% chorych objawowych [wiedza modelu, niezweryfikowane]",
+        "wymioty, ból kolkowy → podnosi → słabo"
+      ],
+      "przeciw": [
+        "brak żółtaczki, ciemnego moczu, odbarwionych stolców (wg obserwacji pacjentki) → obniża → umiarkowanie",
+        "bilirubina, aminotransferazy, GGTP, fosfataza zasadowa — NIEZNANE; brak żółtaczki klinicznej nie wyklucza cholestazy biochemicznej"
+      ]
+    },
+    {
+      "nazwa": "ostre zapalenie trzustki",
+      "p": 0.04,
+      "za": [
+        "kamica żółciowa najczęstszą przyczyną ostrego zapalenia trzustki w Polsce → kamica podnosi → słabo",
+        "ból w nadbrzuszu, nudności, wymioty → podnosi → słabo"
+      ],
+      "przeciw": [
+        "ból falujący, zlokalizowany w prawym podżebrzu z promieniowaniem pod łopatkę, a nie stały opasujący do pleców → obniża → umiarkowanie",
+        "alkohol okazjonalny → brak czynnika alkoholowego",
+        "stabilna hemodynamika → obniża ciężką postać",
+        "lipaza — NIEZNANE"
+      ]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "krwawienie z przewodu pokarmowego (brak smolistych i krwistych stolców) — w zakresie wywiadu",
+    "niestabilność hemodynamiczna (HR 84, RR 138/86)",
+    "otrzewnowe zapalenie rozlane (brak obrony mięśniowej)",
+    "jawna żółtaczka (klinicznie nie zauważona)"
+  ],
+  "red_flags_otwarte": [
+    "ostre zapalenie pęcherzyka żółciowego — Murphy dodatni, ból 3 dni, gorączka mogła być maskowana ibuprofenem; brak CRP/leukocytów/USG",
+    "cholestaza / kamica przewodowa / zapalenie dróg żółciowych — brak bilirubiny i prób wątrobowych",
+    "ostre zapalenie trzustki — brak lipazy",
+    "ostry zespół wieńcowy z bólem w nadbrzuszu — kobieta 54 l. z nadciśnieniem i hipercholesterolemią, brak EKG; pretest niski (ból jednoznacznie poposiłkowy, bez duszności i potów), ale nie wykluczony",
+    "ciąża pozamaciczna — wiek 54 l. czyni ją bardzo mało prawdopodobną, status menopauzalny NIEZNANY"
+  ],
+  "nastepny_krok": "Dziś: morfologia, CRP, bilirubina, ALT, AST, GGTP, fosfataza zasadowa, lipaza oraz USG jamy brzusznej (pęcherzyk i drogi żółciowe) z EKG w gabinecie; jeśli USG lub laboratorium nieosiągalne dziś w POZ — skierowanie na SOR/izbę przyjęć do pilnej diagnostyki w kierunku ostrego zapalenia pęcherzyka.",
+  "co_zmieniloby_zdanie": "USG z pogrubieniem ściany pęcherzyka, płynem okołopęcherzykowym lub sonograficznym objawem Murphy'ego albo CRP/leukocytoza podwyższone przesunęłyby p ostrego zapalenia pęcherzyka powyżej 0,6, a podwyższona bilirubina/aminotransferazy lub poszerzony przewód żółciowy wspólny — kamicy przewodowej; USG bez złogów obniżyłoby całą grupę żółciową i podniosło dyspepsję/wrzód.",
+  "zrodla": [
+    "zrodla/ — brak polskich wytycznych dla tej sytuacji (manifest zawiera tylko przykłady); poziom 1 niedostępny",
+    "PubMed — niedostępny w tej sesji (błąd połączenia serwera MCP); poziom 2 niedostępny",
+    "Tokyo Guidelines 2018 (TG18) — kryteria rozpoznania ostrego zapalenia pęcherzyka i dróg żółciowych [wiedza modelu, niezweryfikowane — brak weryfikacji w sesji]",
+    "Trowbridge RL i wsp., JAMA 2003;289:80–86 — dokładność objawów klinicznych w ostrym zapaleniu pęcherzyka (Murphy LR+ ok. 2,8) [wiedza modelu, niezweryfikowane]",
+    "EASL Clinical Practice Guidelines on gallstones, J Hepatol 2016 [wiedza modelu, niezweryfikowane]",
+    "częstość kamicy pęcherzyka u kobiet po 50. r.ż. i współwystępowanie kamicy przewodowej [wiedza modelu, niezweryfikowane]"
+  ]
+}

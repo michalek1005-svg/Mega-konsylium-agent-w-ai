@@ -1,0 +1,6 @@
+{"rola":"gospodarz_kosztow","rozpoznania":[],
+ "pilnosc":3,"pewnosc":"srednia","red_flags_wykluczone":[],"red_flags_otwarte":[],
+ "nastepny_krok":"USG jamy brzusznej rozstrzyga top-2; lipaza i EKG są tanie i wykluczają groźne — zlecić; TK jamy brzusznej NIE na tym etapie",
+ "badania":[{"nazwa":"USG jamy brzusznej","cel":"kamica/zapalenie pęcherzyka","zmienia_decyzje":true,"kolejnosc":1},{"nazwa":"lipaza","cel":"OZT","zmienia_decyzje":true,"kolejnosc":1},{"nazwa":"EKG","cel":"OZW","zmienia_decyzje":true,"kolejnosc":1},{"nazwa":"ALT/AST/bilirubina","cel":"cholestaza","zmienia_decyzje":true,"kolejnosc":1},{"nazwa":"CRP, morfologia","cel":"zapalenie","zmienia_decyzje":true,"kolejnosc":1}],
+ "nie_zlecac":[{"nazwa":"TK jamy brzusznej","powod":"nie zmienia decyzji przed USG; promieniowanie; kolejka"},{"nazwa":"gastroskopia","powod":"dopiero jeśli USG ujemne i objawy trwają"},{"nazwa":"H. pylori","powod":"nie rozstrzyga nic dziś"}],
+ "co_zmieniloby_zdanie":"USG za >7 dni → bilans: skierowanie do szpitala tańsze niż czekanie","zrodla":["[wiedza modelu, niezweryfikowane]"]}

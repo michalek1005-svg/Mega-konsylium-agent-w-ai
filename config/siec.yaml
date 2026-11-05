@@ -1,0 +1,21 @@
+# Sieć agentów konsylium (ankieta innowacji 2.11.2026, plan: konsylium/PLAN-INNOWACJE-KONSYLIUM-2026-11-02.md)
+# asystenci:
+#   na_prosbe – (K1, obecne) lekarz sam prosi o 1–2 asystentów dowodów
+#   stali     – (K2a) przed ślepą turą zawsze 5 niewidocznych asystentów o stałych specjalizacjach (niżej)
+# Plan: „asystenci stają się domyślni dopiero po wyniku pomiaru 30 spraw” (Testowy) – do tego czasu na_prosbe;
+# Testowy przełącza na stali dla wariantu K2a. Zmienia Michał (albo Kodujący na jego polecenie).
+asystenci: na_prosbe
+
+# specjalizacja → rola lekarza, której asystent przygotowuje dowody (brief w .claude/agents/asystent-dowodow.md)
+stali_asystenci:
+  rejestr_lekow: farmakolog            # ChPL z RPL każdego leku z wywiadu, interakcje
+  polskie_wytyczne: poz_pragmatyk      # zrodla/ + PubMed (Poland/Polish), BRAK_PL
+  nie_przeoczyc: najgorszy_scenariusz  # lista „nie wolno przeoczyć” dla prezentacji + LR objawów alarmowych
+  wybor_badan: gospodarz_kosztow       # które badanie rozstrzyga top-2, „co zrobiłby POZ bez konsylium”
+  krytyk: hipotezujacy                 # falsyfikator: co obala każdą hipotezę z wywiadu
+
+# ChPL z Rejestru Produktów Leczniczych przy każdej sprawie z lekami (niezależnie od trybu asystentów)
+chpl_zawsze: true
+
+# ClinicalTrials.gov tylko przy chorobie rzadkiej albo opornej na leczenie (jedno zdanie we Wnioskach)
+badania_kliniczne: tylko_rzadkie_oporne

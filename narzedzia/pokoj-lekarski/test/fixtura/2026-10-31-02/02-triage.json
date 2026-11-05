@@ -1,0 +1,102 @@
+{
+ "zastepcy": [
+  {
+   "zastepca": "zlozonosc",
+   "wynik": 7,
+   "eskaluj": true,
+   "uzasadnienie": "Objawy z 2 układów (przewód pokarmowy: kuleczki w stolcu; moczowy: brunatny mocz w badaniu ogólnym). Trzy choroby przewlekłe wnioskowane z leczenia. 7 pozycji NIEZNANE, w tym wygląd kuleczki, sposób połykania Siofor XR, HbA1c, alkohol i suplementy.",
+   "czynniki": [
+    "2 układy (przewód pokarmowy + moczowy): +2",
+    "3 choroby przewlekłe wnioskowane z leków (nadciśnienie, dyslipidemia, cukrzyca/insulinooporność): +3",
+    "3 preparaty (5 substancji czynnych: ezetimib/statyna, metformina, peryndopryl, amlodypina), poniżej progu polipragmazji dla preparatów: 0",
+    "7 pozycji NIEZNANE (7 × 0,5 = 3,5, limit +2): +2",
+    "brak wieku <2 lub >80, ciąży, immunosupresji i dializ: 0",
+    "brak objawów sprzecznych lub nietypowych dla wieku i płci: 0"
+   ]
+  },
+  {
+   "zastepca": "bezpieczenstwo",
+   "wynik": 4,
+   "eskaluj": true,
+   "pilnosc_wstepna": 4,
+   "flagi": [
+    {
+     "flaga": "Żółtaczka, zażółcenie twardówek, świąd (cholestaza, polekowe uszkodzenie wątroby przy rosuwastatynie i ezetymibie)",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Odbarwiony (acholiczny) stolec",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Ból brzucha z gorączką (zapalenie dróg żółciowych, kamica przewodowa)",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Bóle lub osłabienie mięśni, wzrost CK (rabdomioliza przy statynie, mioglobinuria)",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Krwiomocz lub hemoglobinuria w badaniu ogólnym moczu",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Pogorszenie funkcji nerek (kreatynina, eGFR) przy metforminie, inhibitorze ACE (konwertazy angiotensyny) i indapamidzie",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Niezamierzony spadek masy ciała",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Smolisty stolec lub krew w stolcu",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Ciąża",
+     "status": "NIEOBECNA"
+    },
+    {
+     "flaga": "Nudności, wymioty, duszność, apatia (kwasica mleczanowa przy metforminie, ostre zapalenie wątroby)",
+     "status": "NIEZBADANA"
+    },
+    {
+     "flaga": "Alkohol, zioła i suplementy hepatotoksyczne (odpowiedź ogólna 'nic')",
+     "status": "NIEZBADANA"
+    },
+    {
+     "flaga": "Aktualność badań laboratoryjnych (brak dat; prawidłowe wyniki mogą poprzedzać objaw)",
+     "status": "NIEZBADANA"
+    },
+    {
+     "flaga": "Odwodnienie, hipotensja, zaburzenia elektrolitowe (mało pije; inhibitor ACE, indapamid, metformina; brak RR, Na/K i ciężaru właściwego moczu)",
+     "status": "NIEZBADANA"
+    },
+    {
+     "flaga": "Hemoliza (LDH, morfologia, haptoglobina nieopisane)",
+     "status": "NIEZBADANA"
+    }
+   ],
+   "uzasadnienie": "Żadna czerwona flaga nie jest obecna. Kuleczka wiąże się czasowo z przyjęciem metforminy XR i prawdopodobnie jest pustą otoczką tabletki. Wynik 4 wynika z czterech flag niezbadanych (limit +4): objawy kwasicy, alkohol, brak dat badań, nawodnienie i RR. Próg osiągnięty, więc eskaluję."
+  },
+  {
+   "zastepca": "niepewnosc",
+   "wynik": 3,
+   "eskaluj": false,
+   "pilnosc_wstepna": 5,
+   "hipoteza_wlasna": "Pojedyncza kuleczka w stolcu, czasowo związana z przyjęciem leku, to najpewniej wydalona matryca tabletki metforminy o przedłużonym uwalnianiu (Siofor XR, tzw. ghost tablet). Ciemny mocz przy prawidłowym badaniu ogólnym moczu i prawidłowych badaniach wątrobowych tłumaczy zagęszczenie moczu przy małej podaży płynów. Pilność 5 (obserwacja).",
+   "hipoteza_ordynatora": "Kuleczka w stolcu to najpewniej wydalona matryca tabletki Siofor XR (ghost tablet, bez znaczenia klinicznego), a ciemny mocz przy prawidłowym badaniu ogólnym wynika z zagęszczenia przy małej podaży płynów; pilność 5 (obserwacja).",
+   "zgodne": true,
+   "flagi": [
+    "wyglad_kuleczki_NIEZNANE",
+    "daty_badan_NIEZNANE",
+    "polykanie_w_calosci_NIEZNANE"
+   ],
+   "co_by_zmienilo_zdanie": "Zmieniłoby: kuleczka twarda, nierozpuszczalna, warstwowa (kamień żółciowy) albo kilka kuleczek niezwiązanych z dawką leku. Zmieniłyby też nieaktualne badania lub ponowny ciemny mocz z bilirubinurią albo podwyższonymi ALT, ALP, GGTP, bilirubiną lub CK. Kluczowa jest obejrzana kuleczka.",
+   "uzasadnienie": "Rozpoznanie i pilność zgodne z ordynatorem. +2 za NIEZNANE (wygląd kuleczki, daty badań), bo mogłyby zmienić rozpoznanie. +1 za średnią własną pewność. Prezentacja nie jest niespecyficzna. Wynik 3 jest poniżej progu, więc bez eskalacji."
+  }
+ ],
+ "tryb": "PELNY",
+ "wymuszony_przez_uzytkownika": false,
+ "liczba_rezydentow": 2
+}

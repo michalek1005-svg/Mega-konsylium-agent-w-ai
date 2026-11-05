@@ -1,0 +1,62 @@
+<svg viewBox="-322.1 -328.4 1404.2 1494.8" width="62" height="66" xmlns="http://www.w3.org/2000/svg" aria-label="Konsylium AI" role="img">
+<defs>
+  <g id="n-kc" fill="none" stroke="#fff" stroke-width="130" stroke-linecap="round" stroke-linejoin="round"><path d="M66.5 764.0 L66.5 74.0"/><path d="M620.0 74.0 L120.0 470.0 M320.0 312.0 L660.0 764.0"/></g>
+  <g id="core-kc" fill="none" stroke="#fff" stroke-width="22.6" stroke-linecap="round" stroke-linejoin="round"><path d="M66.5 700.0 L66.5 74.0"/><path d="M620.0 74.0 L120.0 470.0 M320.0 312.0 L660.0 764.0"/></g>
+  <g id="ms-kc" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M51.6 798.4 L51.6 780.0 L59.6 798.4 L67.6 780.0 L67.6 798.4"/><path d="M85.0 783.0 C84.0 780.8 81.6 779.8 78.4 779.8 C74.7 779.8 72.1 781.6 72.1 784.5 C72.1 787.5 74.6 788.5 78.4 789.4 C82.4 790.3 85.2 791.6 85.2 794.8 C85.2 797.6 82.4 798.8 78.5 798.8 C75.0 798.8 72.4 797.5 71.4 794.8"/></g>
+  <mask id="mn-kc" maskUnits="userSpaceOnUse" x="-100" y="-100" width="960" height="1040"><use href="#n-kc"/></mask>
+  
+<filter id="h-kc" filterUnits="userSpaceOnUse" x="-520" y="-520" width="1800" height="1880" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="36.237" result="h1"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="0.3"/><feComposite in2="h1" operator="in" result="H1"/>
+  <feGaussianBlur in="SourceAlpha" stdDeviation="101.925" result="h2"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="0.14"/><feComposite in2="h2" operator="in" result="H2"/>
+  <feMerge><feMergeNode in="H2"/><feMergeNode in="H1"/></feMerge></filter>
+<filter id="b-kc" filterUnits="userSpaceOnUse" x="-520" y="-520" width="1800" height="1880" color-interpolation-filters="sRGB">
+  
+  <feGaussianBlur in="SourceAlpha" stdDeviation="10.191" result="a"/>
+  
+  <feTurbulence type="fractalNoise" baseFrequency="0.09714" numOctaves="2" seed="17" result="tGcg"/>
+  <feColorMatrix in="tGcg" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.35 0 0 0 0.75" result="cg"/>
+  <feComposite in="a" in2="cg" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" result="bodyA"/>
+  <feFlood flood-color="#D5DAE2" flood-opacity="0.16"/><feComposite in2="bodyA" operator="in" result="body"/>
+  
+  <feGaussianBlur in="SourceAlpha" stdDeviation="20.382" result="H_S"/>
+  <feOffset in="H_S" dx="10.191" dy="10.191" result="Hd_S"/><feOffset in="H_S" dx="-10.191" dy="-10.191" result="Hu_S"/>
+  <feComposite in="H_S" in2="Hd_S" operator="arithmetic" k2="5.5" k3="-5.5" result="STL"/>
+  <feComposite in="H_S" in2="Hu_S" operator="arithmetic" k2="5.5" k3="-5.5" result="SBR"/>
+  <feComponentTransfer in="STL" result="shA"><feFuncA type="gamma" amplitude="1" exponent="1.05" offset="0"/></feComponentTransfer><feComposite in="shA" in2="a" operator="in" result="shB"/>
+  <feFlood flood-color="#000000" flood-opacity="0.55"/><feComposite in2="shB" operator="in" result="shade"/>
+  <feComponentTransfer in="SBR" result="hiA"><feFuncA type="gamma" amplitude="1" exponent="1.15" offset="0"/></feComponentTransfer><feComposite in="hiA" in2="a" operator="in" result="hiB"/>
+  <feFlood flood-color="#F2F5FA" flood-opacity="0.42"/><feComposite in2="hiB" operator="in" result="hi"/>
+  <feOffset in="a" dx="-7.92" dy="-9.056" result="lp0"/><feComposite in="lp0" in2="a" operator="out" result="lp1"/><feGaussianBlur in="lp1" stdDeviation="3.393" result="lp2"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="0.28"/><feComposite in2="lp2" operator="in" result="lip"/>
+  <feOffset in="a" dx="6.799" dy="7.92" result="ld0"/><feComposite in="ld0" in2="a" operator="out" result="ld1"/><feGaussianBlur in="ld1" stdDeviation="4.528" result="ld2"/>
+  <feFlood flood-color="#000000" flood-opacity="0.35"/><feComposite in2="ld2" operator="in" result="lipD"/>
+  <feMerge><feMergeNode in="lip"/><feMergeNode in="lipD"/><feMergeNode in="body"/><feMergeNode in="shade"/><feMergeNode in="hi"/></feMerge>
+</filter>
+<filter id="n-kc" filterUnits="userSpaceOnUse" x="-520" y="-520" width="1800" height="1880" color-interpolation-filters="sRGB">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="22.653" result="w3"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="0.7"/><feComposite in2="w3" operator="in" result="G3"/>
+  <feGaussianBlur in="SourceAlpha" stdDeviation="7.245" result="w2"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="1"/><feComposite in2="w2" operator="in" result="G2"/>
+  <feGaussianBlur in="SourceAlpha" stdDeviation="2.271" result="w1"/>
+  <feFlood flood-color="#FFFFFF" flood-opacity="1"/><feComposite in2="w1" operator="in" result="G1"/>
+  <feMerge><feMergeNode in="G3"/><feMergeNode in="G2"/><feMergeNode in="G1"/></feMerge></filter>
+
+<filter id="ms-kc" filterUnits="userSpaceOnUse" x="36" y="764" width="66" height="50" color-interpolation-filters="sRGB">
+  <feMorphology in="SourceAlpha" operator="dilate" radius="0.45" result="A"/>
+  
+  <feFlood flood-color="#C3C9D3" flood-opacity="0.55"/><feComposite in2="A" operator="in" result="g"/>
+  <feOffset in="A" dx="0.55" dy="0.65" result="o"/><feComposite in="o" in2="A" operator="out" result="h0"/>
+  <feFlood flood-color="#ffffff" flood-opacity="0.2"/><feComposite in2="h0" operator="in" result="h"/>
+  <feOffset in="A" dx="-0.35" dy="-0.4" result="o2"/><feComposite in="o2" in2="A" operator="out" result="s0"/>
+  <feFlood flood-color="#000000" flood-opacity="0.4"/><feComposite in2="s0" operator="in" result="s"/>
+  <feMerge><feMergeNode in="s"/><feMergeNode in="g"/><feMergeNode in="h"/></feMerge>
+</filter>
+</defs>
+<g  ><use href="#n-kc" filter="url(#h-kc)"/></g>
+<g  ><use href="#n-kc" filter="url(#b-kc)"/></g>
+<g mask="url(#mn-kc)" ><use href="#core-kc" filter="url(#n-kc)"/></g>
+<g  ><use href="#ms-kc" filter="url(#ms-kc)"/></g>
+
+</svg>

@@ -1,0 +1,46 @@
+# Wagi ról per tor. Waga efektywna = waga_roli[tor] × k[rola] (k z pamiec/kalibracja.json, 0.5–1.5, start 1.0).
+# Tory: rozpoznanie (agregat p), pilnosc (ważona mediana + weto), plan (informacyjnie dla ordynatora; skrypt nie agreguje planu).
+# Zero = rola nie wchodzi do tego toru. Rezydenci i sprawdzający celowo nieobecni.
+
+role:
+  hipotezujacy:          {rozpoznanie: 1.0, pilnosc: 0.6, plan: 0.2}
+  bayes:                 {rozpoznanie: 1.0, pilnosc: 0.6, plan: 0.2}
+  najgorszy_scenariusz:  {rozpoznanie: 0.5, pilnosc: 1.0, plan: 0.2, weto_pilnosci: true}
+  poz_pragmatyk:         {rozpoznanie: 0.5, pilnosc: 0.6, plan: 1.0}
+  farmakolog:            {rozpoznanie: 0.0, pilnosc: 0.3, plan: 1.0}   # bez rankingu: pole przyczyna_polekowa (tak|nie|mozliwa)
+  gospodarz_kosztow:     {rozpoznanie: 0.0, pilnosc: 0.3, plan: 0.6}
+
+# Konsultant dołączony do konkretnej sprawy (np. alergolog, dermatolog), którego nie ma w liście ról powyżej.
+# Ma głos w rozpoznaniu i pilności, bez weta. (1.11.2026: opinia alergologa w sprawie 02 wypadała z agregatu.)
+konsultant:              {rozpoznanie: 0.8, pilnosc: 0.6, plan: 0.6}
+
+# Rozpoznania polekowe to wyjątek: farmakolog ma w nich głos. Skrypt stosuje tę wagę dla pozycji,
+# których nazwa zaczyna się od prefiksu poniżej.
+wyjatki:
+  farmakolog_prefiks_polekowe: "objawy polekowe"
+  farmakolog_waga_polekowe: 1.0
+
+agregacja:
+  epsilon_niewymienione: 0.02     # p przypisane rozpoznaniu, którego lekarz nie wymienił
+  prog_niskiej_zgody: 0.6         # zgoda (udział lekarzy z liderem na 1. miejscu) < prog → flaga NISKA_ZGODA
+  top_n: 5
+
+kalibracja:
+  alpha: 0.10                     # tempo uczenia (0.1 = ~10 spraw, by przestawić k o połowę drogi)
+  beta: 2.0                       # czułość na różnicę Brier
+  k_min: 0.5
+  k_max: 1.5
+
+triage:
+  progi: {zlozonosc: 5, bezpieczenstwo: 4, niepewnosc: 5}
+  rezydenci_domyslnie: 2
+  rezydenci_gdy_ryzyko_od: 7      # ryzyko ≥ 7 → 3 rezydentów
+  rezydenci_max: 3
+  max_petli_sprawdzajacych: 2
+
+pilnosc_skala:
+  1: natychmiast (SOR / ZRM)
+  2: dziś
+  3: w tym tygodniu
+  4: planowo
+  5: obserwacja

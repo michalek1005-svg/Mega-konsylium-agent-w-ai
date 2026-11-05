@@ -1,0 +1,6 @@
+{"rola":"farmakolog","rozpoznania":[{"nazwa":"objawy polekowe — ibuprofen (dyspepsja/uszkodzenie błony śluzowej)","p":0.10,"za":["NLPZ bez osłony"],"przeciw":["objawy poprzedzają NLPZ o 2 dni"]}],
+ "pilnosc":3,"pewnosc":"wysoka","red_flags_wykluczone":[],"red_flags_otwarte":[],
+ "nastepny_krok":"Odstawić ibuprofen; przeciwbólowo paracetamol; przeciwskurczowo drotaweryna lub hioscyna; IPP tylko jeśli potwierdzona składowa wrzodowa",
+ "plan_farmakologiczny":[{"lek":"paracetamol","dawka":"500–1000 mg","droga":"p.o.","czas":"doraźnie, max 4 g/d","uwagi":"brak interakcji z amlodypiną/atorwastatyną","zrodlo":"[wiedza modelu, niezweryfikowane] — potwierdzić w ChPL z zrodla/"},{"lek":"drotaweryna","dawka":"40–80 mg","droga":"p.o.","czas":"doraźnie","uwagi":"","zrodlo":"[wiedza modelu, niezweryfikowane]"}],
+ "nie_podawac":[{"lek":"ibuprofen i inne NLPZ","powod":"ryzyko GI, nadciśnienie, maskowanie zapalenia"},{"lek":"metamizol rutynowo","powod":"agranulocytoza — tylko gdy inne nieskuteczne"}],
+ "co_zmieniloby_zdanie":"eGFR <60 → ograniczyć dawki","zrodla":["[wiedza modelu, niezweryfikowane]"]}

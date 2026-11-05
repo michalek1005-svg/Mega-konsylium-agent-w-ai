@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<!-- FIKCYJNY wynik w układzie podobnym do wydruku Synevo — do testów. Wszystkie dane zmyślone. -->
+<style>
+ @page { size: A4; margin: 14mm; }
+ body { font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 10pt; color: #111; }
+ .gora { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #00558c; padding-bottom: 6px; }
+ .lab { color: #00558c; font-weight: bold; font-size: 16pt; }
+ .kod { display: flex; height: 34px; align-items: stretch; }
+ .kod i { display: block; background: #000; margin-right: 2px; }
+ table.dane { width: 100%; margin: 10px 0; border-collapse: collapse; }
+ table.dane td { padding: 2px 4px; vertical-align: top; }
+ table.wyn { width: 100%; border-collapse: collapse; margin-top: 8px; }
+ table.wyn th, table.wyn td { border-bottom: 1px solid #ccc; padding: 3px 4px; text-align: left; }
+ .stopka { margin-top: 26px; font-size: 8pt; color: #444; border-top: 1px solid #999; padding-top: 4px; }
+</style></head><body>
+<div class="gora">
+  <div><div class="lab">SYNEVO</div><div>Laboratorium Medyczne</div></div>
+  <div><div class="kod" id="kod"></div><div style="font-size:8pt">Nr zlecenia: 7712345678</div></div>
+</div>
+<table class="dane">
+ <tr><td>Pacjent: KOWALSKI JAN</td><td>Data urodzenia: 01.01.1985</td></tr>
+ <tr><td>PESEL: 85010112345</td><td>Płeć: M</td></tr>
+ <tr><td>Adres: ul. Długa 15/3, 00-950 Warszawa</td><td>Tel. 600 700 800</td></tr>
+ <tr><td>Lekarz kierujący: lek. Anna Nowak</td><td>Data pobrania: 12.10.2026 08:15</td></tr>
+ <tr><td>Punkt pobrań: PP Warszawa Mokotów</td><td>Kod dostępu: AB12CD</td></tr>
+</table>
+<b>Morfologia krwi (CBC)</b>
+<table class="wyn">
+ <tr><th>Badanie</th><th>Wynik</th><th>Jednostka</th><th>Zakres referencyjny</th></tr>
+ <tr><td>Hemoglobina</td><td>14,2</td><td>g/dl</td><td>13,5 - 17,5</td></tr>
+ <tr><td>Leukocyty</td><td>6,45</td><td>tys/µl</td><td>4,00 - 10,00</td></tr>
+ <tr><td>Płytki krwi</td><td>245</td><td>tys/µl</td><td>150 - 400</td></tr>
+ <tr><td>TSH</td><td>1,234</td><td>µIU/ml</td><td>0,270 - 4,200</td></tr>
+</table>
+<p>Autoryzował: mgr Piotr Wiśniewski, diagnosta laboratoryjny</p>
+<div class="stopka">Synevo Sp. z o.o., ul. Zbąszyńska 3, 91-342 Łódź · Wynik dla: KOWALSKI JAN · strona 1/1</div>
+<script>
+ const k = document.getElementById('kod'); let s = 7;
+ for (let i = 0; i < 46; i++) { s = (s * 31 + 11) % 97; const e = document.createElement('i'); e.style.width = (1 + s % 3) + 'px'; k.append(e); }
+</script>
+</body></html>

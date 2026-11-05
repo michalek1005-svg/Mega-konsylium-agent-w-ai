@@ -1,0 +1,63 @@
+{
+  "rola": "najgorszy_scenariusz",
+  "rozpoznania": [
+    {
+      "nazwa": "kolka żółciowa w przebiegu kamicy pęcherzyka żółciowego",
+      "p": 0.45,
+      "za": ["ból po tłustych posiłkach promieniujący pod prawą łopatkę", "epizody falujące 30–90 min", "2–3 podobne, samoustępujące epizody w ostatnim roku", "kobieta, 54 lata, BMI około 31"],
+      "przeciw": ["dolegliwości trwają 3 dni z bólem resztkowym między epizodami — niecharakterystyczne dla niepowikłanej kolki", "dodatni objaw Murphy'ego sugeruje stan zapalny pęcherzyka"]
+    },
+    {
+      "nazwa": "ostre zapalenie pęcherzyka żółciowego",
+      "p": 0.32,
+      "za": ["dodatni objaw Murphy'ego i bolesność w prawym podżebrzu (kryterium miejscowe wg Tokyo Guidelines 2018)", "czas trwania 3 dni, ból resztkowy", "wymioty", "ibuprofen może maskować gorączkę i ból"],
+      "przeciw": ["temperatura 36,9 °C, tętno 84/min", "brak obrony mięśniowej", "brak dreszczy"]
+    },
+    {
+      "nazwa": "kamica przewodowa żółciowa (ewentualnie z zapaleniem dróg żółciowych)",
+      "p": 0.07,
+      "za": ["objawowa kamica z nawracającymi epizodami", "ból w nadbrzuszu z wymiotami"],
+      "przeciw": ["brak zauważonej żółtaczki, ciemnego moczu, odbarwionych stolców", "brak gorączki"]
+    },
+    {
+      "nazwa": "ostre zapalenie trzustki o etiologii żółciowej",
+      "p": 0.05,
+      "za": ["ból w nadbrzuszu z nudnościami i wymiotami", "podłoże kamicze"],
+      "przeciw": ["ból zlokalizowany w prawym podżebrzu, nie opasujący", "stan ogólny stabilny"]
+    },
+    {
+      "nazwa": "ostry zespół wieńcowy (zawał ściany dolnej) z bólem w nadbrzuszu",
+      "p": 0.03,
+      "za": ["kobieta 54 lata, nadciśnienie tętnicze, hipercholesterolemia, otyłość", "ból w nadbrzuszu z nudnościami i wymiotami — atypowa prezentacja częsta u kobiet", "elektrokardiogram nie wykonany"],
+      "przeciw": ["wyraźny związek z posiłkami", "brak bólu wysiłkowego, duszności, potów", "dodatni objaw Murphy'ego, tkliwość miejscowa"]
+    }
+  ],
+  "pilnosc": 2,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "perforacja wrzodu / zapalenie otrzewnej — wykluczone klinicznie z rozsądną pewnością: brak obrony mięśniowej, stabilne parametry życiowe (wymaga ponownej oceny brzucha, gdyż ibuprofen może maskować)",
+    "krwawienie z górnego odcinka przewodu pokarmowego — brak smolistych stolców i krwi w stolcu, tętno 84/min",
+    "wstrząs septyczny / ciężkie zapalenie dróg żółciowych — brak gorączki, dreszczy, żółtaczki; tętno i ciśnienie prawidłowe",
+    "rozwarstwienie aorty / pękający tętniak aorty brzusznej — mało prawdopodobne: ból kolkowy związany z posiłkami, nawracający od roku, ciśnienie 138/86; [wiedza modelu, niezweryfikowane]"
+  ],
+  "red_flags_otwarte": [
+    "ostre zapalenie pęcherzyka żółciowego — objaw Murphy'ego dodatni, 3 dni bólu; nie wykluczone, dopóki brak CRP, leukocytozy i USG; wykluczy: prawidłowe CRP i leukocyty oraz USG bez pogrubienia ściany / płynu okołopęcherzykowego / sonograficznego objawu Murphy'ego",
+    "kamica przewodowa / zapalenie dróg żółciowych — żółtaczka oceniana tylko przez pacjentkę; wykluczy: prawidłowa bilirubina, ALT, AST, ALP, GGTP i nieposzerzony przewód żółciowy wspólny w USG",
+    "ostre zapalenie trzustki — wykluczy: lipaza poniżej 3-krotności górnej granicy normy",
+    "ostry zespół wieńcowy z bólem w nadbrzuszu — kobieta z 3 czynnikami ryzyka sercowo-naczyniowego, EKG nie wykonane; wykluczy: prawidłowe EKG spoczynkowe w gabinecie, a przy wątpliwości troponina wysokoczuła",
+    "nowotwór pęcherzyka żółciowego / trzustki / dróg żółciowych (nieodwracalne przy opóźnieniu tygodni) — nawracające dolegliwości od roku, kobieta 54 l. z otyłością; wykluczy: USG jamy brzusznej bez zmian ogniskowych, prawidłowe próby cholestatyczne",
+    "ciąża — status miesiączki/menopauzy NIEZNANY; znaczenie głównie dla doboru leków i obrazowania; wykluczy: wywiad menopauzalny lub test beta-hCG",
+    "maskowanie objawów przez NLPZ (ibuprofen 2 × 400 mg wczoraj) — brak gorączki i obrony mięśniowej mniej wiarygodny"
+  ],
+  "nastepny_krok": "Dziś: EKG w gabinecie od ręki, a następnie tego samego dnia CRP, morfologia, ALT, AST, bilirubina, ALP, GGTP, lipaza i USG jamy brzusznej — jeśli laboratorium i USG nie są dostępne dziś w POZ, skierowanie na SOR/izbę przyjęć chirurgiczną.",
+  "co_zmieniloby_zdanie": "Prawidłowe EKG, CRP, leukocyty, próby wątrobowe, bilirubina i lipaza oraz USG pokazujące kamicę bez cech zapalenia i bez poszerzenia dróg żółciowych pozwoliłyby zejść z pilności 2 do 3 (planowa konsultacja chirurgiczna).",
+  "zrodla": [
+    "Yokoe M i wsp. Tokyo Guidelines 2018: diagnostic criteria and severity grading of acute cholecystitis. J Hepatobiliary Pancreat Sci 2018;25:41–54. DOI 10.1002/jhbp.515 [wiedza modelu, niezweryfikowane — PubMed niedostępny w tej sesji]",
+    "Kiriyama S i wsp. Tokyo Guidelines 2018: diagnostic criteria and severity grading of acute cholangitis. J Hepatobiliary Pancreat Sci 2018;25:17–30. DOI 10.1002/jhbp.512 [wiedza modelu, niezweryfikowane]",
+    "European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the prevention, diagnosis and treatment of gallstones. J Hepatol 2016;65:146–181. DOI 10.1016/j.jhep.2016.03.005 [wiedza modelu, niezweryfikowane]",
+    "Byrne RA i wsp. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J 2023;44:3720–3826. DOI 10.1093/eurheartj/ehad191 [wiedza modelu, niezweryfikowane]",
+    "Kryterium lipazy ≥3 × GGN dla ostrego zapalenia trzustki (klasyfikacja z Atlanty, rewizja 2012: Banks PA i wsp. Gut 2013;62:102–111, DOI 10.1136/gutjnl-2012-302779) [wiedza modelu, niezweryfikowane]",
+    "pamiec/zespol.md — 2026-10-31, PRZYKLAD-001: kolka żółciowa u kobiety 50+ z czynnikami ryzyka sercowego — EKG w gabinecie zawsze przed planem planowym",
+    "zrodla/ — brak polskich wytycznych dla kamicy żółciowej / bólu brzucha w bibliotece (MANIFEST.md zawiera tylko przykłady)"
+  ]
+}

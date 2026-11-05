@@ -1,0 +1,90 @@
+{
+  "rola": "hipotezujacy",
+  "rozpoznania": [
+    {
+      "nazwa": "Pozostałość tabletki o przedłużonym uwalnianiu",
+      "p": 0.6,
+      "za": [
+        "Przyjmuje metforminę o przedłużonym uwalnianiu (Siofor XR 1 g) od kilku miesięcy; pojedyncza kulka raczej powiązana czasowo z przyjęciem leku",
+        "Jedna kulka na epizod (odpowiada jednej tabletce dziennie), żółtawa powłoka, brak objawów jelitowych, stolec prawidłowej barwy",
+        "Opisany przypadek: żółtawa struktura w stolcu imitująca pasożyta u kobiety na metforminie XR, rozpoznana jako tabletka-widmo bez dalszej diagnostyki (PMID 40209786)"
+      ],
+      "przeciw": [
+        "Nie wiadomo, czy tabletka połykana jest w całości; kulki nie obejrzano ani nie zachowano — brak porównania z tabletką",
+        "Opis 'małe okrągłe kuleczki' może nie pasować do kształtu i rozmiaru tabletki 1 g (owalna, duża) [wiedza modelu, niezweryfikowane]",
+        "Pozostałe leki (Ezehron Duo, Co-Prestarium) to tabletki o natychmiastowym uwalnianiu — nie tłumaczą objawu, więc rozpoznanie opiera się na jednym leku"
+      ]
+    },
+    {
+      "nazwa": "Zagęszczenie moczu przy małej podaży płynów",
+      "p": 0.2,
+      "za": [
+        "Pacjentka sama podaje, że mało pije",
+        "Ciemny mocz rzadki, stwierdzony głównie w badaniu ogólnym; poza barwą badanie ogólne moczu prawidłowe (bez krwi, bilirubiny, białka), bilirubina, aminotransferazy, kinaza kreatynowa i kreatynina prawidłowe",
+        "Brak żółtaczki, świądu, bólu mięśni, bólu brzucha, gorączki; nie jadła buraków, rabarbaru, bobu"
+      ],
+      "przeciw": [
+        "Nieznany ciężar właściwy moczu — brak bezpośredniego potwierdzenia zagęszczenia",
+        "Nieznane daty badań — nie wiadomo, czy wyniki pochodzą z okresu objawu"
+      ]
+    },
+    {
+      "nazwa": "Niestrawione resztki pokarmowe",
+      "p": 0.1,
+      "za": [
+        "Częsta, łagodna przyczyna 'kulek' w stolcu (np. nasiona, otoczki ziaren, skórki) [wiedza modelu, niezweryfikowane]",
+        "Kulki widziane tylko dwukrotnie, bez objawów żołądkowo-jelitowych"
+      ],
+      "przeciw": [
+        "Pacjentka neguje chia, tapiokę, kapsułki, tran, probiotyki",
+        "Pacjentka łączy kulkę czasowo z przyjęciem leku"
+      ]
+    },
+    {
+      "nazwa": "Kamica żółciowa",
+      "p": 0.03,
+      "za": [
+        "Kobieta 40 lat, prawdopodobna cukrzyca typu 2 i dyslipidemia — czynniki ryzyka kamicy; żółtawe kuleczki mogą imitować złogi"
+      ],
+      "przeciw": [
+        "Neguje wywiad kamiczy, brak bólu brzucha i żółtaczki",
+        "Bilirubina i aminotransferazy prawidłowe, stolec prawidłowej barwy"
+      ]
+    },
+    {
+      "nazwa": "Polekowe uszkodzenie wątroby",
+      "p": 0.02,
+      "za": [
+        "Przyjmuje rosuwastatynę z ezetymibem; ciemny mocz bywa pierwszym objawem cholestazy [wiedza modelu, niezweryfikowane]"
+      ],
+      "przeciw": [
+        "Bilirubina i aminotransferazy prawidłowe, w moczu brak bilirubiny, brak żółtaczki i świądu",
+        "Brak zmian w lekach"
+      ]
+    }
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "Żółtaczka, świąd, odbarwiony stolec — brak; bilirubina i bilirubina w moczu prawidłowe",
+    "Rabdomioliza statynowa — brak bólów i osłabienia mięśni, kinaza kreatynowa i kreatynina prawidłowe (PMID 34987920 jako tło kliniczne)",
+    "Krwiomocz — badanie ogólne moczu bez krwi",
+    "Krwawienie z przewodu pokarmowego — stolec prawidłowej barwy, bez krwi i smolistości",
+    "Objawy ogólne nowotworu lub zakażenia — brak gorączki, spadku masy ciała"
+  ],
+  "red_flags_otwarte": [
+    "Daty badań laboratoryjnych NIEZNANE — jeśli wyniki sprzed wystąpienia ciemnego moczu, wykluczenie uszkodzenia wątroby i rabdomiolizy jest niepełne",
+    "Alkohol i zioła/suplementy NIEZNANE (odpowiedź ogólna) — możliwe polekowe lub toksyczne uszkodzenie wątroby nie w pełni wykluczone",
+    "Ocena twardówek i stanu nawodnienia nieudokumentowana szczegółowo"
+  ],
+  "nastepny_krok": "Poprosić pacjentkę, by przy kolejnym epizodzie wypłukała i zachowała kulkę (lub zrobiła zdjęcie) i przyniosła ją razem z tabletką Siofor XR do porównania makroskopowego.",
+  "co_zmieniloby_zdanie": "Kulka niepodobna do tabletki (np. twardy, warstwowy złóg albo struktura organiczna) lub ciemny mocz z bilirubinurią, krwiomoczem albo podwyższoną kinazą kreatynową w aktualnym badaniu przesunęłyby rozpoznanie od pozostałości tabletki ku kamicy, chorobie wątroby lub rabdomiolizie.",
+  "zrodla": [
+    "PubMed PMID 40209786 — K-Sarı I i wsp. Presence of Ghost Capsules in Stool Mimicking Parasites due to Extended Release Metformin. Clin Lab 2025;71(4). DOI 10.7754/Clin.Lab.2024.241019",
+    "PubMed PMID 36873007 — Hadinugroho W i wsp. HPMC hydrogel matrix for controlled release tablet (mechanizm 'ghost matrix' tabletek matrycowych). ACS Omega 2023;8(8):7767-7778. DOI 10.1021/acsomega.2c07432",
+    "PubMed PMID 38021975 — Lucerna A i wsp. Turquoise Urine in a Man Who Had Urinary Retention (przegląd: przebarwienia moczu najczęściej z pokarmów i leków). Cureus 2023;15(10):e47530. DOI 10.7759/cureus.47530",
+    "PubMed PMID 34987920 — Osborn H i wsp. Delayed Onset Multi-Drug Interaction Resulting in Rhabdomyolysis (rosuwastatyna, ciemny mocz, kinaza kreatynowa). Cureus 2021;13(11):e20035. DOI 10.7759/cureus.20035",
+    "zrodla/ — brak polskich wytycznych dla tej prezentacji w bibliotece (MANIFEST zawiera tylko przykłady)",
+    "[wiedza modelu, niezweryfikowane] — kształt tabletki Siofor XR 1 g; ChPL preparatów metforminy XR wspomina o możliwych pozostałościach tabletki w stolcu"
+  ]
+}

@@ -1,0 +1,4 @@
+{"petla": 1,
+ "fakty": {"kartka": "ZOLTA", "uwagi": ["Sprawdzający nie miał PubMed (chwilowy błąd połączenia); ordynator zweryfikował wszystkie PMID/DOI w PubMed po pętli: 40209786, 29264103, 27048352, 35201303, 36873007, 38021975, 34987920 — wszystkie poprawne.", "ACE-I w ciąży: przeciwwskazane w II–III trymestrze, niezalecane w I — poprawione w FINAL.", "Odstawienie rosuwastatyny w PLAN B wymaga etykiety — dodana.", "Tytuł K-Sarı mówi o 'ghost capsules' — poprawione w cytacie."]},
+ "proces": {"kartka": "CZERWONA", "uwagi": ["REKOMENDACJA z 4 działaniami i słowem 'lub' — poprawione w FINAL (jedno działanie).", "Brak porfirii w WRÓĆ — dopisana.", "NIEZNANE niepełne (alergie, co pacjentka uważa, od kiedy cukrzyca) — dopisane.", "Ślepa tura bez przecieku hipotezy (osobny plik).", "Log: 7 pakietów przy 2 rezydentach (użyte seedy 101 i 202)."]},
+ "rubryka": {"za_przeciw_obecne": 13, "komunikat": 9}}

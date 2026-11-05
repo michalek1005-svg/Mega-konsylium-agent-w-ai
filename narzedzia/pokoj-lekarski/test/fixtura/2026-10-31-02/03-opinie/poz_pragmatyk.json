@@ -1,0 +1,51 @@
+{
+  "rola": "poz_pragmatyk",
+  "rozpoznania": [
+    {"nazwa": "pozostałość tabletki w stolcu", "p": 0.6,
+     "za": ["metformina o przedłużonym uwalnianiu (Siofor XR) od kilku miesięcy", "pojedyncza kulka, związek czasowy z przyjęciem leku", "brak objawów z przewodu pokarmowego, stolec prawidłowej barwy", "matryca żelowa preparatów XR może być wydalana w stolcu w niezmienionej postaci — opisane w ChPL metforminy XR [wiedza modelu, niezweryfikowane]"],
+     "przeciw": ["nie wiadomo, czy tabletka jest połykana w całości", "kulka nieobejrzana, nie zachowana", "opis 'okrągła, żółtawa powłoka' słabo pasuje do podłużnej tabletki Siofor XR — dotyczy też innych leków (Co-Prestarium, Ezehron Duo)"]},
+    {"nazwa": "zagęszczenie moczu", "p": 0.15,
+     "za": ["pacjentka mało pije", "badanie ogólne moczu poza barwą prawidłowe (bilirubina, urobilinogen, krew ujemne wg wywiadu)", "epizodyczność ciemnego moczu"],
+     "przeciw": ["dokładny ciężar właściwy NIEZNANY", "data badania NIEZNANA"]},
+    {"nazwa": "kamica żółciowa", "p": 0.07,
+     "za": ["kobieta 40 lat, cukrzyca leczona metforminą, prawdopodobnie nadwaga (BMI NIEZNANE)", "żółtawe kuliste twory w stolcu"],
+     "przeciw": ["brak bólu, żółtaczki, świądu", "ALT, ALP/bilirubina prawidłowe wg wywiadu", "neguje wywiad kamiczy", "złogi żółciowe rzadko są widoczne w stolcu bez objawów"]},
+    {"nazwa": "polekowe uszkodzenie wątroby", "p": 0.03,
+     "za": ["rosuwastatyna z ezetymibem", "ciemny mocz"],
+     "przeciw": ["ALT, AST, bilirubina prawidłowe wg wywiadu", "brak żółtaczki i świądu", "bilirubina w moczu ujemna"]},
+    {"nazwa": "miopatia statynowa", "p": 0.02,
+     "za": ["statyna w skojarzeniu z ezetymibem", "ciemny mocz"],
+     "przeciw": ["brak bólu i osłabienia mięśni", "CK prawidłowa wg wywiadu", "brak krwi w pasku moczu (mioglobinuria daje dodatni test na krew)"]}
+  ],
+  "pilnosc": 4,
+  "pewnosc": "srednia",
+  "red_flags_wykluczone": [
+    "żółtaczka, świąd, ból brzucha, gorączka, spadek masy ciała — zaprzeczone",
+    "bóle i osłabienie mięśni — zaprzeczone; CK prawidłowa wg wywiadu (data NIEZNANA)",
+    "stolec odbarwiony, smolisty lub z krwią — zaprzeczone",
+    "bilirubinuria i krwinkomocz w badaniu ogólnym moczu — ujemne wg wywiadu (data NIEZNANA)",
+    "ciąża — zaprzeczona"
+  ],
+  "red_flags_otwarte": [
+    "daty badań laboratoryjnych NIEZNANE — jeśli ALT, bilirubina, CK, kreatynina sprzed ciemnego moczu, nie wykluczają uszkodzenia wątroby ani rabdomiolizy",
+    "kulka nieobejrzana — nie wykluczono złogu żółciowego ani pasożyta",
+    "eGFR NIEZNANY w momencie objawu — istotne przy metforminie i odwodnieniu"
+  ],
+  "nastepny_krok": "Poprosić pacjentkę o zachowanie lub sfotografowanie następnej kulki (przepłukać wodą, sprawdzić czy jest pusta/rozpada się) i przyniesienie opakowania Siofor XR, a jednocześnie — jeśli wyniki są starsze niż wystąpienie ciemnego moczu — zlecić z koszyka POZ: badanie ogólne moczu z osadem, ALT, AST, bilirubina całkowita, fosfataza zasadowa, GGTP, kreatynina z eGFR, CK, HbA1c.",
+  "co_zmieniloby_zdanie": "Kulka twarda, krystaliczna, nierozpadająca się, niezwiązana z porą przyjęcia leku, albo ciemny mocz z dodatnią bilirubiną, krwią w pasku lub wzrostem ALT/CK w świeżym badaniu — wtedy pilność 2–3 i USG jamy brzusznej / ocena wątroby lub mięśni.",
+  "plan_poz": {
+    "w_gabinecie_teraz": "Ustalić daty posiadanych wyników; zmierzyć RR, masę ciała i obwód talii (BMI NIEZNANE); obejrzeć twardówki w świetle dziennym; zapytać, czy Siofor XR połyka w całości, z posiłkiem wieczornym, bez dzielenia.",
+    "zlecic": "Jeśli wyniki sprzed objawu lub nieznanej daty: badanie ogólne moczu z osadem (pierwsza poranna porcja po normalnym nawodnieniu), ALT, AST, bilirubina całkowita, fosfataza zasadowa, GGTP, kreatynina z eGFR, CK, HbA1c, lipidogram — wszystko w koszyku POZ [wiedza modelu, niezweryfikowane]. USG jamy brzusznej tylko gdy kulka okaże się twardym złogiem, pojawi się ból lub nieprawidłowe próby wątrobowe.",
+    "skierowanie": "Brak — sprawa do zamknięcia w POZ.",
+    "kontrola": "Wizyta lub teleporada za 1–2 tygodnie z wynikami i zdjęciem/próbką kulki.",
+    "nawodnienie": "Zalecić zwiększenie podaży płynów (ok. 1,5–2 l/d przy braku przeciwwskazań) [wiedza modelu, niezweryfikowane] i ocenić, czy mocz jaśnieje.",
+    "zdanie_dla_pacjentki": "To najpewniej pusta otoczka tabletki o przedłużonym uwalnianiu — lek i tak się wchłonął; proszę następną kulkę sfotografować, pić więcej i zgłosić się od razu, gdyby pojawiło się zażółcenie oczu, ból brzucha, bóle mięśni albo mocz koloru coli.",
+    "wykonalnosc": "Wysoka — 40-letnia pacjentka, wszystkie badania z koszyka POZ, brak potrzeby dojazdu do AOS/SOR; zdjęcie telefonem zamiast przynoszenia próbki."
+  },
+  "zrodla": [
+    "[wiedza modelu, niezweryfikowane] ChPL metforminy o przedłużonym uwalnianiu (Siofor XR / Glucophage XR) — możliwość wydalania niezmienionej matrycy tabletki w stolcu",
+    "[wiedza modelu, niezweryfikowane] Mioglobinuria daje dodatni test paskowy na krew przy braku erytrocytów w osadzie",
+    "[wiedza modelu, niezweryfikowane] Zakres badań laboratoryjnych w koszyku POZ (NFZ)",
+    "Uwaga: zrodla/ zawiera wyłącznie MANIFEST bez plików; PubMed MCP nie połączył się w tej sesji (ERR_PROXY_TUNNEL 403) — brak PMID/DOI"
+  ]
+}
